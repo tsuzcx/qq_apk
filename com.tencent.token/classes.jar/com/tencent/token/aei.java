@@ -1,37 +1,16 @@
 package com.tencent.token;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.tencent.turingfd.sdk.base.Guava;
+import java.util.Comparator;
 
 public final class aei
+  implements Comparator<Guava>
 {
-  public static aek a = new aek();
-  
-  public static void a(Object paramObject)
+  public final int compare(Object paramObject1, Object paramObject2)
   {
-    b(paramObject);
-  }
-  
-  public static String b(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    if ((paramObject instanceof String)) {
-      return (String)paramObject;
-    }
-    if ((paramObject instanceof Throwable))
-    {
-      Object localObject = (Throwable)paramObject;
-      StringWriter localStringWriter = new StringWriter();
-      paramObject = new PrintWriter(localStringWriter);
-      ((Throwable)localObject).printStackTrace(paramObject);
-      paramObject.flush();
-      localObject = localStringWriter.toString();
-      paramObject.close();
-      return localObject;
-    }
-    return paramObject.toString();
+    paramObject1 = (Guava)paramObject1;
+    paramObject2 = (Guava)paramObject2;
+    return (int)(paramObject1.Mc - paramObject2.Mc);
   }
 }
 

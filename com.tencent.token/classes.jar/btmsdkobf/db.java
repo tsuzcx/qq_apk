@@ -10,8 +10,8 @@ import android.os.Message;
 import android.os.Process;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.jw;
-import com.tencent.token.jy;
+import com.tencent.token.jv;
+import com.tencent.token.jx;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,7 +31,7 @@ public class db
   private static int lj;
   private static final long[] lk = { 100L, 60000L, 120000L };
   private final String TAG = "SharkProtocolQueue";
-  private cy hF;
+  public cy hF;
   private cl he;
   private ExecutorService jn;
   private Handler jy = new Handler(cx.getLooper())
@@ -266,9 +266,9 @@ public class db
             ??? = db.m(db.this).iterator();
             while (???.hasNext())
             {
-              ??? = (jw)???.next();
+              ??? = (jv)???.next();
               if (??? != null) {
-                db.this.b(((jw)???).a, ((jw)???).b, ((jw)???).c);
+                db.this.b(((jv)???).a, ((jv)???).b, ((jv)???).c);
               }
             }
             db.a(db.this, null);
@@ -382,7 +382,7 @@ public class db
   };
   private boolean la = false;
   private boolean lb = false;
-  private LinkedList<jw> ld = null;
+  private LinkedList<jv> ld = null;
   private boolean le = false;
   private boolean lf = false;
   private boolean lg = false;
@@ -1022,7 +1022,7 @@ public class db
     if (this.ld == null) {
       this.ld = new LinkedList();
     }
-    this.ld.add(new jw(paramInt1, paramInt2, paramInt3));
+    this.ld.add(new jv(paramInt1, paramInt2, paramInt3));
   }
   
   public void b(ch paramch)
@@ -1448,12 +1448,12 @@ public class db
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        jy localjy = (jy)paramAnonymousMessage.obj;
+        jx localjx = (jx)paramAnonymousMessage.obj;
         ba localba = new ba();
         localba.df = -11050000;
         localba.dd = paramAnonymousMessage.what;
-        if (localjy != null) {
-          localba.bM = localjy.a;
+        if (localjx != null) {
+          localba.bM = localjx.a;
         }
         paramAnonymousMessage = new StringBuilder("接收超时：seq: ");
         paramAnonymousMessage.append(localba.dd);
@@ -1718,7 +1718,7 @@ public class db
             ((StringBuilder)localObject1).append("计时(ms): ");
             ((StringBuilder)localObject1).append(l2);
             eh.i("SharkProtocolQueue", ((StringBuilder)localObject1).toString());
-            localObject1 = new jy(localas.bM);
+            localObject1 = new jx(localas.bM);
             localObject1 = Message.obtain(this.d, localas.dc, localObject1);
             this.d.sendMessageDelayed((Message)localObject1, l2);
             if ((((db.d)((Map.Entry)localObject3).getValue()).i & 0x800) != 0) {

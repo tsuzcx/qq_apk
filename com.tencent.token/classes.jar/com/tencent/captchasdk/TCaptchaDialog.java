@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import com.tencent.token.ko.a;
-import com.tencent.token.ko.b;
+import com.tencent.token.kn.a;
+import com.tencent.token.kn.b;
+import com.tencent.token.ko;
 import com.tencent.token.kp;
 import com.tencent.token.kq;
-import com.tencent.token.kr;
-import com.tencent.token.kr.a;
+import com.tencent.token.kq.a;
 
 public class TCaptchaDialog
   extends Dialog
@@ -20,11 +20,11 @@ public class TCaptchaDialog
   private Context a;
   private String b;
   private float c;
-  private kp d;
+  private ko d;
   private String e;
   private RelativeLayout f;
-  private kr g;
-  private kr.a h;
+  private kq g;
+  private kq.a h;
   
   public void dismiss()
   {
@@ -54,14 +54,14 @@ public class TCaptchaDialog
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(ko.b.tcaptcha_popup);
+    setContentView(kn.b.tcaptcha_popup);
     this.c = this.a.getResources().getDisplayMetrics().density;
-    paramBundle = (RelativeLayout)findViewById(ko.a.tcaptcha_container);
-    this.d = new kp(this.a);
+    paramBundle = (RelativeLayout)findViewById(kn.a.tcaptcha_container);
+    this.d = new ko(this.a);
     this.d.setLayerType(1, null);
-    this.f = ((RelativeLayout)findViewById(ko.a.tcaptcha_indicator_layout));
-    kq.a(this.a, getWindow(), paramBundle, this.f, this.d);
-    this.g = new kr(this.a, this.h, this.b, this.d, this.e);
+    this.f = ((RelativeLayout)findViewById(kn.a.tcaptcha_indicator_layout));
+    kp.a(this.a, getWindow(), paramBundle, this.f, this.d);
+    this.g = new kq(this.a, this.h, this.b, this.d, this.e);
   }
 }
 

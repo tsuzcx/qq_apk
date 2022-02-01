@@ -1,8 +1,8 @@
 package com.oasisfeng.condom;
 
 import android.support.annotation.Keep;
-import com.tencent.token.kj;
-import com.tencent.token.kn;
+import com.tencent.token.ki;
+import com.tencent.token.km;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,16 +12,16 @@ public class CondomOptions
   boolean mDryRun;
   boolean mExcludeBackgroundReceivers = true;
   boolean mExcludeBackgroundServices = true;
-  List<kj> mKits;
+  List<ki> mKits;
   OutboundJudge mOutboundJudge;
-  kn mPackageManagerFactory;
+  km mPackageManagerFactory;
   
-  public CondomOptions addKit(kj paramkj)
+  public CondomOptions addKit(ki paramki)
   {
     if (this.mKits == null) {
       this.mKits = new ArrayList();
     }
-    this.mKits.add(paramkj);
+    this.mKits.add(paramki);
     return this;
   }
   
@@ -49,9 +49,9 @@ public class CondomOptions
     return this;
   }
   
-  public CondomOptions setPackageManagerFactory(kn paramkn)
+  public CondomOptions setPackageManagerFactory(km paramkm)
   {
-    this.mPackageManagerFactory = paramkn;
+    this.mPackageManagerFactory = paramkm;
     return this;
   }
 }

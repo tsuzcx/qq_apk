@@ -1,27 +1,40 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
+import android.content.ContentValues;
+import android.os.Handler;
+import java.io.File;
+import java.util.HashMap;
 
 public final class aaq
 {
-  public sl a = new sl();
-  long b;
-  public boolean c;
+  public String a;
+  public int b;
+  public HashMap<String, Object> c = new HashMap();
+  public Handler d;
+  public boolean e = false;
+  public int f;
+  public boolean g = false;
+  public int h = 90000;
+  public String i;
+  public int j;
+  public boolean k;
+  public tk.a l;
+  public int m = 0;
+  public ContentValues n;
+  public File o;
+  public String p;
+  public byte[] q;
   
-  public final void a(sl paramsl)
+  public aaq() {}
+  
+  public aaq(String paramString, Handler paramHandler)
   {
-    try
-    {
-      this.a = paramsl;
-      if (ta.a().k.b() != null) {
-        this.b = ta.a().k.b().mUin;
-      }
-      return;
-    }
-    finally
-    {
-      paramsl = finally;
-      throw paramsl;
+    this.a = paramString;
+    this.b = 1;
+    this.d = paramHandler;
+    this.f = 3042;
+    if (paramHandler != null) {
+      this.i = paramHandler.getClass().getName();
     }
   }
 }

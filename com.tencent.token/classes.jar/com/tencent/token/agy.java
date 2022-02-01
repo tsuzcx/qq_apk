@@ -1,11 +1,16 @@
 package com.tencent.token;
 
-import android.util.Pair;
-import com.qq.taf.jce.JceStruct;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface agy
+public final class agy
 {
-  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
+  public boolean a = false;
+  AtomicInteger b = new AtomicInteger();
+  
+  public final void a(int paramInt)
+  {
+    this.b.set(paramInt);
+  }
 }
 
 

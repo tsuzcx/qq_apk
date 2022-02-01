@@ -1,125 +1,150 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import com.tencent.turingfd.sdk.base.Flat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public final class afc
 {
-  public static Map<String, Set<String>> a = new HashMap();
-  public static Map<String, Integer> b = new HashMap();
-  
-  static
-  {
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("18C867F0717AA67B2AB7347505BA07ED");
-    a.put(afg.a(afg.J), localHashSet);
-    localHashSet = new HashSet();
-    localHashSet.add("31223B0BDF1DEF1FE8252971ADA3B577");
-    localHashSet.add("CCD4AD38DC6669F875BC37E3F8840648");
-    localHashSet.add("AA3978F41FD96FF9914A669E186474C7");
-    localHashSet.add("775E696D09856872FDD8AB4F3F06B1E0");
-    localHashSet.add("A6B745BF24A2C277527716F6F36EB68D");
-    localHashSet.add("A01EECAB85E9E3BA2B0F6A158C855C29");
-    a.put(afg.a(afg.K), localHashSet);
-    b.put(afg.a(afg.J), Integer.valueOf(105118));
-    b.put(afg.a(afg.K), Integer.valueOf(105178));
-  }
+  public static ArrayList<Flat> a;
   
   public static ArrayList<Flat> a(Context paramContext)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    String str = paramContext.getPackageName();
-    Object localObject1;
-    Object localObject2;
-    if (!TextUtils.isEmpty(str))
+    ArrayList localArrayList = new ArrayList();
+    int i = b(paramContext);
+    if (i > 0)
     {
-      localObject1 = b.get(str);
-      if ((localObject1 != null) && (((Integer)localObject1).intValue() != afi.a))
-      {
-        localObject1 = aez.b(paramContext, str);
-        localObject2 = new Flat();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(afn.c);
-        localStringBuilder.append(afn.d);
-        ((Flat)localObject2).sc = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("_");
-        localStringBuilder.append((String)localObject1);
-        ((Flat)localObject2).tc = localStringBuilder.toString();
-        localArrayList2.add(localObject2);
-      }
+      paramContext = new Flat();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(afm.c);
+      localStringBuilder.append(afm.e);
+      paramContext.sc = localStringBuilder.toString();
+      paramContext.tc = String.valueOf(i);
+      localArrayList.add(paramContext);
     }
-    localArrayList1.addAll(localArrayList2);
-    localArrayList2 = new ArrayList();
-    str = paramContext.getPackageName();
-    if (!TextUtils.isEmpty(str))
+    return localArrayList;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    Object localObject1 = paramContext.getPackageManager();
+    bool2 = false;
+    String str;
+    if (localObject1 != null) {
+      str = aff.a(aff.l);
+    }
+    try
     {
-      localObject1 = (Set)a.get(str);
-      if ((localObject1 != null) && (((Set)localObject1).size() != 0))
+      ((PackageManager)localObject1).getPackageInfo(str, 128);
+      bool1 = true;
+    }
+    catch (Throwable localThrowable)
+    {
+      label42:
+      int k;
+      break label42;
+    }
+    bool1 = false;
+    k = aey.a(0, bool1, 0);
+    try
+    {
+      localObject1 = new String(aey.c(aff.a(aff.n)));
+      boolean bool3 = TextUtils.isEmpty((CharSequence)localObject1);
+      bool1 = bool2;
+      if (bool3) {
+        break label289;
+      }
+      localObject1 = ((String)localObject1).split("\\n");
+      bool1 = bool2;
+      if (localObject1 == null) {
+        break label289;
+      }
+      bool1 = bool2;
+      if (localObject1.length == 0) {
+        break label289;
+      }
+      paramContext = paramContext.getPackageName();
+      m = localObject1.length;
+      j = 0;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
       {
-        paramContext = aez.b(paramContext, str);
-        if (!TextUtils.isEmpty(paramContext))
+        int m;
+        int j;
+        Object localObject2;
+        int i;
+        StringBuilder localStringBuilder;
+        bool1 = bool2;
+        continue;
+        bool1 = bool2;
+        if (j < m)
         {
-          int j = 0;
-          localObject1 = ((Set)localObject1).iterator();
-          do
+          localObject2 = localThrowable[j];
+          if (localObject2 == null)
           {
-            i = j;
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
+            i = 0;
+            continue;
+            i = 0;
+            if ((!bool1) && (i == 0)) {
+              i = 0;
             }
-          } while (!((String)((Iterator)localObject1).next()).equals(paramContext));
-          int i = 1;
-          if (i == 0)
-          {
-            localObject1 = new Flat();
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(afn.c);
-            ((StringBuilder)localObject2).append(afn.d);
-            ((Flat)localObject1).sc = ((StringBuilder)localObject2).toString();
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(str);
-            ((StringBuilder)localObject2).append("_");
-            ((StringBuilder)localObject2).append(paramContext);
-            ((Flat)localObject1).tc = ((StringBuilder)localObject2).toString();
-            localArrayList2.add(localObject1);
           }
         }
       }
     }
-    localArrayList1.addAll(localArrayList2);
-    return localArrayList1;
-  }
-  
-  public static ArrayList<Flat> b(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    String str = paramContext.getPackageName();
-    if (TextUtils.isEmpty(str)) {
-      return localArrayList;
+    i = localObject2.indexOf('/');
+    if (i == -1)
+    {
+      i = 0;
     }
-    paramContext = aez.b(paramContext, str);
-    Flat localFlat = new Flat();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(afn.c);
-    localStringBuilder.append(afn.g);
-    localFlat.sc = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramContext);
-    localFlat.tc = localStringBuilder.toString();
-    localArrayList.add(localFlat);
-    return localArrayList;
+    else
+    {
+      str = localObject2.substring(i).trim();
+      if (!str.startsWith("/data/"))
+      {
+        i = 0;
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder("/data/data/");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append("/");
+        if (str.startsWith(localStringBuilder.toString()))
+        {
+          i = 0;
+        }
+        else
+        {
+          bool1 = str.endsWith(".so");
+          if ((bool1) || (!str.endsWith(".jar"))) {
+            break label336;
+          }
+          i = 1;
+          break label338;
+          bool1 = localObject2.contains(aff.a(aff.m));
+          if (bool1) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+      }
+    }
+    if (i != 0)
+    {
+      bool1 = true;
+    }
+    else
+    {
+      j += 1;
+      break label310;
+    }
+    label289:
+    return aey.a(k, bool1, 1);
   }
 }
 

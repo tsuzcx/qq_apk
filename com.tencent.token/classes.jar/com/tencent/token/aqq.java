@@ -1,21 +1,52 @@
 package com.tencent.token;
 
+import android.os.Process;
 import com.qq.taf.jce.JceStruct;
 import java.lang.ref.WeakReference;
 
-public abstract interface aqq
+public final class aqq
+  implements aqp
 {
-  public abstract agy a(int paramInt1, int paramInt2);
+  private long a = 0L;
+  private aqj b = (aqj)aou.a(aqj.class);
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agx paramagx);
+  public aqq()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("pid: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("SharkQueueProxy mSharkProtocolQueue: ");
+    localStringBuilder.append(this.b.hashCode());
+  }
   
-  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agx paramagx, long paramLong);
+  public final agx a(int paramInt1, int paramInt2)
+  {
+    return this.b.a(paramInt1, paramInt2);
+  }
   
-  public abstract void a();
+  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw)
+  {
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagw);
+  }
   
-  public abstract void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agy paramagy);
+  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw, long paramLong)
+  {
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagw, paramLong);
+  }
   
-  public abstract void b();
+  public final void a()
+  {
+    aqj.a(5);
+  }
+  
+  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agx paramagx)
+  {
+    this.b.a(paramInt1, paramJceStruct, paramInt2, paramagx);
+  }
+  
+  public final void b()
+  {
+    aqj.b(1);
+  }
 }
 
 

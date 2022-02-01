@@ -1,93 +1,46 @@
 package com.tencent.token;
 
-import java.io.InterruptedIOException;
-import java.util.concurrent.TimeUnit;
+import java.nio.charset.Charset;
 
-public class alq
+public final class alq
 {
-  public static final alq c = new alq()
-  {
-    public final alq a(long paramAnonymousLong)
-    {
-      return this;
-    }
-    
-    public final alq a(long paramAnonymousLong, TimeUnit paramAnonymousTimeUnit)
-    {
-      return this;
-    }
-    
-    public final void f() {}
-  };
-  private boolean a;
-  private long b;
-  private long d;
+  public static final Charset a = Charset.forName("UTF-8");
   
-  public alq a(long paramLong)
+  public static int a(int paramInt)
   {
-    this.a = true;
-    this.b = paramLong;
-    return this;
+    return (paramInt & 0xFF) << 24 | (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8;
   }
   
-  public alq a(long paramLong, TimeUnit paramTimeUnit)
+  public static short a(short paramShort)
   {
-    if (paramLong >= 0L)
-    {
-      if (paramTimeUnit != null)
-      {
-        this.d = paramTimeUnit.toNanos(paramLong);
-        return this;
-      }
-      throw new IllegalArgumentException("unit == null");
-    }
-    throw new IllegalArgumentException("timeout < 0: ".concat(String.valueOf(paramLong)));
+    paramShort &= 0xFFFF;
+    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
   }
   
-  public long c()
+  public static void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.a) {
-      return this.b;
-    }
-    throw new IllegalStateException("No deadline");
-  }
-  
-  public alq d()
-  {
-    this.d = 0L;
-    return this;
-  }
-  
-  public long d_()
-  {
-    return this.d;
-  }
-  
-  public boolean e_()
-  {
-    return this.a;
-  }
-  
-  public void f()
-  {
-    if (!Thread.interrupted())
-    {
-      if (this.a)
-      {
-        if (this.b - System.nanoTime() > 0L) {
-          return;
-        }
-        throw new InterruptedIOException("deadline reached");
-      }
+    if (((paramLong2 | paramLong3) >= 0L) && (paramLong2 <= paramLong1) && (paramLong1 - paramLong2 >= paramLong3)) {
       return;
     }
-    throw new InterruptedIOException("thread interrupted");
+    throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
   }
   
-  public alq f_()
+  public static void a(Throwable paramThrowable)
   {
-    this.a = false;
-    return this;
+    throw paramThrowable;
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
+  {
+    int i = 0;
+    while (i < paramInt3)
+    {
+      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
 }
 

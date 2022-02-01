@@ -3,29 +3,28 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.core.bean.FreezeStatusResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vx
-  extends tk
+  extends tj
 {
-  public QueryCaptchaResult d;
-  private long e;
-  private int f;
+  private long d;
+  private int e;
+  private FreezeStatusResult f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramaar.c.get("param.scene.id")).intValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -36,17 +35,28 @@ public final class vx
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
-      paramJSONObject = this.d;
-      paramJSONObject.mRealUin = this.e;
-      paramJSONObject.mSceneId = this.f;
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
+        return;
+      }
+      xa.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
+      this.f = new FreezeStatusResult(paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -56,7 +66,7 @@ public final class vx
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.d;
+      localMessage.obj = this.f;
       localMessage.sendToTarget();
       this.b.e = true;
     }

@@ -1,166 +1,74 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import java.lang.reflect.Method;
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class rl
-  implements rn
 {
-  private SharedPreferences a;
-  private SharedPreferences.Editor b;
-  private boolean c;
+  protected static boolean a = true;
+  protected List<String> b = new ArrayList();
+  rb.a c;
   
-  public rl(Context paramContext, String paramString)
+  rl(String paramString)
   {
-    this.a = paramContext.getSharedPreferences(paramString, 0);
+    this.b.add(paramString);
   }
   
-  private static boolean a(SharedPreferences.Editor paramEditor)
+  public final rb.a a()
   {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (Build.VERSION.SDK_INT >= 9)) {}
-    try
+    if (this.c == null)
     {
-      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-      return true;
+      Object localObject1 = rp.a();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((rp)localObject1).c.d());
+      ((StringBuilder)localObject2).append(".");
+      ((StringBuilder)localObject2).append(((rp)localObject1).c.e());
+      ((StringBuilder)localObject2).append(".");
+      ((StringBuilder)localObject2).append(((rp)localObject1).c.f());
+      String str = ((StringBuilder)localObject2).toString();
+      int i = -((rp)localObject1).c.g();
+      localObject2 = ((rp)localObject1).c.a;
+      boolean bool = false;
+      if (((rm)localObject2).a("meri_update_url_type", 0) == 0) {
+        bool = ((rp)localObject1).e();
+      }
+      localObject2 = null;
+      if (bool) {
+        localObject1 = ((rp)localObject1).c.a.a("meri_lastest_url", "");
+      } else {
+        localObject1 = null;
+      }
+      if (localObject1 != null)
+      {
+        localObject2 = new StringBuilder("com.tencent.token_");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("_");
+        ((StringBuilder)localObject2).append(str);
+        str = ((StringBuilder)localObject2).toString();
+        localObject2 = rb.b.a().a((String)localObject1);
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+        }
+        else
+        {
+          localObject2 = new rb.a();
+          ((rb.a)localObject2).a = "com.tencent.token";
+          ((rb.a)localObject2).c = ((String)localObject1);
+          ((rb.a)localObject2).d = str;
+          localObject1 = localObject2;
+        }
+        localObject2 = localObject1;
+        if (rb.b.a().a((rb.a)localObject1))
+        {
+          ((rb.a)localObject1).f = DownloaderTaskStatus.COMPLETE;
+          localObject2 = localObject1;
+        }
+      }
+      this.c = ((rb.a)localObject2);
     }
-    catch (Throwable localThrowable)
-    {
-      label51:
-      break label51;
-    }
-    return paramEditor.commit();
-    return paramEditor.commit();
-  }
-  
-  private SharedPreferences.Editor c()
-  {
-    if (this.b == null) {
-      this.b = this.a.edit();
-    }
-    return this.b;
-  }
-  
-  public final int a(String paramString)
-  {
-    try
-    {
-      int i = this.a.getInt(paramString, 0);
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public final int a(String paramString, int paramInt)
-  {
-    try
-    {
-      System.nanoTime();
-      int i = this.a.getInt(paramString, paramInt);
-      System.nanoTime();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return paramInt;
-  }
-  
-  public final long a(String paramString, long paramLong)
-  {
-    try
-    {
-      System.nanoTime();
-      long l = this.a.getLong(paramString, paramLong);
-      return l;
-    }
-    catch (Exception paramString) {}
-    return paramLong;
-  }
-  
-  public final String a(String paramString1, String paramString2)
-  {
-    try
-    {
-      System.nanoTime();
-      paramString1 = this.a.getString(paramString1, paramString2);
-      return paramString1;
-    }
-    catch (Exception paramString1) {}
-    return paramString2;
-  }
-  
-  public final void a()
-  {
-    this.c = true;
-  }
-  
-  public final boolean a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      boolean bool = this.a.getBoolean(paramString, paramBoolean);
-      return bool;
-    }
-    catch (Exception paramString) {}
-    return paramBoolean;
-  }
-  
-  public final boolean b()
-  {
-    this.c = false;
-    SharedPreferences.Editor localEditor = this.b;
-    if (localEditor != null) {
-      return a(localEditor);
-    }
-    return true;
-  }
-  
-  public final boolean b(String paramString, int paramInt)
-  {
-    System.nanoTime();
-    SharedPreferences.Editor localEditor = c();
-    localEditor.putInt(paramString, paramInt);
-    if (!this.c)
-    {
-      boolean bool = a(localEditor);
-      System.nanoTime();
-      return bool;
-    }
-    return true;
-  }
-  
-  public final boolean b(String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = c();
-    localEditor.putLong(paramString, paramLong);
-    if (!this.c) {
-      return a(localEditor);
-    }
-    return true;
-  }
-  
-  public final boolean b(String paramString1, String paramString2)
-  {
-    System.nanoTime();
-    SharedPreferences.Editor localEditor = c();
-    localEditor.putString(paramString1, paramString2);
-    if (!this.c) {
-      return a(localEditor);
-    }
-    return true;
-  }
-  
-  public final boolean b(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = c();
-    localEditor.putBoolean(paramString, paramBoolean);
-    if (!this.c) {
-      return a(localEditor);
-    }
-    return true;
+    return this.c;
   }
 }
 

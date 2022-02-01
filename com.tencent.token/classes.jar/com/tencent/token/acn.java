@@ -1,27 +1,21 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import java.util.Arrays;
 
 public final class acn
 {
-  public static final afk<acn> a = new a();
-  public Handler b;
+  public final int a;
+  public final long b;
+  public final float[] c;
   
-  public acn()
+  public acn(SensorEvent paramSensorEvent, long paramLong)
   {
-    HandlerThread localHandlerThread = new HandlerThread("TuringMMWorker");
-    localHandlerThread.start();
-    this.b = new Handler(localHandlerThread.getLooper());
-  }
-  
-  public static final class a
-    extends afk<acn>
-  {
-    public final Object a()
-    {
-      return new acn((byte)0);
-    }
+    this.a = paramSensorEvent.sensor.getType();
+    this.b = paramLong;
+    paramSensorEvent = paramSensorEvent.values;
+    this.c = Arrays.copyOf(paramSensorEvent, paramSensorEvent.length);
   }
 }
 

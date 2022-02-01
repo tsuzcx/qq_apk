@@ -1,116 +1,255 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.widget.CompoundButton;
-import java.lang.reflect.Field;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.FilterQueryProvider;
+import android.widget.Filterable;
 
-public final class fp
+public abstract class fp
+  extends BaseAdapter
+  implements Filterable, fq.a
 {
-  private static final c a = new c();
+  protected boolean a = false;
+  protected boolean b = true;
+  protected Cursor c = null;
+  protected Context d;
+  protected int e;
+  protected a f;
+  protected DataSetObserver g;
+  protected fq h;
+  protected FilterQueryProvider i;
   
-  static
+  public fp(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      a = new b();
-      return;
+    this.d = paramContext;
+    this.e = -1;
+    this.f = new a();
+    this.g = new b();
+  }
+  
+  public final Cursor a()
+  {
+    return this.c;
+  }
+  
+  public Cursor a(CharSequence paramCharSequence)
+  {
+    FilterQueryProvider localFilterQueryProvider = this.i;
+    if (localFilterQueryProvider != null) {
+      return localFilterQueryProvider.runQuery(paramCharSequence);
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    return this.c;
+  }
+  
+  public abstract View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup);
+  
+  public void a(Cursor paramCursor)
+  {
+    Cursor localCursor = this.c;
+    if (paramCursor == localCursor)
     {
-      a = new a();
-      return;
+      paramCursor = null;
     }
-  }
-  
-  public static Drawable a(CompoundButton paramCompoundButton)
-  {
-    return a.a(paramCompoundButton);
-  }
-  
-  public static void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
-  {
-    a.a(paramCompoundButton, paramColorStateList);
-  }
-  
-  public static void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
-  {
-    a.a(paramCompoundButton, paramMode);
-  }
-  
-  static class a
-    extends fp.c
-  {
-    public final void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    else
     {
-      paramCompoundButton.setButtonTintList(paramColorStateList);
-    }
-    
-    public final void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
-    {
-      paramCompoundButton.setButtonTintMode(paramMode);
-    }
-  }
-  
-  static final class b
-    extends fp.a
-  {
-    public final Drawable a(CompoundButton paramCompoundButton)
-    {
-      return paramCompoundButton.getButtonDrawable();
-    }
-  }
-  
-  static class c
-  {
-    private static Field a;
-    private static boolean b;
-    
-    public Drawable a(CompoundButton paramCompoundButton)
-    {
-      if (!b) {}
-      try
+      Object localObject;
+      if (localCursor != null)
       {
-        Field localField = CompoundButton.class.getDeclaredField("mButtonDrawable");
-        a = localField;
-        localField.setAccessible(true);
-        label23:
-        b = true;
-        localField = a;
-        if (localField != null) {}
-        try
-        {
-          paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
-          return paramCompoundButton;
+        localObject = this.f;
+        if (localObject != null) {
+          localCursor.unregisterContentObserver((ContentObserver)localObject);
         }
-        catch (IllegalAccessException paramCompoundButton)
-        {
-          label46:
-          break label46;
+        localObject = this.g;
+        if (localObject != null) {
+          localCursor.unregisterDataSetObserver((DataSetObserver)localObject);
         }
-        a = null;
-        return null;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      this.c = paramCursor;
+      if (paramCursor != null)
       {
-        break label23;
+        localObject = this.f;
+        if (localObject != null) {
+          paramCursor.registerContentObserver((ContentObserver)localObject);
+        }
+        localObject = this.g;
+        if (localObject != null) {
+          paramCursor.registerDataSetObserver((DataSetObserver)localObject);
+        }
+        this.e = paramCursor.getColumnIndexOrThrow("_id");
+        this.a = true;
+        notifyDataSetChanged();
+        paramCursor = localCursor;
+      }
+      else
+      {
+        this.e = -1;
+        this.a = false;
+        notifyDataSetInvalidated();
+        paramCursor = localCursor;
       }
     }
-    
-    public void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    if (paramCursor != null) {
+      paramCursor.close();
+    }
+  }
+  
+  public abstract void a(View paramView, Cursor paramCursor);
+  
+  public View b(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  {
+    return a(paramContext, paramCursor, paramViewGroup);
+  }
+  
+  public CharSequence b(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return "";
+    }
+    return paramCursor.toString();
+  }
+  
+  protected final void b()
+  {
+    if (this.b)
     {
-      if ((paramCompoundButton instanceof fz)) {
-        ((fz)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+      Cursor localCursor = this.c;
+      if ((localCursor != null) && (!localCursor.isClosed())) {
+        this.a = this.c.requery();
       }
     }
-    
-    public void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+  }
+  
+  public int getCount()
+  {
+    if (this.a)
     {
-      if ((paramCompoundButton instanceof fz)) {
-        ((fz)paramCompoundButton).setSupportButtonTintMode(paramMode);
+      Cursor localCursor = this.c;
+      if (localCursor != null) {
+        return localCursor.getCount();
       }
+    }
+    return 0;
+  }
+  
+  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a)
+    {
+      this.c.moveToPosition(paramInt);
+      View localView = paramView;
+      if (paramView == null) {
+        localView = b(this.d, this.c, paramViewGroup);
+      }
+      a(localView, this.c);
+      return localView;
+    }
+    return null;
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.h == null) {
+      this.h = new fq(this);
+    }
+    return this.h;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.a)
+    {
+      Cursor localCursor = this.c;
+      if (localCursor != null)
+      {
+        localCursor.moveToPosition(paramInt);
+        return this.c;
+      }
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (this.a)
+    {
+      Cursor localCursor = this.c;
+      if (localCursor != null)
+      {
+        if (localCursor.moveToPosition(paramInt)) {
+          return this.c.getLong(this.e);
+        }
+        return 0L;
+      }
+    }
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a)
+    {
+      if (this.c.moveToPosition(paramInt))
+      {
+        View localView = paramView;
+        if (paramView == null) {
+          localView = a(this.d, this.c, paramViewGroup);
+        }
+        a(localView, this.c);
+        return localView;
+      }
+      throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
+    }
+    throw new IllegalStateException("this should only be called when the cursor is valid");
+  }
+  
+  public boolean hasStableIds()
+  {
+    return true;
+  }
+  
+  final class a
+    extends ContentObserver
+  {
+    a()
+    {
+      super();
+    }
+    
+    public final boolean deliverSelfNotifications()
+    {
+      return true;
+    }
+    
+    public final void onChange(boolean paramBoolean)
+    {
+      fp.this.b();
+    }
+  }
+  
+  final class b
+    extends DataSetObserver
+  {
+    b() {}
+    
+    public final void onChanged()
+    {
+      fp localfp = fp.this;
+      localfp.a = true;
+      localfp.notifyDataSetChanged();
+    }
+    
+    public final void onInvalidated()
+    {
+      fp localfp = fp.this;
+      localfp.a = false;
+      localfp.notifyDataSetInvalidated();
     }
   }
 }

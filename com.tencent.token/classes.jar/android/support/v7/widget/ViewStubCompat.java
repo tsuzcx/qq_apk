@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.token.gp.j;
+import com.tencent.token.go.j;
 import java.lang.ref.WeakReference;
 
 public final class ViewStubCompat
@@ -29,10 +29,10 @@ public final class ViewStubCompat
   public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.ViewStubCompat, paramInt, 0);
-    this.b = paramContext.getResourceId(gp.j.ViewStubCompat_android_inflatedId, -1);
-    this.a = paramContext.getResourceId(gp.j.ViewStubCompat_android_layout, 0);
-    setId(paramContext.getResourceId(gp.j.ViewStubCompat_android_id, -1));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ViewStubCompat, paramInt, 0);
+    this.b = paramContext.getResourceId(go.j.ViewStubCompat_android_inflatedId, -1);
+    this.a = paramContext.getResourceId(go.j.ViewStubCompat_android_layout, 0);
+    setId(paramContext.getResourceId(go.j.ViewStubCompat_android_id, -1));
     paramContext.recycle();
     setVisibility(8);
     setWillNotDraw(true);

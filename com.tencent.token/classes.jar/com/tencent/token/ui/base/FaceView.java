@@ -17,8 +17,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.jni.LiveRectInfo;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xb;
-import com.tencent.token.xx;
+import com.tencent.token.xa;
+import com.tencent.token.xw;
 
 public class FaceView
   extends View
@@ -102,7 +102,7 @@ public class FaceView
     paramContext.append(this.c);
     paramContext.append(",scale=");
     paramContext.append(this.a);
-    xb.c(paramContext.toString());
+    xa.c(paramContext.toString());
     this.d = new Rect(0, 0, this.b, this.c);
     int i1 = this.b;
     this.f = (i1 / 2);
@@ -220,7 +220,7 @@ public class FaceView
     super.onDraw(paramCanvas);
     if (this.d == null)
     {
-      xb.a("rect=null");
+      xa.a("rect=null");
       return;
     }
     this.x.setAlpha(255);
@@ -502,16 +502,16 @@ public class FaceView
       default: 
         break;
       case 4: 
-        this.h = (this.f + this.e * this.U / xx.k);
+        this.h = (this.f + this.e * this.U / xw.k);
         break;
       case 3: 
-        this.h = (this.f - this.e * this.U / xx.k);
+        this.h = (this.f - this.e * this.U / xw.k);
         break;
       case 2: 
-        this.i = (this.g + this.e * this.U / xx.k);
+        this.i = (this.g + this.e * this.U / xw.k);
         break;
       case 1: 
-        this.i = (this.g - this.e * this.U / xx.k);
+        this.i = (this.g - this.e * this.U / xw.k);
       }
       this.n = 8;
       invalidate();

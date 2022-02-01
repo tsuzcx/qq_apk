@@ -11,8 +11,8 @@ import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.qz;
-import com.tencent.token.sc;
+import com.tencent.token.qy;
+import com.tencent.token.sb;
 import com.tencent.token.ui.IndexActivity;
 
 public class CodeCircleView
@@ -85,14 +85,14 @@ public class CodeCircleView
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.p, 270.0F, 360.0F, false, this.a);
-    this.s = (System.currentTimeMillis() + qz.a().g());
+    this.s = (System.currentTimeMillis() + qy.a().g());
     long l1 = this.s;
     this.t = ((int)(l1 / 1000L) % 30);
     this.u = ((int)(l1 % 1000L));
     this.c.setColor(this.m);
     this.v = ((this.t * 1000 + this.u) * 360 / 30000);
     paramCanvas.drawArc(this.p, 270.0F, this.v, false, this.c);
-    this.y = sc.g();
+    this.y = sb.g();
     this.w = ((int)(this.d / 2.0F - this.b.measureText(this.y) / 2.0F));
     float f1 = this.e / 2.0F;
     String str = this.y;

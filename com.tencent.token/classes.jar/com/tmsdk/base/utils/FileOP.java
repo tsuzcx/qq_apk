@@ -3,7 +3,7 @@ package com.tmsdk.base.utils;
 import android.content.Context;
 import android.os.storage.StorageManager;
 import btmsdkobf.dz;
-import com.tencent.token.aor;
+import com.tencent.token.aoq;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
@@ -71,7 +71,7 @@ public class FileOP
     return localArrayList;
   }
   
-  public static aor loadWupObjectFromFile(String paramString1, String paramString2)
+  public static aoq loadWupObjectFromFile(String paramString1, String paramString2)
   {
     return dz.loadWupObjectFromFile(paramString1, paramString2);
   }

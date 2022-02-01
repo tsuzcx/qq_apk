@@ -7,31 +7,25 @@ import com.qq.taf.jce.JceStruct;
 public final class aok
   extends JceStruct
 {
-  public int a = 0;
-  public boolean b = true;
+  public String a = "";
+  public String b = "";
   public int c = 0;
   public int d = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.read(this.c, 2, false);
-    this.d = paramJceInputStream.read(this.d, 3, false);
+    this.a = paramJceInputStream.readString(0, true);
+    this.b = paramJceInputStream.readString(1, true);
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.read(this.d, 3, true);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    int i = this.c;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 2);
-    }
-    i = this.d;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 3);
-    }
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
   }
 }
 

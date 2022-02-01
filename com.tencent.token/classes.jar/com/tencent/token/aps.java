@@ -1,42 +1,18 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.qq.taf.jce.JceStruct;
 
 final class aps
-  extends Handler
 {
-  WeakReference a = null;
+  public agw a = null;
+  public JceStruct b;
+  public int c = 0;
   
-  public aps(aqs paramaqs, Context paramContext)
+  public aps(int paramInt, agw paramagw, JceStruct paramJceStruct)
   {
-    super(paramContext.getMainLooper());
-    this.a = new WeakReference(paramaqs);
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    aqs localaqs = (aqs)this.a.get();
-    if (localaqs == null) {
-      return;
-    }
-    if (paramMessage.what != 0) {
-      return;
-    }
-    int i = localaqs.c + 1;
-    localaqs.c = i;
-    if (i < 20)
-    {
-      if (localaqs.d()) {
-        localaqs.c = 0;
-      }
-    }
-    else {
-      localaqs.c();
-    }
+    this.a = paramagw;
+    this.b = paramJceStruct;
+    this.c = paramInt;
   }
 }
 

@@ -1,13 +1,24 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.os.Bundle;
 
-final class pd
-  extends ox
+public final class pd
 {
-  pd(Context paramContext, String paramString)
+  public static String a(Bundle paramBundle, String paramString)
   {
-    super(paramContext, paramString);
+    if (paramBundle == null) {
+      return null;
+    }
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      new StringBuilder("getStringExtra exception:").append(paramBundle.getMessage());
+    }
+    return null;
   }
 }
 

@@ -1,132 +1,225 @@
 package com.tencent.token;
 
-import java.io.EOFException;
 import java.io.IOException;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 public final class alh
-  implements alp
 {
-  private final alb a;
-  private final Inflater b;
-  private int c;
-  private boolean d;
+  static final Logger a = Logger.getLogger(alh.class.getName());
   
-  alh(alb paramalb, Inflater paramInflater)
+  public static akz a(aln paramaln)
   {
-    if (paramalb != null)
-    {
-      if (paramInflater != null)
-      {
-        this.a = paramalb;
-        this.b = paramInflater;
-        return;
-      }
-      throw new IllegalArgumentException("inflater == null");
-    }
-    throw new IllegalArgumentException("source == null");
+    return new ali(paramaln);
   }
   
-  private void b()
+  public static ala a(alo paramalo)
   {
-    int i = this.c;
-    if (i == 0) {
-      return;
-    }
-    i -= this.b.getRemaining();
-    this.c -= i;
-    this.a.g(i);
+    return new alj(paramalo);
   }
   
-  public final long a(akz paramakz, long paramLong)
+  public static aln a(final Socket paramSocket)
   {
-    if (paramLong >= 0L) {
-      if (!this.d) {
-        if (paramLong == 0L) {
-          return 0L;
-        }
-      }
-    }
-    label285:
-    for (;;)
+    if (paramSocket != null)
     {
-      boolean bool = this.b.needsInput();
-      int i = 0;
-      all localall;
-      if (bool)
+      if (paramSocket.getOutputStream() != null)
       {
-        b();
-        if (this.b.getRemaining() != 0) {
-          break label285;
+        akw localakw = c(paramSocket);
+        paramSocket = paramSocket.getOutputStream();
+        if (paramSocket != null) {
+          new akw.1(localakw, new aln()
+          {
+            public final alp a()
+            {
+              return alh.this;
+            }
+            
+            public final void a_(aky paramAnonymousaky, long paramAnonymousLong)
+            {
+              alq.a(paramAnonymousaky.b, 0L, paramAnonymousLong);
+              while (paramAnonymousLong > 0L)
+              {
+                alh.this.f();
+                alk localalk = paramAnonymousaky.a;
+                int i = (int)Math.min(paramAnonymousLong, localalk.c - localalk.b);
+                paramSocket.write(localalk.a, localalk.b, i);
+                localalk.b += i;
+                long l2 = i;
+                long l1 = paramAnonymousLong - l2;
+                paramAnonymousaky.b -= l2;
+                paramAnonymousLong = l1;
+                if (localalk.b == localalk.c)
+                {
+                  paramAnonymousaky.a = localalk.b();
+                  all.a(localalk);
+                  paramAnonymousLong = l1;
+                }
+              }
+            }
+            
+            public final void close()
+            {
+              paramSocket.close();
+            }
+            
+            public final void flush()
+            {
+              paramSocket.flush();
+            }
+            
+            public final String toString()
+            {
+              StringBuilder localStringBuilder = new StringBuilder("sink(");
+              localStringBuilder.append(paramSocket);
+              localStringBuilder.append(")");
+              return localStringBuilder.toString();
+            }
+          });
         }
-        if (this.a.c())
-        {
-          i = 1;
-        }
-        else
-        {
-          localall = this.a.b().a;
-          this.c = (localall.c - localall.b);
-          this.b.setInput(localall.a, localall.b, this.c);
-        }
+        throw new IllegalArgumentException("out == null");
       }
-      label240:
-      do
+      throw new IOException("socket's output stream == null");
+    }
+    throw new IllegalArgumentException("socket == null");
+  }
+  
+  public static alo a(InputStream paramInputStream)
+  {
+    return a(paramInputStream, new alp());
+  }
+  
+  private static alo a(final InputStream paramInputStream, alp paramalp)
+  {
+    if (paramInputStream != null)
+    {
+      if (paramalp != null) {
+        new alo()
+        {
+          public final long a(aky paramAnonymousaky, long paramAnonymousLong)
+          {
+            if (paramAnonymousLong >= 0L)
+            {
+              if (paramAnonymousLong == 0L) {
+                return 0L;
+              }
+              try
+              {
+                alh.this.f();
+                alk localalk = paramAnonymousaky.e(1);
+                int i = (int)Math.min(paramAnonymousLong, 8192 - localalk.c);
+                i = paramInputStream.read(localalk.a, localalk.c, i);
+                if (i == -1) {
+                  return -1L;
+                }
+                localalk.c += i;
+                paramAnonymousLong = paramAnonymousaky.b;
+                long l = i;
+                paramAnonymousaky.b = (paramAnonymousLong + l);
+                return l;
+              }
+              catch (AssertionError paramAnonymousaky)
+              {
+                if (alh.a(paramAnonymousaky)) {
+                  throw new IOException(paramAnonymousaky);
+                }
+                throw paramAnonymousaky;
+              }
+            }
+            throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramAnonymousLong)));
+          }
+          
+          public final alp a()
+          {
+            return alh.this;
+          }
+          
+          public final void close()
+          {
+            paramInputStream.close();
+          }
+          
+          public final String toString()
+          {
+            StringBuilder localStringBuilder = new StringBuilder("source(");
+            localStringBuilder.append(paramInputStream);
+            localStringBuilder.append(")");
+            return localStringBuilder.toString();
+          }
+        };
+      }
+      throw new IllegalArgumentException("timeout == null");
+    }
+    throw new IllegalArgumentException("in == null");
+  }
+  
+  static boolean a(AssertionError paramAssertionError)
+  {
+    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
+  }
+  
+  public static alo b(Socket paramSocket)
+  {
+    if (paramSocket != null)
+    {
+      if (paramSocket.getInputStream() != null)
+      {
+        akw localakw = c(paramSocket);
+        return new akw.2(localakw, a(paramSocket.getInputStream(), localakw));
+      }
+      throw new IOException("socket's input stream == null");
+    }
+    throw new IllegalArgumentException("socket == null");
+  }
+  
+  private static akw c(Socket paramSocket)
+  {
+    new akw()
+    {
+      protected final IOException a(@Nullable IOException paramAnonymousIOException)
+      {
+        SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
+        if (paramAnonymousIOException != null) {
+          localSocketTimeoutException.initCause(paramAnonymousIOException);
+        }
+        return localSocketTimeoutException;
+      }
+      
+      protected final void a()
       {
         try
         {
-          localall = paramakz.e(1);
-          int j = (int)Math.min(paramLong, 8192 - localall.c);
-          j = this.b.inflate(localall.a, localall.c, j);
-          if (j > 0)
-          {
-            localall.c += j;
-            paramLong = paramakz.b;
-            long l = j;
-            paramakz.b = (paramLong + l);
-            return l;
-          }
-          if (!this.b.finished())
-          {
-            if (!this.b.needsDictionary()) {
-              continue;
-            }
-            break label240;
-            throw new EOFException("source exhausted prematurely");
-          }
-          b();
-          if (localall.b == localall.c)
-          {
-            paramakz.a = localall.b();
-            alm.a(localall);
-          }
-          return -1L;
+          alh.this.close();
+          return;
         }
-        catch (DataFormatException paramakz)
+        catch (AssertionError localAssertionError)
         {
-          throw new IOException(paramakz);
+          if (alh.a(localAssertionError))
+          {
+            localLogger = alh.a;
+            localLevel = Level.WARNING;
+            localStringBuilder = new StringBuilder("Failed to close timed out socket ");
+            localStringBuilder.append(alh.this);
+            localLogger.log(localLevel, localStringBuilder.toString(), localAssertionError);
+            return;
+          }
+          throw localAssertionError;
         }
-        throw new IllegalStateException("?");
-        throw new IllegalStateException("closed");
-        throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-      } while (i != 0);
-    }
-  }
-  
-  public final alq a()
-  {
-    return this.a.a();
-  }
-  
-  public final void close()
-  {
-    if (this.d) {
-      return;
-    }
-    this.b.end();
-    this.d = true;
-    this.a.close();
+        catch (Exception localException)
+        {
+          Logger localLogger = alh.a;
+          Level localLevel = Level.WARNING;
+          StringBuilder localStringBuilder = new StringBuilder("Failed to close timed out socket ");
+          localStringBuilder.append(alh.this);
+          localLogger.log(localLevel, localStringBuilder.toString(), localException);
+        }
+      }
+    };
   }
 }
 

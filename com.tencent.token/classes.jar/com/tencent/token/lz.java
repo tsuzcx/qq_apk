@@ -1,140 +1,63 @@
 package com.tencent.token;
 
-import android.os.SystemClock;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class lz
 {
-  long a = 0L;
-  long b = 0L;
-  long c = 0L;
-  int d = 0;
-  private ml e;
-  private a f = new a((byte)0);
+  public volatile long a = 0L;
+  private volatile LinkedList b = new LinkedList();
+  private Object c = new Object();
   
-  public lz(ml paramml)
+  public final a a()
   {
-    this.e = paramml;
-  }
-  
-  public final long a()
-  {
-    return this.c - this.b;
-  }
-  
-  public final void a(int paramInt1, int paramInt2)
-  {
-    this.d += paramInt2;
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = this.a;
-    this.a = l1;
-    Object localObject1 = this.e;
-    ((ml)localObject1).m += l1 - l2;
-    localObject1 = this.f;
-    int j = 1;
-    if (paramInt1 <= 0) {
-      paramInt2 = 1;
-    } else {
-      paramInt2 = 0;
-    }
-    l1 = SystemClock.elapsedRealtime();
-    int i = (int)(l1 - ((a)localObject1).a);
-    ((a)localObject1).a = l1;
-    if (((a)localObject1).d.size() == 0)
+    synchronized (this.c)
     {
-      i = j;
-      if (paramInt2 == 0)
+      if (this.b.size() > 0)
       {
-        ((a)localObject1).d.add(new lz.a.a(paramInt1));
-        i = j;
+        a locala = (a)this.b.removeFirst();
+        this.a -= locala.d;
+        return locala;
       }
+      return null;
     }
-    else
-    {
-      Object localObject2 = ((a)localObject1).d.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        lz.a.a locala = (lz.a.a)((Iterator)localObject2).next();
-        locala.b += i;
-        if ((paramInt2 == 0) && (locala.b > 2000))
-        {
-          locala.b = 0;
-          locala.a = paramInt1;
-          paramInt2 = 1;
-        }
-      }
-      if (paramInt2 == 0) {
-        if (((a)localObject1).d.size() > 2000 / ky.f + 1)
-        {
-          localObject2 = new StringBuilder("records.size():");
-          ((StringBuilder)localObject2).append(((a)localObject1).d.size());
-          li.d("CostTimeCounter", ((StringBuilder)localObject2).toString());
-        }
-        else
-        {
-          ((a)localObject1).d.add(new lz.a.a(paramInt1));
-        }
-      }
-      if (l1 - ((a)localObject1).b > 200L) {
-        i = j;
-      } else {
-        i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      ((a)localObject1).c = ((a)localObject1).a();
-      ((a)localObject1).b = l1;
-    }
-    this.e.t = this.f.c;
   }
   
-  static final class a
+  public final void a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
   {
-    long a = 0L;
-    long b = 0L;
-    int c = 0;
-    List d = new LinkedList();
+    synchronized (this.c)
+    {
+      LinkedList localLinkedList = this.b;
+      int i = (int)paramLong2;
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+      localLinkedList.addLast(new a(paramInt, paramLong1, arrayOfByte, paramLong2));
+      this.a += paramLong2;
+      return;
+    }
+  }
+  
+  public final void b()
+  {
+    synchronized (this.c)
+    {
+      while (a() != null) {}
+      return;
+    }
+  }
+  
+  public static final class a
+  {
+    public int a = -1;
+    public long b;
+    public byte[] c;
+    public long d;
     
-    final int a()
+    public a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
     {
-      if (this.d.size() == 0) {
-        return 0;
-      }
-      Iterator localIterator = this.d.iterator();
-      long l1 = 0L;
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        if (locala.b <= 2000)
-        {
-          long l2 = l1 + locala.a;
-          l1 = l2;
-          if (l2 < 0L)
-          {
-            StringBuilder localStringBuilder = new StringBuilder("sum:");
-            localStringBuilder.append(l2);
-            localStringBuilder.append(",len:");
-            localStringBuilder.append(locala.a);
-            li.c("CostTimeCounter", localStringBuilder.toString());
-            l1 = l2;
-          }
-        }
-      }
-      return (int)(l1 * 1000L / 2000L);
-    }
-    
-    static final class a
-    {
-      public int a = 0;
-      public int b = 0;
-      
-      public a(int paramInt)
-      {
-        this.a = paramInt;
-      }
+      this.a = paramInt;
+      this.b = paramLong1;
+      this.c = paramArrayOfByte;
+      this.d = paramLong2;
     }
   }
 }

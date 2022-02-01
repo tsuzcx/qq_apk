@@ -1,146 +1,216 @@
 package com.tencent.token;
 
-import java.lang.ref.Reference;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLSocket;
 
 public final class aia
 {
-  static final Executor a = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), aix.a("OkHttp ConnectionPool", true));
-  final int b = 5;
-  final Runnable c = new Runnable()
+  public static final aia a = new a(true).a(i).a(new ait[] { ait.b }).a().b();
+  public static final aia b = new a(true).a(j).a(new ait[] { ait.b, ait.c, ait.d }).a().b();
+  public static final aia c = new a(b).a(new ait[] { ait.d }).a().b();
+  public static final aia d = new a(false).b();
+  private static final ahy[] i = { ahy.aX, ahy.bb, ahy.aY, ahy.bc, ahy.bi, ahy.bh };
+  private static final ahy[] j = { ahy.aX, ahy.bb, ahy.aY, ahy.bc, ahy.bi, ahy.bh, ahy.aI, ahy.aJ, ahy.ag, ahy.ah, ahy.E, ahy.I, ahy.i };
+  final boolean e;
+  public final boolean f;
+  @Nullable
+  final String[] g;
+  @Nullable
+  final String[] h;
+  
+  aia(a parama)
   {
-    public final void run()
-    {
-      for (;;)
-      {
-        long l1 = aia.this.a(System.nanoTime());
-        if (l1 == -1L) {
-          return;
-        }
-        long l2;
-        if (l1 > 0L) {
-          l2 = l1 / 1000000L;
-        }
-        try
-        {
-          synchronized (aia.this)
-          {
-            aia.this.wait(l2, (int)(l1 - 1000000L * l2));
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          label65:
-          break label65;
-        }
-      }
-      throw localObject;
+    this.e = parama.a;
+    this.g = parama.b;
+    this.h = parama.c;
+    this.f = parama.d;
+  }
+  
+  public final boolean a(SSLSocket paramSSLSocket)
+  {
+    if (!this.e) {
+      return false;
     }
-  };
-  final Deque<ajf> d = new ArrayDeque();
-  final ajg e = new ajg();
-  boolean f;
-  private final long h;
-  
-  public aia()
-  {
-    this(TimeUnit.MINUTES);
+    if ((this.h != null) && (!aiw.b(aiw.h, this.h, paramSSLSocket.getEnabledProtocols()))) {
+      return false;
+    }
+    return (this.g == null) || (aiw.b(ahy.a, this.g, paramSSLSocket.getEnabledCipherSuites()));
   }
   
-  private aia(TimeUnit paramTimeUnit)
+  public final boolean equals(@Nullable Object paramObject)
   {
-    this.h = paramTimeUnit.toNanos(5L);
-  }
-  
-  final long a(long paramLong)
-  {
-    for (;;)
+    if (!(paramObject instanceof aia)) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (aia)paramObject;
+    boolean bool = this.e;
+    if (bool != paramObject.e) {
+      return false;
+    }
+    if (bool)
     {
-      int j;
-      int k;
-      try
+      if (!Arrays.equals(this.g, paramObject.g)) {
+        return false;
+      }
+      if (!Arrays.equals(this.h, paramObject.h)) {
+        return false;
+      }
+      if (this.f != paramObject.f) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    if (this.e) {
+      return ((Arrays.hashCode(this.g) + 527) * 31 + Arrays.hashCode(this.h)) * 31 + (this.f ^ true);
+    }
+    return 17;
+  }
+  
+  public final String toString()
+  {
+    if (!this.e) {
+      return "ConnectionSpec()";
+    }
+    Object localObject1 = this.g;
+    Object localObject2 = null;
+    if (localObject1 != null)
+    {
+      if (localObject1 != null) {
+        localObject1 = ahy.a((String[])localObject1);
+      } else {
+        localObject1 = null;
+      }
+      localObject1 = localObject1.toString();
+    }
+    else
+    {
+      localObject1 = "[all enabled]";
+    }
+    Object localObject3 = this.h;
+    if (localObject3 != null)
+    {
+      if (localObject3 != null) {
+        localObject2 = ait.a((String[])localObject3);
+      }
+      localObject2 = localObject2.toString();
+    }
+    else
+    {
+      localObject2 = "[all enabled]";
+    }
+    localObject3 = new StringBuilder("ConnectionSpec(cipherSuites=");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", tlsVersions=");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(", supportsTlsExtensions=");
+    ((StringBuilder)localObject3).append(this.f);
+    ((StringBuilder)localObject3).append(")");
+    return ((StringBuilder)localObject3).toString();
+  }
+  
+  public static final class a
+  {
+    boolean a;
+    @Nullable
+    String[] b;
+    @Nullable
+    String[] c;
+    boolean d;
+    
+    public a(aia paramaia)
+    {
+      this.a = paramaia.e;
+      this.b = paramaia.g;
+      this.c = paramaia.h;
+      this.d = paramaia.f;
+    }
+    
+    a(boolean paramBoolean)
+    {
+      this.a = paramBoolean;
+    }
+    
+    public final a a()
+    {
+      if (this.a)
       {
-        Iterator localIterator = this.d.iterator();
-        long l1 = -9223372036854775808L;
-        Object localObject1 = null;
+        this.d = true;
+        return this;
+      }
+      throw new IllegalStateException("no TLS extensions for cleartext connections");
+    }
+    
+    public final a a(ahy... paramVarArgs)
+    {
+      if (this.a)
+      {
+        String[] arrayOfString = new String[paramVarArgs.length];
         int i = 0;
-        j = 0;
-        if (localIterator.hasNext())
+        while (i < paramVarArgs.length)
         {
-          ajf localajf = (ajf)localIterator.next();
-          List localList = localajf.j;
-          k = 0;
-          if (k < localList.size())
-          {
-            Object localObject3 = (Reference)localList.get(k);
-            if (((Reference)localObject3).get() != null)
-            {
-              k += 1;
-              continue;
-            }
-            localObject3 = (ajj.a)localObject3;
-            Object localObject4 = new StringBuilder("A connection to ");
-            ((StringBuilder)localObject4).append(localajf.a.a.a);
-            ((StringBuilder)localObject4).append(" was leaked. Did you forget to close a response body?");
-            localObject4 = ((StringBuilder)localObject4).toString();
-            akr.c().a((String)localObject4, ((ajj.a)localObject3).a);
-            localList.remove(k);
-            localajf.g = true;
-            if (!localList.isEmpty()) {
-              continue;
-            }
-            localajf.k = (paramLong - this.h);
-            k = 0;
-          }
-          else
-          {
-            k = localList.size();
-            break label351;
-            k = i + 1;
-            long l2 = paramLong - localajf.k;
-            i = k;
-            if (l2 <= l1) {
-              continue;
-            }
-            localObject1 = localajf;
-            l1 = l2;
-            i = k;
-          }
+          arrayOfString[i] = paramVarArgs[i].bk;
+          i += 1;
         }
-        else
+        return a(arrayOfString);
+      }
+      throw new IllegalStateException("no cipher suites for cleartext connections");
+    }
+    
+    public final a a(ait... paramVarArgs)
+    {
+      if (this.a)
+      {
+        String[] arrayOfString = new String[paramVarArgs.length];
+        int i = 0;
+        while (i < paramVarArgs.length)
         {
-          if ((l1 < this.h) && (i <= this.b))
-          {
-            if (i > 0)
-            {
-              paramLong = this.h;
-              return paramLong - l1;
-            }
-            if (j > 0)
-            {
-              paramLong = this.h;
-              return paramLong;
-            }
-            this.f = false;
-            return -1L;
-          }
-          this.d.remove(localObject1);
-          aix.a(localObject1.b);
-          return 0L;
+          arrayOfString[i] = paramVarArgs[i].f;
+          i += 1;
         }
+        return b(arrayOfString);
       }
-      finally {}
-      label351:
-      if (k > 0) {
-        j += 1;
+      throw new IllegalStateException("no TLS versions for cleartext connections");
+    }
+    
+    public final a a(String... paramVarArgs)
+    {
+      if (this.a)
+      {
+        if (paramVarArgs.length != 0)
+        {
+          this.b = ((String[])paramVarArgs.clone());
+          return this;
+        }
+        throw new IllegalArgumentException("At least one cipher suite is required");
       }
+      throw new IllegalStateException("no cipher suites for cleartext connections");
+    }
+    
+    public final a b(String... paramVarArgs)
+    {
+      if (this.a)
+      {
+        if (paramVarArgs.length != 0)
+        {
+          this.c = ((String[])paramVarArgs.clone());
+          return this;
+        }
+        throw new IllegalArgumentException("At least one TLS version is required");
+      }
+      throw new IllegalStateException("no TLS versions for cleartext connections");
+    }
+    
+    public final aia b()
+    {
+      return new aia(this);
     }
   }
 }

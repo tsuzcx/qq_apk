@@ -1,16 +1,13 @@
 package com.tencent.token;
 
-public final class kf
+import android.os.Handler;
+import android.os.HandlerThread;
+
+public abstract interface kf
 {
-  public static void a(Runnable paramRunnable, String paramString)
-  {
-    new Thread(paramRunnable, paramString).start();
-  }
+  public abstract HandlerThread a();
   
-  public static void b(Runnable paramRunnable, String paramString)
-  {
-    new Thread(paramRunnable, paramString).start();
-  }
+  public abstract Handler b();
 }
 
 

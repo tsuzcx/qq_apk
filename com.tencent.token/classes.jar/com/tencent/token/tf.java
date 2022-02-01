@@ -1,114 +1,161 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.utils.UserTask;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public final class tf
-  extends rs
+public abstract interface tf
 {
-  static tf f;
-  int a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  private final String g = "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2";
-  private final String h = "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt";
-  private int i;
-  
-  public static tf a()
-  {
-    if (f == null) {
-      f = new tf();
-    }
-    return f;
-  }
-  
-  public final wz a(int paramInt)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final wz a(String paramString, int paramInt)
-  {
-    wz localwz = new wz();
-    ta localta = ta.a();
-    if ((localta != null) && (localta.k.b() != null))
-    {
-      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      Object localObject = new AtomicReference(null);
-      qz.a().a(localta.k.b().mUin, this.i, paramInt, paramString, new qz.a()
-      {
-        public final void a(rb paramAnonymousrb)
-        {
-          this.a.set(paramAnonymousrb);
-          localCountDownLatch.countDown();
-        }
-      });
-      try
-      {
-        localCountDownLatch.await();
-      }
-      catch (InterruptedException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      paramString = (rb)((AtomicReference)localObject).get();
-      if (paramString == null)
-      {
-        localwz.a(-349, null, null);
-        return localwz;
-      }
-      try
-      {
-        paramInt = paramString.b;
-        if (paramInt != 0)
-        {
-          paramString = paramString.d;
-          localwz.a(paramInt, paramString, paramString);
-          return localwz;
-        }
-        new JSONObject(paramString.c);
-        localwz.a = 0;
-        return localwz;
-      }
-      catch (Exception paramString)
-      {
-        localObject = new StringBuilder("unknown err: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xb.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localwz.a(10021, ((StringBuilder)localObject).toString(), null);
-        return localwz;
-      }
-      catch (JSONException paramString)
-      {
-        localObject = new StringBuilder("parse json failed: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xb.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localwz.a(10020, ((StringBuilder)localObject).toString(), null);
-        return localwz;
-      }
-    }
-    localwz.a(110, null, null);
-    return localwz;
-  }
-  
-  public final void a(final int paramInt, final Handler paramHandler)
-  {
-    if (paramHandler == null) {
-      return;
-    }
-    new UserTask() {}.a(new String[] { "" });
-  }
+  @tl(a=tq.class)
+  public static final String CMD_CHECK_UP_SMS = "mbtoken3_check_up_sms";
+  @tl(a=ts.class)
+  public static final String CMD_DEL_DEVICE = "mbtoken3_device_lock_del_device_v2";
+  @tl(a=tt.class)
+  public static final String CMD_DEL_MB_INFO = "mbtoken3_del_mbitem";
+  @tl(a=tu.class)
+  public static final String CMD_DEL_UNVERIFYUIN = "mbtoken3_del_unvfy_uin";
+  @tl(a=tv.class)
+  public static final String CMD_DEVICE_INFO_REPORT = "mbtoken3_device_info_report_encrypt";
+  @tl(a=tw.class)
+  public static final String CMD_DO_ACTIVETOKEN = "mbtoken3_activate_token";
+  @tl(a=to.class)
+  public static final String CMD_DO_AUTO_IDCARD_DETECT = "mbtoken3_auto_idcard_detect";
+  @tl(a=tx.class)
+  public static final String CMD_DO_BINDTOKEN = "mbtoken3_bind_token_by_app_v3";
+  @tl(a=tp.class)
+  public static final String CMD_DO_BINDTOKENH5 = "mbtoken3_bind_token_h5";
+  @tl(a=ty.class)
+  public static final String CMD_DO_BINDTOKEN_BYREALNAME = "mbtoken3_bind_token_by_realname";
+  @tl(a=tz.class)
+  public static final String CMD_DO_BINDTOKEN_BYUNIVERIFY = "mbtoken3_bind_token_by_univerify";
+  @tl(a=tr.class)
+  public static final String CMD_DO_COPY_FACE = "mbtoken3_copy_face";
+  @tl(a=ua.class)
+  public static final String CMD_DO_EXCHANGEKEY = "mbtoken3_exchange_key_v3";
+  @tl(a=ud.class)
+  public static final String CMD_DO_FEEDBACK_COMMENT = "mbtoken3_feedback_v2";
+  @tl(a=ur.class)
+  public static final String CMD_DO_FREEZE_UIN = "mbtoken3_freeze_action";
+  @tl(a=ub.class)
+  public static final String CMD_DO_GENERAL_BINDTOKEN = "mbtoken3_general_bind";
+  @tl(a=uh.class)
+  public static final String CMD_DO_GENERAL_VERIFY_FACTOR = "mbtoken3_verify_original_mobile";
+  @tl(a=vs.class)
+  public static final String CMD_DO_LIVE_VIDEO_DETECT = "mbtoken3_live_video_detect";
+  @tl(a=uc.class)
+  public static final String CMD_DO_LOGIN_V2 = "mbtoken3_login_v2";
+  @tl(a=wc.class)
+  public static final String CMD_DO_REALNAME_CARD_CHECK = "mbtoken3_card_check";
+  @tl(a=wf.class)
+  public static final String CMD_DO_REPORT_LOCATION = "mbtoken3_report_location";
+  @tl(a=ue.class)
+  public static final String CMD_DO_SEND_SMSCODE = "mbtoken3_get_mobile_code_v2";
+  @tl(a=uf.class)
+  public static final String CMD_DO_SESSIONINFO = "mbtoken3_session_info";
+  @tl(a=ug.class)
+  public static final String CMD_DO_UNBINDTOKEN = "mbtoken3_unbind_token";
+  @tl(a=ui.class)
+  public static final String CMD_DO_VERIFYQQTOKEN = "mbtoken3_verify_qqtoken_v2";
+  @tl(a=uj.class)
+  public static final String CMD_DO_VERIFYQUESTION = "mbtoken3_vry_ques_v2";
+  @tl(a=uk.class)
+  public static final String CMD_DO_VERIFY_SMSCODE = "mbtoken3_verify_mobile_code_v2";
+  @tl(a=ul.class)
+  public static final String CMD_DO_WTLOGIN = "mbtoken3_vfy_wtlogin";
+  @tl(a=un.class)
+  public static final String CMD_FACEPK = "mbtoken3_face_pk";
+  @tl(a=um.class)
+  public static final String CMD_FACERECOGNITION = "mbtoken3_face_reg_v2";
+  @tl(a=up.class)
+  public static final String CMD_FEEDBACK_ABNORMAL_LOGIN = "mbtoken3_feedback_abnormal_login";
+  @tl(a=uq.class)
+  public static final String CMD_FEEDBACK_MOBILE_USING = "mbtoken3_feedback_mobile_using";
+  @tl(a=us.class)
+  public static final String CMD_GENERAL_GET_MOBILE_CODE = "mbtoken3_general_get_mobile_code";
+  @tl(a=ut.class)
+  public static final String CMD_GENERAL_VRY_MOBILE_CODE = "mbtoken3_general_verify_mobile_code";
+  @tl(a=uu.class)
+  public static final String CMD_GET_ACCOUNT_LOCK_STATUS = "mbtoken3_get_ac_lock_status_v2";
+  @tl(a=uv.class)
+  public static final String CMD_GET_COMMON_IMG = "token.getcommonimg";
+  @tl(a=uw.class)
+  public static final String CMD_GET_CONFIG = "mbtoken3_get_config_v2";
+  @tl(a=ux.class)
+  public static final String CMD_GET_DETERMIN_VERIFY_FACTORS = "mbtoken3_determine_verify_factors";
+  @tl(a=uy.class)
+  public static final String CMD_GET_DEVICE_LOCK = "mbtoken3_get_device_lock_status_v2";
+  @tl(a=uz.class)
+  public static final String CMD_GET_DOMAIN = "mbtoken3_get_domain";
+  @tl(a=va.class)
+  public static final String CMD_GET_DUAL_MSG_LIST = "mbtoken3_get_dual_msg_list_v2";
+  @tl(a=vb.class)
+  public static final String CMD_GET_EVAL_ACCOUNT_RESULT = "mbtoken3_eval_account_v3";
+  @tl(a=vc.class)
+  public static final String CMD_GET_GAME_LOCK_STATUS = "mbtoken3_get_game_lock_status_v2";
+  @tl(a=vd.class)
+  public static final String CMD_GET_LOGIN_PROTECT = "mbtoken3_get_login_prot";
+  @tl(a=ve.class)
+  public static final String CMD_GET_MB_INFO = "mbtoken3_get_mbinfo";
+  @tl(a=vf.class)
+  public static final String CMD_GET_MB_MOBILE_CODE = "mbtoken3_mbop_get_mobile_code";
+  @tl(a=vg.class)
+  public static final String CMD_GET_MESSAGE = "mbtoken3_get_message_v2";
+  @tl(a=vh.class)
+  public static final String CMD_GET_OPERATEMSG = "mbtoken3_get_ads_info";
+  @tl(a=vi.class)
+  public static final String CMD_GET_QQFACEURL = "mbtoken3_get_photo_v3";
+  @tl(a=vk.class)
+  public static final String CMD_GET_REALNAME_VERIFY = "mbtoken3_realname_lip";
+  @tl(a=vl.class)
+  public static final String CMD_GET_REALUIN = "mbtoken3_query_real_uin_v2";
+  @tl(a=vj.class)
+  public static final String CMD_GET_REAL_NAME_STATUS = "mbtoken3_realname_status_v2";
+  @tl(a=vn.class)
+  public static final String CMD_GET_SAFE_PROTECTION = "mbtoken3_get_safe_protection_v2";
+  @tl(a=vm.class)
+  public static final String CMD_GET_SMS_CHANNEL = "mbtoken3_get_sms_port_v2";
+  @tl(a=vo.class)
+  public static final String CMD_GET_STARTUP_IMG = "token.getstartupimg";
+  @tl(a=vp.class)
+  public static final String CMD_GET_STR_CONFIG = "mbtoken3_get_key_value_conf";
+  @tl(a=vq.class)
+  public static final String CMD_GET_UIN_LIST = "mbtoken3_get_uin_list_v2";
+  @tl(a=uo.class)
+  public static final String CMD_GET_VRY_ON_OFF = "mbtoken3_face_verify_on_off";
+  @tl(a=vr.class)
+  public static final String CMD_KICK_ONLINE_DEVICE_OFF = "mbtoken3_kickoff_v2";
+  @tl(a=vu.class)
+  public static final String CMD_MOD_QQ_PWD = "mbtoken3_modify_pwd";
+  @tl(a=vt.class)
+  public static final String CMD_MOD_SEED = "mbtoken3_mod_seed";
+  @tl(a=vv.class)
+  public static final String CMD_QRY_BIND_NOTIFY_MSG = "mbtoken3_qry_bind_notify_msg";
+  @tl(a=vw.class)
+  public static final String CMD_QUERY_CAPTCHA = "mbtoken3_query_captcha";
+  @tl(a=vx.class)
+  public static final String CMD_QUERY_FREEZE_STATUS = "mbtoken3_query_freeze_status";
+  @tl(a=vy.class)
+  public static final String CMD_QUERY_MALICIOUS_URL = "mbtoken3_query_malicious_url";
+  @tl(a=vz.class)
+  public static final String CMD_QUERY_REALNAME = "mbtoken3_realname_qry";
+  @tl(a=wa.class)
+  public static final String CMD_QUERY_SPE_VERIFY = "mbtoken3_qry_spec_verify";
+  @tl(a=wb.class)
+  public static final String CMD_QUERY_SUPER_CODE_INFO = "mbtoken3_qry_super_code_info";
+  @tl(a=wd.class)
+  public static final String CMD_REAL_NAME_REG = "mbtoken3_realname_reg_v2";
+  @tl(a=we.class)
+  public static final String CMD_REPORT_DNS_INFO = "mbtoken3_report_dns_v2";
+  @tl(a=wg.class)
+  public static final String CMD_SET_MB_MOBILE = "mbtoken3_set_mod_mobile";
+  @tl(a=ti.class)
+  public static final String CMD_SET_SERVICES_STATUS_V2 = "mbtoken3_set_service_status_v2";
+  @tl(a=wh.class)
+  public static final String CMD_SET_SUPER_CODE = "mbtoken3_set_super_code";
+  @tl(a=wi.class)
+  public static final String CMD_UPLOAD_LOGFILE = "mbtoken3_log_upload";
+  @tl(a=wj.class)
+  public static final String CMD_UPLOAD_REALNAME_FILE = "mbtoken3_realname_check";
+  @tl(a=wk.class)
+  public static final String CMD_VRY_CAPTCHA = "mbtoken3_verify_captcha_v3";
+  @tl(a=wl.class)
+  public static final String CMD_VRY_MB_MOBILE_CODE = "mbtoken3_mbop_verify_mobile_code";
 }
 
 

@@ -1,55 +1,23 @@
 package com.tencent.token;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
 public final class aoe
 {
-  public static void a(String paramString1, String paramString2)
+  public static abstract class a
   {
-    paramString1 = new ZipFile(paramString1);
-    Enumeration localEnumeration = paramString1.entries();
-    byte[] arrayOfByte = new byte[1024];
-    while (localEnumeration.hasMoreElements())
-    {
-      Object localObject1 = (ZipEntry)localEnumeration.nextElement();
-      if (!((ZipEntry)localObject1).getName().contains("../")) {
-        if (((ZipEntry)localObject1).isDirectory())
-        {
-          new File(paramString2, ((ZipEntry)localObject1).getName()).mkdirs();
-        }
-        else
-        {
-          BufferedInputStream localBufferedInputStream = new BufferedInputStream(paramString1.getInputStream((ZipEntry)localObject1));
-          localObject1 = new File(paramString2, ((ZipEntry)localObject1).getName());
-          Object localObject2 = ((File)localObject1).getParentFile();
-          if ((localObject2 != null) && (!((File)localObject2).exists())) {
-            ((File)localObject2).mkdirs();
-          }
-          localObject1 = new FileOutputStream((File)localObject1);
-          localObject2 = new BufferedOutputStream((OutputStream)localObject1, 1024);
-          for (;;)
-          {
-            int i = localBufferedInputStream.read(arrayOfByte, 0, 1024);
-            if (i == -1) {
-              break;
-            }
-            ((FileOutputStream)localObject1).write(arrayOfByte, 0, i);
-          }
-          ((BufferedOutputStream)localObject2).flush();
-          ((BufferedOutputStream)localObject2).close();
-          ((FileOutputStream)localObject1).close();
-          localBufferedInputStream.close();
-        }
-      }
-    }
-    paramString1.close();
+    public abstract void a();
+    
+    public abstract void a(int paramInt1, int paramInt2);
+  }
+  
+  public static abstract class b {}
+  
+  public static final class c
+  {
+    public int a = -1;
+    public int b = 0;
+    public long c = -1L;
+    public String d = null;
+    public String e;
   }
 }
 

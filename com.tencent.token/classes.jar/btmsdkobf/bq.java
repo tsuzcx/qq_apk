@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.token.asp;
+import com.tencent.token.aso;
 import com.tmsdk.base.utils.HttpGetFile;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.io.File;
@@ -20,7 +20,7 @@ public class bq
   static final String[] gq = { "00B1208638DE0FCD3E920886D658DAF6", "7CC749CFC0FB5677E6ABA342EDBDBA5A" };
   static bq gx = null;
   HashMap<bt, Class<?>> gr = new HashMap();
-  HashMap<bt, asp> gs = new HashMap();
+  HashMap<bt, aso> gs = new HashMap();
   HandlerThread gt = null;
   Handler gu = null;
   eb.a gv = null;
@@ -239,7 +239,7 @@ public class bq
           }
           if (paramAnonymousMessage.what == 261)
           {
-            paramAnonymousMessage = (asp)paramAnonymousMessage.obj;
+            paramAnonymousMessage = (aso)paramAnonymousMessage.obj;
             if (paramAnonymousMessage == null) {
               return;
             }
@@ -250,7 +250,7 @@ public class bq
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (bt)((Iterator)localObject1).next();
-              if ((asp)bq.this.gs.get(localObject2) == paramAnonymousMessage) {
+              if ((aso)bq.this.gs.get(localObject2) == paramAnonymousMessage) {
                 bq.this.gs.remove(localObject2);
               }
             }
@@ -492,7 +492,7 @@ public class bq
     //   357: iconst_0
     //   358: anewarray 4	java/lang/Object
     //   361: invokevirtual 278	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   364: checkcast 280	com/tencent/token/asp
+    //   364: checkcast 280	com/tencent/token/aso
     //   367: astore 6
     //   369: iload_2
     //   370: iconst_1
@@ -612,7 +612,7 @@ public class bq
     //   609: astore 5
     //   611: aload 5
     //   613: astore 6
-    //   615: invokestatic 319	com/tencent/token/ass:b	()Z
+    //   615: invokestatic 319	com/tencent/token/asr:b	()Z
     //   618: ifeq +8 -> 626
     //   621: ldc_w 321
     //   624: astore 6
@@ -1095,7 +1095,7 @@ public class bq
     //   1518: iconst_0
     //   1519: anewarray 4	java/lang/Object
     //   1522: invokevirtual 278	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   1525: checkcast 280	com/tencent/token/asp
+    //   1525: checkcast 280	com/tencent/token/aso
     //   1528: astore 7
     //   1530: iload_2
     //   1531: iconst_1
@@ -1427,7 +1427,7 @@ public class bq
     //   110: ifeq +20 -> 130
     //   113: aload 11
     //   115: aconst_null
-    //   116: invokestatic 488	com/tencent/token/ass:a	([B[B)[B
+    //   116: invokestatic 488	com/tencent/token/asr:a	([B[B)[B
     //   119: astore 9
     //   121: aload_2
     //   122: aload 9
@@ -1435,7 +1435,7 @@ public class bq
     //   127: goto +14 -> 141
     //   130: aload 11
     //   132: aconst_null
-    //   133: invokestatic 492	com/tencent/token/ass:b	([B[B)[B
+    //   133: invokestatic 492	com/tencent/token/asr:b	([B[B)[B
     //   136: astore 9
     //   138: goto -17 -> 121
     //   141: aload_2
@@ -2276,19 +2276,19 @@ public class bq
     return Boolean.valueOf(ec.cS().getBoolean("r_e", false));
   }
   
-  public void a(asp paramasp)
+  public void a(aso paramaso)
   {
     try
     {
       U();
-      Message.obtain(this.gu, 261, paramasp).sendToTarget();
+      Message.obtain(this.gu, 261, paramaso).sendToTarget();
       this.gu.sendEmptyMessage(262);
       return;
     }
     finally
     {
-      paramasp = finally;
-      throw paramasp;
+      paramaso = finally;
+      throw paramaso;
     }
   }
   

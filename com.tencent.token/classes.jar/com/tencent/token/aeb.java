@@ -1,19 +1,17 @@
 package com.tencent.token;
 
+import java.io.File;
+import java.util.Comparator;
+
 public final class aeb
+  implements Comparator<File>
 {
-  public String a;
-  public int b;
-  
-  public aeb(String paramString, int paramInt)
+  public final int compare(Object paramObject1, Object paramObject2)
   {
-    this.a = paramString;
-    this.b = paramInt;
-  }
-  
-  public static aeb a(int paramInt)
-  {
-    return new aeb("", paramInt);
+    paramObject1 = (File)paramObject1;
+    paramObject2 = (File)paramObject2;
+    long l = adz.a(paramObject1);
+    return (int)(adz.a(paramObject2) - l);
   }
 }
 

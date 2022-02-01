@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +18,9 @@ public final class Herbaceous
   public int Yc = 0;
   public int Zc = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Tc = paramafl.a(this.Tc, 0, true);
+    this.Tc = paramafk.a(this.Tc, 0, true);
     if (Sc == null)
     {
       Sc = new HashMap();
@@ -28,25 +28,25 @@ public final class Herbaceous
       localArrayList.add(new Haw());
       Sc.put(Integer.valueOf(0), localArrayList);
     }
-    this.Uc = ((Map)paramafl.a(Sc, 1, true));
-    this.Vc = paramafl.a(this.Vc, 2, false);
-    this.Wc = paramafl.a(this.Wc, 3, false);
-    this.Xc = paramafl.a(this.Xc, 4, false);
-    this.Yc = paramafl.a(this.Yc, 5, false);
-    this.Zc = paramafl.a(this.Zc, 6, false);
+    this.Uc = ((Map)paramafk.a(Sc, 1, true));
+    this.Vc = paramafk.a(this.Vc, 2, false);
+    this.Wc = paramafk.a(this.Wc, 3, false);
+    this.Xc = paramafk.a(this.Xc, 4, false);
+    this.Yc = paramafk.a(this.Yc, 5, false);
+    this.Zc = paramafk.a(this.Zc, 6, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Tc, 0);
-    paramafo.a(this.Uc, 1);
-    paramafo.a(this.Vc, 2);
-    paramafo.a(this.Wc, 3);
-    paramafo.a(this.Xc, 4);
-    paramafo.a(this.Yc, 5);
+    paramafn.a(this.Tc, 0);
+    paramafn.a(this.Uc, 1);
+    paramafn.a(this.Vc, 2);
+    paramafn.a(this.Wc, 3);
+    paramafn.a(this.Xc, 4);
+    paramafn.a(this.Yc, 5);
     int i = this.Zc;
     if (i != 0) {
-      paramafo.a(i, 6);
+      paramafn.a(i, 6);
     }
   }
 }

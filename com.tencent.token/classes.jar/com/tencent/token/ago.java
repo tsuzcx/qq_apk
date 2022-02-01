@@ -1,310 +1,158 @@
 package com.tencent.token;
 
-import android.os.Process;
-import com.tencent.wcdb.CursorWindow;
-import com.tencent.wcdb.database.SQLiteConnection;
-import com.tencent.wcdb.database.SQLiteConnectionPool;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
 public final class ago
+  extends agk
 {
-  public SQLiteConnection a;
-  private final SQLiteConnectionPool c;
-  private int d;
-  private int e;
-  private a f;
-  private a g;
-  
-  public ago(SQLiteConnectionPool paramSQLiteConnectionPool)
+  public ago(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject)
   {
-    if (paramSQLiteConnectionPool != null)
-    {
-      this.c = paramSQLiteConnectionPool;
-      return;
-    }
-    throw new IllegalArgumentException("connectionPool must not be null");
+    super(paramSQLiteDatabase, paramString, paramArrayOfObject, null);
   }
   
-  private void a(a parama)
+  /* Error */
+  public final int b()
   {
-    parama.a = this.f;
-    parama.c = null;
-    this.f = parama;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/ago:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/agk:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/agn;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/agk:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/agk:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/agk:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 46	com/tencent/token/agn:b	(Ljava/lang/String;[Ljava/lang/Object;I)I
+    //   29: istore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   34: iload_1
+    //   35: ireturn
+    //   36: astore_2
+    //   37: goto +10 -> 47
+    //   40: astore_2
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/ago:a	()V
+    //   45: aload_2
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   51: aload_2
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	ago
+    //   29	6	1	i	int
+    //   36	1	2	localObject	Object
+    //   40	12	2	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  private void b(int paramInt, agt paramagt)
+  /* Error */
+  public final long f()
   {
-    if (paramagt != null) {
-      paramagt.a();
-    }
-    if (this.g == null) {
-      a(null, paramInt, paramagt);
-    }
-    try
-    {
-      if (this.g == null) {
-        this.a.a("BEGIN EXCLUSIVE;", null, paramagt);
-      }
-      paramagt = e();
-      paramagt.a = this.g;
-      this.g = paramagt;
-      return;
-      return;
-    }
-    finally
-    {
-      if (this.g == null) {
-        b();
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/ago:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/agk:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/agn;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/agk:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/agk:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/agk:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 55	com/tencent/token/agn:c	(Ljava/lang/String;[Ljava/lang/Object;I)J
+    //   29: lstore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   34: lload_1
+    //   35: lreturn
+    //   36: astore_3
+    //   37: goto +10 -> 47
+    //   40: astore_3
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/ago:a	()V
+    //   45: aload_3
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   51: aload_3
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	ago
+    //   29	6	1	l	long
+    //   36	1	3	localObject	Object
+    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  private void b(agt paramagt)
+  /* Error */
+  public final long g()
   {
-    if (paramagt != null) {
-      paramagt.a();
-    }
-    a locala = this.g;
-    int i;
-    if ((locala.d) && (!locala.e)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    this.g = locala.a;
-    a(locala);
-    locala = this.g;
-    if (locala != null)
-    {
-      if (i == 0)
-      {
-        locala.e = true;
-        return;
-      }
-      return;
-    }
-    if (i != 0) {}
-    try
-    {
-      this.a.a("COMMIT;", null, paramagt);
-      break label96;
-      this.a.a("ROLLBACK;", null, paramagt);
-      label96:
-      return;
-    }
-    finally
-    {
-      b();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 18	com/tencent/token/ago:d	()V
+    //   4: aload_0
+    //   5: getfield 22	com/tencent/token/agk:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   8: invokevirtual 27	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/agn;
+    //   11: aload_0
+    //   12: getfield 30	com/tencent/token/agk:b	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 34	com/tencent/token/agk:e	[Ljava/lang/Object;
+    //   19: aload_0
+    //   20: getfield 38	com/tencent/token/agk:c	Z
+    //   23: invokestatic 41	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   26: invokevirtual 58	com/tencent/token/agn:a	(Ljava/lang/String;[Ljava/lang/Object;I)J
+    //   29: lstore_1
+    //   30: aload_0
+    //   31: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   34: lload_1
+    //   35: lreturn
+    //   36: astore_3
+    //   37: goto +10 -> 47
+    //   40: astore_3
+    //   41: aload_0
+    //   42: invokevirtual 50	com/tencent/token/ago:a	()V
+    //   45: aload_3
+    //   46: athrow
+    //   47: aload_0
+    //   48: invokevirtual 48	com/tencent/token/ago:e	()V
+    //   51: aload_3
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	ago
+    //   29	6	1	l	long
+    //   36	1	3	localObject	Object
+    //   40	12	3	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    // Exception table:
+    //   from	to	target	type
+    //   4	30	36	finally
+    //   41	47	36	finally
+    //   4	30	40	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
   }
   
-  private boolean b(String paramString, int paramInt, agt paramagt)
+  public final String toString()
   {
-    if (paramagt != null) {
-      paramagt.a();
-    }
-    switch (afz.b(paramString))
-    {
-    default: 
-      return false;
-    case 6: 
-      a(paramagt);
-      return true;
-    case 5: 
-      a();
-      a(paramagt);
-      return true;
-    }
-    a(paramInt, paramagt);
-    return true;
-  }
-  
-  private void c()
-  {
-    if (this.g != null) {
-      return;
-    }
-    throw new IllegalStateException("Cannot perform this operation because there is no current transaction.");
-  }
-  
-  private void d()
-  {
-    a locala = this.g;
-    if (locala != null)
-    {
-      if (!locala.d) {
-        return;
-      }
-      throw new IllegalStateException("Cannot perform this operation because the transaction has already been marked successful.  The only thing you can do now is call endTransaction().");
-    }
-  }
-  
-  private a e()
-  {
-    a locala = this.f;
-    if (locala != null)
-    {
-      this.f = locala.a;
-      locala.a = null;
-      locala.d = false;
-      locala.e = false;
-    }
-    else
-    {
-      locala = new a((byte)0);
-    }
-    locala.b = 2;
-    locala.c = null;
-    return locala;
-  }
-  
-  public final int a(String paramString, Object[] paramArrayOfObject, CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, agt paramagt)
-  {
-    if (paramString != null)
-    {
-      if (paramCursorWindow != null)
-      {
-        if (b(paramString, paramInt3, paramagt))
-        {
-          paramCursorWindow.a();
-          return 0;
-        }
-        a(paramString, paramInt3, paramagt);
-        try
-        {
-          paramInt1 = this.a.a(paramString, paramArrayOfObject, paramCursorWindow, paramInt1, paramInt2, paramBoolean, paramagt);
-          return paramInt1;
-        }
-        finally
-        {
-          b();
-        }
-      }
-      throw new IllegalArgumentException("window must not be null.");
-    }
-    throw new IllegalArgumentException("sql must not be null.");
-  }
-  
-  public final long a(String paramString, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramString != null)
-    {
-      if (b(paramString, paramInt, null)) {
-        return 0L;
-      }
-      a(paramString, paramInt, null);
-      try
-      {
-        long l = this.a.a(paramString, paramArrayOfObject);
-        return l;
-      }
-      finally
-      {
-        b();
-      }
-    }
-    throw new IllegalArgumentException("sql must not be null.");
-  }
-  
-  public final void a()
-  {
-    c();
-    d();
-    this.g.d = true;
-  }
-  
-  public final void a(int paramInt, agt paramagt)
-  {
-    d();
-    b(paramInt, paramagt);
-  }
-  
-  public final void a(agt paramagt)
-  {
-    c();
-    if ((!b) && (this.a == null)) {
-      throw new AssertionError();
-    }
-    b(paramagt);
-  }
-  
-  public final void a(String paramString, int paramInt, agt paramagt)
-  {
-    if (this.a == null)
-    {
-      this.a = this.c.a(paramString, paramInt, paramagt);
-      this.d = paramInt;
-      this.a.a(Thread.currentThread(), Process.myTid());
-    }
-    this.e += 1;
-  }
-  
-  public final int b(String paramString, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramString != null)
-    {
-      if (b(paramString, paramInt, null)) {
-        return 0;
-      }
-      a(paramString, paramInt, null);
-      try
-      {
-        paramInt = this.a.b(paramString, paramArrayOfObject);
-        return paramInt;
-      }
-      finally
-      {
-        b();
-      }
-    }
-    throw new IllegalArgumentException("sql must not be null.");
-  }
-  
-  public final void b()
-  {
-    int i = this.e - 1;
-    this.e = i;
-    if (i == 0) {
-      try
-      {
-        this.a.a(null, 0);
-        this.c.a(this.a);
-        return;
-      }
-      finally
-      {
-        this.a = null;
-      }
-    }
-  }
-  
-  public final long c(String paramString, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramString != null)
-    {
-      if (b(paramString, paramInt, null)) {
-        return 0L;
-      }
-      a(paramString, paramInt, null);
-      try
-      {
-        long l = this.a.c(paramString, paramArrayOfObject);
-        return l;
-      }
-      finally
-      {
-        b();
-      }
-    }
-    throw new IllegalArgumentException("sql must not be null.");
-  }
-  
-  static final class a
-  {
-    public a a;
-    public int b;
-    public ags c;
-    public boolean d;
-    public boolean e;
+    StringBuilder localStringBuilder = new StringBuilder("SQLiteProgram: ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

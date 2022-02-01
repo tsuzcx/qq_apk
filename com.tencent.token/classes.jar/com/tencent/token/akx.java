@@ -1,191 +1,70 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nullable;
+import java.io.UnsupportedEncodingException;
 
-public class akx
-  extends alq
+final class akx
 {
-  private static final long a = TimeUnit.SECONDS.toMillis(60L);
-  @Nullable
-  static akx b;
-  private static final long d = TimeUnit.MILLISECONDS.toNanos(a);
-  private boolean e;
-  @Nullable
-  private akx f;
-  private long g;
+  private static final byte[] a = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+  private static final byte[] b = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 45, 95 };
   
-  private static void a(akx paramakx, long paramLong, boolean paramBoolean)
+  public static String a(byte[] paramArrayOfByte)
   {
+    return a(paramArrayOfByte, a);
+  }
+  
+  private static String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[(paramArrayOfByte1.length + 2) / 3 * 4];
+    int k = paramArrayOfByte1.length - paramArrayOfByte1.length % 3;
+    int i = 0;
+    int j = 0;
+    int m;
+    while (i < k)
+    {
+      m = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0xFF) >> 2)];
+      j = m + 1;
+      int i1 = paramArrayOfByte1[i];
+      int n = i + 1;
+      arrayOfByte[m] = paramArrayOfByte2[((i1 & 0x3) << 4 | (paramArrayOfByte1[n] & 0xFF) >> 4)];
+      m = j + 1;
+      i1 = paramArrayOfByte1[n];
+      n = i + 2;
+      arrayOfByte[j] = paramArrayOfByte2[((i1 & 0xF) << 2 | (paramArrayOfByte1[n] & 0xFF) >> 6)];
+      j = m + 1;
+      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[n] & 0x3F)];
+      i += 3;
+    }
+    switch (paramArrayOfByte1.length % 3)
+    {
+    default: 
+      break;
+    case 2: 
+      i = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
+      j = i + 1;
+      m = paramArrayOfByte1[k];
+      k += 1;
+      arrayOfByte[i] = paramArrayOfByte2[((m & 0x3) << 4 | (paramArrayOfByte1[k] & 0xFF) >> 4)];
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xF) << 2)];
+      arrayOfByte[(j + 1)] = 61;
+      break;
+    case 1: 
+      i = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
+      j = i + 1;
+      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4)];
+      arrayOfByte[j] = 61;
+      arrayOfByte[(j + 1)] = 61;
+    }
     try
     {
-      if (b == null)
-      {
-        b = new akx();
-        new a().start();
-      }
-      long l = System.nanoTime();
-      if ((paramLong != 0L) && (paramBoolean))
-      {
-        paramakx.g = (Math.min(paramLong, paramakx.c() - l) + l);
-      }
-      else if (paramLong != 0L)
-      {
-        paramakx.g = (paramLong + l);
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label180;
-        }
-        paramakx.g = paramakx.c();
-      }
-      paramLong = paramakx.g;
-      for (akx localakx = b; (localakx.f != null) && (paramLong - l >= localakx.f.g - l); localakx = localakx.f) {}
-      paramakx.f = localakx.f;
-      localakx.f = paramakx;
-      if (localakx == b)
-      {
-        akx.class.notify();
-        return;
-      }
-      return;
-      label180:
-      throw new AssertionError();
+      paramArrayOfByte1 = new String(arrayOfByte, "US-ASCII");
+      return paramArrayOfByte1;
     }
-    finally {}
-  }
-  
-  private static boolean a(akx paramakx)
-  {
-    try
+    catch (UnsupportedEncodingException paramArrayOfByte1)
     {
-      for (akx localakx = b; localakx != null; localakx = localakx.f) {
-        if (localakx.f == paramakx)
-        {
-          localakx.f = paramakx.f;
-          paramakx.f = null;
-          return false;
-        }
-      }
-      return true;
-    }
-    finally {}
-  }
-  
-  @Nullable
-  static akx e()
-  {
-    akx localakx = b.f;
-    if (localakx == null)
-    {
-      l1 = System.nanoTime();
-      akx.class.wait(a);
-      if ((b.f == null) && (System.nanoTime() - l1 >= d)) {
-        return b;
-      }
-      return null;
-    }
-    long l1 = System.nanoTime();
-    l1 = localakx.g - l1;
-    if (l1 > 0L)
-    {
-      long l2 = l1 / 1000000L;
-      akx.class.wait(l2, (int)(l1 - 1000000L * l2));
-      return null;
-    }
-    b.f = localakx.f;
-    localakx.f = null;
-    return localakx;
-  }
-  
-  protected IOException a(@Nullable IOException paramIOException)
-  {
-    InterruptedIOException localInterruptedIOException = new InterruptedIOException("timeout");
-    if (paramIOException != null) {
-      localInterruptedIOException.initCause(paramIOException);
-    }
-    return localInterruptedIOException;
-  }
-  
-  protected void a() {}
-  
-  final void a(boolean paramBoolean)
-  {
-    if (c_())
-    {
-      if (!paramBoolean) {
-        return;
-      }
-      throw a(null);
-    }
-  }
-  
-  final IOException b(IOException paramIOException)
-  {
-    if (!c_()) {
-      return paramIOException;
-    }
-    return a(paramIOException);
-  }
-  
-  public final void b_()
-  {
-    if (!this.e)
-    {
-      long l = d_();
-      boolean bool = e_();
-      if ((l == 0L) && (!bool)) {
-        return;
-      }
-      this.e = true;
-      a(this, l, bool);
-      return;
-    }
-    throw new IllegalStateException("Unbalanced enter/exit");
-  }
-  
-  public final boolean c_()
-  {
-    if (!this.e) {
-      return false;
-    }
-    this.e = false;
-    return a(this);
-  }
-  
-  static final class a
-    extends Thread
-  {
-    a()
-    {
-      super();
-      setDaemon(true);
-    }
-    
-    public final void run()
-    {
-      try
-      {
-        for (;;)
-        {
-          try
-          {
-            akx localakx = akx.e();
-            if (localakx == null) {}
-            if (localakx == akx.b)
-            {
-              akx.b = null;
-              return;
-            }
-            localakx.a();
-          }
-          finally {}
-        }
-      }
-      catch (InterruptedException localInterruptedException) {}
+      throw new AssertionError(paramArrayOfByte1);
     }
   }
 }

@@ -1,14 +1,11 @@
 package com.tencent.token;
 
-import java.util.List;
+import android.graphics.Path;
 
-public final class alu
-  extends ama<Integer>
+abstract interface alu
+  extends aof
 {
-  public alu(List<alz<Integer>> paramList)
-  {
-    super(paramList);
-  }
+  public abstract Path g_();
 }
 
 

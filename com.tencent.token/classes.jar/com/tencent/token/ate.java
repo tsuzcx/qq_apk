@@ -1,35 +1,32 @@
 package com.tencent.token;
 
+import android.graphics.Matrix;
 import android.graphics.Path;
-import android.graphics.PointF;
-import java.util.List;
+import android.graphics.PathMeasure;
 
 public final class ate
 {
-  public static void a(anc paramanc, Path paramPath)
+  private static final PathMeasure a = new PathMeasure();
+  private static final Path b = new Path();
+  private static final Path c = new Path();
+  private static final float[] d = new float[4];
+  private static final float e = (float)Math.sqrt(2.0D);
+  
+  public static float a(Matrix paramMatrix)
   {
-    paramPath.reset();
-    PointF localPointF1 = paramanc.b;
-    paramPath.moveTo(localPointF1.x, localPointF1.y);
-    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
-    int i = 0;
-    while (i < paramanc.a.size())
-    {
-      Object localObject = (amm)paramanc.a.get(i);
-      PointF localPointF2 = ((amm)localObject).a;
-      PointF localPointF3 = ((amm)localObject).b;
-      localObject = ((amm)localObject).c;
-      if ((localPointF2.equals(localPointF1)) && (localPointF3.equals(localObject))) {
-        paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
-      } else {
-        paramPath.cubicTo(localPointF2.x, localPointF2.y, localPointF3.x, localPointF3.y, ((PointF)localObject).x, ((PointF)localObject).y);
-      }
-      localPointF1.set(((PointF)localObject).x, ((PointF)localObject).y);
-      i += 1;
-    }
-    if (paramanc.c) {
-      paramPath.close();
-    }
+    float[] arrayOfFloat = d;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    float f1 = e;
+    arrayOfFloat[2] = f1;
+    arrayOfFloat[3] = f1;
+    paramMatrix.mapPoints(arrayOfFloat);
+    paramMatrix = d;
+    f1 = paramMatrix[2];
+    float f2 = paramMatrix[0];
+    float f3 = paramMatrix[3];
+    float f4 = paramMatrix[1];
+    return (float)Math.hypot(f1 - f2, f3 - f4) / 2.0F;
   }
 }
 

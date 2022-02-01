@@ -14,22 +14,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
+import com.tencent.token.aac;
 import com.tencent.token.aad;
-import com.tencent.token.aae;
-import com.tencent.token.ahh;
+import com.tencent.token.ahg;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.rt;
 import com.tencent.token.ru;
-import com.tencent.token.rv;
-import com.tencent.token.rv.a;
-import com.tencent.token.rz;
-import com.tencent.token.sd;
-import com.tencent.token.ta;
+import com.tencent.token.ru.a;
+import com.tencent.token.ry;
+import com.tencent.token.sc;
+import com.tencent.token.sz;
 import com.tencent.token.ui.base.LockPatternVerifyView;
 import com.tencent.token.ui.base.LockPatternVerifyView.b;
 import com.tencent.token.ui.base.LockPatternView;
-import com.tencent.token.wz;
-import com.tencent.token.xb;
+import com.tencent.token.wy;
+import com.tencent.token.xa;
 
 public class StartPwdGestureVerifyActivity
   extends BaseActivity
@@ -81,7 +81,7 @@ public class StartPwdGestureVerifyActivity
       }
       if (paramAnonymousMessage.arg1 == 0)
       {
-        paramAnonymousMessage = ta.a().k.b();
+        paramAnonymousMessage = sz.a().k.b();
         if (paramAnonymousMessage == null)
         {
           StartPwdGestureVerifyActivity.this.dismissDialog();
@@ -96,16 +96,16 @@ public class StartPwdGestureVerifyActivity
           return;
         }
         StartPwdGestureVerifyActivity.this.dismissDialog();
-        localObject1 = rz.a(StartPwdGestureVerifyActivity.this.getApplicationContext());
+        localObject1 = ry.a(StartPwdGestureVerifyActivity.this.getApplicationContext());
         localObject2 = StartPwdGestureVerifyActivity.this;
         Handler localHandler = ((StartPwdGestureVerifyActivity)localObject2).mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramAnonymousMessage.mRealUin);
-        ((rz)localObject1).a((Activity)localObject2, localHandler, localStringBuilder.toString());
+        ((ry)localObject1).a((Activity)localObject2, localHandler, localStringBuilder.toString());
         return;
       }
       StartPwdGestureVerifyActivity.this.dismissDialog();
-      paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
+      paramAnonymousMessage = (wy)paramAnonymousMessage.obj;
       StartPwdGestureVerifyActivity.this.showUserDialog(paramAnonymousMessage.c);
     }
   };
@@ -115,17 +115,17 @@ public class StartPwdGestureVerifyActivity
   {
     try
     {
-      QQUser localQQUser = ta.a().k.b();
+      QQUser localQQUser = sz.a().k.b();
       if ((localQQUser != null) && (localQQUser.mRealUin > 0L))
       {
-        rz localrz = rz.a(getApplicationContext());
+        ry localry = ry.a(getApplicationContext());
         Handler localHandler = this.mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localQQUser.mRealUin);
-        localrz.a(this, localHandler, localStringBuilder.toString());
+        localry.a(this, localHandler, localStringBuilder.toString());
         return;
       }
-      rv.a.a().c(this.mHandler);
+      ru.a.a().c(this.mHandler);
       showProDialog(this, 2131492986, 2131493441, null);
       return;
     }
@@ -138,12 +138,12 @@ public class StartPwdGestureVerifyActivity
   private void judgeNextStep()
   {
     dismissDialog();
-    ru.a().a(System.currentTimeMillis(), 25);
-    sd.a().e();
+    rt.a().a(System.currentTimeMillis(), 25);
+    sc.a().e();
     RqdApplication.k();
-    aad.a(FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    sd.a();
-    sd.a(0);
+    aac.a(FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
+    sc.a();
+    sc.a(0);
     int i = this.mActivityType;
     if ((i != 2) && (i != 1))
     {
@@ -156,7 +156,7 @@ public class StartPwdGestureVerifyActivity
         localIntent = new Intent(this, FaceChangePwdIndexActivity.class);
         localIntent.putExtra("verify_psw", true);
         localIntent.setFlags(67108864);
-        ru.a().a(System.currentTimeMillis(), 95);
+        rt.a().a(System.currentTimeMillis(), 95);
         startActivity(localIntent);
         return;
       }
@@ -165,13 +165,13 @@ public class StartPwdGestureVerifyActivity
         localIntent = new Intent(this, FaceChangeMobileActivity.class);
         localIntent.putExtra("verify_psw", true);
         localIntent.setFlags(67108864);
-        ru.a().a(System.currentTimeMillis(), 95);
+        rt.a().a(System.currentTimeMillis(), 95);
         startActivity(localIntent);
         finish();
         return;
       }
       RqdApplication.f();
-      if (!sd.a().c())
+      if (!sc.a().c())
       {
         showOldPwdDeletedAlert();
         return;
@@ -188,14 +188,14 @@ public class StartPwdGestureVerifyActivity
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          sd.a().e();
+          sc.a().e();
           RqdApplication.k();
         }
       }, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          sd.a().e();
+          sc.a().e();
           RqdApplication.k();
           StartPwdGestureVerifyActivity.this.setResult(35);
           StartPwdGestureVerifyActivity.this.finish();
@@ -256,7 +256,7 @@ public class StartPwdGestureVerifyActivity
       StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -264,7 +264,7 @@ public class StartPwdGestureVerifyActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
-      rz.a(getApplicationContext()).a(paramIntent);
+      ry.a(getApplicationContext()).a(paramIntent);
     }
   }
   
@@ -275,7 +275,7 @@ public class StartPwdGestureVerifyActivity
     setNeverShowLockVerifyView();
     setContentView(this.mView);
     hideTitle();
-    ru.a().a(System.currentTimeMillis(), 17);
+    rt.a().a(System.currentTimeMillis(), 17);
     this.mActivityType = getIntent().getIntExtra("startpwd_verify_source", 0);
     int i = getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
     if ((this.mActivityType == 0) && (i == 0)) {
@@ -286,14 +286,14 @@ public class StartPwdGestureVerifyActivity
       public final void a()
       {
         StartPwdGestureVerifyActivity.this.setResult(35);
-        ru.a().a(System.currentTimeMillis(), 18);
+        rt.a().a(System.currentTimeMillis(), 18);
         IndexActivity.need_query_dual_msg = true;
         StartPwdGestureVerifyActivity.this.finish();
       }
       
       public final void a(boolean paramAnonymousBoolean)
       {
-        xb.a("verifyinit limit");
+        xa.a("verifyinit limit");
         if (paramAnonymousBoolean)
         {
           localStartPwdGestureVerifyActivity = StartPwdGestureVerifyActivity.this;
@@ -317,7 +317,7 @@ public class StartPwdGestureVerifyActivity
         StartPwdGestureVerifyActivity.this.gotoQuickLoginWb();
       }
     });
-    aae.a(this, this.mTitleBar, 2130968773);
+    aad.a(this, this.mTitleBar, 2130968773);
   }
   
   public void onDestroy()
@@ -363,7 +363,7 @@ public class StartPwdGestureVerifyActivity
   {
     super.onResume();
     RqdApplication.b = true;
-    if (!sd.a().c())
+    if (!sc.a().c())
     {
       setResult(35);
       finish();

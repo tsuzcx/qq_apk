@@ -4,22 +4,20 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class uq
-  extends tk
+  extends tj
 {
   private long d;
-  private long e;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramaar.c.get("param.feedback.msgid")).longValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)

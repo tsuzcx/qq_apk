@@ -7,11 +7,11 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import com.tencent.token.ui.base.RightLetterView;
 import com.tencent.token.ui.base.RightLetterView.a;
-import com.tencent.token.ww;
-import com.tencent.token.wy;
-import com.tencent.token.xa;
+import com.tencent.token.wv;
+import com.tencent.token.wx;
+import com.tencent.token.wz;
+import com.tencent.token.xc;
 import com.tencent.token.xd;
-import com.tencent.token.xe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,29 +19,29 @@ import java.util.List;
 public class SelectCountryCodeActivity
   extends BaseActivity
 {
-  private xd adapter;
-  private ww characterParser;
-  private xa pinyinComparator;
+  private xc adapter;
+  private wv characterParser;
+  private wz pinyinComparator;
   RightLetterView sideBar;
   private ListView sortListView;
-  private List<xe> sourceDateList;
+  private List<xd> sourceDateList;
   
-  private List<xe> filledData(String[][] paramArrayOfString)
+  private List<xd> filledData(String[][] paramArrayOfString)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayOfString.length)
     {
-      xe localxe = new xe();
-      localxe.a = paramArrayOfString[i][1];
-      localxe.c = paramArrayOfString[i][0];
+      xd localxd = new xd();
+      localxd.a = paramArrayOfString[i][1];
+      localxd.c = paramArrayOfString[i][0];
       String str = this.characterParser.a(paramArrayOfString[i][1]).substring(0, 1).toUpperCase();
       if (str.matches("[A-Z]")) {
-        localxe.b = str.toUpperCase();
+        localxd.b = str.toUpperCase();
       } else {
-        localxe.b = "#";
+        localxd.b = "#";
       }
-      localArrayList.add(localxe);
+      localArrayList.add(localxd);
       i += 1;
     }
     return localArrayList;
@@ -49,24 +49,24 @@ public class SelectCountryCodeActivity
   
   private void init()
   {
-    this.characterParser = ww.a();
-    this.pinyinComparator = new xa();
+    this.characterParser = wv.a();
+    this.pinyinComparator = new wz();
     this.sortListView = ((ListView)findViewById(2131165658));
     this.sideBar = ((RightLetterView)findViewById(2131165918));
     this.sideBar.setOnTouchingLetterChangedListener(new a((byte)0));
-    this.sourceDateList = filledData(wy.b);
-    List localList = filledData(wy.c);
+    this.sourceDateList = filledData(wx.b);
+    List localList = filledData(wx.c);
     Collections.sort(localList, this.pinyinComparator);
     this.sourceDateList.addAll(localList);
-    this.adapter = new xd(this, this.sourceDateList, new View.OnClickListener()
+    this.adapter = new xc(this, this.sourceDateList, new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("name", ((xe)SelectCountryCodeActivity.this.sourceDateList.get(i)).a);
+        paramAnonymousView.putExtra("name", ((xd)SelectCountryCodeActivity.this.sourceDateList.get(i)).a);
         SelectCountryCodeActivity localSelectCountryCodeActivity = SelectCountryCodeActivity.this;
-        localSelectCountryCodeActivity.setResult(Integer.parseInt(((xe)localSelectCountryCodeActivity.sourceDateList.get(i)).c), paramAnonymousView);
+        localSelectCountryCodeActivity.setResult(Integer.parseInt(((xd)localSelectCountryCodeActivity.sourceDateList.get(i)).c), paramAnonymousView);
         SelectCountryCodeActivity.this.finish();
       }
     });
@@ -87,12 +87,12 @@ public class SelectCountryCodeActivity
     
     public final void a(int paramInt)
     {
-      xd localxd = SelectCountryCodeActivity.this.adapter;
-      String str = wy.a[paramInt];
+      xc localxc = SelectCountryCodeActivity.this.adapter;
+      String str = wx.a[paramInt];
       paramInt = 10;
-      while (paramInt < localxd.getCount())
+      while (paramInt < localxc.getCount())
       {
-        if (str.equals(((xe)localxd.a.get(paramInt)).b)) {
+        if (str.equals(((xd)localxc.a.get(paramInt)).b)) {
           break label60;
         }
         paramInt += 1;

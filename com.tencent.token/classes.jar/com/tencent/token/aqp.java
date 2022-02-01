@@ -1,14 +1,21 @@
 package com.tencent.token;
 
-final class aqp
-  implements Runnable
+import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
+
+public abstract interface aqp
 {
-  aqp(aqn paramaqn, aqm paramaqm, Integer paramInteger1, Integer paramInteger2) {}
+  public abstract agx a(int paramInt1, int paramInt2);
   
-  public final void run()
-  {
-    this.a.f.a(this.a.g, this.a.b, this.b.intValue(), this.c.intValue(), this.a.d);
-  }
+  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw);
+  
+  public abstract WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw, long paramLong);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agx paramagx);
+  
+  public abstract void b();
 }
 
 

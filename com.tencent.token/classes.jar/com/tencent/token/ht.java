@@ -1,30 +1,16 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public abstract interface ht
 {
-  public abstract void a(Context paramContext, hm paramhm);
-  
-  public abstract void a(hm paramhm, boolean paramBoolean);
-  
-  public abstract void a(a parama);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(hz paramhz);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b(ho paramho);
-  
-  public abstract boolean c(ho paramho);
+  public abstract void a(hl paramhl);
   
   public static abstract interface a
   {
-    public abstract void a(hm paramhm, boolean paramBoolean);
+    public abstract void a(hn paramhn);
     
-    public abstract boolean a(hm paramhm);
+    public abstract boolean a();
+    
+    public abstract hn getItemData();
   }
 }
 

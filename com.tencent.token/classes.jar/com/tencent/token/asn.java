@@ -1,10 +1,10 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-
-public abstract interface asn
+public final class asn<F, S, T>
 {
-  public abstract aso<Long, Integer, JceStruct> a(long paramLong, int paramInt, JceStruct paramJceStruct);
+  public F a;
+  public S b;
+  public T c;
 }
 
 

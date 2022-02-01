@@ -1,589 +1,242 @@
 package com.tencent.token;
 
-import java.util.ConcurrentModificationException;
-import java.util.Map;
-
-public class eg<K, V>
+public final class eg<E>
+  implements Cloneable
 {
-  static Object[] b;
-  static int c;
-  static Object[] d;
-  static int e;
-  int[] f = dx.a;
-  Object[] g = dx.c;
-  int h = 0;
+  private static final Object e = new Object();
+  public boolean a = false;
+  public int[] b;
+  public Object[] c;
+  public int d;
   
-  private int a()
+  public eg()
   {
-    int j = this.h;
-    if (j == 0) {
-      return -1;
-    }
-    int k = a(this.f, j, 0);
-    if (k < 0) {
-      return k;
-    }
-    if (this.g[(k << 1)] == null) {
-      return k;
-    }
-    int i = k + 1;
-    while ((i < j) && (this.f[i] == 0))
-    {
-      if (this.g[(i << 1)] == null) {
-        return i;
-      }
-      i += 1;
-    }
-    j = k - 1;
-    while ((j >= 0) && (this.f[j] == 0))
-    {
-      if (this.g[(j << 1)] == null) {
-        return j;
-      }
-      j -= 1;
-    }
-    return i ^ 0xFFFFFFFF;
+    this(10);
   }
   
-  private int a(Object paramObject, int paramInt)
+  public eg(int paramInt)
   {
-    int j = this.h;
-    if (j == 0) {
-      return -1;
-    }
-    int k = a(this.f, j, paramInt);
-    if (k < 0) {
-      return k;
-    }
-    if (paramObject.equals(this.g[(k << 1)])) {
-      return k;
-    }
-    int i = k + 1;
-    while ((i < j) && (this.f[i] == paramInt))
+    if (paramInt == 0)
     {
-      if (paramObject.equals(this.g[(i << 1)])) {
-        return i;
-      }
-      i += 1;
+      this.b = dw.a;
+      this.c = dw.c;
     }
-    j = k - 1;
-    while ((j >= 0) && (this.f[j] == paramInt))
+    else
     {
-      if (paramObject.equals(this.g[(j << 1)])) {
-        return j;
-      }
-      j -= 1;
+      paramInt = dw.a(paramInt);
+      this.b = new int[paramInt];
+      this.c = new Object[paramInt];
     }
-    return i ^ 0xFFFFFFFF;
+    this.d = 0;
   }
   
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private eg<E> c()
   {
-    try
-    {
-      paramInt1 = dx.a(paramArrayOfInt, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    catch (ArrayIndexOutOfBoundsException paramArrayOfInt)
-    {
-      label9:
-      break label9;
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramArrayOfInt.length == 8) {
-      try
-      {
-        if (e < 10)
-        {
-          paramArrayOfObject[0] = d;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label118;
-          d = paramArrayOfObject;
-          e += 1;
-        }
-        return;
-      }
-      finally {}
-    } else if (paramArrayOfInt.length != 4) {}
     for (;;)
     {
       try
       {
-        if (c < 10)
-        {
-          paramArrayOfObject[0] = b;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label134;
-          b = paramArrayOfObject;
-          c += 1;
-        }
-        return;
+        localeg = (eg)super.clone();
       }
-      finally {}
-      return;
-      label118:
-      while (paramInt >= 2)
+      catch (CloneNotSupportedException localCloneNotSupportedException1)
       {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
+        eg localeg;
+        continue;
+        return localCloneNotSupportedException1;
       }
-      break;
-      label134:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-    }
-  }
-  
-  public final int a(Object paramObject)
-  {
-    if (paramObject == null) {
-      return a();
-    }
-    return a(paramObject, paramObject.hashCode());
-  }
-  
-  final void a(int paramInt)
-  {
-    if (paramInt == 8) {
       try
       {
-        if (d != null)
-        {
-          Object[] arrayOfObject1 = d;
-          this.g = arrayOfObject1;
-          d = (Object[])arrayOfObject1[0];
-          this.f = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          e -= 1;
-          return;
-        }
+        localeg.b = ((int[])this.b.clone());
+        localeg.c = ((Object[])this.c.clone());
+        return localeg;
       }
-      finally {}
-    } else if (paramInt == 4) {
-      try
-      {
-        if (b != null)
-        {
-          Object[] arrayOfObject2 = b;
-          this.g = arrayOfObject2;
-          b = (Object[])arrayOfObject2[0];
-          this.f = ((int[])arrayOfObject2[1]);
-          arrayOfObject2[1] = null;
-          arrayOfObject2[0] = null;
-          c -= 1;
-          return;
-        }
-      }
-      finally {}
-    }
-    this.f = new int[paramInt];
-    this.g = new Object[paramInt << 1];
-  }
-  
-  final int b(Object paramObject)
-  {
-    int j = this.h * 2;
-    Object[] arrayOfObject = this.g;
-    if (paramObject == null)
-    {
-      i = 1;
-      while (i < j)
-      {
-        if (arrayOfObject[i] == null) {
-          return i >> 1;
-        }
-        i += 2;
-      }
-    }
-    int i = 1;
-    while (i < j)
-    {
-      if (paramObject.equals(arrayOfObject[i])) {
-        return i >> 1;
-      }
-      i += 2;
-    }
-    return -1;
-  }
-  
-  public final K b(int paramInt)
-  {
-    return this.g[(paramInt << 1)];
-  }
-  
-  public final V c(int paramInt)
-  {
-    return this.g[((paramInt << 1) + 1)];
-  }
-  
-  public void clear()
-  {
-    int i = this.h;
-    if (i > 0)
-    {
-      int[] arrayOfInt = this.f;
-      Object[] arrayOfObject = this.g;
-      this.f = dx.a;
-      this.g = dx.c;
-      this.h = 0;
-      a(arrayOfInt, arrayOfObject, i);
-    }
-    if (this.h <= 0) {
-      return;
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  public boolean containsKey(Object paramObject)
-  {
-    return a(paramObject) >= 0;
-  }
-  
-  public boolean containsValue(Object paramObject)
-  {
-    return b(paramObject) >= 0;
-  }
-  
-  public final V d(int paramInt)
-  {
-    Object localObject = this.g;
-    int m = paramInt << 1;
-    V ? = localObject[(m + 1)];
-    int k = this.h;
-    int i;
-    if (k <= 1)
-    {
-      a(this.f, (Object[])localObject, k);
-      this.f = dx.a;
-      this.g = dx.c;
-      i = 0;
-    }
-    else
-    {
-      int j = k - 1;
-      localObject = this.f;
-      int n = localObject.length;
-      i = 8;
-      if ((n > 8) && (k < localObject.length / 3))
-      {
-        if (k > 8) {
-          i = k + (k >> 1);
-        }
-        localObject = this.f;
-        Object[] arrayOfObject = this.g;
-        a(i);
-        if (k == this.h)
-        {
-          if (paramInt > 0)
-          {
-            System.arraycopy(localObject, 0, this.f, 0, paramInt);
-            System.arraycopy(arrayOfObject, 0, this.g, 0, m);
-          }
-          i = j;
-          if (paramInt < j)
-          {
-            i = paramInt + 1;
-            int[] arrayOfInt = this.f;
-            n = j - paramInt;
-            System.arraycopy(localObject, i, arrayOfInt, paramInt, n);
-            System.arraycopy(arrayOfObject, i << 1, this.g, m, n << 1);
-            i = j;
-          }
-        }
-        else
-        {
-          throw new ConcurrentModificationException();
-        }
-      }
-      else
-      {
-        if (paramInt < j)
-        {
-          localObject = this.f;
-          i = paramInt + 1;
-          n = j - paramInt;
-          System.arraycopy(localObject, i, localObject, paramInt, n);
-          localObject = this.g;
-          System.arraycopy(localObject, i << 1, localObject, m, n << 1);
-        }
-        localObject = this.g;
-        paramInt = j << 1;
-        localObject[paramInt] = null;
-        localObject[(paramInt + 1)] = null;
-        i = j;
-      }
-    }
-    if (k == this.h)
-    {
-      this.h = i;
-      return ?;
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    int i;
-    if ((paramObject instanceof eg))
-    {
-      paramObject = (eg)paramObject;
-      if (size() != paramObject.size()) {
-        return false;
-      }
-      i = 0;
-    }
-    try
-    {
-      while (i < this.h)
-      {
-        localObject1 = b(i);
-        localObject2 = c(i);
-        localObject3 = paramObject.get(localObject1);
-        if (localObject2 == null)
-        {
-          if (localObject3 != null) {
-            break label229;
-          }
-          if (!paramObject.containsKey(localObject1)) {
-            return false;
-          }
-        }
-        else
-        {
-          bool = localObject2.equals(localObject3);
-          if (!bool) {
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
-    }
-    catch (NullPointerException paramObject)
-    {
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      boolean bool;
-      return false;
-    }
-    catch (ClassCastException paramObject)
-    {
-      return false;
-    }
-    if ((paramObject instanceof Map))
-    {
-      paramObject = (Map)paramObject;
-      if (size() != paramObject.size()) {
-        return false;
-      }
-      i = 0;
-    }
-    try
-    {
-      while (i < this.h)
-      {
-        localObject1 = b(i);
-        localObject2 = c(i);
-        localObject3 = paramObject.get(localObject1);
-        if (localObject2 == null)
-        {
-          if (localObject3 != null) {
-            break label231;
-          }
-          if (!paramObject.containsKey(localObject1)) {
-            return false;
-          }
-        }
-        else
-        {
-          bool = localObject2.equals(localObject3);
-          if (!bool) {
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
-    }
-    catch (NullPointerException paramObject)
-    {
-      return false;
-    }
-    catch (ClassCastException paramObject)
-    {
-      return false;
-    }
-    return false;
-    label229:
-    return false;
-    label231:
-    return false;
-  }
-  
-  public V get(Object paramObject)
-  {
-    int i = a(paramObject);
-    if (i >= 0) {
-      return this.g[((i << 1) + 1)];
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
     }
     return null;
   }
   
-  public int hashCode()
+  public final E a(int paramInt)
   {
-    int[] arrayOfInt = this.f;
-    Object[] arrayOfObject = this.g;
-    int n = this.h;
-    int j = 0;
-    int k = 0;
-    int i = 1;
-    while (j < n)
+    paramInt = dw.a(this.b, this.d, paramInt);
+    if (paramInt >= 0)
+    {
+      Object[] arrayOfObject = this.c;
+      if (arrayOfObject[paramInt] != e) {
+        return arrayOfObject[paramInt];
+      }
+    }
+    return null;
+  }
+  
+  public final void a()
+  {
+    int m = this.d;
+    int[] arrayOfInt = this.b;
+    Object[] arrayOfObject = this.c;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
-      int i1 = arrayOfInt[j];
-      int m;
-      if (localObject == null) {
-        m = 0;
-      } else {
-        m = localObject.hashCode();
+      k = j;
+      if (localObject != e)
+      {
+        if (i != j)
+        {
+          arrayOfInt[j] = arrayOfInt[i];
+          arrayOfObject[j] = localObject;
+          arrayOfObject[i] = null;
+        }
+        k = j + 1;
       }
-      k += (m ^ i1);
-      j += 1;
-      i += 2;
+      i += 1;
     }
-    return k;
+    this.a = false;
+    this.d = j;
   }
   
-  public boolean isEmpty()
+  public final void a(int paramInt, E paramE)
   {
-    return this.h <= 0;
-  }
-  
-  public V put(K paramK, V paramV)
-  {
-    int k = this.h;
-    int j;
-    if (paramK == null)
-    {
-      i = a();
-      j = 0;
-    }
-    else
-    {
-      j = paramK.hashCode();
-      i = a(paramK, j);
-    }
-    Object localObject;
+    int i = dw.a(this.b, this.d, paramInt);
     if (i >= 0)
     {
-      i = (i << 1) + 1;
-      paramK = this.g;
-      localObject = paramK[i];
-      paramK[i] = paramV;
-      return localObject;
+      this.c[i] = paramE;
+      return;
     }
-    int m = i ^ 0xFFFFFFFF;
-    if (k >= this.f.length)
+    int j = i ^ 0xFFFFFFFF;
+    Object localObject1;
+    if (j < this.d)
     {
-      i = 4;
-      if (k >= 8) {
-        i = (k >> 1) + k;
-      } else if (k >= 4) {
-        i = 8;
-      }
-      localObject = this.f;
-      Object[] arrayOfObject = this.g;
-      a(i);
-      if (k == this.h)
+      localObject1 = this.c;
+      if (localObject1[j] == e)
       {
-        int[] arrayOfInt = this.f;
-        if (arrayOfInt.length > 0)
-        {
-          System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
-          System.arraycopy(arrayOfObject, 0, this.g, 0, arrayOfObject.length);
-        }
-        a((int[])localObject, arrayOfObject, k);
-      }
-      else
-      {
-        throw new ConcurrentModificationException();
+        this.b[j] = paramInt;
+        localObject1[j] = paramE;
+        return;
       }
     }
-    if (m < k)
+    i = j;
+    if (this.a)
     {
-      localObject = this.f;
-      i = m + 1;
-      System.arraycopy(localObject, m, localObject, i, k - m);
-      localObject = this.g;
-      System.arraycopy(localObject, m << 1, localObject, i << 1, this.h - m << 1);
-    }
-    int i = this.h;
-    if (k == i)
-    {
-      localObject = this.f;
-      if (m < localObject.length)
+      i = j;
+      if (this.d >= this.b.length)
       {
-        localObject[m] = j;
-        localObject = this.g;
-        j = m << 1;
-        localObject[j] = paramK;
-        localObject[(j + 1)] = paramV;
-        this.h = (i + 1);
-        return null;
+        a();
+        i = dw.a(this.b, this.d, paramInt) ^ 0xFFFFFFFF;
       }
     }
-    throw new ConcurrentModificationException();
+    j = this.d;
+    if (j >= this.b.length)
+    {
+      j = dw.a(j + 1);
+      localObject1 = new int[j];
+      Object[] arrayOfObject = new Object[j];
+      Object localObject2 = this.b;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.c;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.b = ((int[])localObject1);
+      this.c = arrayOfObject;
+    }
+    j = this.d;
+    if (j - i != 0)
+    {
+      localObject1 = this.b;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.c;
+      System.arraycopy(localObject1, i, localObject1, k, this.d - i);
+    }
+    this.b[i] = paramInt;
+    this.c[i] = paramE;
+    this.d += 1;
   }
   
-  public V remove(Object paramObject)
+  public final int b()
   {
-    int i = a(paramObject);
-    if (i >= 0) {
-      return d(i);
+    if (this.a) {
+      a();
     }
-    return null;
+    return this.d;
   }
   
-  public int size()
+  public final void b(int paramInt)
   {
-    return this.h;
+    paramInt = dw.a(this.b, this.d, paramInt);
+    if (paramInt >= 0)
+    {
+      Object[] arrayOfObject = this.c;
+      Object localObject1 = arrayOfObject[paramInt];
+      Object localObject2 = e;
+      if (localObject1 != localObject2)
+      {
+        arrayOfObject[paramInt] = localObject2;
+        this.a = true;
+      }
+    }
   }
   
-  public String toString()
+  public final void b(int paramInt, E paramE)
   {
-    if (isEmpty()) {
+    int i = this.d;
+    if ((i != 0) && (paramInt <= this.b[(i - 1)]))
+    {
+      a(paramInt, paramE);
+      return;
+    }
+    if ((this.a) && (this.d >= this.b.length)) {
+      a();
+    }
+    i = this.d;
+    if (i >= this.b.length)
+    {
+      int j = dw.a(i + 1);
+      int[] arrayOfInt = new int[j];
+      Object[] arrayOfObject = new Object[j];
+      Object localObject = this.b;
+      System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
+      localObject = this.c;
+      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
+      this.b = arrayOfInt;
+      this.c = arrayOfObject;
+    }
+    this.b[i] = paramInt;
+    this.c[i] = paramE;
+    this.d = (i + 1);
+  }
+  
+  public final int c(int paramInt)
+  {
+    if (this.a) {
+      a();
+    }
+    return this.b[paramInt];
+  }
+  
+  public final E d(int paramInt)
+  {
+    if (this.a) {
+      a();
+    }
+    return this.c[paramInt];
+  }
+  
+  public final String toString()
+  {
+    if (b() <= 0) {
       return "{}";
     }
-    StringBuilder localStringBuilder = new StringBuilder(this.h * 28);
+    StringBuilder localStringBuilder = new StringBuilder(this.d * 28);
     localStringBuilder.append('{');
     int i = 0;
-    while (i < this.h)
+    while (i < this.d)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      Object localObject = b(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
-      } else {
-        localStringBuilder.append("(this Map)");
-      }
+      localStringBuilder.append(c(i));
       localStringBuilder.append('=');
-      localObject = c(i);
+      Object localObject = d(i);
       if (localObject != this) {
         localStringBuilder.append(localObject);
       } else {

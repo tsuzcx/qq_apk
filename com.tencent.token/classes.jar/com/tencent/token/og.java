@@ -1,18 +1,28 @@
 package com.tencent.token;
 
-public final class og
+import android.os.Bundle;
+
+public abstract class og
 {
-  public static byte[] a(String paramString1, String paramString2)
+  public String a;
+  public String b;
+  
+  public abstract int a();
+  
+  public void a(Bundle paramBundle)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramString1 != null) {
-      localStringBuffer.append(paramString1);
-    }
-    localStringBuffer.append(621086720);
-    localStringBuffer.append(paramString2);
-    localStringBuffer.append("mMcShCsTr");
-    return pf.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
+    paramBundle.putInt("_wxapi_command_type", a());
+    paramBundle.putString("_wxapi_basereq_transaction", this.a);
+    paramBundle.putString("_wxapi_basereq_openid", this.b);
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a = pd.a(paramBundle, "_wxapi_basereq_transaction");
+    this.b = pd.a(paramBundle, "_wxapi_basereq_openid");
+  }
+  
+  public abstract boolean b();
 }
 
 

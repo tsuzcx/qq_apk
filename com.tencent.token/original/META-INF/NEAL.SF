@@ -1,10 +1,10 @@
 Signature-Version: 1.0
 Created-By: tencent
-SHA1-Digest-Manifest: 8G53Y2u1bnAxT11f1s4B1TmaGl8=
+SHA1-Digest-Manifest: CTDcq9e58C3qX4Dwm2mO+TFMEzQ=
 X-Android-APK-Signed: 2
 
 Name: AndroidManifest.xml
-SHA1-Digest: n19W5mqm4fxXpT13TfP2j95NgrI=
+SHA1-Digest: J4MJTeUZTUZcDXjcqkple5FD4i0=
 
 Name: META-INF/android.arch.core_runtime.version
 SHA1-Digest: OPQCkzMXJVPQryHeMowVNZmfRMw=
@@ -85,7 +85,7 @@ Name: assets/tcaptcha_webview.html
 SHA1-Digest: h2EaZFkzQKhTnJaKBv16vhWXKoo=
 
 Name: classes.dex
-SHA1-Digest: esuygNPdKuPw28S6hxOHkgkeuHQ=
+SHA1-Digest: 7cZqOVIP4AZ+nxHr48fmLAl8Vlk=
 
 Name: lib/armeabi/libFaceAlgClinet.so
 SHA1-Digest: MvGVRVePfmDwoqOy8c5l88a8yO4=
@@ -109,7 +109,7 @@ Name: lib/armeabi/libTmsdk-2.0.9-mfr.so
 SHA1-Digest: wpr76ektOcEBTANZo6iwJvioxVU=
 
 Name: lib/armeabi/libqqtoken-lib.so
-SHA1-Digest: CffStnKi+ugrR1pMbiUaIxQYr/E=
+SHA1-Digest: AaMgCYsDan7Knl9zhP2Hoo0kqzY=
 
 Name: lib/armeabi/libsecure.so
 SHA1-Digest: GTGiQ6tDurWz5NSa6GLkfEUUal4=

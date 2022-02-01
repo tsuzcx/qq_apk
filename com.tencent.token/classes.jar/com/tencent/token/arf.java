@@ -1,17 +1,8 @@
 package com.tencent.token;
 
-final class arf
-  extends Thread
+public abstract interface arf
 {
-  arf(are paramare, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public final void run()
-  {
-    are.a(this.a);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

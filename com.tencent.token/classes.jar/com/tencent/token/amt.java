@@ -1,12 +1,11 @@
 package com.tencent.token;
 
 public final class amt
-  extends amx<amy, amy>
 {
-  public final ami a()
-  {
-    return new ami(this.a);
-  }
+  public final amm a;
+  public final amm b;
+  public final amn c;
+  public final amn d;
 }
 
 

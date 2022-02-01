@@ -1,47 +1,29 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
+import android.graphics.Outline;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.ActionBarContainer;
 
-public class ic
-  extends Drawable
+public final class ic
+  extends ib
 {
-  final ActionBarContainer a;
-  
   public ic(ActionBarContainer paramActionBarContainer)
   {
-    this.a = paramActionBarContainer;
+    super(paramActionBarContainer);
   }
   
-  public void draw(Canvas paramCanvas)
+  public final void getOutline(Outline paramOutline)
   {
     if (this.a.d)
     {
       if (this.a.c != null) {
-        this.a.c.draw(paramCanvas);
+        this.a.c.getOutline(paramOutline);
       }
     }
-    else
-    {
-      if (this.a.a != null) {
-        this.a.a.draw(paramCanvas);
-      }
-      if ((this.a.b != null) && (this.a.e)) {
-        this.a.b.draw(paramCanvas);
-      }
+    else if (this.a.a != null) {
+      this.a.a.getOutline(paramOutline);
     }
   }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

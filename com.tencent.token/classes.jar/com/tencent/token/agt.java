@@ -1,68 +1,73 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.support.OperationCanceledException;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import com.tencent.wcdb.FileUtils;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
+import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteDatabase.a;
+import com.tencent.wcdb.database.SQLiteGlobal;
+import java.io.File;
 
 public final class agt
 {
-  private boolean a;
-  private a b;
-  private boolean c;
+  static {}
   
-  private boolean b()
+  public static SQLiteDatabase a(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, SQLiteDatabase.a parama, afx paramafx)
   {
-    try
+    if (paramString.charAt(0) == File.separatorChar)
     {
-      boolean bool = this.a;
-      return bool;
+      paramContext = new File(paramString.substring(0, paramString.lastIndexOf(File.separatorChar)));
+      paramString = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
     }
-    finally {}
-  }
-  
-  private void c()
-  {
-    while (this.c) {
-      try
-      {
-        wait();
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        label14:
-        break label14;
-      }
-    }
-  }
-  
-  public final void a()
-  {
-    if (!b()) {
-      return;
-    }
-    throw new OperationCanceledException();
-  }
-  
-  public final void a(a parama)
-  {
-    try
+    else
     {
-      c();
-      if (this.b == parama) {
-        return;
+      if (paramContext == null) {
+        break label289;
       }
-      this.b = parama;
-      if ((this.a) && (parama != null))
-      {
-        parama.c();
-        return;
+      paramContext = paramContext.getApplicationInfo().dataDir;
+      if (paramContext != null) {
+        paramContext = new File(paramContext);
+      } else {
+        paramContext = null;
       }
-      return;
+      File localFile = new File(paramContext, "databases");
+      paramContext = localFile;
+      if (localFile.getPath().equals("databases")) {
+        paramContext = new File("/data/system");
+      }
+      if (paramString.indexOf(File.separatorChar) >= 0) {
+        break label254;
+      }
+      paramString = new File(paramContext, paramString);
     }
-    finally {}
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void c();
+    if ((!paramContext.isDirectory()) && (paramContext.mkdir())) {
+      FileUtils.setPermissions(paramContext.getPath(), 505, -1, -1);
+    }
+    if ((paramInt & 0x8) != 0) {
+      i = 805306368;
+    } else {
+      i = 268435456;
+    }
+    paramContext = SQLiteDatabase.a(paramString.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, parama, i, paramafx);
+    paramString = paramString.getPath();
+    int i = 432;
+    if ((paramInt & 0x1) != 0) {
+      i = 436;
+    }
+    int j = i;
+    if ((paramInt & 0x2) != 0) {
+      j = i | 0x2;
+    }
+    FileUtils.setPermissions(paramString, j, -1, -1);
+    return paramContext;
+    label254:
+    paramContext = new StringBuilder("File ");
+    paramContext.append(paramString);
+    paramContext.append(" contains a path separator");
+    throw new IllegalArgumentException(paramContext.toString());
+    label289:
+    throw new RuntimeException("Not supported in system context");
   }
 }
 

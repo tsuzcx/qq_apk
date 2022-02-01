@@ -15,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.tf;
+import com.tencent.token.te;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.wz;
+import com.tencent.token.wy;
 
 public class SecondVerifyDialog
   extends Dialog
@@ -51,7 +51,7 @@ public class SecondVerifyDialog
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
       ((ViewGroup.MarginLayoutParams)findViewById(2131165967).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-      paramBundle = tf.a();
+      paramBundle = te.a();
       this.b = ((TextView)findViewById(2131165971));
       if ((paramBundle.c != null) && (paramBundle.c.length() > 0)) {
         this.b.setText(paramBundle.c);

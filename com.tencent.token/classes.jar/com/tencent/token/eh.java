@@ -1,251 +1,199 @@
 package com.tencent.token;
 
-public final class eh<E>
-  implements Cloneable
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
+
+public class eh
 {
-  private static final Object e = new Object();
-  public boolean a = false;
-  public int[] b;
-  public Object[] c;
-  public int d;
+  private static final b b;
+  private static final View.AccessibilityDelegate c = new View.AccessibilityDelegate();
+  final View.AccessibilityDelegate a = b.a(this);
   
-  public eh()
+  static
   {
-    this(10);
+    if (Build.VERSION.SDK_INT >= 16) {
+      b = new a();
+    } else {
+      b = new b();
+    }
   }
   
-  public eh(int paramInt)
+  public static ff a(View paramView)
   {
-    if (paramInt == 0)
-    {
-      this.b = dx.a;
-      this.c = dx.c;
-    }
-    else
-    {
-      paramInt = dx.a(paramInt);
-      this.b = new int[paramInt];
-      this.c = new Object[paramInt];
-    }
-    this.d = 0;
+    return b.a(c, paramView);
   }
   
-  private eh<E> c()
+  public static void a(View paramView, int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        localeh = (eh)super.clone();
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException1)
-      {
-        eh localeh;
-        continue;
-        return localCloneNotSupportedException1;
-      }
-      try
-      {
-        localeh.b = ((int[])this.b.clone());
-        localeh.c = ((Object[])this.c.clone());
-        return localeh;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-    }
-    return null;
+    c.sendAccessibilityEvent(paramView, paramInt);
   }
   
-  public final E a(int paramInt)
+  public static void a(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
-    paramInt = dx.a(this.b, this.d, paramInt);
-    if (paramInt >= 0)
-    {
-      Object[] arrayOfObject = this.c;
-      if (arrayOfObject[paramInt] != e) {
-        return arrayOfObject[paramInt];
-      }
-    }
-    return null;
+    c.sendAccessibilityEventUnchecked(paramView, paramAccessibilityEvent);
   }
   
-  public final void a()
+  public static void c(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
-    int m = this.d;
-    int[] arrayOfInt = this.b;
-    Object[] arrayOfObject = this.c;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
+    c.onPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
+  }
+  
+  public void a(View paramView, fe paramfe)
+  {
+    c.onInitializeAccessibilityNodeInfo(paramView, paramfe.a);
+  }
+  
+  public boolean a(View paramView, int paramInt, Bundle paramBundle)
+  {
+    return b.a(c, paramView, paramInt, paramBundle);
+  }
+  
+  public boolean a(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    return c.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
+  }
+  
+  public boolean b(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    return c.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
+  }
+  
+  public void d(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    c.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+  }
+  
+  static final class a
+    extends eh.b
+  {
+    public final View.AccessibilityDelegate a(final eh parameh)
     {
-      Object localObject = arrayOfObject[i];
-      k = j;
-      if (localObject != e)
+      new View.AccessibilityDelegate()
       {
-        if (i != j)
+        public final boolean dispatchPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
         {
-          arrayOfInt[j] = arrayOfInt[i];
-          arrayOfObject[j] = localObject;
-          arrayOfObject[i] = null;
+          return parameh.b(paramAnonymousView, paramAnonymousAccessibilityEvent);
         }
-        k = j + 1;
-      }
-      i += 1;
+        
+        public final AccessibilityNodeProvider getAccessibilityNodeProvider(View paramAnonymousView)
+        {
+          paramAnonymousView = eh.a(paramAnonymousView);
+          if (paramAnonymousView != null) {
+            return (AccessibilityNodeProvider)paramAnonymousView.a;
+          }
+          return null;
+        }
+        
+        public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          parameh.d(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+        {
+          parameh.a(paramAnonymousView, fe.a(paramAnonymousAccessibilityNodeInfo));
+        }
+        
+        public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          eh.c(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final boolean onRequestSendAccessibilityEvent(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          return parameh.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
+        {
+          return parameh.a(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle);
+        }
+        
+        public final void sendAccessibilityEvent(View paramAnonymousView, int paramAnonymousInt)
+        {
+          eh.a(paramAnonymousView, paramAnonymousInt);
+        }
+        
+        public final void sendAccessibilityEventUnchecked(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          eh.a(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+      };
     }
-    this.a = false;
-    this.d = j;
+    
+    public final ff a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
+    {
+      paramAccessibilityDelegate = paramAccessibilityDelegate.getAccessibilityNodeProvider(paramView);
+      if (paramAccessibilityDelegate != null) {
+        return new ff(paramAccessibilityDelegate);
+      }
+      return null;
+    }
+    
+    public final boolean a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView, int paramInt, Bundle paramBundle)
+    {
+      return paramAccessibilityDelegate.performAccessibilityAction(paramView, paramInt, paramBundle);
+    }
   }
   
-  public final void a(int paramInt, E paramE)
+  static class b
   {
-    int i = dx.a(this.b, this.d, paramInt);
-    if (i >= 0)
+    public View.AccessibilityDelegate a(final eh parameh)
     {
-      this.c[i] = paramE;
-      return;
-    }
-    int j = i ^ 0xFFFFFFFF;
-    Object localObject1;
-    if (j < this.d)
-    {
-      localObject1 = this.c;
-      if (localObject1[j] == e)
+      new View.AccessibilityDelegate()
       {
-        this.b[j] = paramInt;
-        localObject1[j] = paramE;
-        return;
-      }
+        public final boolean dispatchPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          return parameh.b(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          parameh.d(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+        {
+          parameh.a(paramAnonymousView, fe.a(paramAnonymousAccessibilityNodeInfo));
+        }
+        
+        public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          eh.c(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final boolean onRequestSendAccessibilityEvent(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          return parameh.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+        
+        public final void sendAccessibilityEvent(View paramAnonymousView, int paramAnonymousInt)
+        {
+          eh.a(paramAnonymousView, paramAnonymousInt);
+        }
+        
+        public final void sendAccessibilityEventUnchecked(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
+        {
+          eh.a(paramAnonymousView, paramAnonymousAccessibilityEvent);
+        }
+      };
     }
-    i = j;
-    if (this.a)
+    
+    public ff a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
     {
-      i = j;
-      if (this.d >= this.b.length)
-      {
-        a();
-        i = dx.a(this.b, this.d, paramInt) ^ 0xFFFFFFFF;
-      }
+      return null;
     }
-    j = this.d;
-    if (j >= this.b.length)
+    
+    public boolean a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView, int paramInt, Bundle paramBundle)
     {
-      j = dx.a(j + 1);
-      localObject1 = new int[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject2 = this.b;
-      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
-      localObject2 = this.c;
-      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
-      this.b = ((int[])localObject1);
-      this.c = arrayOfObject;
+      return false;
     }
-    j = this.d;
-    if (j - i != 0)
-    {
-      localObject1 = this.b;
-      int k = i + 1;
-      System.arraycopy(localObject1, i, localObject1, k, j - i);
-      localObject1 = this.c;
-      System.arraycopy(localObject1, i, localObject1, k, this.d - i);
-    }
-    this.b[i] = paramInt;
-    this.c[i] = paramE;
-    this.d += 1;
-  }
-  
-  public final int b()
-  {
-    if (this.a) {
-      a();
-    }
-    return this.d;
-  }
-  
-  public final void b(int paramInt)
-  {
-    paramInt = dx.a(this.b, this.d, paramInt);
-    if (paramInt >= 0)
-    {
-      Object[] arrayOfObject = this.c;
-      Object localObject1 = arrayOfObject[paramInt];
-      Object localObject2 = e;
-      if (localObject1 != localObject2)
-      {
-        arrayOfObject[paramInt] = localObject2;
-        this.a = true;
-      }
-    }
-  }
-  
-  public final void b(int paramInt, E paramE)
-  {
-    int i = this.d;
-    if ((i != 0) && (paramInt <= this.b[(i - 1)]))
-    {
-      a(paramInt, paramE);
-      return;
-    }
-    if ((this.a) && (this.d >= this.b.length)) {
-      a();
-    }
-    i = this.d;
-    if (i >= this.b.length)
-    {
-      int j = dx.a(i + 1);
-      int[] arrayOfInt = new int[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject = this.b;
-      System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
-      localObject = this.c;
-      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
-      this.b = arrayOfInt;
-      this.c = arrayOfObject;
-    }
-    this.b[i] = paramInt;
-    this.c[i] = paramE;
-    this.d = (i + 1);
-  }
-  
-  public final int c(int paramInt)
-  {
-    if (this.a) {
-      a();
-    }
-    return this.b[paramInt];
-  }
-  
-  public final E d(int paramInt)
-  {
-    if (this.a) {
-      a();
-    }
-    return this.c[paramInt];
-  }
-  
-  public final String toString()
-  {
-    if (b() <= 0) {
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(this.d * 28);
-    localStringBuilder.append('{');
-    int i = 0;
-    while (i < this.d)
-    {
-      if (i > 0) {
-        localStringBuilder.append(", ");
-      }
-      localStringBuilder.append(c(i));
-      localStringBuilder.append('=');
-      Object localObject = d(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
-      } else {
-        localStringBuilder.append("(this Map)");
-      }
-      i += 1;
-    }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
   }
 }
 

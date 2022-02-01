@@ -1,10 +1,11 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
+import java.util.Map;
 
-public abstract interface asu
+public final class asu
 {
-  public abstract Bitmap a();
+  public final Map<String, String> a;
+  public boolean b;
 }
 
 

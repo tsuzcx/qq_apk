@@ -1,31 +1,31 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import javax.net.ssl.SSLSocket;
-
 public abstract class aiv
+  implements Runnable
 {
-  public static aiv a;
+  protected final String b;
   
-  public abstract int a(air.a parama);
+  public aiv(String paramString, Object... paramVarArgs)
+  {
+    this.b = aiw.a(paramString, paramVarArgs);
+  }
   
-  public abstract ajf a(aia paramaia, ahs paramahs, ajj paramajj, ait paramait);
+  protected abstract void b();
   
-  public abstract ajg a(aia paramaia);
-  
-  public abstract Socket a(aia paramaia, ahs paramahs, ajj paramajj);
-  
-  public abstract void a(aib paramaib, SSLSocket paramSSLSocket, boolean paramBoolean);
-  
-  public abstract void a(aii.a parama, String paramString);
-  
-  public abstract void a(aii.a parama, String paramString1, String paramString2);
-  
-  public abstract boolean a(ahs paramahs1, ahs paramahs2);
-  
-  public abstract boolean a(aia paramaia, ajf paramajf);
-  
-  public abstract void b(aia paramaia, ajf paramajf);
+  public final void run()
+  {
+    String str = Thread.currentThread().getName();
+    Thread.currentThread().setName(this.b);
+    try
+    {
+      b();
+      return;
+    }
+    finally
+    {
+      Thread.currentThread().setName(str);
+    }
+  }
 }
 
 

@@ -3,26 +3,44 @@ package com.tencent.token;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class aoo
   extends JceStruct
 {
-  static aok f = new aok();
-  static aol g = new aol();
-  static aol h = new aol();
-  static ArrayList<aop> i = new ArrayList();
-  public String a = "";
-  public aok b = null;
-  public aol c = null;
-  public aol d = null;
-  public ArrayList<aop> e = null;
+  static byte[] o;
+  static byte[] p;
+  static byte[] q;
+  static Map<String, String> r;
+  public int a = 0;
+  public byte[] b = null;
+  public int c = 0;
+  public String d = "";
+  public boolean e = false;
+  public byte[] f = null;
+  public byte[] g = null;
+  public int h = 0;
+  public int i = 0;
+  public long j = 0L;
+  public int k = 0;
+  public int l = 0;
+  public String m = "";
+  public Map<String, String> n = null;
   
   static
   {
-    aop localaop = new aop();
-    i.add(localaop);
+    byte[] arrayOfByte = (byte[])new byte[1];
+    o = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
+    arrayOfByte = (byte[])new byte[1];
+    p = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
+    arrayOfByte = (byte[])new byte[1];
+    q = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
+    r = new HashMap();
+    r.put("", "");
   }
   
   public final JceStruct newInit()
@@ -32,31 +50,70 @@ public final class aoo
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramJceInputStream.readString(0, true);
-    this.b = ((aok)paramJceInputStream.read(f, 1, false));
-    this.c = ((aol)paramJceInputStream.read(g, 2, false));
-    this.d = ((aol)paramJceInputStream.read(h, 3, false));
-    this.e = ((ArrayList)paramJceInputStream.read(i, 4, false));
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = ((byte[])paramJceInputStream.read(o, 1, true));
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.readString(3, false);
+    this.e = paramJceInputStream.read(this.e, 4, false);
+    this.f = ((byte[])paramJceInputStream.read(p, 5, false));
+    this.g = ((byte[])paramJceInputStream.read(q, 6, false));
+    this.h = paramJceInputStream.read(this.h, 7, false);
+    this.i = paramJceInputStream.read(this.i, 8, false);
+    this.j = paramJceInputStream.read(this.j, 9, false);
+    this.k = paramJceInputStream.read(this.k, 10, false);
+    this.l = paramJceInputStream.read(this.l, 11, false);
+    this.m = paramJceInputStream.readString(12, false);
+    this.n = ((Map)paramJceInputStream.read(r, 13, false));
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    Object localObject = this.b;
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    Object localObject = this.d;
     if (localObject != null) {
-      paramJceOutputStream.write((JceStruct)localObject, 1);
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    localObject = this.c;
-    if (localObject != null) {
-      paramJceOutputStream.write((JceStruct)localObject, 2);
+    boolean bool = this.e;
+    if (bool) {
+      paramJceOutputStream.write(bool, 4);
     }
-    localObject = this.d;
+    localObject = this.f;
     if (localObject != null) {
-      paramJceOutputStream.write((JceStruct)localObject, 3);
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    localObject = this.e;
+    localObject = this.g;
     if (localObject != null) {
-      paramJceOutputStream.write((Collection)localObject, 4);
+      paramJceOutputStream.write((byte[])localObject, 6);
+    }
+    int i1 = this.h;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 7);
+    }
+    i1 = this.i;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 8);
+    }
+    long l1 = this.j;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 9);
+    }
+    i1 = this.k;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 10);
+    }
+    i1 = this.l;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 11);
+    }
+    localObject = this.m;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
+    }
+    localObject = this.n;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }

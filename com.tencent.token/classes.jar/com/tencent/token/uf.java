@@ -2,55 +2,82 @@ package com.tencent.token;
 
 import android.content.Context;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import java.net.URLEncoder;
+import oicq.wlogin_sdk.request.WtloginHelper;
 import org.json.JSONObject;
 
 public final class uf
-  extends tk
+  extends tj
 {
-  public long d;
-  private int e;
-  
   public final String a()
   {
-    sa.a();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      int i = sa.b + 1;
+      sa.b = i;
+      localJSONObject.put("seq_id", i);
+      localObject = sm.b();
+      localJSONObject.put("rmd_ver", ((sm)localObject).g);
+      localJSONObject.put("rmd_times", ((sm)localObject).h);
+      localJSONObject.put("rmd_last_time", ((sm)localObject).i);
+      localJSONObject.put("config_ver", ta.a().h.b);
+      localObject = RqdApplication.l();
+      if (localObject != null) {
+        localJSONObject.put("sec_sig", URLEncoder.encode((String)localObject));
+      }
+      localJSONObject.put("channel_id", aac.k());
+      localJSONObject.put("wtsdk_guid", aac.a(ry.a(RqdApplication.n()).a.GetGuid()));
+      localJSONObject.put("device_name", URLEncoder.encode(aad.x()));
+      localJSONObject.put("release_tag", ww.a);
+      aac.b(localJSONObject.toString().getBytes());
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      Object localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      xa.c(((StringBuilder)localObject).toString());
+    }
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
-  {
-    this.d = ((Long)paramaar.c.get("param.realuin")).longValue();
-  }
+  public final void a(aaq paramaaq) {}
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    Object localObject;
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, paramJSONObject, paramJSONObject);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (i != this.e)
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      xa.c(paramJSONObject.toString());
+      if (paramJSONObject.has("new_config"))
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
-        return;
+        localObject = paramJSONObject.getJSONObject("new_config");
+        ta.a().h.a((JSONObject)localObject);
+      }
+      if (paramJSONObject.has("update")) {
+        sm.b().a(paramJSONObject.optJSONObject("update"));
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
 }

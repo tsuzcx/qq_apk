@@ -1,30 +1,55 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import android.content.Context;
+import android.os.Process;
+import java.util.concurrent.Executors;
 
 public final class aos
-  implements Serializable
 {
-  public static final aos b = new aos(0, 0, "CT_NONE");
-  public static final aos c = new aos(1, 1, "CT_GPRS");
-  public static final aos d = new aos(2, 2, "CT_WIFI");
-  public static final aos e = new aos(3, 3, "CT_GPRS_WAP");
-  public static final aos f = new aos(4, 4, "CT_GPRS_NET");
-  public static final aos g = new aos(5, 5, "CT_3G_NET");
-  private static aos[] i = new aos[6];
-  public int a;
-  private String j = new String();
+  public static int a;
+  private static Context b;
   
-  private aos(int paramInt1, int paramInt2, String paramString)
+  public static int a(String paramString)
   {
-    this.j = paramString;
-    this.a = paramInt2;
-    i[paramInt1] = this;
+    if ("build".equals(paramString)) {
+      return a;
+    }
+    return 0;
   }
   
-  public final String toString()
+  public static Context a()
   {
-    return this.j;
+    return b;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    b = paramContext.getApplicationContext();
+  }
+  
+  public static void a(apy paramapy, int paramInt)
+  {
+    a = paramInt;
+    aqj localaqj = (aqj)aou.a(aqj.class);
+    StringBuilder localStringBuilder = new StringBuilder("pid: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("SharkProtocolQueue init()");
+    localaqj.a = new aqg(b, paramapy);
+    aqr.a().a(paramapy);
+    localaqj.b = Executors.newSingleThreadExecutor();
+    paramapy = localaqj.a;
+    if (paramapy.e.a())
+    {
+      long l1 = paramapy.a.j();
+      long l2 = System.currentTimeMillis();
+      boolean bool = apb.a(l2, l1, 360);
+      paramapy.a.b(l2);
+      if (bool)
+      {
+        kd.a();
+        ke.b(new aqh(paramapy), "checkDoRegist");
+      }
+    }
   }
 }
 

@@ -2,108 +2,664 @@ package com.tencent.token;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.XmlResourceParser;
+import android.graphics.ColorFilter;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.widget.CompoundButton;
+import android.util.TypedValue;
+import android.util.Xml;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 public final class ig
 {
-  public ColorStateList a = null;
-  public PorterDuff.Mode b = null;
-  private final CompoundButton c;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f;
+  private static final PorterDuff.Mode c = PorterDuff.Mode.SRC_IN;
+  private static ig d;
+  private static final b e = new b();
+  private static final int[] f = { go.e.abc_textfield_search_default_mtrl_alpha, go.e.abc_textfield_default_mtrl_alpha, go.e.abc_ab_share_pack_mtrl_alpha };
+  private static final int[] g = { go.e.abc_ic_commit_search_api_mtrl_alpha, go.e.abc_seekbar_tick_mark_material, go.e.abc_ic_menu_share_mtrl_alpha, go.e.abc_ic_menu_copy_mtrl_am_alpha, go.e.abc_ic_menu_cut_mtrl_alpha, go.e.abc_ic_menu_selectall_mtrl_alpha, go.e.abc_ic_menu_paste_mtrl_am_alpha };
+  private static final int[] h = { go.e.abc_textfield_activated_mtrl_alpha, go.e.abc_textfield_search_activated_mtrl_alpha, go.e.abc_cab_background_top_mtrl_alpha, go.e.abc_text_cursor_material, go.e.abc_text_select_handle_left_mtrl_dark, go.e.abc_text_select_handle_middle_mtrl_dark, go.e.abc_text_select_handle_right_mtrl_dark, go.e.abc_text_select_handle_left_mtrl_light, go.e.abc_text_select_handle_middle_mtrl_light, go.e.abc_text_select_handle_right_mtrl_light };
+  private static final int[] i = { go.e.abc_popup_background_mtrl_mult, go.e.abc_cab_background_internal_bg, go.e.abc_menu_hardkey_panel_mtrl_mult };
+  private static final int[] j = { go.e.abc_tab_indicator_material, go.e.abc_textfield_search_material };
+  private static final int[] k = { go.e.abc_btn_check_material, go.e.abc_btn_radio_material };
+  public final Object a = new Object();
+  public final WeakHashMap<Context, dz<WeakReference<Drawable.ConstantState>>> b = new WeakHashMap(0);
+  private WeakHashMap<Context, eg<ColorStateList>> l;
+  private du<String, c> m;
+  private eg<String> n;
+  private TypedValue o;
+  private boolean p;
   
-  public ig(CompoundButton paramCompoundButton)
+  private static long a(TypedValue paramTypedValue)
   {
-    this.c = paramCompoundButton;
+    return paramTypedValue.assetCookie << 32 | paramTypedValue.data;
   }
   
-  private void b()
+  private static ColorStateList a(Context paramContext)
   {
-    Drawable localDrawable = fp.a(this.c);
-    if ((localDrawable != null) && ((this.d) || (this.e)))
-    {
-      localDrawable = dh.d(localDrawable).mutate();
-      if (this.d) {
-        dh.a(localDrawable, this.a);
-      }
-      if (this.e) {
-        dh.a(localDrawable, this.b);
-      }
-      if (localDrawable.isStateful()) {
-        localDrawable.setState(this.c.getDrawableState());
-      }
-      this.c.setButtonDrawable(localDrawable);
+    return e(paramContext, ja.a(paramContext, go.a.colorButtonNormal));
+  }
+  
+  private static PorterDuff.Mode a(int paramInt)
+  {
+    if (paramInt == go.e.abc_switch_thumb_material) {
+      return PorterDuff.Mode.MULTIPLY;
     }
+    return null;
   }
   
-  public final int a(int paramInt)
+  private static PorterDuffColorFilter a(int paramInt, PorterDuff.Mode paramMode)
   {
-    int i = paramInt;
-    if (Build.VERSION.SDK_INT < 17)
+    PorterDuffColorFilter localPorterDuffColorFilter2 = e.a(paramInt, paramMode);
+    PorterDuffColorFilter localPorterDuffColorFilter1 = localPorterDuffColorFilter2;
+    if (localPorterDuffColorFilter2 == null)
     {
-      Drawable localDrawable = fp.a(this.c);
-      i = paramInt;
-      if (localDrawable != null) {
-        i = paramInt + localDrawable.getIntrinsicWidth();
-      }
+      localPorterDuffColorFilter1 = new PorterDuffColorFilter(paramInt, paramMode);
+      e.a(paramInt, paramMode, localPorterDuffColorFilter1);
     }
-    return i;
+    return localPorterDuffColorFilter1;
   }
   
-  public final void a()
+  private Drawable a(Context paramContext, long paramLong)
   {
-    if (this.f)
+    for (;;)
     {
-      this.f = false;
-      return;
-    }
-    this.f = true;
-    b();
-  }
-  
-  public final void a(ColorStateList paramColorStateList)
-  {
-    this.a = paramColorStateList;
-    this.d = true;
-    b();
-  }
-  
-  public final void a(PorterDuff.Mode paramMode)
-  {
-    this.b = paramMode;
-    this.e = true;
-    b();
-  }
-  
-  public final void a(AttributeSet paramAttributeSet, int paramInt)
-  {
-    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, gp.j.CompoundButton, paramInt, 0);
-    try
-    {
-      if (paramAttributeSet.hasValue(gp.j.CompoundButton_android_button))
+      synchronized (this.a)
       {
-        paramInt = paramAttributeSet.getResourceId(gp.j.CompoundButton_android_button, 0);
-        if (paramInt != 0) {
-          this.c.setButtonDrawable(gr.b(this.c.getContext(), paramInt));
+        dz localdz = (dz)this.b.get(paramContext);
+        if (localdz == null) {
+          return null;
+        }
+        int i1 = dw.a(localdz.c, localdz.e, paramLong);
+        if ((i1 >= 0) && (localdz.d[i1] != dz.a))
+        {
+          localObject1 = localdz.d[i1];
+          localObject1 = (WeakReference)localObject1;
+          if (localObject1 != null)
+          {
+            localObject1 = (Drawable.ConstantState)((WeakReference)localObject1).get();
+            if (localObject1 != null)
+            {
+              paramContext = ((Drawable.ConstantState)localObject1).newDrawable(paramContext.getResources());
+              return paramContext;
+            }
+            i1 = dw.a(localdz.c, localdz.e, paramLong);
+            if ((i1 >= 0) && (localdz.d[i1] != dz.a))
+            {
+              localdz.d[i1] = dz.a;
+              localdz.b = true;
+            }
+          }
+          return null;
         }
       }
-      if (paramAttributeSet.hasValue(gp.j.CompoundButton_buttonTint)) {
-        fp.a(this.c, paramAttributeSet.getColorStateList(gp.j.CompoundButton_buttonTint));
+      Object localObject1 = null;
+    }
+  }
+  
+  public static ig a()
+  {
+    if (d == null)
+    {
+      ig localig = new ig();
+      d = localig;
+      if (Build.VERSION.SDK_INT < 24)
+      {
+        localig.a("vector", new d());
+        localig.a("animated-vector", new a());
       }
-      if (paramAttributeSet.hasValue(gp.j.CompoundButton_buttonTintMode)) {
-        fp.a(this.c, ir.a(paramAttributeSet.getInt(gp.j.CompoundButton_buttonTintMode, -1), null));
-      }
+    }
+    return d;
+  }
+  
+  private void a(Context paramContext, int paramInt, ColorStateList paramColorStateList)
+  {
+    if (this.l == null) {
+      this.l = new WeakHashMap();
+    }
+    eg localeg2 = (eg)this.l.get(paramContext);
+    eg localeg1 = localeg2;
+    if (localeg2 == null)
+    {
+      localeg1 = new eg();
+      this.l.put(paramContext, localeg1);
+    }
+    localeg1.b(paramInt, paramColorStateList);
+  }
+  
+  private static void a(Drawable paramDrawable, int paramInt, PorterDuff.Mode paramMode)
+  {
+    Drawable localDrawable = paramDrawable;
+    if (iq.c(paramDrawable)) {
+      localDrawable = paramDrawable.mutate();
+    }
+    paramDrawable = paramMode;
+    if (paramMode == null) {
+      paramDrawable = c;
+    }
+    localDrawable.setColorFilter(a(paramInt, paramDrawable));
+  }
+  
+  static void a(Drawable paramDrawable, jc paramjc, int[] paramArrayOfInt)
+  {
+    if ((iq.c(paramDrawable)) && (paramDrawable.mutate() != paramDrawable)) {
       return;
     }
-    finally
+    if ((!paramjc.d) && (!paramjc.c))
     {
-      paramAttributeSet.recycle();
+      paramDrawable.clearColorFilter();
+    }
+    else
+    {
+      boolean bool = paramjc.d;
+      Object localObject2 = null;
+      ColorStateList localColorStateList;
+      if (bool) {
+        localColorStateList = paramjc.a;
+      } else {
+        localColorStateList = null;
+      }
+      if (paramjc.c) {
+        paramjc = paramjc.b;
+      } else {
+        paramjc = c;
+      }
+      Object localObject1 = localObject2;
+      if (localColorStateList != null) {
+        if (paramjc == null) {
+          localObject1 = localObject2;
+        } else {
+          localObject1 = a(localColorStateList.getColorForState(paramArrayOfInt, 0), paramjc);
+        }
+      }
+      paramDrawable.setColorFilter((ColorFilter)localObject1);
+    }
+    if (Build.VERSION.SDK_INT <= 23) {
+      paramDrawable.invalidateSelf();
+    }
+  }
+  
+  private void a(String paramString, c paramc)
+  {
+    if (this.m == null) {
+      this.m = new du();
+    }
+    this.m.put(paramString, paramc);
+  }
+  
+  static boolean a(Context paramContext, int paramInt, Drawable paramDrawable)
+  {
+    PorterDuff.Mode localMode = c;
+    boolean bool = a(f, paramInt);
+    int i2 = 16842801;
+    int i1;
+    if (bool)
+    {
+      i2 = go.a.colorControlNormal;
+      i1 = 1;
+      paramInt = -1;
+    }
+    else if (a(h, paramInt))
+    {
+      i2 = go.a.colorControlActivated;
+      i1 = 1;
+      paramInt = -1;
+    }
+    else if (a(i, paramInt))
+    {
+      localMode = PorterDuff.Mode.MULTIPLY;
+      i1 = 1;
+      paramInt = -1;
+    }
+    else if (paramInt == go.e.abc_list_divider_mtrl_alpha)
+    {
+      i2 = 16842800;
+      paramInt = Math.round(40.799999F);
+      i1 = 1;
+    }
+    else if (paramInt == go.e.abc_dialog_material_background)
+    {
+      i1 = 1;
+      paramInt = -1;
+    }
+    else
+    {
+      i1 = 0;
+      paramInt = -1;
+      i2 = 0;
+    }
+    if (i1 != 0)
+    {
+      Drawable localDrawable = paramDrawable;
+      if (iq.c(paramDrawable)) {
+        localDrawable = paramDrawable.mutate();
+      }
+      localDrawable.setColorFilter(a(ja.a(paramContext, i2), localMode));
+      if (paramInt != -1) {
+        localDrawable.setAlpha(paramInt);
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean a(Context paramContext, long paramLong, Drawable paramDrawable)
+  {
+    Drawable.ConstantState localConstantState = paramDrawable.getConstantState();
+    if (localConstantState != null) {
+      synchronized (this.a)
+      {
+        dz localdz = (dz)this.b.get(paramContext);
+        paramDrawable = localdz;
+        if (localdz == null)
+        {
+          paramDrawable = new dz();
+          this.b.put(paramContext, paramDrawable);
+        }
+        paramDrawable.a(paramLong, new WeakReference(localConstantState));
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static boolean a(Drawable paramDrawable)
+  {
+    return ((paramDrawable instanceof bs)) || ("android.graphics.drawable.VectorDrawable".equals(paramDrawable.getClass().getName()));
+  }
+  
+  private static boolean a(int[] paramArrayOfInt, int paramInt)
+  {
+    int i2 = paramArrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (paramArrayOfInt[i1] == paramInt) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
+  }
+  
+  private static ColorStateList b(Context paramContext)
+  {
+    return e(paramContext, ja.a(paramContext, go.a.colorAccent));
+  }
+  
+  private static ColorStateList c(Context paramContext)
+  {
+    int[][] arrayOfInt = new int[3][];
+    int[] arrayOfInt1 = new int[3];
+    ColorStateList localColorStateList = ja.b(paramContext, go.a.colorSwitchThumbNormal);
+    if ((localColorStateList != null) && (localColorStateList.isStateful()))
+    {
+      arrayOfInt[0] = ja.a;
+      arrayOfInt1[0] = localColorStateList.getColorForState(arrayOfInt[0], 0);
+      arrayOfInt[1] = ja.e;
+      arrayOfInt1[1] = ja.a(paramContext, go.a.colorControlActivated);
+      arrayOfInt[2] = ja.h;
+      arrayOfInt1[2] = localColorStateList.getDefaultColor();
+    }
+    else
+    {
+      arrayOfInt[0] = ja.a;
+      arrayOfInt1[0] = ja.c(paramContext, go.a.colorSwitchThumbNormal);
+      arrayOfInt[1] = ja.e;
+      arrayOfInt1[1] = ja.a(paramContext, go.a.colorControlActivated);
+      arrayOfInt[2] = ja.h;
+      arrayOfInt1[2] = ja.a(paramContext, go.a.colorSwitchThumbNormal);
+    }
+    return new ColorStateList(arrayOfInt, arrayOfInt1);
+  }
+  
+  private Drawable c(Context paramContext, int paramInt)
+  {
+    if (this.o == null) {
+      this.o = new TypedValue();
+    }
+    TypedValue localTypedValue = this.o;
+    paramContext.getResources().getValue(paramInt, localTypedValue, true);
+    long l1 = a(localTypedValue);
+    Object localObject = a(paramContext, l1);
+    if (localObject != null) {
+      return localObject;
+    }
+    if (paramInt == go.e.abc_cab_background_top_material) {
+      localObject = new LayerDrawable(new Drawable[] { a(paramContext, go.e.abc_cab_background_internal_bg, false), a(paramContext, go.e.abc_cab_background_top_mtrl_alpha, false) });
+    }
+    if (localObject != null)
+    {
+      ((Drawable)localObject).setChangingConfigurations(localTypedValue.changingConfigurations);
+      a(paramContext, l1, (Drawable)localObject);
+    }
+    return localObject;
+  }
+  
+  private ColorStateList d(Context paramContext, int paramInt)
+  {
+    WeakHashMap localWeakHashMap = this.l;
+    if (localWeakHashMap != null)
+    {
+      paramContext = (eg)localWeakHashMap.get(paramContext);
+      if (paramContext != null) {
+        return (ColorStateList)paramContext.a(paramInt);
+      }
+      return null;
+    }
+    return null;
+  }
+  
+  private void d(Context paramContext)
+  {
+    if (this.p) {
+      return;
+    }
+    this.p = true;
+    paramContext = a(paramContext, go.e.abc_vector_test, false);
+    if ((paramContext != null) && (a(paramContext))) {
+      return;
+    }
+    this.p = false;
+    throw new IllegalStateException("This app has been built with an incorrect configuration. Please configure your build for VectorDrawableCompat.");
+  }
+  
+  private static ColorStateList e(Context paramContext, int paramInt)
+  {
+    int i3 = ja.a(paramContext, go.a.colorControlHighlight);
+    int i1 = ja.c(paramContext, go.a.colorButtonNormal);
+    paramContext = ja.a;
+    int[] arrayOfInt1 = ja.d;
+    int i2 = cy.a(i3, paramInt);
+    int[] arrayOfInt2 = ja.b;
+    i3 = cy.a(i3, paramInt);
+    return new ColorStateList(new int[][] { paramContext, arrayOfInt1, arrayOfInt2, ja.h }, new int[] { i1, i2, i3, paramInt });
+  }
+  
+  final Drawable a(Context paramContext, int paramInt)
+  {
+    Object localObject1 = this.m;
+    TypedValue localTypedValue;
+    long l1;
+    Drawable localDrawable;
+    Object localObject2;
+    if ((localObject1 != null) && (!((du)localObject1).isEmpty()))
+    {
+      localObject1 = this.n;
+      if (localObject1 != null)
+      {
+        localObject1 = (String)((eg)localObject1).a(paramInt);
+        if (("appcompat_skip_skip".equals(localObject1)) || ((localObject1 != null) && (this.m.get(localObject1) == null))) {
+          return null;
+        }
+      }
+      else
+      {
+        this.n = new eg();
+      }
+      if (this.o == null) {
+        this.o = new TypedValue();
+      }
+      localTypedValue = this.o;
+      localObject1 = paramContext.getResources();
+      ((Resources)localObject1).getValue(paramInt, localTypedValue, true);
+      l1 = a(localTypedValue);
+      localDrawable = a(paramContext, l1);
+      if (localDrawable != null) {
+        return localDrawable;
+      }
+      localObject2 = localDrawable;
+      if (localTypedValue.string != null)
+      {
+        localObject2 = localDrawable;
+        if (localTypedValue.string.toString().endsWith(".xml")) {
+          localObject2 = localDrawable;
+        }
+      }
+    }
+    try
+    {
+      XmlResourceParser localXmlResourceParser = ((Resources)localObject1).getXml(paramInt);
+      localObject2 = localDrawable;
+      AttributeSet localAttributeSet = Xml.asAttributeSet(localXmlResourceParser);
+      int i1;
+      do
+      {
+        localObject2 = localDrawable;
+        i1 = localXmlResourceParser.next();
+      } while ((i1 != 2) && (i1 != 1));
+      if (i1 == 2)
+      {
+        localObject2 = localDrawable;
+        localObject1 = localXmlResourceParser.getName();
+        localObject2 = localDrawable;
+        this.n.b(paramInt, localObject1);
+        localObject2 = localDrawable;
+        c localc = (c)this.m.get(localObject1);
+        localObject1 = localDrawable;
+        if (localc != null)
+        {
+          localObject2 = localDrawable;
+          localObject1 = localc.a(paramContext, localXmlResourceParser, localAttributeSet, paramContext.getTheme());
+        }
+        localObject2 = localObject1;
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1;
+          ((Drawable)localObject1).setChangingConfigurations(localTypedValue.changingConfigurations);
+          localObject2 = localObject1;
+          a(paramContext, l1, (Drawable)localObject1);
+          localObject2 = localObject1;
+        }
+      }
+      else
+      {
+        localObject2 = localDrawable;
+        throw new XmlPullParserException("No start tag found");
+      }
+    }
+    catch (Exception paramContext)
+    {
+      label365:
+      break label365;
+    }
+    if (localObject2 == null) {
+      this.n.b(paramInt, "appcompat_skip_skip");
+    }
+    return localObject2;
+    return null;
+  }
+  
+  public final Drawable a(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    d(paramContext);
+    Object localObject2 = a(paramContext, paramInt);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = c(paramContext, paramInt);
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = cr.a(paramContext, paramInt);
+    }
+    localObject1 = localObject2;
+    if (localObject2 != null) {
+      localObject1 = a(paramContext, paramInt, paramBoolean, (Drawable)localObject2);
+    }
+    if (localObject1 != null) {
+      iq.b((Drawable)localObject1);
+    }
+    return localObject1;
+  }
+  
+  final Drawable a(Context paramContext, int paramInt, boolean paramBoolean, Drawable paramDrawable)
+  {
+    Object localObject = b(paramContext, paramInt);
+    if (localObject != null)
+    {
+      paramContext = paramDrawable;
+      if (iq.c(paramDrawable)) {
+        paramContext = paramDrawable.mutate();
+      }
+      paramContext = dg.d(paramContext);
+      dg.a(paramContext, (ColorStateList)localObject);
+      paramDrawable = a(paramInt);
+      localObject = paramContext;
+      if (paramDrawable != null)
+      {
+        dg.a(paramContext, paramDrawable);
+        return paramContext;
+      }
+    }
+    else
+    {
+      if (paramInt == go.e.abc_seekbar_track_material)
+      {
+        localObject = (LayerDrawable)paramDrawable;
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ja.a(paramContext, go.a.colorControlNormal), c);
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ja.a(paramContext, go.a.colorControlNormal), c);
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ja.a(paramContext, go.a.colorControlActivated), c);
+        return paramDrawable;
+      }
+      if ((paramInt != go.e.abc_ratingbar_material) && (paramInt != go.e.abc_ratingbar_indicator_material) && (paramInt != go.e.abc_ratingbar_small_material))
+      {
+        localObject = paramDrawable;
+        if (!a(paramContext, paramInt, paramDrawable))
+        {
+          localObject = paramDrawable;
+          if (paramBoolean) {
+            return null;
+          }
+        }
+      }
+      else
+      {
+        localObject = (LayerDrawable)paramDrawable;
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ja.c(paramContext, go.a.colorControlNormal), c);
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ja.a(paramContext, go.a.colorControlActivated), c);
+        a(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ja.a(paramContext, go.a.colorControlActivated), c);
+        localObject = paramDrawable;
+      }
+    }
+    return localObject;
+  }
+  
+  final ColorStateList b(Context paramContext, int paramInt)
+  {
+    ColorStateList localColorStateList1 = d(paramContext, paramInt);
+    ColorStateList localColorStateList2 = localColorStateList1;
+    if (localColorStateList1 == null)
+    {
+      if (paramInt == go.e.abc_edit_text_material) {
+        localColorStateList1 = gq.a(paramContext, go.c.abc_tint_edittext);
+      } else if (paramInt == go.e.abc_switch_track_mtrl_alpha) {
+        localColorStateList1 = gq.a(paramContext, go.c.abc_tint_switch_track);
+      } else if (paramInt == go.e.abc_switch_thumb_material) {
+        localColorStateList1 = c(paramContext);
+      } else if (paramInt == go.e.abc_btn_default_mtrl_shape) {
+        localColorStateList1 = a(paramContext);
+      } else if (paramInt == go.e.abc_btn_borderless_material) {
+        localColorStateList1 = e(paramContext, 0);
+      } else if (paramInt == go.e.abc_btn_colored_material) {
+        localColorStateList1 = b(paramContext);
+      } else if ((paramInt != go.e.abc_spinner_mtrl_am_alpha) && (paramInt != go.e.abc_spinner_textfield_background_material))
+      {
+        if (a(g, paramInt)) {
+          localColorStateList1 = ja.b(paramContext, go.a.colorControlNormal);
+        } else if (a(j, paramInt)) {
+          localColorStateList1 = gq.a(paramContext, go.c.abc_tint_default);
+        } else if (a(k, paramInt)) {
+          localColorStateList1 = gq.a(paramContext, go.c.abc_tint_btn_checkable);
+        } else if (paramInt == go.e.abc_seekbar_thumb_material) {
+          localColorStateList1 = gq.a(paramContext, go.c.abc_tint_seek_thumb);
+        }
+      }
+      else {
+        localColorStateList1 = gq.a(paramContext, go.c.abc_tint_spinner);
+      }
+      localColorStateList2 = localColorStateList1;
+      if (localColorStateList1 != null)
+      {
+        a(paramContext, paramInt, localColorStateList1);
+        localColorStateList2 = localColorStateList1;
+      }
+    }
+    return localColorStateList2;
+  }
+  
+  static final class a
+    implements ig.c
+  {
+    public final Drawable a(Context paramContext, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+    {
+      try
+      {
+        paramContext = bm.a(paramContext, paramContext.getResources(), paramXmlPullParser, paramAttributeSet, paramTheme);
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        label15:
+        break label15;
+      }
+      return null;
+    }
+  }
+  
+  static final class b
+    extends ea<Integer, PorterDuffColorFilter>
+  {
+    public b()
+    {
+      super();
+    }
+    
+    private static int b(int paramInt, PorterDuff.Mode paramMode)
+    {
+      return (paramInt + 31) * 31 + paramMode.hashCode();
+    }
+    
+    final PorterDuffColorFilter a(int paramInt, PorterDuff.Mode paramMode)
+    {
+      return (PorterDuffColorFilter)a(Integer.valueOf(b(paramInt, paramMode)));
+    }
+    
+    final PorterDuffColorFilter a(int paramInt, PorterDuff.Mode paramMode, PorterDuffColorFilter paramPorterDuffColorFilter)
+    {
+      return (PorterDuffColorFilter)a(Integer.valueOf(b(paramInt, paramMode)), paramPorterDuffColorFilter);
+    }
+  }
+  
+  static abstract interface c
+  {
+    public abstract Drawable a(Context paramContext, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme);
+  }
+  
+  static final class d
+    implements ig.c
+  {
+    public final Drawable a(Context paramContext, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+    {
+      try
+      {
+        paramContext = bs.a(paramContext.getResources(), paramXmlPullParser, paramAttributeSet, paramTheme);
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        label14:
+        break label14;
+      }
+      return null;
     }
   }
 }

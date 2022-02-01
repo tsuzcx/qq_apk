@@ -1,18 +1,10 @@
 package com.tencent.token;
 
-public final class mu
+import java.util.List;
+
+public abstract interface mu
 {
-  private static mt a;
-  
-  public static mt a()
-  {
-    return a;
-  }
-  
-  public static void a(mt parammt)
-  {
-    a = parammt;
-  }
+  public abstract List a(String paramString, long paramLong);
 }
 
 

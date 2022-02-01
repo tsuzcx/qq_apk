@@ -8,30 +8,30 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
-import com.tencent.token.ew;
-import com.tencent.token.ga;
-import com.tencent.token.gp.a;
-import com.tencent.token.if;
-import com.tencent.token.ij;
-import com.tencent.token.jc;
+import com.tencent.token.ev;
+import com.tencent.token.fz;
+import com.tencent.token.go.a;
+import com.tencent.token.ie;
+import com.tencent.token.ii;
+import com.tencent.token.jb;
 
 public class AppCompatImageButton
   extends ImageButton
-  implements ew, ga
+  implements ev, fz
 {
-  private final if a = new if(this);
-  private final ij b;
+  private final ie a = new ie(this);
+  private final ii b;
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.imageButtonStyle);
+    this(paramContext, paramAttributeSet, go.a.imageButtonStyle);
   }
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jc.a(paramContext), paramAttributeSet, paramInt);
+    super(jb.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
-    this.b = new ij(this);
+    this.b = new ii(this);
     this.b.a(paramAttributeSet, paramInt);
   }
   
@@ -40,46 +40,46 @@ public class AppCompatImageButton
     super.drawableStateChanged();
     Object localObject = this.a;
     if (localObject != null) {
-      ((if)localObject).d();
+      ((ie)localObject).d();
     }
     localObject = this.b;
     if (localObject != null) {
-      ((ij)localObject).d();
+      ((ii)localObject).d();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.b();
+    ie localie = this.a;
+    if (localie != null) {
+      return localie.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.c();
+    ie localie = this.a;
+    if (localie != null) {
+      return localie.c();
     }
     return null;
   }
   
   public ColorStateList getSupportImageTintList()
   {
-    ij localij = this.b;
-    if (localij != null) {
-      return localij.b();
+    ii localii = this.b;
+    if (localii != null) {
+      return localii.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    ij localij = this.b;
-    if (localij != null) {
-      return localij.c();
+    ii localii = this.b;
+    if (localii != null) {
+      return localii.c();
     }
     return null;
   }
@@ -101,9 +101,9 @@ public class AppCompatImageButton
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramInt);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramInt);
     }
   }
   
@@ -141,33 +141,33 @@ public class AppCompatImageButton
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramColorStateList);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramMode);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramMode);
     }
   }
   
   public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    ij localij = this.b;
-    if (localij != null) {
-      localij.a(paramColorStateList);
+    ii localii = this.b;
+    if (localii != null) {
+      localii.a(paramColorStateList);
     }
   }
   
   public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    ij localij = this.b;
-    if (localij != null) {
-      localij.a(paramMode);
+    ii localii = this.b;
+    if (localii != null) {
+      localii.a(paramMode);
     }
   }
 }

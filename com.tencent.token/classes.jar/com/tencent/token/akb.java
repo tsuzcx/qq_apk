@@ -1,159 +1,210 @@
 package com.tencent.token;
 
 import java.io.IOException;
+import java.net.ProtocolException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public final class akb
+  implements ajl
 {
-  static final alc a = alc.a("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
-  static final String[] b;
-  static final String[] c;
-  private static final String[] d;
+  private static final alb b = alb.a("connection");
+  private static final alb c = alb.a("host");
+  private static final alb d = alb.a("keep-alive");
+  private static final alb e = alb.a("proxy-connection");
+  private static final alb f = alb.a("transfer-encoding");
+  private static final alb g = alb.a("te");
+  private static final alb h = alb.a("encoding");
+  private static final alb i = alb.a("upgrade");
+  private static final List<alb> j = aiw.a(new alb[] { b, c, d, e, g, f, h, i, ajy.c, ajy.d, ajy.e, ajy.f });
+  private static final List<alb> k = aiw.a(new alb[] { b, c, d, e, g, f, h, i });
+  final aji a;
+  private final aij.a l;
+  private final akc m;
+  private ake n;
+  private final aim o;
   
-  static
+  public akb(ail paramail, aij.a parama, aji paramaji, akc paramakc)
   {
-    int k = 0;
-    d = new String[] { "DATA", "HEADERS", "PRIORITY", "RST_STREAM", "SETTINGS", "PUSH_PROMISE", "PING", "GOAWAY", "WINDOW_UPDATE", "CONTINUATION" };
-    b = new String[64];
-    c = new String[256];
-    int i = 0;
-    for (;;)
-    {
-      localObject = c;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject[i] = aix.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
-      i += 1;
-    }
-    String[] arrayOfString = b;
-    arrayOfString[0] = "";
-    arrayOfString[1] = "END_STREAM";
-    Object localObject = new int[1];
-    localObject[0] = 1;
-    arrayOfString[8] = "PADDED";
-    i = 0;
-    int j;
-    StringBuilder localStringBuilder;
-    while (i <= 0)
-    {
-      j = localObject[i];
-      arrayOfString = b;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(b[j]);
-      localStringBuilder.append("|PADDED");
-      arrayOfString[(j | 0x8)] = localStringBuilder.toString();
-      i += 1;
-    }
-    arrayOfString = b;
-    arrayOfString[4] = "END_HEADERS";
-    arrayOfString[32] = "PRIORITY";
-    arrayOfString[36] = "END_HEADERS|PRIORITY";
-    i = 0;
-    for (;;)
-    {
-      j = k;
-      if (i >= 3) {
-        break;
-      }
-      int m = new int[] { 4, 32, 36 }[i];
-      j = 0;
-      while (j <= 0)
-      {
-        int n = localObject[j];
-        arrayOfString = b;
-        int i1 = n | m;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(b[n]);
-        localStringBuilder.append('|');
-        localStringBuilder.append(b[m]);
-        arrayOfString[i1] = localStringBuilder.toString();
-        arrayOfString = b;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(b[n]);
-        localStringBuilder.append('|');
-        localStringBuilder.append(b[m]);
-        localStringBuilder.append("|PADDED");
-        arrayOfString[(i1 | 0x8)] = localStringBuilder.toString();
-        j += 1;
-      }
-      i += 1;
-    }
-    for (;;)
-    {
-      localObject = b;
-      if (j >= localObject.length) {
-        break;
-      }
-      if (localObject[j] == null) {
-        localObject[j] = c[j];
-      }
-      j += 1;
-    }
-  }
-  
-  static IllegalArgumentException a(String paramString, Object... paramVarArgs)
-  {
-    throw new IllegalArgumentException(aix.a(paramString, paramVarArgs));
-  }
-  
-  static String a(boolean paramBoolean, int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
-  {
-    Object localObject = d;
-    String str1;
-    if (paramByte1 < localObject.length) {
-      str1 = localObject[paramByte1];
+    this.l = parama;
+    this.a = paramaji;
+    this.m = paramakc;
+    if (paramail.e.contains(aim.e)) {
+      paramail = aim.e;
     } else {
-      str1 = aix.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
+      paramail = aim.d;
     }
-    if (paramByte2 == 0)
-    {
-      localObject = "";
-    }
-    else
-    {
-      switch (paramByte1)
-      {
-      case 5: 
-      default: 
-        localObject = b;
-        if (paramByte2 < localObject.length) {
-          localObject = localObject[paramByte2];
-        }
-        break;
-      case 4: 
-      case 6: 
-        if (paramByte2 == 1) {
-          localObject = "ACK";
-        } else {
-          localObject = c[paramByte2];
-        }
-        break;
-      case 2: 
-      case 3: 
-      case 7: 
-      case 8: 
-        localObject = c[paramByte2];
-        break;
-      }
-      localObject = c[paramByte2];
-      if ((paramByte1 == 5) && ((paramByte2 & 0x4) != 0)) {
-        localObject = ((String)localObject).replace("HEADERS", "PUSH_PROMISE");
-      } else if ((paramByte1 == 0) && ((paramByte2 & 0x20) != 0)) {
-        localObject = ((String)localObject).replace("PRIORITY", "COMPRESSED");
-      }
-    }
-    String str2;
-    if (paramBoolean) {
-      str2 = "<<";
-    } else {
-      str2 = ">>";
-    }
-    return aix.a("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, localObject });
+    this.o = paramail;
   }
   
-  static IOException b(String paramString, Object... paramVarArgs)
+  public final aiq.a a(boolean paramBoolean)
   {
-    throw new IOException(aix.a(paramString, paramVarArgs));
+    List localList = this.n.c();
+    aim localaim = this.o;
+    Object localObject2 = new aih.a();
+    int i2 = localList.size();
+    int i1 = 0;
+    Object localObject3 = null;
+    Object localObject1;
+    while (i1 < i2)
+    {
+      localObject1 = (ajy)localList.get(i1);
+      Object localObject4;
+      if (localObject1 == null)
+      {
+        localObject1 = localObject3;
+        localObject4 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject1 = localObject3;
+          localObject4 = localObject2;
+          if (localObject3.b == 100)
+          {
+            localObject4 = new aih.a();
+            localObject1 = null;
+          }
+        }
+      }
+      else
+      {
+        alb localalb = ((ajy)localObject1).g;
+        String str = ((ajy)localObject1).h.a();
+        if (localalb.equals(ajy.b))
+        {
+          localObject1 = ajt.a("HTTP/1.1 ".concat(String.valueOf(str)));
+          localObject4 = localObject2;
+        }
+        else
+        {
+          localObject1 = localObject3;
+          localObject4 = localObject2;
+          if (!k.contains(localalb))
+          {
+            aiu.a.a((aih.a)localObject2, localalb.a(), str);
+            localObject4 = localObject2;
+            localObject1 = localObject3;
+          }
+        }
+      }
+      i1 += 1;
+      localObject3 = localObject1;
+      localObject2 = localObject4;
+    }
+    if (localObject3 != null)
+    {
+      localObject1 = new aiq.a();
+      ((aiq.a)localObject1).b = localaim;
+      ((aiq.a)localObject1).c = localObject3.b;
+      ((aiq.a)localObject1).d = localObject3.c;
+      localObject1 = ((aiq.a)localObject1).a(((aih.a)localObject2).a());
+      if ((paramBoolean) && (aiu.a.a((aiq.a)localObject1) == 100)) {
+        return null;
+      }
+      return localObject1;
+    }
+    throw new ProtocolException("Expected ':status' header not present");
+  }
+  
+  public final air a(aiq paramaiq)
+  {
+    return new ajq(paramaiq.a("Content-Type"), ajn.a(paramaiq), alh.a(new a(this.n.g)));
+  }
+  
+  public final aln a(aio paramaio, long paramLong)
+  {
+    return this.n.d();
+  }
+  
+  public final void a()
+  {
+    this.m.p.b();
+  }
+  
+  public final void a(aio paramaio)
+  {
+    if (this.n != null) {
+      return;
+    }
+    Object localObject = paramaio.d;
+    int i1 = 0;
+    boolean bool;
+    if (localObject != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject = paramaio.c;
+    ArrayList localArrayList = new ArrayList(((aih)localObject).a.length / 2 + 4);
+    localArrayList.add(new ajy(ajy.c, paramaio.b));
+    localArrayList.add(new ajy(ajy.d, ajr.a(paramaio.a)));
+    String str = paramaio.a("Host");
+    if (str != null) {
+      localArrayList.add(new ajy(ajy.f, str));
+    }
+    localArrayList.add(new ajy(ajy.e, paramaio.a.a));
+    int i2 = ((aih)localObject).a.length / 2;
+    while (i1 < i2)
+    {
+      paramaio = alb.a(((aih)localObject).a(i1).toLowerCase(Locale.US));
+      if (!j.contains(paramaio)) {
+        localArrayList.add(new ajy(paramaio, ((aih)localObject).b(i1)));
+      }
+      i1 += 1;
+    }
+    this.n = this.m.a(localArrayList, bool);
+    this.n.i.a(this.l.c(), TimeUnit.MILLISECONDS);
+    this.n.j.a(this.l.d(), TimeUnit.MILLISECONDS);
+  }
+  
+  public final void b()
+  {
+    this.n.d().close();
+  }
+  
+  final class a
+    extends ald
+  {
+    boolean a = false;
+    long b = 0L;
+    
+    a(alo paramalo)
+    {
+      super();
+    }
+    
+    private void b()
+    {
+      if (this.a) {
+        return;
+      }
+      this.a = true;
+      akb.this.a.a(false, akb.this);
+    }
+    
+    public final long a(aky paramaky, long paramLong)
+    {
+      try
+      {
+        paramLong = this.d.a(paramaky, paramLong);
+        if (paramLong > 0L) {
+          this.b += paramLong;
+        }
+        return paramLong;
+      }
+      catch (IOException paramaky)
+      {
+        b();
+        throw paramaky;
+      }
+    }
+    
+    public final void close()
+    {
+      super.close();
+      b();
+    }
   }
 }
 

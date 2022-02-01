@@ -1,12 +1,34 @@
 package com.tencent.token;
 
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+
 public abstract interface ls
 {
-  public abstract lt a(String paramString1, String paramString2, String paramString3, String paramString4, lu paramlu);
+  public abstract long a_();
   
-  public abstract void a(lt paramlt);
+  public abstract String b();
   
-  public abstract void b(lt paramlt);
+  public abstract String c();
+  
+  public abstract DownloaderTaskStatus d();
+  
+  public abstract long e();
+  
+  public abstract int g();
+  
+  public abstract String h();
+  
+  public abstract String i();
+  
+  public abstract String j();
+  
+  public abstract void k();
+  
+  public abstract boolean l();
+  
+  public abstract int m();
+  
+  public abstract String n();
 }
 
 

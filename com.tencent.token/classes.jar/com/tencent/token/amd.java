@@ -1,18 +1,11 @@
 package com.tencent.token;
 
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
 import java.util.List;
 
 public final class amd
-  extends ama<PointF>
+  extends alz<ann>
 {
-  private final PointF c = new PointF();
-  private final float[] d = new float[2];
-  private amc e;
-  private PathMeasure f;
-  
-  public amd(List<? extends alz<PointF>> paramList)
+  public amd(List<aly<ann>> paramList)
   {
     super(paramList);
   }

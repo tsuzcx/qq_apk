@@ -1,146 +1,165 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.security.NoSuchAlgorithmException;
+import java.security.Provider;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
 
-final class akq<T>
+public class akq
 {
-  private final Class<?> a;
-  private final String b;
-  private final Class[] c;
+  private static final Logger a = Logger.getLogger(ail.class.getName());
+  static final akq c;
   
-  akq(Class<?> paramClass, String paramString, Class... paramVarArgs)
+  static
   {
-    this.a = paramClass;
-    this.b = paramString;
-    this.c = paramVarArgs;
-  }
-  
-  private Method a(Class<?> paramClass)
-  {
-    String str = this.b;
-    Method localMethod = null;
-    if (str != null)
+    Object localObject = akl.a();
+    if (localObject == null)
     {
-      localMethod = a(paramClass, str, this.c);
-      if (localMethod != null)
-      {
-        paramClass = this.a;
-        if ((paramClass != null) && (!paramClass.isAssignableFrom(localMethod.getReturnType()))) {
-          return null;
-        }
+      boolean bool;
+      if ("conscrypt".equals(System.getProperty("okhttp.platform"))) {
+        bool = true;
+      } else {
+        bool = "Conscrypt".equals(java.security.Security.getProviders()[0].getName());
       }
-    }
-    return localMethod;
-  }
-  
-  private static Method a(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
-  {
-    try
-    {
-      paramClass = paramClass.getMethod(paramString, paramArrayOfClass);
-      int i;
-      return paramClass;
-    }
-    catch (NoSuchMethodException paramClass)
-    {
-      for (;;)
+      if (bool)
       {
-        try
+        localObject = akm.a();
+        if (localObject != null) {}
+      }
+      else
+      {
+        localObject = akn.a();
+        if (localObject == null)
         {
-          i = paramClass.getModifiers();
-          if ((i & 0x1) == 0)
-          {
-            return null;
-            paramClass = null;
+          localObject = ako.a();
+          if (localObject == null) {
+            localObject = new akq();
           }
-          return paramClass;
         }
-        catch (NoSuchMethodException paramString) {}
-        paramClass = paramClass;
       }
     }
+    c = (akq)localObject;
   }
   
-  private Object c(T paramT, Object... paramVarArgs)
+  public static List<String> a(List<aim> paramList)
   {
-    Method localMethod = a(paramT.getClass());
-    if (localMethod == null) {
-      return null;
-    }
-    try
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      paramT = localMethod.invoke(paramT, paramVarArgs);
-      return paramT;
+      aim localaim = (aim)paramList.get(i);
+      if (localaim != aim.a) {
+        localArrayList.add(localaim.toString());
+      }
+      i += 1;
     }
-    catch (IllegalAccessException paramT) {}
+    return localArrayList;
+  }
+  
+  public static akq c()
+  {
+    return c;
+  }
+  
+  public akt a(X509TrustManager paramX509TrustManager)
+  {
+    return new akr(b(paramX509TrustManager));
+  }
+  
+  public Object a(String paramString)
+  {
+    if (a.isLoggable(Level.FINE)) {
+      return new Throwable(paramString);
+    }
     return null;
   }
   
-  private Object d(T paramT, Object... paramVarArgs)
+  @Nullable
+  public String a(SSLSocket paramSSLSocket)
   {
-    Method localMethod = a(paramT.getClass());
-    if (localMethod != null) {
+    return null;
+  }
+  
+  public void a(int paramInt, String paramString, Throwable paramThrowable)
+  {
+    Level localLevel;
+    if (paramInt == 5) {
+      localLevel = Level.WARNING;
+    } else {
+      localLevel = Level.INFO;
+    }
+    a.log(localLevel, paramString, paramThrowable);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    Object localObject = paramString;
+    if (paramObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    a(5, (String)localObject, (Throwable)paramObject);
+  }
+  
+  public void a(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
+  {
+    paramSocket.connect(paramInetSocketAddress, paramInt);
+  }
+  
+  public void a(SSLSocket paramSSLSocket, String paramString, List<aim> paramList) {}
+  
+  public void a(SSLSocketFactory paramSSLSocketFactory) {}
+  
+  public akv b(X509TrustManager paramX509TrustManager)
+  {
+    return new aks(paramX509TrustManager.getAcceptedIssuers());
+  }
+  
+  public SSLContext b()
+  {
+    if ("1.7".equals(System.getProperty("java.specification.version"))) {}
+    for (;;)
+    {
       try
       {
-        paramT = localMethod.invoke(paramT, paramVarArgs);
-        return paramT;
+        localSSLContext = SSLContext.getInstance("TLSv1.2");
+        return localSSLContext;
       }
-      catch (IllegalAccessException paramT)
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
       {
-        paramVarArgs = new AssertionError("Unexpectedly could not call: ".concat(String.valueOf(localMethod)));
-        paramVarArgs.initCause(paramT);
-        throw paramVarArgs;
+        SSLContext localSSLContext;
+        continue;
       }
-    }
-    paramVarArgs = new StringBuilder("Method ");
-    paramVarArgs.append(this.b);
-    paramVarArgs.append(" not supported for object ");
-    paramVarArgs.append(paramT);
-    throw new AssertionError(paramVarArgs.toString());
-  }
-  
-  public final Object a(T paramT, Object... paramVarArgs)
-  {
-    try
-    {
-      paramT = c(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (InvocationTargetException paramT)
-    {
-      paramT = paramT.getTargetException();
-      if ((paramT instanceof RuntimeException)) {
-        throw ((RuntimeException)paramT);
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLS");
+        return localSSLContext;
       }
-      paramVarArgs = new AssertionError("Unexpected exception");
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
+      }
     }
   }
   
-  public final boolean a(T paramT)
-  {
-    return a(paramT.getClass()) != null;
-  }
+  public void b(SSLSocket paramSSLSocket) {}
   
-  public final Object b(T paramT, Object... paramVarArgs)
+  public boolean b(String paramString)
   {
-    try
-    {
-      paramT = d(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (InvocationTargetException paramT)
-    {
-      paramT = paramT.getTargetException();
-      if ((paramT instanceof RuntimeException)) {
-        throw ((RuntimeException)paramT);
-      }
-      paramVarArgs = new AssertionError("Unexpected exception");
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
-    }
+    return true;
   }
 }
 

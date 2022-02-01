@@ -3,9 +3,9 @@ package com.tencent.token;
 import java.util.List;
 
 public final class alx
-  extends ama<Integer>
+  extends alz<Float>
 {
-  public alx(List<alz<Integer>> paramList)
+  public alx(List<aly<Float>> paramList)
   {
     super(paramList);
   }

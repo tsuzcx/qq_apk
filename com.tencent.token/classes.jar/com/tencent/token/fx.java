@@ -1,35 +1,86 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Build.VERSION;
+import android.widget.TextView;
 
-public abstract class fx
-  extends fq
+public final class fx
 {
-  private int j;
-  private int k;
-  private LayoutInflater l;
+  static final g a = new g();
   
-  @Deprecated
-  public fx(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext);
-    this.k = paramInt;
-    this.j = paramInt;
-    this.l = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    if (dp.a())
+    {
+      a = new f();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      a = new e();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new d();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  public static void a(TextView paramTextView, int paramInt)
   {
-    return this.l.inflate(this.j, paramViewGroup, false);
+    a.a(paramTextView, paramInt);
   }
   
-  public final View b(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  static class a
+    extends fx.g
+  {}
+  
+  static class b
+    extends fx.a
+  {}
+  
+  static class c
+    extends fx.b
+  {}
+  
+  static class d
+    extends fx.c
   {
-    return this.l.inflate(this.k, paramViewGroup, false);
+    public final void a(TextView paramTextView, int paramInt)
+    {
+      paramTextView.setTextAppearance(paramInt);
+    }
+  }
+  
+  static class e
+    extends fx.d
+  {}
+  
+  static final class f
+    extends fx.e
+  {}
+  
+  static class g
+  {
+    public void a(TextView paramTextView, int paramInt)
+    {
+      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
+    }
   }
 }
 

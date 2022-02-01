@@ -4,7 +4,7 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ui
-  extends tk
+  extends tj
 {
   public String d;
   public long e;
@@ -12,16 +12,16 @@ public final class ui
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.d = ((String)paramaar.c.get("param.mbmobile.mobile"));
-    this.f = ((Integer)paramaar.c.get("param.type")).intValue();
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.d = ((String)paramaaq.c.get("param.qqtoken"));
+    this.f = ((Integer)paramaaq.c.get("param.type")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)

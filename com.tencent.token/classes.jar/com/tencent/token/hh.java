@@ -1,61 +1,17 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import java.util.Map;
-
-abstract class hh<T>
-  extends hi<T>
+public class hh<T>
 {
-  final Context a;
-  Map<do, MenuItem> b;
-  Map<dp, SubMenu> c;
+  public final T d;
   
-  hh(Context paramContext, T paramT)
+  hh(T paramT)
   {
-    super(paramT);
-    this.a = paramContext;
-  }
-  
-  final MenuItem a(MenuItem paramMenuItem)
-  {
-    if ((paramMenuItem instanceof do))
+    if (paramT != null)
     {
-      do localdo = (do)paramMenuItem;
-      if (this.b == null) {
-        this.b = new dv();
-      }
-      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
-      paramMenuItem = localMenuItem;
-      if (localMenuItem == null)
-      {
-        paramMenuItem = hv.a(this.a, localdo);
-        this.b.put(localdo, paramMenuItem);
-      }
-      return paramMenuItem;
+      this.d = paramT;
+      return;
     }
-    return paramMenuItem;
-  }
-  
-  final SubMenu a(SubMenu paramSubMenu)
-  {
-    if ((paramSubMenu instanceof dp))
-    {
-      dp localdp = (dp)paramSubMenu;
-      if (this.c == null) {
-        this.c = new dv();
-      }
-      SubMenu localSubMenu = (SubMenu)this.c.get(localdp);
-      paramSubMenu = localSubMenu;
-      if (localSubMenu == null)
-      {
-        paramSubMenu = new ia(this.a, localdp);
-        this.c.put(localdp, paramSubMenu);
-      }
-      return paramSubMenu;
-    }
-    return paramSubMenu;
+    throw new IllegalArgumentException("Wrapped Object can not be null.");
   }
 }
 

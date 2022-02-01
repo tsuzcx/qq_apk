@@ -3,61 +3,63 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.RealNameQueryResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vz
-  extends tk
+  extends tj
 {
-  public String d;
-  private int e;
-  private String f;
+  RealNameQueryResult d;
+  private long e;
+  private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((String)paramaar.c.get("param.barcode.url"));
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.f = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    xa.c("ProtoQueryRealName parseJSON errCode: ".concat(String.valueOf(i)));
     if (i != 0)
     {
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      StringBuilder localStringBuilder = new StringBuilder("json");
-      localStringBuilder.append(paramJSONObject.toString());
-      xb.a(localStringBuilder.toString());
       i = paramJSONObject.getInt("seq_id");
-      if (i != this.c)
+      if (i != this.f)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xb.c(paramJSONObject.toString());
+        paramJSONObject.append(this.f);
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.e = paramJSONObject.getInt("malicious_id");
-      this.f = paramJSONObject.getString("malicious_desc");
+      this.d = new RealNameQueryResult(paramJSONObject);
+      paramJSONObject = new StringBuilder("result rebind_type: ");
+      paramJSONObject.append(this.d.zzb_rebind_type);
+      xa.c(paramJSONObject.toString());
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -67,8 +69,7 @@ public final class vz
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.arg2 = this.e;
-      localMessage.obj = this.f;
+      localMessage.obj = this.d;
       localMessage.sendToTarget();
       this.b.e = true;
     }

@@ -1,40 +1,173 @@
 package com.tencent.token;
 
-import android.animation.TypeEvaluator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.util.AttributeSet;
+import android.view.InflateException;
+import android.view.animation.Interpolator;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class bq
-  implements TypeEvaluator
+  implements Interpolator
 {
-  private static final bq a = new bq();
+  private float[] a;
+  private float[] b;
   
-  public static bq a()
+  public bq(Context paramContext, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
-    return a;
+    this(paramContext.getResources(), paramContext.getTheme(), paramAttributeSet, paramXmlPullParser);
   }
   
-  public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  private bq(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
-    int i = ((Integer)paramObject1).intValue();
-    float f1 = (i >> 24 & 0xFF) / 255.0F;
-    float f4 = (i >> 16 & 0xFF) / 255.0F;
-    float f5 = (i >> 8 & 0xFF) / 255.0F;
-    float f6 = (i & 0xFF) / 255.0F;
-    i = ((Integer)paramObject2).intValue();
-    float f2 = (i >> 24 & 0xFF) / 255.0F;
-    float f8 = (i >> 16 & 0xFF) / 255.0F;
-    float f7 = (i >> 8 & 0xFF) / 255.0F;
-    float f3 = (i & 0xFF) / 255.0F;
-    f4 = (float)Math.pow(f4, 2.2D);
-    f5 = (float)Math.pow(f5, 2.2D);
-    f6 = (float)Math.pow(f6, 2.2D);
-    f8 = (float)Math.pow(f8, 2.2D);
-    f7 = (float)Math.pow(f7, 2.2D);
-    f3 = (float)Math.pow(f3, 2.2D);
-    f4 = (float)Math.pow(f4 + (f8 - f4) * paramFloat, 0.4545454545454545D);
-    f5 = (float)Math.pow(f5 + (f7 - f5) * paramFloat, 0.4545454545454545D);
-    f3 = (float)Math.pow(f6 + paramFloat * (f3 - f6), 0.4545454545454545D);
-    i = Math.round((f1 + (f2 - f1) * paramFloat) * 255.0F);
-    return Integer.valueOf(Math.round(f4 * 255.0F) << 16 | i << 24 | Math.round(f5 * 255.0F) << 8 | Math.round(f3 * 255.0F));
+    paramResources = cx.a(paramResources, paramTheme, paramAttributeSet, bk.l);
+    if (cx.a(paramXmlPullParser, "pathData"))
+    {
+      paramTheme = cx.b(paramResources, paramXmlPullParser, "pathData", 4);
+      paramAttributeSet = cz.a(paramTheme);
+      if (paramAttributeSet != null) {
+        a(paramAttributeSet);
+      } else {
+        throw new InflateException("The path is null, which is created from ".concat(String.valueOf(paramTheme)));
+      }
+    }
+    else
+    {
+      if (!cx.a(paramXmlPullParser, "controlX1")) {
+        break label252;
+      }
+      if (!cx.a(paramXmlPullParser, "controlY1")) {
+        break label242;
+      }
+      float f1 = cx.a(paramResources, paramXmlPullParser, "controlX1", 0, 0.0F);
+      float f2 = cx.a(paramResources, paramXmlPullParser, "controlY1", 1, 0.0F);
+      boolean bool = cx.a(paramXmlPullParser, "controlX2");
+      if (bool != cx.a(paramXmlPullParser, "controlY2")) {
+        break label232;
+      }
+      if (!bool)
+      {
+        paramTheme = new Path();
+        paramTheme.moveTo(0.0F, 0.0F);
+        paramTheme.quadTo(f1, f2, 1.0F, 1.0F);
+        a(paramTheme);
+      }
+      else
+      {
+        float f3 = cx.a(paramResources, paramXmlPullParser, "controlX2", 2, 0.0F);
+        float f4 = cx.a(paramResources, paramXmlPullParser, "controlY2", 3, 0.0F);
+        paramTheme = new Path();
+        paramTheme.moveTo(0.0F, 0.0F);
+        paramTheme.cubicTo(f1, f2, f3, f4, 1.0F, 1.0F);
+        a(paramTheme);
+      }
+    }
+    paramResources.recycle();
+    return;
+    label232:
+    throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
+    label242:
+    throw new InflateException("pathInterpolator requires the controlY1 attribute");
+    label252:
+    throw new InflateException("pathInterpolator requires the controlX1 attribute");
+  }
+  
+  private void a(Path paramPath)
+  {
+    int j = 0;
+    paramPath = new PathMeasure(paramPath, false);
+    float f1 = paramPath.getLength();
+    int k = Math.min(3000, (int)(f1 / 0.002F) + 1);
+    if (k > 0)
+    {
+      this.a = new float[k];
+      this.b = new float[k];
+      float[] arrayOfFloat = new float[2];
+      int i = 0;
+      while (i < k)
+      {
+        paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
+        this.a[i] = arrayOfFloat[0];
+        this.b[i] = arrayOfFloat[1];
+        i += 1;
+      }
+      if ((Math.abs(this.a[0]) <= 1.E-005D) && (Math.abs(this.b[0]) <= 1.E-005D))
+      {
+        arrayOfFloat = this.a;
+        i = k - 1;
+        if ((Math.abs(arrayOfFloat[i] - 1.0F) <= 1.E-005D) && (Math.abs(this.b[i] - 1.0F) <= 1.E-005D))
+        {
+          i = 0;
+          f1 = 0.0F;
+          while (j < k)
+          {
+            arrayOfFloat = this.a;
+            float f2 = arrayOfFloat[i];
+            if (f2 >= f1)
+            {
+              arrayOfFloat[j] = f2;
+              j += 1;
+              f1 = f2;
+              i += 1;
+            }
+            else
+            {
+              throw new IllegalArgumentException("The Path cannot loop back on itself, x :".concat(String.valueOf(f2)));
+            }
+          }
+          if (!paramPath.nextContour()) {
+            return;
+          }
+          throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
+        }
+      }
+      paramPath = new StringBuilder("The Path must start at (0,0) and end at (1,1) start: ");
+      paramPath.append(this.a[0]);
+      paramPath.append(",");
+      paramPath.append(this.b[0]);
+      paramPath.append(" end:");
+      arrayOfFloat = this.a;
+      i = k - 1;
+      paramPath.append(arrayOfFloat[i]);
+      paramPath.append(",");
+      paramPath.append(this.b[i]);
+      throw new IllegalArgumentException(paramPath.toString());
+    }
+    throw new IllegalArgumentException("The Path has a invalid length ".concat(String.valueOf(f1)));
+  }
+  
+  public final float getInterpolation(float paramFloat)
+  {
+    if (paramFloat <= 0.0F) {
+      return 0.0F;
+    }
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
+    }
+    int j = 0;
+    int i = this.a.length - 1;
+    while (i - j > 1)
+    {
+      int k = (j + i) / 2;
+      if (paramFloat < this.a[k]) {
+        i = k;
+      } else {
+        j = k;
+      }
+    }
+    float[] arrayOfFloat = this.a;
+    float f = arrayOfFloat[i] - arrayOfFloat[j];
+    if (f == 0.0F) {
+      return this.b[j];
+    }
+    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
+    arrayOfFloat = this.b;
+    f = arrayOfFloat[j];
+    return f + paramFloat * (arrayOfFloat[i] - f);
   }
 }
 

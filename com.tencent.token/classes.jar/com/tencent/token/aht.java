@@ -1,8 +1,23 @@
 package com.tencent.token;
 
-public abstract interface aht
+import java.io.Closeable;
+import java.io.Flushable;
+
+public final class aht
+  implements Closeable, Flushable
 {
-  public static final aht a = new aht() {};
+  final ajb a;
+  final aja b;
+  
+  public final void close()
+  {
+    this.b.close();
+  }
+  
+  public final void flush()
+  {
+    this.b.flush();
+  }
 }
 
 

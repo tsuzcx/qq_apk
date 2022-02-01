@@ -1,10 +1,10 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.base.Lemon;
+import android.view.View;
 
 public abstract interface abs
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, Lemon paramLemon);
+  public abstract void a(String paramString, View paramView);
 }
 
 

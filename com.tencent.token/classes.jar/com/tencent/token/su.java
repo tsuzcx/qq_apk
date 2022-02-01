@@ -1,43 +1,143 @@
 package com.tencent.token;
 
-public final class su
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
+public class su
+  implements sn
 {
-  public static void a(sq paramsq, byte[] paramArrayOfByte)
+  public long a = 0L;
+  public ss b = null;
+  private Handler d = null;
+  private ahn e = null;
+  
+  public su()
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
+    try
     {
-      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
-        return;
+      this.e = ahm.a();
+      if ((!c) && (this.e == null)) {
+        throw new AssertionError();
       }
-      paramsq.g = ss.b(paramArrayOfByte, 1);
-      paramsq.h = ss.a(paramArrayOfByte, 5);
-      paramsq.i = paramArrayOfByte[7];
-      paramsq.j = ss.a(paramArrayOfByte, 8);
-      paramsq.k = ss.a(paramArrayOfByte, 10);
-      paramsq.l = ((int)ss.b(paramArrayOfByte, 12));
-      paramsq.m = ((int)ss.b(paramArrayOfByte, 16));
-      paramsq.n = ss.a(paramArrayOfByte, 20);
-      paramsq.o = ss.a(paramArrayOfByte, 22);
-      paramsq.p = ss.a(paramArrayOfByte, 24);
-      paramsq.q = ss.a(paramArrayOfByte, 26);
-      paramsq.r = ss.a(paramArrayOfByte, 28, 64);
-      paramsq.b = ((int)ss.b(paramArrayOfByte, 92));
-      paramsq.c = ss.a(paramArrayOfByte, 96, 256);
-      paramsq.d = ((int)ss.b(paramArrayOfByte, 352));
-      paramsq.e = ss.a(paramArrayOfByte, 356);
-      ss.a(paramsq.t, 0, paramArrayOfByte, 358, paramsq.t.length);
-      int j = paramsq.t.length + 358;
-      int k = paramArrayOfByte.length - 1 - paramsq.s.length - j;
-      int i = j;
-      if (k > 0)
-      {
-        paramsq.f = new byte[k];
-        ss.a(paramsq.f, 0, paramArrayOfByte, j, paramsq.f.length);
-        i = j + paramsq.f.length;
-      }
-      ss.a(paramsq.s, 0, paramArrayOfByte, i, paramsq.s.length);
+      this.b = new ss(this);
+      this.b.a = this.e;
       return;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder("RESULT_ERROR!!!");
+      localStringBuilder.append(localException.getMessage());
+      xa.c(localStringBuilder.toString());
+    }
+  }
+  
+  public final void a()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(10);
+  }
+  
+  public final void a(int paramInt)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("serTime", paramInt);
+    localMessage.what = 13;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 9;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 14;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(12);
+  }
+  
+  public final void b(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 11;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ucSmsPort", paramString);
+    localMessage.what = 1;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void c()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(15);
+  }
+  
+  public final void c(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 2;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
   }
 }
 

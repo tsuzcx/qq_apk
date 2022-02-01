@@ -17,7 +17,7 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.support.annotation.Keep;
 import com.oasisfeng.condom.util.Lazy;
-import com.tencent.token.kh;
+import com.tencent.token.kg;
 
 @Keep
 public class CondomContext
@@ -62,14 +62,14 @@ public class CondomContext
     if ((localContext instanceof Application))
     {
       Application localApplication = (Application)localContext;
-      kh localkh = new kh(localCondomCore, localApplication, paramString);
-      paramCondomOptions = new CondomContext(localCondomCore, localkh, paramString);
+      kg localkg = new kg(localCondomCore, localApplication, paramString);
+      paramCondomOptions = new CondomContext(localCondomCore, localkg, paramString);
       if (paramContext == localContext) {
         paramContext = paramCondomOptions;
       } else {
         paramContext = new CondomContext(localCondomCore, localApplication, paramString);
       }
-      localkh.attachBaseContext(paramContext);
+      localkg.attachBaseContext(paramContext);
       return paramCondomOptions;
     }
     if (paramContext == localContext) {

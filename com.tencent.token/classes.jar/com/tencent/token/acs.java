@@ -1,136 +1,168 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.base.Foxnut;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.turingfd.sdk.base.Filbert;
+import com.tencent.turingfd.sdk.base.Ginkgo;
+import com.tencent.turingfd.sdk.base.Lemon;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public final class acs
 {
-  public static int a = -1;
-  public static Foxnut b;
+  public static acw a;
+  public static acw b;
+  public static acw c;
+  public static boolean d = false;
+  public static afg e;
+  public static Filbert f;
+  public static boolean g = true;
+  public static final abr h = new a();
+  public static final abt i = new c();
   
-  /* Error */
   public static void a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 16	com/tencent/token/acs:a	I
-    //   6: iconst_m1
-    //   7: if_icmpeq +9 -> 16
-    //   10: getstatic 18	com/tencent/token/acs:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   13: ifnonnull +105 -> 118
-    //   16: new 20	android/util/SparseArray
-    //   19: dup
-    //   20: invokespecial 23	android/util/SparseArray:<init>	()V
-    //   23: astore_1
-    //   24: new 20	android/util/SparseArray
-    //   27: dup
-    //   28: invokespecial 23	android/util/SparseArray:<init>	()V
-    //   31: invokestatic 29	com/tencent/turingfd/sdk/base/TuringDIDService$aa:d	(Landroid/util/SparseArray;)Landroid/util/SparseArray;
-    //   34: astore_0
-    //   35: aload_0
-    //   36: astore_1
-    //   37: aload_1
-    //   38: sipush 201
-    //   41: ldc 31
-    //   43: invokestatic 36	com/tencent/token/aez:a	(Landroid/util/SparseArray;ILjava/lang/Class;)Ljava/lang/Object;
-    //   46: checkcast 31	java/lang/String
-    //   49: astore_2
-    //   50: aload_2
-    //   51: astore_0
-    //   52: aload_2
-    //   53: ifnonnull +6 -> 59
-    //   56: ldc 38
-    //   58: astore_0
-    //   59: aload_1
-    //   60: sipush 202
-    //   63: ldc 31
-    //   65: invokestatic 36	com/tencent/token/aez:a	(Landroid/util/SparseArray;ILjava/lang/Class;)Ljava/lang/Object;
-    //   68: checkcast 31	java/lang/String
-    //   71: astore_2
-    //   72: aload_2
-    //   73: astore_1
-    //   74: aload_2
-    //   75: ifnonnull +6 -> 81
-    //   78: ldc 38
-    //   80: astore_1
-    //   81: aload_0
-    //   82: invokestatic 44	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   85: invokevirtual 48	java/lang/Integer:intValue	()I
-    //   88: putstatic 16	com/tencent/token/acs:a	I
-    //   91: new 50	com/tencent/turingfd/sdk/base/Foxnut
-    //   94: dup
-    //   95: invokespecial 51	com/tencent/turingfd/sdk/base/Foxnut:<init>	()V
-    //   98: putstatic 18	com/tencent/token/acs:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   101: getstatic 18	com/tencent/token/acs:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   104: aload_1
-    //   105: invokestatic 44	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   108: invokevirtual 48	java/lang/Integer:intValue	()I
-    //   111: putfield 54	com/tencent/turingfd/sdk/base/Foxnut:uc	I
-    //   114: ldc 2
-    //   116: monitorexit
-    //   117: return
-    //   118: ldc 2
-    //   120: monitorexit
-    //   121: return
-    //   122: astore_0
-    //   123: ldc 2
-    //   125: monitorexit
-    //   126: aload_0
-    //   127: athrow
-    //   128: astore_0
-    //   129: goto -92 -> 37
-    //   132: astore_0
-    //   133: goto -42 -> 91
-    //   136: astore_0
-    //   137: goto -19 -> 118
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	48	0	localObject1	Object
-    //   122	5	0	localObject2	Object
-    //   128	1	0	localThrowable	java.lang.Throwable
-    //   132	1	0	localNumberFormatException1	java.lang.NumberFormatException
-    //   136	1	0	localNumberFormatException2	java.lang.NumberFormatException
-    //   23	82	1	localObject3	Object
-    //   49	26	2	str	java.lang.String
-    // Exception table:
-    //   from	to	target	type
-    //   3	16	122	finally
-    //   16	24	122	finally
-    //   24	35	122	finally
-    //   37	50	122	finally
-    //   59	72	122	finally
-    //   81	91	122	finally
-    //   91	101	122	finally
-    //   101	114	122	finally
-    //   24	35	128	java/lang/Throwable
-    //   81	91	132	java/lang/NumberFormatException
-    //   101	114	136	java/lang/NumberFormatException
+    try
+    {
+      if (b.a())
+      {
+        b.b();
+        new d().start();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public static int b()
+  public static void a(int paramInt1, int paramInt2, acw paramacw, Lemon paramLemon)
+  {
+    paramacw.b();
+    adg.a locala = new adg.a(aey.a(), paramInt1);
+    paramInt1 = paramacw.h;
+    if (paramInt1 <= 0) {
+      locala.b = 1L;
+    } else if (paramInt1 > 12) {
+      locala.b = 12L;
+    } else {
+      locala.b = paramInt1;
+    }
+    locala.f = paramLemon;
+    locala.d = new b(paramacw);
+    locala.e = paramInt2;
+    paramacw = new adg(locala);
+    ((adn)adn.a.b()).a(paramacw);
+  }
+  
+  public static void a(afg paramafg)
   {
     try
     {
-      if (a == -1) {
-        a();
+      aey.a(paramafg.a);
+      e = paramafg;
+      Object localObject1 = new Filbert();
+      Object localObject2 = new Ginkgo();
+      ((Filbert)localObject1).metaData = paramafg.m;
+      ((Ginkgo)localObject2).version = paramafg.j;
+      ((Ginkgo)localObject2).Nb = paramafg.i;
+      ((Ginkgo)localObject2).S = paramafg.l;
+      ((Ginkgo)localObject2).xc = paramafg.k;
+      StringBuilder localStringBuilder = aeu.a("");
+      localStringBuilder.append(paramafg.q);
+      ((Ginkgo)localObject2).yc = localStringBuilder.toString();
+      ((Filbert)localObject1).rc = ((Ginkgo)localObject2);
+      f = (Filbert)localObject1;
+      boolean bool = d;
+      if (bool) {
+        return;
       }
-      int i = a;
-      return i;
+      d = true;
+      abm.a();
+      localObject1 = paramafg.a;
+      localObject2 = abm.a((Context)localObject1, 100);
+      c = (acw)localObject2;
+      if (localObject2 == null) {
+        c = new acw((Context)localObject1, paramafg.x, paramafg.y, paramafg.w, paramafg.v, 100);
+      }
+      localObject2 = abm.a((Context)localObject1, 999);
+      a = (acw)localObject2;
+      if (localObject2 == null) {
+        a = new acw((Context)localObject1, 20, 12, 30, 3, 999);
+      }
+      localObject2 = abm.a((Context)localObject1, 998);
+      b = (acw)localObject2;
+      if (localObject2 == null) {
+        b = new acw((Context)localObject1, 3, 1, 3600, 6, 998);
+      }
+      abq.a().a(afg.c());
+      acx.a(paramafg.a, h, i);
+      acx.a();
+      if (paramafg.t != null) {
+        acx.a((Activity)paramafg.t.get());
+      }
+      a();
+      return;
     }
     finally {}
   }
   
-  public static Foxnut c()
+  public static void b()
   {
     try
     {
-      if (b == null) {
-        a();
-      }
-      Foxnut localFoxnut = b;
-      return localFoxnut;
+      Lemon localLemon = new Lemon();
+      localLemon.od = System.currentTimeMillis();
+      localLemon.duration = 0;
+      localLemon.pd = new ArrayList();
+      a(998, 0, b, localLemon);
+      return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static final class a
+    implements abr
+  {
+    public final void a(String paramString, int paramInt1, int paramInt2, Lemon paramLemon)
+    {
+      if ((paramInt1 == 100) && (acs.c.a())) {
+        paramString = acs.c;
+      } else if ((paramInt1 == 999) && (acs.a.a())) {
+        paramString = acs.a;
+      } else {
+        paramString = null;
+      }
+      if (paramString != null) {
+        acs.a(paramInt1, paramInt2, paramString, paramLemon);
+      }
+    }
+  }
+  
+  public static final class b
+    implements add
+  {
+    public b(acw paramacw) {}
+  }
+  
+  public static final class c
+    implements abt
+  {
+    public final void a(Activity paramActivity) {}
+    
+    public final void b(Activity paramActivity) {}
+  }
+  
+  public static final class d
+    extends Thread
+  {
+    public final void run() {}
   }
 }
 

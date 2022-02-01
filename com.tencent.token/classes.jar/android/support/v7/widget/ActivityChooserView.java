@@ -32,19 +32,19 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import com.tencent.token.ej;
-import com.tencent.token.ff;
-import com.tencent.token.gp.d;
-import com.tencent.token.gp.f;
-import com.tencent.token.gp.g;
-import com.tencent.token.gp.h;
-import com.tencent.token.gp.j;
-import com.tencent.token.hx;
-import com.tencent.token.ie;
-import com.tencent.token.ie.a;
-import com.tencent.token.ie.c;
-import com.tencent.token.iu;
-import com.tencent.token.jf;
+import com.tencent.token.ei;
+import com.tencent.token.fe;
+import com.tencent.token.go.d;
+import com.tencent.token.go.f;
+import com.tencent.token.go.g;
+import com.tencent.token.go.h;
+import com.tencent.token.go.j;
+import com.tencent.token.hw;
+import com.tencent.token.id;
+import com.tencent.token.id.a;
+import com.tencent.token.id.c;
+import com.tencent.token.it;
+import com.tencent.token.je;
 import java.util.List;
 
 public class ActivityChooserView
@@ -56,7 +56,7 @@ public class ActivityChooserView
   final FrameLayout d;
   final FrameLayout e;
   final ImageView f;
-  ej g;
+  ei g;
   final DataSetObserver h = new DataSetObserver()
   {
     public final void onChanged()
@@ -107,34 +107,34 @@ public class ActivityChooserView
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.ActivityChooserView, paramInt, 0);
-    this.k = ((TypedArray)localObject).getInt(gp.j.ActivityChooserView_initialActivityCount, 4);
-    paramAttributeSet = ((TypedArray)localObject).getDrawable(gp.j.ActivityChooserView_expandActivityOverflowButtonDrawable);
+    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ActivityChooserView, paramInt, 0);
+    this.k = ((TypedArray)localObject).getInt(go.j.ActivityChooserView_initialActivityCount, 4);
+    paramAttributeSet = ((TypedArray)localObject).getDrawable(go.j.ActivityChooserView_expandActivityOverflowButtonDrawable);
     ((TypedArray)localObject).recycle();
-    LayoutInflater.from(getContext()).inflate(gp.g.abc_activity_chooser_view, this, true);
+    LayoutInflater.from(getContext()).inflate(go.g.abc_activity_chooser_view, this, true);
     this.m = new b();
-    this.b = findViewById(gp.f.activity_chooser_view_content);
+    this.b = findViewById(go.f.activity_chooser_view_content);
     this.c = this.b.getBackground();
-    this.e = ((FrameLayout)findViewById(gp.f.default_activity_button));
+    this.e = ((FrameLayout)findViewById(go.f.default_activity_button));
     this.e.setOnClickListener(this.m);
     this.e.setOnLongClickListener(this.m);
-    this.f = ((ImageView)this.e.findViewById(gp.f.image));
-    localObject = (FrameLayout)findViewById(gp.f.expand_activities_button);
+    this.f = ((ImageView)this.e.findViewById(go.f.image));
+    localObject = (FrameLayout)findViewById(go.f.expand_activities_button);
     ((FrameLayout)localObject).setOnClickListener(this.m);
     ((FrameLayout)localObject).setAccessibilityDelegate(new View.AccessibilityDelegate()
     {
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
-        paramAnonymousView = ff.a(paramAnonymousAccessibilityNodeInfo);
+        paramAnonymousView = fe.a(paramAnonymousAccessibilityNodeInfo);
         if (Build.VERSION.SDK_INT >= 19) {
           paramAnonymousView.a.setCanOpenPopup(true);
         }
       }
     });
-    ((FrameLayout)localObject).setOnTouchListener(new iu((View)localObject)
+    ((FrameLayout)localObject).setOnTouchListener(new it((View)localObject)
     {
-      public final hx a()
+      public final hw a()
       {
         return ActivityChooserView.this.getListPopupWindow();
       }
@@ -152,7 +152,7 @@ public class ActivityChooserView
       }
     });
     this.d = ((FrameLayout)localObject);
-    this.n = ((ImageView)((FrameLayout)localObject).findViewById(gp.f.image));
+    this.n = ((ImageView)((FrameLayout)localObject).findViewById(go.f.image));
     this.n.setImageDrawable(paramAttributeSet);
     this.a = new a();
     this.a.registerDataSetObserver(new DataSetObserver()
@@ -194,7 +194,7 @@ public class ActivityChooserView
       }
     });
     paramContext = paramContext.getResources();
-    this.o = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(gp.d.abc_config_prefDialogWidth));
+    this.o = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(go.d.abc_config_prefDialogWidth));
   }
   
   final void a(int paramInt)
@@ -234,7 +234,7 @@ public class ActivityChooserView
     return getListPopupWindow().q.isShowing();
   }
   
-  public ie getDataModel()
+  public id getDataModel()
   {
     return this.a.a;
   }
@@ -259,9 +259,9 @@ public class ActivityChooserView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ie localie = this.a.a;
-    if (localie != null) {
-      localie.registerObserver(this.h);
+    id localid = this.a.a;
+    if (localid != null) {
+      localid.registerObserver(this.h);
     }
     this.r = true;
   }
@@ -271,7 +271,7 @@ public class ActivityChooserView
     super.onDetachedFromWindow();
     Object localObject = this.a.a;
     if (localObject != null) {
-      ((ie)localObject).unregisterObserver(this.h);
+      ((id)localObject).unregisterObserver(this.h);
     }
     localObject = getViewTreeObserver();
     if (((ViewTreeObserver)localObject).isAlive()) {
@@ -302,16 +302,16 @@ public class ActivityChooserView
     setMeasuredDimension(localView.getMeasuredWidth(), localView.getMeasuredHeight());
   }
   
-  public void setActivityChooserModel(ie paramie)
+  public void setActivityChooserModel(id paramid)
   {
     a locala = this.a;
-    ie localie = locala.c.a.a;
-    if ((localie != null) && (locala.c.isShown())) {
-      localie.unregisterObserver(locala.c.h);
+    id localid = locala.c.a.a;
+    if ((localid != null) && (locala.c.isShown())) {
+      localid.unregisterObserver(locala.c.h);
     }
-    locala.a = paramie;
-    if ((paramie != null) && (locala.c.isShown())) {
-      paramie.registerObserver(locala.c.h);
+    locala.a = paramid;
+    if ((paramid != null) && (locala.c.isShown())) {
+      paramid.registerObserver(locala.c.h);
     }
     locala.notifyDataSetChanged();
     if (getListPopupWindow().q.isShowing())
@@ -347,9 +347,9 @@ public class ActivityChooserView
     this.i = paramOnDismissListener;
   }
   
-  public void setProvider(ej paramej)
+  public void setProvider(ei paramei)
   {
-    this.g = paramej;
+    this.g = paramei;
   }
   
   public static class InnerLayout
@@ -360,7 +360,7 @@ public class ActivityChooserView
     public InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = jf.a(paramContext, paramAttributeSet, a);
+      paramContext = je.a(paramContext, paramAttributeSet, a);
       setBackgroundDrawable(paramContext.a(0));
       paramContext.a.recycle();
     }
@@ -369,7 +369,7 @@ public class ActivityChooserView
   final class a
     extends BaseAdapter
   {
-    ie a;
+    id a;
     boolean b;
     private int d = 4;
     private boolean e;
@@ -493,26 +493,26 @@ public class ActivityChooserView
         }
         else
         {
-          localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(gp.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+          localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(go.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
           localView.setId(1);
-          ((TextView)localView.findViewById(gp.f.title)).setText(ActivityChooserView.this.getContext().getString(gp.h.abc_activity_chooser_view_see_all));
+          ((TextView)localView.findViewById(go.f.title)).setText(ActivityChooserView.this.getContext().getString(go.h.abc_activity_chooser_view_see_all));
         }
         return localView;
       }
       if (paramView != null)
       {
         localView = paramView;
-        if (paramView.getId() == gp.f.list_item) {}
+        if (paramView.getId() == go.f.list_item) {}
       }
       else
       {
-        localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(gp.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
+        localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(go.g.abc_activity_chooser_view_list_item, paramViewGroup, false);
       }
       paramView = ActivityChooserView.this.getContext().getPackageManager();
-      paramViewGroup = (ImageView)localView.findViewById(gp.f.icon);
+      paramViewGroup = (ImageView)localView.findViewById(go.f.icon);
       ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
       paramViewGroup.setImageDrawable(localResolveInfo.loadIcon(paramView));
-      ((TextView)localView.findViewById(gp.f.title)).setText(localResolveInfo.loadLabel(paramView));
+      ((TextView)localView.findViewById(go.f.title)).setText(localResolveInfo.loadLabel(paramView));
       if ((this.b) && (paramInt == 0) && (this.e))
       {
         localView.setActivated(true);
@@ -589,13 +589,13 @@ public class ActivityChooserView
         synchronized (paramView.b)
         {
           paramView.d();
-          ie.a locala1 = (ie.a)paramView.c.get(paramInt);
-          ie.a locala2 = (ie.a)paramView.c.get(0);
+          id.a locala1 = (id.a)paramView.c.get(paramInt);
+          id.a locala2 = (id.a)paramView.c.get(0);
           if (locala2 == null) {
             break label261;
           }
           f = locala2.b - locala1.b + 5.0F;
-          paramView.a(new ie.c(new ComponentName(locala1.a.activityInfo.packageName, locala1.a.activityInfo.name), System.currentTimeMillis(), f));
+          paramView.a(new id.c(new ComponentName(locala1.a.activityInfo.packageName, locala1.a.activityInfo.name), System.currentTimeMillis(), f));
           return;
         }
         return;

@@ -2,27 +2,9 @@ package com.tencent.token;
 
 public abstract interface rn
 {
-  public abstract int a(String paramString);
-  
-  public abstract int a(String paramString, int paramInt);
-  
-  public abstract long a(String paramString, long paramLong);
-  
-  public abstract String a(String paramString1, String paramString2);
-  
   public abstract void a();
   
-  public abstract boolean a(String paramString, boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(String paramString, int paramInt);
-  
-  public abstract boolean b(String paramString, long paramLong);
-  
-  public abstract boolean b(String paramString1, String paramString2);
-  
-  public abstract boolean b(String paramString, boolean paramBoolean);
+  public abstract void b();
 }
 
 

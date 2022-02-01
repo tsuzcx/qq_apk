@@ -1,17 +1,25 @@
 package com.tencent.token;
 
+import java.io.File;
 import java.io.IOException;
 
-public final class akk
-  extends IOException
+public abstract interface akk
 {
-  public final ajy a;
-  
-  public akk(ajy paramajy)
+  public static final akk a = new akk()
   {
-    super("stream was reset: ".concat(String.valueOf(paramajy)));
-    this.a = paramajy;
-  }
+    public final void a(File paramAnonymousFile)
+    {
+      if (!paramAnonymousFile.delete())
+      {
+        if (!paramAnonymousFile.exists()) {
+          return;
+        }
+        throw new IOException("failed to delete ".concat(String.valueOf(paramAnonymousFile)));
+      }
+    }
+  };
+  
+  public abstract void a(File paramFile);
 }
 
 

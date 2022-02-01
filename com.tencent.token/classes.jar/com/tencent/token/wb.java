@@ -8,60 +8,75 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wb
-  extends tk
+  extends tj
 {
-  private long d;
-  private long e;
+  public long d;
+  private int e;
   private int f;
-  private int g;
-  private long h;
-  private Integer i;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this);
+    localStringBuilder.append("sessId null ");
+    xa.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramaar.c.get("param.scene_id")).intValue();
-    this.h = ((Long)paramaar.c.get("param.op_time")).longValue();
-    this.f = paramaar.j;
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramaaq.c.get("param.common.seq")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j != 0)
+    int i = paramJSONObject.getInt("err");
+    Object localObject;
+    if (i != 0)
     {
-      a(j, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject = new StringBuilder("error");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(",error code =");
+      ((StringBuilder)localObject).append(i);
+      xa.a(((StringBuilder)localObject).toString());
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("--data:");
+      ((StringBuilder)localObject).append(new String(paramJSONObject));
+      xa.a(((StringBuilder)localObject).toString());
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.a("mbtoken3_qry_face_verify_on_off ret: ".concat(String.valueOf(paramJSONObject)));
-      j = paramJSONObject.getInt("seq_id");
-      if (j != this.f)
+      if (paramJSONObject.getInt("seq_id") != this.e)
       {
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.f);
-        xb.c(paramJSONObject.toString());
         this.a.a(10030, null, null);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("parseJSON error seq is wrong seq=");
+        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
+        ((StringBuilder)localObject).append(",right = ");
+        ((StringBuilder)localObject).append(this.e);
+        xa.c(((StringBuilder)localObject).toString());
         return;
       }
-      this.i = Integer.valueOf(paramJSONObject.getInt("verify_type"));
+      this.f = paramJSONObject.optInt("config_val");
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -71,7 +86,7 @@ public final class wb
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.i;
+      localMessage.arg2 = this.f;
       localMessage.sendToTarget();
       this.b.e = true;
     }

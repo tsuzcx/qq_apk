@@ -1,10 +1,23 @@
 package com.tencent.token;
 
-public abstract interface ajc
+public final class ajc
+  implements aij
 {
-  public abstract air a();
+  public final ail a;
   
-  public abstract aiz b();
+  public ajc(ail paramail)
+  {
+    this.a = paramail;
+  }
+  
+  public final aiq a(aij.a parama)
+  {
+    ajp localajp = (ajp)parama;
+    aio localaio = localajp.d;
+    aji localaji = localajp.a;
+    boolean bool = localaio.b.equals("GET");
+    return localajp.a(localaio, localaji, localaji.a(this.a, parama, bool ^ true), localaji.b());
+  }
 }
 
 

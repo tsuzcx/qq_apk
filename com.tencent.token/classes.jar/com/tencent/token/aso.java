@@ -1,11 +1,6 @@
 package com.tencent.token;
 
-public final class aso<F, S, T>
-{
-  public F a;
-  public S b;
-  public T c;
-}
+public abstract class aso {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

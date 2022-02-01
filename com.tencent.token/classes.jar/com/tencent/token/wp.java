@@ -1,67 +1,45 @@
 package com.tencent.token;
 
-public class wp
+public final class wp
 {
-  public static long d;
-  public static byte[] k = new byte[16];
-  public short a;
-  public short b;
-  public long c;
-  public short e;
-  public short f;
-  public short g;
-  public long h;
-  public byte i;
-  public byte j;
-  public byte[] l = null;
-  
-  public wp() {}
-  
-  public wp(short paramShort, byte paramByte)
+  public static int a(byte[] paramArrayOfByte, int paramInt, wo paramwo)
   {
-    this.b = paramShort;
-    this.i = paramByte;
-    this.j = 0;
-  }
-  
-  public final byte[] a()
-  {
-    Object localObject = this.l;
-    int m;
-    if ((localObject != null) && (localObject.length > 0)) {
-      m = localObject.length;
-    } else {
-      m = 0;
+    if (paramInt <= 42) {
+      return -1;
     }
-    this.a = ((short)(m + 41 + 1));
-    localObject = new StringBuilder("socket req msg total len: ");
-    ((StringBuilder)localObject).append(this.a);
-    xb.a(((StringBuilder)localObject).toString());
-    this.h = System.currentTimeMillis();
-    short s = this.a;
-    localObject = new byte[s];
-    localObject[0] = 2;
-    ss.a((byte[])localObject, 1, s);
-    ss.a((byte[])localObject, 3, this.b);
-    ss.a((byte[])localObject, 5, this.c);
-    ss.a((byte[])localObject, 9, d);
-    ss.a((byte[])localObject, 13, this.e);
-    ss.a((byte[])localObject, 15, this.f);
-    ss.a((byte[])localObject, 17, this.g);
-    ss.a((byte[])localObject, 19, this.h);
-    localObject[23] = this.i;
-    localObject[24] = this.j;
-    byte[] arrayOfByte = k;
-    ss.a((byte[])localObject, 25, arrayOfByte, 0, arrayOfByte.length);
-    int i1 = k.length + 25;
-    int n = i1;
-    if (m > 0)
+    if ((paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramInt - 1)] == 3))
     {
-      ss.a((byte[])localObject, i1, this.l, 0, m);
-      n = i1 + m;
+      paramwo.a = sr.a(paramArrayOfByte, 1);
+      if (paramwo.a != paramInt) {
+        return -3;
+      }
+      paramwo.b = sr.a(paramArrayOfByte, 3);
+      paramwo.c = sr.b(paramArrayOfByte, 5);
+      wo.d = sr.b(paramArrayOfByte, 9);
+      paramwo.e = sr.a(paramArrayOfByte, 13);
+      paramwo.f = sr.a(paramArrayOfByte, 15);
+      paramwo.g = sr.a(paramArrayOfByte, 17);
+      paramwo.h = sr.b(paramArrayOfByte, 19);
+      paramwo.i = paramArrayOfByte[23];
+      paramwo.j = paramArrayOfByte[24];
+      sr.b(paramArrayOfByte, 25, wo.k, 16);
+      paramArrayOfByte = new StringBuilder("socket parse msg head: totallen[");
+      paramArrayOfByte.append(paramwo.a);
+      paramArrayOfByte.append("] msgtype[");
+      paramArrayOfByte.append(paramwo.b);
+      paramArrayOfByte.append("] seq[");
+      paramArrayOfByte.append(paramwo.c);
+      paramArrayOfByte.append("] traceID[");
+      paramArrayOfByte.append(wo.d);
+      paramArrayOfByte.append("] version[");
+      paramArrayOfByte.append(paramwo.g);
+      paramArrayOfByte.append("] echo[");
+      paramArrayOfByte.append(wo.k);
+      paramArrayOfByte.append("]");
+      xa.a(paramArrayOfByte.toString());
+      return 0;
     }
-    localObject[n] = 3;
-    return localObject;
+    return -2;
   }
 }
 

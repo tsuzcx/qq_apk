@@ -1,20 +1,46 @@
 package com.tencent.token;
 
-import com.tencent.mm.sdk.plugin.MMPluginOAuth;
-import com.tencent.mm.sdk.plugin.MMPluginOAuth.Receiver;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
 public final class pz
-  implements Runnable
 {
-  public pz(MMPluginOAuth.Receiver paramReceiver, MMPluginOAuth paramMMPluginOAuth, String paramString) {}
-  
-  public final void run()
+  public static final class a
   {
-    MMPluginOAuth localMMPluginOAuth = this.a;
-    String str = this.b;
-    MMPluginOAuth.Receiver.a(localMMPluginOAuth.b);
-    localMMPluginOAuth.a = str;
-    pq.b("MicroMsg.SDK.MMPluginOAuth", "access token: ".concat(String.valueOf(str)));
+    public static Object a(int paramInt, String paramString)
+    {
+      switch (paramInt)
+      {
+      default: 
+        break;
+      case 6: 
+      case 5: 
+      case 4: 
+      case 2: 
+      case 1: 
+        try
+        {
+          return Double.valueOf(paramString);
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+        }
+        return Float.valueOf(paramString);
+        return Boolean.valueOf(paramString);
+        return Long.valueOf(paramString);
+        return Integer.valueOf(paramString);
+        pp.a("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
+        return null;
+      }
+      return paramString;
+    }
+  }
+  
+  public static final class b
+    implements BaseColumns
+  {
+    public static final Uri a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
   }
 }
 

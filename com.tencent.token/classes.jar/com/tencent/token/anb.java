@@ -1,22 +1,23 @@
 package com.tencent.token;
 
+import android.graphics.PointF;
+import java.util.ArrayList;
+import java.util.List;
+
 public final class anb
 {
-  final int a;
-  final ams b;
-  final amp c;
+  public final List<aml> a = new ArrayList();
+  public PointF b;
+  public boolean c;
   
-  public static enum a
+  public final String toString()
   {
-    public static final int a = 1;
-    public static final int b = 2;
-    public static final int c = 3;
-    public static final int d = 4;
-    
-    public static int[] a()
-    {
-      return (int[])e.clone();
-    }
+    StringBuilder localStringBuilder = new StringBuilder("ShapeData{numCurves=");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append("closed=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

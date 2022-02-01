@@ -1,237 +1,316 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import tmsdk.common.tcc.TccCryptor;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class apu
 {
-  @Deprecated
-  public static JceStruct a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, JceStruct paramJceStruct)
+  private final boolean a = false;
+  private final String b = "GuidCertifier";
+  private Context c;
+  private aqg d;
+  private volatile boolean e = false;
+  private volatile String f;
+  private volatile long g = 0L;
+  
+  public apu(Context paramContext, aqg paramaqg)
   {
-    if (paramArrayOfByte2 != null)
+    this.c = paramContext;
+    this.d = paramaqg;
+    this.f = this.d.a.e();
+    if (TextUtils.isEmpty(this.f))
     {
-      if (paramArrayOfByte2.length == 0) {
-        return null;
-      }
-      paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2);
-      if (paramArrayOfByte1 == null) {
-        return null;
-      }
-      return aqa.a(paramArrayOfByte1, paramJceStruct);
+      this.e = false;
+      this.f = this.d.a.f();
+      return;
     }
-    return null;
+    this.e = true;
   }
   
-  public static byte[] a(JceStruct paramJceStruct)
+  private static void a(ag paramag)
   {
-    paramJceStruct = a(aqa.a(paramJceStruct));
-    if (paramJceStruct == null) {
+    new StringBuilder("printCSRegist()CSRegist.imei: ").append(paramag.a);
+    new StringBuilder("printCSRegist()CSRegist.imsi: ").append(paramag.b);
+    new StringBuilder("printCSRegist()CSRegist.mac: ").append(paramag.c);
+    new StringBuilder("printCSRegist()CSRegist.qq: ").append(paramag.d);
+    new StringBuilder("printCSRegist()CSRegist.phone: ").append(paramag.e);
+    new StringBuilder("printCSRegist()CSRegist.product: ").append(paramag.f);
+    new StringBuilder("printCSRegist()CSRegist.lc: ").append(paramag.g);
+    new StringBuilder("printCSRegist()CSRegist.buildno: ").append(paramag.h);
+    new StringBuilder("printCSRegist()CSRegist.channelid: ").append(paramag.i);
+    new StringBuilder("printCSRegist()CSRegist.platform: ").append(paramag.j);
+    new StringBuilder("printCSRegist()CSRegist.subplatform: ").append(paramag.k);
+    new StringBuilder("printCSRegist()CSRegist.isbuildin: ").append(paramag.l);
+    new StringBuilder("printCSRegist()CSRegist.pkgname: ").append(paramag.m);
+    new StringBuilder("printCSRegist()CSRegist.ua: ").append(paramag.n);
+    new StringBuilder("printCSRegist()CSRegist.sdkver: ").append(paramag.o);
+    new StringBuilder("printCSRegist()CSRegist.androidid: ").append(paramag.p);
+    new StringBuilder("printCSRegist()CSRegist.lang: ").append(paramag.q);
+    new StringBuilder("printCSRegist()CSRegist.simnum: ").append(paramag.r);
+    new StringBuilder("printCSRegist()CSRegist.cpu: ").append(paramag.s);
+    new StringBuilder("printCSRegist()CSRegist.cpufreq: ").append(paramag.t);
+    new StringBuilder("printCSRegist()CSRegist.cpunum: ").append(paramag.u);
+    new StringBuilder("printCSRegist()CSRegist.resolution: ").append(paramag.v);
+    new StringBuilder("printCSRegist()CSRegist.ram: ").append(paramag.w);
+    new StringBuilder("printCSRegist()CSRegist.rom: ").append(paramag.x);
+    new StringBuilder("printCSRegist()CSRegist.sdcard: ").append(paramag.y);
+    new StringBuilder("printCSRegist()CSRegist.build_brand: ").append(paramag.z);
+    new StringBuilder("printCSRegist()CSRegist.build_version_incremental: ").append(paramag.A);
+    new StringBuilder("printCSRegist()CSRegist.build_version_release: ").append(paramag.B);
+    new StringBuilder("printCSRegist()CSRegist.version: ").append(paramag.P);
+    new StringBuilder("printCSRegist()CSRegist.extSdkVer: ").append(paramag.Q);
+    new StringBuilder("printCSRegist()CSRegist.pkgkey: ").append(paramag.R);
+  }
+  
+  private void a(String paramString, ag paramag)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    this.f = paramString;
+    this.e = true;
+    this.d.a.c(paramString);
+    this.d.a.a(paramag);
+  }
+  
+  private static boolean a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 != paramInt2;
+  }
+  
+  private static boolean a(long paramLong1, long paramLong2)
+  {
+    return paramLong1 != paramLong2;
+  }
+  
+  private static boolean a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return true;
+    }
+    return !paramString1.equals(paramString2);
+  }
+  
+  private ag e()
+  {
+    ag localag = this.d.a.h();
+    if (localag.a == null) {
+      localag.a = "";
+    }
+    return localag;
+  }
+  
+  public final boolean a()
+  {
+    return (TextUtils.isEmpty(d())) || (!this.e);
+  }
+  
+  public final String b()
+  {
+    if (!a())
+    {
+      new StringBuilder("checkGuid() !need, mGuid: ").append(this.f);
+      return this.f;
+    }
+    Object localObject1 = this.d.d.b();
+    new StringBuilder("checkGuid() encodeKey: ").append(localObject1);
+    ag localag = e();
+    Object localObject3 = new ai();
+    ((ai)localObject3).b = this.d.b.a();
+    ((ai)localObject3).a = 1;
+    ((ai)localObject3).d = apt.a(((aqd)localObject1).b.getBytes(), localag);
+    a(localag);
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add(localObject3);
+    localObject3 = new AtomicReference();
+    if (this.d.a(false, true, false, (aqd)localObject1, (ArrayList)localObject2, (AtomicReference)localObject3) != 0) {
       return null;
     }
-    return paramJceStruct;
-  }
-  
-  /* Error */
-  static byte[] a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: new 27	java/io/ByteArrayOutputStream
-    //   3: dup
-    //   4: invokespecial 31	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore_1
-    //   8: new 33	java/util/zip/DeflaterOutputStream
-    //   11: dup
-    //   12: aload_1
-    //   13: invokespecial 36	java/util/zip/DeflaterOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   16: astore_2
-    //   17: aload_2
-    //   18: aload_0
-    //   19: invokevirtual 40	java/util/zip/DeflaterOutputStream:write	([B)V
-    //   22: aload_2
-    //   23: invokevirtual 43	java/util/zip/DeflaterOutputStream:finish	()V
-    //   26: aload_1
-    //   27: invokevirtual 47	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   30: astore_0
-    //   31: aload_1
-    //   32: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   35: aload_2
-    //   36: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
-    //   39: aload_0
-    //   40: areturn
-    //   41: astore_1
-    //   42: aload_1
-    //   43: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   46: aload_0
-    //   47: areturn
-    //   48: astore_0
-    //   49: goto +26 -> 75
-    //   52: astore_0
-    //   53: aload_0
-    //   54: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   57: aload_1
-    //   58: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   61: aload_2
-    //   62: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
-    //   65: goto +8 -> 73
-    //   68: astore_0
-    //   69: aload_0
-    //   70: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   73: aconst_null
-    //   74: areturn
-    //   75: aload_1
-    //   76: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   79: aload_2
-    //   80: invokevirtual 51	java/util/zip/DeflaterOutputStream:close	()V
-    //   83: goto +8 -> 91
-    //   86: astore_1
-    //   87: aload_1
-    //   88: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   91: aload_0
-    //   92: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	paramArrayOfByte	byte[]
-    //   7	25	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   41	35	1	localIOException1	java.io.IOException
-    //   86	2	1	localIOException2	java.io.IOException
-    //   16	64	2	localDeflaterOutputStream	java.util.zip.DeflaterOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   31	39	41	java/io/IOException
-    //   17	31	48	finally
-    //   53	57	48	finally
-    //   17	31	52	java/io/IOException
-    //   57	65	68	java/io/IOException
-    //   75	83	86	java/io/IOException
-  }
-  
-  @Deprecated
-  public static byte[] a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
-  {
-    if (paramJceStruct == null) {
+    localObject1 = (ArrayList)((AtomicReference)localObject3).get();
+    if (localObject1 == null) {
       return null;
     }
-    paramJceStruct = a(paramJceStruct);
-    if (paramJceStruct == null) {
+    if (((ArrayList)localObject1).size() <= 0) {
       return null;
     }
-    return TccCryptor.encrypt(paramJceStruct, paramArrayOfByte);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (paramArrayOfByte2 != null) {
-      if (paramArrayOfByte2.length == 0) {
-        return null;
-      }
+    localObject1 = (al)((ArrayList)localObject1).get(0);
+    if (localObject1 == null) {
+      return null;
     }
+    localObject2 = new StringBuilder("checkGuid() rs.seqNo: ");
+    ((StringBuilder)localObject2).append(((al)localObject1).b);
+    ((StringBuilder)localObject2).append(" rs.cmd: ");
+    ((StringBuilder)localObject2).append(((al)localObject1).a);
+    ((StringBuilder)localObject2).append(" rs.retCode: ");
+    ((StringBuilder)localObject2).append(((al)localObject1).d);
+    ((StringBuilder)localObject2).append(" rs.dataRetCode: ");
+    ((StringBuilder)localObject2).append(((al)localObject1).e);
+    if (1 == ((al)localObject1).d) {
+      return null;
+    }
+    if (((al)localObject1).e != 0) {
+      return null;
+    }
+    localObject2 = ((al)localObject1).f;
+    if (localObject2 == null) {
+      return null;
+    }
+    new StringBuilder("checkGuid() rs.data.length: ").append(((al)localObject1).f.length);
+    localObject1 = new ak();
     try
     {
-      paramArrayOfByte1 = TccCryptor.decrypt(paramArrayOfByte2, paramArrayOfByte1);
-      if (paramArrayOfByte1 == null) {
+      localObject1 = apt.a(this.d.d.b().b.getBytes(), (byte[])localObject2, (JceStruct)localObject1);
+      if (localObject1 == null) {
         return null;
       }
-      return b(paramArrayOfByte1);
+      a(((ak)localObject1).a, localag);
+      new StringBuilder("checkGuid() ret.guid mGuid: ").append(this.f);
+      return this.f;
     }
-    catch (Exception paramArrayOfByte1) {}
-    return null;
+    catch (Exception localException) {}
     return null;
   }
   
-  /* Error */
-  static byte[] b(byte[] paramArrayOfByte)
+  public final boolean c()
   {
-    // Byte code:
-    //   0: new 71	java/io/ByteArrayInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
-    //   8: astore_0
-    //   9: new 75	java/util/zip/InflaterInputStream
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 78	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
-    //   17: astore_2
-    //   18: new 27	java/io/ByteArrayOutputStream
-    //   21: dup
-    //   22: invokespecial 31	java/io/ByteArrayOutputStream:<init>	()V
-    //   25: astore_3
-    //   26: aload_2
-    //   27: invokevirtual 82	java/util/zip/InflaterInputStream:read	()I
-    //   30: istore_1
-    //   31: iload_1
-    //   32: iconst_m1
-    //   33: if_icmpeq +11 -> 44
-    //   36: aload_3
-    //   37: iload_1
-    //   38: invokevirtual 85	java/io/ByteArrayOutputStream:write	(I)V
-    //   41: goto -15 -> 26
-    //   44: aload_3
-    //   45: invokevirtual 47	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   48: astore 4
-    //   50: aload_0
-    //   51: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
-    //   54: aload_2
-    //   55: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
-    //   58: aload_3
-    //   59: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   62: aload 4
-    //   64: areturn
-    //   65: astore_0
-    //   66: aload_0
-    //   67: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   70: aload 4
-    //   72: areturn
-    //   73: astore 4
-    //   75: goto +32 -> 107
-    //   78: astore 4
-    //   80: aload 4
-    //   82: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   85: aload_0
-    //   86: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
-    //   89: aload_2
-    //   90: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
-    //   93: aload_3
-    //   94: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   97: goto +8 -> 105
-    //   100: astore_0
-    //   101: aload_0
-    //   102: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   105: aconst_null
-    //   106: areturn
-    //   107: aload_0
-    //   108: invokevirtual 86	java/io/ByteArrayInputStream:close	()V
-    //   111: aload_2
-    //   112: invokevirtual 87	java/util/zip/InflaterInputStream:close	()V
-    //   115: aload_3
-    //   116: invokevirtual 50	java/io/ByteArrayOutputStream:close	()V
-    //   119: goto +8 -> 127
-    //   122: astore_0
-    //   123: aload_0
-    //   124: invokevirtual 54	java/io/IOException:printStackTrace	()V
-    //   127: aload 4
-    //   129: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	130	0	paramArrayOfByte	byte[]
-    //   30	8	1	i	int
-    //   17	95	2	localInflaterInputStream	java.util.zip.InflaterInputStream
-    //   25	91	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   48	23	4	arrayOfByte	byte[]
-    //   73	1	4	localObject	Object
-    //   78	50	4	localIOException	java.io.IOException
-    // Exception table:
-    //   from	to	target	type
-    //   50	62	65	java/io/IOException
-    //   26	31	73	finally
-    //   36	41	73	finally
-    //   44	50	73	finally
-    //   80	85	73	finally
-    //   26	31	78	java/io/IOException
-    //   36	41	78	java/io/IOException
-    //   44	50	78	java/io/IOException
-    //   85	97	100	java/io/IOException
-    //   107	119	122	java/io/IOException
+    long l = System.currentTimeMillis();
+    int i;
+    if (!apb.a(l, this.g, 720))
+    {
+      i = 0;
+    }
+    else
+    {
+      this.g = l;
+      i = 1;
+    }
+    Object localObject1 = null;
+    boolean bool1;
+    if (i == 0)
+    {
+      l = System.currentTimeMillis();
+      if (l - this.d.a.i() > 86400000L) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        this.d.a.a(l);
+        localObject2 = e();
+        localObject3 = this.d.a.g();
+        if (localObject2 != null)
+        {
+          a((ag)localObject3);
+          bool1 = a(((ag)localObject2).a, ((ag)localObject3).a);
+          boolean bool2 = a(((ag)localObject2).b, ((ag)localObject3).b);
+          boolean bool3 = a(((ag)localObject2).c, ((ag)localObject3).c);
+          boolean bool4 = a(((ag)localObject2).d, ((ag)localObject3).d);
+          boolean bool5 = a(((ag)localObject2).e, ((ag)localObject3).e);
+          boolean bool6 = a(((ag)localObject2).f, ((ag)localObject3).f);
+          boolean bool7 = a(((ag)localObject2).g, ((ag)localObject3).g);
+          boolean bool8 = a(((ag)localObject2).h, ((ag)localObject3).h);
+          boolean bool9 = a(((ag)localObject2).i, ((ag)localObject3).i);
+          boolean bool10 = a(((ag)localObject2).j, ((ag)localObject3).j);
+          boolean bool11 = a(((ag)localObject2).k, ((ag)localObject3).k);
+          if (((ag)localObject2).l != ((ag)localObject3).l) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          boolean bool12 = a(((ag)localObject2).m, ((ag)localObject3).m);
+          boolean bool13 = a(((ag)localObject2).n, ((ag)localObject3).n);
+          boolean bool14 = a(((ag)localObject2).o, ((ag)localObject3).o);
+          boolean bool15 = a(((ag)localObject2).p, ((ag)localObject3).p);
+          boolean bool16 = a(((ag)localObject2).q, ((ag)localObject3).q);
+          boolean bool17 = a(((ag)localObject2).r, ((ag)localObject3).r);
+          boolean bool18 = a(((ag)localObject2).s, ((ag)localObject3).s);
+          boolean bool19 = a(((ag)localObject2).t, ((ag)localObject3).t);
+          boolean bool20 = a(((ag)localObject2).u, ((ag)localObject3).u);
+          boolean bool21 = a(((ag)localObject2).v, ((ag)localObject3).v);
+          boolean bool22 = a(((ag)localObject2).w, ((ag)localObject3).w);
+          boolean bool23 = a(((ag)localObject2).x, ((ag)localObject3).x);
+          boolean bool24 = a(((ag)localObject2).y, ((ag)localObject3).y);
+          boolean bool25 = a(((ag)localObject2).z, ((ag)localObject3).z);
+          boolean bool26 = a(((ag)localObject2).A, ((ag)localObject3).A);
+          boolean bool27 = a(((ag)localObject2).B, ((ag)localObject3).B);
+          boolean bool28 = a(((ag)localObject2).P, ((ag)localObject3).P);
+          boolean bool29 = a(((ag)localObject2).Q, ((ag)localObject3).Q);
+          if ((a(((ag)localObject2).R, ((ag)localObject3).R) | bool1 | false | bool2 | bool3 | bool4 | bool5 | bool6 | bool7 | bool8 | bool9 | bool10 | bool11 | i | bool12 | bool13 | bool14 | bool15 | bool16 | bool17 | bool18 | bool19 | bool20 | bool21 | bool22 | bool23 | bool24 | bool25 | bool26 | bool27 | bool28 | bool29)) {
+            localObject1 = localObject2;
+          }
+        }
+      }
+    }
+    Object localObject2 = new StringBuilder("checUpdateGuid() need: ");
+    if (localObject1 != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject2).append(bool1);
+    if (localObject1 == null) {
+      return false;
+    }
+    new StringBuilder("updateGuid() mGuid: ").append(this.f);
+    localObject2 = this.d.d.b();
+    new StringBuilder("updateGuid() encodeKey: ").append(localObject2);
+    Object localObject4 = new ah();
+    ((ah)localObject4).a = localObject1;
+    ((ah)localObject4).b = d();
+    Object localObject3 = new ai();
+    ((ai)localObject3).b = this.d.b.a();
+    ((ai)localObject3).a = 2;
+    ((ai)localObject3).d = apt.a(((aqd)localObject2).b.getBytes(), (JceStruct)localObject4);
+    a(((ah)localObject4).a);
+    localObject4 = new ArrayList();
+    ((ArrayList)localObject4).add(localObject3);
+    localObject3 = new AtomicReference();
+    if (this.d.a(false, false, true, (aqd)localObject2, (ArrayList)localObject4, (AtomicReference)localObject3) != 0) {
+      return false;
+    }
+    localObject2 = (ArrayList)((AtomicReference)localObject3).get();
+    if (localObject2 == null) {
+      return false;
+    }
+    if (((ArrayList)localObject2).size() <= 0) {
+      return false;
+    }
+    localObject2 = (al)((ArrayList)localObject2).get(0);
+    if (localObject2 == null) {
+      return false;
+    }
+    localObject3 = new StringBuilder("updateGuid() rs.seqNo: ");
+    ((StringBuilder)localObject3).append(((al)localObject2).b);
+    ((StringBuilder)localObject3).append("rs.cmd");
+    ((StringBuilder)localObject3).append(((al)localObject2).a);
+    ((StringBuilder)localObject3).append(" rs.retCode: ");
+    ((StringBuilder)localObject3).append(((al)localObject2).d);
+    ((StringBuilder)localObject3).append(" rs.dataRetCode: ");
+    ((StringBuilder)localObject3).append(((al)localObject2).e);
+    if (1 == ((al)localObject2).d) {
+      return false;
+    }
+    if (((al)localObject2).d != 0) {
+      return false;
+    }
+    new StringBuilder("updateGuid() succed, mGuid: ").append(this.f);
+    a(this.f, localObject1);
+    return true;
+  }
+  
+  public final String d()
+  {
+    if (this.f == null) {
+      return "";
+    }
+    return this.f;
   }
 }
 

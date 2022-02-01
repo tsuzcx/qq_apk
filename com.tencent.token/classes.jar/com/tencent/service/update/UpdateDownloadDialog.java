@@ -15,12 +15,12 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.rc;
-import com.tencent.token.rc.a;
-import com.tencent.token.rc.b;
-import com.tencent.token.rc.c;
-import com.tencent.token.rn;
-import com.tencent.token.rp;
+import com.tencent.token.rb;
+import com.tencent.token.rb.a;
+import com.tencent.token.rb.b;
+import com.tencent.token.rb.c;
+import com.tencent.token.rm;
+import com.tencent.token.ro;
 import com.tencent.token.ui.IndexActivity;
 import com.tmsdk.TMSDKContext;
 import com.tmsdk.Unit;
@@ -30,7 +30,7 @@ public class UpdateDownloadDialog
   extends Dialog
 {
   Context a;
-  rc.a b;
+  rb.a b;
   Button c;
   TextView d;
   TextView e;
@@ -43,30 +43,30 @@ public class UpdateDownloadDialog
       }
     }
   };
-  rc.c g = new rc.c()
+  rb.c g = new rb.c()
   {
-    public final void a(rc.a paramAnonymousa)
+    public final void a(rb.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void b(rc.a paramAnonymousa)
+    public final void b(rb.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void c(rc.a paramAnonymousa)
+    public final void c(rb.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void d(rc.a paramAnonymousa)
+    public final void d(rb.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
   };
   
-  public UpdateDownloadDialog(Context paramContext, rc.a parama)
+  public UpdateDownloadDialog(Context paramContext, rb.a parama)
   {
     super(paramContext, 2131558791);
     this.a = paramContext;
@@ -104,7 +104,7 @@ public class UpdateDownloadDialog
     this.c.setText("重试");
   }
   
-  final void a(rc.a parama)
+  final void a(rb.a parama)
   {
     if (parama == this.b)
     {
@@ -157,53 +157,53 @@ public class UpdateDownloadDialog
           default: 
             return;
           case 7: 
-            rc.b.a().d(paramAnonymousView.b);
+            rb.b.a().d(paramAnonymousView.b);
             return;
           case 6: 
-            rc.a(paramAnonymousView.a, new File(rc.a(), paramAnonymousView.b.d));
+            rb.a(paramAnonymousView.a, new File(rb.a(), paramAnonymousView.b.d));
             return;
           case 4: 
           case 5: 
-            rc.b.a().b(paramAnonymousView.b);
+            rb.b.a().b(paramAnonymousView.b);
             return;
           }
-          rp localrp = rp.a();
-          localrp.k(2);
-          localrp.c(true);
-          rc.b.a().c(paramAnonymousView.b);
+          ro localro = ro.a();
+          localro.k(2);
+          localro.c(true);
+          rb.b.a().c(paramAnonymousView.b);
           TMSDKContext.saveActionData(1150107);
           return;
         }
       }
     });
     a();
-    localObject = rp.a();
-    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((rp)localObject).d()), Integer.valueOf(((rp)localObject).e()), Integer.valueOf(((rp)localObject).f()) });
-    if (!TextUtils.isEmpty(((rp)localObject).j())) {
-      paramBundle = ((rp)localObject).j();
+    localObject = ro.a();
+    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((ro)localObject).d()), Integer.valueOf(((ro)localObject).e()), Integer.valueOf(((ro)localObject).f()) });
+    if (!TextUtils.isEmpty(((ro)localObject).j())) {
+      paramBundle = ((ro)localObject).j();
     }
     this.d.setText(paramBundle);
     paramBundle = new StringBuffer();
-    paramBundle.append(((rp)localObject).a.a("meri_lastest_featrue", ""));
-    if (((rp)localObject).h() > 0)
+    paramBundle.append(((ro)localObject).a.a("meri_lastest_featrue", ""));
+    if (((ro)localObject).h() > 0)
     {
       paramBundle.append('\n');
       paramBundle.append("更新包：");
-      paramBundle.append(Unit.transformShortType(((rp)localObject).h(), true));
+      paramBundle.append(Unit.transformShortType(((ro)localObject).h(), true));
     }
     this.e.setText(paramBundle.toString());
   }
   
   protected void onStart()
   {
-    rc.b.a().a(this.g);
+    rb.b.a().a(this.g);
     super.onStart();
   }
   
   protected void onStop()
   {
     super.onStop();
-    rc.b.a().b(this.g);
+    rb.b.a().b(this.g);
   }
 }
 

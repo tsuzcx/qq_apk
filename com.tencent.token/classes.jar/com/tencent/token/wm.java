@@ -1,55 +1,54 @@
 package com.tencent.token;
 
+import android.app.Notification.Builder;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.ContextWrapper;
+import android.os.Build.VERSION;
 import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
-import org.json.JSONObject;
 
 public final class wm
-  extends tk
+  extends ContextWrapper
 {
-  private long d;
-  private String e;
+  private NotificationManager a;
   
-  public final String a()
+  public wm(Context paramContext)
   {
-    sa.a();
-    this.a.a(104, null, null);
-    return null;
+    super(paramContext);
   }
   
-  public final void a(aar paramaar)
+  private NotificationManager a()
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramaar.c.get("param.mbmobile.vrycode"));
-  }
-  
-  public final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
+    if (this.a == null) {
+      this.a = ((NotificationManager)getSystemService("notification"));
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    return this.a;
+  }
+  
+  public final void a(int paramInt, String paramString1, String paramString2, PendingIntent paramPendingIntent)
+  {
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (this.c != i)
+      if (Build.VERSION.SDK_INT >= 26)
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xb.c(paramJSONObject.toString());
-        return;
+        NotificationChannel localNotificationChannel = new NotificationChannel("channel_qqsafe", "channel_name_qqsafe", 4);
+        a().createNotificationChannel(localNotificationChannel);
       }
-      this.a.a = 0;
+      if (Build.VERSION.SDK_INT >= 26) {
+        paramString1 = new Notification.Builder(RqdApplication.n(), "channel_qqsafe").setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2131099914).setAutoCancel(true);
+      } else {
+        paramString1 = null;
+      }
+      paramString1 = paramString1.build();
+      a().notify(paramInt, paramString1);
       return;
     }
-    a(10022, RqdApplication.n().getString(2131493068));
+    paramString1 = new cj.b(RqdApplication.n(), (byte)0).c().a(paramString1).b(paramString2);
+    paramString1.e = paramPendingIntent;
+    paramString1 = paramString1.a().b().d();
+    a().notify(paramInt, paramString1);
   }
 }
 

@@ -1,20 +1,86 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.text.TextUtils;
+
 public final class adt
-  extends Thread
 {
-  public adt(String paramString1, String paramString2) {}
+  public static final long a = ;
   
-  public final void run()
+  public static String a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    try
-    {
-      byte[] arrayOfByte = this.b.getBytes();
-      arrayOfByte = aez.a(arrayOfByte, ".turingdebug".getBytes());
-      aez.a(this.a, arrayOfByte);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder("T:");
+    localStringBuilder.append(a);
+    localStringBuilder.append(",");
+    localStringBuilder.append("LT:");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(System.currentTimeMillis() - a);
+    localStringBuilder.append(((StringBuilder)localObject1).toString());
+    localStringBuilder.append(",");
+    localStringBuilder.append("F:");
+    if (paramBoolean1) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
     }
-    catch (Throwable localThrowable) {}
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append("PT:");
+    localStringBuilder.append("0");
+    localStringBuilder.append(",");
+    localStringBuilder.append("PKG:");
+    if (paramBoolean2) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append("SC:");
+    if (paramBoolean3) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    localStringBuilder.append((String)localObject1);
+    localObject1 = adp.a;
+    localObject1 = adp.b(paramContext);
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("CL:");
+      localStringBuilder.append((String)localObject1);
+    }
+    Object localObject2 = adi.a(paramContext, "204");
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject2 = aeu.a("0_");
+      if (paramBoolean1) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "0";
+      }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("R:");
+      localStringBuilder.append((String)localObject1);
+    }
+    localStringBuilder.append(",");
+    localStringBuilder.append("US:");
+    localStringBuilder.append(adi.a(paramContext));
+    paramContext = adi.a(paramContext, "111");
+    if (!TextUtils.isEmpty(paramContext))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("ND:");
+      localStringBuilder.append(paramContext);
+    }
+    return localStringBuilder.toString();
   }
 }
 

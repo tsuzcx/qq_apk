@@ -1,69 +1,37 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class any
 {
-  public static Object a(JSONArray paramJSONArray, int paramInt)
+  public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT)
   {
-    if ((paramJSONArray != null) && (paramInt >= 0))
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
     {
-      if (paramInt >= paramJSONArray.length()) {
-        return null;
-      }
-      try
-      {
-        paramJSONArray = paramJSONArray.get(paramInt);
-        return paramJSONArray;
-      }
-      catch (Throwable paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-      }
+      paramT.recyle();
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("UTF-8");
+      paramT.readFrom(paramArrayOfByte);
+      return paramT;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      new StringBuilder("getJceStruct exception: ").append(paramArrayOfByte);
     }
     return null;
   }
   
-  public static Object a(JSONObject paramJSONObject, String paramString)
+  public static byte[] a(JceStruct paramJceStruct)
   {
-    if (paramJSONObject != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return null;
-      }
-      try
-      {
-        paramJSONObject = paramJSONObject.get(paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public static String b(JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return null;
-      }
-      try
-      {
-        paramJSONObject = paramJSONObject.getString(paramString);
-        return paramJSONObject;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
-    return null;
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("UTF-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
   }
 }
 

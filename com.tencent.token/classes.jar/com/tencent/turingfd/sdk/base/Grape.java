@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,64 +22,64 @@ public final class Grape
   public String Vb = "";
   public int W = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Kb = paramafl.a(0, true);
-    this.Bc = paramafl.a(this.Bc, 1, true);
-    this.Cc = paramafl.a(this.Cc, 2, true);
-    this.Vb = paramafl.a(3, false);
-    this.Dc = paramafl.a(4, false);
-    this.Ec = paramafl.a(5, false);
-    this.Jb = paramafl.a(this.Jb, 6, false);
-    this.W = paramafl.a(this.W, 7, false);
+    this.Kb = paramafk.a(0, true);
+    this.Bc = paramafk.a(this.Bc, 1, true);
+    this.Cc = paramafk.a(this.Cc, 2, true);
+    this.Vb = paramafk.a(3, false);
+    this.Dc = paramafk.a(4, false);
+    this.Ec = paramafk.a(5, false);
+    this.Jb = paramafk.a(this.Jb, 6, false);
+    this.W = paramafk.a(this.W, 7, false);
     if (zc == null)
     {
       zc = new ArrayList();
       zc.add(Integer.valueOf(0));
     }
-    this.Fc = ((ArrayList)paramafl.a(zc, 8, false));
-    this.Gc = paramafl.a(this.Gc, 9, false);
+    this.Fc = ((ArrayList)paramafk.a(zc, 8, false));
+    this.Gc = paramafk.a(this.Gc, 9, false);
     if (Ac == null)
     {
       Ac = new ArrayList();
       Ac.add(Integer.valueOf(0));
     }
-    this.Hc = ((ArrayList)paramafl.a(Ac, 10, false));
+    this.Hc = ((ArrayList)paramafk.a(Ac, 10, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Kb, 0);
-    paramafo.a(this.Bc, 1);
-    paramafo.a(this.Cc, 2);
+    paramafn.a(this.Kb, 0);
+    paramafn.a(this.Bc, 1);
+    paramafn.a(this.Cc, 2);
     Object localObject = this.Vb;
     if (localObject != null) {
-      paramafo.a((String)localObject, 3);
+      paramafn.a((String)localObject, 3);
     }
     localObject = this.Dc;
     if (localObject != null) {
-      paramafo.a((String)localObject, 4);
+      paramafn.a((String)localObject, 4);
     }
     localObject = this.Ec;
     if (localObject != null) {
-      paramafo.a((String)localObject, 5);
+      paramafn.a((String)localObject, 5);
     }
     long l = this.Jb;
     if (l != 0L) {
-      paramafo.a(l, 6);
+      paramafn.a(l, 6);
     }
-    paramafo.a(this.W, 7);
+    paramafn.a(this.W, 7);
     localObject = this.Fc;
     if (localObject != null) {
-      paramafo.a((Collection)localObject, 8);
+      paramafn.a((Collection)localObject, 8);
     }
     int i = this.Gc;
     if (i != 0) {
-      paramafo.a(i, 9);
+      paramafn.a(i, 9);
     }
     localObject = this.Hc;
     if (localObject != null) {
-      paramafo.a((Collection)localObject, 10);
+      paramafn.a((Collection)localObject, 10);
     }
   }
 }

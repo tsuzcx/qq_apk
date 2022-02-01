@@ -1,136 +1,73 @@
 package com.tencent.token;
 
-import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Typeface;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
 import android.util.TypedValue;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class cx
 {
-  public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama)
+  public static float a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt, float paramFloat)
   {
-    if (paramContext.isRestricted()) {
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramFloat;
+    }
+    return paramTypedArray.getFloat(paramInt, paramFloat);
+  }
+  
+  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
+  {
+    if (!a(paramXmlPullParser, paramString)) {
+      return 0;
+    }
+    return paramTypedArray.getResourceId(paramInt, 0);
+  }
+  
+  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
+  {
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramInt2;
+    }
+    return paramTypedArray.getInt(paramInt1, paramInt2);
+  }
+  
+  public static TypedArray a(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, int[] paramArrayOfInt)
+  {
+    if (paramTheme == null) {
+      return paramResources.obtainAttributes(paramAttributeSet, paramArrayOfInt);
+    }
+    return paramTheme.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt, 0, 0);
+  }
+  
+  public static TypedValue a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString)
+  {
+    if (!a(paramXmlPullParser, paramString)) {
       return null;
     }
-    Resources localResources = paramContext.getResources();
-    localResources.getValue(paramInt1, paramTypedValue, true);
-    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama);
-    if (paramContext == null)
-    {
-      if (parama != null) {
-        return paramContext;
-      }
-      paramContext = new StringBuilder("Font resource ID #0x");
-      paramContext.append(Integer.toHexString(paramInt1));
-      paramContext.append(" could not be retrieved.");
-      throw new Resources.NotFoundException(paramContext.toString());
-    }
-    return paramContext;
+    return paramTypedArray.peekValue(0);
   }
   
-  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
+  public static boolean a(XmlPullParser paramXmlPullParser, String paramString)
   {
-    if (paramTypedValue.string != null)
-    {
-      paramTypedValue = paramTypedValue.string.toString();
-      if (!paramTypedValue.startsWith("res/"))
-      {
-        if (parama != null) {
-          parama.a(-3, null);
-        }
-        return null;
-      }
-      Typeface localTypeface = db.a(paramResources, paramInt1, paramInt2);
-      if (localTypeface != null)
-      {
-        if (parama != null) {
-          parama.a(localTypeface, null);
-        }
-        return localTypeface;
-      }
-    }
-    try
-    {
-      if (paramTypedValue.toLowerCase().endsWith(".xml"))
-      {
-        paramTypedValue = cw.a(paramResources.getXml(paramInt1), paramResources);
-        if (paramTypedValue == null)
-        {
-          if (parama == null) {
-            break label242;
-          }
-          parama.a(-3, null);
-          return null;
-        }
-        return db.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
-      }
-      paramContext = db.a(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
-      if (parama != null)
-      {
-        if (paramContext != null)
-        {
-          parama.a(paramContext, null);
-          return paramContext;
-        }
-        parama.a(-3, null);
-      }
-      return paramContext;
-    }
-    catch (XmlPullParserException|IOException paramContext)
-    {
-      label162:
-      break label162;
-    }
-    if (parama != null) {
-      parama.a(-3, null);
-    }
-    return null;
-    paramContext = new StringBuilder("Resource \"");
-    paramContext.append(paramResources.getResourceName(paramInt1));
-    paramContext.append("\" (");
-    paramContext.append(Integer.toHexString(paramInt1));
-    paramContext.append(") is not a Font: ");
-    paramContext.append(paramTypedValue);
-    throw new Resources.NotFoundException(paramContext.toString());
-    label242:
-    return null;
+    return paramXmlPullParser.getAttributeValue("http://schemas.android.com/apk/res/android", paramString) != null;
   }
   
-  public static abstract class a
+  public static int b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
   {
-    public final void a(final int paramInt, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
-      {
-        public final void run() {}
-      });
+    if (!a(paramXmlPullParser, paramString)) {
+      return paramInt2;
     }
-    
-    public abstract void a(Typeface paramTypeface);
-    
-    public final void a(final Typeface paramTypeface, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
-      {
-        public final void run()
-        {
-          cx.a.this.a(paramTypeface);
-        }
-      });
+    return paramTypedArray.getColor(paramInt1, paramInt2);
+  }
+  
+  public static String b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
+  {
+    if (!a(paramXmlPullParser, paramString)) {
+      return null;
     }
+    return paramTypedArray.getString(paramInt);
   }
 }
 

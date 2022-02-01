@@ -1,419 +1,622 @@
 package com.tencent.token;
 
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
+import android.content.res.Resources.NotFoundException;
+import android.content.res.Resources.Theme;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.ActionBar.a;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.LinearLayoutCompat.LayoutParams;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
+import android.text.style.TextAppearanceSpan;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.BaseAdapter;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.Spinner;
 import android.widget.TextView;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.WeakHashMap;
 
 public final class iz
-  extends HorizontalScrollView
-  implements AdapterView.OnItemSelectedListener
+  extends fw
+  implements View.OnClickListener
 {
-  private static final Interpolator i = new DecelerateInterpolator();
-  Runnable a;
-  LinearLayoutCompat b;
-  int c;
-  int d;
-  int e;
-  private Spinner f;
-  private boolean g;
-  private int h;
+  public int j = 1;
+  private final SearchManager k = (SearchManager)this.d.getSystemService("search");
+  private final SearchView l;
+  private final SearchableInfo m;
+  private final Context n;
+  private final WeakHashMap<String, Drawable.ConstantState> o;
+  private final int p;
+  private boolean q = false;
+  private ColorStateList r;
+  private int s = -1;
+  private int t = -1;
+  private int u = -1;
+  private int v = -1;
+  private int w = -1;
+  private int x = -1;
   
-  private boolean a()
+  public iz(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
-    Spinner localSpinner = this.f;
-    return (localSpinner != null) && (localSpinner.getParent() == this);
+    super(paramContext, paramSearchView.getSuggestionRowLayout());
+    this.l = paramSearchView;
+    this.m = paramSearchableInfo;
+    this.p = paramSearchView.getSuggestionCommitIconResId();
+    this.n = paramContext;
+    this.o = paramWeakHashMap;
   }
   
-  private boolean b()
+  private Drawable a(ComponentName paramComponentName)
   {
-    if (!a()) {
-      return false;
+    Object localObject = this.d.getPackageManager();
+    try
+    {
+      ActivityInfo localActivityInfo = ((PackageManager)localObject).getActivityInfo(paramComponentName, 128);
+      int i = localActivityInfo.getIconResource();
+      if (i == 0) {
+        return null;
+      }
+      localObject = ((PackageManager)localObject).getDrawable(paramComponentName.getPackageName(), i, localActivityInfo.applicationInfo);
+      if (localObject == null)
+      {
+        localObject = new StringBuilder("Invalid icon resource ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" for ");
+        ((StringBuilder)localObject).append(paramComponentName.flattenToShortString());
+        return null;
+      }
+      return localObject;
     }
-    removeView(this.f);
-    addView(this.b, new ViewGroup.LayoutParams(-2, -1));
-    setTabSelected(this.f.getSelectedItemPosition());
+    catch (PackageManager.NameNotFoundException paramComponentName) {}
+    return null;
+  }
+  
+  private Drawable a(Uri paramUri)
+  {
+    try
+    {
+      boolean bool = "android.resource".equals(paramUri.getScheme());
+      if (!bool) {}
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      Object localObject1;
+      label22:
+      Drawable localDrawable;
+      label69:
+      label95:
+      localStringBuilder = new StringBuilder("Icon not found: ");
+      localStringBuilder.append(paramUri);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localFileNotFoundException.getMessage());
+      return null;
+    }
+    try
+    {
+      localObject1 = b(paramUri);
+      return localObject1;
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      break label22;
+    }
+    throw new FileNotFoundException("Resource does not exist: ".concat(String.valueOf(paramUri)));
+    localObject1 = this.n.getContentResolver().openInputStream(paramUri);
+    if (localObject1 != null) {
+      try
+      {
+        localDrawable = Drawable.createFromStream((InputStream)localObject1, null);
+      }
+      finally {}
+    }
+    try
+    {
+      ((InputStream)localObject1).close();
+      return localDrawable;
+    }
+    catch (IOException localIOException1)
+    {
+      break label69;
+    }
+    new StringBuilder("Error closing icon stream for ").append(paramUri);
+    return localDrawable;
+    try
+    {
+      ((InputStream)localObject1).close();
+    }
+    catch (IOException localIOException2)
+    {
+      StringBuilder localStringBuilder;
+      break label95;
+    }
+    new StringBuilder("Error closing icon stream for ").append(paramUri);
+    throw localObject2;
+    throw new FileNotFoundException("Failed to open ".concat(String.valueOf(paramUri)));
+  }
+  
+  private Drawable a(String paramString)
+  {
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      if ("0".equals(paramString)) {
+        return null;
+      }
+    }
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      localObject = new StringBuilder("android.resource://");
+      ((StringBuilder)localObject).append(this.n.getPackageName());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(i);
+      localObject = ((StringBuilder)localObject).toString();
+      Drawable localDrawable = b((String)localObject);
+      if (localDrawable != null) {
+        return localDrawable;
+      }
+      localDrawable = cr.a(this.n, i);
+      a((String)localObject, localDrawable);
+      return localDrawable;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      Object localObject;
+      label102:
+      break label102;
+    }
+    catch (Resources.NotFoundException paramString) {}
+    localObject = b(paramString);
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = a(Uri.parse(paramString));
+    a(paramString, (Drawable)localObject);
+    return localObject;
+    return null;
+    return null;
+  }
+  
+  private static String a(Cursor paramCursor, int paramInt)
+  {
+    if (paramInt == -1) {
+      return null;
+    }
+    try
+    {
+      paramCursor = paramCursor.getString(paramInt);
+      return paramCursor;
+    }
+    catch (Exception paramCursor) {}
+    return null;
+  }
+  
+  public static String a(Cursor paramCursor, String paramString)
+  {
+    return a(paramCursor, paramCursor.getColumnIndex(paramString));
+  }
+  
+  private static void a(ImageView paramImageView, Drawable paramDrawable, int paramInt)
+  {
+    paramImageView.setImageDrawable(paramDrawable);
+    if (paramDrawable == null)
+    {
+      paramImageView.setVisibility(paramInt);
+      return;
+    }
+    paramImageView.setVisibility(0);
+    paramDrawable.setVisible(false, false);
+    paramDrawable.setVisible(true, false);
+  }
+  
+  private static void a(TextView paramTextView, CharSequence paramCharSequence)
+  {
+    paramTextView.setText(paramCharSequence);
+    if (TextUtils.isEmpty(paramCharSequence))
+    {
+      paramTextView.setVisibility(8);
+      return;
+    }
+    paramTextView.setVisibility(0);
+  }
+  
+  private void a(String paramString, Drawable paramDrawable)
+  {
+    if (paramDrawable != null) {
+      this.o.put(paramString, paramDrawable.getConstantState());
+    }
+  }
+  
+  private Drawable b(Uri paramUri)
+  {
+    String str = paramUri.getAuthority();
+    if (!TextUtils.isEmpty(str)) {}
+    try
+    {
+      localResources = this.d.getPackageManager().getResourcesForApplication(str);
+      localList = paramUri.getPathSegments();
+      if (localList != null)
+      {
+        i = localList.size();
+        if (i != 1) {}
+      }
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      Resources localResources;
+      List localList;
+      int i;
+      label67:
+      break label184;
+    }
+    try
+    {
+      i = Integer.parseInt((String)localList.get(0));
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      break label67;
+    }
+    throw new FileNotFoundException("Single path segment is not a resource ID: ".concat(String.valueOf(paramUri)));
+    if (i == 2)
+    {
+      i = localResources.getIdentifier((String)localList.get(1), (String)localList.get(0), str);
+      if (i != 0) {
+        return localResources.getDrawable(i);
+      }
+      throw new FileNotFoundException("No resource found for: ".concat(String.valueOf(paramUri)));
+    }
+    throw new FileNotFoundException("More than two path segments: ".concat(String.valueOf(paramUri)));
+    throw new FileNotFoundException("No path: ".concat(String.valueOf(paramUri)));
+    label184:
+    throw new FileNotFoundException("No package found for authority: ".concat(String.valueOf(paramUri)));
+    throw new FileNotFoundException("No authority: ".concat(String.valueOf(paramUri)));
+  }
+  
+  private Drawable b(String paramString)
+  {
+    paramString = (Drawable.ConstantState)this.o.get(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    return paramString.newDrawable();
+  }
+  
+  private static void c(Cursor paramCursor)
+  {
+    if (paramCursor != null) {
+      paramCursor = paramCursor.getExtras();
+    } else {
+      paramCursor = null;
+    }
+    if ((paramCursor != null) && (paramCursor.getBoolean("in_progress"))) {}
+  }
+  
+  public final Cursor a(CharSequence paramCharSequence)
+  {
+    if (paramCharSequence == null) {
+      paramCharSequence = "";
+    } else {
+      paramCharSequence = paramCharSequence.toString();
+    }
+    if (this.l.getVisibility() == 0) {
+      if (this.l.getWindowVisibility() != 0) {
+        return null;
+      }
+    }
+    try
+    {
+      Object localObject2 = this.m;
+      if (localObject2 == null)
+      {
+        paramCharSequence = null;
+      }
+      else
+      {
+        Object localObject1 = ((SearchableInfo)localObject2).getSuggestAuthority();
+        if (localObject1 == null)
+        {
+          paramCharSequence = null;
+        }
+        else
+        {
+          localObject1 = new Uri.Builder().scheme("content").authority((String)localObject1).query("").fragment("");
+          String str = ((SearchableInfo)localObject2).getSuggestPath();
+          if (str != null) {
+            ((Uri.Builder)localObject1).appendEncodedPath(str);
+          }
+          ((Uri.Builder)localObject1).appendPath("search_suggest_query");
+          localObject2 = ((SearchableInfo)localObject2).getSuggestSelection();
+          if (localObject2 != null)
+          {
+            paramCharSequence = new String[] { paramCharSequence };
+          }
+          else
+          {
+            ((Uri.Builder)localObject1).appendPath(paramCharSequence);
+            paramCharSequence = null;
+          }
+          ((Uri.Builder)localObject1).appendQueryParameter("limit", "50");
+          localObject1 = ((Uri.Builder)localObject1).build();
+          paramCharSequence = this.d.getContentResolver().query((Uri)localObject1, null, (String)localObject2, paramCharSequence, null);
+        }
+      }
+      if (paramCharSequence != null)
+      {
+        paramCharSequence.getCount();
+        return paramCharSequence;
+      }
+      return null;
+    }
+    catch (RuntimeException paramCharSequence) {}
+    return null;
+    return null;
+  }
+  
+  public final View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  {
+    paramContext = super.a(paramContext, paramCursor, paramViewGroup);
+    paramContext.setTag(new a(paramContext));
+    ((ImageView)paramContext.findViewById(go.f.edit_query)).setImageResource(this.p);
+    return paramContext;
+  }
+  
+  public final void a(Cursor paramCursor)
+  {
+    if (this.q)
+    {
+      if (paramCursor != null) {
+        paramCursor.close();
+      }
+      return;
+    }
+    try
+    {
+      super.a(paramCursor);
+      if (paramCursor != null)
+      {
+        this.s = paramCursor.getColumnIndex("suggest_text_1");
+        this.t = paramCursor.getColumnIndex("suggest_text_2");
+        this.u = paramCursor.getColumnIndex("suggest_text_2_url");
+        this.v = paramCursor.getColumnIndex("suggest_icon_1");
+        this.w = paramCursor.getColumnIndex("suggest_icon_2");
+        this.x = paramCursor.getColumnIndex("suggest_flags");
+      }
+      return;
+    }
+    catch (Exception paramCursor) {}
+  }
+  
+  public final void a(View paramView, Cursor paramCursor)
+  {
+    a locala = (a)paramView.getTag();
+    int i = this.x;
+    if (i != -1) {
+      i = paramCursor.getInt(i);
+    } else {
+      i = 0;
+    }
+    if (locala.a != null)
+    {
+      paramView = a(paramCursor, this.s);
+      a(locala.a, paramView);
+    }
+    if (locala.b != null)
+    {
+      str1 = a(paramCursor, this.u);
+      if (str1 != null)
+      {
+        if (this.r == null)
+        {
+          paramView = new TypedValue();
+          this.d.getTheme().resolveAttribute(go.a.textColorSearchUrl, paramView, true);
+          this.r = this.d.getResources().getColorStateList(paramView.resourceId);
+        }
+        paramView = new SpannableString(str1);
+        paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.r, null), 0, str1.length(), 33);
+      }
+      else
+      {
+        paramView = a(paramCursor, this.t);
+      }
+      if (TextUtils.isEmpty(paramView))
+      {
+        if (locala.a != null)
+        {
+          locala.a.setSingleLine(false);
+          locala.a.setMaxLines(2);
+        }
+      }
+      else if (locala.a != null)
+      {
+        locala.a.setSingleLine(true);
+        locala.a.setMaxLines(1);
+      }
+      a(locala.b, paramView);
+    }
+    paramView = locala.c;
+    String str1 = null;
+    Object localObject;
+    if (paramView != null)
+    {
+      ImageView localImageView = locala.c;
+      i1 = this.v;
+      if (i1 == -1)
+      {
+        paramView = null;
+      }
+      else
+      {
+        paramView = a(paramCursor.getString(i1));
+        if (paramView == null)
+        {
+          paramView = this.m.getSearchActivity();
+          String str2 = paramView.flattenToShortString();
+          if (this.o.containsKey(str2))
+          {
+            paramView = (Drawable.ConstantState)this.o.get(str2);
+            if (paramView == null) {
+              paramView = null;
+            } else {
+              paramView = paramView.newDrawable(this.n.getResources());
+            }
+          }
+          else
+          {
+            localObject = a(paramView);
+            if (localObject == null) {
+              paramView = null;
+            } else {
+              paramView = ((Drawable)localObject).getConstantState();
+            }
+            this.o.put(str2, paramView);
+            paramView = (View)localObject;
+          }
+          if (paramView == null) {
+            paramView = this.d.getPackageManager().getDefaultActivityIcon();
+          }
+        }
+      }
+      a(localImageView, paramView, 4);
+    }
+    if (locala.d != null)
+    {
+      localObject = locala.d;
+      i1 = this.w;
+      if (i1 == -1) {
+        paramView = str1;
+      } else {
+        paramView = a(paramCursor.getString(i1));
+      }
+      a((ImageView)localObject, paramView, 8);
+    }
+    int i1 = this.j;
+    if ((i1 != 2) && ((i1 != 1) || ((i & 0x1) == 0)))
+    {
+      locala.e.setVisibility(8);
+      return;
+    }
+    locala.e.setVisibility(0);
+    locala.e.setTag(locala.a.getText());
+    locala.e.setOnClickListener(this);
+  }
+  
+  public final CharSequence b(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return null;
+    }
+    String str = a(paramCursor, "suggest_intent_query");
+    if (str != null) {
+      return str;
+    }
+    if (this.m.shouldRewriteQueryFromData())
+    {
+      str = a(paramCursor, "suggest_intent_data");
+      if (str != null) {
+        return str;
+      }
+    }
+    if (this.m.shouldRewriteQueryFromText())
+    {
+      paramCursor = a(paramCursor, "suggest_text_1");
+      if (paramCursor != null) {
+        return paramCursor;
+      }
+    }
+    return null;
+  }
+  
+  public final View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    try
+    {
+      paramView = super.getDropDownView(paramInt, paramView, paramViewGroup);
+      return paramView;
+    }
+    catch (RuntimeException paramView)
+    {
+      paramViewGroup = b(this.d, this.c, paramViewGroup);
+      if (paramViewGroup != null) {
+        ((a)paramViewGroup.getTag()).a.setText(paramView.toString());
+      }
+    }
+    return paramViewGroup;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    try
+    {
+      paramView = super.getView(paramInt, paramView, paramViewGroup);
+      return paramView;
+    }
+    catch (RuntimeException paramView)
+    {
+      paramViewGroup = a(this.d, this.c, paramViewGroup);
+      if (paramViewGroup != null) {
+        ((a)paramViewGroup.getTag()).a.setText(paramView.toString());
+      }
+    }
+    return paramViewGroup;
+  }
+  
+  public final boolean hasStableIds()
+  {
     return false;
   }
   
-  public final void onAttachedToWindow()
+  public final void notifyDataSetChanged()
   {
-    super.onAttachedToWindow();
-    Runnable localRunnable = this.a;
-    if (localRunnable != null) {
-      post(localRunnable);
+    super.notifyDataSetChanged();
+    c(a());
+  }
+  
+  public final void notifyDataSetInvalidated()
+  {
+    super.notifyDataSetInvalidated();
+    c(a());
+  }
+  
+  public final void onClick(View paramView)
+  {
+    paramView = paramView.getTag();
+    if ((paramView instanceof CharSequence)) {
+      this.l.setQuery((CharSequence)paramView);
     }
   }
   
-  protected final void onConfigurationChanged(Configuration paramConfiguration)
+  static final class a
   {
-    super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = gw.a(getContext());
-    TypedArray localTypedArray = paramConfiguration.a.obtainStyledAttributes(null, gp.j.ActionBar, gp.a.actionBarStyle, 0);
-    int k = localTypedArray.getLayoutDimension(gp.j.ActionBar_height, 0);
-    Resources localResources = paramConfiguration.a.getResources();
-    int j = k;
-    if (!paramConfiguration.b()) {
-      j = Math.min(k, localResources.getDimensionPixelSize(gp.d.abc_action_bar_stacked_max_height));
-    }
-    localTypedArray.recycle();
-    setContentHeight(j);
-    this.d = paramConfiguration.a.getResources().getDimensionPixelSize(gp.d.abc_action_bar_stacked_tab_max_width);
-  }
-  
-  public final void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    Runnable localRunnable = this.a;
-    if (localRunnable != null) {
-      removeCallbacks(localRunnable);
-    }
-  }
-  
-  public final void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
-  
-  public final void onMeasure(int paramInt1, int paramInt2)
-  {
-    int j = View.MeasureSpec.getMode(paramInt1);
-    paramInt2 = 1;
-    boolean bool;
-    if (j == 1073741824) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    setFillViewport(bool);
-    int k = this.b.getChildCount();
-    if ((k > 1) && ((j == 1073741824) || (j == -2147483648)))
-    {
-      if (k > 2) {
-        this.c = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
-      } else {
-        this.c = (View.MeasureSpec.getSize(paramInt1) / 2);
-      }
-      this.c = Math.min(this.c, this.d);
-    }
-    else
-    {
-      this.c = -1;
-    }
-    j = View.MeasureSpec.makeMeasureSpec(this.e, 1073741824);
-    if ((bool) || (!this.g)) {
-      paramInt2 = 0;
-    }
-    if (paramInt2 != 0)
-    {
-      this.b.measure(0, j);
-      if (this.b.getMeasuredWidth() > View.MeasureSpec.getSize(paramInt1))
-      {
-        if (!a())
-        {
-          if (this.f == null)
-          {
-            localObject = new AppCompatSpinner(getContext(), null, gp.a.actionDropDownStyle);
-            ((Spinner)localObject).setLayoutParams(new LinearLayoutCompat.LayoutParams(-2, -1));
-            ((Spinner)localObject).setOnItemSelectedListener(this);
-            this.f = ((Spinner)localObject);
-          }
-          removeView(this.b);
-          addView(this.f, new ViewGroup.LayoutParams(-2, -1));
-          if (this.f.getAdapter() == null) {
-            this.f.setAdapter(new a());
-          }
-          Object localObject = this.a;
-          if (localObject != null)
-          {
-            removeCallbacks((Runnable)localObject);
-            this.a = null;
-          }
-          this.f.setSelection(this.h);
-        }
-      }
-      else {
-        b();
-      }
-    }
-    else
-    {
-      b();
-    }
-    paramInt2 = getMeasuredWidth();
-    super.onMeasure(paramInt1, j);
-    paramInt1 = getMeasuredWidth();
-    if ((bool) && (paramInt2 != paramInt1)) {
-      setTabSelected(this.h);
-    }
-  }
-  
-  public final void onNothingSelected(AdapterView<?> paramAdapterView) {}
-  
-  public final void setAllowCollapse(boolean paramBoolean)
-  {
-    this.g = paramBoolean;
-  }
-  
-  public final void setContentHeight(int paramInt)
-  {
-    this.e = paramInt;
-    requestLayout();
-  }
-  
-  public final void setTabSelected(int paramInt)
-  {
-    this.h = paramInt;
-    int k = this.b.getChildCount();
-    int j = 0;
-    while (j < k)
-    {
-      localObject = this.b.getChildAt(j);
-      boolean bool;
-      if (j == paramInt) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ((View)localObject).setSelected(bool);
-      if (bool)
-      {
-        localObject = this.b.getChildAt(paramInt);
-        Runnable localRunnable = this.a;
-        if (localRunnable != null) {
-          removeCallbacks(localRunnable);
-        }
-        this.a = new Runnable()
-        {
-          public final void run()
-          {
-            int i = this.a.getLeft();
-            int j = (iz.this.getWidth() - this.a.getWidth()) / 2;
-            iz.this.smoothScrollTo(i - j, 0);
-            iz.this.a = null;
-          }
-        };
-        post(this.a);
-      }
-      j += 1;
-    }
-    Object localObject = this.f;
-    if ((localObject != null) && (paramInt >= 0)) {
-      ((Spinner)localObject).setSelection(paramInt);
-    }
-  }
-  
-  final class a
-    extends BaseAdapter
-  {
-    a() {}
+    public final TextView a;
+    public final TextView b;
+    public final ImageView c;
+    public final ImageView d;
+    public final ImageView e;
     
-    public final int getCount()
+    public a(View paramView)
     {
-      return iz.this.b.getChildCount();
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      return ((iz.b)iz.this.b.getChildAt(paramInt)).a;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      if (paramView == null)
-      {
-        paramView = iz.this;
-        paramViewGroup = (ActionBar.a)getItem(paramInt);
-        paramViewGroup = new iz.b(paramView, paramView.getContext(), paramViewGroup);
-        paramViewGroup.setBackgroundDrawable(null);
-        paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, paramView.e));
-        return paramViewGroup;
-      }
-      paramViewGroup = (iz.b)paramView;
-      paramViewGroup.a = ((ActionBar.a)getItem(paramInt));
-      paramViewGroup.a();
-      return paramView;
-    }
-  }
-  
-  final class b
-    extends LinearLayout
-  {
-    ActionBar.a a;
-    private final int[] c = { 16842964 };
-    private TextView d;
-    private ImageView e;
-    private View f;
-    
-    public b(Context paramContext, ActionBar.a parama)
-    {
-      super(null, gp.a.actionBarTabStyle);
-      this.a = parama;
-      this$1 = jf.a(paramContext, null, this.c, gp.a.actionBarTabStyle, 0);
-      if (iz.this.f(0)) {
-        setBackgroundDrawable(iz.this.a(0));
-      }
-      iz.this.a.recycle();
-      setGravity(8388627);
-      a();
-    }
-    
-    public final void a()
-    {
-      ActionBar.a locala = this.a;
-      Object localObject2 = locala.c();
-      Object localObject1 = null;
-      if (localObject2 != null)
-      {
-        localObject1 = ((View)localObject2).getParent();
-        if (localObject1 != this)
-        {
-          if (localObject1 != null) {
-            ((ViewGroup)localObject1).removeView((View)localObject2);
-          }
-          addView((View)localObject2);
-        }
-        this.f = ((View)localObject2);
-        localObject1 = this.d;
-        if (localObject1 != null) {
-          ((TextView)localObject1).setVisibility(8);
-        }
-        localObject1 = this.e;
-        if (localObject1 != null)
-        {
-          ((ImageView)localObject1).setVisibility(8);
-          this.e.setImageDrawable(null);
-        }
-        return;
-      }
-      localObject2 = this.f;
-      if (localObject2 != null)
-      {
-        removeView((View)localObject2);
-        this.f = null;
-      }
-      Object localObject3 = locala.a();
-      localObject2 = locala.b();
-      Object localObject4;
-      if (localObject3 != null)
-      {
-        if (this.e == null)
-        {
-          localObject4 = new AppCompatImageView(getContext());
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-          localLayoutParams.gravity = 16;
-          ((ImageView)localObject4).setLayoutParams(localLayoutParams);
-          addView((View)localObject4, 0);
-          this.e = ((ImageView)localObject4);
-        }
-        this.e.setImageDrawable((Drawable)localObject3);
-        this.e.setVisibility(0);
-      }
-      else
-      {
-        localObject3 = this.e;
-        if (localObject3 != null)
-        {
-          ((ImageView)localObject3).setVisibility(8);
-          this.e.setImageDrawable(null);
-        }
-      }
-      boolean bool = TextUtils.isEmpty((CharSequence)localObject2) ^ true;
-      if (bool)
-      {
-        if (this.d == null)
-        {
-          localObject3 = new AppCompatTextView(getContext(), null, gp.a.actionBarTabTextStyle);
-          ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-          localObject4 = new LinearLayout.LayoutParams(-2, -2);
-          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
-          ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          addView((View)localObject3);
-          this.d = ((TextView)localObject3);
-        }
-        this.d.setText((CharSequence)localObject2);
-        this.d.setVisibility(0);
-      }
-      else
-      {
-        localObject2 = this.d;
-        if (localObject2 != null)
-        {
-          ((TextView)localObject2).setVisibility(8);
-          this.d.setText(null);
-        }
-      }
-      localObject2 = this.e;
-      if (localObject2 != null) {
-        ((ImageView)localObject2).setContentDescription(locala.d());
-      }
-      if (!bool) {
-        localObject1 = locala.d();
-      }
-      jh.a(this, (CharSequence)localObject1);
-    }
-    
-    public final void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
-    {
-      super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
-      paramAccessibilityEvent.setClassName(ActionBar.a.class.getName());
-    }
-    
-    public final void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
-    {
-      super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-      paramAccessibilityNodeInfo.setClassName(ActionBar.a.class.getName());
-    }
-    
-    public final void onMeasure(int paramInt1, int paramInt2)
-    {
-      super.onMeasure(paramInt1, paramInt2);
-      if ((iz.this.c > 0) && (getMeasuredWidth() > iz.this.c)) {
-        super.onMeasure(View.MeasureSpec.makeMeasureSpec(iz.this.c, 1073741824), paramInt2);
-      }
-    }
-    
-    public final void setSelected(boolean paramBoolean)
-    {
-      int i;
-      if (isSelected() != paramBoolean) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      super.setSelected(paramBoolean);
-      if ((i != 0) && (paramBoolean)) {
-        sendAccessibilityEvent(4);
-      }
+      this.a = ((TextView)paramView.findViewById(16908308));
+      this.b = ((TextView)paramView.findViewById(16908309));
+      this.c = ((ImageView)paramView.findViewById(16908295));
+      this.d = ((ImageView)paramView.findViewById(16908296));
+      this.e = ((ImageView)paramView.findViewById(go.f.edit_query));
     }
   }
 }

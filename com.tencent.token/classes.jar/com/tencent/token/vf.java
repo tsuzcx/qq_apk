@@ -3,27 +3,32 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vf
-  extends tk
+  extends tj
 {
-  MbInfoResult d;
-  private long e;
+  private long d;
+  private String e;
+  private int f;
+  private String g;
+  private String h;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramaaq.c.get("param.mbmobile.getcode")).intValue();
+    this.g = ((String)paramaaq.c.get("param.mbmobile.mobile"));
+    this.h = ((String)paramaaq.c.get("param.mbmoible.areacode"));
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -34,7 +39,7 @@ public final class vf
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -46,25 +51,23 @@ public final class vf
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
         paramJSONObject.append(this.c);
-        xb.c(paramJSONObject.toString());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.d = new MbInfoResult(paramJSONObject.getJSONArray("mb_list"));
-      aam.a().a(this.d);
+      this.e = paramJSONObject.getString("sms_prefix");
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
   public final void b()
   {
-    if ((!this.b.e) && (this.b.d != null))
+    if (!this.b.e)
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.d;
+      localMessage.obj = this.e;
       localMessage.sendToTarget();
       this.b.e = true;
     }

@@ -1,10 +1,10 @@
 package gameloginsdk;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.agx;
+import com.tencent.token.agw;
 
 abstract class p
-  implements agx
+  implements agw
 {
   int b = 0;
   protected JceStruct c = null;

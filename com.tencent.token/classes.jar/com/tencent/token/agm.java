@@ -1,120 +1,64 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.text.TextUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class agm
-  extends agl
 {
-  private final agt g;
+  private static final Pattern a = Pattern.compile("\\s*\\d+\\s*(,\\s*\\d+\\s*)?");
   
-  agm(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, agt paramagt)
+  public static String a(String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    super(paramSQLiteDatabase, paramString, paramArrayOfObject, paramagt);
-    this.g = paramagt;
+    if ((TextUtils.isEmpty(null)) && (!TextUtils.isEmpty(null))) {
+      throw new IllegalArgumentException("HAVING clauses are only permitted when using a groupBy clause");
+    }
+    if ((!TextUtils.isEmpty(paramString6)) && (!a.matcher(paramString6).matches())) {
+      throw new IllegalArgumentException("invalid LIMIT clauses:".concat(String.valueOf(paramString6)));
+    }
+    paramString3 = new StringBuilder(120);
+    paramString3.append("SELECT ");
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0)) {
+      a(paramString3, paramArrayOfString);
+    } else {
+      paramString3.append("* ");
+    }
+    paramString3.append("FROM ");
+    paramString3.append(paramString1);
+    a(paramString3, " WHERE ", paramString2);
+    a(paramString3, " GROUP BY ", null);
+    a(paramString3, " HAVING ", null);
+    a(paramString3, " ORDER BY ", paramString5);
+    a(paramString3, " LIMIT ", paramString6);
+    return paramString3.toString();
   }
   
-  /* Error */
-  final int a(com.tencent.wcdb.CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean)
+  private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 23	com/tencent/token/agm:d	()V
-    //   4: aload_1
-    //   5: invokevirtual 26	com/tencent/wcdb/CursorWindow:d	()V
-    //   8: aload_0
-    //   9: getfield 29	com/tencent/token/agl:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   12: invokevirtual 35	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/ago;
-    //   15: aload_0
-    //   16: getfield 38	com/tencent/token/agl:b	Ljava/lang/String;
-    //   19: aload_0
-    //   20: getfield 42	com/tencent/token/agl:e	[Ljava/lang/Object;
-    //   23: aload_1
-    //   24: iload_2
-    //   25: iload_3
-    //   26: iload 4
-    //   28: aload_0
-    //   29: getfield 46	com/tencent/token/agl:c	Z
-    //   32: invokestatic 49	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
-    //   35: aload_0
-    //   36: getfield 12	com/tencent/token/agm:g	Lcom/tencent/token/agt;
-    //   39: invokevirtual 54	com/tencent/token/ago:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/CursorWindow;IIZILcom/tencent/token/agt;)I
-    //   42: istore_2
-    //   43: aload_1
-    //   44: invokevirtual 56	com/tencent/wcdb/CursorWindow:e	()V
-    //   47: aload_0
-    //   48: invokevirtual 57	com/tencent/token/agm:e	()V
-    //   51: iload_2
-    //   52: ireturn
-    //   53: astore 5
-    //   55: goto +67 -> 122
-    //   58: astore 5
-    //   60: new 59	java/lang/StringBuilder
-    //   63: dup
-    //   64: ldc 61
-    //   66: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   69: astore 6
-    //   71: aload 6
-    //   73: aload 5
-    //   75: invokevirtual 68	com/tencent/wcdb/database/SQLiteException:getMessage	()Ljava/lang/String;
-    //   78: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: pop
-    //   82: aload 6
-    //   84: ldc 74
-    //   86: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: pop
-    //   90: aload 6
-    //   92: aload_0
-    //   93: getfield 38	com/tencent/token/agl:b	Ljava/lang/String;
-    //   96: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: pop
-    //   100: ldc 76
-    //   102: aload 6
-    //   104: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 84	com/tencent/wcdb/support/Log:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: aload 5
-    //   112: athrow
-    //   113: astore 5
-    //   115: aload_0
-    //   116: invokevirtual 86	com/tencent/token/agm:a	()V
-    //   119: aload 5
-    //   121: athrow
-    //   122: aload_1
-    //   123: invokevirtual 56	com/tencent/wcdb/CursorWindow:e	()V
-    //   126: aload 5
-    //   128: athrow
-    //   129: astore_1
-    //   130: aload_0
-    //   131: invokevirtual 57	com/tencent/token/agm:e	()V
-    //   134: aload_1
-    //   135: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	136	0	this	agm
-    //   0	136	1	paramCursorWindow	com.tencent.wcdb.CursorWindow
-    //   0	136	2	paramInt1	int
-    //   0	136	3	paramInt2	int
-    //   0	136	4	paramBoolean	boolean
-    //   53	1	5	localObject	Object
-    //   58	53	5	localSQLiteException	com.tencent.wcdb.database.SQLiteException
-    //   113	14	5	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
-    //   69	34	6	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   8	43	53	finally
-    //   60	113	53	finally
-    //   115	122	53	finally
-    //   8	43	58	com/tencent/wcdb/database/SQLiteException
-    //   8	43	113	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
-    //   4	8	129	finally
-    //   43	47	129	finally
-    //   122	129	129	finally
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramStringBuilder.append(paramString1);
+      paramStringBuilder.append(paramString2);
+    }
   }
   
-  public final String toString()
+  private static void a(StringBuilder paramStringBuilder, String[] paramArrayOfString)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SQLiteQuery: ");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      if (str != null)
+      {
+        if (i > 0) {
+          paramStringBuilder.append(", ");
+        }
+        paramStringBuilder.append(str);
+      }
+      i += 1;
+    }
+    paramStringBuilder.append(' ');
   }
 }
 

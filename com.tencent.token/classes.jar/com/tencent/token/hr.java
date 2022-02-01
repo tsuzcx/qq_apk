@@ -1,131 +1,153 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.graphics.Rect;
-import android.view.MenuItem;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
-import android.widget.HeaderViewListAdapter;
-import android.widget.ListAdapter;
+import android.view.WindowManager;
 import android.widget.PopupWindow.OnDismissListener;
 
-abstract class hr
-  implements AdapterView.OnItemClickListener, ht, hx
+public class hr
 {
-  Rect e;
-  
-  protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
+  protected View a;
+  protected int b = 8388611;
+  PopupWindow.OnDismissListener c;
+  private final Context d;
+  private final hl e;
+  private final boolean f;
+  private final int g;
+  private final int h;
+  private boolean i;
+  private hs.a j;
+  private hq k;
+  private final PopupWindow.OnDismissListener l = new PopupWindow.OnDismissListener()
   {
-    int j = 0;
-    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i3 = paramListAdapter.getCount();
-    Object localObject1 = paramViewGroup;
-    paramViewGroup = null;
-    int i = 0;
-    int m = 0;
-    while (j < i3)
+    public final void onDismiss()
     {
-      int n = paramListAdapter.getItemViewType(j);
-      int k = m;
-      if (n != m)
-      {
-        paramViewGroup = null;
-        k = n;
-      }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new FrameLayout(paramContext);
-      }
-      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
-      paramViewGroup.measure(i1, i2);
-      m = paramViewGroup.getMeasuredWidth();
-      if (m >= paramInt) {
-        return paramInt;
-      }
-      n = i;
-      if (m > i) {
-        n = m;
-      }
-      j += 1;
-      m = k;
-      localObject1 = localObject2;
-      i = n;
+      hr.this.d();
     }
-    return i;
+  };
+  
+  public hr(Context paramContext, hl paramhl, View paramView, boolean paramBoolean, int paramInt)
+  {
+    this(paramContext, paramhl, paramView, paramBoolean, paramInt, 0);
   }
   
-  protected static hl a(ListAdapter paramListAdapter)
+  public hr(Context paramContext, hl paramhl, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((paramListAdapter instanceof HeaderViewListAdapter)) {
-      return (hl)((HeaderViewListAdapter)paramListAdapter).getWrappedAdapter();
-    }
-    return (hl)paramListAdapter;
+    this.d = paramContext;
+    this.e = paramhl;
+    this.a = paramView;
+    this.f = paramBoolean;
+    this.g = paramInt1;
+    this.h = paramInt2;
   }
   
-  protected static boolean b(hm paramhm)
+  public final hq a()
   {
-    int j = paramhm.size();
-    int i = 0;
-    while (i < j)
+    if (this.k == null)
     {
-      MenuItem localMenuItem = paramhm.getItem(i);
-      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
-        return true;
+      Object localObject = ((WindowManager)this.d.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17) {
+        ((Display)localObject).getRealSize(localPoint);
+      } else {
+        ((Display)localObject).getSize(localPoint);
       }
-      i += 1;
+      int m;
+      if (Math.min(localPoint.x, localPoint.y) >= this.d.getResources().getDimensionPixelSize(go.d.abc_cascading_menus_min_smallest_width)) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if (m != 0) {
+        localObject = new hi(this.d, this.a, this.g, this.h, this.f);
+      } else {
+        localObject = new hx(this.d, this.e, this.a, this.g, this.h, this.f);
+      }
+      ((hq)localObject).a(this.e);
+      ((hq)localObject).a(this.l);
+      ((hq)localObject).a(this.a);
+      ((hq)localObject).a(this.j);
+      ((hq)localObject).a(this.i);
+      ((hq)localObject).a(this.b);
+      this.k = ((hq)localObject);
     }
-    return false;
+    return this.k;
   }
   
-  public abstract void a(int paramInt);
-  
-  public final void a(Context paramContext, hm paramhm) {}
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(PopupWindow.OnDismissListener paramOnDismissListener);
-  
-  public abstract void a(hm paramhm);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public final boolean b(ho paramho)
+  final void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return false;
+    hq localhq = a();
+    localhq.c(paramBoolean2);
+    if (paramBoolean1)
+    {
+      int m = paramInt1;
+      if ((ej.a(this.b, ew.c(this.a)) & 0x7) == 5) {
+        m = paramInt1 + this.a.getWidth();
+      }
+      localhq.b(m);
+      localhq.c(paramInt2);
+      paramInt1 = (int)(this.d.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
+      localhq.e = new Rect(m - paramInt1, paramInt2 - paramInt1, m + paramInt1, paramInt2 + paramInt1);
+    }
+    localhq.b();
   }
   
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public final boolean c(ho paramho)
+  public final void a(hs.a parama)
   {
-    return false;
+    this.j = parama;
+    hq localhq = this.k;
+    if (localhq != null) {
+      localhq.a(parama);
+    }
   }
   
-  protected boolean f()
+  public final void a(boolean paramBoolean)
   {
+    this.i = paramBoolean;
+    hq localhq = this.k;
+    if (localhq != null) {
+      localhq.a(paramBoolean);
+    }
+  }
+  
+  public final boolean b()
+  {
+    if (e()) {
+      return true;
+    }
+    if (this.a == null) {
+      return false;
+    }
+    a(0, 0, false, false);
     return true;
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void c()
   {
-    paramView = (ListAdapter)paramAdapterView.getAdapter();
-    paramAdapterView = a(paramView).b;
-    paramView = (MenuItem)paramView.getItem(paramInt);
-    if (f()) {
-      paramInt = 0;
-    } else {
-      paramInt = 4;
+    if (e()) {
+      this.k.c();
     }
-    paramAdapterView.a(paramView, this, paramInt);
+  }
+  
+  protected void d()
+  {
+    this.k = null;
+    PopupWindow.OnDismissListener localOnDismissListener = this.c;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
+    }
+  }
+  
+  public final boolean e()
+  {
+    hq localhq = this.k;
+    return (localhq != null) && (localhq.d());
   }
 }
 

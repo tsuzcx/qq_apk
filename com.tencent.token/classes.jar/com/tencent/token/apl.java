@@ -1,11 +1,31 @@
 package com.tencent.token;
 
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 final class apl
-  implements Comparator
+  extends Handler
 {
-  apl(aqs paramaqs) {}
+  apl(aqr paramaqr, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2: 
+      paramMessage = (aqf)paramMessage.obj;
+      aqr.a(this.a, paramMessage);
+      return;
+    }
+    aqr.a((aqe)paramMessage.obj);
+  }
 }
 
 

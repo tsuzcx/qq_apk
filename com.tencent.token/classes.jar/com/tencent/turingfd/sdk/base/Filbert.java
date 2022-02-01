@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Filbert
   extends break
@@ -11,26 +11,26 @@ public final class Filbert
   public String qc = "";
   public Ginkgo rc = null;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.qc = paramafl.a(0, true);
-    this.metaData = paramafl.a(1, false);
+    this.qc = paramafk.a(0, true);
+    this.metaData = paramafk.a(1, false);
     if (pc == null) {
       pc = new Ginkgo();
     }
-    this.rc = ((Ginkgo)paramafl.a(pc, 2, false));
+    this.rc = ((Ginkgo)paramafk.a(pc, 2, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.qc, 0);
+    paramafn.a(this.qc, 0);
     Object localObject = this.metaData;
     if (localObject != null) {
-      paramafo.a((String)localObject, 1);
+      paramafn.a((String)localObject, 1);
     }
     localObject = this.rc;
     if (localObject != null) {
-      paramafo.a((break)localObject, 2);
+      paramafn.a((break)localObject, 2);
     }
   }
 }

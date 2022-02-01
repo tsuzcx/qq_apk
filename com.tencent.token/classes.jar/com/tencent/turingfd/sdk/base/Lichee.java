@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Lichee
   extends break
@@ -12,27 +12,27 @@ public final class Lichee
   public float x = 0.0F;
   public float y = 0.0F;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.qd = paramafl.a(this.qd, 0, true);
-    this.x = paramafl.a(this.x, 1, true);
-    this.y = paramafl.a(this.y, 2, true);
-    this.rd = paramafl.a(this.rd, 3, false);
-    this.radius = paramafl.a(this.radius, 4, false);
+    this.qd = paramafk.a(this.qd, 0, true);
+    this.x = paramafk.a(this.x, 1, true);
+    this.y = paramafk.a(this.y, 2, true);
+    this.rd = paramafk.a(this.rd, 3, false);
+    this.radius = paramafk.a(this.radius, 4, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.qd, 0);
-    paramafo.a(this.x, 1);
-    paramafo.a(this.y, 2);
+    paramafn.a(this.qd, 0);
+    paramafn.a(this.x, 1);
+    paramafn.a(this.y, 2);
     float f = this.rd;
     if (f != 0.0F) {
-      paramafo.a(f, 3);
+      paramafn.a(f, 3);
     }
     f = this.radius;
     if (f != 0.0F) {
-      paramafo.a(f, 4);
+      paramafn.a(f, 4);
     }
   }
 }

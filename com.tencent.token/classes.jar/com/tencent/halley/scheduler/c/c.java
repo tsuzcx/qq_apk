@@ -1,7 +1,7 @@
 package com.tencent.halley.scheduler.c;
 
+import com.tencent.token.li;
 import com.tencent.token.lj;
-import com.tencent.token.lk;
 
 public final class c
   extends com.tencent.halley.common.b.c
@@ -14,29 +14,29 @@ public final class c
   public int e = 0;
   public i f = null;
   
-  public final void a(lj paramlj)
+  public final void a(li paramli)
   {
-    this.a = paramlj.a(this.a, 0, false);
-    this.b = paramlj.a(this.b, 1, false);
-    this.c = paramlj.a(this.c, 2, false);
-    this.d = paramlj.a(this.d, 3, false);
-    this.e = paramlj.a(this.e, 4, false);
+    this.a = paramli.a(this.a, 0, false);
+    this.b = paramli.a(this.b, 1, false);
+    this.c = paramli.a(this.c, 2, false);
+    this.d = paramli.a(this.d, 3, false);
+    this.e = paramli.a(this.e, 4, false);
     if (g == null) {
       g = new i();
     }
-    this.f = ((i)paramlj.a(g, 5, false));
+    this.f = ((i)paramli.a(g, 5, false));
   }
   
-  public final void a(lk paramlk)
+  public final void a(lj paramlj)
   {
-    paramlk.a(this.a, 0);
-    paramlk.a(this.b, 1);
-    paramlk.a(this.c, 2);
-    paramlk.a(this.d, 3);
-    paramlk.a(this.e, 4);
+    paramlj.a(this.a, 0);
+    paramlj.a(this.b, 1);
+    paramlj.a(this.c, 2);
+    paramlj.a(this.d, 3);
+    paramlj.a(this.e, 4);
     i locali = this.f;
     if (locali != null) {
-      paramlk.a(locali, 5);
+      paramlj.a(locali, 5);
     }
   }
 }

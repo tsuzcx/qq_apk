@@ -1,115 +1,67 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.c.b;
-import com.tencent.halley.downloader.c.b.a;
+import android.text.TextUtils;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 public final class mg
-  implements Runnable
 {
-  public mg(b paramb, b.a parama) {}
+  private List a = new ArrayList();
   
-  public final void run()
+  public final String a()
   {
-    lu locallu;
-    switch (com.tencent.halley.downloader.c.b.1.b[this.a.ordinal()])
+    synchronized (this.a)
     {
-    default: 
-      return;
-    case 7: 
-      ly.b().e(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator1 = this.b.d.iterator();
-        while (localIterator1.hasNext())
-        {
-          locallu = (lu)localIterator1.next();
-          if (locallu != null) {
-            locallu.e(this.b.a);
-          }
-        }
-        return;
+      if (this.a.size() == 0) {
+        return "";
       }
-    case 6: 
-      ly.b().d(this.b.a);
-      synchronized (this.b.d)
+      Object localObject1 = new StringBuilder();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator2 = this.b.d.iterator();
-        while (localIterator2.hasNext())
-        {
-          locallu = (lu)localIterator2.next();
-          if (locallu != null) {
-            locallu.d(this.b.a);
-          }
-        }
-        return;
+        a locala = (a)localIterator.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(locala.a);
+        localStringBuilder.append(",");
+        localStringBuilder.append(locala.b);
+        localStringBuilder.append(",");
+        localStringBuilder.append(locala.c);
+        ((StringBuilder)localObject1).append(localStringBuilder.toString());
+        ((StringBuilder)localObject1).append(";");
       }
-    case 5: 
-      ly.b().c(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator3 = this.b.d.iterator();
-        while (localIterator3.hasNext())
-        {
-          locallu = (lu)localIterator3.next();
-          if (locallu != null) {
-            locallu.c(this.b.a);
-          }
-        }
-        return;
-      }
-    case 4: 
-      ly.b().b(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator4 = this.b.d.iterator();
-        while (localIterator4.hasNext())
-        {
-          locallu = (lu)localIterator4.next();
-          if (locallu != null) {
-            locallu.b(this.b.a);
-          }
-        }
-        return;
-      }
-    case 3: 
-      ly.b().a(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator5 = this.b.d.iterator();
-        while (localIterator5.hasNext())
-        {
-          locallu = (lu)localIterator5.next();
-          if (locallu != null) {
-            locallu.a(this.b.a);
-          }
-        }
-        return;
-      }
-    case 2: 
-      ly.b().a();
-      synchronized (this.b.d)
-      {
-        Iterator localIterator6 = this.b.d.iterator();
-        while (localIterator6.hasNext())
-        {
-          locallu = (lu)localIterator6.next();
-          if (locallu != null) {
-            locallu.a();
-          }
-        }
-        return;
-      }
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
-    ly.b();
-    synchronized (this.b.d)
+  }
+  
+  public final void a(a parama)
+  {
+    synchronized (this.a)
     {
-      Iterator localIterator7 = this.b.d.iterator();
-      while (localIterator7.hasNext()) {
-        localIterator7.next();
+      if (this.a.size() < 20) {
+        this.a.add(parama);
       }
       return;
+    }
+  }
+  
+  public static final class a
+  {
+    long a;
+    int b;
+    String c;
+    
+    public a(long paramLong, int paramInt, String paramString)
+    {
+      this.a = paramLong;
+      this.b = paramInt;
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "";; paramString = lq.b(paramString))
+      {
+        this.c = paramString;
+        return;
+      }
     }
   }
 }

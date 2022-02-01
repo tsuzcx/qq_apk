@@ -1,59 +1,58 @@
 package com.tencent.token;
 
-import java.util.Stack;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.text.TextUtils;
 
 public final class aet
 {
-  public Stack<Node> a = new Stack();
-  public Document b;
-  public final DocumentBuilder c = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+  public static int a = -1;
   
-  public final void a(String paramString1, String paramString2, String paramString3, aep[] paramArrayOfaep)
+  public static int a(Context paramContext)
   {
-    if ((paramString1 != null) && (!"".equals(paramString1))) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    if (i != 0) {
-      paramString1 = this.b.createElement(paramString2);
-    } else {
-      paramString1 = this.b.createElementNS(paramString1, paramString3);
-    }
-    int k = paramArrayOfaep.length;
-    int i = 0;
-    while (i < k)
+    try
     {
-      paramString2 = paramArrayOfaep[i];
-      paramString3 = paramString2.c;
-      int j;
-      if ((paramString3 != null) && (!"".equals(paramString3))) {
-        j = 0;
-      } else {
-        j = 1;
+      paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+      if (paramContext == null) {
+        return a;
       }
-      if (j != 0)
-      {
-        paramString1.setAttribute(paramString2.a, paramString2.d);
+      if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
+        return a;
       }
-      else
-      {
-        paramString3 = paramString2.c;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString2.b);
-        localStringBuilder.append(':');
-        localStringBuilder.append(paramString2.a);
-        paramString1.setAttributeNS(paramString3, localStringBuilder.toString(), paramString2.d);
-      }
-      i += 1;
     }
-    ((Node)this.a.peek()).appendChild(paramString1);
-    this.a.push(paramString1);
+    catch (Throwable paramContext)
+    {
+      int i;
+      int j;
+      label92:
+      label96:
+      break label96;
+    }
+    try
+    {
+      i = paramContext.getIntExtra("level", 0);
+      j = paramContext.getIntExtra("scale", 100);
+      if (j == 0) {
+        return a;
+      }
+      j = i * 100 / j;
+      i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      j = i;
+      if (i > 100) {
+        j = 100;
+      }
+      return j;
+    }
+    catch (Throwable paramContext)
+    {
+      break label92;
+    }
+    return a;
+    return a;
   }
 }
 

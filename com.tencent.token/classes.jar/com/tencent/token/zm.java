@@ -1,166 +1,117 @@
 package com.tencent.token;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.TelephonyManager;
-import android.telephony.gsm.GsmCellLocation;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Environment;
+import android.os.StatFs;
+import java.io.File;
+import java.text.DecimalFormat;
 
 public final class zm
 {
-  public static double a(Context paramContext, int paramInt)
+  private static DecimalFormat a = new DecimalFormat("#0");
+  private static DecimalFormat b = new DecimalFormat("#0.#");
+  
+  public static long a()
   {
     try
     {
-      double d1 = zl.b;
-      double d2 = zl.b;
-      LocationManager localLocationManager = (LocationManager)paramContext.getSystemService("location");
-      paramContext = localLocationManager.getProviders(true);
-      if (paramContext.contains("gps"))
-      {
-        paramContext = "gps";
-      }
-      else
-      {
-        if (!paramContext.contains("network")) {
-          break label105;
-        }
-        paramContext = "network";
-      }
-      paramContext = localLocationManager.getLastKnownLocation(paramContext);
-      if (paramContext != null)
-      {
-        d1 = paramContext.getLatitude();
-        d2 = paramContext.getLongitude();
-      }
-      if (paramInt == zl.c) {
-        return d1;
-      }
-      int i = zl.d;
-      if (paramInt == i)
-      {
-        return d2;
-        label105:
-        return 0.0D;
-      }
+      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getAvailableBlocks();
+      return i * l;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
+      localException.printStackTrace();
     }
-    return zl.b;
+    return zk.b;
   }
   
-  public static int a(Context paramContext)
+  public static long a(Context paramContext)
   {
     try
     {
-      paramContext = (GsmCellLocation)((TelephonyManager)paramContext.getSystemService("phone")).getCellLocation();
-      if (paramContext != null)
-      {
-        int i = paramContext.getCid();
-        return i;
-      }
-      return -1;
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      paramContext.getMemoryInfo(localMemoryInfo);
+      long l = localMemoryInfo.availMem;
+      return l;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
-    return zl.b;
+    return zk.b;
   }
   
-  public static int b(Context paramContext)
+  public static long b()
   {
     try
     {
-      paramContext = (GsmCellLocation)((TelephonyManager)paramContext.getSystemService("phone")).getCellLocation();
-      if (paramContext != null)
-      {
-        int i = paramContext.getLac();
-        return i;
-      }
-      return -1;
+      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getBlockCount();
+      return i * l;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
+      localException.printStackTrace();
     }
-    return zl.b;
+    return zk.b;
   }
   
-  public static int c(Context paramContext)
+  public static long c()
   {
-    int m = 0;
-    int n = 0;
-    int k = 0;
-    int i = m;
-    int j;
     try
     {
-      paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getNeighboringCellInfo();
-      j = n;
-      if (paramContext != null)
+      if (e())
       {
-        i = m;
-        j = n;
-        if (paramContext.size() > 0)
-        {
-          i = m;
-          Iterator localIterator = paramContext.iterator();
-          j = k;
-          for (;;)
-          {
-            i = j;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            i = j;
-            j += ((NeighboringCellInfo)localIterator.next()).getRssi() * 2 - 133;
-          }
-          i = j;
-          j /= paramContext.size();
-          return j;
-        }
+        StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+        long l = localStatFs.getBlockSize();
+        int i = localStatFs.getAvailableBlocks();
+        return i * l;
       }
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
-      j = i;
+      localException.printStackTrace();
     }
-    return j;
+    return zk.b;
   }
   
-  public static int d(Context paramContext)
+  public static long d()
   {
-    int i;
     try
     {
-      paramContext = (LocationManager)paramContext.getSystemService("location");
-      if (paramContext == null) {
-        return 0;
-      }
-      boolean bool1 = paramContext.isProviderEnabled("gps");
-      boolean bool2 = paramContext.isProviderEnabled("network");
-      if ((!bool1) && (!bool2)) {
-        i = 0;
-      } else {
-        i = 1;
+      if (e())
+      {
+        StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+        long l = localStatFs.getBlockSize();
+        int i = localStatFs.getBlockCount();
+        return i * l;
       }
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
-      i = 0;
+      localException.printStackTrace();
     }
-    if (i != 0) {
-      return 1;
+    return zk.b;
+  }
+  
+  private static boolean e()
+  {
+    try
+    {
+      boolean bool = Environment.getExternalStorageState().equals("mounted");
+      return bool;
     }
-    return 0;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
 }
 

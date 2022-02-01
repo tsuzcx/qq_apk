@@ -1,19 +1,33 @@
 package com.tencent.token;
 
+import android.graphics.PointF;
+import java.util.ArrayList;
+import java.util.List;
+
 public final class amp
-  extends amx<Integer, Integer>
+  implements amv<PointF>
 {
-  private amp()
+  private final List<amb> a = new ArrayList();
+  private PointF b = new PointF(0.0F, 0.0F);
+  
+  private boolean b()
   {
-    super(Integer.valueOf(100));
+    return !this.a.isEmpty();
   }
   
-  public final ama<Integer> a()
+  public final alz<PointF> a()
   {
-    if (!super.b()) {
-      return new amh(this.b);
+    if (!b()) {
+      return new amg(this.b);
     }
-    return new alu(this.a);
+    return new amc(this.a);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("initialPoint=");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

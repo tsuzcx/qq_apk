@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 
 public class RecordTextView
   extends TextView
@@ -51,7 +51,7 @@ public class RecordTextView
       }
       if (RecordTextView.g(RecordTextView.this) != null)
       {
-        xb.c("onAniEnd");
+        xa.c("onAniEnd");
         RecordTextView.g(RecordTextView.this);
         RecordTextView.h(RecordTextView.this);
       }

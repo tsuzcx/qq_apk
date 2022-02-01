@@ -1,105 +1,73 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.PowerManager;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class zp
 {
-  public static int a(Context paramContext)
+  public static JSONArray a(Context paramContext)
   {
-    try
+    paramContext = k(paramContext);
+    JSONArray localJSONArray = new JSONArray();
+    if (paramContext != null)
     {
-      paramContext = (WindowManager)paramContext.getSystemService("window");
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      if (paramContext != null)
-      {
-        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-        int i = localDisplayMetrics.heightPixels;
-        return i;
+      if (paramContext.size() == 0) {
+        return localJSONArray;
       }
+      int j = paramContext.size();
+      int i = 0;
+      while (i < j)
+      {
+        Sensor localSensor = (Sensor)paramContext.get(i);
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("name", localSensor.getName());
+          localJSONObject.put("version", localSensor.getVersion());
+          localJSONObject.put("vender", localSensor.getVendor());
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        localJSONArray.put(localJSONObject);
+        i += 1;
+      }
+      return localJSONArray;
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zl.b;
+    return localJSONArray;
   }
   
   public static int b(Context paramContext)
   {
     try
     {
-      paramContext = (WindowManager)paramContext.getSystemService("window");
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      if (paramContext != null)
-      {
-        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-        int i = localDisplayMetrics.widthPixels;
-        return i;
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(1);
+      if (paramContext != null) {
+        return 1;
       }
+      return 0;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
     }
-    return zl.b;
+    return 0;
   }
   
   public static int c(Context paramContext)
   {
     try
     {
-      paramContext = (WindowManager)paramContext.getSystemService("window");
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      if (paramContext != null)
-      {
-        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-        int i = localDisplayMetrics.densityDpi;
-        return i;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zl.b;
-  }
-  
-  public static String d(Context paramContext)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(f(paramContext));
-    localStringBuffer.append(" * ");
-    localStringBuffer.append(g(paramContext));
-    return localStringBuffer.toString();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    try
-    {
-      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
-      return bool;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  private static int f(Context paramContext)
-  {
-    try
-    {
-      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-      if (paramContext != null)
-      {
-        int i = paramContext.getWidth();
-        return i;
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(2);
+      if (paramContext != null) {
+        return 1;
       }
       return 0;
     }
@@ -107,18 +75,16 @@ public final class zp
     {
       paramContext.printStackTrace();
     }
-    return zl.b;
+    return 0;
   }
   
-  private static int g(Context paramContext)
+  public static int d(Context paramContext)
   {
     try
     {
-      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-      if (paramContext != null)
-      {
-        int i = paramContext.getHeight();
-        return i;
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(4);
+      if (paramContext != null) {
+        return 1;
       }
       return 0;
     }
@@ -126,7 +92,124 @@ public final class zp
     {
       paramContext.printStackTrace();
     }
-    return zl.b;
+    return 0;
+  }
+  
+  public static int e(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(9);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public static int f(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(10);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public static int g(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(5);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public static int h(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(8);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public static int i(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(7);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public static int j(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(6);
+      if (paramContext != null) {
+        return 1;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return 0;
+  }
+  
+  private static List<Sensor> k(Context paramContext)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getSensorList(-1);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return localArrayList;
   }
 }
 

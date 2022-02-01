@@ -1,144 +1,35 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.database.Cursor;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.PopupWindow;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.view.ViewGroup;
 
-public final class fw
+public abstract class fw
+  extends fp
 {
-  static final d a = new d();
+  private int j;
+  private int k;
+  private LayoutInflater l;
   
-  static
+  @Deprecated
+  public fw(Context paramContext, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      a = new c();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      a = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      a = new a();
-      return;
-    }
+    super(paramContext);
+    this.k = paramInt;
+    this.j = paramInt;
+    this.l = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
-  public static void a(PopupWindow paramPopupWindow, int paramInt)
+  public View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    a.a(paramPopupWindow, paramInt);
+    return this.l.inflate(this.j, paramViewGroup, false);
   }
   
-  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  public final View b(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    a.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-  {
-    a.a(paramPopupWindow, paramBoolean);
-  }
-  
-  static class a
-    extends fw.d
-  {
-    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-    {
-      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  static class b
-    extends fw.a
-  {
-    private static Field a;
-    
-    static
-    {
-      try
-      {
-        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
-        a = localField;
-        localField.setAccessible(true);
-        return;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException) {}
-    }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      Field localField = a;
-      if (localField != null) {}
-      try
-      {
-        localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
-        return;
-      }
-      catch (IllegalAccessException paramPopupWindow) {}
-      return;
-    }
-  }
-  
-  static final class c
-    extends fw.b
-  {
-    public final void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      paramPopupWindow.setWindowLayoutType(paramInt);
-    }
-    
-    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      paramPopupWindow.setOverlapAnchor(paramBoolean);
-    }
-  }
-  
-  static class d
-  {
-    private static Method a;
-    private static boolean b;
-    
-    public void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      if (!b) {}
-      try
-      {
-        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
-        a = localMethod;
-        localMethod.setAccessible(true);
-        label33:
-        b = true;
-        localMethod = a;
-        if (localMethod != null) {}
-        try
-        {
-          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
-          return;
-        }
-        catch (Exception paramPopupWindow) {}
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label33;
-      }
-    }
-    
-    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-    {
-      int i = paramInt1;
-      if ((ek.a(paramInt3, ex.c(paramView)) & 0x7) == 5) {
-        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
-      }
-      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
-    }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
+    return this.l.inflate(this.k, paramViewGroup, false);
   }
 }
 

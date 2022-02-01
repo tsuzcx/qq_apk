@@ -22,27 +22,27 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.aae;
-import com.tencent.token.ahh;
+import com.tencent.token.aad;
+import com.tencent.token.ahg;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.qz;
-import com.tencent.token.rv;
-import com.tencent.token.rv.a;
+import com.tencent.token.qy;
+import com.tencent.token.ru;
+import com.tencent.token.ru.a;
+import com.tencent.token.sa;
 import com.tencent.token.sb;
-import com.tencent.token.sc;
-import com.tencent.token.ta;
+import com.tencent.token.sz;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.wx;
-import com.tencent.token.wz;
-import com.tencent.token.xb;
-import com.tencent.token.yr;
-import com.tencent.token.yr.a;
+import com.tencent.token.ww;
+import com.tencent.token.wy;
+import com.tencent.token.xa;
+import com.tencent.token.yq;
+import com.tencent.token.yq.a;
 
 public class WelcomeActivity
   extends Activity
-  implements yr.a
+  implements yq.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
@@ -52,7 +52,7 @@ public class WelcomeActivity
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private UserTask<String, String, wz> mActiveTask = null;
+  private UserTask<String, String, wy> mActiveTask = null;
   private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
   {
     public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
@@ -68,7 +68,7 @@ public class WelcomeActivity
         {
           if (WelcomeActivity.this.mLevel < WelcomeActivity.IMAGE_LEVEL_COUNT - 1)
           {
-            paramAnonymousMotionEvent1 = aae.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+            paramAnonymousMotionEvent1 = aad.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
             if (paramAnonymousMotionEvent1 == null)
             {
               WelcomeActivity.this.doOutOfMemory();
@@ -84,7 +84,7 @@ public class WelcomeActivity
         }
         else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (WelcomeActivity.this.mLevel > 0))
         {
-          paramAnonymousMotionEvent1 = aae.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+          paramAnonymousMotionEvent1 = aad.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             WelcomeActivity.this.doOutOfMemory();
@@ -162,9 +162,9 @@ public class WelcomeActivity
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private yr mPageCurlView;
+  private yq mPageCurlView;
   private ProDialogWithShutDown mProDialog;
-  private UserTask<String, String, wz> mSyncInitTask = null;
+  private UserTask<String, String, wy> mSyncInitTask = null;
   private int mWidth;
   ProgressDialog progressDialog;
   
@@ -182,7 +182,7 @@ public class WelcomeActivity
     this.mDotFull = null;
     localObject = this.mPageCurlView;
     if (localObject != null) {
-      ((yr)localObject).b();
+      ((yq)localObject).b();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -213,7 +213,7 @@ public class WelcomeActivity
   @SuppressLint({"ClickableViewAccessibility"})
   private void init()
   {
-    sc.b(wx.h());
+    sb.b(ww.h());
     try
     {
       StringBuilder localStringBuilder = new StringBuilder("totalMemory:");
@@ -222,8 +222,8 @@ public class WelcomeActivity
       localStringBuilder.append(Runtime.getRuntime().freeMemory());
       localStringBuilder.append(" maxMemory:");
       localStringBuilder.append(Runtime.getRuntime().maxMemory());
-      xb.b(localStringBuilder.toString());
-      aae.b();
+      xa.b(localStringBuilder.toString());
+      aad.b();
       nextActivity();
       return;
     }
@@ -246,9 +246,9 @@ public class WelcomeActivity
     if ((localObject != null) && (((UserTask)localObject).e != UserTask.Status.FINISHED)) {
       this.mActiveTask.c();
     }
-    if (!qz.a().d())
+    if (!qy.a().d())
     {
-      if (ta.a().k.a() == 0)
+      if (sz.a().k.a() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -258,7 +258,7 @@ public class WelcomeActivity
       }
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall) {
-        if (ta.a().k.b() != null) {
+        if (sz.a().k.b() != null) {
           ((Intent)localObject).putExtra("index_from", 17);
         } else {
           ((Intent)localObject).putExtra("index_from", 16);
@@ -276,7 +276,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    rv.a.a().a(this.mHandler);
+    ru.a.a().a(this.mHandler);
   }
   
   public void dismissDialog()
@@ -300,7 +300,7 @@ public class WelcomeActivity
     }
     catch (Exception localException)
     {
-      xb.b(localException.toString());
+      xa.b(localException.toString());
     }
   }
   
@@ -322,7 +322,7 @@ public class WelcomeActivity
       StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -334,13 +334,13 @@ public class WelcomeActivity
     paramBundle.append(this);
     paramBundle.append(",task");
     paramBundle.append(getTaskId());
-    xb.b(paramBundle.toString());
+    xa.b(paramBundle.toString());
     paramBundle = new StringBuilder("width = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getWidth());
     paramBundle.append(", height = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getHeight());
-    xb.a(paramBundle.toString());
-    if (!qz.a().c())
+    xa.a(paramBundle.toString());
+    if (!qy.a().c())
     {
       this.progressDialog = new ProgressDialog(this);
       this.progressDialog.setCanceledOnTouchOutside(false);
@@ -351,7 +351,7 @@ public class WelcomeActivity
       {
         public final void run()
         {
-          if (!qz.a().c())
+          if (!qy.a().c())
           {
             WelcomeActivity.this.mHandler.postDelayed(this, 1000L);
             return;
@@ -367,12 +367,12 @@ public class WelcomeActivity
   
   protected void onDestroy()
   {
-    yr localyr = this.mPageCurlView;
-    if (localyr != null) {
-      localyr.b();
+    yq localyq = this.mPageCurlView;
+    if (localyq != null) {
+      localyq.b();
     }
     this.mPageCurlView = null;
-    sb.a().a(getClass().getName());
+    sa.a().a(getClass().getName());
     super.onDestroy();
   }
   

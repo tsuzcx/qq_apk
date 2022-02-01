@@ -1,65 +1,14 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.meri.service.monitor.AccessibilityDispatcher;
 
-public final class asd
+public abstract interface asd
 {
-  public ase a;
+  public abstract int a(Context paramContext);
   
-  private void b()
-  {
-    if (this.a == null) {
-      this.a = new a();
-    }
-  }
+  public abstract void a();
   
-  public final ase a()
-  {
-    b();
-    return this.a;
-  }
-  
-  final class a
-    implements ase
-  {
-    a()
-    {
-      AccessibilityDispatcher.a = new kg()
-      {
-        public final HandlerThread a()
-        {
-          return new HandlerThread("AccessibilityDispatcher");
-        }
-        
-        public final Handler b()
-        {
-          HandlerThread localHandlerThread = new HandlerThread("MonitorCallbackHandler");
-          localHandlerThread.start();
-          return new Handler(localHandlerThread.getLooper());
-        }
-      };
-    }
-    
-    public final int a(Context paramContext)
-    {
-      return AccessibilityDispatcher.a(paramContext);
-    }
-    
-    public final void a() {}
-    
-    public final void a(Context paramContext, amg paramamg, aof.a parama)
-    {
-      AccessibilityDispatcher.a(paramContext, paramamg, parama);
-    }
-  }
-  
-  public static final class b
-  {
-    private static final asd a = new asd((byte)0);
-  }
+  public abstract void a(Context paramContext, amf paramamf, aoe.a parama);
 }
 
 

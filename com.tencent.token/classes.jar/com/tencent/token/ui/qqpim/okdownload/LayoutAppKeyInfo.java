@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.token.aad;
+import com.tencent.token.aac;
 import com.tencent.token.ui.ImageActivity;
 
 public class LayoutAppKeyInfo
@@ -82,7 +82,7 @@ public class LayoutAppKeyInfo
     {
       public final void onClick(View paramAnonymousView)
       {
-        aad.b(paramActivity, paramString4, "应用权限");
+        aac.b(paramActivity, paramString4, "应用权限");
       }
     });
     paramString1 = new SpannableStringBuilder("隐私政策");
@@ -99,7 +99,7 @@ public class LayoutAppKeyInfo
         paramAnonymousView = paramString5.toLowerCase();
         if ((!paramAnonymousView.endsWith("png")) && (!paramAnonymousView.endsWith("jpg")) && (!paramAnonymousView.endsWith("jpeg")))
         {
-          aad.b(paramActivity, paramString5, "隐私政策");
+          aac.b(paramActivity, paramString5, "隐私政策");
           return;
         }
         paramAnonymousView = new Intent(paramActivity, ImageActivity.class);

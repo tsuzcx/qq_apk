@@ -1,35 +1,25 @@
 package com.tencent.token;
 
-public final class abl
+public abstract class abl
 {
-  public static final abl a = new abl();
+  private volatile boolean a = true;
+  volatile int b = ww.a.h;
+  protected abk c = abk.a;
   
-  public static String a(int paramInt)
+  public abl(int paramInt, abk paramabk)
   {
-    if (paramInt != 4)
-    {
-      if (paramInt != 8)
-      {
-        if (paramInt != 16)
-        {
-          if (paramInt != 32)
-          {
-            switch (paramInt)
-            {
-            default: 
-              return "-";
-            case 2: 
-              return "D";
-            }
-            return "V";
-          }
-          return "A";
-        }
-        return "E";
-      }
-      return "W";
+    this.b = paramInt;
+    this.a = true;
+    this.c = paramabk;
+  }
+  
+  protected abstract void a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2);
+  
+  public final void b(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2)
+  {
+    if ((this.a) && (paramInt == (this.b & paramInt))) {
+      a(paramInt, paramThread, paramLong, paramString1, paramString2);
     }
-    return "I";
   }
 }
 

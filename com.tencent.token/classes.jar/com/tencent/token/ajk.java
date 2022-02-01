@@ -1,91 +1,120 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.net.ProtocolException;
 
 public final class ajk
-  implements aik
+  implements aij
 {
-  private final aid a;
+  private final boolean a;
   
-  public ajk(aid paramaid)
+  public ajk(boolean paramBoolean)
   {
-    this.a = paramaid;
+    this.a = paramBoolean;
   }
   
-  public final air a(aik.a parama)
+  public final aiq a(aij.a parama)
   {
-    Object localObject1 = parama.a();
-    Object localObject2 = ((aip)localObject1).a();
-    Object localObject3 = ((aip)localObject1).d;
-    Object localObject4;
-    if (localObject3 != null)
+    parama = (ajp)parama;
+    ajl localajl = parama.b;
+    aji localaji = parama.a;
+    aje localaje = (aje)parama.c;
+    aio localaio = parama.d;
+    long l = System.currentTimeMillis();
+    localajl.a(localaio);
+    boolean bool = ajo.a(localaio.b);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    parama = localObject2;
+    if (bool)
     {
-      localObject4 = ((aiq)localObject3).a();
-      if (localObject4 != null) {
-        ((aip.a)localObject2).a("Content-Type", ((ail)localObject4).toString());
-      }
-      long l = ((aiq)localObject3).b();
-      if (l != -1L)
+      parama = localObject2;
+      if (localaio.d != null)
       {
-        ((aip.a)localObject2).a("Content-Length", Long.toString(l));
-        ((aip.a)localObject2).b("Transfer-Encoding");
+        if ("100-continue".equalsIgnoreCase(localaio.a("Expect")))
+        {
+          localajl.a();
+          localObject1 = localajl.a(true);
+        }
+        if (localObject1 == null)
+        {
+          parama = alh.a(new a(localajl.a(localaio, localaio.d.b())));
+          localaio.d.a(parama);
+          parama.close();
+          parama = (aij.a)localObject1;
+        }
+        else
+        {
+          parama = (aij.a)localObject1;
+          if (!localaje.a())
+          {
+            localaji.d();
+            parama = (aij.a)localObject1;
+          }
+        }
       }
-      else
-      {
-        ((aip.a)localObject2).a("Transfer-Encoding", "chunked");
-        ((aip.a)localObject2).b("Content-Length");
-      }
     }
-    localObject3 = ((aip)localObject1).a("Host");
-    int j = 0;
-    if (localObject3 == null) {
-      ((aip.a)localObject2).a("Host", aix.a(((aip)localObject1).a, false));
+    localajl.b();
+    localObject1 = parama;
+    if (parama == null) {
+      localObject1 = localajl.a(false);
     }
-    if (((aip)localObject1).a("Connection") == null) {
-      ((aip.a)localObject2).a("Connection", "Keep-Alive");
-    }
-    int i;
-    if ((((aip)localObject1).a("Accept-Encoding") == null) && (((aip)localObject1).a("Range") == null))
+    ((aiq.a)localObject1).a = localaio;
+    ((aiq.a)localObject1).e = localaji.b().c;
+    ((aiq.a)localObject1).k = l;
+    ((aiq.a)localObject1).l = System.currentTimeMillis();
+    parama = ((aiq.a)localObject1).a();
+    int j = parama.c;
+    int i = j;
+    if (j == 100)
     {
-      ((aip.a)localObject2).a("Accept-Encoding", "gzip");
-      i = 1;
+      parama = localajl.a(false);
+      parama.a = localaio;
+      parama.e = localaji.b().c;
+      parama.k = l;
+      parama.l = System.currentTimeMillis();
+      parama = parama.a();
+      i = parama.c;
+    }
+    if ((this.a) && (i == 101))
+    {
+      parama = parama.a();
+      parama.g = aiw.c;
+      parama = parama.a();
     }
     else
     {
-      i = 0;
+      localObject1 = parama.a();
+      ((aiq.a)localObject1).g = localajl.a(parama);
+      parama = ((aiq.a)localObject1).a();
     }
-    localObject3 = this.a.a();
-    if (!((List)localObject3).isEmpty())
+    if (("close".equalsIgnoreCase(parama.a.a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
+      localaji.d();
+    }
+    if (((i != 204) && (i != 205)) || (parama.g.a() <= 0L)) {
+      return parama;
+    }
+    localObject1 = new StringBuilder("HTTP ");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" had non-zero Content-Length: ");
+    ((StringBuilder)localObject1).append(parama.g.a());
+    throw new ProtocolException(((StringBuilder)localObject1).toString());
+  }
+  
+  static final class a
+    extends alc
+  {
+    long a;
+    
+    a(aln paramaln)
     {
-      localObject4 = new StringBuilder();
-      int k = ((List)localObject3).size();
-      while (j < k)
-      {
-        if (j > 0) {
-          ((StringBuilder)localObject4).append("; ");
-        }
-        aic localaic = (aic)((List)localObject3).get(j);
-        ((StringBuilder)localObject4).append(localaic.a);
-        ((StringBuilder)localObject4).append('=');
-        ((StringBuilder)localObject4).append(localaic.b);
-        j += 1;
-      }
-      ((aip.a)localObject2).a("Cookie", ((StringBuilder)localObject4).toString());
+      super();
     }
-    if (((aip)localObject1).a("User-Agent") == null) {
-      ((aip.a)localObject2).a("User-Agent", "okhttp/3.11.0");
-    }
-    parama = parama.a(((aip.a)localObject2).a());
-    ajo.a(this.a, ((aip)localObject1).a, parama.f);
-    localObject2 = parama.a();
-    ((air.a)localObject2).a = ((aip)localObject1);
-    if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (ajo.b(parama)))
+    
+    public final void a_(aky paramaky, long paramLong)
     {
-      localObject1 = new alg(parama.g.b());
-      ((air.a)localObject2).a(parama.f.a().a("Content-Encoding").a("Content-Length").a());
-      ((air.a)localObject2).g = new ajr(parama.a("Content-Type"), -1L, ali.a((alp)localObject1));
+      super.a_(paramaky, paramLong);
+      this.a += paramLong;
     }
-    return ((air.a)localObject2).a();
   }
 }
 

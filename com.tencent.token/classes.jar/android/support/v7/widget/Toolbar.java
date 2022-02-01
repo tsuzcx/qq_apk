@@ -27,25 +27,25 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ek;
-import com.tencent.token.em;
-import com.tencent.token.ex;
-import com.tencent.token.gp.a;
-import com.tencent.token.gp.j;
-import com.tencent.token.gr;
-import com.tencent.token.gy;
-import com.tencent.token.hc;
-import com.tencent.token.hm;
-import com.tencent.token.hm.a;
-import com.tencent.token.ho;
-import com.tencent.token.ht;
-import com.tencent.token.ht.a;
-import com.tencent.token.hz;
-import com.tencent.token.iq;
-import com.tencent.token.iy;
+import com.tencent.token.ej;
+import com.tencent.token.el;
+import com.tencent.token.ew;
+import com.tencent.token.go.a;
+import com.tencent.token.go.j;
+import com.tencent.token.gq;
+import com.tencent.token.gx;
+import com.tencent.token.hb;
+import com.tencent.token.hl;
+import com.tencent.token.hl.a;
+import com.tencent.token.hn;
+import com.tencent.token.hs;
+import com.tencent.token.hs.a;
+import com.tencent.token.hy;
+import com.tencent.token.ip;
+import com.tencent.token.ix;
+import com.tencent.token.je;
 import com.tencent.token.jf;
-import com.tencent.token.jg;
-import com.tencent.token.jl;
+import com.tencent.token.jk;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +73,7 @@ public class Toolbar
       return false;
     }
   };
-  private jg M;
+  private jf M;
   private boolean N;
   private final Runnable O = new Runnable()
   {
@@ -94,13 +94,13 @@ public class Toolbar
   public int j;
   public int k;
   int l;
-  public iy m;
+  public ix m;
   final ArrayList<View> n = new ArrayList();
   b o;
   public ActionMenuPresenter p;
   public a q;
-  public ht.a r;
-  public hm.a s;
+  public hs.a r;
+  public hl.a s;
   private ImageButton t;
   private ImageView u;
   private int v;
@@ -111,47 +111,47 @@ public class Toolbar
   
   public Toolbar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.toolbarStyle);
+    this(paramContext, paramAttributeSet, go.a.toolbarStyle);
   }
   
   public Toolbar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = jf.a(getContext(), paramAttributeSet, gp.j.Toolbar, paramInt, 0);
-    this.j = paramContext.g(gp.j.Toolbar_titleTextAppearance, 0);
-    this.k = paramContext.g(gp.j.Toolbar_subtitleTextAppearance, 0);
-    this.C = paramContext.c(gp.j.Toolbar_android_gravity, this.C);
-    this.l = paramContext.c(gp.j.Toolbar_buttonGravity, 48);
-    int i1 = paramContext.d(gp.j.Toolbar_titleMargin, 0);
+    paramContext = je.a(getContext(), paramAttributeSet, go.j.Toolbar, paramInt, 0);
+    this.j = paramContext.g(go.j.Toolbar_titleTextAppearance, 0);
+    this.k = paramContext.g(go.j.Toolbar_subtitleTextAppearance, 0);
+    this.C = paramContext.c(go.j.Toolbar_android_gravity, this.C);
+    this.l = paramContext.c(go.j.Toolbar_buttonGravity, 48);
+    int i1 = paramContext.d(go.j.Toolbar_titleMargin, 0);
     paramInt = i1;
-    if (paramContext.f(gp.j.Toolbar_titleMargins)) {
-      paramInt = paramContext.d(gp.j.Toolbar_titleMargins, i1);
+    if (paramContext.f(go.j.Toolbar_titleMargins)) {
+      paramInt = paramContext.d(go.j.Toolbar_titleMargins, i1);
     }
     this.z = paramInt;
     this.y = paramInt;
     this.x = paramInt;
     this.w = paramInt;
-    paramInt = paramContext.d(gp.j.Toolbar_titleMarginStart, -1);
+    paramInt = paramContext.d(go.j.Toolbar_titleMarginStart, -1);
     if (paramInt >= 0) {
       this.w = paramInt;
     }
-    paramInt = paramContext.d(gp.j.Toolbar_titleMarginEnd, -1);
+    paramInt = paramContext.d(go.j.Toolbar_titleMarginEnd, -1);
     if (paramInt >= 0) {
       this.x = paramInt;
     }
-    paramInt = paramContext.d(gp.j.Toolbar_titleMarginTop, -1);
+    paramInt = paramContext.d(go.j.Toolbar_titleMarginTop, -1);
     if (paramInt >= 0) {
       this.y = paramInt;
     }
-    paramInt = paramContext.d(gp.j.Toolbar_titleMarginBottom, -1);
+    paramInt = paramContext.d(go.j.Toolbar_titleMarginBottom, -1);
     if (paramInt >= 0) {
       this.z = paramInt;
     }
-    this.v = paramContext.e(gp.j.Toolbar_maxButtonHeight, -1);
-    paramInt = paramContext.d(gp.j.Toolbar_contentInsetStart, -2147483648);
-    i1 = paramContext.d(gp.j.Toolbar_contentInsetEnd, -2147483648);
-    int i2 = paramContext.e(gp.j.Toolbar_contentInsetLeft, 0);
-    int i3 = paramContext.e(gp.j.Toolbar_contentInsetRight, 0);
+    this.v = paramContext.e(go.j.Toolbar_maxButtonHeight, -1);
+    paramInt = paramContext.d(go.j.Toolbar_contentInsetStart, -2147483648);
+    i1 = paramContext.d(go.j.Toolbar_contentInsetEnd, -2147483648);
+    int i2 = paramContext.e(go.j.Toolbar_contentInsetLeft, 0);
+    int i3 = paramContext.e(go.j.Toolbar_contentInsetRight, 0);
     g();
     paramAttributeSet = this.m;
     paramAttributeSet.h = false;
@@ -168,41 +168,41 @@ public class Toolbar
     if ((paramInt != -2147483648) || (i1 != -2147483648)) {
       this.m.a(paramInt, i1);
     }
-    this.A = paramContext.d(gp.j.Toolbar_contentInsetStartWithNavigation, -2147483648);
-    this.B = paramContext.d(gp.j.Toolbar_contentInsetEndWithActions, -2147483648);
-    this.d = paramContext.a(gp.j.Toolbar_collapseIcon);
-    this.e = paramContext.c(gp.j.Toolbar_collapseContentDescription);
-    paramAttributeSet = paramContext.c(gp.j.Toolbar_title);
+    this.A = paramContext.d(go.j.Toolbar_contentInsetStartWithNavigation, -2147483648);
+    this.B = paramContext.d(go.j.Toolbar_contentInsetEndWithActions, -2147483648);
+    this.d = paramContext.a(go.j.Toolbar_collapseIcon);
+    this.e = paramContext.c(go.j.Toolbar_collapseContentDescription);
+    paramAttributeSet = paramContext.c(go.j.Toolbar_title);
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setTitle(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.c(gp.j.Toolbar_subtitle);
+    paramAttributeSet = paramContext.c(go.j.Toolbar_subtitle);
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setSubtitle(paramAttributeSet);
     }
     this.h = getContext();
-    setPopupTheme(paramContext.g(gp.j.Toolbar_popupTheme, 0));
-    paramAttributeSet = paramContext.a(gp.j.Toolbar_navigationIcon);
+    setPopupTheme(paramContext.g(go.j.Toolbar_popupTheme, 0));
+    paramAttributeSet = paramContext.a(go.j.Toolbar_navigationIcon);
     if (paramAttributeSet != null) {
       setNavigationIcon(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.c(gp.j.Toolbar_navigationContentDescription);
+    paramAttributeSet = paramContext.c(go.j.Toolbar_navigationContentDescription);
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setNavigationContentDescription(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.a(gp.j.Toolbar_logo);
+    paramAttributeSet = paramContext.a(go.j.Toolbar_logo);
     if (paramAttributeSet != null) {
       setLogo(paramAttributeSet);
     }
-    paramAttributeSet = paramContext.c(gp.j.Toolbar_logoDescription);
+    paramAttributeSet = paramContext.c(go.j.Toolbar_logoDescription);
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setLogoDescription(paramAttributeSet);
     }
-    if (paramContext.f(gp.j.Toolbar_titleTextColor)) {
-      setTitleTextColor(paramContext.b(gp.j.Toolbar_titleTextColor, -1));
+    if (paramContext.f(go.j.Toolbar_titleTextColor)) {
+      setTitleTextColor(paramContext.b(go.j.Toolbar_titleTextColor, -1));
     }
-    if (paramContext.f(gp.j.Toolbar_subtitleTextColor)) {
-      setSubtitleTextColor(paramContext.b(gp.j.Toolbar_subtitleTextColor, -1));
+    if (paramContext.f(go.j.Toolbar_subtitleTextColor)) {
+      setSubtitleTextColor(paramContext.b(go.j.Toolbar_subtitleTextColor, -1));
     }
     paramContext.a.recycle();
   }
@@ -335,7 +335,7 @@ public class Toolbar
   
   private void a(List<View> paramList, int paramInt)
   {
-    int i1 = ex.c(this);
+    int i1 = ew.c(this);
     int i2 = 0;
     if (i1 == 1) {
       i1 = 1;
@@ -343,7 +343,7 @@ public class Toolbar
       i1 = 0;
     }
     int i4 = getChildCount();
-    int i3 = ek.a(paramInt, ex.c(this));
+    int i3 = ej.a(paramInt, ew.c(this));
     paramList.clear();
     paramInt = i2;
     View localView;
@@ -380,8 +380,8 @@ public class Toolbar
   
   private int b(int paramInt)
   {
-    int i1 = ex.c(this);
-    paramInt = ek.a(paramInt, i1) & 0x7;
+    int i1 = ew.c(this);
+    paramInt = ej.a(paramInt, i1) & 0x7;
     if ((paramInt != 1) && (paramInt != 3) && (paramInt != 5))
     {
       if (i1 == 1) {
@@ -395,7 +395,7 @@ public class Toolbar
   private static int b(View paramView)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    return em.a(paramView) + em.b(paramView);
+    return el.a(paramView) + el.b(paramView);
   }
   
   private int b(View paramView, int paramInt1, int[] paramArrayOfInt, int paramInt2)
@@ -428,7 +428,7 @@ public class Toolbar
   
   private MenuInflater getMenuInflater()
   {
-    return new hc(getContext());
+    return new hb(getContext());
   }
   
   private void h()
@@ -443,12 +443,12 @@ public class Toolbar
     d();
     if (this.a.a == null)
     {
-      hm localhm = (hm)this.a.getMenu();
+      hl localhl = (hl)this.a.getMenu();
       if (this.q == null) {
         this.q = new a();
       }
       this.a.setExpandedActionViewsExclusive(true);
-      localhm.a(this.q, this.h);
+      localhl.a(this.q, this.h);
     }
   }
   
@@ -456,7 +456,7 @@ public class Toolbar
   {
     if (this.t == null)
     {
-      this.t = new AppCompatImageButton(getContext(), null, gp.a.toolbarNavigationButtonStyle);
+      this.t = new AppCompatImageButton(getContext(), null, go.a.toolbarNavigationButtonStyle);
       LayoutParams localLayoutParams = new LayoutParams();
       localLayoutParams.a = (0x800003 | this.l & 0x70);
       this.t.setLayoutParams(localLayoutParams);
@@ -508,7 +508,7 @@ public class Toolbar
       localObject = ((a)localObject).b;
     }
     if (localObject != null) {
-      ((ho)localObject).collapseActionView();
+      ((hn)localObject).collapseActionView();
     }
   }
   
@@ -546,19 +546,19 @@ public class Toolbar
   public final void g()
   {
     if (this.m == null) {
-      this.m = new iy();
+      this.m = new ix();
     }
   }
   
   public int getContentInsetEnd()
   {
-    iy localiy = this.m;
-    if (localiy != null)
+    ix localix = this.m;
+    if (localix != null)
     {
-      if (localiy.g) {
-        return localiy.a;
+      if (localix.g) {
+        return localix.a;
       }
-      return localiy.b;
+      return localix.b;
     }
     return 0;
   }
@@ -574,31 +574,31 @@ public class Toolbar
   
   public int getContentInsetLeft()
   {
-    iy localiy = this.m;
-    if (localiy != null) {
-      return localiy.a;
+    ix localix = this.m;
+    if (localix != null) {
+      return localix.a;
     }
     return 0;
   }
   
   public int getContentInsetRight()
   {
-    iy localiy = this.m;
-    if (localiy != null) {
-      return localiy.b;
+    ix localix = this.m;
+    if (localix != null) {
+      return localix.b;
     }
     return 0;
   }
   
   public int getContentInsetStart()
   {
-    iy localiy = this.m;
-    if (localiy != null)
+    ix localix = this.m;
+    if (localix != null)
     {
-      if (localiy.g) {
-        return localiy.b;
+      if (localix.g) {
+        return localix.b;
       }
-      return localiy.a;
+      return localix.a;
     }
     return 0;
   }
@@ -619,7 +619,7 @@ public class Toolbar
     if (localObject != null)
     {
       localObject = ((ActionMenuView)localObject).a;
-      if ((localObject != null) && (((hm)localObject).hasVisibleItems())) {
+      if ((localObject != null) && (((hl)localObject).hasVisibleItems())) {
         i1 = 1;
       } else {
         i1 = 0;
@@ -637,7 +637,7 @@ public class Toolbar
   
   public int getCurrentContentInsetLeft()
   {
-    if (ex.c(this) == 1) {
+    if (ew.c(this) == 1) {
       return getCurrentContentInsetEnd();
     }
     return getCurrentContentInsetStart();
@@ -645,7 +645,7 @@ public class Toolbar
   
   public int getCurrentContentInsetRight()
   {
-    if (ex.c(this) == 1) {
+    if (ew.c(this) == 1) {
       return getCurrentContentInsetStart();
     }
     return getCurrentContentInsetEnd();
@@ -752,10 +752,10 @@ public class Toolbar
     return this.y;
   }
   
-  public iq getWrapper()
+  public ip getWrapper()
   {
     if (this.M == null) {
-      this.M = new jg(this, true);
+      this.M = new jf(this, true);
     }
     return this.M;
   }
@@ -787,7 +787,7 @@ public class Toolbar
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (ex.c(this) == 1) {
+    if (ew.c(this) == 1) {
       i3 = 1;
     } else {
       i3 = 0;
@@ -802,7 +802,7 @@ public class Toolbar
     int[] arrayOfInt = this.K;
     arrayOfInt[1] = 0;
     arrayOfInt[0] = 0;
-    paramInt1 = ex.e(this);
+    paramInt1 = ew.e(this);
     if (paramInt1 >= 0) {
       paramInt4 = Math.min(paramInt1, paramInt4 - paramInt2);
     } else {
@@ -1109,7 +1109,7 @@ public class Toolbar
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     Object localObject = this.K;
-    boolean bool = jl.a(this);
+    boolean bool = jk.a(this);
     int i8 = 1;
     if (bool)
     {
@@ -1305,48 +1305,48 @@ public class Toolbar
       super.onRtlPropertiesChanged(paramInt);
     }
     g();
-    iy localiy = this.m;
+    ix localix = this.m;
     boolean bool = true;
     if (paramInt != 1) {
       bool = false;
     }
-    if (bool != localiy.g)
+    if (bool != localix.g)
     {
-      localiy.g = bool;
-      if (localiy.h)
+      localix.g = bool;
+      if (localix.h)
       {
         if (bool)
         {
-          if (localiy.d != -2147483648) {
-            paramInt = localiy.d;
+          if (localix.d != -2147483648) {
+            paramInt = localix.d;
           } else {
-            paramInt = localiy.e;
+            paramInt = localix.e;
           }
-          localiy.a = paramInt;
-          if (localiy.c != -2147483648) {
-            paramInt = localiy.c;
+          localix.a = paramInt;
+          if (localix.c != -2147483648) {
+            paramInt = localix.c;
           } else {
-            paramInt = localiy.f;
+            paramInt = localix.f;
           }
-          localiy.b = paramInt;
+          localix.b = paramInt;
           return;
         }
-        if (localiy.c != -2147483648) {
-          paramInt = localiy.c;
+        if (localix.c != -2147483648) {
+          paramInt = localix.c;
         } else {
-          paramInt = localiy.e;
+          paramInt = localix.e;
         }
-        localiy.a = paramInt;
-        if (localiy.d != -2147483648) {
-          paramInt = localiy.d;
+        localix.a = paramInt;
+        if (localix.d != -2147483648) {
+          paramInt = localix.d;
         } else {
-          paramInt = localiy.f;
+          paramInt = localix.f;
         }
-        localiy.b = paramInt;
+        localix.b = paramInt;
         return;
       }
-      localiy.a = localiy.e;
-      localiy.b = localiy.f;
+      localix.a = localix.e;
+      localix.b = localix.f;
     }
   }
   
@@ -1418,7 +1418,7 @@ public class Toolbar
   
   public void setLogo(int paramInt)
   {
-    setLogo(gr.b(getContext(), paramInt));
+    setLogo(gq.b(getContext(), paramInt));
   }
   
   public void setLogo(Drawable paramDrawable)
@@ -1485,7 +1485,7 @@ public class Toolbar
   
   public void setNavigationIcon(int paramInt)
   {
-    setNavigationIcon(gr.b(getContext(), paramInt));
+    setNavigationIcon(gq.b(getContext(), paramInt));
   }
   
   public void setNavigationIcon(Drawable paramDrawable)
@@ -1746,36 +1746,36 @@ public class Toolbar
   }
   
   public final class a
-    implements ht
+    implements hs
   {
-    hm a;
-    public ho b;
+    hl a;
+    public hn b;
     
     public a() {}
     
-    public final void a(Context paramContext, hm paramhm)
+    public final void a(Context paramContext, hl paramhl)
     {
       paramContext = this.a;
       if (paramContext != null)
       {
-        ho localho = this.b;
-        if (localho != null) {
-          paramContext.b(localho);
+        hn localhn = this.b;
+        if (localhn != null) {
+          paramContext.b(localhn);
         }
       }
-      this.a = paramhm;
+      this.a = paramhl;
     }
     
-    public final void a(hm paramhm, boolean paramBoolean) {}
+    public final void a(hl paramhl, boolean paramBoolean) {}
     
-    public final void a(ht.a parama) {}
+    public final void a(hs.a parama) {}
     
     public final boolean a()
     {
       return false;
     }
     
-    public final boolean a(hz paramhz)
+    public final boolean a(hy paramhy)
     {
       return false;
     }
@@ -1784,12 +1784,12 @@ public class Toolbar
     {
       if (this.b != null)
       {
-        hm localhm = this.a;
+        hl localhl = this.a;
         int k = 0;
         int j = k;
-        if (localhm != null)
+        if (localhl != null)
         {
-          int m = localhm.size();
+          int m = localhl.size();
           int i = 0;
           for (;;)
           {
@@ -1811,12 +1811,12 @@ public class Toolbar
       }
     }
     
-    public final boolean b(ho paramho)
+    public final boolean b(hn paramhn)
     {
       Object localObject1 = Toolbar.this;
       if (((Toolbar)localObject1).f == null)
       {
-        ((Toolbar)localObject1).f = new AppCompatImageButton(((Toolbar)localObject1).getContext(), null, gp.a.toolbarNavigationButtonStyle);
+        ((Toolbar)localObject1).f = new AppCompatImageButton(((Toolbar)localObject1).getContext(), null, go.a.toolbarNavigationButtonStyle);
         ((Toolbar)localObject1).f.setImageDrawable(((Toolbar)localObject1).d);
         ((Toolbar)localObject1).f.setContentDescription(((Toolbar)localObject1).e);
         localObject2 = new Toolbar.LayoutParams();
@@ -1835,8 +1835,8 @@ public class Toolbar
         localObject1 = Toolbar.this;
         ((Toolbar)localObject1).addView(((Toolbar)localObject1).f);
       }
-      Toolbar.this.g = paramho.getActionView();
-      this.b = paramho;
+      Toolbar.this.g = paramhn.getActionView();
+      this.b = paramhn;
       localObject1 = Toolbar.this.g.getParent();
       localObject2 = Toolbar.this;
       if (localObject1 != localObject2)
@@ -1864,17 +1864,17 @@ public class Toolbar
         i -= 1;
       }
       Toolbar.this.requestLayout();
-      paramho.d(true);
-      if ((Toolbar.this.g instanceof gy)) {
-        ((gy)Toolbar.this.g).a();
+      paramhn.d(true);
+      if ((Toolbar.this.g instanceof gx)) {
+        ((gx)Toolbar.this.g).a();
       }
       return true;
     }
     
-    public final boolean c(ho paramho)
+    public final boolean c(hn paramhn)
     {
-      if ((Toolbar.this.g instanceof gy)) {
-        ((gy)Toolbar.this.g).b();
+      if ((Toolbar.this.g instanceof gx)) {
+        ((gx)Toolbar.this.g).b();
       }
       Toolbar localToolbar = Toolbar.this;
       localToolbar.removeView(localToolbar.g);
@@ -1885,7 +1885,7 @@ public class Toolbar
       localToolbar.f();
       this.b = null;
       Toolbar.this.requestLayout();
-      paramho.d(false);
+      paramhn.d(false);
       return true;
     }
   }

@@ -3,63 +3,79 @@ package com.tencent.token;
 import android.content.Context;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class uu
-  extends tk
+  extends tj
 {
   private long d;
-  private long e;
-  private int f;
-  private int g;
-  private String h;
-  private int i;
+  private int e;
+  private ta f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramaar.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.h = ((String)paramaar.c.get("param.mbmobile.vrycode"));
-    this.i = ((Integer)paramaar.c.get("param.type")).intValue();
-    this.f = paramaar.j;
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j != 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      a(j, paramJSONObject.getString("info"));
+      a(i, null);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    Object localObject = aac.d(paramJSONObject.getString("data"));
+    if (localObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.a("mbtoken3_general_verify_mobile_code ret: ".concat(String.valueOf(paramJSONObject)));
-      j = paramJSONObject.getInt("seq_id");
-      if (j != this.f)
+      localObject = new JSONObject(new String((byte[])localObject));
+      i = ((JSONObject)localObject).getInt("seq_id");
+      if (i != this.e)
       {
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.f);
-        xb.c(paramJSONObject.toString());
         this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
+      long l = ((JSONObject)localObject).getLong("uin");
+      if (l != this.d)
+      {
+        paramJSONObject = this.a;
+        localObject = new StringBuilder("uin not match=");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.d);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
+        return;
+      }
+      localObject = ((JSONObject)localObject).getJSONArray("result");
+      if (!this.f.a((JSONArray)localObject))
+      {
+        paramJSONObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
+        localStringBuilder.append(((JSONArray)localObject).toString());
+        paramJSONObject.a(10000, localStringBuilder.toString(), null);
+        return;
+      }
+      xb.a("account_lock", new String(paramJSONObject.toString()));
+      this.f.b.e = true;
+      this.f.b.f = false;
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
 }

@@ -3,7 +3,7 @@ Built-By: Generated-by-ADT
 Created-By: Android Gradle 3.3.2
 
 Name: AndroidManifest.xml
-SHA1-Digest: fwMOju7bctlsJvep6kXHYZXLnyk=
+SHA1-Digest: CYqPMcic3hnnTzcPrAjr0ClythU=
 
 Name: META-INF/android.arch.core_runtime.version
 SHA1-Digest: BeF7ZGqBckDCBhhvlPj0xwl01dw=
@@ -84,7 +84,7 @@ Name: assets/tcaptcha_webview.html
 SHA1-Digest: MdqRKydENXCqyoQ9ZCAwMrujSO4=
 
 Name: classes.dex
-SHA1-Digest: HKwE3kkLINgF2u2nvl4CXqK+Bcc=
+SHA1-Digest: OhXH+p4CCJRGe1xaf6Pi+r/M9MU=
 
 Name: lib/armeabi/libFaceAlgClinet.so
 SHA1-Digest: SNFCN5uFBUdGRuKdjbF+AWGFaVQ=
@@ -108,7 +108,7 @@ Name: lib/armeabi/libTmsdk-2.0.9-mfr.so
 SHA1-Digest: m3LaAQC/4guTVTQpnQGbqTzX54g=
 
 Name: lib/armeabi/libqqtoken-lib.so
-SHA1-Digest: ZZkjuPWpgpranUDvjvsT9+dGb5I=
+SHA1-Digest: s4trDEJ16iKXh5pllQTCJMprYA8=
 
 Name: lib/armeabi/libsecure.so
 SHA1-Digest: TNXAtJlun3/VG8j/bzk9xS9ma0Y=

@@ -24,15 +24,15 @@ import android.widget.TextView;
 import com.tencent.mm.sdk.openapi.WXMediaMessage;
 import com.tencent.mm.sdk.openapi.WXMediaMessage.a;
 import com.tencent.mm.sdk.openapi.WXWebpageObject;
+import com.tencent.token.aac;
 import com.tencent.token.aad;
-import com.tencent.token.aae;
-import com.tencent.token.pm;
-import com.tencent.token.pn.a;
-import com.tencent.token.po;
-import com.tencent.token.ru;
+import com.tencent.token.pl;
+import com.tencent.token.pm.a;
+import com.tencent.token.pn;
+import com.tencent.token.rt;
 import com.tencent.token.ui.base.TitleOptionMenu;
 import com.tencent.token.ui.base.TitleOptionMenu.a;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import java.lang.reflect.Method;
 
 public abstract class EmbedWebBaseActivity
@@ -67,7 +67,7 @@ public abstract class EmbedWebBaseActivity
     {
       try
       {
-        xb.a("onJsPrompt message=".concat(String.valueOf(paramAnonymousString2)));
+        xa.a("onJsPrompt message=".concat(String.valueOf(paramAnonymousString2)));
         if ((EmbedWebBaseActivity.this.shareurl != null) && (EmbedWebBaseActivity.this.shareurl.contains("mobile_reset_psw_uv_verify")))
         {
           paramAnonymousWebView = new Intent();
@@ -106,7 +106,7 @@ public abstract class EmbedWebBaseActivity
   {
     public final void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong)
     {
-      aad.a(EmbedWebBaseActivity.this, paramAnonymousString1);
+      aac.a(EmbedWebBaseActivity.this, paramAnonymousString1);
     }
   };
   public boolean mDynamicTitle;
@@ -115,7 +115,7 @@ public abstract class EmbedWebBaseActivity
   {
     public final void onClick(View paramAnonymousView)
     {
-      xb.a("BaseActivityonItemClicked");
+      xa.a("BaseActivityonItemClicked");
       if (EmbedWebBaseActivity.this.mTitleMenu.getVisibility() == 0)
       {
         EmbedWebBaseActivity.this.mTitleMenu.b();
@@ -125,9 +125,9 @@ public abstract class EmbedWebBaseActivity
       {
         public final void a(int paramAnonymous2Int)
         {
-          xb.a("BaseActivityonItemClicked");
+          xa.a("BaseActivityonItemClicked");
           Object localObject;
-          pn.a locala;
+          pm.a locala;
           switch (paramAnonymous2Int)
           {
           default: 
@@ -137,14 +137,14 @@ public abstract class EmbedWebBaseActivity
             {
               if (EmbedWebBaseActivity.this.mWeChatApi.b() >= 553779201)
               {
-                ru.a().a(System.currentTimeMillis(), 74);
+                rt.a().a(System.currentTimeMillis(), 74);
                 localObject = new WXWebpageObject();
                 ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
                 localObject = new WXMediaMessage((WXMediaMessage.a)localObject);
                 ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
                 ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493593);
-                ((WXMediaMessage)localObject).setThumbImage(aae.a(EmbedWebBaseActivity.this.getResources(), 2131100201));
-                locala = new pn.a();
+                ((WXMediaMessage)localObject).setThumbImage(aad.a(EmbedWebBaseActivity.this.getResources(), 2131100201));
+                locala = new pm.a();
                 locala.a = String.valueOf(System.currentTimeMillis());
                 locala.b = ((WXMediaMessage)localObject);
                 locala.c = 1;
@@ -161,14 +161,14 @@ public abstract class EmbedWebBaseActivity
           {
             if (EmbedWebBaseActivity.this.mWeChatApi.b() >= 553779201)
             {
-              ru.a().a(System.currentTimeMillis(), 74);
+              rt.a().a(System.currentTimeMillis(), 74);
               localObject = new WXWebpageObject();
               ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
               localObject = new WXMediaMessage((WXMediaMessage.a)localObject);
               ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
               ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493593);
-              ((WXMediaMessage)localObject).setThumbImage(aae.a(EmbedWebBaseActivity.this.getResources(), 2131100201));
-              locala = new pn.a();
+              ((WXMediaMessage)localObject).setThumbImage(aad.a(EmbedWebBaseActivity.this.getResources(), 2131100201));
+              locala = new pm.a();
               locala.a = String.valueOf(System.currentTimeMillis());
               locala.b = ((WXMediaMessage)localObject);
               locala.c = 0;
@@ -192,13 +192,13 @@ public abstract class EmbedWebBaseActivity
       return false;
     }
   };
-  protected pm mWeChatApi;
+  protected pl mWeChatApi;
   public WebView mWebView;
   private final WebViewClient mWebviewClient = new WebViewClient()
   {
     public final void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
     {
-      xb.c("onPageFinished");
+      xa.c("onPageFinished");
       if (EmbedWebBaseActivity.this.mWebView.canGoBack()) {
         EmbedWebBaseActivity.this.closetext.setVisibility(0);
       } else {
@@ -221,7 +221,7 @@ public abstract class EmbedWebBaseActivity
       paramAnonymousWebView = new StringBuilder("url");
       paramAnonymousWebView.append(paramAnonymousString);
       paramAnonymousWebView.append(",override=");
-      xb.a(paramAnonymousWebView.toString());
+      xa.a(paramAnonymousWebView.toString());
       return EmbedWebBaseActivity.this.overrideUrlLoading(paramAnonymousString);
     }
   };
@@ -269,7 +269,7 @@ public abstract class EmbedWebBaseActivity
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      xb.b(paramString1.toString());
+      xa.b(paramString1.toString());
     }
   }
   
@@ -288,7 +288,7 @@ public abstract class EmbedWebBaseActivity
         catch (Exception paramAnonymousDialogInterface)
         {
           paramAnonymousDialogInterface.printStackTrace();
-          xb.b(paramAnonymousDialogInterface.toString());
+          xa.b(paramAnonymousDialogInterface.toString());
         }
       }
     }, null);
@@ -314,7 +314,7 @@ public abstract class EmbedWebBaseActivity
         paramBundle.printStackTrace();
         StringBuilder localStringBuilder = new StringBuilder("removeJavascriptInterface error: ");
         localStringBuilder.append(paramBundle.getMessage());
-        xb.c(localStringBuilder.toString());
+        xa.c(localStringBuilder.toString());
       }
       setRightTitleImage(2131100165, this.mRightTitleButtonClickListener);
       this.mTitleMenu = getDialogMenu();
@@ -324,7 +324,7 @@ public abstract class EmbedWebBaseActivity
       if (this.mRightOptionLayout != null) {
         this.mRightOptionLayout.setVisibility(8);
       }
-      this.mWeChatApi = po.a(this, "wx58837a82c2e0ed15");
+      this.mWeChatApi = pn.a(this, "wx58837a82c2e0ed15");
       this.mWeChatApi.a("wx58837a82c2e0ed15");
       return;
     }
@@ -339,14 +339,14 @@ public abstract class EmbedWebBaseActivity
   {
     if (paramString.startsWith("sms:"))
     {
-      xb.b("url".concat(String.valueOf(paramString)));
+      xa.b("url".concat(String.valueOf(paramString)));
       sendBindUinSmsBySMSAPP(paramString.substring(4), "");
       return true;
     }
     if ((!paramString.startsWith("wtloginmqq://ptlogin/qlogin?p=http")) && (!paramString.startsWith("weixin://"))) {
       return false;
     }
-    aad.a(this, paramString);
+    aac.a(this, paramString);
     return true;
   }
   

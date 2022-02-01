@@ -1,20 +1,27 @@
 package com.tencent.token;
 
-public abstract interface aik
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+
+public final class aik
 {
-  public abstract air a(a parama);
+  private static final Pattern a = Pattern.compile("([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)/([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)");
+  private static final Pattern b = Pattern.compile(";\\s*(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)=(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)|\"([^\"]*)\"))?");
+  private final String c;
   
-  public static abstract interface a
+  public final boolean equals(@Nullable Object paramObject)
   {
-    public abstract aip a();
-    
-    public abstract air a(aip paramaip);
-    
-    public abstract int b();
-    
-    public abstract int c();
-    
-    public abstract int d();
+    return ((paramObject instanceof aik)) && (((aik)paramObject).c.equals(this.c));
+  }
+  
+  public final int hashCode()
+  {
+    return this.c.hashCode();
+  }
+  
+  public final String toString()
+  {
+    return this.c;
   }
 }
 

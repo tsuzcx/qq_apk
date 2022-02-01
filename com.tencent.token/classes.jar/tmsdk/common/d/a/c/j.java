@@ -7,10 +7,10 @@ import android.content.IntentFilter;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
+import com.tencent.token.aqz;
 import com.tencent.token.ara;
-import com.tencent.token.arb;
+import com.tencent.token.kd;
 import com.tencent.token.ke;
-import com.tencent.token.kf;
 import java.util.LinkedList;
 
 public class j
@@ -76,8 +76,8 @@ public class j
       {
         if (this.c.compareTo(NetworkInfo.State.DISCONNECTED) == 0)
         {
-          ke.a();
-          kf.a(new ara(this), "无网络 -> 有网络");
+          kd.a();
+          ke.a(new aqz(this), "无网络 -> 有网络");
         }
         this.c = paramContext;
         return;
@@ -86,8 +86,8 @@ public class j
       {
         if (this.c.compareTo(NetworkInfo.State.CONNECTED) == 0)
         {
-          ke.a();
-          kf.a(new arb(this), "有网络 -> 无网络");
+          kd.a();
+          ke.a(new ara(this), "有网络 -> 无网络");
         }
         this.c = paramContext;
       }

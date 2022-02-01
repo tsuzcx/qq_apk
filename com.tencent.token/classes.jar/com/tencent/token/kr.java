@@ -1,236 +1,360 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Message;
-import android.webkit.CookieManager;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebView.WebViewTransport;
-import android.webkit.WebViewClient;
-import java.lang.reflect.Method;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class kr
 {
-  private a a;
-  private Context b;
+  public static int a = 1;
+  public static int b = 2;
   private String c;
-  private WebView d;
-  private String e;
-  private int f;
-  private final WebChromeClient g = new WebChromeClient()
-  {
-    public final void onCloseWindow(WebView paramAnonymousWebView)
-    {
-      super.onCloseWindow(paramAnonymousWebView);
-    }
-    
-    public final boolean onCreateWindow(WebView paramAnonymousWebView, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, Message paramAnonymousMessage)
-    {
-      try
-      {
-        paramAnonymousWebView = new WebView(paramAnonymousWebView.getContext());
-        try
-        {
-          if (Build.VERSION.SDK_INT >= 11)
-          {
-            paramAnonymousWebView.removeJavascriptInterface("searchBoxJavaBridge_");
-            paramAnonymousWebView.removeJavascriptInterface("accessibility");
-            paramAnonymousWebView.removeJavascriptInterface("accessibilityTraversal");
-          }
-          else
-          {
-            Method localMethod = paramAnonymousWebView.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
-            if (localMethod != null)
-            {
-              localMethod.invoke(paramAnonymousWebView, new Object[] { "searchBoxJavaBridge_" });
-              localMethod.invoke(paramAnonymousWebView, new Object[] { "accessibility" });
-              localMethod.invoke(paramAnonymousWebView, new Object[] { "accessibilityTraversal" });
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        paramAnonymousWebView.setWebViewClient(new WebViewClient()
-        {
-          public final boolean shouldOverrideUrlLoading(WebView paramAnonymous2WebView, String paramAnonymous2String)
-          {
-            try
-            {
-              paramAnonymous2String = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymous2String));
-              paramAnonymous2String.addFlags(268435456);
-              paramAnonymous2WebView.getContext().startActivity(paramAnonymous2String);
-              return true;
-            }
-            catch (Exception paramAnonymous2WebView)
-            {
-              paramAnonymous2WebView.printStackTrace();
-            }
-            return true;
-          }
-        });
-        ((WebView.WebViewTransport)paramAnonymousMessage.obj).setWebView(paramAnonymousWebView);
-        paramAnonymousMessage.sendToTarget();
-        return true;
-      }
-      catch (Exception paramAnonymousWebView)
-      {
-        paramAnonymousWebView.printStackTrace();
-      }
-      return true;
-    }
-    
-    public final void onProgressChanged(WebView paramAnonymousWebView, int paramAnonymousInt) {}
-    
-    public final void onReceivedTitle(WebView paramAnonymousWebView, String paramAnonymousString) {}
-  };
-  private final WebViewClient h = new WebViewClient()
-  {
-    public final boolean shouldOverrideUrlLoading(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest)
-    {
-      Uri localUri = paramAnonymousWebResourceRequest.getUrl();
-      if (localUri.getScheme().equals("tcwebscheme"))
-      {
-        kr.a(kr.this, localUri);
-        return true;
-      }
-      return super.shouldOverrideUrlLoading(paramAnonymousWebView, paramAnonymousWebResourceRequest);
-    }
-    
-    public final boolean shouldOverrideUrlLoading(WebView paramAnonymousWebView, String paramAnonymousString)
-    {
-      Uri localUri = Uri.parse(paramAnonymousString);
-      if (localUri.getScheme().equals("tcwebscheme"))
-      {
-        kr.a(kr.this, localUri);
-        return true;
-      }
-      return super.shouldOverrideUrlLoading(paramAnonymousWebView, paramAnonymousString);
-    }
-  };
+  private int d = b;
+  private ArrayList<String> e = new ArrayList();
+  private String f;
+  private String g;
+  private String h;
+  private String i;
+  private String j;
+  private String k;
+  private String l;
+  private String m;
+  private String n;
+  private String o;
+  private String p;
+  private String q;
+  private long r;
+  private long s;
+  private long t;
+  private long u;
   
-  public kr(Context paramContext, a parama, String paramString1, WebView paramWebView, String paramString2)
+  public static kr a(String paramString1, String paramString2)
   {
-    this.b = paramContext;
-    this.a = parama;
-    this.c = paramString1;
-    this.d = paramWebView;
-    if ((paramString2 != null) && (paramString2.length() > 0)) {
-      this.e = paramString2;
-    } else {
-      this.e = "";
+    if (TextUtils.isEmpty(paramString2)) {
+      return null;
     }
-    this.f = 140;
-    if ((this.b != null) && (this.a != null))
-    {
-      this.d.getSettings().setDefaultTextEncodingName("UTF-8");
-      this.d.setWebChromeClient(this.g);
-      this.d.setWebViewClient(this.h);
-      try
-      {
-        if (Build.VERSION.SDK_INT >= 11)
-        {
-          this.d.removeJavascriptInterface("searchBoxJavaBridge_");
-          this.d.removeJavascriptInterface("accessibility");
-          this.d.removeJavascriptInterface("accessibilityTraversal");
-        }
-        else
-        {
-          paramContext = this.d.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
-          if (paramContext != null)
-          {
-            paramContext.invoke(this.d, new Object[] { "searchBoxJavaBridge_" });
-            paramContext.invoke(this.d, new Object[] { "accessibility" });
-            paramContext.invoke(this.d, new Object[] { "accessibilityTraversal" });
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-      }
-      paramContext = this.d.getSettings();
-      try
-      {
-        paramContext.setJavaScriptEnabled(true);
-        paramContext.setJavaScriptCanOpenWindowsAutomatically(true);
-        paramContext.setSupportMultipleWindows(true);
-        paramContext.setNeedInitialFocus(false);
-        parama = new StringBuilder();
-        parama.append(paramContext.getUserAgentString());
-        parama.append(" TCSDK/1.0.2");
-        paramContext.setUserAgentString(parama.toString());
-        paramContext.setAllowFileAccess(true);
-        paramContext.setAppCacheEnabled(true);
-        paramContext.setDomStorageEnabled(true);
-        paramContext.setDatabaseEnabled(true);
-        CookieManager.getInstance().setAcceptCookie(true);
-        if (Build.VERSION.SDK_INT >= 21) {
-          CookieManager.getInstance().setAcceptThirdPartyCookies(this.d, true);
-        }
-      }
-      catch (Exception parama)
-      {
-        parama.printStackTrace();
-      }
-      paramContext.setBuiltInZoomControls(false);
-      paramContext.setSupportZoom(false);
-      if ((Build.VERSION.SDK_INT >= 19) && (a(this.b))) {
-        try
-        {
-          WebView.setWebContentsDebuggingEnabled(true);
-        }
-        catch (Exception paramContext)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-      paramContext = new StringBuilder("file:///android_asset/tcaptcha_webview.html?appid=");
-      paramContext.append(this.c);
-      paramContext.append("&width=");
-      paramContext.append(this.f);
-      paramContext.append("&height=");
-      paramContext.append(this.f);
-      paramContext.append("&map=");
-      paramContext.append(this.e);
-      paramContext = paramContext.toString();
-      this.d.loadUrl(paramContext);
-    }
-  }
-  
-  private static boolean a(Context paramContext)
-  {
+    kr localkr = new kr();
+    localkr.c = paramString1;
     try
     {
-      int i = paramContext.getApplicationInfo().flags;
-      return (i & 0x2) != 0;
+      paramString2 = new JSONObject(paramString2);
+      if (paramString2.has("pkglist")) {
+        localkr.e = b(paramString2.getString("pkglist"));
+      }
+      if (paramString2.has("mode")) {
+        localkr.d = paramString2.getInt("mode");
+      }
+      if (paramString2.has("img1")) {
+        localkr.f = paramString2.getString("img1");
+      }
+      if (paramString2.has("img2")) {
+        localkr.g = paramString2.getString("img2");
+      }
+      if (paramString2.has("img3")) {
+        localkr.h = paramString2.getString("img3");
+      }
+      if (paramString2.has("text1")) {
+        localkr.i = paramString2.getString("text1");
+      }
+      if (paramString2.has("text2")) {
+        localkr.j = paramString2.getString("text2");
+      }
+      if (paramString2.has("text3")) {
+        localkr.k = paramString2.getString("text3");
+      }
+      if (paramString2.has("text4")) {
+        localkr.l = paramString2.getString("text4");
+      }
+      if (paramString2.has("text5")) {
+        localkr.m = paramString2.getString("text5");
+      }
+      if (paramString2.has("text6")) {
+        localkr.n = paramString2.getString("text6");
+      }
+      if (paramString2.has("text7")) {
+        localkr.o = paramString2.getString("text7");
+      }
+      if (paramString2.has("text8")) {
+        localkr.p = paramString2.getString("text8");
+      }
+      if (paramString2.has("lastpkg")) {
+        localkr.q = paramString2.getString("lastpkg");
+      }
+      if (paramString2.has("interval")) {
+        localkr.s = paramString2.getInt("interval");
+      }
+      if (paramString2.has("begin")) {
+        localkr.t = paramString2.getLong("begin");
+      }
+      if (paramString2.has("end")) {
+        localkr.u = paramString2.getLong("end");
+      }
+      paramString1 = localkr;
+      if (paramString2.has("timestamp"))
+      {
+        localkr.r = paramString2.getLong("timestamp");
+        return localkr;
+      }
     }
-    catch (Exception paramContext) {}
-    return false;
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      paramString1 = null;
+    }
+    return paramString1;
   }
   
-  public final void a()
+  private static String a(int paramInt, String paramString)
   {
-    this.a = null;
-    this.b = null;
-    this.d = null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = b(paramString);
+      if (paramString.size() > paramInt) {
+        return (String)paramString.get(paramInt);
+      }
+    }
+    return null;
   }
   
-  public static abstract interface a
+  private static ArrayList<String> b(String paramString)
   {
-    public abstract void a(int paramInt1, int paramInt2);
-    
-    public abstract void a(String paramString);
-    
-    public abstract void b(String paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
+    }
+    paramString = paramString.split("\\|");
+    if (paramString != null)
+    {
+      int i2 = paramString.length;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localArrayList.add(paramString[i1]);
+        i1 += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  private JSONObject b()
+  {
+    JSONObject localJSONObject2 = new JSONObject();
+    try
+    {
+      localJSONObject2.put("mode", this.d);
+      if (!TextUtils.isEmpty(this.c)) {
+        localJSONObject2.put("scene", this.c);
+      }
+      Object localObject = c();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localJSONObject2.put("pkglist", localObject);
+      }
+      if (!TextUtils.isEmpty(this.f)) {
+        localJSONObject2.put("img1", this.f);
+      }
+      if (!TextUtils.isEmpty(this.g)) {
+        localJSONObject2.put("img2", this.g);
+      }
+      if (!TextUtils.isEmpty(this.h)) {
+        localJSONObject2.put("img3", this.h);
+      }
+      if (!TextUtils.isEmpty(this.i)) {
+        localJSONObject2.put("text1", this.i);
+      }
+      if (!TextUtils.isEmpty(this.j)) {
+        localJSONObject2.put("text2", this.j);
+      }
+      if (!TextUtils.isEmpty(this.k)) {
+        localJSONObject2.put("text3", this.k);
+      }
+      if (!TextUtils.isEmpty(this.l)) {
+        localJSONObject2.put("text4", this.l);
+      }
+      if (!TextUtils.isEmpty(this.m)) {
+        localJSONObject2.put("text5", this.m);
+      }
+      if (!TextUtils.isEmpty(this.n)) {
+        localJSONObject2.put("text6", this.n);
+      }
+      if (!TextUtils.isEmpty(this.o)) {
+        localJSONObject2.put("text7", this.o);
+      }
+      if (!TextUtils.isEmpty(this.p)) {
+        localJSONObject2.put("text8", this.p);
+      }
+      if (!TextUtils.isEmpty(this.q)) {
+        localJSONObject2.put("lastpkg", this.q);
+      }
+      if (this.r > 0L) {
+        localJSONObject2.put("timestamp", this.r);
+      }
+      if (this.s > 0L) {
+        localJSONObject2.put("interval", this.s);
+      }
+      if (this.t > 0L) {
+        localJSONObject2.put("begin", this.t);
+      }
+      localObject = localJSONObject2;
+      if (this.u > 0L)
+      {
+        localJSONObject2.put("end", this.u);
+        return localJSONObject2;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      JSONObject localJSONObject1 = null;
+      return localJSONObject1;
+    }
+  }
+  
+  private String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.e.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str);
+      if (this.e.indexOf(str) != this.e.size() - 1) {
+        localStringBuilder.append("|");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public final kt a(Context paramContext, HashSet<String> paramHashSet)
+  {
+    int i1 = a;
+    int i2 = this.d;
+    Iterator localIterator;
+    Object localObject;
+    if (i1 == i2)
+    {
+      localIterator = this.e.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (String)localIterator.next();
+      } while (((paramHashSet != null) && (paramHashSet.contains(localObject))) || (yy.b(paramContext, (String)localObject)));
+      paramContext = (Context)localObject;
+    }
+    else
+    {
+      if (b == i2)
+      {
+        localObject = new ArrayList();
+        localIterator = this.e.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (((paramHashSet == null) || (!paramHashSet.contains(str))) && (!yy.b(paramContext, str))) {
+            ((ArrayList)localObject).add(str);
+          }
+        }
+        if (((ArrayList)localObject).size() == 1)
+        {
+          paramContext = (String)((ArrayList)localObject).get(0);
+          break label297;
+        }
+        i1 = -1;
+        if (!TextUtils.isEmpty(this.q))
+        {
+          ((ArrayList)localObject).remove(this.q);
+          if (((ArrayList)localObject).size() == 1)
+          {
+            paramContext = (String)((ArrayList)localObject).get(0);
+            break label297;
+          }
+          i1 = this.e.indexOf(this.q);
+        }
+        paramHashSet = ((ArrayList)localObject).iterator();
+        while (paramHashSet.hasNext())
+        {
+          paramContext = (String)paramHashSet.next();
+          if (this.e.indexOf(paramContext) > i1) {
+            break label297;
+          }
+        }
+        if (((ArrayList)localObject).size() > 0)
+        {
+          paramContext = (String)((ArrayList)localObject).get(0);
+          break label297;
+        }
+      }
+      paramContext = null;
+    }
+    label297:
+    if (TextUtils.isEmpty(paramContext)) {
+      return null;
+    }
+    i1 = this.e.indexOf(paramContext);
+    if (i1 < 0) {
+      return null;
+    }
+    paramHashSet = new kt();
+    paramHashSet.a = paramContext;
+    paramHashSet.d = a(i1, this.i);
+    paramHashSet.e = a(i1, this.j);
+    paramHashSet.f = a(i1, this.k);
+    paramHashSet.g = a(i1, this.l);
+    paramHashSet.b = a(i1, this.f);
+    paramHashSet.c = a(i1, this.g);
+    paramHashSet.h = new ArrayList();
+    paramContext = a(i1, this.m);
+    if (!TextUtils.isEmpty(paramContext)) {
+      paramHashSet.h.add(paramContext);
+    }
+    paramContext = a(i1, this.n);
+    if (!TextUtils.isEmpty(paramContext)) {
+      paramHashSet.h.add(paramContext);
+    }
+    paramContext = a(i1, this.o);
+    if (!TextUtils.isEmpty(paramContext)) {
+      paramHashSet.h.add(paramContext);
+    }
+    paramContext = a(i1, this.p);
+    if (!TextUtils.isEmpty(paramContext)) {
+      paramHashSet.h.add(paramContext);
+    }
+    return paramHashSet;
+  }
+  
+  public final void a(String paramString)
+  {
+    this.q = paramString;
+    this.r = System.currentTimeMillis();
+    paramString = b();
+    if ((paramString != null) && (!TextUtils.isEmpty(this.c))) {
+      afq.b(this.c, paramString.toString());
+    }
+  }
+  
+  public final boolean a()
+  {
+    if ((this.s > 0L) && (Math.abs(System.currentTimeMillis() - this.r) < this.s * 3600000L)) {
+      return false;
+    }
+    if ((this.t > 0L) && (System.currentTimeMillis() < this.t * 1000L)) {
+      return false;
+    }
+    return (this.u <= 0L) || (System.currentTimeMillis() <= this.u * 1000L);
+  }
+  
+  public final String toString()
+  {
+    JSONObject localJSONObject = b();
+    if (localJSONObject != null) {
+      return localJSONObject.toString();
+    }
+    return "invalid guideinfo.";
   }
 }
 

@@ -1,116 +1,114 @@
 package com.tencent.token;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.token.core.bean.UpgradeDeterminResult;
 import com.tencent.token.global.RqdApplication;
-import com.tmsdk.common.util.TmsLog;
 import java.util.HashMap;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class uc
-  extends tk
+  extends tj
 {
-  private String d;
-  private String e;
+  sb d;
+  ahg e;
   private long f;
   private int g;
   private int h;
-  private int i;
   
   public final String a()
   {
-    sa.a();
+    this.d.d();
+    this.d.f();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.f = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramaar.c.get("param.type")).intValue();
-    this.d = ((String)paramaar.c.get("param.bind.mobile"));
-    this.e = ((String)paramaar.c.get("param.bind.areacode"));
+    this.f = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.g = ((Integer)paramaaq.c.get("param.loginv2.clearkick")).intValue();
+    this.h = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    TmsLog.i("mod_seed", "ProtoDoGeneralBindToken, errcode: ".concat(String.valueOf(j)));
-    if (j != 0)
+    int i = paramJSONObject.getInt("err");
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(j);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wz)localObject).a(j, localStringBuilder.toString(), paramJSONObject);
+      if (i == 270)
+      {
+        localObject1 = aac.d(paramJSONObject.getString("data"));
+        if (localObject1 != null)
+        {
+          localObject2 = new JSONObject(new String((byte[])localObject1));
+          localObject1 = ((JSONObject)localObject2).optString("masked_mobile");
+          localObject2 = ((JSONObject)localObject2).optString("mSmsPrefix");
+          localObject3 = new UpgradeDeterminResult();
+          ((UpgradeDeterminResult)localObject3).mMobileMask = ((String)localObject1);
+          ((UpgradeDeterminResult)localObject3).mSmsPrefix = ((String)localObject2);
+          this.a.d = localObject3;
+        }
+      }
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    Object localObject = aad.d(paramJSONObject.getString("data"));
-    if (localObject != null)
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
     {
-      localObject = new JSONObject(new String((byte[])localObject));
-      j = ((JSONObject)localObject).getInt("seq_id");
-      if (j != this.i)
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      xa.a("login_v2 ret: ".concat(String.valueOf(paramJSONObject)));
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.h)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
+        paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
+        paramJSONObject.append(this.h);
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.h = ((JSONObject)localObject).getInt("bind_mobile_succ");
-      if (1 != this.h) {
-        try
-        {
-          this.a.a(paramJSONObject.getString("info"));
-        }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-      long l = ((JSONObject)localObject).getLong("server_time");
-      sc.b();
-      sc.a(l);
-      try
+      long l = paramJSONObject.getLong("uin");
+      sz.a();
+      sz.a(paramJSONObject);
+      if (l != this.f)
       {
-        l = ((JSONObject)localObject).getLong("seed_expire_time");
-        sc.b();
-        sc.b(l);
+        paramJSONObject = this.a;
+        localObject1 = new StringBuilder("uin not match=");
+        ((StringBuilder)localObject1).append(l);
+        ((StringBuilder)localObject1).append(":");
+        ((StringBuilder)localObject1).append(this.f);
+        paramJSONObject.a(10000, ((StringBuilder)localObject1).toString(), null);
+        return;
       }
-      catch (JSONException paramJSONObject)
+      sz.a().g();
+      if (!this.e.a(l)) {
+        this.a.a(10000, "mUserStorage.setCurrentUserByUin failed", null);
+      }
+      System.currentTimeMillis();
+      l = paramJSONObject.getInt("valid_time");
+      sz.a().a(this.f, l);
+      if (this.d.a.f.length() == 0)
       {
-        paramJSONObject.printStackTrace();
-      }
-      paramJSONObject = ta.a().d(this.f);
-      if (paramJSONObject != null) {
-        ta.a().b(paramJSONObject);
+        localObject1 = this.d;
+        paramJSONObject = paramJSONObject.optString("ksid");
+        localObject1 = ((sb)localObject1).a;
+        localObject2 = new ahd();
+        localObject3 = new ContentValues();
+        ((ContentValues)localObject3).put("ksid", paramJSONObject);
+        ahh.a((ahj)localObject2, "ksid_data", (ContentValues)localObject3, "key=?", new String[] { String.valueOf(((ahd)localObject2).b) });
+        ((rw)localObject1).f = paramJSONObject;
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.a;
-      localMessage.arg2 = this.h;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
   }
 }
 

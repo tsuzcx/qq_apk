@@ -1,22 +1,9 @@
 package com.tencent.token;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import java.util.Arrays;
-
 public final class aco
 {
-  public final int a;
-  public final long b;
-  public final float[] c;
-  
-  public aco(SensorEvent paramSensorEvent, long paramLong)
-  {
-    this.a = paramSensorEvent.sensor.getType();
-    this.b = paramLong;
-    paramSensorEvent = paramSensorEvent.values;
-    this.c = Arrays.copyOf(paramSensorEvent, paramSensorEvent.length);
-  }
+  public int a = 0;
+  public int b = 0;
 }
 
 

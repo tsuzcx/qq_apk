@@ -1,22 +1,64 @@
 package com.tencent.token;
 
+import java.net.UnknownServiceException;
+import java.util.Arrays;
+import java.util.List;
+import javax.net.ssl.SSLSocket;
+
 public final class ajd
-  implements aik
 {
-  public final aim a;
+  boolean a;
+  boolean b;
+  private final List<aia> c;
+  private int d = 0;
   
-  public ajd(aim paramaim)
+  public ajd(List<aia> paramList)
   {
-    this.a = paramaim;
+    this.c = paramList;
   }
   
-  public final air a(aik.a parama)
+  private boolean b(SSLSocket paramSSLSocket)
   {
-    ajq localajq = (ajq)parama;
-    aip localaip = localajq.d;
-    ajj localajj = localajq.a;
-    boolean bool = localaip.b.equals("GET");
-    return localajq.a(localaip, localajj, localajj.a(this.a, parama, bool ^ true), localajj.b());
+    int i = this.d;
+    while (i < this.c.size())
+    {
+      if (((aia)this.c.get(i)).a(paramSSLSocket)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public final aia a(SSLSocket paramSSLSocket)
+  {
+    int i = this.d;
+    int j = this.c.size();
+    while (i < j)
+    {
+      localObject = (aia)this.c.get(i);
+      if (((aia)localObject).a(paramSSLSocket))
+      {
+        this.d = (i + 1);
+        break label64;
+      }
+      i += 1;
+    }
+    Object localObject = null;
+    label64:
+    if (localObject != null)
+    {
+      this.a = b(paramSSLSocket);
+      aiu.a.a((aia)localObject, paramSSLSocket, this.b);
+      return localObject;
+    }
+    localObject = new StringBuilder("Unable to find acceptable protocols. isFallback=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(", modes=");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(", supported protocols=");
+    ((StringBuilder)localObject).append(Arrays.toString(paramSSLSocket.getEnabledProtocols()));
+    throw new UnknownServiceException(((StringBuilder)localObject).toString());
   }
 }
 

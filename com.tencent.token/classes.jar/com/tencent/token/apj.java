@@ -3,16 +3,16 @@ package com.tencent.token;
 import com.qq.taf.jce.JceStruct;
 
 final class apj
-  implements agx
+  implements agw
 {
   int a = 0;
   final int b = 3;
   
-  apj(aqs paramaqs) {}
+  apj(aqr paramaqr) {}
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    paramJceStruct = new StringBuilder("_Cmd_SCHeartBeat : ");
+    paramJceStruct = new StringBuilder("_Cmd_SCReconnect : ");
     paramJceStruct.append(paramInt2);
     paramJceStruct.append("  retCode : ");
     paramJceStruct.append(paramInt3);
@@ -23,9 +23,11 @@ final class apj
       return;
     }
     this.a += 1;
-    new StringBuilder("心跳包失败 ： ").append(this.a);
-    if (this.a < 3) {
-      this.c.d();
+    if ((this.a < 3) && (this.c.d()))
+    {
+      this.a = 0;
+      paramJceStruct = this.c;
+      paramJceStruct.a(aqr.a(paramJceStruct), 998, aqr.b(this.c), 10000L);
     }
   }
 }

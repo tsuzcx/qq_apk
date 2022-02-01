@@ -1,172 +1,78 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.Log;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public final class ob
 {
-  private static String a = "";
-  private static String b = "";
-  
-  public static String a(Context paramContext)
+  public static final String a(byte[] paramArrayOfByte)
   {
-    if (paramContext == null) {
-      return null;
-    }
-    try
+    char[] arrayOfChar = new char[16];
+    char[] tmp8_6 = arrayOfChar;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 97;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 98;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 99;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 100;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 101;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 102;
+    tmp92_86;
+    for (;;)
     {
-      String str = a;
-      i = 1;
-      if (str != null) {
-        if (str.trim().length() != 0) {
-          break label65;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        continue;
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null) {
-        a = paramContext.getDeviceId();
-      }
-    }
-    return a;
-  }
-  
-  public static String a(Exception paramException)
-  {
-    String str = Log.getStackTraceString(paramException);
-    if (str != null)
-    {
-      if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
-        return str.substring(0, str.indexOf("\n"));
-      }
-      paramException = str;
-      if (str.length() > 100) {
-        paramException = str.substring(0, 100);
-      }
-      return paramException;
-    }
-    return "";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return true;
-    }
-    return paramString.trim().length() == 0;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    try
-    {
-      String str = b;
-      i = 1;
-      if (str != null) {
-        if (str.trim().length() != 0) {
-          break label74;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        continue;
-        int i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext != null) {
-          b = paramContext.getMacAddress();
-        }
-      }
-    }
-    return b;
-  }
-  
-  public static String b(String paramString)
-  {
-    Object localObject = lp.a();
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder("");
-      String str = a((Context)localObject);
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuilder.append(str);
-      }
-      localObject = b((Context)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localStringBuilder.append((String)localObject);
-      }
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append(paramString);
-      localStringBuilder.append((int)(Math.random() * 2147483647.0D));
-      paramString = c(localStringBuilder.toString());
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  private static String c(String paramString)
-  {
-    if (paramString != null)
-    {
-      if (paramString.length() == 0) {
-        return null;
-      }
+      Object localObject;
+      int k;
+      int i;
+      int j;
       try
       {
-        Object localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).update(paramString.getBytes());
-        paramString = ((MessageDigest)localObject).digest();
-        if (paramString == null) {
-          return "";
-        }
-        localObject = new StringBuffer();
-        int i = 0;
-        while (i < paramString.length)
-        {
-          String str = Integer.toHexString(paramString[i] & 0xFF);
-          if (str.length() == 1) {
-            ((StringBuffer)localObject).append("0");
-          }
-          ((StringBuffer)localObject).append(str);
-          i += 1;
-        }
-        return ((StringBuffer)localObject).toString().toUpperCase();
+        localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).update(paramArrayOfByte);
+        paramArrayOfByte = ((MessageDigest)localObject).digest();
+        k = paramArrayOfByte.length;
+        localObject = new char[k * 2];
+        i = 0;
+        j = 0;
       }
-      catch (NoSuchAlgorithmException paramString)
+      catch (Exception paramArrayOfByte)
       {
-        paramString.printStackTrace();
+        continue;
+      }
+      paramArrayOfByte = new String((char[])localObject);
+      return paramArrayOfByte;
+      return null;
+      while (i < k)
+      {
+        int m = paramArrayOfByte[i];
+        int n = j + 1;
+        localObject[j] = arrayOfChar[(m >>> 4 & 0xF)];
+        j = n + 1;
+        localObject[n] = arrayOfChar[(m & 0xF)];
+        i += 1;
       }
     }
-    return null;
   }
 }
 

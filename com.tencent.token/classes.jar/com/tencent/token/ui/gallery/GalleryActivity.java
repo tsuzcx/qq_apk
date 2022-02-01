@@ -16,21 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aae;
+import com.tencent.token.aad;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.r;
 import com.tencent.token.t;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
+import com.tencent.token.yx;
 import com.tencent.token.yy;
 import com.tencent.token.yz;
-import com.tencent.token.za;
+import com.tencent.token.zb;
 import com.tencent.token.zc;
-import com.tencent.token.zd;
-import com.tencent.token.zf;
-import com.tencent.token.zf.a;
-import com.tencent.token.zo;
+import com.tencent.token.ze;
+import com.tencent.token.ze.a;
+import com.tencent.token.zn;
 import com.tmsdk.TMSDKContext;
 import java.io.File;
 
@@ -56,15 +56,15 @@ public class GalleryActivity
       if (paramAnonymousContext != null) {
         if (paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
         {
-          if (zo.a())
+          if (zn.a())
           {
-            if (!yy.g().h()) {
-              yy.g().a();
+            if (!yx.g().h()) {
+              yx.g().a();
             }
           }
-          else if (yy.g().h())
+          else if (yx.g().h())
           {
-            yy.g().c();
+            yx.g().c();
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(8);
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
@@ -85,8 +85,8 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    yy localyy = yy.g();
-    za local4 = new za()
+    yx localyx = yx.g();
+    yz local4 = new yz()
     {
       public final void a()
       {
@@ -97,7 +97,7 @@ public class GalleryActivity
           {
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493203));
             Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131493211), 0).show();
-            yz.a(GalleryActivity.this, GalleryActivity.this.filePath);
+            yy.a(GalleryActivity.this, GalleryActivity.this.filePath);
             GalleryActivity.access$602(GalleryActivity.this, true);
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(8);
@@ -160,22 +160,22 @@ public class GalleryActivity
     String str2 = null;
     String str1;
     if (TextUtils.isEmpty(null)) {
-      str1 = localyy.f();
+      str1 = localyx.f();
     } else {
       str1 = null;
     }
     if (TextUtils.isEmpty(null)) {
-      str2 = yy.b();
+      str2 = yx.b();
     }
-    localyy.a = new zc(new zd("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", str1, str2), local4);
-    yy.g().a();
+    localyx.a = new zb(new zc("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", str1, str2), local4);
+    yx.g().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = yy.g().d();
-    this.isInstall = yz.b(this, "com.tencent.gallerymanager");
-    this.filePath = yy.g().e();
+    this.isApkDownload = yx.g().d();
+    this.isInstall = yy.b(this, "com.tencent.gallerymanager");
+    this.filePath = yx.g().e();
   }
   
   private void initView()
@@ -297,14 +297,14 @@ public class GalleryActivity
       }
       if (this.isApkDownload)
       {
-        yz.a(this, this.filePath);
+        yy.a(this, this.filePath);
         return;
       }
-      if (zo.a())
+      if (zn.a())
       {
-        if (yy.g().h())
+        if (yx.g().h())
         {
-          yy.g().c();
+          yx.g().c();
           return;
         }
         startDownload();
@@ -318,12 +318,12 @@ public class GalleryActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296296);
-    aae.a(this, this.mTitleBar, 2130968771);
+    aad.a(this, this.mTitleBar, 2130968771);
     initView();
     registReceiver();
     registerInstallReceiver();
     TMSDKContext.saveActionData(170015);
-    zf.a("com.tencent.gallerymanager", new zf.a()
+    ze.a("com.tencent.gallerymanager", new ze.a()
     {
       public final void a(final r paramAnonymousr)
       {

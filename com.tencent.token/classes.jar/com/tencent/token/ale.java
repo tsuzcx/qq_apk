@@ -1,43 +1,60 @@
 package com.tencent.token;
 
-public abstract class ale
-  implements alp
+import java.util.concurrent.TimeUnit;
+
+public final class ale
+  extends alp
 {
-  protected final alp d;
+  public alp a;
   
   public ale(alp paramalp)
   {
     if (paramalp != null)
     {
-      this.d = paramalp;
+      this.a = paramalp;
       return;
     }
     throw new IllegalArgumentException("delegate == null");
   }
   
-  public long a(akz paramakz, long paramLong)
+  public final alp a(long paramLong)
   {
-    return this.d.a(paramakz, paramLong);
+    return this.a.a(paramLong);
   }
   
-  public final alq a()
+  public final alp a(long paramLong, TimeUnit paramTimeUnit)
   {
-    return this.d.a();
+    return this.a.a(paramLong, paramTimeUnit);
   }
   
-  public void close()
+  public final long c()
   {
-    this.d.close();
+    return this.a.c();
   }
   
-  public String toString()
+  public final alp d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getClass().getSimpleName());
-    localStringBuilder.append("(");
-    localStringBuilder.append(this.d.toString());
-    localStringBuilder.append(")");
-    return localStringBuilder.toString();
+    return this.a.d();
+  }
+  
+  public final long d_()
+  {
+    return this.a.d_();
+  }
+  
+  public final boolean e_()
+  {
+    return this.a.e_();
+  }
+  
+  public final void f()
+  {
+    this.a.f();
+  }
+  
+  public final alp f_()
+  {
+    return this.a.f_();
   }
 }
 

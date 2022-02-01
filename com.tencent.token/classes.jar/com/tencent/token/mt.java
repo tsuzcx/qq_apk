@@ -1,14 +1,18 @@
 package com.tencent.token;
 
-public abstract interface mt
+public final class mt
 {
-  public abstract ms a(Runnable paramRunnable);
+  private static ms a;
   
-  public abstract ms b(Runnable paramRunnable);
+  public static ms a()
+  {
+    return a;
+  }
   
-  public abstract ms c(Runnable paramRunnable);
-  
-  public abstract ms d(Runnable paramRunnable);
+  public static void a(ms paramms)
+  {
+    a = paramms;
+  }
 }
 
 

@@ -1,201 +1,129 @@
 package com.tencent.token;
 
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.util.concurrent.atomic.AtomicReference;
 
-public abstract class aed
-  implements adx
+public final class aed
+  implements adw
 {
-  public aeb a;
-  
-  private static int a(Context paramContext, AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
+  /* Error */
+  public final aea a(Context paramContext)
   {
-    final Object localObject = new Object();
-    Intent localIntent = new Intent(afg.a(afg.k));
-    localIntent.setComponent(new ComponentName(afg.a(afg.g), afg.a(afg.h)));
-    if (!paramContext.bindService(localIntent, new a(paramAtomicReference, paramAtomicReference1, localObject), 1)) {
-      return -100;
-    }
-    if (paramAtomicReference.get() == null) {}
-    try
-    {
-      try
-      {
-        localObject.wait(1000L);
-      }
-      finally
-      {
-        break label99;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      label94:
-      break label94;
-    }
-    break label103;
-    label99:
-    throw paramContext;
-    label103:
-    if (paramAtomicReference.get() == null) {
-      return -105;
-    }
-    return 0;
+    // Byte code:
+    //   0: getstatic 21	com/tencent/token/aff:av	[I
+    //   3: invokestatic 24	com/tencent/token/aff:a	([I)Ljava/lang/String;
+    //   6: invokestatic 30	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   9: astore 4
+    //   11: getstatic 32	com/tencent/token/aff:a	[I
+    //   14: invokestatic 24	com/tencent/token/aff:a	([I)Ljava/lang/String;
+    //   17: astore 5
+    //   19: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   22: istore_2
+    //   23: aconst_null
+    //   24: astore_3
+    //   25: iload_2
+    //   26: bipush 17
+    //   28: if_icmplt +115 -> 143
+    //   31: aload_1
+    //   32: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   35: aload 4
+    //   37: invokevirtual 50	android/content/ContentResolver:acquireContentProviderClient	(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
+    //   40: astore 4
+    //   42: aload 4
+    //   44: aload 5
+    //   46: aconst_null
+    //   47: aconst_null
+    //   48: invokevirtual 56	android/content/ContentProviderClient:call	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+    //   51: astore_1
+    //   52: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   55: bipush 24
+    //   57: if_icmplt +11 -> 68
+    //   60: aload 4
+    //   62: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   65: goto +92 -> 157
+    //   68: aload 4
+    //   70: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   73: pop
+    //   74: goto +83 -> 157
+    //   77: astore_1
+    //   78: aload 4
+    //   80: ifnull +25 -> 105
+    //   83: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   86: bipush 24
+    //   88: if_icmplt +11 -> 99
+    //   91: aload 4
+    //   93: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   96: goto +9 -> 105
+    //   99: aload 4
+    //   101: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   104: pop
+    //   105: aload_1
+    //   106: athrow
+    //   107: aload_3
+    //   108: astore_1
+    //   109: aload 4
+    //   111: ifnull +46 -> 157
+    //   114: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   117: bipush 24
+    //   119: if_icmplt +13 -> 132
+    //   122: aload 4
+    //   124: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   127: aload_3
+    //   128: astore_1
+    //   129: goto +28 -> 157
+    //   132: aload 4
+    //   134: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   137: pop
+    //   138: aload_3
+    //   139: astore_1
+    //   140: goto +17 -> 157
+    //   143: aload_1
+    //   144: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   147: aload 4
+    //   149: aload 5
+    //   151: aconst_null
+    //   152: aconst_null
+    //   153: invokevirtual 66	android/content/ContentResolver:call	(Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+    //   156: astore_1
+    //   157: aload_1
+    //   158: ifnonnull +8 -> 166
+    //   161: iconst_m1
+    //   162: invokestatic 71	com/tencent/token/aea:a	(I)Lcom/tencent/token/aea;
+    //   165: areturn
+    //   166: aload_1
+    //   167: getstatic 74	com/tencent/token/aff:aw	[I
+    //   170: invokestatic 24	com/tencent/token/aff:a	([I)Ljava/lang/String;
+    //   173: iconst_m1
+    //   174: invokevirtual 80	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   177: ifeq +9 -> 186
+    //   180: bipush 254
+    //   182: invokestatic 71	com/tencent/token/aea:a	(I)Lcom/tencent/token/aea;
+    //   185: areturn
+    //   186: new 68	com/tencent/token/aea
+    //   189: dup
+    //   190: aload_1
+    //   191: getstatic 83	com/tencent/token/aff:ax	[I
+    //   194: invokestatic 24	com/tencent/token/aff:a	([I)Ljava/lang/String;
+    //   197: invokevirtual 87	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: iconst_0
+    //   201: invokespecial 90	com/tencent/token/aea:<init>	(Ljava/lang/String;I)V
+    //   204: areturn
+    //   205: astore_1
+    //   206: goto -99 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	209	0	this	aed
+    //   0	209	1	paramContext	Context
+    //   22	7	2	i	int
+    //   24	115	3	localObject1	Object
+    //   9	139	4	localObject2	Object
+    //   17	133	5	str	java.lang.String
+    // Exception table:
+    //   from	to	target	type
+    //   42	52	77	finally
+    //   42	52	205	java/lang/Throwable
   }
   
-  private int a(final Context paramContext, final AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1, final AtomicReference<String> paramAtomicReference2)
-  {
-    final Object localObject = new Object();
-    final AtomicReference localAtomicReference = new AtomicReference(Integer.valueOf(0));
-    new b(paramAtomicReference, localAtomicReference, paramAtomicReference2, paramContext, paramAtomicReference1, localObject).start();
-    try
-    {
-      try
-      {
-        localObject.wait(1000L);
-      }
-      finally
-      {
-        break label75;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      label60:
-      break label60;
-    }
-    return ((Integer)localAtomicReference.get()).intValue();
-    label75:
-    throw paramContext;
-  }
-  
-  private aeb c(Context paramContext)
-  {
-    AtomicReference localAtomicReference1 = new AtomicReference();
-    localAtomicReference1.set("");
-    try
-    {
-      localAtomicReference2 = new AtomicReference();
-      localAtomicReference3 = new AtomicReference();
-      j = a(paramContext, localAtomicReference2, localAtomicReference3);
-      i = j;
-      if (j != 0) {}
-    }
-    catch (Throwable paramContext)
-    {
-      AtomicReference localAtomicReference2;
-      AtomicReference localAtomicReference3;
-      label64:
-      label66:
-      break label64;
-    }
-    try
-    {
-      i = a(paramContext, localAtomicReference2, localAtomicReference3, localAtomicReference1);
-    }
-    catch (Throwable paramContext)
-    {
-      i = j;
-      break label66;
-    }
-    i = -1;
-    return new aeb((String)localAtomicReference1.get(), i);
-  }
-  
-  public final aeb a(Context paramContext)
-  {
-    aeb localaeb = this.a;
-    if ((localaeb == null) || (localaeb.b != 0)) {
-      this.a = c(paramContext);
-    }
-    return this.a;
-  }
-  
-  public abstract String a(IBinder paramIBinder);
-  
-  public final void b(Context paramContext)
-  {
-    this.a = c(paramContext);
-  }
-  
-  public final class a
-    implements ServiceConnection
-  {
-    public a(AtomicReference paramAtomicReference, Object paramObject) {}
-    
-    public final void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
-    {
-      aed.this.set(paramIBinder);
-      paramAtomicReference1.set(this);
-      try
-      {
-        synchronized (localObject)
-        {
-          localObject.notifyAll();
-        }
-      }
-      catch (Throwable paramIBinder)
-      {
-        label37:
-        break label37;
-      }
-      return;
-      throw paramIBinder;
-    }
-    
-    public final void onServiceDisconnected(ComponentName paramComponentName) {}
-  }
-  
-  public final class b
-    extends Thread
-  {
-    public b(AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, AtomicReference paramAtomicReference3, Context paramContext, AtomicReference paramAtomicReference4, Object paramObject) {}
-    
-    public final void run()
-    {
-      ??? = "";
-      try
-      {
-        String str = aed.this.a((IBinder)paramAtomicReference.get());
-        ??? = str;
-      }
-      catch (Throwable localThrowable2)
-      {
-        label26:
-        break label26;
-      }
-      localAtomicReference.set(Integer.valueOf(-102));
-      paramAtomicReference2.set(???);
-      try
-      {
-        paramContext.unbindService((ServiceConnection)paramAtomicReference1.get());
-      }
-      catch (Throwable localThrowable1)
-      {
-        label66:
-        label99:
-        break label66;
-      }
-      localAtomicReference.set(Integer.valueOf(-103));
-      try
-      {
-        synchronized (localObject)
-        {
-          localObject.notifyAll();
-        }
-      }
-      catch (Throwable localThrowable3)
-      {
-        break label99;
-      }
-      return;
-      throw localObject2;
-    }
-  }
+  public final void b(Context paramContext) {}
 }
 
 

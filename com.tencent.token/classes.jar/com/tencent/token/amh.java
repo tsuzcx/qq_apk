@@ -1,31 +1,14 @@
 package com.tencent.token;
 
-import java.util.Collections;
+import java.util.List;
 
-public final class amh<T>
-  extends ama<T>
+public final class amh
+  extends alz<amx>
 {
-  private final T c;
-  
-  public amh(T paramT)
+  public amh(List<? extends aly<amx>> paramList)
   {
-    super(Collections.emptyList());
-    this.c = paramT;
+    super(paramList);
   }
-  
-  public final T a()
-  {
-    return this.c;
-  }
-  
-  public final T a(alz<T> paramalz, float paramFloat)
-  {
-    return this.c;
-  }
-  
-  public final void a(float paramFloat) {}
-  
-  public final void a(alw.a parama) {}
 }
 
 

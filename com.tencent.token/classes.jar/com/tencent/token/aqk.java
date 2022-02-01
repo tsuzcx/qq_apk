@@ -1,122 +1,57 @@
 package com.tencent.token;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Pair;
-import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
+import android.os.Message;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class aqk
-  extends aou
+final class aqk
+  extends Handler
 {
-  public aqh a;
-  public ExecutorService b;
-  private final String c = "SharkProtocolQueue";
-  private final int d = 1073741824;
-  private final long e = -1L;
-  private Context f;
-  private TreeMap g = new TreeMap();
-  private ArrayList h = new ArrayList();
-  private Handler i = new aql(this, Looper.getMainLooper());
-  
-  public static void a(int paramInt)
+  aqk(aqj paramaqj, Looper paramLooper)
   {
-    if (b(5, 1))
-    {
-      aqs.a().a.incrementAndGet();
-      if (b(5, 4)) {
-        aqs.a().b();
-      }
-    }
+    super(paramLooper);
   }
   
-  public static void b(int paramInt)
+  public final void handleMessage(Message arg1)
   {
-    if (b(1, 1))
+    switch (???.what)
     {
-      aqs localaqs = aqs.a();
-      if (localaqs.a.decrementAndGet() <= 0)
+    default: 
+      return;
+    case 2: 
+      ??? = (Object[])???.obj;
+      localObject1 = (aql)???[0];
+      ((aql)localObject1).f.a(((aql)localObject1).g, ((aql)localObject1).b, ((Integer)???[1]).intValue(), ((Integer)???[2]).intValue(), ((aql)localObject1).d);
+      return;
+    }
+    aqj.a(this.a).removeMessages(1);
+    Object localObject1 = new aqm(this.a, (byte)0);
+    synchronized (aqj.b(this.a))
+    {
+      Iterator localIterator = aqj.b(this.a).iterator();
+      while (localIterator.hasNext())
       {
-        localaqs.a.set(0);
-        localaqs.c();
-      }
-    }
-  }
-  
-  private static boolean b(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 & paramInt2) != 0;
-  }
-  
-  public final agy a(int paramInt1, int paramInt2)
-  {
-    if (b(paramInt2, 1)) {
-      return aqs.a().a(paramInt1);
-    }
-    agy localagy = null;
-    synchronized (this.g)
-    {
-      if (this.g.containsKey(Integer.valueOf(paramInt1))) {
-        localagy = (agy)((Pair)this.g.remove(Integer.valueOf(paramInt1))).second;
-      }
-      return localagy;
-    }
-  }
-  
-  public final WeakReference a(long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agx paramagx)
-  {
-    return a(paramLong, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagx, -1L);
-  }
-  
-  public final WeakReference a(long paramLong1, int paramInt1, JceStruct arg4, JceStruct paramJceStruct2, int paramInt2, agx paramagx, long paramLong2)
-  {
-    if (b(paramInt2, 1)) {
-      return aqs.a().a(this.a, paramInt1, paramInt2, 0, 0, ???, paramJceStruct2, paramagx, paramLong2);
-    }
-    paramJceStruct2 = new aqm(this, paramLong1, paramInt1, ???, paramJceStruct2, paramInt2, paramagx);
-    paramJceStruct2.g = this.a.b.a();
-    paramJceStruct2.i = paramLong2;
-    synchronized (this.h)
-    {
-      this.h.add(paramJceStruct2);
-      this.i.sendEmptyMessage(1);
-      return new WeakReference(paramJceStruct2.h);
-    }
-  }
-  
-  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agy paramagy)
-  {
-    if (paramagy != null)
-    {
-      if (b(paramInt2, 1))
-      {
-        aqs.a().a(paramInt2, paramInt1, paramJceStruct, paramagy);
-        return;
-      }
-      Object localObject = null;
-      synchronized (this.g)
-      {
-        if (!this.g.containsKey(Integer.valueOf(paramInt1)))
+        aql localaql = (aql)localIterator.next();
+        if ((localaql.e & 0x40000000) == 0)
         {
-          this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramagy));
-          paramJceStruct = localObject;
+          if (!localaql.h.a)
+          {
+            int i = localaql.g;
+            ((aqm)localObject1).a.put(Integer.valueOf(i), localaql);
+          }
         }
-        else
-        {
-          paramJceStruct = new ClassCastException();
+        else {
+          ((aqm)localObject1).b.add(localaql);
         }
-        if (paramJceStruct == null) {
-          return;
-        }
-        throw paramJceStruct;
       }
+      aqj.b(this.a).clear();
+      aqj.c(this.a).submit((Runnable)localObject1);
+      return;
     }
-    throw new NullPointerException();
   }
 }
 

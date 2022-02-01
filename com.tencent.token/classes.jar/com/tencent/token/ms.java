@@ -1,32 +1,14 @@
 package com.tencent.token;
 
-import java.util.concurrent.Future;
-
-public final class ms
+public abstract interface ms
 {
-  private Future a;
+  public abstract mr a(Runnable paramRunnable);
   
-  public ms(Future paramFuture)
-  {
-    this.a = paramFuture;
-  }
+  public abstract mr b(Runnable paramRunnable);
   
-  public final boolean a()
-  {
-    Future localFuture = this.a;
-    if (localFuture != null) {
-      try
-      {
-        boolean bool = localFuture.cancel(false);
-        return bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    return false;
-  }
+  public abstract mr c(Runnable paramRunnable);
+  
+  public abstract mr d(Runnable paramRunnable);
 }
 
 

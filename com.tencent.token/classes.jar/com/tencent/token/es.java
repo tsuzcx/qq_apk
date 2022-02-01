@@ -1,19 +1,16 @@
 package com.tencent.token;
 
-import android.view.View;
+import android.view.ViewGroup;
 
-public abstract interface es
-  extends er
+public final class es
 {
-  public abstract void a(int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  public int a;
+  private final ViewGroup b;
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract boolean b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public es(ViewGroup paramViewGroup)
+  {
+    this.b = paramViewGroup;
+  }
 }
 
 

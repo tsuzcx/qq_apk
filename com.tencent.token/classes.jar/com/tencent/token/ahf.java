@@ -1,28 +1,47 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
+import android.content.ContentValues;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-public final class ahf
-  extends agk
+public class ahf
+  implements ahj
 {
-  Context a;
+  public String a;
+  public String b;
   
-  ahf(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
+  public final ahj a(afw paramafw)
   {
-    super(paramContext, str, paramString.getBytes(), paramSQLiteCipherSpec, new ahd());
-    this.a = paramContext;
+    ahf localahf = new ahf();
+    localahf.a = paramafw.getString(paramafw.getColumnIndex("uinhash"));
+    localahf.b = paramafw.getString(paramafw.getColumnIndex("filename"));
+    return localahf;
   }
   
-  protected final void finalize()
+  public final String a()
   {
-    try
-    {
-      b();
-      return;
-    }
-    catch (Exception localException) {}
-    return;
+    return "qqface";
+  }
+  
+  public final void a(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+  }
+  
+  public final long b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return paramSQLiteDatabase.a("qqface", localContentValues);
+  }
+  
+  public final ContentValues b()
+  {
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return localContentValues;
   }
 }
 

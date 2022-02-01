@@ -1,157 +1,389 @@
 package com.tencent.token;
 
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.ActionProvider;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
-import android.view.KeyboardShortcutGroup;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.SearchEvent;
+import android.view.MenuItem.OnActionExpandListener;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.SubMenu;
 import android.view.View;
-import android.view.Window.Callback;
-import android.view.WindowManager.LayoutParams;
-import android.view.accessibility.AccessibilityEvent;
-import java.util.List;
 
-public class he
-  implements Window.Callback
+public final class he
+  implements dn
 {
-  final Window.Callback e;
+  private final int a;
+  private final int b;
+  private final int c;
+  private final int d;
+  private CharSequence e;
+  private CharSequence f;
+  private Intent g;
+  private char h;
+  private int i = 4096;
+  private char j;
+  private int k = 4096;
+  private Drawable l;
+  private int m = 0;
+  private Context n;
+  private MenuItem.OnMenuItemClickListener o;
+  private CharSequence p;
+  private CharSequence q;
+  private ColorStateList r = null;
+  private PorterDuff.Mode s = null;
+  private boolean t = false;
+  private boolean u = false;
+  private int v = 16;
   
-  public he(Window.Callback paramCallback)
+  public he(Context paramContext, CharSequence paramCharSequence)
   {
-    if (paramCallback != null)
+    this.n = paramContext;
+    this.a = 16908332;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+    this.e = paramCharSequence;
+  }
+  
+  private void b()
+  {
+    if ((this.l != null) && ((this.t) || (this.u)))
     {
-      this.e = paramCallback;
-      return;
+      this.l = dg.d(this.l);
+      this.l = this.l.mutate();
+      if (this.t) {
+        dg.a(this.l, this.r);
+      }
+      if (this.u) {
+        dg.a(this.l, this.s);
+      }
     }
-    throw new IllegalArgumentException("Window callback may not be null");
   }
   
-  public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
+  public final dn a(ei paramei)
   {
-    return this.e.dispatchGenericMotionEvent(paramMotionEvent);
+    throw new UnsupportedOperationException();
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public final dn a(CharSequence paramCharSequence)
   {
-    return this.e.dispatchKeyEvent(paramKeyEvent);
+    this.p = paramCharSequence;
+    return this;
   }
   
-  public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+  public final ei a()
   {
-    return this.e.dispatchKeyShortcutEvent(paramKeyEvent);
+    return null;
   }
   
-  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  public final dn b(CharSequence paramCharSequence)
   {
-    return this.e.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    this.q = paramCharSequence;
+    return this;
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public final boolean collapseActionView()
   {
-    return this.e.dispatchTouchEvent(paramMotionEvent);
+    return false;
   }
   
-  public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
+  public final boolean expandActionView()
   {
-    return this.e.dispatchTrackballEvent(paramMotionEvent);
+    return false;
   }
   
-  public void onActionModeFinished(ActionMode paramActionMode)
+  public final ActionProvider getActionProvider()
   {
-    this.e.onActionModeFinished(paramActionMode);
+    throw new UnsupportedOperationException();
   }
   
-  public void onActionModeStarted(ActionMode paramActionMode)
+  public final View getActionView()
   {
-    this.e.onActionModeStarted(paramActionMode);
+    return null;
   }
   
-  public void onAttachedToWindow()
+  public final int getAlphabeticModifiers()
   {
-    this.e.onAttachedToWindow();
+    return this.k;
   }
   
-  public void onContentChanged()
+  public final char getAlphabeticShortcut()
   {
-    this.e.onContentChanged();
+    return this.j;
   }
   
-  public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+  public final CharSequence getContentDescription()
   {
-    return this.e.onCreatePanelMenu(paramInt, paramMenu);
+    return this.p;
   }
   
-  public View onCreatePanelView(int paramInt)
+  public final int getGroupId()
   {
-    return this.e.onCreatePanelView(paramInt);
+    return this.b;
   }
   
-  public void onDetachedFromWindow()
+  public final Drawable getIcon()
   {
-    this.e.onDetachedFromWindow();
+    return this.l;
   }
   
-  public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
+  public final ColorStateList getIconTintList()
   {
-    return this.e.onMenuItemSelected(paramInt, paramMenuItem);
+    return this.r;
   }
   
-  public boolean onMenuOpened(int paramInt, Menu paramMenu)
+  public final PorterDuff.Mode getIconTintMode()
   {
-    return this.e.onMenuOpened(paramInt, paramMenu);
+    return this.s;
   }
   
-  public void onPanelClosed(int paramInt, Menu paramMenu)
+  public final Intent getIntent()
   {
-    this.e.onPanelClosed(paramInt, paramMenu);
+    return this.g;
   }
   
-  public void onPointerCaptureChanged(boolean paramBoolean)
+  public final int getItemId()
   {
-    this.e.onPointerCaptureChanged(paramBoolean);
+    return this.a;
   }
   
-  public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+  public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.e.onPreparePanel(paramInt, paramView, paramMenu);
+    return null;
   }
   
-  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+  public final int getNumericModifiers()
   {
-    this.e.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+    return this.i;
   }
   
-  public boolean onSearchRequested()
+  public final char getNumericShortcut()
   {
-    return this.e.onSearchRequested();
+    return this.h;
   }
   
-  public boolean onSearchRequested(SearchEvent paramSearchEvent)
+  public final int getOrder()
   {
-    return this.e.onSearchRequested(paramSearchEvent);
+    return this.d;
   }
   
-  public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
+  public final SubMenu getSubMenu()
   {
-    this.e.onWindowAttributesChanged(paramLayoutParams);
+    return null;
   }
   
-  public void onWindowFocusChanged(boolean paramBoolean)
+  public final CharSequence getTitle()
   {
-    this.e.onWindowFocusChanged(paramBoolean);
+    return this.e;
   }
   
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+  public final CharSequence getTitleCondensed()
   {
-    return this.e.onWindowStartingActionMode(paramCallback);
+    CharSequence localCharSequence = this.f;
+    if (localCharSequence != null) {
+      return localCharSequence;
+    }
+    return this.e;
   }
   
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+  public final CharSequence getTooltipText()
   {
-    return this.e.onWindowStartingActionMode(paramCallback, paramInt);
+    return this.q;
+  }
+  
+  public final boolean hasSubMenu()
+  {
+    return false;
+  }
+  
+  public final boolean isActionViewExpanded()
+  {
+    return false;
+  }
+  
+  public final boolean isCheckable()
+  {
+    return (this.v & 0x1) != 0;
+  }
+  
+  public final boolean isChecked()
+  {
+    return (this.v & 0x2) != 0;
+  }
+  
+  public final boolean isEnabled()
+  {
+    return (this.v & 0x10) != 0;
+  }
+  
+  public final boolean isVisible()
+  {
+    return (this.v & 0x8) == 0;
+  }
+  
+  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar)
+  {
+    this.j = Character.toLowerCase(paramChar);
+    return this;
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
+  {
+    this.j = Character.toLowerCase(paramChar);
+    this.k = KeyEvent.normalizeMetaState(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setCheckable(boolean paramBoolean)
+  {
+    this.v = (paramBoolean | this.v & 0xFFFFFFFE);
+    return this;
+  }
+  
+  public final MenuItem setChecked(boolean paramBoolean)
+  {
+    int i2 = this.v;
+    int i1;
+    if (paramBoolean) {
+      i1 = 2;
+    } else {
+      i1 = 0;
+    }
+    this.v = (i1 | i2 & 0xFFFFFFFD);
+    return this;
+  }
+  
+  public final MenuItem setEnabled(boolean paramBoolean)
+  {
+    int i2 = this.v;
+    int i1;
+    if (paramBoolean) {
+      i1 = 16;
+    } else {
+      i1 = 0;
+    }
+    this.v = (i1 | i2 & 0xFFFFFFEF);
+    return this;
+  }
+  
+  public final MenuItem setIcon(int paramInt)
+  {
+    this.m = paramInt;
+    this.l = cr.a(this.n, paramInt);
+    b();
+    return this;
+  }
+  
+  public final MenuItem setIcon(Drawable paramDrawable)
+  {
+    this.l = paramDrawable;
+    this.m = 0;
+    b();
+    return this;
+  }
+  
+  public final MenuItem setIconTintList(ColorStateList paramColorStateList)
+  {
+    this.r = paramColorStateList;
+    this.t = true;
+    b();
+    return this;
+  }
+  
+  public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
+  {
+    this.s = paramMode;
+    this.u = true;
+    b();
+    return this;
+  }
+  
+  public final MenuItem setIntent(Intent paramIntent)
+  {
+    this.g = paramIntent;
+    return this;
+  }
+  
+  public final MenuItem setNumericShortcut(char paramChar)
+  {
+    this.h = paramChar;
+    return this;
+  }
+  
+  public final MenuItem setNumericShortcut(char paramChar, int paramInt)
+  {
+    this.h = paramChar;
+    this.i = KeyEvent.normalizeMetaState(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+  {
+    this.o = paramOnMenuItemClickListener;
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2)
+  {
+    this.h = paramChar1;
+    this.j = Character.toLowerCase(paramChar2);
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
+  {
+    this.h = paramChar1;
+    this.i = KeyEvent.normalizeMetaState(paramInt1);
+    this.j = Character.toLowerCase(paramChar2);
+    this.k = KeyEvent.normalizeMetaState(paramInt2);
+    return this;
+  }
+  
+  public final void setShowAsAction(int paramInt) {}
+  
+  public final MenuItem setTitle(int paramInt)
+  {
+    this.e = this.n.getResources().getString(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setTitle(CharSequence paramCharSequence)
+  {
+    this.e = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
+  {
+    this.f = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setVisible(boolean paramBoolean)
+  {
+    int i2 = this.v;
+    int i1 = 8;
+    if (paramBoolean) {
+      i1 = 0;
+    }
+    this.v = (i2 & 0x8 | i1);
+    return this;
   }
 }
 

@@ -1,16 +1,89 @@
 package com.tencent.token;
 
 import android.os.Build.VERSION;
-import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import java.lang.reflect.Field;
 
 public final class ek
 {
-  public static int a(int paramInt1, int paramInt2)
+  static final b a = new b();
+  private static Field b;
+  private static boolean c;
+  
+  static
   {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
+      return;
     }
-    return paramInt1 & 0xFF7FFFFF;
+  }
+  
+  static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+  {
+    if (!c) {}
+    try
+    {
+      localObject = LayoutInflater.class.getDeclaredField("mFactory2");
+      b = (Field)localObject;
+      ((Field)localObject).setAccessible(true);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      Object localObject;
+      label26:
+      break label26;
+    }
+    localObject = new StringBuilder("forceSetFactory2 Could not find field 'mFactory2' on class ");
+    ((StringBuilder)localObject).append(LayoutInflater.class.getName());
+    ((StringBuilder)localObject).append("; inflation may have unexpected results.");
+    c = true;
+    localObject = b;
+    if (localObject != null) {}
+    try
+    {
+      ((Field)localObject).set(paramLayoutInflater, paramFactory2);
+      return;
+    }
+    catch (IllegalAccessException paramFactory2)
+    {
+      label72:
+      break label72;
+    }
+    paramFactory2 = new StringBuilder("forceSetFactory2 could not set the Factory2 on LayoutInflater ");
+    paramFactory2.append(paramLayoutInflater);
+    paramFactory2.append("; inflation may have unexpected results.");
+  }
+  
+  public static void b(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+  {
+    a.a(paramLayoutInflater, paramFactory2);
+  }
+  
+  static final class a
+    extends ek.b
+  {
+    public final void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+    {
+      paramLayoutInflater.setFactory2(paramFactory2);
+    }
+  }
+  
+  static class b
+  {
+    public void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+    {
+      paramLayoutInflater.setFactory2(paramFactory2);
+      LayoutInflater.Factory localFactory = paramLayoutInflater.getFactory();
+      if ((localFactory instanceof LayoutInflater.Factory2))
+      {
+        ek.a(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
+        return;
+      }
+      ek.a(paramLayoutInflater, paramFactory2);
+    }
   }
 }
 

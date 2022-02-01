@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -16,13 +16,13 @@ public final class Mandarin
   public ArrayList<String> Cd = null;
   public Loquat connected = null;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Ad = paramafl.a(this.Ad, 0, true);
+    this.Ad = paramafk.a(this.Ad, 0, true);
     if (xd == null) {
       xd = new Loquat();
     }
-    this.connected = ((Loquat)paramafl.a(xd, 1, false));
+    this.connected = ((Loquat)paramafk.a(xd, 1, false));
     Object localObject;
     if (yd == null)
     {
@@ -30,30 +30,30 @@ public final class Mandarin
       localObject = new Loquat();
       yd.add(localObject);
     }
-    this.Bd = ((ArrayList)paramafl.a(yd, 2, false));
+    this.Bd = ((ArrayList)paramafk.a(yd, 2, false));
     if (zd == null)
     {
       localObject = new ArrayList();
       zd = (ArrayList)localObject;
       ((ArrayList)localObject).add("");
     }
-    this.Cd = ((ArrayList)paramafl.a(zd, 3, false));
+    this.Cd = ((ArrayList)paramafk.a(zd, 3, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Ad, 0);
+    paramafn.a(this.Ad, 0);
     Object localObject = this.connected;
     if (localObject != null) {
-      paramafo.a((break)localObject, 1);
+      paramafn.a((break)localObject, 1);
     }
     localObject = this.Bd;
     if (localObject != null) {
-      paramafo.a((Collection)localObject, 2);
+      paramafn.a((Collection)localObject, 2);
     }
     localObject = this.Cd;
     if (localObject != null) {
-      paramafo.a((Collection)localObject, 3);
+      paramafn.a((Collection)localObject, 3);
     }
   }
 }

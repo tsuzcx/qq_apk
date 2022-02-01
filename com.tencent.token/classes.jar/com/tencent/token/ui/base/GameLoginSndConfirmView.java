@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 
 public class GameLoginSndConfirmView
   extends RelativeLayout
@@ -87,7 +87,7 @@ public class GameLoginSndConfirmView
   
   public final void a()
   {
-    xb.a("game login unregister interval timer");
+    xa.a("game login unregister interval timer");
     AlarmManager localAlarmManager = this.p;
     if (localAlarmManager != null)
     {

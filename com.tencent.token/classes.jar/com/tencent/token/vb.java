@@ -1,29 +1,39 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class vb
-  extends tk
+  extends tj
 {
-  private long d;
-  private byte e;
+  EvalAccountResult d;
+  private long e;
   private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
+    StringBuilder localStringBuilder = new StringBuilder("account page generateUrl sessId =");
+    localStringBuilder.append(null);
+    xa.c(localStringBuilder.toString());
     this.a.a(104, null, null);
+    localStringBuilder = new StringBuilder("account page generateUrl sessId =");
+    localStringBuilder.append(null);
+    xa.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((Byte)paramaar.c.get("param.msg.source")).byteValue();
+    this.e = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    paramaaq = new StringBuilder("account page ProtoGetEvalAccountResult unpacketParams: user =");
+    paramaaq.append(this.e);
+    xa.c(paramaaq.toString());
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -34,7 +44,7 @@ public final class vb
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -45,26 +55,29 @@ public final class vb
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      paramJSONObject = paramJSONObject.getJSONArray("msgs");
-      if (!sy.a().a(paramJSONObject, this.d))
-      {
-        wz localwz = this.a;
-        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
-        localStringBuilder.append(paramJSONObject.toString());
-        localwz.a(10000, localStringBuilder.toString(), null);
-        return;
-      }
-      ta.a().g();
+      this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.d;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

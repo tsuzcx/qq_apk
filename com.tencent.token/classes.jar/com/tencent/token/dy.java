@@ -1,33 +1,50 @@
 package com.tencent.token;
 
+import java.io.Writer;
+
 public final class dy
+  extends Writer
 {
-  public static void a(Object paramObject, StringBuilder paramStringBuilder)
+  private final String a;
+  private StringBuilder b = new StringBuilder(128);
+  
+  public dy(String paramString)
   {
-    if (paramObject == null)
+    this.a = paramString;
+  }
+  
+  private void a()
+  {
+    if (this.b.length() > 0)
     {
-      paramStringBuilder.append("null");
-      return;
+      StringBuilder localStringBuilder = this.b;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
-    String str2 = paramObject.getClass().getSimpleName();
-    String str1;
-    if (str2 != null)
+  }
+  
+  public final void close()
+  {
+    a();
+  }
+  
+  public final void flush()
+  {
+    a();
+  }
+  
+  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    while (i < paramInt2)
     {
-      str1 = str2;
-      if (str2.length() > 0) {}
-    }
-    else
-    {
-      str2 = paramObject.getClass().getName();
-      int i = str2.lastIndexOf('.');
-      str1 = str2;
-      if (i > 0) {
-        str1 = str2.substring(i + 1);
+      char c = paramArrayOfChar[(paramInt1 + i)];
+      if (c == '\n') {
+        a();
+      } else {
+        this.b.append(c);
       }
+      i += 1;
     }
-    paramStringBuilder.append(str1);
-    paramStringBuilder.append('{');
-    paramStringBuilder.append(Integer.toHexString(System.identityHashCode(paramObject)));
   }
 }
 

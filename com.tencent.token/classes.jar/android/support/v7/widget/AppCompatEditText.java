@@ -8,30 +8,30 @@ import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
-import com.tencent.token.ew;
-import com.tencent.token.gp.a;
-import com.tencent.token.if;
-import com.tencent.token.ii;
-import com.tencent.token.im;
-import com.tencent.token.jc;
+import com.tencent.token.ev;
+import com.tencent.token.go.a;
+import com.tencent.token.ie;
+import com.tencent.token.ih;
+import com.tencent.token.il;
+import com.tencent.token.jb;
 
 public class AppCompatEditText
   extends EditText
-  implements ew
+  implements ev
 {
-  private final if a = new if(this);
-  private final im b;
+  private final ie a = new ie(this);
+  private final il b;
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.editTextStyle);
+    this(paramContext, paramAttributeSet, go.a.editTextStyle);
   }
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jc.a(paramContext), paramAttributeSet, paramInt);
+    super(jb.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
-    this.b = im.a(this);
+    this.b = il.a(this);
     this.b.a(paramAttributeSet, paramInt);
     this.b.a();
   }
@@ -41,35 +41,35 @@ public class AppCompatEditText
     super.drawableStateChanged();
     Object localObject = this.a;
     if (localObject != null) {
-      ((if)localObject).d();
+      ((ie)localObject).d();
     }
     localObject = this.b;
     if (localObject != null) {
-      ((im)localObject).a();
+      ((il)localObject).a();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.b();
+    ie localie = this.a;
+    if (localie != null) {
+      return localie.b();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.c();
+    ie localie = this.a;
+    if (localie != null) {
+      return localie.c();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return ii.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return ih.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
@@ -84,34 +84,34 @@ public class AppCompatEditText
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramInt);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramInt);
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramColorStateList);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramMode);
+    ie localie = this.a;
+    if (localie != null) {
+      localie.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    im localim = this.b;
-    if (localim != null) {
-      localim.a(paramContext, paramInt);
+    il localil = this.b;
+    if (localil != null) {
+      localil.a(paramContext, paramInt);
     }
   }
 }

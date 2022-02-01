@@ -1,10 +1,12 @@
 package com.tencent.token;
 
-import android.view.View;
+import android.app.Activity;
 
 public abstract interface abt
 {
-  public abstract void a(String paramString, View paramView);
+  public abstract void a(Activity paramActivity);
+  
+  public abstract void b(Activity paramActivity);
 }
 
 

@@ -1,28 +1,52 @@
 package com.tencent.token;
 
-public enum ajy
+public final class ajy
 {
-  public final int l;
+  public static final alb a = alb.a(":");
+  public static final alb b = alb.a(":status");
+  public static final alb c = alb.a(":method");
+  public static final alb d = alb.a(":path");
+  public static final alb e = alb.a(":scheme");
+  public static final alb f = alb.a(":authority");
+  public final alb g;
+  public final alb h;
+  final int i;
   
-  private ajy(int paramInt)
+  public ajy(alb paramalb1, alb paramalb2)
   {
-    this.l = paramInt;
+    this.g = paramalb1;
+    this.h = paramalb2;
+    this.i = (paramalb1.g() + 32 + paramalb2.g());
   }
   
-  public static ajy a(int paramInt)
+  public ajy(alb paramalb, String paramString)
   {
-    ajy[] arrayOfajy = values();
-    int i1 = arrayOfajy.length;
-    int n = 0;
-    while (n < i1)
+    this(paramalb, alb.a(paramString));
+  }
+  
+  public ajy(String paramString1, String paramString2)
+  {
+    this(alb.a(paramString1), alb.a(paramString2));
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof ajy))
     {
-      ajy localajy = arrayOfajy[n];
-      if (localajy.l == paramInt) {
-        return localajy;
-      }
-      n += 1;
+      paramObject = (ajy)paramObject;
+      return (this.g.equals(paramObject.g)) && (this.h.equals(paramObject.h));
     }
-    return null;
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return (this.g.hashCode() + 527) * 31 + this.h.hashCode();
+  }
+  
+  public final String toString()
+  {
+    return aiw.a("%s: %s", new Object[] { this.g.a(), this.h.a() });
   }
 }
 

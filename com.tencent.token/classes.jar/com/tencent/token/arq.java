@@ -1,91 +1,82 @@
 package com.tencent.token;
 
-import android.net.NetworkInfo;
-import android.net.Proxy;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.content.res.Resources;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 
 public final class arq
 {
-  public static jn a()
+  private static String a = "tms_";
+  private static String b = "[com.android.internal.telephony.ITelephony]";
+  private static String c = "[com.android.internal.telephony.ITelephonyRegistry]";
+  private static Boolean d;
+  
+  public static String a()
   {
-    String str;
-    try
-    {
-      NetworkInfo localNetworkInfo = aow.a().a();
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      new StringBuilder(" getActiveNetworkInfo NullPointerException--- \n").append(localNullPointerException.getMessage());
-      str = null;
-    }
-    if (str == null) {
-      return jn.a;
-    }
-    if (str.getType() == 1) {
-      return jn.c;
-    }
-    if (str.getType() == 0)
-    {
-      str = b();
-      if ((str != null) && (str.length() > 0) && (c() > 0)) {
-        return jn.d;
-      }
-      return jn.e;
-    }
-    return jn.e;
+    return "android_id";
+  }
+  
+  public static String a(Context paramContext)
+  {
+    return ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
   }
   
   public static String b()
   {
-    if (e()) {
-      return System.getProperty("http.proxyHost");
-    }
-    return Proxy.getHost(aot.a());
+    return Build.MODEL;
   }
   
-  public static int c()
+  public static String b(Context paramContext)
   {
-    if (e()) {}
-    try
-    {
-      int i = Integer.parseInt(System.getProperty("http.proxyPort"));
-      return i;
+    paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+    if (paramContext == null) {
+      return "000000000000000";
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      label17:
-      break label17;
-    }
-    return -1;
-    return Proxy.getPort(aot.a());
+    return paramContext;
   }
   
-  public static boolean d()
+  public static String c(Context paramContext)
   {
-    NetworkInfo localNetworkInfo = f();
-    if (localNetworkInfo == null) {
-      return false;
-    }
-    return localNetworkInfo.isConnected();
-  }
-  
-  private static boolean e()
-  {
-    return Build.VERSION.SDK_INT >= 14;
-  }
-  
-  private static NetworkInfo f()
-  {
-    try
-    {
-      NetworkInfo localNetworkInfo = aow.a().a();
-      return localNetworkInfo;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      new StringBuilder(" getActiveNetworkInfo NullPointerException--- \n").append(localNullPointerException.getMessage());
+    paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+    if (paramContext != null) {
+      return paramContext.getMacAddress();
     }
     return null;
+  }
+  
+  public static int d(Context paramContext)
+  {
+    return paramContext.getResources().getDisplayMetrics().widthPixels;
+  }
+  
+  public static int e(Context paramContext)
+  {
+    return paramContext.getResources().getDisplayMetrics().heightPixels;
+  }
+  
+  public static int f(Context paramContext)
+  {
+    paramContext = b(paramContext);
+    if (paramContext != null) {
+      if ((!paramContext.startsWith("46000")) && (!paramContext.startsWith("46002")) && (!paramContext.startsWith("46007")))
+      {
+        if (paramContext.startsWith("46001")) {
+          return 1;
+        }
+        if (paramContext.startsWith("46003")) {
+          return 2;
+        }
+      }
+      else
+      {
+        return 0;
+      }
+    }
+    return -1;
   }
 }
 

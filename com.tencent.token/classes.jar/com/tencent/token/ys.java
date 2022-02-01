@@ -1,87 +1,57 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public final class ys
-  extends Drawable
+  extends Animation
 {
-  public boolean a;
-  public float b;
-  private int c;
-  private int d;
-  private Paint e = new Paint();
-  private RectF f;
-  private RectF g;
-  private float h;
+  private final float a;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
+  private final boolean f;
+  private Camera g;
   
-  public ys(Context paramContext)
+  public ys(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
-    this.c = paramContext.getResources().getColor(2130968665);
-    this.d = paramContext.getResources().getColor(2130968669);
-    this.f = new RectF();
-    this.g = new RectF();
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = 310.0F;
+    this.f = paramBoolean;
   }
   
-  public final void a()
+  protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.b = 0.0F;
-    this.a = false;
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    this.e.setColor(this.c);
-    this.e.setStyle(Paint.Style.FILL);
-    paramCanvas.drawRoundRect(this.f, 5.0F, 5.0F, this.e);
-    if (!this.a)
-    {
-      double d1 = this.b;
-      Double.isNaN(d1);
-      this.b = ((float)(d1 + 0.15D));
-      if (this.b > 80.0F) {
-        this.b = 80.0F;
-      }
+    float f1 = this.a;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.g;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.f) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
+    } else {
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-    else
-    {
-      this.b += 5.0F;
-    }
-    if (this.b >= 100.0F) {
-      this.b = 100.0F;
-    }
-    this.g.set(this.f.left, this.f.top, this.f.left + this.h * this.b, this.f.bottom);
-    this.e.setColor(this.d);
-    paramCanvas.drawRoundRect(this.g, 5.0F, 5.0F, this.e);
-    invalidateSelf();
+    localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+    localCamera.getMatrix(paramTransformation);
+    localCamera.restore();
+    paramTransformation.preTranslate(-f3, -f4);
+    paramTransformation.postTranslate(f3, f4);
   }
   
-  public final int getOpacity()
+  public final void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return 0;
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.g = new Camera();
   }
-  
-  public final void setAlpha(int paramInt) {}
-  
-  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.f.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.h = (this.f.width() / 100.0F);
-    StringBuilder localStringBuilder = new StringBuilder("setBounds rect=");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(",clipRect=");
-    localStringBuilder.append(this.g);
-    xb.c(localStringBuilder.toString());
-  }
-  
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

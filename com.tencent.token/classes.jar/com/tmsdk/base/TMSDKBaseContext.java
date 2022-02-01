@@ -11,7 +11,7 @@ import btmsdkobf.ec;
 import btmsdkobf.ee;
 import btmsdkobf.eg;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ass;
+import com.tencent.token.asr;
 
 public class TMSDKBaseContext
 {
@@ -72,12 +72,12 @@ public class TMSDKBaseContext
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return ass.b(paramArrayOfByte1, paramArrayOfByte2);
+    return asr.b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return ass.a(paramArrayOfByte1, paramArrayOfByte2);
+    return asr.a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static Context getApplicationContext()

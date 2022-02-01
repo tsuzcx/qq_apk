@@ -5,37 +5,24 @@ import android.os.Bundle;
 public final class ol
 {
   public static final class a
-    extends oh
+    extends og
   {
     public String c;
-    public String d = "";
-    public int e = 0;
-    public String f = "";
     
     public final int a()
     {
-      return 19;
+      return 29;
     }
     
     public final void a(Bundle paramBundle)
     {
       super.a(paramBundle);
-      paramBundle.putString("_launch_wxminiprogram_username", this.c);
-      paramBundle.putString("_launch_wxminiprogram_path", this.d);
-      paramBundle.putString("_launch_wxminiprogram_extData", this.f);
-      paramBundle.putInt("_launch_wxminiprogram_type", this.e);
+      paramBundle.putString("_launch_wxminiprogram_token", this.c);
     }
     
     public final boolean b()
     {
-      if (ph.a(this.c)) {
-        return false;
-      }
-      int i = this.e;
-      if (i >= 0) {
-        return i <= 2;
-      }
-      return false;
+      return !pg.a(this.c);
     }
   }
 }

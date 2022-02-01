@@ -14,7 +14,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 
 public class FreezeUinDialog
   extends Dialog
@@ -57,7 +57,7 @@ public class FreezeUinDialog
         FreezeUinDialog.this.dismiss();
         if (FreezeUinDialog.a(FreezeUinDialog.this) != null)
         {
-          xb.a("freeze: msg=4009");
+          xa.a("freeze: msg=4009");
           paramAnonymousView = FreezeUinDialog.a(FreezeUinDialog.this).obtainMessage(4009);
           if (paramBundle.isChecked()) {
             paramAnonymousView.arg1 = 1;

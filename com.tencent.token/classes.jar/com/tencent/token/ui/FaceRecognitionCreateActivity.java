@@ -14,12 +14,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import com.tencent.token.aad;
-import com.tencent.token.ahh;
+import com.tencent.token.aac;
+import com.tencent.token.ahg;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ta;
-import com.tencent.token.xb;
+import com.tencent.token.sz;
+import com.tencent.token.xa;
 
 public class FaceRecognitionCreateActivity
   extends BaseActivity
@@ -42,7 +42,7 @@ public class FaceRecognitionCreateActivity
     {
       StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
     return false;
   }
@@ -90,7 +90,7 @@ public class FaceRecognitionCreateActivity
       public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = FaceRecognitionCreateActivity.this;
-        aad.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493439), FaceRecognitionCreateActivity.this.getResources().getString(2131493440));
+        aac.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493439), FaceRecognitionCreateActivity.this.getResources().getString(2131493440));
       }
     });
     this.btn_reg = ((Button)findViewById(2131165509));
@@ -100,13 +100,13 @@ public class FaceRecognitionCreateActivity
       {
         if (FaceRecognitionCreateActivity.this.chk.isChecked())
         {
-          if (ta.a().k.b() == null)
+          if (sz.a().k.b() == null)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 0);
             return;
           }
-          if (!ta.a().k.b().mIsBinded)
+          if (!sz.a().k.b().mIsBinded)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 1);
@@ -141,7 +141,7 @@ public class FaceRecognitionCreateActivity
     {
       StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
   }
   

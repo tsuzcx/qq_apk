@@ -1,10 +1,11 @@
 package com.tencent.token;
 
+import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
 
 public abstract interface agx
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
+  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
 }
 
 

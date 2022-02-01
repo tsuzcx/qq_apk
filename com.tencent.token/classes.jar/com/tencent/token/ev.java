@@ -1,41 +1,17 @@
 package com.tencent.token;
 
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-public abstract class ev
+public abstract interface ev
 {
-  private final DataSetObservable a = new DataSetObservable();
-  private DataSetObserver b;
+  public abstract ColorStateList getSupportBackgroundTintList();
   
-  public static void b()
-  {
-    throw new UnsupportedOperationException("Required method destroyItem was not overridden");
-  }
+  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
   
-  public abstract int a();
+  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
   
-  public final void a(DataSetObserver paramDataSetObserver)
-  {
-    this.a.registerObserver(paramDataSetObserver);
-  }
-  
-  public final void b(DataSetObserver paramDataSetObserver)
-  {
-    this.a.unregisterObserver(paramDataSetObserver);
-  }
-  
-  public final void c(DataSetObserver paramDataSetObserver)
-  {
-    try
-    {
-      this.b = paramDataSetObserver;
-      return;
-    }
-    finally {}
-  }
-  
-  public abstract boolean c();
+  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
 }
 
 

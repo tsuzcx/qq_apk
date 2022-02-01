@@ -1,16 +1,15 @@
 package com.tencent.token;
 
-public final class jw
+import btmsdkobf.cy.b;
+
+public abstract class jw
+  implements cy.b
 {
-  public int a;
-  public int b;
-  public int c;
+  public String e = "";
   
-  public jw(int paramInt1, int paramInt2, int paramInt3)
+  public jw(String paramString)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.e = paramString;
   }
 }
 

@@ -1,581 +1,338 @@
 package com.tencent.token;
 
-import java.io.EOFException;
+import java.io.Closeable;
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.SocketTimeoutException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public final class akf
+final class akf
+  implements Closeable
 {
-  long a = 0L;
-  long b;
-  final int c;
-  final akd d;
-  List<ajz> e;
-  boolean f;
-  final b g;
-  final a h;
-  final c i = new c();
-  final c j = new c();
-  ajy k = null;
-  private final List<ajz> m;
+  private static final Logger c = Logger.getLogger(aka.class.getName());
+  int a;
+  final ajz.b b;
+  private final akz d;
+  private final boolean e;
+  private final aky f;
+  private boolean g;
   
-  akf(int paramInt, akd paramakd, boolean paramBoolean1, boolean paramBoolean2, List<ajz> paramList)
+  akf(akz paramakz, boolean paramBoolean)
   {
-    if (paramakd != null)
+    this.d = paramakz;
+    this.e = paramBoolean;
+    this.f = new aky();
+    this.b = new ajz.b(this.f);
+    this.a = 16384;
+  }
+  
+  private void a(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
+  {
+    if (c.isLoggable(Level.FINE)) {
+      c.fine(aka.a(false, paramInt1, paramInt2, paramByte1, paramByte2));
+    }
+    int i = this.a;
+    if (paramInt2 <= i)
     {
-      if (paramList != null)
+      if ((0x80000000 & paramInt1) == 0)
       {
-        this.c = paramInt;
-        this.d = paramakd;
-        this.b = paramakd.m.b();
-        this.g = new b(paramakd.l.b());
-        this.h = new a();
-        this.g.b = paramBoolean2;
-        this.h.b = paramBoolean1;
-        this.m = paramList;
+        a(this.d, paramInt2);
+        this.d.h(paramByte1 & 0xFF);
+        this.d.h(paramByte2 & 0xFF);
+        this.d.f(paramInt1 & 0x7FFFFFFF);
         return;
       }
-      throw new NullPointerException("requestHeaders == null");
+      throw aka.a("reserved bit set: %s", new Object[] { Integer.valueOf(paramInt1) });
     }
-    throw new NullPointerException("connection == null");
+    throw aka.a("FRAME_SIZE_ERROR length > %d: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
   }
   
-  private boolean d(ajy paramajy)
+  private static void a(akz paramakz, int paramInt)
   {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
-    try
+    paramakz.h(paramInt >>> 16 & 0xFF);
+    paramakz.h(paramInt >>> 8 & 0xFF);
+    paramakz.h(paramInt & 0xFF);
+  }
+  
+  private void b(int paramInt, long paramLong)
+  {
+    while (paramLong > 0L)
     {
-      if (this.k != null) {
-        return false;
+      int i = (int)Math.min(this.a, paramLong);
+      long l = i;
+      paramLong -= l;
+      byte b1;
+      if (paramLong == 0L) {
+        b1 = 4;
+      } else {
+        b1 = 0;
       }
-      if ((this.g.b) && (this.h.b)) {
-        return false;
-      }
-      this.k = paramajy;
-      notifyAll();
-      this.d.b(this.c);
-      return true;
-    }
-    finally {}
-  }
-  
-  final void a(long paramLong)
-  {
-    this.b += paramLong;
-    if (paramLong > 0L) {
-      notifyAll();
+      a(paramInt, i, (byte)9, b1);
+      this.d.a_(this.f, l);
     }
   }
   
-  public final void a(ajy paramajy)
-  {
-    if (!d(paramajy)) {
-      return;
-    }
-    this.d.b(this.c, paramajy);
-  }
-  
-  public final boolean a()
+  public final void a()
   {
     try
     {
-      ajy localajy = this.k;
-      if (localajy != null) {
-        return false;
-      }
-      if (((this.g.b) || (this.g.a)) && ((this.h.b) || (this.h.a)))
+      if (!this.g)
       {
-        boolean bool = this.f;
-        if (bool) {
-          return false;
+        boolean bool = this.e;
+        if (!bool) {
+          return;
         }
+        if (c.isLoggable(Level.FINE)) {
+          c.fine(aiw.a(">> CONNECTION %s", new Object[] { aka.a.e() }));
+        }
+        this.d.c(aka.a.h());
+        this.d.flush();
+        return;
       }
-      return true;
+      throw new IOException("closed");
     }
     finally {}
   }
   
-  public final void b(ajy paramajy)
-  {
-    if (!d(paramajy)) {
-      return;
-    }
-    this.d.a(this.c, paramajy);
-  }
-  
-  public final boolean b()
-  {
-    int n;
-    if ((this.c & 0x1) == 1) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    return this.d.a == n;
-  }
-  
-  public final List<ajz> c()
+  public final void a(int paramInt, long paramLong)
   {
     try
     {
-      if (b())
+      if (!this.g)
       {
-        this.i.b_();
-        try
+        if ((paramLong != 0L) && (paramLong <= 2147483647L))
         {
-          while ((this.e == null) && (this.k == null)) {
-            h();
-          }
-          this.i.b();
-          List localList = this.e;
-          if (localList != null)
-          {
-            this.e = null;
-            return localList;
-          }
-          throw new akk(this.k);
+          a(paramInt, 4, (byte)8, (byte)0);
+          this.d.f((int)paramLong);
+          this.d.flush();
+          return;
         }
-        finally
-        {
-          this.i.b();
-        }
+        throw aka.a("windowSizeIncrement == 0 || windowSizeIncrement > 0x7fffffffL: %s", new Object[] { Long.valueOf(paramLong) });
       }
-      throw new IllegalStateException("servers cannot read response headers");
+      throw new IOException("closed");
     }
     finally {}
   }
   
-  final void c(ajy paramajy)
+  public final void a(int paramInt, ajx paramajx)
   {
     try
     {
-      if (this.k == null)
+      if (!this.g)
       {
-        this.k = paramajy;
-        notifyAll();
+        if (paramajx.l != -1)
+        {
+          a(paramInt, 4, (byte)3, (byte)0);
+          this.d.f(paramajx.l);
+          this.d.flush();
+          return;
+        }
+        throw new IllegalArgumentException();
       }
-      return;
-    }
-    finally
-    {
-      paramajy = finally;
-      throw paramajy;
-    }
-  }
-  
-  public final alo d()
-  {
-    try
-    {
-      if ((!this.f) && (!b())) {
-        throw new IllegalStateException("reply before requesting the sink");
-      }
-      return this.h;
+      throw new IOException("closed");
     }
     finally {}
   }
   
-  final void e()
+  public final void a(int paramInt, ajx paramajx, byte[] paramArrayOfByte)
   {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
     try
     {
-      this.g.b = true;
-      boolean bool = a();
-      notifyAll();
-      if (!bool) {
-        this.d.b(this.c);
+      if (!this.g)
+      {
+        if (paramajx.l != -1)
+        {
+          a(0, paramArrayOfByte.length + 8, (byte)7, (byte)0);
+          this.d.f(paramInt);
+          this.d.f(paramajx.l);
+          if (paramArrayOfByte.length > 0) {
+            this.d.c(paramArrayOfByte);
+          }
+          this.d.flush();
+          return;
+        }
+        throw aka.a("errorCode.httpCode == -1", new Object[0]);
       }
-      return;
+      throw new IOException("closed");
     }
     finally {}
   }
   
-  final void f()
+  public final void a(aki paramaki)
   {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
+    try
+    {
+      if (!this.g)
+      {
+        int i = this.a;
+        if ((paramaki.a & 0x20) != 0) {
+          i = paramaki.b[5];
+        }
+        this.a = i;
+        if (paramaki.a() != -1) {
+          this.b.a(paramaki.a());
+        }
+        a(0, 0, (byte)4, (byte)1);
+        this.d.flush();
+        return;
+      }
+      throw new IOException("closed");
     }
+    finally {}
+  }
+  
+  public final void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
     for (;;)
     {
       try
       {
-        if ((this.g.b) || (!this.g.a)) {
-          break label115;
+        if (!this.g)
+        {
+          if (paramBoolean)
+          {
+            b1 = 1;
+            a(0, 8, (byte)6, b1);
+            this.d.f(paramInt1);
+            this.d.f(paramInt2);
+            this.d.flush();
+          }
         }
-        if (this.h.b) {
-          break label110;
-        }
-        if (!this.h.a) {
-          break label115;
+        else {
+          throw new IOException("closed");
         }
       }
       finally {}
-      boolean bool = a();
-      if (n != 0)
-      {
-        a(ajy.f);
-        return;
-      }
-      if (!bool) {
-        this.d.b(this.c);
-      }
-      return;
-      label110:
-      int n = 1;
-      continue;
-      label115:
-      n = 0;
+      byte b1 = 0;
     }
   }
   
-  final void g()
+  public final void a(boolean paramBoolean, int paramInt1, aky paramaky, int paramInt2)
   {
-    if (!this.h.a)
-    {
-      if (!this.h.b)
-      {
-        ajy localajy = this.k;
-        if (localajy == null) {
-          return;
-        }
-        throw new akk(localajy);
-      }
-      throw new IOException("stream finished");
-    }
-    throw new IOException("stream closed");
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  final void h()
+  public final void a(boolean paramBoolean, int paramInt, List<ajy> paramList)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!this.g)
+        {
+          if (!this.g)
+          {
+            this.b.a(paramList);
+            long l1 = this.f.b;
+            int i = (int)Math.min(this.a, l1);
+            long l2 = i;
+            if (l1 == l2)
+            {
+              b1 = 4;
+              break label139;
+              a(paramInt, i, (byte)1, b2);
+              this.d.a_(this.f, l2);
+              if (l1 > l2) {
+                b(paramInt, l1 - l2);
+              }
+            }
+          }
+          else
+          {
+            throw new IOException("closed");
+          }
+        }
+        else {
+          throw new IOException("closed");
+        }
+      }
+      finally {}
+      byte b1 = 0;
+      label139:
+      byte b2 = b1;
+      if (paramBoolean) {
+        b2 = (byte)(b1 | 0x1);
+      }
+    }
+  }
+  
+  public final void b()
   {
     try
     {
-      wait();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      label5:
-      break label5;
-    }
-    Thread.currentThread().interrupt();
-    throw new InterruptedIOException();
-  }
-  
-  final class a
-    implements alo
-  {
-    boolean a;
-    boolean b;
-    private final akz e = new akz();
-    
-    a() {}
-    
-    private void a(boolean paramBoolean)
-    {
-      for (;;)
+      if (!this.g)
       {
-        synchronized (akf.this)
-        {
-          akf.this.j.b_();
-          try
-          {
-            if ((akf.this.b <= 0L) && (!this.b) && (!this.a) && (akf.this.k == null))
-            {
-              akf.this.h();
-              continue;
-            }
-            akf.this.j.b();
-            akf.this.g();
-            long l = Math.min(akf.this.b, this.e.b);
-            akf localakf = akf.this;
-            localakf.b -= l;
-            akf.this.j.b_();
-            try
-            {
-              ??? = akf.this.d;
-              int i = akf.this.c;
-              if ((!paramBoolean) || (l != this.e.b)) {
-                break label230;
-              }
-              paramBoolean = true;
-              ((akd)???).a(i, paramBoolean, this.e, l);
-              return;
-            }
-            finally
-            {
-              akf.this.j.b();
-            }
-            localObject4 = finally;
-          }
-          finally
-          {
-            akf.this.j.b();
-          }
-        }
-        label230:
-        paramBoolean = false;
-      }
-    }
-    
-    public final alq a()
-    {
-      return akf.this.j;
-    }
-    
-    public final void a_(akz paramakz, long paramLong)
-    {
-      if ((!c) && (Thread.holdsLock(akf.this))) {
-        throw new AssertionError();
-      }
-      this.e.a_(paramakz, paramLong);
-      while (this.e.b >= 16384L) {
-        a(false);
-      }
-    }
-    
-    public final void close()
-    {
-      if ((!c) && (Thread.holdsLock(akf.this))) {
-        throw new AssertionError();
-      }
-      synchronized (akf.this)
-      {
-        if (this.a) {
-          return;
-        }
-        if (!akf.this.h.b)
-        {
-          if (this.e.b > 0L) {
-            while (this.e.b > 0L) {
-              a(true);
-            }
-          }
-          akf.this.d.a(akf.this.c, true, null, 0L);
-        }
-        synchronized (akf.this)
-        {
-          this.a = true;
-          akf.this.d.p.b();
-          akf.this.f();
-          return;
-        }
-      }
-    }
-    
-    public final void flush()
-    {
-      if ((!c) && (Thread.holdsLock(akf.this))) {
-        throw new AssertionError();
-      }
-      synchronized (akf.this)
-      {
-        akf.this.g();
-        while (this.e.b > 0L)
-        {
-          a(false);
-          akf.this.d.p.b();
-        }
+        this.d.flush();
         return;
       }
+      throw new IOException("closed");
     }
+    finally {}
   }
   
-  final class b
-    implements alp
+  public final void b(aki paramaki)
   {
-    boolean a;
-    boolean b;
-    private final akz e = new akz();
-    private final akz f = new akz();
-    private final long g;
-    
-    b(long paramLong)
+    for (;;)
     {
-      this.g = paramLong;
-    }
-    
-    private void a(long paramLong)
-    {
-      if ((!c) && (Thread.holdsLock(akf.this))) {
-        throw new AssertionError();
-      }
-      akf.this.d.a(paramLong);
-    }
-    
-    private void b()
-    {
-      akf.this.i.b_();
+      int j;
+      int i;
       try
       {
-        while ((this.f.b == 0L) && (!this.b) && (!this.a) && (akf.this.k == null)) {
-          akf.this.h();
-        }
-        return;
-      }
-      finally
-      {
-        akf.this.i.b();
-      }
-    }
-    
-    public final long a(akz paramakz, long paramLong)
-    {
-      if (paramLong >= 0L) {}
-      for (;;)
-      {
-        synchronized (akf.this)
+        if (!this.g)
         {
-          b();
-          if (!this.a)
+          j = Integer.bitCount(paramaki.a);
+          i = 0;
+          a(0, j * 6, (byte)4, (byte)0);
+          if (i < 10)
           {
-            ajy localajy = akf.this.k;
-            if (this.f.b <= 0L) {
-              break label219;
+            if (!paramaki.a(i)) {
+              break label127;
             }
-            paramLong = this.f.a(paramakz, Math.min(paramLong, this.f.b));
-            paramakz = akf.this;
-            paramakz.a += paramLong;
-            if ((localajy == null) && (akf.this.a >= akf.this.d.l.b() / 2))
+            if (i == 4)
             {
-              akf.this.d.a(akf.this.c, akf.this.a);
-              akf.this.a = 0L;
-            }
-            if (paramLong != -1L)
-            {
-              a(paramLong);
-              return paramLong;
-            }
-            if (localajy == null) {
-              return -1L;
-            }
-            throw new akk(localajy);
-          }
-          throw new IOException("stream closed");
-        }
-        throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-        label219:
-        paramLong = -1L;
-      }
-    }
-    
-    public final alq a()
-    {
-      return akf.this.i;
-    }
-    
-    final void a(alb paramalb, long paramLong)
-    {
-      long l1 = paramLong;
-      if (!c) {
-        if (!Thread.holdsLock(akf.this)) {
-          l1 = paramLong;
-        } else {
-          throw new AssertionError();
-        }
-      }
-      if (l1 > 0L) {}
-      for (;;)
-      {
-        synchronized (akf.this)
-        {
-          for (;;)
-          {
-            boolean bool = this.b;
-            paramLong = this.f.b;
-            long l2 = this.g;
-            int j = 1;
-            if (paramLong + l1 <= l2) {
-              break label235;
-            }
-            i = 1;
-            if (i != 0)
-            {
-              paramalb.g(l1);
-              akf.this.b(ajy.d);
-              return;
-            }
-            if (bool)
-            {
-              paramalb.g(l1);
-              return;
-            }
-            paramLong = paramalb.a(this.e, l1);
-            if (paramLong != -1L)
-            {
-              l1 -= paramLong;
-              synchronized (akf.this)
-              {
-                if (this.f.b != 0L) {
-                  break label241;
-                }
-                i = j;
-                this.f.a(this.e);
-                if (i != 0) {
-                  akf.this.notifyAll();
-                }
-              }
+              j = 3;
+              this.d.g(j);
+              this.d.f(paramaki.b[i]);
+              break label127;
             }
           }
-          throw new EOFException();
+          else
+          {
+            this.d.flush();
+          }
         }
-        return;
-        label235:
-        int i = 0;
+        else
+        {
+          throw new IOException("closed");
+        }
+      }
+      finally {}
+      if (i == 7)
+      {
+        j = 4;
+      }
+      else
+      {
+        j = i;
         continue;
-        label241:
-        i = 0;
-      }
-    }
-    
-    public final void close()
-    {
-      synchronized (akf.this)
-      {
-        this.a = true;
-        long l = this.f.b;
-        this.f.p();
-        akf.this.notifyAll();
-        if (l > 0L) {
-          a(l);
-        }
-        akf.this.f();
-        return;
+        label127:
+        i += 1;
       }
     }
   }
   
-  final class c
-    extends akx
+  public final void close()
   {
-    c() {}
-    
-    public final IOException a(IOException paramIOException)
+    try
     {
-      SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-      if (paramIOException != null) {
-        localSocketTimeoutException.initCause(paramIOException);
-      }
-      return localSocketTimeoutException;
+      this.g = true;
+      this.d.close();
+      return;
     }
-    
-    public final void a()
+    finally
     {
-      akf.this.b(ajy.f);
-    }
-    
-    public final void b()
-    {
-      if (!c_()) {
-        return;
-      }
-      throw a(null);
+      localObject = finally;
+      throw localObject;
     }
   }
 }

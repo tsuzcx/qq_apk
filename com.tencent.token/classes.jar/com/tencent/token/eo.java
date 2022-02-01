@@ -1,11 +1,8 @@
 package com.tencent.token;
 
 public abstract interface eo
-{
-  public abstract boolean isNestedScrollingEnabled();
-  
-  public abstract void stopNestedScroll();
-}
+  extends en
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

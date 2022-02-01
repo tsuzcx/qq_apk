@@ -1,29 +1,27 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
 import java.util.HashMap;
-import java.util.List;
 import org.json.JSONObject;
 
 public final class uk
-  extends tk
+  extends tj
 {
-  public String[] d;
+  public String d;
   public long e;
-  public List<DeterminVerifyFactorsResult.QuesInfoItem> f;
+  private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.f = ((List)paramaar.c.get("param.qqquestion"));
-    this.d = ((String[])paramaar.c.get("param.qqquestionanswer"));
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.d = ((String)paramaaq.c.get("param.smscode"));
+    this.f = ((Integer)paramaaq.c.get("param.type")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)

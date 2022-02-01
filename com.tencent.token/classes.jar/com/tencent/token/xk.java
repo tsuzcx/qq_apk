@@ -1,22 +1,71 @@
 package com.tencent.token;
 
-public abstract interface xk
+import com.tmsdk.TMSDKContext;
+import java.util.ArrayList;
+import tmsdk.common.tcc.TccCryptor;
+
+public final class xk
+  implements ase
 {
-  public static abstract interface a {}
-  
-  public static final class b
+  public final asg a(String paramString)
   {
-    public int a;
-    public long b;
-    public String c;
-    public int d;
-    public long e;
-    public long f;
-    public long g;
-    public boolean h;
-    public Runnable i;
-    public Object j;
-    public long k;
+    return new xm(paramString);
+  }
+  
+  public final asi a()
+  {
+    return xn.a.a();
+  }
+  
+  public final asf b()
+  {
+    return xl.a.a();
+  }
+  
+  public final ask c()
+  {
+    return xo.a.a();
+  }
+  
+  public final ash d()
+  {
+    new ash()
+    {
+      public final void a(int paramAnonymousInt, ArrayList<String> paramAnonymousArrayList)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (paramAnonymousArrayList.size() > 0)
+        {
+          int j = paramAnonymousArrayList.size();
+          int i = 0;
+          while (i < j)
+          {
+            localStringBuilder.append((String)paramAnonymousArrayList.get(i));
+            if (i != j - 1) {
+              localStringBuilder.append(",");
+            }
+            i += 1;
+          }
+        }
+        TMSDKContext.SaveStringData(paramAnonymousInt, localStringBuilder.toString());
+      }
+    };
+  }
+  
+  public final asj e()
+  {
+    new asj()
+    {
+      public final byte[] a(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+      {
+        return TccCryptor.encrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+      }
+      
+      public final byte[] b(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+      {
+        return TccCryptor.decrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+      }
+    };
   }
 }
 

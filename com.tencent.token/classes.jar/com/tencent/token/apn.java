@@ -1,23 +1,21 @@
 package com.tencent.token;
 
-import android.util.Pair;
-import com.qq.taf.jce.JceStruct;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 final class apn
-  implements agy
+  extends Handler
 {
-  apn(aqs paramaqs) {}
-  
-  public final Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct)
+  apn(aqr paramaqr, Looper paramLooper)
   {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    if (paramInt2 != 10001) {
-      return null;
-    }
-    paramJceStruct = (aa)paramJceStruct;
-    return aqs.a(this.a, paramJceStruct);
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    aqr.a(this.a, paramMessage.what);
   }
 }
 

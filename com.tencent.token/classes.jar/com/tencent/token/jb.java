@@ -1,74 +1,140 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
+import android.content.ContextWrapper;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.util.TypedValue;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-final class jb
+public final class jb
+  extends ContextWrapper
 {
-  static final int[] a = { -16842910 };
-  static final int[] b = { 16842908 };
-  static final int[] c = { 16843518 };
-  static final int[] d = { 16842919 };
-  static final int[] e = { 16842912 };
-  static final int[] f = { 16842913 };
-  static final int[] g = { -16842919, -16842908 };
-  static final int[] h = new int[0];
-  private static final ThreadLocal<TypedValue> i = new ThreadLocal();
-  private static final int[] j = new int[1];
+  private static final Object a = new Object();
+  private static ArrayList<WeakReference<jb>> b;
+  private final Resources c;
+  private final Resources.Theme d;
   
-  public static int a(Context paramContext, int paramInt)
+  private jb(Context paramContext)
   {
-    int[] arrayOfInt = j;
-    arrayOfInt[0] = paramInt;
-    paramContext = jf.a(paramContext, null, arrayOfInt);
-    try
+    super(paramContext);
+    if (jj.a())
     {
-      paramInt = paramContext.b(0, 0);
-      return paramInt;
+      this.c = new jj(this, paramContext.getResources());
+      this.d = this.c.newTheme();
+      this.d.setTo(paramContext.getTheme());
+      return;
     }
-    finally
+    this.c = new jd(this, paramContext.getResources());
+    this.d = null;
+  }
+  
+  public static Context a(Context paramContext)
+  {
+    boolean bool = paramContext instanceof jb;
+    int j = 0;
+    int i = j;
+    if (!bool)
     {
-      paramContext.a.recycle();
+      i = j;
+      if (!(paramContext.getResources() instanceof jd)) {
+        if ((paramContext.getResources() instanceof jj))
+        {
+          i = j;
+        }
+        else if (Build.VERSION.SDK_INT >= 21)
+        {
+          i = j;
+          if (!jj.a()) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      }
+    }
+    if (i != 0) {}
+    for (;;)
+    {
+      synchronized (a)
+      {
+        if (b == null)
+        {
+          b = new ArrayList();
+        }
+        else
+        {
+          i = b.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)b.get(i);
+            if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
+              break label238;
+            }
+            b.remove(i);
+            break label238;
+          }
+          i = b.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)b.get(i);
+            if (localObject1 == null) {
+              break label245;
+            }
+            localObject1 = (jb)((WeakReference)localObject1).get();
+            if ((localObject1 == null) || (((jb)localObject1).getBaseContext() != paramContext)) {
+              break label251;
+            }
+            return localObject1;
+          }
+        }
+        paramContext = new jb(paramContext);
+        b.add(new WeakReference(paramContext));
+        return paramContext;
+      }
+      return paramContext;
+      label238:
+      i -= 1;
+      continue;
+      label245:
+      Object localObject1 = null;
+      continue;
+      label251:
+      i -= 1;
     }
   }
   
-  public static ColorStateList b(Context paramContext, int paramInt)
+  public final AssetManager getAssets()
   {
-    Object localObject1 = j;
-    localObject1[0] = paramInt;
-    paramContext = jf.a(paramContext, null, (int[])localObject1);
-    try
-    {
-      localObject1 = paramContext.e(0);
-      return localObject1;
-    }
-    finally
-    {
-      paramContext.a.recycle();
-    }
+    return this.c.getAssets();
   }
   
-  public static int c(Context paramContext, int paramInt)
+  public final Resources getResources()
   {
-    Object localObject = b(paramContext, paramInt);
-    if ((localObject != null) && (((ColorStateList)localObject).isStateful())) {
-      return ((ColorStateList)localObject).getColorForState(a, ((ColorStateList)localObject).getDefaultColor());
+    return this.c;
+  }
+  
+  public final Resources.Theme getTheme()
+  {
+    Resources.Theme localTheme2 = this.d;
+    Resources.Theme localTheme1 = localTheme2;
+    if (localTheme2 == null) {
+      localTheme1 = super.getTheme();
     }
-    TypedValue localTypedValue = (TypedValue)i.get();
-    localObject = localTypedValue;
-    if (localTypedValue == null)
+    return localTheme1;
+  }
+  
+  public final void setTheme(int paramInt)
+  {
+    Resources.Theme localTheme = this.d;
+    if (localTheme == null)
     {
-      localObject = new TypedValue();
-      i.set(localObject);
+      super.setTheme(paramInt);
+      return;
     }
-    paramContext.getTheme().resolveAttribute(16842803, (TypedValue)localObject, true);
-    float f1 = ((TypedValue)localObject).getFloat();
-    paramInt = a(paramContext, paramInt);
-    return cz.b(paramInt, Math.round(Color.alpha(paramInt) * f1));
+    localTheme.applyStyle(paramInt, true);
   }
 }
 

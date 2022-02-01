@@ -1,22 +1,11 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-
 public final class ams
-  extends amx<anc, Path>
+  extends amw<amx, amx>
 {
-  private final Path c;
-  
-  public final alw<?, Path> c()
+  public final amh a()
   {
-    if (!super.b())
-    {
-      anc localanc = (anc)this.b;
-      this.c.reset();
-      ate.a(localanc, this.c);
-      return new amh(this.c);
-    }
-    return new amf(this.a);
+    return new amh(this.a);
   }
 }
 

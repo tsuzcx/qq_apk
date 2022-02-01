@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.rr.a;
+import com.tencent.token.rq.a;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class MoveMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.b = paramContext;
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, rr.a.moveMaskView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, rq.a.moveMaskView, 0, 0);
     try
     {
       this.s = paramContext.getColor(3, 10526880);

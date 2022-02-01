@@ -10,40 +10,40 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.token.afr;
+import com.tencent.token.afq;
 import com.tencent.token.r;
-import com.tencent.token.rc;
-import com.tencent.token.rc.a;
-import com.tencent.token.rc.b;
-import com.tencent.token.rc.c;
+import com.tencent.token.rb;
+import com.tencent.token.rb.a;
+import com.tencent.token.rb.b;
+import com.tencent.token.rb.c;
 import com.tencent.token.t;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
-import com.tencent.token.zf;
-import com.tencent.token.zf.a;
+import com.tencent.token.ze;
+import com.tencent.token.ze.a;
 import java.io.File;
 
 public class DownloadQQSecureActivity
   extends Activity
 {
   static final int MSG_UPDATE_UI = 99;
-  rc.c listener = new rc.c()
+  rb.c listener = new rb.c()
   {
-    public final void a(rc.a paramAnonymousa)
+    public final void a(rb.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void b(rc.a paramAnonymousa)
+    public final void b(rb.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void c(rc.a paramAnonymousa)
+    public final void c(rb.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void d(rc.a paramAnonymousa)
+    public final void d(rb.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
@@ -51,7 +51,7 @@ public class DownloadQQSecureActivity
   LayoutAppKeyInfo mAppLayout;
   FrameLayout mBackView;
   Button mButton;
-  rc.a mDownloadInfo;
+  rb.a mDownloadInfo;
   Handler mHandler = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -84,23 +84,23 @@ public class DownloadQQSecureActivity
     default: 
       return;
     case 7: 
-      rc.b.a().c(this.mDownloadInfo);
+      rb.b.a().c(this.mDownloadInfo);
       return;
     case 6: 
-      rc.b.a().d(this.mDownloadInfo);
+      rb.b.a().d(this.mDownloadInfo);
       return;
     case 5: 
-      rc.b.a().c(this.mDownloadInfo);
+      rb.b.a().c(this.mDownloadInfo);
       return;
     case 4: 
-      rc.a(this, new File(rc.a(), this.mDownloadInfo.d));
+      rb.a(this, new File(rb.a(), this.mDownloadInfo.d));
       return;
     case 2: 
     case 3: 
-      rc.b.a().b(this.mDownloadInfo);
+      rb.b.a().b(this.mDownloadInfo);
       return;
     }
-    rc.b.a().c(this.mDownloadInfo);
+    rb.b.a().c(this.mDownloadInfo);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -110,11 +110,11 @@ public class DownloadQQSecureActivity
     setContentView(2131296295);
     this.mButton = ((Button)findViewById(2131165826));
     this.mBackView = ((FrameLayout)findViewById(2131165858));
-    this.mDownloadInfo = rc.b.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+    this.mDownloadInfo = rb.b.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = afr.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+      this.mDownloadInfo = afq.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     }
-    if (rc.b.a().a(this.mDownloadInfo)) {
+    if (rb.b.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
     }
     this.mButton.setOnClickListener(new View.OnClickListener()
@@ -132,10 +132,10 @@ public class DownloadQQSecureActivity
       }
     });
     refreshUIByState();
-    rc.b.a().a(this.listener);
+    rb.b.a().a(this.listener);
     this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
     this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "8.11.0", "腾讯手机管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpimsecure", "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11", this);
-    zf.a("com.tencent.qqpimsecure", new zf.a()
+    ze.a("com.tencent.qqpimsecure", new ze.a()
     {
       public final void a(final r paramAnonymousr)
       {
@@ -152,7 +152,7 @@ public class DownloadQQSecureActivity
   
   protected void onDestroy()
   {
-    rc.b.a().b(this.listener);
+    rb.b.a().b(this.listener);
     super.onDestroy();
   }
   

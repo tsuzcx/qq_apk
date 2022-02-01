@@ -8,7 +8,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.wy;
+import com.tencent.token.wx;
 
 public class RightLetterView
   extends View
@@ -24,7 +24,7 @@ public class RightLetterView
   {
     super(paramContext, paramAttributeSet);
     this.d = paramContext.getResources().getDimension(2131034250);
-    this.e = wy.a;
+    this.e = wx.a;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);

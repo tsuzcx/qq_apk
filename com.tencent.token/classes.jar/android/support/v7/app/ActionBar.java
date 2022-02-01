@@ -9,15 +9,15 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.token.gp.j;
-import com.tencent.token.gx;
-import com.tencent.token.gx.a;
+import com.tencent.token.go.j;
+import com.tencent.token.gw;
+import com.tencent.token.gw.a;
 
 public abstract class ActionBar
 {
   public abstract int a();
   
-  public gx a(gx.a parama)
+  public gw a(gw.a parama)
   {
     return null;
   }
@@ -98,8 +98,8 @@ public abstract class ActionBar
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.ActionBarLayout);
-      this.a = paramContext.getInt(gp.j.ActionBarLayout_android_layout_gravity, 0);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ActionBarLayout);
+      this.a = paramContext.getInt(go.j.ActionBarLayout_android_layout_gravity, 0);
       paramContext.recycle();
     }
     

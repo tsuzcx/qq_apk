@@ -1,38 +1,37 @@
 package com.tencent.token;
 
 import android.os.Bundle;
-import java.util.HashMap;
 
 public final class op
 {
   public static final class a
-    extends oh
+    extends og
   {
-    public HashMap<String, String> c;
-    public int d;
+    public String c;
     
     public final int a()
     {
-      return 25;
+      return 22;
     }
     
     public final void a(Bundle paramBundle)
     {
-      super.a(paramBundle);
-      paramBundle.putSerializable("_wxapi_open_business_webview_query_info", this.c);
-      paramBundle.putInt("_wxapi_open_business_webview_query_type", this.d);
+      super.b(paramBundle);
+      paramBundle.putString("_wxapi_pay_insourance_req_url", this.c);
     }
     
     public final void b(Bundle paramBundle)
     {
       super.b(paramBundle);
-      this.c = ((HashMap)paramBundle.getSerializable("_wxapi_open_business_webview_query_info"));
-      this.d = paramBundle.getInt("_wxapi_open_business_webview_query_type", 0);
+      this.c = paramBundle.getString("_wxapi_pay_insourance_req_url");
     }
     
     public final boolean b()
     {
-      return true;
+      if (pg.a(this.c)) {
+        return false;
+      }
+      return this.c.length() <= 10240;
     }
   }
 }

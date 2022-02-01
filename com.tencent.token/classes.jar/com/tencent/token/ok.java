@@ -5,33 +5,37 @@ import android.os.Bundle;
 public final class ok
 {
   public static final class a
-    extends oh
+    extends og
   {
     public String c;
+    public String d = "";
+    public int e = 0;
+    public String f = "";
     
     public final int a()
     {
-      return 20;
+      return 19;
     }
     
     public final void a(Bundle paramBundle)
     {
-      super.b(paramBundle);
-      paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.c);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
+      super.a(paramBundle);
+      paramBundle.putString("_launch_wxminiprogram_username", this.c);
+      paramBundle.putString("_launch_wxminiprogram_path", this.d);
+      paramBundle.putString("_launch_wxminiprogram_extData", this.f);
+      paramBundle.putInt("_launch_wxminiprogram_type", this.e);
     }
     
     public final boolean b()
     {
-      if (ph.a(this.c)) {
+      if (pg.a(this.c)) {
         return false;
       }
-      return this.c.length() <= 10240;
+      int i = this.e;
+      if (i >= 0) {
+        return i <= 2;
+      }
+      return false;
     }
   }
 }

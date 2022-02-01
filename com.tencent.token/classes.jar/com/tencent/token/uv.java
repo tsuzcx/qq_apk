@@ -1,82 +1,50 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.core.bean.CommonImgResult;
 import java.util.HashMap;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class uv
-  extends tk
+  extends tj
 {
-  private long d;
-  private int e;
-  private tb f;
+  private String d;
+  private CommonImgResult e;
   
   public final String a()
   {
-    sa.a();
-    this.a.a(104, null, null);
-    return null;
+    return this.d;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramaaq.c.get("param.common.img.url"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    paramJSONObject = (Bitmap)paramJSONObject.get("img");
+    if ((paramJSONObject != null) && (paramJSONObject.getWidth() != 0) && (paramJSONObject.getHeight() != 0))
     {
-      a(i, null);
-      return;
-    }
-    Object localObject = aad.d(paramJSONObject.getString("data"));
-    if (localObject != null)
-    {
-      localObject = new JSONObject(new String((byte[])localObject));
-      i = ((JSONObject)localObject).getInt("seq_id");
-      if (i != this.e)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
-        return;
-      }
-      long l = ((JSONObject)localObject).getLong("uin");
-      if (l != this.d)
-      {
-        paramJSONObject = this.a;
-        localObject = new StringBuilder("uin not match=");
-        ((StringBuilder)localObject).append(l);
-        ((StringBuilder)localObject).append(":");
-        ((StringBuilder)localObject).append(this.d);
-        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
-        return;
-      }
-      localObject = ((JSONObject)localObject).getJSONArray("result");
-      if (!this.f.a((JSONArray)localObject))
-      {
-        paramJSONObject = this.a;
-        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
-        localStringBuilder.append(((JSONArray)localObject).toString());
-        paramJSONObject.a(10000, localStringBuilder.toString(), null);
-        return;
-      }
-      xc.a("account_lock", new String(paramJSONObject.toString()));
-      this.f.b.e = true;
-      this.f.b.f = false;
       this.a.a = 0;
+      this.e = new CommonImgResult(this.d, paramJSONObject);
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    this.a.a(104, null, null);
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.e;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

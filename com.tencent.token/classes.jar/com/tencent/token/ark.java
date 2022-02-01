@@ -1,26 +1,10 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class ark
-  extends aou
-  implements arl
+public abstract interface ark
 {
-  public final NetworkInfo a()
-  {
-    try
-    {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)aot.a().getSystemService("connectivity")).getActiveNetworkInfo();
-      return localNetworkInfo;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
+  public abstract NetworkInfo a();
 }
 
 

@@ -1,63 +1,131 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.view.ActionProvider;
-import android.view.ActionProvider.VisibilityListener;
+import android.graphics.Rect;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
+import android.widget.HeaderViewListAdapter;
+import android.widget.ListAdapter;
+import android.widget.PopupWindow.OnDismissListener;
 
-final class hq
-  extends hp
+abstract class hq
+  implements AdapterView.OnItemClickListener, hs, hw
 {
-  hq(Context paramContext, do paramdo)
-  {
-    super(paramContext, paramdo);
-  }
+  Rect e;
   
-  final hp.a a(ActionProvider paramActionProvider)
+  protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
   {
-    return new a(this.a, paramActionProvider);
-  }
-  
-  final class a
-    extends hp.a
-    implements ActionProvider.VisibilityListener
-  {
-    ej.b e;
-    
-    public a(Context paramContext, ActionProvider paramActionProvider)
+    int j = 0;
+    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    int i3 = paramListAdapter.getCount();
+    Object localObject1 = paramViewGroup;
+    paramViewGroup = null;
+    int i = 0;
+    int m = 0;
+    while (j < i3)
     {
-      super(paramContext, paramActionProvider);
-    }
-    
-    public final View a(MenuItem paramMenuItem)
-    {
-      return this.c.onCreateActionView(paramMenuItem);
-    }
-    
-    public final void a(ej.b paramb)
-    {
-      this.e = paramb;
-      this.c.setVisibilityListener(this);
-    }
-    
-    public final boolean b()
-    {
-      return this.c.overridesItemVisibility();
-    }
-    
-    public final boolean c()
-    {
-      return this.c.isVisible();
-    }
-    
-    public final void onActionProviderVisibilityChanged(boolean paramBoolean)
-    {
-      ej.b localb = this.e;
-      if (localb != null) {
-        localb.a();
+      int n = paramListAdapter.getItemViewType(j);
+      int k = m;
+      if (n != m)
+      {
+        paramViewGroup = null;
+        k = n;
       }
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new FrameLayout(paramContext);
+      }
+      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
+      paramViewGroup.measure(i1, i2);
+      m = paramViewGroup.getMeasuredWidth();
+      if (m >= paramInt) {
+        return paramInt;
+      }
+      n = i;
+      if (m > i) {
+        n = m;
+      }
+      j += 1;
+      m = k;
+      localObject1 = localObject2;
+      i = n;
     }
+    return i;
+  }
+  
+  protected static hk a(ListAdapter paramListAdapter)
+  {
+    if ((paramListAdapter instanceof HeaderViewListAdapter)) {
+      return (hk)((HeaderViewListAdapter)paramListAdapter).getWrappedAdapter();
+    }
+    return (hk)paramListAdapter;
+  }
+  
+  protected static boolean b(hl paramhl)
+  {
+    int j = paramhl.size();
+    int i = 0;
+    while (i < j)
+    {
+      MenuItem localMenuItem = paramhl.getItem(i);
+      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public final void a(Context paramContext, hl paramhl) {}
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(PopupWindow.OnDismissListener paramOnDismissListener);
+  
+  public abstract void a(hl paramhl);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public final boolean b(hn paramhn)
+  {
+    return false;
+  }
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public final boolean c(hn paramhn)
+  {
+    return false;
+  }
+  
+  protected boolean f()
+  {
+    return true;
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramView = (ListAdapter)paramAdapterView.getAdapter();
+    paramAdapterView = a(paramView).b;
+    paramView = (MenuItem)paramView.getItem(paramInt);
+    if (f()) {
+      paramInt = 0;
+    } else {
+      paramInt = 4;
+    }
+    paramAdapterView.a(paramView, this, paramInt);
   }
 }
 

@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ_security_center-6.9.22-110-3075.apk
+apkFileName: QQ_security_center-6.9.22-111-3075.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -26,5 +26,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '110'
+  versionCode: '111'
   versionName: 6.9.22

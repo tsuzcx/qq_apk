@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pq;
+import com.tencent.token.pp;
 
 public class WXWebpageObject
   implements WXMediaMessage.a
@@ -21,7 +21,7 @@ public class WXWebpageObject
     if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240)) {
       return true;
     }
-    pq.a("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
+    pp.a("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
     return false;
   }
   

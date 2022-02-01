@@ -1,864 +1,371 @@
 package com.tencent.token;
 
-import java.io.Closeable;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.IDN;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-import java.util.concurrent.ThreadFactory;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
 
 public final class aix
+  implements aij
 {
-  public static final byte[] a = new byte[0];
-  public static final String[] b = new String[0];
-  public static final ais c = ais.a(a);
-  public static final aiq d;
-  public static final Charset e;
-  public static final Charset f;
-  public static final TimeZone g;
-  public static final Comparator<String> h;
-  private static final alc i;
-  private static final alc j;
-  private static final alc k;
-  private static final alc l;
-  private static final alc m;
-  private static final Charset n;
-  private static final Charset o;
-  private static final Charset p;
-  private static final Charset q;
-  private static final Method r;
-  private static final Pattern s;
+  final ajb a;
   
-  static
+  public aix(ajb paramajb)
   {
-    Object localObject = a;
-    int i1 = localObject.length;
-    if (localObject != null)
-    {
-      a(localObject.length, i1);
-      d = new aiq.1(i1, (byte[])localObject);
-      i = alc.b("efbbbf");
-      j = alc.b("feff");
-      k = alc.b("fffe");
-      l = alc.b("0000ffff");
-      m = alc.b("ffff0000");
-      e = Charset.forName("UTF-8");
-      f = Charset.forName("ISO-8859-1");
-      n = Charset.forName("UTF-16BE");
-      o = Charset.forName("UTF-16LE");
-      p = Charset.forName("UTF-32BE");
-      q = Charset.forName("UTF-32LE");
-      g = TimeZone.getTimeZone("GMT");
-      h = new Comparator() {};
-    }
-    try
-    {
-      localObject = Throwable.class.getDeclaredMethod("addSuppressed", new Class[] { Throwable.class });
-    }
-    catch (Exception localException)
-    {
-      label179:
-      break label179;
-    }
-    localObject = null;
-    r = (Method)localObject;
-    s = Pattern.compile("([0-9a-fA-F]*:[0-9a-fA-F:.]*)|([\\d.]+)");
-    return;
-    throw new NullPointerException("content == null");
+    this.a = paramajb;
   }
   
-  public static int a(char paramChar)
+  private static aih a(aih paramaih1, aih paramaih2)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return paramChar - '0';
-    }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return paramChar - 'a' + 10;
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return paramChar - 'A' + 10;
-    }
-    return -1;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2)
-  {
-    while (paramInt1 < paramInt2)
+    aih.a locala = new aih.a();
+    int k = paramaih1.a.length / 2;
+    int j = 0;
+    int i = 0;
+    while (i < k)
     {
-      switch (paramString.charAt(paramInt1))
-      {
-      default: 
-        return paramInt1;
+      String str1 = paramaih1.a(i);
+      String str2 = paramaih1.b(i);
+      if (((!"Warning".equalsIgnoreCase(str1)) || (!str2.startsWith("1"))) && ((b(str1)) || (!a(str1)) || (paramaih2.a(str1) == null))) {
+        aiu.a.a(locala, str1, str2);
       }
-      paramInt1 += 1;
+      i += 1;
     }
-    return paramInt2;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2, char paramChar)
-  {
-    while (paramInt1 < paramInt2)
+    k = paramaih2.a.length / 2;
+    i = j;
+    while (i < k)
     {
-      if (paramString.charAt(paramInt1) == paramChar) {
-        return paramInt1;
+      paramaih1 = paramaih2.a(i);
+      if ((!b(paramaih1)) && (a(paramaih1))) {
+        aiu.a.a(locala, paramaih1, paramaih2.b(i));
       }
-      paramInt1 += 1;
+      i += 1;
     }
-    return paramInt2;
+    return locala.a();
   }
   
-  public static int a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  private static aiq a(aiq paramaiq)
   {
-    while (paramInt1 < paramInt2)
+    if ((paramaiq != null) && (paramaiq.g != null))
     {
-      if (paramString2.indexOf(paramString1.charAt(paramInt1)) != -1) {
-        return paramInt1;
-      }
-      paramInt1 += 1;
+      paramaiq = paramaiq.a();
+      paramaiq.g = null;
+      return paramaiq.a();
     }
-    return paramInt2;
+    return paramaiq;
   }
   
-  public static int a(String paramString, TimeUnit paramTimeUnit)
+  private static boolean a(String paramString)
   {
-    if (paramTimeUnit != null)
-    {
-      long l1 = paramTimeUnit.toMillis(60L);
-      if (l1 <= 2147483647L)
-      {
-        if (l1 == 0L)
-        {
-          paramTimeUnit = new StringBuilder();
-          paramTimeUnit.append(paramString);
-          paramTimeUnit.append(" too small.");
-          throw new IllegalArgumentException(paramTimeUnit.toString());
-        }
-        return (int)l1;
-      }
-      paramTimeUnit = new StringBuilder();
-      paramTimeUnit.append(paramString);
-      paramTimeUnit.append(" too large.");
-      throw new IllegalArgumentException(paramTimeUnit.toString());
-    }
-    throw new NullPointerException("unit == null");
+    return (!"Connection".equalsIgnoreCase(paramString)) && (!"Keep-Alive".equalsIgnoreCase(paramString)) && (!"Proxy-Authenticate".equalsIgnoreCase(paramString)) && (!"Proxy-Authorization".equalsIgnoreCase(paramString)) && (!"TE".equalsIgnoreCase(paramString)) && (!"Trailers".equalsIgnoreCase(paramString)) && (!"Transfer-Encoding".equalsIgnoreCase(paramString)) && (!"Upgrade".equalsIgnoreCase(paramString));
   }
   
-  public static int a(Comparator<String> paramComparator, String[] paramArrayOfString, String paramString)
+  private static boolean b(String paramString)
   {
-    int i2 = paramArrayOfString.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (paramComparator.compare(paramArrayOfString[i1], paramString) == 0) {
-        return i1;
-      }
-      i1 += 1;
-    }
-    return -1;
+    return ("Content-Length".equalsIgnoreCase(paramString)) || ("Content-Encoding".equalsIgnoreCase(paramString)) || ("Content-Type".equalsIgnoreCase(paramString));
   }
   
-  public static AssertionError a(String paramString, Exception paramException)
+  public final aiq a(aij.a parama)
   {
-    paramString = new AssertionError(paramString);
-    try
-    {
-      paramString.initCause(paramException);
-      return paramString;
+    Object localObject1 = this.a;
+    Object localObject2;
+    if (localObject1 != null) {
+      localObject2 = ((ajb)localObject1).a();
+    } else {
+      localObject2 = null;
     }
-    catch (IllegalStateException paramException) {}
-    return paramString;
-  }
-  
-  public static String a(aij paramaij, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramaij.b.contains(":"))
+    aiz.a locala = new aiz.a(System.currentTimeMillis(), parama.a(), (aiq)localObject2);
+    long l1;
+    if (locala.c == null)
     {
-      localObject = new StringBuilder("[");
-      ((StringBuilder)localObject).append(paramaij.b);
-      ((StringBuilder)localObject).append("]");
-      localObject = ((StringBuilder)localObject).toString();
+      localObject1 = new aiz(locala.b, null);
+    }
+    else if ((locala.b.a.b()) && (locala.c.e == null))
+    {
+      localObject1 = new aiz(locala.b, null);
+    }
+    else if (!aiz.a(locala.c, locala.b))
+    {
+      localObject1 = new aiz(locala.b, null);
     }
     else
     {
-      localObject = paramaij.b;
-    }
-    if ((!paramBoolean) && (paramaij.c == aij.a(paramaij.a))) {
-      return localObject;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramaij.c);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    boolean bool;
-    if (paramString.contains(":"))
-    {
-      bool = paramString.startsWith("[");
-      int i7 = 0;
-      if ((bool) && (paramString.endsWith("]"))) {
-        localObject = d(paramString, 1, paramString.length() - 1);
-      } else {
-        localObject = d(paramString, 0, paramString.length());
-      }
-      if (localObject == null) {
-        return null;
-      }
-      Object localObject = ((InetAddress)localObject).getAddress();
-      if (localObject.length == 16)
+      localObject3 = locala.b.b();
+      if (!((ahu)localObject3).c)
       {
-        int i1 = 0;
-        int i3 = -1;
-        int i4;
-        int i5;
-        for (int i2 = 0; i1 < localObject.length; i2 = i5)
-        {
-          i4 = i1;
-          while ((i4 < 16) && (localObject[i4] == 0) && (localObject[(i4 + 1)] == 0)) {
-            i4 += 2;
-          }
-          int i8 = i4 - i1;
-          int i6 = i3;
-          i5 = i2;
-          if (i8 > i2)
-          {
-            i6 = i3;
-            i5 = i2;
-            if (i8 >= 4)
-            {
-              i5 = i8;
-              i6 = i1;
-            }
-          }
-          i1 = i4 + 2;
-          i3 = i6;
+        localObject1 = locala.b;
+        int i;
+        if ((((aio)localObject1).a("If-Modified-Since") == null) && (((aio)localObject1).a("If-None-Match") == null)) {
+          i = 0;
+        } else {
+          i = 1;
         }
-        paramString = new akz();
-        i1 = i7;
-        while (i1 < localObject.length) {
-          if (i1 == i3)
+        if (i == 0)
+        {
+          Object localObject4 = locala.c.b();
+          if (((ahu)localObject4).l)
           {
-            paramString.b(58);
-            i4 = i1 + i2;
-            i1 = i4;
-            if (i4 == 16)
-            {
-              paramString.b(58);
-              i1 = i4;
+            localObject1 = new aiz(null, locala.c);
+            break label946;
+          }
+          localObject1 = locala.d;
+          long l4 = 0L;
+          if (localObject1 != null) {
+            l1 = Math.max(0L, locala.j - locala.d.getTime());
+          } else {
+            l1 = 0L;
+          }
+          long l2 = l1;
+          if (locala.l != -1) {
+            l2 = Math.max(l1, TimeUnit.SECONDS.toMillis(locala.l));
+          }
+          long l5 = l2 + (locala.j - locala.i) + (locala.a - locala.j);
+          localObject1 = locala.c.b();
+          if (((ahu)localObject1).e != -1)
+          {
+            l1 = TimeUnit.SECONDS.toMillis(((ahu)localObject1).e);
+          }
+          else if (locala.h != null)
+          {
+            if (locala.d != null) {
+              l1 = locala.d.getTime();
+            } else {
+              l1 = locala.j;
+            }
+            l1 = locala.h.getTime() - l1;
+            if (l1 <= 0L) {
+              l1 = 0L;
             }
           }
           else
           {
-            if (i1 > 0) {
-              paramString.b(58);
-            }
-            paramString.i((localObject[i1] & 0xFF) << 8 | localObject[(i1 + 1)] & 0xFF);
-            i1 += 2;
-          }
-        }
-        return paramString.m();
-      }
-      localObject = new StringBuilder("Invalid IPv6 address: '");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("'");
-      throw new AssertionError(((StringBuilder)localObject).toString());
-    }
-    try
-    {
-      paramString = IDN.toASCII(paramString).toLowerCase(Locale.US);
-      if (paramString.isEmpty()) {
-        return null;
-      }
-      bool = d(paramString);
-      if (bool) {
-        return null;
-      }
-      return paramString;
-    }
-    catch (IllegalArgumentException paramString) {}
-    return null;
-  }
-  
-  public static String a(String paramString, Object... paramVarArgs)
-  {
-    return String.format(Locale.US, paramString, paramVarArgs);
-  }
-  
-  public static <T> List<T> a(List<T> paramList)
-  {
-    return Collections.unmodifiableList(new ArrayList(paramList));
-  }
-  
-  public static <T> List<T> a(T... paramVarArgs)
-  {
-    return Collections.unmodifiableList(Arrays.asList((Object[])paramVarArgs.clone()));
-  }
-  
-  public static <K, V> Map<K, V> a(Map<K, V> paramMap)
-  {
-    if (paramMap.isEmpty()) {
-      return Collections.emptyMap();
-    }
-    return Collections.unmodifiableMap(new LinkedHashMap(paramMap));
-  }
-  
-  public static ThreadFactory a(String paramString, final boolean paramBoolean)
-  {
-    new ThreadFactory()
-    {
-      public final Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, aix.this);
-        paramAnonymousRunnable.setDaemon(paramBoolean);
-        return paramAnonymousRunnable;
-      }
-    };
-  }
-  
-  public static X509TrustManager a()
-  {
-    try
-    {
-      Object localObject = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      ((TrustManagerFactory)localObject).init(null);
-      localObject = ((TrustManagerFactory)localObject).getTrustManagers();
-      if ((localObject.length == 1) && ((localObject[0] instanceof X509TrustManager))) {
-        return (X509TrustManager)localObject[0];
-      }
-      StringBuilder localStringBuilder = new StringBuilder("Unexpected default trust managers:");
-      localStringBuilder.append(Arrays.toString((Object[])localObject));
-      throw new IllegalStateException(localStringBuilder.toString());
-    }
-    catch (GeneralSecurityException localGeneralSecurityException)
-    {
-      throw a("No System TLS", localGeneralSecurityException);
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2)
-  {
-    if (((paramLong2 | 0L) >= 0L) && (0L <= paramLong1) && (paramLong1 - 0L >= paramLong2)) {
-      return;
-    }
-    throw new ArrayIndexOutOfBoundsException();
-  }
-  
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (RuntimeException paramCloseable)
-    {
-      throw paramCloseable;
-      return;
-    }
-    catch (Exception paramCloseable) {}
-  }
-  
-  public static void a(Throwable paramThrowable1, Throwable paramThrowable2)
-  {
-    Method localMethod = r;
-    if (localMethod != null) {}
-    try
-    {
-      localMethod.invoke(paramThrowable1, new Object[] { paramThrowable2 });
-      return;
-    }
-    catch (InvocationTargetException|IllegalAccessException paramThrowable1) {}
-    return;
-  }
-  
-  public static void a(Socket paramSocket)
-  {
-    if (paramSocket != null) {}
-    try
-    {
-      paramSocket.close();
-      return;
-    }
-    catch (RuntimeException paramSocket)
-    {
-      throw paramSocket;
-    }
-    catch (AssertionError paramSocket)
-    {
-      if (a(paramSocket)) {
-        return;
-      }
-      throw paramSocket;
-      return;
-    }
-    catch (Exception paramSocket) {}
-  }
-  
-  /* Error */
-  public static boolean a(alp paramalp, int paramInt, TimeUnit paramTimeUnit)
-  {
-    // Byte code:
-    //   0: invokestatic 435	java/lang/System:nanoTime	()J
-    //   3: lstore 5
-    //   5: aload_0
-    //   6: invokeinterface 440 1 0
-    //   11: invokevirtual 445	com/tencent/token/alq:e_	()Z
-    //   14: ifeq +19 -> 33
-    //   17: aload_0
-    //   18: invokeinterface 440 1 0
-    //   23: invokevirtual 447	com/tencent/token/alq:c	()J
-    //   26: lload 5
-    //   28: lsub
-    //   29: lstore_3
-    //   30: goto +7 -> 37
-    //   33: ldc2_w 448
-    //   36: lstore_3
-    //   37: aload_0
-    //   38: invokeinterface 440 1 0
-    //   43: lload_3
-    //   44: aload_2
-    //   45: iload_1
-    //   46: i2l
-    //   47: invokevirtual 452	java/util/concurrent/TimeUnit:toNanos	(J)J
-    //   50: invokestatic 458	java/lang/Math:min	(JJ)J
-    //   53: lload 5
-    //   55: ladd
-    //   56: invokevirtual 461	com/tencent/token/alq:a	(J)Lcom/tencent/token/alq;
-    //   59: pop
-    //   60: new 280	com/tencent/token/akz
-    //   63: dup
-    //   64: invokespecial 281	com/tencent/token/akz:<init>	()V
-    //   67: astore_2
-    //   68: aload_0
-    //   69: aload_2
-    //   70: ldc2_w 462
-    //   73: invokeinterface 466 4 0
-    //   78: ldc2_w 467
-    //   81: lcmp
-    //   82: ifeq +10 -> 92
-    //   85: aload_2
-    //   86: invokevirtual 470	com/tencent/token/akz:p	()V
-    //   89: goto -21 -> 68
-    //   92: lload_3
-    //   93: ldc2_w 448
-    //   96: lcmp
-    //   97: ifne +16 -> 113
-    //   100: aload_0
-    //   101: invokeinterface 440 1 0
-    //   106: invokevirtual 473	com/tencent/token/alq:f_	()Lcom/tencent/token/alq;
-    //   109: pop
-    //   110: goto +17 -> 127
-    //   113: aload_0
-    //   114: invokeinterface 440 1 0
-    //   119: lload 5
-    //   121: lload_3
-    //   122: ladd
-    //   123: invokevirtual 461	com/tencent/token/alq:a	(J)Lcom/tencent/token/alq;
-    //   126: pop
-    //   127: iconst_1
-    //   128: ireturn
-    //   129: astore_2
-    //   130: lload_3
-    //   131: ldc2_w 448
-    //   134: lcmp
-    //   135: ifne +16 -> 151
-    //   138: aload_0
-    //   139: invokeinterface 440 1 0
-    //   144: invokevirtual 473	com/tencent/token/alq:f_	()Lcom/tencent/token/alq;
-    //   147: pop
-    //   148: goto +17 -> 165
-    //   151: aload_0
-    //   152: invokeinterface 440 1 0
-    //   157: lload 5
-    //   159: lload_3
-    //   160: ladd
-    //   161: invokevirtual 461	com/tencent/token/alq:a	(J)Lcom/tencent/token/alq;
-    //   164: pop
-    //   165: aload_2
-    //   166: athrow
-    //   167: lload_3
-    //   168: ldc2_w 448
-    //   171: lcmp
-    //   172: ifne +16 -> 188
-    //   175: aload_0
-    //   176: invokeinterface 440 1 0
-    //   181: invokevirtual 473	com/tencent/token/alq:f_	()Lcom/tencent/token/alq;
-    //   184: pop
-    //   185: goto +17 -> 202
-    //   188: aload_0
-    //   189: invokeinterface 440 1 0
-    //   194: lload 5
-    //   196: lload_3
-    //   197: ladd
-    //   198: invokevirtual 461	com/tencent/token/alq:a	(J)Lcom/tencent/token/alq;
-    //   201: pop
-    //   202: iconst_0
-    //   203: ireturn
-    //   204: astore_2
-    //   205: goto -38 -> 167
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	paramalp	alp
-    //   0	208	1	paramInt	int
-    //   0	208	2	paramTimeUnit	TimeUnit
-    //   29	168	3	l1	long
-    //   3	192	5	l2	long
-    // Exception table:
-    //   from	to	target	type
-    //   60	68	129	finally
-    //   68	89	129	finally
-    //   60	68	204	java/io/InterruptedIOException
-    //   68	89	204	java/io/InterruptedIOException
-  }
-  
-  public static boolean a(alp paramalp, TimeUnit paramTimeUnit)
-  {
-    try
-    {
-      boolean bool = a(paramalp, 100, paramTimeUnit);
-      return bool;
-    }
-    catch (IOException paramalp)
-    {
-      label10:
-      break label10;
-    }
-    return false;
-  }
-  
-  public static boolean a(AssertionError paramAssertionError)
-  {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
-  }
-  
-  public static String[] a(Comparator<? super String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i3 = paramArrayOfString1.length;
-    int i1 = 0;
-    while (i1 < i3)
-    {
-      String str = paramArrayOfString1[i1];
-      int i4 = paramArrayOfString2.length;
-      int i2 = 0;
-      while (i2 < i4)
-      {
-        if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0)
-        {
-          localArrayList.add(str);
-          break;
-        }
-        i2 += 1;
-      }
-      i1 += 1;
-    }
-    return (String[])localArrayList.toArray(new String[localArrayList.size()]);
-  }
-  
-  public static String[] a(String[] paramArrayOfString, String paramString)
-  {
-    String[] arrayOfString = new String[paramArrayOfString.length + 1];
-    System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramArrayOfString.length);
-    arrayOfString[(arrayOfString.length - 1)] = paramString;
-    return arrayOfString;
-  }
-  
-  public static int b(String paramString)
-  {
-    int i2 = paramString.length();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      int i3 = paramString.charAt(i1);
-      if (i3 > 31)
-      {
-        if (i3 >= 127) {
-          return i1;
-        }
-        i1 += 1;
-      }
-      else
-      {
-        return i1;
-      }
-    }
-    return -1;
-  }
-  
-  public static int b(String paramString, int paramInt1, int paramInt2)
-  {
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      switch (paramString.charAt(paramInt2))
-      {
-      default: 
-        return paramInt2 + 1;
-      }
-      paramInt2 -= 1;
-    }
-    return paramInt1;
-  }
-  
-  public static boolean b(Comparator<String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    if ((paramArrayOfString1 != null) && (paramArrayOfString2 != null) && (paramArrayOfString1.length != 0))
-    {
-      if (paramArrayOfString2.length == 0) {
-        return false;
-      }
-      int i3 = paramArrayOfString1.length;
-      int i1 = 0;
-      while (i1 < i3)
-      {
-        String str = paramArrayOfString1[i1];
-        int i4 = paramArrayOfString2.length;
-        int i2 = 0;
-        while (i2 < i4)
-        {
-          if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0) {
-            return true;
-          }
-          i2 += 1;
-        }
-        i1 += 1;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public static String c(String paramString, int paramInt1, int paramInt2)
-  {
-    paramInt1 = a(paramString, paramInt1, paramInt2);
-    return paramString.substring(paramInt1, b(paramString, paramInt1, paramInt2));
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return s.matcher(paramString).matches();
-  }
-  
-  @Nullable
-  private static InetAddress d(String paramString, int paramInt1, int paramInt2)
-  {
-    byte[] arrayOfByte = new byte[16];
-    int i3 = paramInt1;
-    int i1 = 0;
-    int i2 = -1;
-    paramInt1 = -1;
-    while (i3 < paramInt2)
-    {
-      if (i1 == 16) {
-        return null;
-      }
-      int i4 = i3 + 2;
-      int i6;
-      if ((i4 <= paramInt2) && (paramString.regionMatches(i3, "::", 0, 2)))
-      {
-        if (i2 != -1) {
-          return null;
-        }
-        paramInt1 = i1 + 2;
-        if (i4 == paramInt2)
-        {
-          i2 = paramInt1;
-          break label465;
-        }
-        i2 = paramInt1;
-        i1 = i4;
-        i3 = paramInt1;
-        paramInt1 = i1;
-      }
-      else if (i1 != 0)
-      {
-        if (paramString.regionMatches(i3, ":", 0, 1))
-        {
-          paramInt1 = i3 + 1;
-          i3 = i1;
-        }
-        else
-        {
-          if (paramString.regionMatches(i3, ".", 0, 1))
-          {
-            i6 = i1 - 2;
-            i4 = i6;
-            i3 = paramInt1;
-            for (;;)
+            if (locala.f != null)
             {
-              i5 = 0;
-              if (i3 >= paramInt2) {
-                break;
-              }
-              if (i4 == 16)
+              localObject1 = locala.c.a.a;
+              if (((aii)localObject1).d == null)
               {
-                paramInt1 = i5;
-                break label332;
+                localObject1 = null;
               }
-              paramInt1 = i3;
-              if (i4 != i6)
+              else
               {
-                if (paramString.charAt(i3) != '.')
+                StringBuilder localStringBuilder = new StringBuilder();
+                aii.b(localStringBuilder, ((aii)localObject1).d);
+                localObject1 = localStringBuilder.toString();
+              }
+              if (localObject1 == null)
+              {
+                if (locala.d != null) {
+                  l1 = locala.d.getTime();
+                } else {
+                  l1 = locala.i;
+                }
+                l1 -= locala.f.getTime();
+                if (l1 > 0L)
                 {
-                  paramInt1 = i5;
-                  break label332;
+                  l1 /= 10L;
+                  break label563;
                 }
-                paramInt1 = i3 + 1;
+                l1 = 0L;
+                break label563;
               }
-              i3 = paramInt1;
-              i5 = 0;
-              while (i3 < paramInt2)
-              {
-                int i7 = paramString.charAt(i3);
-                if ((i7 < 48) || (i7 > 57)) {
-                  break;
-                }
-                if ((i5 == 0) && (paramInt1 != i3))
-                {
-                  paramInt1 = 0;
-                  break label332;
-                }
-                i5 = i5 * 10 + i7 - 48;
-                if (i5 > 255)
-                {
-                  paramInt1 = 0;
-                  break label332;
-                }
-                i3 += 1;
-              }
-              if (i3 - paramInt1 == 0)
-              {
-                paramInt1 = 0;
-                break label332;
-              }
-              arrayOfByte[i4] = ((byte)i5);
-              i4 += 1;
             }
-            if (i4 != i6 + 4) {
-              paramInt1 = 0;
-            } else {
-              paramInt1 = 1;
-            }
-            label332:
-            if (paramInt1 == 0) {
-              return null;
-            }
-            paramInt1 = i1 + 2;
-            break label465;
+            l1 = 0L;
           }
-          return null;
+          label563:
+          l2 = l1;
+          if (((ahu)localObject3).e != -1) {
+            l2 = Math.min(l1, TimeUnit.SECONDS.toMillis(((ahu)localObject3).e));
+          }
+          if (((ahu)localObject3).j != -1) {
+            l1 = TimeUnit.SECONDS.toMillis(((ahu)localObject3).j);
+          } else {
+            l1 = 0L;
+          }
+          long l3 = l4;
+          if (!((ahu)localObject4).h)
+          {
+            l3 = l4;
+            if (((ahu)localObject3).i != -1) {
+              l3 = TimeUnit.SECONDS.toMillis(((ahu)localObject3).i);
+            }
+          }
+          if (!((ahu)localObject4).c)
+          {
+            l1 += l5;
+            if (l1 < l3 + l2)
+            {
+              localObject1 = locala.c.a();
+              if (l1 >= l2) {
+                ((aiq.a)localObject1).a("Warning", "110 HttpURLConnection \"Response is stale\"");
+              }
+              if (l5 > 86400000L)
+              {
+                if ((locala.c.b().e == -1) && (locala.h == null)) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+                if (i != 0) {
+                  ((aiq.a)localObject1).a("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
+                }
+              }
+              localObject1 = new aiz(null, ((aiq.a)localObject1).a());
+              break label946;
+            }
+          }
+          if (locala.k != null)
+          {
+            localObject1 = "If-None-Match";
+            localObject3 = locala.k;
+          }
+          else if (locala.f != null)
+          {
+            localObject1 = "If-Modified-Since";
+            localObject3 = locala.g;
+          }
+          else
+          {
+            if (locala.d == null) {
+              break label913;
+            }
+            localObject1 = "If-Modified-Since";
+            localObject3 = locala.e;
+          }
+          localObject4 = locala.b.c.a();
+          aiu.a.a((aih.a)localObject4, (String)localObject1, (String)localObject3);
+          localObject1 = locala.b.a();
+          ((aio.a)localObject1).c = ((aih.a)localObject4).a().a();
+          localObject1 = new aiz(((aio.a)localObject1).a(), locala.c);
+          break label946;
+          label913:
+          localObject1 = new aiz(locala.b, null);
+          break label946;
         }
       }
-      else
-      {
-        paramInt1 = i3;
-        i3 = i1;
-      }
-      i1 = paramInt1;
-      i4 = 0;
-      while (i1 < paramInt2)
-      {
-        i5 = a(paramString.charAt(i1));
-        if (i5 == -1) {
-          break;
-        }
-        i4 = (i4 << 4) + i5;
-        i1 += 1;
-      }
-      int i5 = i1 - paramInt1;
-      if (i5 != 0)
-      {
-        if (i5 > 4) {
-          return null;
-        }
-        i6 = i3 + 1;
-        arrayOfByte[i3] = ((byte)(i4 >>> 8 & 0xFF));
-        i5 = i6 + 1;
-        arrayOfByte[i6] = ((byte)(i4 & 0xFF));
-        i3 = i1;
-        i1 = i5;
-      }
-      else
-      {
-        return null;
+      localObject1 = new aiz(locala.b, null);
+    }
+    label946:
+    Object localObject3 = localObject1;
+    if (((aiz)localObject1).a != null)
+    {
+      localObject3 = localObject1;
+      if (locala.b.b().k) {
+        localObject3 = new aiz(null, null);
       }
     }
-    paramInt1 = i1;
-    label465:
-    if (paramInt1 != 16)
+    localObject1 = ((aiz)localObject3).a;
+    localObject3 = ((aiz)localObject3).b;
+    if ((localObject2 != null) && (localObject3 == null)) {
+      aiw.a(((aiq)localObject2).g);
+    }
+    if ((localObject1 == null) && (localObject3 == null))
     {
-      if (i2 == -1) {
-        return null;
-      }
-      paramInt2 = paramInt1 - i2;
-      System.arraycopy(arrayOfByte, i2, arrayOfByte, 16 - paramInt2, paramInt2);
-      Arrays.fill(arrayOfByte, i2, 16 - paramInt1 + i2, (byte)0);
+      localObject1 = new aiq.a();
+      ((aiq.a)localObject1).a = parama.a();
+      ((aiq.a)localObject1).b = aim.b;
+      ((aiq.a)localObject1).c = 504;
+      ((aiq.a)localObject1).d = "Unsatisfiable Request (only-if-cached)";
+      ((aiq.a)localObject1).g = aiw.c;
+      ((aiq.a)localObject1).k = -1L;
+      ((aiq.a)localObject1).l = System.currentTimeMillis();
+      return ((aiq.a)localObject1).a();
+    }
+    if (localObject1 == null) {
+      return ((aiq)localObject3).a().b(a((aiq)localObject3)).a();
     }
     try
     {
-      paramString = InetAddress.getByAddress(arrayOfByte);
-      return paramString;
-    }
-    catch (UnknownHostException paramString)
-    {
-      label521:
-      break label521;
-    }
-    throw new AssertionError();
-  }
-  
-  private static boolean d(String paramString)
-  {
-    int i1 = 0;
-    while (i1 < paramString.length())
-    {
-      int i2 = paramString.charAt(i1);
-      if (i2 > 31)
-      {
-        if (i2 >= 127) {
-          return true;
-        }
-        if (" #%/:?@[\\]".indexOf(i2) != -1) {
-          return true;
-        }
-        i1 += 1;
+      parama = parama.a((aio)localObject1);
+      if ((parama == null) && (localObject2 != null)) {
+        aiw.a(((aiq)localObject2).g);
       }
-      else
+      if (localObject3 != null)
       {
-        return true;
+        if (parama.c == 304)
+        {
+          localObject1 = ((aiq)localObject3).a().a(a(((aiq)localObject3).f, parama.f));
+          ((aiq.a)localObject1).k = parama.k;
+          ((aiq.a)localObject1).l = parama.l;
+          localObject1 = ((aiq.a)localObject1).b(a((aiq)localObject3)).a(a(parama)).a();
+          parama.g.close();
+          return localObject1;
+        }
+        aiw.a(((aiq)localObject3).g);
+      }
+      parama = parama.a().b(a((aiq)localObject3)).a(a(parama)).a();
+      if (this.a != null)
+      {
+        if ((ajn.b(parama)) && (aiz.a(parama, (aio)localObject1)))
+        {
+          localObject1 = this.a.b();
+          if (localObject1 == null) {
+            return parama;
+          }
+          localObject2 = ((aiy)localObject1).a();
+          if (localObject2 == null) {
+            return parama;
+          }
+          localObject1 = new alo()
+          {
+            boolean a;
+            
+            public final long a(aky paramAnonymousaky, long paramAnonymousLong)
+            {
+              try
+              {
+                paramAnonymousLong = this.b.a(paramAnonymousaky, paramAnonymousLong);
+                if (paramAnonymousLong == -1L)
+                {
+                  if (!this.a)
+                  {
+                    this.a = true;
+                    this.d.close();
+                  }
+                  return -1L;
+                }
+                paramAnonymousaky.a(this.d.b(), paramAnonymousaky.b - paramAnonymousLong, paramAnonymousLong);
+                this.d.r();
+                return paramAnonymousLong;
+              }
+              catch (IOException paramAnonymousaky)
+              {
+                if (!this.a) {
+                  this.a = true;
+                }
+                throw paramAnonymousaky;
+              }
+            }
+            
+            public final alp a()
+            {
+              return this.b.a();
+            }
+            
+            public final void close()
+            {
+              if ((!this.a) && (!aiw.a(this, TimeUnit.MILLISECONDS))) {
+                this.a = true;
+              }
+              this.b.close();
+            }
+          };
+          localObject2 = parama.a("Content-Type");
+          l1 = parama.g.a();
+          parama = parama.a();
+          parama.g = new ajq((String)localObject2, l1, alh.a((alo)localObject1));
+          return parama.a();
+        }
+        localObject1 = ((aio)localObject1).b;
+        if ((!((String)localObject1).equals("POST")) && (!((String)localObject1).equals("PATCH")) && (!((String)localObject1).equals("PUT")) && (!((String)localObject1).equals("DELETE"))) {
+          ((String)localObject1).equals("MOVE");
+        }
+      }
+      return parama;
+    }
+    finally
+    {
+      if (localObject2 != null) {
+        aiw.a(((aiq)localObject2).g);
       }
     }
-    return false;
   }
 }
 

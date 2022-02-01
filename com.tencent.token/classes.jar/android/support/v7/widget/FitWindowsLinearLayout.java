@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import com.tencent.token.it;
-import com.tencent.token.it.a;
+import com.tencent.token.is;
+import com.tencent.token.is.a;
 
 public class FitWindowsLinearLayout
   extends LinearLayout
-  implements it
+  implements is
 {
-  private it.a a;
+  private is.a a;
   
   public FitWindowsLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,14 +20,14 @@ public class FitWindowsLinearLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    it.a locala = this.a;
+    is.a locala = this.a;
     if (locala != null) {
       locala.a(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }
   
-  public void setOnFitSystemWindowsListener(it.a parama)
+  public void setOnFitSystemWindowsListener(is.a parama)
   {
     this.a = parama;
   }

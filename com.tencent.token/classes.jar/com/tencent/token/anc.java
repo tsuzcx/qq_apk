@@ -1,21 +1,31 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class anc
+  implements amy
 {
-  public final List<amm> a = new ArrayList();
-  public PointF b;
-  public boolean c;
+  final String a;
+  final List<amy> b;
+  
+  public anc(String paramString, List<amy> paramList)
+  {
+    this.a = paramString;
+    this.b = paramList;
+  }
+  
+  public final aof a(asv paramasv, ane paramane)
+  {
+    return new aog(paramasv, paramane, this);
+  }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ShapeData{numCurves=");
-    localStringBuilder.append(this.a.size());
-    localStringBuilder.append("closed=");
-    localStringBuilder.append(this.c);
+    StringBuilder localStringBuilder = new StringBuilder("ShapeGroup{name='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("' Shapes: ");
+    localStringBuilder.append(Arrays.toString(this.b.toArray()));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

@@ -5,48 +5,31 @@ import android.os.Bundle;
 public final class oi
 {
   public static final class a
-    extends oh
+    extends og
   {
-    public int c;
-    public String d;
-    public String e;
+    public String c;
     
     public final int a()
     {
-      return 18;
+      return 23;
     }
     
     public final void a(Bundle paramBundle)
     {
       super.a(paramBundle);
-      paramBundle.putInt("_wxapi_subscribemessage_req_scene", this.c);
-      paramBundle.putString("_wxapi_subscribemessage_req_templateid", this.d);
-      paramBundle.putString("_wxapi_subscribemessage_req_reserved", this.e);
+      paramBundle.putString("_wxapi_subscribeminiprogram_req_miniprogramappid", this.c);
     }
     
     public final void b(Bundle paramBundle)
     {
       super.b(paramBundle);
-      this.c = paramBundle.getInt("_wxapi_subscribemessage_req_scene");
-      this.d = paramBundle.getString("_wxapi_subscribemessage_req_templateid");
-      this.e = paramBundle.getString("_wxapi_subscribemessage_req_reserved");
+      this.c = paramBundle.getString("_wxapi_subscribeminiprogram_req_miniprogramappid");
     }
     
     public final boolean b()
     {
-      String str = this.d;
-      if (str != null)
-      {
-        if (str.length() == 0) {
-          return false;
-        }
-        if (this.d.length() > 1024) {
-          return false;
-        }
-        str = this.e;
-        return (str == null) || (str.length() <= 1024);
-      }
-      return false;
+      String str = this.c;
+      return (str != null) && (str.length() != 0);
     }
   }
 }

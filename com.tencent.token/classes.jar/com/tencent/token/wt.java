@@ -1,10 +1,12 @@
 package com.tencent.token;
 
 public final class wt
-  extends wp
+  extends wo
 {
-  public short m;
-  public byte[] n;
+  long m;
+  long n;
+  byte[] o;
+  byte[] p;
 }
 
 

@@ -1,16 +1,20 @@
 package com.tencent.token;
 
 public final class ads
+  extends Thread
 {
-  public static final afk<ads> a = new a();
+  public ads(String paramString1, String paramString2) {}
   
-  public static final class a
-    extends afk<ads>
+  public final void run()
   {
-    public final Object a()
+    try
     {
-      return new ads();
+      byte[] arrayOfByte = this.b.getBytes();
+      arrayOfByte = aey.a(arrayOfByte, ".turingdebug".getBytes());
+      aey.a(this.a, arrayOfByte);
+      return;
     }
+    catch (Throwable localThrowable) {}
   }
 }
 

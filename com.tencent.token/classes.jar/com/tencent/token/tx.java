@@ -1,84 +1,114 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
-import com.tmsdk.common.util.TmsLog;
-import org.json.JSONException;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class tx
-  extends tk
+  extends tj
 {
-  private static final aat d = new aat("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
-  private aat e;
-  private sc f;
+  private String d;
+  private String e;
+  private long f;
+  private int g;
+  private int h;
+  private sb i;
+  private int j;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar) {}
+  public final void a(aaq paramaaq)
+  {
+    this.f = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramaaq.c.get("param.bind.type")).intValue();
+    this.d = ((String)paramaaq.c.get("param.bind.mobile"));
+    this.e = ((String)paramaaq.c.get("param.bind.areacode"));
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    TmsLog.i("mod_seed", "active token parseJon, errcode: ".concat(String.valueOf(i)));
-    Object localObject;
-    if (i != 0)
+    int k = paramJSONObject.getInt("err");
+    if (k != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
       localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       localStringBuilder.append(":");
       localStringBuilder.append(paramJSONObject);
-      ((wz)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      ((wy)localObject).a(k, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    Object localObject = aac.d(paramJSONObject.getString("data"));
+    if (localObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (this.c != i)
+      localObject = new JSONObject(new String((byte[])localObject));
+      k = ((JSONObject)localObject).getInt("seq_id");
+      if (k != this.j)
       {
         this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(k);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      localObject = paramJSONObject.getString("svc_pub_key");
-      if (((String)localObject).length() > 0)
-      {
+      this.h = ((JSONObject)localObject).getInt("bind_mobile_succ");
+      if (1 != this.h) {
         try
         {
-          sc.b(paramJSONObject.getLong("seed_expire_time"));
+          this.a.a(paramJSONObject.getString("info"));
         }
-        catch (JSONException localJSONException)
+        catch (Exception paramJSONObject)
         {
-          localJSONException.printStackTrace();
+          paramJSONObject.printStackTrace();
         }
-        this.f.c();
-        localObject = new aat((String)localObject, 16);
-        localObject = aax.b(this.e, (aat)localObject, d);
-        if (localObject == null)
-        {
-          this.a.a(10026, null, null);
-          return;
-        }
-        this.f.a((aat)localObject);
-        this.f.e();
-        this.f.j();
-        sc.a(paramJSONObject.getLong("server_time"));
-        rv.a.a().b();
-        this.a.a = 0;
-        return;
       }
-      throw new JSONException("");
+      long l = ((JSONObject)localObject).getLong("server_time");
+      sb.b();
+      sb.a(l);
+      if (((JSONObject)localObject).getInt("seed_available") == 1)
+      {
+        paramJSONObject = aac.e(((JSONObject)localObject).getString("seed"));
+        if (paramJSONObject != null)
+        {
+          this.i.c();
+          this.i.a(paramJSONObject);
+          sb.b().a.a();
+        }
+      }
+      paramJSONObject = sz.a().d(this.f);
+      if (paramJSONObject != null) {
+        sz.a().a(paramJSONObject);
+      }
+      this.a.a = 0;
+      return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
     a(10022, RqdApplication.n().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.a;
+      localMessage.arg2 = this.h;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

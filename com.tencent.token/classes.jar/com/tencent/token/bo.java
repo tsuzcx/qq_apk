@@ -1,390 +1,846 @@
 package com.tencent.token;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.Keyframe;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.util.Xml;
+import android.view.InflateException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.xmlpull.v1.XmlPullParser;
+
 public final class bo
 {
   /* Error */
-  public static android.view.animation.Interpolator a(android.content.Context paramContext, int paramInt)
+  public static Animator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, int paramInt)
   {
     // Byte code:
-    //   0: getstatic 16	android/os/Build$VERSION:SDK_INT	I
-    //   3: bipush 21
-    //   5: if_icmplt +9 -> 14
-    //   8: aload_0
-    //   9: iload_1
-    //   10: invokestatic 21	android/view/animation/AnimationUtils:loadInterpolator	(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
-    //   13: areturn
-    //   14: aconst_null
-    //   15: astore 6
-    //   17: aconst_null
-    //   18: astore 7
-    //   20: aconst_null
-    //   21: astore 4
-    //   23: aconst_null
-    //   24: astore 8
-    //   26: iload_1
-    //   27: ldc 22
-    //   29: if_icmpne +11 -> 40
-    //   32: new 24	com/tencent/token/fh
-    //   35: dup
-    //   36: invokespecial 28	com/tencent/token/fh:<init>	()V
-    //   39: areturn
-    //   40: iload_1
-    //   41: ldc 29
-    //   43: if_icmpne +11 -> 54
-    //   46: new 31	com/tencent/token/fi
-    //   49: dup
-    //   50: invokespecial 32	com/tencent/token/fi:<init>	()V
-    //   53: areturn
-    //   54: iload_1
-    //   55: ldc 33
-    //   57: if_icmpne +11 -> 68
-    //   60: new 35	com/tencent/token/fj
-    //   63: dup
-    //   64: invokespecial 36	com/tencent/token/fj:<init>	()V
-    //   67: areturn
-    //   68: aload_0
-    //   69: invokevirtual 42	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   72: iload_1
-    //   73: invokevirtual 48	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
-    //   76: astore 5
-    //   78: aload_0
-    //   79: invokevirtual 42	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   82: pop
-    //   83: aload_0
-    //   84: invokevirtual 52	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
-    //   87: pop
-    //   88: aload 5
-    //   90: invokeinterface 58 1 0
-    //   95: istore_2
-    //   96: aload 8
-    //   98: astore 4
-    //   100: aload 5
-    //   102: invokeinterface 61 1 0
-    //   107: istore_3
-    //   108: iload_3
-    //   109: iconst_3
-    //   110: if_icmpne +14 -> 124
-    //   113: aload 5
-    //   115: invokeinterface 58 1 0
-    //   120: iload_2
-    //   121: if_icmple +306 -> 427
-    //   124: iload_3
-    //   125: iconst_1
-    //   126: if_icmpeq +301 -> 427
-    //   129: iload_3
-    //   130: iconst_2
-    //   131: if_icmpne -31 -> 100
-    //   134: aload 5
-    //   136: invokestatic 67	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
-    //   139: astore 4
-    //   141: aload 5
-    //   143: invokeinterface 71 1 0
-    //   148: astore 6
-    //   150: aload 6
-    //   152: ldc 73
-    //   154: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   157: ifeq +15 -> 172
-    //   160: new 81	android/view/animation/LinearInterpolator
-    //   163: dup
-    //   164: invokespecial 82	android/view/animation/LinearInterpolator:<init>	()V
-    //   167: astore 4
-    //   169: goto -69 -> 100
-    //   172: aload 6
-    //   174: ldc 84
-    //   176: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   179: ifeq +18 -> 197
-    //   182: new 86	android/view/animation/AccelerateInterpolator
-    //   185: dup
-    //   186: aload_0
-    //   187: aload 4
-    //   189: invokespecial 89	android/view/animation/AccelerateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   192: astore 4
-    //   194: goto -94 -> 100
-    //   197: aload 6
-    //   199: ldc 91
-    //   201: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   204: ifeq +18 -> 222
-    //   207: new 93	android/view/animation/DecelerateInterpolator
-    //   210: dup
-    //   211: aload_0
-    //   212: aload 4
-    //   214: invokespecial 94	android/view/animation/DecelerateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   217: astore 4
-    //   219: goto -119 -> 100
-    //   222: aload 6
-    //   224: ldc 96
-    //   226: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   229: ifeq +15 -> 244
-    //   232: new 98	android/view/animation/AccelerateDecelerateInterpolator
-    //   235: dup
-    //   236: invokespecial 99	android/view/animation/AccelerateDecelerateInterpolator:<init>	()V
-    //   239: astore 4
-    //   241: goto -141 -> 100
-    //   244: aload 6
-    //   246: ldc 101
-    //   248: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   251: ifeq +18 -> 269
-    //   254: new 103	android/view/animation/CycleInterpolator
-    //   257: dup
-    //   258: aload_0
-    //   259: aload 4
-    //   261: invokespecial 104	android/view/animation/CycleInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   264: astore 4
-    //   266: goto -166 -> 100
-    //   269: aload 6
-    //   271: ldc 106
-    //   273: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   276: ifeq +18 -> 294
-    //   279: new 108	android/view/animation/AnticipateInterpolator
-    //   282: dup
-    //   283: aload_0
-    //   284: aload 4
-    //   286: invokespecial 109	android/view/animation/AnticipateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   289: astore 4
-    //   291: goto -191 -> 100
-    //   294: aload 6
-    //   296: ldc 111
-    //   298: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   301: ifeq +18 -> 319
-    //   304: new 113	android/view/animation/OvershootInterpolator
-    //   307: dup
-    //   308: aload_0
-    //   309: aload 4
-    //   311: invokespecial 114	android/view/animation/OvershootInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   314: astore 4
-    //   316: goto -216 -> 100
-    //   319: aload 6
-    //   321: ldc 116
-    //   323: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   326: ifeq +18 -> 344
-    //   329: new 118	android/view/animation/AnticipateOvershootInterpolator
-    //   332: dup
-    //   333: aload_0
-    //   334: aload 4
-    //   336: invokespecial 119	android/view/animation/AnticipateOvershootInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    //   339: astore 4
-    //   341: goto -241 -> 100
-    //   344: aload 6
-    //   346: ldc 121
-    //   348: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   351: ifeq +15 -> 366
-    //   354: new 123	android/view/animation/BounceInterpolator
-    //   357: dup
-    //   358: invokespecial 124	android/view/animation/BounceInterpolator:<init>	()V
-    //   361: astore 4
-    //   363: goto -263 -> 100
-    //   366: aload 6
-    //   368: ldc 126
-    //   370: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   373: ifeq +20 -> 393
-    //   376: new 128	com/tencent/token/br
-    //   379: dup
-    //   380: aload_0
-    //   381: aload 4
-    //   383: aload 5
-    //   385: invokespecial 131	com/tencent/token/br:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;Lorg/xmlpull/v1/XmlPullParser;)V
-    //   388: astore 4
-    //   390: goto -290 -> 100
-    //   393: new 133	java/lang/StringBuilder
-    //   396: dup
-    //   397: ldc 135
-    //   399: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   402: astore_0
-    //   403: aload_0
-    //   404: aload 5
-    //   406: invokeinterface 71 1 0
-    //   411: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   414: pop
-    //   415: new 144	java/lang/RuntimeException
-    //   418: dup
-    //   419: aload_0
-    //   420: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   423: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   426: athrow
-    //   427: aload 5
-    //   429: ifnull +10 -> 439
-    //   432: aload 5
-    //   434: invokeinterface 153 1 0
-    //   439: aload 4
-    //   441: areturn
-    //   442: astore_0
-    //   443: goto +149 -> 592
-    //   446: astore 4
-    //   448: aload 5
-    //   450: astore_0
-    //   451: aload 4
-    //   453: astore 5
-    //   455: goto +15 -> 470
-    //   458: astore 4
-    //   460: aload 5
-    //   462: astore_0
-    //   463: aload 4
-    //   465: astore 5
-    //   467: goto +64 -> 531
-    //   470: aload_0
-    //   471: astore 4
-    //   473: new 133	java/lang/StringBuilder
-    //   476: dup
-    //   477: ldc 155
-    //   479: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   482: astore 6
-    //   484: aload_0
-    //   485: astore 4
-    //   487: aload 6
-    //   489: iload_1
-    //   490: invokestatic 161	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   493: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: pop
-    //   497: aload_0
-    //   498: astore 4
-    //   500: new 163	android/content/res/Resources$NotFoundException
-    //   503: dup
-    //   504: aload 6
-    //   506: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   509: invokespecial 164	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
-    //   512: astore 6
-    //   514: aload_0
-    //   515: astore 4
-    //   517: aload 6
-    //   519: aload 5
-    //   521: invokevirtual 168	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   524: pop
-    //   525: aload_0
-    //   526: astore 4
-    //   528: aload 6
-    //   530: athrow
-    //   531: aload_0
-    //   532: astore 4
-    //   534: new 133	java/lang/StringBuilder
-    //   537: dup
-    //   538: ldc 155
-    //   540: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   543: astore 6
-    //   545: aload_0
-    //   546: astore 4
-    //   548: aload 6
-    //   550: iload_1
-    //   551: invokestatic 161	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   554: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   557: pop
-    //   558: aload_0
-    //   559: astore 4
-    //   561: new 163	android/content/res/Resources$NotFoundException
-    //   564: dup
-    //   565: aload 6
-    //   567: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   570: invokespecial 164	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
-    //   573: astore 6
-    //   575: aload_0
-    //   576: astore 4
-    //   578: aload 6
-    //   580: aload 5
-    //   582: invokevirtual 168	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   585: pop
-    //   586: aload_0
-    //   587: astore 4
-    //   589: aload 6
-    //   591: athrow
-    //   592: aload 5
-    //   594: ifnull +10 -> 604
-    //   597: aload 5
-    //   599: invokeinterface 153 1 0
-    //   604: aload_0
-    //   605: athrow
-    //   606: astore_0
-    //   607: aload 4
-    //   609: astore 5
-    //   611: goto -19 -> 592
-    //   614: astore 5
-    //   616: aload 6
-    //   618: astore_0
-    //   619: goto -149 -> 470
-    //   622: astore 5
-    //   624: aload 7
-    //   626: astore_0
-    //   627: goto -96 -> 531
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aload_1
+    //   10: iload_3
+    //   11: invokevirtual 18	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
+    //   14: astore 7
+    //   16: aload 7
+    //   18: astore 4
+    //   20: aload 7
+    //   22: astore 5
+    //   24: aload 7
+    //   26: astore 6
+    //   28: aload_0
+    //   29: aload_1
+    //   30: aload_2
+    //   31: aload 7
+    //   33: aload 7
+    //   35: invokestatic 24	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+    //   38: aconst_null
+    //   39: iconst_0
+    //   40: fconst_1
+    //   41: invokestatic 27	com/tencent/token/bo:a	(Landroid/content/Context;Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/animation/AnimatorSet;IF)Landroid/animation/Animator;
+    //   44: astore_0
+    //   45: aload 7
+    //   47: ifnull +10 -> 57
+    //   50: aload 7
+    //   52: invokeinterface 33 1 0
+    //   57: aload_0
+    //   58: areturn
+    //   59: astore_0
+    //   60: goto +123 -> 183
+    //   63: astore_0
+    //   64: aload 5
+    //   66: astore 4
+    //   68: new 35	java/lang/StringBuilder
+    //   71: dup
+    //   72: ldc 37
+    //   74: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   77: astore_1
+    //   78: aload 5
+    //   80: astore 4
+    //   82: aload_1
+    //   83: iload_3
+    //   84: invokestatic 47	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   87: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload 5
+    //   93: astore 4
+    //   95: new 53	android/content/res/Resources$NotFoundException
+    //   98: dup
+    //   99: aload_1
+    //   100: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokespecial 58	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   106: astore_1
+    //   107: aload 5
+    //   109: astore 4
+    //   111: aload_1
+    //   112: aload_0
+    //   113: invokevirtual 62	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   116: pop
+    //   117: aload 5
+    //   119: astore 4
+    //   121: aload_1
+    //   122: athrow
+    //   123: astore_0
+    //   124: aload 6
+    //   126: astore 4
+    //   128: new 35	java/lang/StringBuilder
+    //   131: dup
+    //   132: ldc 37
+    //   134: invokespecial 41	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   137: astore_1
+    //   138: aload 6
+    //   140: astore 4
+    //   142: aload_1
+    //   143: iload_3
+    //   144: invokestatic 47	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   147: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload 6
+    //   153: astore 4
+    //   155: new 53	android/content/res/Resources$NotFoundException
+    //   158: dup
+    //   159: aload_1
+    //   160: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokespecial 58	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   166: astore_1
+    //   167: aload 6
+    //   169: astore 4
+    //   171: aload_1
+    //   172: aload_0
+    //   173: invokevirtual 62	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   176: pop
+    //   177: aload 6
+    //   179: astore 4
+    //   181: aload_1
+    //   182: athrow
+    //   183: aload 4
+    //   185: ifnull +10 -> 195
+    //   188: aload 4
+    //   190: invokeinterface 33 1 0
+    //   195: aload_0
+    //   196: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	630	0	paramContext	android.content.Context
-    //   0	630	1	paramInt	int
-    //   95	27	2	i	int
-    //   107	25	3	j	int
-    //   21	419	4	localObject1	Object
-    //   446	6	4	localIOException1	java.io.IOException
-    //   458	6	4	localXmlPullParserException1	org.xmlpull.v1.XmlPullParserException
-    //   471	137	4	localContext	android.content.Context
-    //   76	534	5	localObject2	Object
-    //   614	1	5	localIOException2	java.io.IOException
-    //   622	1	5	localXmlPullParserException2	org.xmlpull.v1.XmlPullParserException
-    //   15	602	6	localObject3	Object
-    //   18	607	7	localObject4	Object
-    //   24	73	8	localObject5	Object
+    //   0	197	0	paramContext	Context
+    //   0	197	1	paramResources	Resources
+    //   0	197	2	paramTheme	Resources.Theme
+    //   0	197	3	paramInt	int
+    //   7	182	4	localObject1	Object
+    //   1	117	5	localObject2	Object
+    //   4	174	6	localObject3	Object
+    //   14	37	7	localXmlResourceParser	android.content.res.XmlResourceParser
     // Exception table:
     //   from	to	target	type
-    //   78	96	442	finally
-    //   100	108	442	finally
-    //   113	124	442	finally
-    //   134	169	442	finally
-    //   172	194	442	finally
-    //   197	219	442	finally
-    //   222	241	442	finally
-    //   244	266	442	finally
-    //   269	291	442	finally
-    //   294	316	442	finally
-    //   319	341	442	finally
-    //   344	363	442	finally
-    //   366	390	442	finally
-    //   393	427	442	finally
-    //   78	96	446	java/io/IOException
-    //   100	108	446	java/io/IOException
-    //   113	124	446	java/io/IOException
-    //   134	169	446	java/io/IOException
-    //   172	194	446	java/io/IOException
-    //   197	219	446	java/io/IOException
-    //   222	241	446	java/io/IOException
-    //   244	266	446	java/io/IOException
-    //   269	291	446	java/io/IOException
-    //   294	316	446	java/io/IOException
-    //   319	341	446	java/io/IOException
-    //   344	363	446	java/io/IOException
-    //   366	390	446	java/io/IOException
-    //   393	427	446	java/io/IOException
-    //   78	96	458	org/xmlpull/v1/XmlPullParserException
-    //   100	108	458	org/xmlpull/v1/XmlPullParserException
-    //   113	124	458	org/xmlpull/v1/XmlPullParserException
-    //   134	169	458	org/xmlpull/v1/XmlPullParserException
-    //   172	194	458	org/xmlpull/v1/XmlPullParserException
-    //   197	219	458	org/xmlpull/v1/XmlPullParserException
-    //   222	241	458	org/xmlpull/v1/XmlPullParserException
-    //   244	266	458	org/xmlpull/v1/XmlPullParserException
-    //   269	291	458	org/xmlpull/v1/XmlPullParserException
-    //   294	316	458	org/xmlpull/v1/XmlPullParserException
-    //   319	341	458	org/xmlpull/v1/XmlPullParserException
-    //   344	363	458	org/xmlpull/v1/XmlPullParserException
-    //   366	390	458	org/xmlpull/v1/XmlPullParserException
-    //   393	427	458	org/xmlpull/v1/XmlPullParserException
-    //   32	40	606	finally
-    //   46	54	606	finally
-    //   60	68	606	finally
-    //   68	78	606	finally
-    //   473	484	606	finally
-    //   487	497	606	finally
-    //   500	514	606	finally
-    //   517	525	606	finally
-    //   528	531	606	finally
-    //   534	545	606	finally
-    //   548	558	606	finally
-    //   561	575	606	finally
-    //   578	586	606	finally
-    //   589	592	606	finally
-    //   32	40	614	java/io/IOException
-    //   46	54	614	java/io/IOException
-    //   60	68	614	java/io/IOException
-    //   68	78	614	java/io/IOException
-    //   32	40	622	org/xmlpull/v1/XmlPullParserException
-    //   46	54	622	org/xmlpull/v1/XmlPullParserException
-    //   60	68	622	org/xmlpull/v1/XmlPullParserException
-    //   68	78	622	org/xmlpull/v1/XmlPullParserException
+    //   9	16	59	finally
+    //   28	45	59	finally
+    //   68	78	59	finally
+    //   82	91	59	finally
+    //   95	107	59	finally
+    //   111	117	59	finally
+    //   121	123	59	finally
+    //   128	138	59	finally
+    //   142	151	59	finally
+    //   155	167	59	finally
+    //   171	177	59	finally
+    //   181	183	59	finally
+    //   9	16	63	java/io/IOException
+    //   28	45	63	java/io/IOException
+    //   9	16	123	org/xmlpull/v1/XmlPullParserException
+    //   28	45	123	org/xmlpull/v1/XmlPullParserException
+  }
+  
+  private static Animator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, AnimatorSet paramAnimatorSet, int paramInt, float paramFloat)
+  {
+    int k = paramXmlPullParser.getDepth();
+    Object localObject3 = null;
+    Object localObject2 = null;
+    int j;
+    int i;
+    for (;;)
+    {
+      int m = paramXmlPullParser.next();
+      j = 0;
+      i = 0;
+      if (((m == 3) && (paramXmlPullParser.getDepth() <= k)) || (m == 1)) {
+        break;
+      }
+      if (m == 2)
+      {
+        Object localObject1 = paramXmlPullParser.getName();
+        if (((String)localObject1).equals("objectAnimator"))
+        {
+          localObject1 = a(paramContext, paramResources, paramTheme, paramAttributeSet, paramFloat, paramXmlPullParser);
+        }
+        else if (((String)localObject1).equals("animator"))
+        {
+          localObject1 = a(paramContext, paramResources, paramTheme, paramAttributeSet, null, paramFloat, paramXmlPullParser);
+        }
+        else if (((String)localObject1).equals("set"))
+        {
+          localObject1 = new AnimatorSet();
+          localObject3 = cx.a(paramResources, paramTheme, paramAttributeSet, bk.h);
+          j = cx.a((TypedArray)localObject3, paramXmlPullParser, "ordering", 0, 0);
+          a(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, j, paramFloat);
+          ((TypedArray)localObject3).recycle();
+        }
+        else
+        {
+          if (!((String)localObject1).equals("propertyValuesHolder")) {
+            break label301;
+          }
+          localObject1 = a(paramContext, paramResources, paramTheme, paramXmlPullParser, Xml.asAttributeSet(paramXmlPullParser));
+          if ((localObject1 != null) && (localObject3 != null) && ((localObject3 instanceof ValueAnimator))) {
+            ((ValueAnimator)localObject3).setValues((PropertyValuesHolder[])localObject1);
+          }
+          i = 1;
+          localObject1 = localObject3;
+        }
+        localObject3 = localObject1;
+        if (paramAnimatorSet != null)
+        {
+          localObject3 = localObject1;
+          if (i == 0)
+          {
+            Object localObject4 = localObject2;
+            if (localObject2 == null) {
+              localObject4 = new ArrayList();
+            }
+            ((ArrayList)localObject4).add(localObject1);
+            localObject3 = localObject1;
+            localObject2 = localObject4;
+            continue;
+            label301:
+            paramContext = new StringBuilder("Unknown animator name: ");
+            paramContext.append(paramXmlPullParser.getName());
+            throw new RuntimeException(paramContext.toString());
+          }
+        }
+      }
+    }
+    if ((paramAnimatorSet != null) && (localObject2 != null))
+    {
+      paramContext = new Animator[localObject2.size()];
+      paramResources = localObject2.iterator();
+      i = j;
+      while (paramResources.hasNext())
+      {
+        paramContext[i] = ((Animator)paramResources.next());
+        i += 1;
+      }
+      if (paramInt == 0)
+      {
+        paramAnimatorSet.playTogether(paramContext);
+        return localObject3;
+      }
+      paramAnimatorSet.playSequentially(paramContext);
+    }
+    return localObject3;
+  }
+  
+  private static Keyframe a(Keyframe paramKeyframe, float paramFloat)
+  {
+    if (paramKeyframe.getType() == Float.TYPE) {
+      return Keyframe.ofFloat(paramFloat);
+    }
+    if (paramKeyframe.getType() == Integer.TYPE) {
+      return Keyframe.ofInt(paramFloat);
+    }
+    return Keyframe.ofObject(paramFloat);
+  }
+  
+  private static ObjectAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, float paramFloat, XmlPullParser paramXmlPullParser)
+  {
+    ObjectAnimator localObjectAnimator = new ObjectAnimator();
+    a(paramContext, paramResources, paramTheme, paramAttributeSet, localObjectAnimator, paramFloat, paramXmlPullParser);
+    return localObjectAnimator;
+  }
+  
+  private static PropertyValuesHolder a(TypedArray paramTypedArray, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    Object localObject = paramTypedArray.peekValue(paramInt2);
+    int j;
+    if (localObject != null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int m;
+    if (j != 0) {
+      m = ((TypedValue)localObject).type;
+    } else {
+      m = 0;
+    }
+    localObject = paramTypedArray.peekValue(paramInt3);
+    int k;
+    if (localObject != null) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    int n;
+    if (k != 0) {
+      n = ((TypedValue)localObject).type;
+    } else {
+      n = 0;
+    }
+    int i = paramInt1;
+    if (paramInt1 == 4) {
+      if (((j != 0) && (a(m))) || ((k != 0) && (a(n)))) {
+        i = 3;
+      } else {
+        i = 0;
+      }
+    }
+    if (i == 0) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
+    }
+    if (i == 2)
+    {
+      localObject = paramTypedArray.getString(paramInt2);
+      paramTypedArray = paramTypedArray.getString(paramInt3);
+      cz.b[] arrayOfb1 = cz.b((String)localObject);
+      cz.b[] arrayOfb2 = cz.b(paramTypedArray);
+      if ((arrayOfb1 != null) || (arrayOfb2 != null))
+      {
+        if (arrayOfb1 != null)
+        {
+          a locala = new a((byte)0);
+          if (arrayOfb2 != null)
+          {
+            if (cz.a(arrayOfb1, arrayOfb2)) {
+              return PropertyValuesHolder.ofObject(paramString, locala, new Object[] { arrayOfb1, arrayOfb2 });
+            }
+            paramString = new StringBuilder(" Can't morph from ");
+            paramString.append((String)localObject);
+            paramString.append(" to ");
+            paramString.append(paramTypedArray);
+            throw new InflateException(paramString.toString());
+          }
+          return PropertyValuesHolder.ofObject(paramString, locala, new Object[] { arrayOfb1 });
+        }
+        if (arrayOfb2 != null) {
+          return PropertyValuesHolder.ofObject(paramString, new a((byte)0), new Object[] { arrayOfb2 });
+        }
+      }
+      return null;
+    }
+    if (i == 3) {
+      localObject = bp.a();
+    } else {
+      localObject = null;
+    }
+    if (paramInt1 != 0)
+    {
+      float f1;
+      if (j != 0)
+      {
+        if (m == 5) {
+          f1 = paramTypedArray.getDimension(paramInt2, 0.0F);
+        } else {
+          f1 = paramTypedArray.getFloat(paramInt2, 0.0F);
+        }
+        if (k != 0)
+        {
+          float f2;
+          if (n == 5) {
+            f2 = paramTypedArray.getDimension(paramInt3, 0.0F);
+          } else {
+            f2 = paramTypedArray.getFloat(paramInt3, 0.0F);
+          }
+          paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1, f2 });
+        }
+        else
+        {
+          paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
+        }
+      }
+      else
+      {
+        if (n == 5) {
+          f1 = paramTypedArray.getDimension(paramInt3, 0.0F);
+        } else {
+          f1 = paramTypedArray.getFloat(paramInt3, 0.0F);
+        }
+        paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
+      }
+    }
+    else if (j != 0)
+    {
+      if (m == 5) {
+        paramInt1 = (int)paramTypedArray.getDimension(paramInt2, 0.0F);
+      } else if (a(m)) {
+        paramInt1 = paramTypedArray.getColor(paramInt2, 0);
+      } else {
+        paramInt1 = paramTypedArray.getInt(paramInt2, 0);
+      }
+      if (k != 0)
+      {
+        if (n == 5) {
+          paramInt2 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
+        } else if (a(n)) {
+          paramInt2 = paramTypedArray.getColor(paramInt3, 0);
+        } else {
+          paramInt2 = paramTypedArray.getInt(paramInt3, 0);
+        }
+        paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
+      }
+      else
+      {
+        paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
+      }
+    }
+    else if (k != 0)
+    {
+      if (n == 5) {
+        paramInt1 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
+      } else if (a(n)) {
+        paramInt1 = paramTypedArray.getColor(paramInt3, 0);
+      } else {
+        paramInt1 = paramTypedArray.getInt(paramInt3, 0);
+      }
+      paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
+    }
+    else
+    {
+      paramTypedArray = null;
+    }
+    if ((paramTypedArray != null) && (localObject != null)) {
+      paramTypedArray.setEvaluator((TypeEvaluator)localObject);
+    }
+    return paramTypedArray;
+  }
+  
+  private static ValueAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
+  {
+    TypedArray localTypedArray = cx.a(paramResources, paramTheme, paramAttributeSet, bk.g);
+    paramTheme = cx.a(paramResources, paramTheme, paramAttributeSet, bk.k);
+    paramResources = paramValueAnimator;
+    if (paramValueAnimator == null) {
+      paramResources = new ValueAnimator();
+    }
+    a(paramResources, localTypedArray, paramTheme, paramFloat, paramXmlPullParser);
+    int i = cx.a(localTypedArray, paramXmlPullParser, "interpolator", 0);
+    if (i > 0) {
+      paramResources.setInterpolator(bn.a(paramContext, i));
+    }
+    localTypedArray.recycle();
+    if (paramTheme != null) {
+      paramTheme.recycle();
+    }
+    return paramResources;
+  }
+  
+  private static void a(ValueAnimator paramValueAnimator, TypedArray paramTypedArray1, TypedArray paramTypedArray2, float paramFloat, XmlPullParser paramXmlPullParser)
+  {
+    long l1 = cx.a(paramTypedArray1, paramXmlPullParser, "duration", 1, 300);
+    long l2 = cx.a(paramTypedArray1, paramXmlPullParser, "startOffset", 2, 0);
+    int j = cx.a(paramTypedArray1, paramXmlPullParser, "valueType", 7, 4);
+    Object localObject;
+    if ((cx.a(paramXmlPullParser, "valueFrom")) && (cx.a(paramXmlPullParser, "valueTo")))
+    {
+      int i = j;
+      if (j == 4)
+      {
+        localObject = paramTypedArray1.peekValue(5);
+        if (localObject != null) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0) {
+          j = ((TypedValue)localObject).type;
+        } else {
+          j = 0;
+        }
+        localObject = paramTypedArray1.peekValue(6);
+        int k;
+        if (localObject != null) {
+          k = 1;
+        } else {
+          k = 0;
+        }
+        int m;
+        if (k != 0) {
+          m = ((TypedValue)localObject).type;
+        } else {
+          m = 0;
+        }
+        if (((i != 0) && (a(j))) || ((k != 0) && (a(m)))) {
+          i = 3;
+        } else {
+          i = 0;
+        }
+      }
+      localObject = a(paramTypedArray1, i, 5, 6, "");
+      if (localObject != null) {
+        paramValueAnimator.setValues(new PropertyValuesHolder[] { localObject });
+      }
+    }
+    paramValueAnimator.setDuration(l1);
+    paramValueAnimator.setStartDelay(l2);
+    paramValueAnimator.setRepeatCount(cx.a(paramTypedArray1, paramXmlPullParser, "repeatCount", 3, 0));
+    paramValueAnimator.setRepeatMode(cx.a(paramTypedArray1, paramXmlPullParser, "repeatMode", 4, 1));
+    if (paramTypedArray2 != null)
+    {
+      paramValueAnimator = (ObjectAnimator)paramValueAnimator;
+      paramTypedArray1 = cx.b(paramTypedArray2, paramXmlPullParser, "pathData", 1);
+      if (paramTypedArray1 != null)
+      {
+        localObject = cx.b(paramTypedArray2, paramXmlPullParser, "propertyXName", 2);
+        paramXmlPullParser = cx.b(paramTypedArray2, paramXmlPullParser, "propertyYName", 3);
+        if ((localObject == null) && (paramXmlPullParser == null))
+        {
+          paramValueAnimator = new StringBuilder();
+          paramValueAnimator.append(paramTypedArray2.getPositionDescription());
+          paramValueAnimator.append(" propertyXName or propertyYName is needed for PathData");
+          throw new InflateException(paramValueAnimator.toString());
+        }
+        a(cz.a(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
+        return;
+      }
+      paramValueAnimator.setPropertyName(cx.b(paramTypedArray2, paramXmlPullParser, "propertyName", 0));
+    }
+  }
+  
+  private static void a(Path paramPath, ObjectAnimator paramObjectAnimator, float paramFloat, String paramString1, String paramString2)
+  {
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Float.valueOf(0.0F));
+    float f1 = 0.0F;
+    float f2;
+    do
+    {
+      f2 = f1 + localPathMeasure.getLength();
+      localArrayList.add(Float.valueOf(f2));
+      f1 = f2;
+    } while (localPathMeasure.nextContour());
+    paramPath = new PathMeasure(paramPath, false);
+    int n = Math.min(100, (int)(f2 / paramFloat) + 1);
+    float[] arrayOfFloat2 = new float[n];
+    float[] arrayOfFloat1 = new float[n];
+    float[] arrayOfFloat3 = new float[2];
+    f2 /= (n - 1);
+    int i = 0;
+    paramFloat = 0.0F;
+    int k;
+    for (int j = 0;; j = k)
+    {
+      localPathMeasure = null;
+      if (i >= n) {
+        break;
+      }
+      paramPath.getPosTan(paramFloat, arrayOfFloat3, null);
+      arrayOfFloat2[i] = arrayOfFloat3[0];
+      arrayOfFloat1[i] = arrayOfFloat3[1];
+      f1 = paramFloat + f2;
+      int m = j + 1;
+      paramFloat = f1;
+      k = j;
+      if (m < localArrayList.size())
+      {
+        paramFloat = f1;
+        k = j;
+        if (f1 > ((Float)localArrayList.get(m)).floatValue())
+        {
+          paramFloat = f1 - ((Float)localArrayList.get(m)).floatValue();
+          paramPath.nextContour();
+          k = m;
+        }
+      }
+      i += 1;
+    }
+    if (paramString1 != null) {
+      paramPath = PropertyValuesHolder.ofFloat(paramString1, arrayOfFloat2);
+    } else {
+      paramPath = null;
+    }
+    paramString1 = localPathMeasure;
+    if (paramString2 != null) {
+      paramString1 = PropertyValuesHolder.ofFloat(paramString2, arrayOfFloat1);
+    }
+    if (paramPath == null)
+    {
+      paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramString1 });
+      return;
+    }
+    if (paramString1 == null)
+    {
+      paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath });
+      return;
+    }
+    paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath, paramString1 });
+  }
+  
+  private static void a(Keyframe[] paramArrayOfKeyframe, float paramFloat, int paramInt1, int paramInt2)
+  {
+    paramFloat /= (paramInt2 - paramInt1 + 2);
+    while (paramInt1 <= paramInt2)
+    {
+      paramArrayOfKeyframe[paramInt1].setFraction(paramArrayOfKeyframe[(paramInt1 - 1)].getFraction() + paramFloat);
+      paramInt1 += 1;
+    }
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    return (paramInt >= 28) && (paramInt <= 31);
+  }
+  
+  private static PropertyValuesHolder[] a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
+  {
+    Object localObject2 = null;
+    int j;
+    for (;;)
+    {
+      i = paramXmlPullParser.getEventType();
+      if ((i == 3) || (i == 1)) {
+        break;
+      }
+      if (i != 2)
+      {
+        paramXmlPullParser.next();
+      }
+      else
+      {
+        Object localObject1;
+        if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
+        {
+          TypedArray localTypedArray = cx.a(paramResources, paramTheme, paramAttributeSet, bk.i);
+          String str = cx.b(localTypedArray, paramXmlPullParser, "propertyName", 3);
+          int i1 = cx.a(localTypedArray, paramXmlPullParser, "valueType", 2, 4);
+          j = i1;
+          Object localObject3 = null;
+          Object localObject4;
+          float f;
+          int k;
+          for (;;)
+          {
+            i = paramXmlPullParser.next();
+            if ((i == 3) || (i == 1)) {
+              break;
+            }
+            if (paramXmlPullParser.getName().equals("keyframe"))
+            {
+              i = j;
+              if (j == 4)
+              {
+                localObject1 = cx.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), bk.j);
+                localObject4 = cx.a((TypedArray)localObject1, paramXmlPullParser, "value");
+                if (localObject4 != null) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+                if ((i != 0) && (a(((TypedValue)localObject4).type))) {
+                  i = 3;
+                } else {
+                  i = 0;
+                }
+                ((TypedArray)localObject1).recycle();
+              }
+              localObject4 = cx.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), bk.j);
+              f = cx.a((TypedArray)localObject4, paramXmlPullParser, "fraction", 3, -1.0F);
+              localObject1 = cx.a((TypedArray)localObject4, paramXmlPullParser, "value");
+              if (localObject1 != null) {
+                k = 1;
+              } else {
+                k = 0;
+              }
+              if (i == 4)
+              {
+                if ((k != 0) && (a(((TypedValue)localObject1).type))) {
+                  j = 3;
+                } else {
+                  j = 0;
+                }
+              }
+              else {
+                j = i;
+              }
+              if (k != 0)
+              {
+                if (j != 3) {
+                  switch (j)
+                  {
+                  default: 
+                    localObject1 = null;
+                    break;
+                  case 0: 
+                    localObject1 = Keyframe.ofFloat(f, cx.a((TypedArray)localObject4, paramXmlPullParser, "value", 0, 0.0F));
+                    break;
+                  }
+                } else {
+                  localObject1 = Keyframe.ofInt(f, cx.a((TypedArray)localObject4, paramXmlPullParser, "value", 0, 0));
+                }
+              }
+              else if (j == 0) {
+                localObject1 = Keyframe.ofFloat(f);
+              } else {
+                localObject1 = Keyframe.ofInt(f);
+              }
+              j = cx.a((TypedArray)localObject4, paramXmlPullParser, "interpolator", 1);
+              if (j > 0) {
+                ((Keyframe)localObject1).setInterpolator(bn.a(paramContext, j));
+              }
+              ((TypedArray)localObject4).recycle();
+              localObject4 = localObject3;
+              if (localObject1 != null)
+              {
+                localObject4 = localObject3;
+                if (localObject3 == null) {
+                  localObject4 = new ArrayList();
+                }
+                ((ArrayList)localObject4).add(localObject1);
+              }
+              paramXmlPullParser.next();
+              localObject3 = localObject4;
+            }
+            else
+            {
+              i = j;
+            }
+            j = i;
+          }
+          if (localObject3 != null)
+          {
+            k = ((ArrayList)localObject3).size();
+            if (k > 0)
+            {
+              localObject1 = (Keyframe)((ArrayList)localObject3).get(0);
+              localObject4 = (Keyframe)((ArrayList)localObject3).get(k - 1);
+              f = ((Keyframe)localObject4).getFraction();
+              i = k;
+              if (f < 1.0F) {
+                if (f < 0.0F)
+                {
+                  ((Keyframe)localObject4).setFraction(1.0F);
+                  i = k;
+                }
+                else
+                {
+                  ((ArrayList)localObject3).add(((ArrayList)localObject3).size(), a((Keyframe)localObject4, 1.0F));
+                  i = k + 1;
+                }
+              }
+              f = ((Keyframe)localObject1).getFraction();
+              int m = i;
+              if (f != 0.0F) {
+                if (f < 0.0F)
+                {
+                  ((Keyframe)localObject1).setFraction(0.0F);
+                  m = i;
+                }
+                else
+                {
+                  ((ArrayList)localObject3).add(0, a((Keyframe)localObject1, 0.0F));
+                  m = i + 1;
+                }
+              }
+              localObject1 = new Keyframe[m];
+              ((ArrayList)localObject3).toArray((Object[])localObject1);
+              i = 0;
+              while (i < m)
+              {
+                localObject3 = localObject1[i];
+                if (((Keyframe)localObject3).getFraction() < 0.0F) {
+                  if (i == 0)
+                  {
+                    ((Keyframe)localObject3).setFraction(0.0F);
+                  }
+                  else
+                  {
+                    int i2 = m - 1;
+                    if (i == i2)
+                    {
+                      ((Keyframe)localObject3).setFraction(1.0F);
+                    }
+                    else
+                    {
+                      k = i + 1;
+                      int n = i;
+                      while ((k < i2) && (localObject1[k].getFraction() < 0.0F))
+                      {
+                        n = k;
+                        k += 1;
+                      }
+                      a((Keyframe[])localObject1, localObject1[(n + 1)].getFraction() - localObject1[(i - 1)].getFraction(), i, n);
+                    }
+                  }
+                }
+                i += 1;
+              }
+              localObject3 = PropertyValuesHolder.ofKeyframe(str, (Keyframe[])localObject1);
+              localObject1 = localObject3;
+              if (j != 3) {
+                break label864;
+              }
+              ((PropertyValuesHolder)localObject3).setEvaluator(bp.a());
+              localObject1 = localObject3;
+              break label864;
+            }
+          }
+          localObject1 = null;
+          label864:
+          localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = a(localTypedArray, i1, 0, 1, str);
+          }
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new ArrayList();
+            }
+            ((ArrayList)localObject1).add(localObject3);
+          }
+          localTypedArray.recycle();
+        }
+        else
+        {
+          localObject1 = localObject2;
+        }
+        paramXmlPullParser.next();
+        localObject2 = localObject1;
+      }
+    }
+    int i = 0;
+    if (localObject2 != null)
+    {
+      j = localObject2.size();
+      paramContext = new PropertyValuesHolder[j];
+      while (i < j)
+      {
+        paramContext[i] = ((PropertyValuesHolder)localObject2.get(i));
+        i += 1;
+      }
+      return paramContext;
+    }
+    return null;
+  }
+  
+  static final class a
+    implements TypeEvaluator<cz.b[]>
+  {
+    private cz.b[] a;
   }
 }
 

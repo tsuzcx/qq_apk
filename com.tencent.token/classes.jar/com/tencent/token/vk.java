@@ -1,76 +1,55 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.RealNameStatusResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vk
-  extends tk
+  extends tj
 {
-  RealNameStatusResult d;
-  private long e;
+  public static String d;
+  public static int e;
   private long f;
-  private int g;
+  private long g;
+  private int h;
+  private int i;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.f = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = paramaar.j;
+    this.f = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.g = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.i = ((Integer)paramaaq.c.get("param.scene.id")).intValue();
+    this.h = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int j = paramJSONObject.getInt("err");
+    if (j == 0)
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.g)
+      paramJSONObject = aac.d(paramJSONObject.getString("data"));
+      if (paramJSONObject != null)
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.g);
-        xb.c(paramJSONObject.toString());
+        paramJSONObject = new JSONObject(new String(paramJSONObject));
+        d = paramJSONObject.getString("validate_code");
+        e = paramJSONObject.getInt("validate_id");
+        this.a.a = 0;
         return;
       }
-      this.d = new RealNameStatusResult(paramJSONObject);
-      this.a.a = 0;
+      xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.n().getString(2131493068));
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    a(j, paramJSONObject.getString("info"));
+    xa.a("ProtoGetRealNameVerify fail errCode=".concat(String.valueOf(j)));
   }
 }
 

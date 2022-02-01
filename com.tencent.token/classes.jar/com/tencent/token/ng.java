@@ -2,7 +2,9 @@ package com.tencent.token;
 
 public abstract interface ng
 {
-  public abstract void a();
+  public abstract void a(my parammy);
+  
+  public abstract void b(my parammy);
 }
 
 

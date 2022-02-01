@@ -36,9 +36,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.gf;
-import com.tencent.token.gp.a;
-import com.tencent.token.gp.j;
+import com.tencent.token.ge;
+import com.tencent.token.go.a;
+import com.tencent.token.go.j;
 import java.lang.ref.WeakReference;
 
 final class AlertController
@@ -113,15 +113,15 @@ final class AlertController
     this.b = paramAppCompatDialog;
     this.c = paramWindow;
     this.R = new b(paramAppCompatDialog);
-    paramContext = paramContext.obtainStyledAttributes(null, gp.j.AlertDialog, gp.a.alertDialogStyle, 0);
-    this.J = paramContext.getResourceId(gp.j.AlertDialog_android_layout, 0);
-    this.K = paramContext.getResourceId(gp.j.AlertDialog_buttonPanelSideLayout, 0);
-    this.L = paramContext.getResourceId(gp.j.AlertDialog_listLayout, 0);
-    this.M = paramContext.getResourceId(gp.j.AlertDialog_multiChoiceItemLayout, 0);
-    this.N = paramContext.getResourceId(gp.j.AlertDialog_singleChoiceItemLayout, 0);
-    this.O = paramContext.getResourceId(gp.j.AlertDialog_listItemLayout, 0);
-    this.P = paramContext.getBoolean(gp.j.AlertDialog_showTitle, true);
-    this.d = paramContext.getDimensionPixelSize(gp.j.AlertDialog_buttonIconDimen, 0);
+    paramContext = paramContext.obtainStyledAttributes(null, go.j.AlertDialog, go.a.alertDialogStyle, 0);
+    this.J = paramContext.getResourceId(go.j.AlertDialog_android_layout, 0);
+    this.K = paramContext.getResourceId(go.j.AlertDialog_buttonPanelSideLayout, 0);
+    this.L = paramContext.getResourceId(go.j.AlertDialog_listLayout, 0);
+    this.M = paramContext.getResourceId(go.j.AlertDialog_multiChoiceItemLayout, 0);
+    this.N = paramContext.getResourceId(go.j.AlertDialog_singleChoiceItemLayout, 0);
+    this.O = paramContext.getResourceId(go.j.AlertDialog_listItemLayout, 0);
+    this.P = paramContext.getBoolean(go.j.AlertDialog_showTitle, true);
+    this.d = paramContext.getDimensionPixelSize(go.j.AlertDialog_buttonIconDimen, 0);
     paramContext.recycle();
     paramAppCompatDialog.a().c(1);
   }
@@ -263,9 +263,9 @@ final class AlertController
     public RecycleListView(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.RecycleListView);
-      this.b = paramContext.getDimensionPixelOffset(gp.j.RecycleListView_paddingBottomNoButtons, -1);
-      this.a = paramContext.getDimensionPixelOffset(gp.j.RecycleListView_paddingTopNoTitle, -1);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.RecycleListView);
+      this.b = paramContext.getDimensionPixelOffset(go.j.RecycleListView_paddingBottomNoButtons, -1);
+      this.a = paramContext.getDimensionPixelOffset(go.j.RecycleListView_paddingTopNoTitle, -1);
     }
   }
   

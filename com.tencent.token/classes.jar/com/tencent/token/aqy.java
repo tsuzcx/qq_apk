@@ -1,32 +1,50 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-final class aqy
-  extends Handler
+public final class aqy
 {
-  private WeakReference a = null;
+  int a;
+  String b;
+  private int c;
   
-  public aqy(aqu paramaqu)
+  public aqy() {}
+  
+  public aqy(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramaqu.a.getMainLooper());
-    this.a = new WeakReference(paramaqu);
+    this.c = paramInt2;
+    this.b = paramString;
+    this.a = paramInt1;
   }
   
-  public final void handleMessage(Message paramMessage)
+  protected final Object clone()
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (aqu)this.a.get();
-    if (paramMessage == null) {
-      return;
+    return new aqy(this.b, this.a, this.c);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {
+      return false;
     }
-    if (paramMessage.d != null) {
-      paramMessage.d.e();
+    paramObject = (aqy)paramObject;
+    return (paramObject.b.equals(this.b)) && (paramObject.a == this.a);
+  }
+  
+  public final int hashCode()
+  {
+    return super.hashCode();
+  }
+  
+  public final String toString()
+  {
+    if (this.a >= 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.a);
+      return localStringBuilder.toString();
     }
-    aqt.a(paramMessage.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE", paramMessage.c);
+    return this.b;
   }
 }
 

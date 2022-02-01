@@ -1,28 +1,36 @@
 package com.tencent.token;
 
-import java.util.LinkedList;
-
-public final class aci<E>
+public final class aci
 {
   public int a;
-  public LinkedList<E> b = new LinkedList();
+  public int b;
+  public int c;
+  public String d = "";
+  public int e;
   
-  public aci(int paramInt)
+  public aci(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.a = paramInt;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.d = paramString;
+    this.c = paramInt3;
+    this.e = paramInt4;
   }
   
-  public final E a(int paramInt)
+  public final String toString()
   {
-    return this.b.get(paramInt);
-  }
-  
-  public final void a(E paramE)
-  {
-    if (this.b.size() >= this.a) {
-      this.b.poll();
-    }
-    this.b.offer(paramE);
+    String str1 = String.format("% 6d", new Object[] { Integer.valueOf(this.a) });
+    String str2 = String.format("% 6d", new Object[] { Integer.valueOf(this.b) });
+    String str3 = String.format("% 6d", new Object[] { Integer.valueOf(this.c) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

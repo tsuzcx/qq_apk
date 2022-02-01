@@ -2,23 +2,9 @@ package com.tencent.token;
 
 public final class apb
 {
-  public static final String a(byte[] paramArrayOfByte)
+  public static boolean a(long paramLong1, long paramLong2, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuffer.append(0);
-      }
-      localStringBuffer.append(str.toUpperCase());
-      i += 1;
-    }
-    return localStringBuffer.toString();
+    return paramLong1 - paramLong2 > paramInt * 60 * 1000;
   }
 }
 

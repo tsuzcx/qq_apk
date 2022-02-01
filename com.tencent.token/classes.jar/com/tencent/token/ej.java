@@ -1,77 +1,16 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import android.view.View;
+import android.os.Build.VERSION;
+import android.view.Gravity;
 
-public abstract class ej
+public final class ej
 {
-  public a a;
-  public b b;
-  private final Context c;
-  
-  public ej(Context paramContext)
+  public static int a(int paramInt1, int paramInt2)
   {
-    this.c = paramContext;
-  }
-  
-  public abstract View a();
-  
-  public View a(MenuItem paramMenuItem)
-  {
-    return a();
-  }
-  
-  public void a(SubMenu paramSubMenu) {}
-  
-  public void a(b paramb)
-  {
-    if (this.b != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ");
-      localStringBuilder.append(getClass().getSimpleName());
-      localStringBuilder.append(" instance while it is still in use somewhere else?");
+    if (Build.VERSION.SDK_INT >= 17) {
+      return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
     }
-    this.b = paramb;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    a locala = this.a;
-    if (locala != null) {
-      locala.a(paramBoolean);
-    }
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(boolean paramBoolean);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a();
+    return paramInt1 & 0xFF7FFFFF;
   }
 }
 

@@ -1,42 +1,27 @@
 package com.tencent.token;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-abstract class amx<V, O>
-  implements amw<O>
+public final class amx
 {
-  final List<alz<V>> a;
-  final V b;
+  public String a;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  double f;
+  public int g;
+  public int h;
+  public int i;
+  public boolean j;
   
-  amx(V paramV)
+  public final int hashCode()
   {
-    this(Collections.emptyList(), paramV);
-  }
-  
-  private amx(List<alz<V>> paramList, V paramV)
-  {
-    this.a = paramList;
-    this.b = paramV;
-  }
-  
-  public boolean b()
-  {
-    return !this.a.isEmpty();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=");
-    localStringBuilder.append(this.b);
-    if (!this.a.isEmpty())
-    {
-      localStringBuilder.append(", values=");
-      localStringBuilder.append(Arrays.toString(this.a.toArray()));
-    }
-    return localStringBuilder.toString();
+    int k = this.a.hashCode();
+    int m = this.b.hashCode();
+    int n = this.c;
+    int i1 = this.d;
+    int i2 = this.e;
+    long l = Double.doubleToLongBits(this.f);
+    return (((((k * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + (int)(l ^ l >>> 32)) * 31 + this.g;
   }
 }
 

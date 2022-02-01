@@ -1,19 +1,125 @@
 package com.tencent.token;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
-public abstract interface aid
+public final class aid
 {
-  public static final aid a = new aid()
-  {
-    public final List<aic> a()
-    {
-      return Collections.emptyList();
-    }
-  };
+  private int a = 64;
+  private int b = 5;
+  @Nullable
+  private Runnable c;
+  @Nullable
+  private ExecutorService d;
+  private final Deque<ain.a> e = new ArrayDeque();
+  private final Deque<ain.a> f = new ArrayDeque();
+  private final Deque<ain> g = new ArrayDeque();
   
-  public abstract List<aic> a();
+  private ExecutorService a()
+  {
+    try
+    {
+      if (this.d == null) {
+        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), aiw.a("OkHttp Dispatcher", false));
+      }
+      ExecutorService localExecutorService = this.d;
+      return localExecutorService;
+    }
+    finally {}
+  }
+  
+  private void b()
+  {
+    if (this.f.size() >= this.a) {
+      return;
+    }
+    if (this.e.isEmpty()) {
+      return;
+    }
+    Iterator localIterator = this.e.iterator();
+    while (localIterator.hasNext())
+    {
+      ain.a locala = (ain.a)localIterator.next();
+      if (c(locala) < this.b)
+      {
+        localIterator.remove();
+        this.f.add(locala);
+        a().execute(locala);
+      }
+      if (this.f.size() >= this.a) {}
+    }
+  }
+  
+  private int c()
+  {
+    try
+    {
+      int i = this.f.size();
+      int j = this.g.size();
+      return i + j;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private int c(ain.a parama)
+  {
+    Iterator localIterator = this.f.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      ain.a locala = (ain.a)localIterator.next();
+      if ((!locala.a.e) && (locala.a().equals(parama.a()))) {
+        i += 1;
+      }
+    }
+    return i;
+  }
+  
+  final void a(ain.a parama)
+  {
+    try
+    {
+      if ((this.f.size() < this.a) && (c(parama) < this.b))
+      {
+        this.f.add(parama);
+        a().execute(parama);
+        return;
+      }
+      this.e.add(parama);
+      return;
+    }
+    finally {}
+  }
+  
+  final void b(ain.a parama)
+  {
+    Deque localDeque = this.f;
+    try
+    {
+      if (localDeque.remove(parama))
+      {
+        b();
+        int i = c();
+        parama = this.c;
+        if ((i == 0) && (parama != null)) {
+          parama.run();
+        }
+        return;
+      }
+      throw new AssertionError("Call wasn't in-flight!");
+    }
+    finally {}
+  }
 }
 
 

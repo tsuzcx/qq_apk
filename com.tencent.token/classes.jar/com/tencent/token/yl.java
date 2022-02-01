@@ -1,55 +1,89 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.token.ui.IndexActivity;
+import android.app.Dialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.FacePwdIndexActivity;
+import java.util.List;
 
 public final class yl
-  extends Drawable
+  extends BaseAdapter
 {
-  public boolean a = true;
-  public ImageView b;
-  public ImageView c;
-  private Paint d;
-  private float e;
-  private float f;
+  private List<QQUser> a;
+  private Dialog b;
+  private LayoutInflater c;
+  private FacePwdIndexActivity d;
   
-  public yl(Context paramContext)
+  public yl(FacePwdIndexActivity paramFacePwdIndexActivity, Dialog paramDialog, List<QQUser> paramList)
   {
-    int i = IndexActivity.S_RES_WIDTH;
-    paramContext.getResources().getDimension(2131034278);
-    this.e = paramContext.getResources().getDimension(2131034277);
-    this.f = (IndexActivity.S_DENSITY * 3.5F);
-    this.d = new Paint();
-    this.d.setStyle(Paint.Style.FILL);
-    this.d.setColor(-1);
+    this.c = LayoutInflater.from(paramFacePwdIndexActivity);
+    this.b = paramDialog;
+    this.a = paramList;
+    this.d = paramFacePwdIndexActivity;
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int getCount()
   {
-    long l = System.currentTimeMillis() + qz.a().g();
-    float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
-    float f2 = this.e;
-    paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.f, this.d);
-    if (this.a) {
-      invalidateSelf();
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
     }
+    return localList.size();
   }
   
-  public final int getOpacity()
+  public final Object getItem(int paramInt)
   {
-    return -1;
+    return null;
   }
   
-  public final void setAlpha(int paramInt) {}
+  public final long getItemId(int paramInt)
+  {
+    return 0L;
+  }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.c.inflate(2131296333, paramViewGroup, false);
+    }
+    paramView = localView.findViewById(2131165447);
+    if (paramInt == getCount() - 1) {
+      paramView.setVisibility(4);
+    } else {
+      paramView.setVisibility(0);
+    }
+    paramView = (TextView)localView.findViewById(2131166073);
+    paramViewGroup = this.a;
+    if (paramViewGroup != null)
+    {
+      paramViewGroup = (QQUser)paramViewGroup.get(paramInt);
+      if (paramViewGroup != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramViewGroup.mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(aac.e(paramViewGroup.mRealUin));
+        localStringBuilder.append(")");
+        paramView.setText(localStringBuilder.toString());
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            aad.b(paramViewGroup.mRealUin);
+            yl.a(yl.this).dismiss();
+            yl.b(yl.this).refreshList();
+          }
+        });
+      }
+    }
+    return localView;
+  }
 }
 
 

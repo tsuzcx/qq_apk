@@ -1,43 +1,18 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 
-public final class aqa
+final class aqa
 {
-  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
-  {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    paramJceStruct.recyle();
-    paramJceStruct.readFrom(b(paramArrayOfByte));
-    return paramJceStruct;
-  }
+  public agx a = null;
+  public JceStruct b;
+  public int c = 0;
   
-  public static am a(byte[] paramArrayOfByte)
+  public aqa(int paramInt, agx paramagx, JceStruct paramJceStruct)
   {
-    paramArrayOfByte = a(paramArrayOfByte, new am());
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    return (am)paramArrayOfByte;
-  }
-  
-  public static byte[] a(JceStruct paramJceStruct)
-  {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("UTF-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
-  }
-  
-  private static JceInputStream b(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-    paramArrayOfByte.setServerEncoding("UTF-8");
-    return paramArrayOfByte;
+    this.a = paramagx;
+    this.b = paramJceStruct;
+    this.c = paramInt;
   }
 }
 

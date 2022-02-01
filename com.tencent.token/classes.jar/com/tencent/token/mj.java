@@ -1,346 +1,405 @@
 package com.tencent.token;
 
 import android.text.TextUtils;
+import com.tencent.halley.downloader.c.d.a;
+import com.tencent.halley.downloader.c.d.a.a;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class mj
 {
-  public long a = -1L;
-  public volatile long b = 0L;
-  volatile long c = 0L;
-  volatile long d = 0L;
-  String e = "";
-  public boolean f;
-  private long g = 0L;
-  private String h = "";
-  private List i;
+  public boolean a = false;
+  public a b;
+  public a c;
+  public Map d = new ConcurrentHashMap();
+  public AtomicInteger e = new AtomicInteger(0);
   
   public mj(String paramString)
   {
-    int j = 0;
-    this.f = false;
-    this.i = new LinkedList();
-    this.f = false;
-    if (!TextUtils.isEmpty(paramString)) {}
-    label260:
-    try
+    this.b = new a(paramString, a.a.b);
+    this.b.c = this.e.getAndIncrement();
+  }
+  
+  public final a a(String paramString, a parama, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    a.a locala1;
+    if (parama != null)
     {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
+      a.a locala2 = parama.b;
+      localObject1 = localObject2;
+      locala1 = locala2;
+      if (!paramBoolean2)
       {
-        if (paramString.length == 0) {
-          return;
-        }
-        if (!paramString[0].equals("3.0")) {
-          return;
-        }
-        if (paramString.length < 7) {
-          return;
-        }
-        try
+        localObject1 = localObject2;
+        locala1 = locala2;
+        if (a.b(parama.b))
         {
-          this.a = Long.parseLong(paramString[1]);
-          this.b = Long.parseLong(paramString[2]);
-          this.c = Long.parseLong(paramString[3]);
-          this.d = Long.parseLong(paramString[4]);
-          String[] arrayOfString = paramString[5].split(";");
-          int k = arrayOfString.length;
-          while (j < k)
+          a locala = (a)this.d.get(paramString);
+          localObject1 = localObject2;
+          locala1 = locala2;
+          if (locala != null)
           {
-            md localmd = new md(this, arrayOfString[j]);
-            if (localmd.b)
-            {
-              this.i.add(localmd);
-              j += 1;
-            }
-            else
-            {
-              this.i.clear();
-              return;
+            parama = locala.a(parama);
+            localObject1 = parama;
+            locala1 = locala2;
+            if (parama != null) {
+              return parama;
             }
           }
-          if (paramString.length != 9) {
-            break label260;
-          }
-          a(paramString[7]);
-          b(paramString[8]);
         }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          li.a("TaskDivider", "parseLong for totalLen fail.", paramString);
+      }
+    }
+    else
+    {
+      locala1 = null;
+      localObject1 = localObject2;
+    }
+    int i = a.a.a().length;
+    while ((localObject1 == null) && (i > 0))
+    {
+      locala1 = a.a(locala1, paramBoolean1);
+      if (a.a(locala1))
+      {
+        parama = (a)this.d.get(paramString);
+        if (parama != null) {
+          localObject1 = parama.a(locala1);
         }
       }
       else
       {
+        if (locala1 == a.a.g) {
+          parama = this.c;
+        } else {
+          parama = this.b;
+        }
+        localObject1 = parama;
+      }
+      i -= 1;
+    }
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = this.b;
+    }
+    return paramString;
+  }
+  
+  public final a a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    synchronized (this.d)
+    {
+      a locala2 = (a)this.d.get(paramString);
+      a locala1 = locala2;
+      if (locala2 == null)
+      {
+        locala1 = new a(paramString);
+        this.d.put(paramString, locala1);
+      }
+      return locala1;
+    }
+  }
+  
+  public final String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.b != null)
+    {
+      localStringBuilder.append("0,");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(";");
+    }
+    if (this.c != null)
+    {
+      localStringBuilder.append("1,");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(";");
+    }
+    Iterator localIterator = this.d.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (a)this.d.get(localObject);
+      if (localObject != null)
+      {
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(";");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public final void a(String paramString1, String paramString2, a.a parama)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-    }
-    catch (Exception paramString) {}
-    this.g = c();
-    this.f = true;
-    return;
-  }
-  
-  public final md a()
-  {
-    label238:
-    label244:
-    label250:
-    for (;;)
-    {
-      synchronized (this.i)
-      {
-        md localmd1;
-        if (this.i.size() == 0)
-        {
-          localmd1 = new md(this, 0L, 0L, 0L, -1L);
-        }
-        else
-        {
-          md localmd2 = (md)this.i.get(0);
-          Iterator localIterator = this.i.iterator();
-          if (!localIterator.hasNext()) {
-            break label238;
-          }
-          localmd1 = (md)localIterator.next();
-          if ((localmd1.i) || (localmd1.a(this.a) <= 0L))
-          {
-            if (localmd1.a(this.a) <= localmd2.a(this.a)) {
-              continue;
-            }
-            localmd2 = localmd1;
-            continue;
-          }
-          if (localmd1 != null) {
-            break label250;
-          }
-          long l1 = localmd2.a(this.a);
-          long l2 = localmd2.g;
-          if (l1 <= ky.e() << 1) {
-            break label244;
-          }
-          l1 = l2 + l1 / 2L;
-          localmd1 = new md(this, l1, l1, l1, localmd2.h);
-          localmd1.d = localmd2.c;
-        }
-        if (localmd1 != null) {
-          localmd1.i = true;
-        }
-        return localmd1;
+      paramString1 = a(paramString1);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, parama);
       }
-      Object localObject2 = null;
-      continue;
-      localObject2 = null;
     }
   }
   
-  public final md a(int paramInt)
+  public final class a
   {
-    synchronized (this.i)
+    public List a;
+    public boolean b = false;
+    private String c;
+    private List d;
+    private List e;
+    private List f;
+    private a g;
+    private List h;
+    private a i;
+    
+    public a(String paramString)
+    {
+      this.c = paramString;
+    }
+    
+    private static void a(StringBuilder paramStringBuilder, List paramList)
+    {
+      if (paramList != null)
+      {
+        if (paramList != null) {}
+        try
+        {
+          if (paramList.size() > 0)
+          {
+            Iterator localIterator = paramList.iterator();
+            while (localIterator.hasNext())
+            {
+              a locala = (a)localIterator.next();
+              if (locala != null)
+              {
+                paramStringBuilder.append(locala);
+                paramStringBuilder.append(",");
+              }
+            }
+          }
+          return;
+        }
+        finally {}
+      }
+    }
+    
+    private List b(a.a parama)
+    {
+      if (parama == a.a.c) {
+        return this.d;
+      }
+      if (parama == a.a.e) {
+        return this.a;
+      }
+      if (parama == a.a.f) {
+        return this.e;
+      }
+      if (parama == a.a.j) {
+        return this.f;
+      }
+      if (parama == a.a.h) {
+        return this.h;
+      }
+      return null;
+    }
+    
+    public final a a(a.a parama)
     {
       try
       {
-        md localmd = (md)this.i.get(paramInt);
-        if (localmd != null) {
-          return localmd;
+        if (parama == a.a.d)
+        {
+          parama = this.g;
+          return parama;
         }
-      }
-      catch (Exception localException)
-      {
-        li.a("TaskDivider", localException);
-        ??? = new StringBuilder("getSection fail. sectionId:");
-        ((StringBuilder)???).append(paramInt);
-        ((StringBuilder)???).append(", divider:");
-        ((StringBuilder)???).append(b());
-        li.d("TaskDivider", ((StringBuilder)???).toString());
+        if (parama == a.a.i)
+        {
+          parama = this.i;
+          return parama;
+        }
+        if (a.b(parama))
+        {
+          parama = b(parama);
+          if (parama != null)
+          {
+            parama = (a)parama.get(0);
+            return parama;
+          }
+        }
         return null;
       }
-      throw localException;
+      finally {}
     }
-  }
-  
-  public final void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
-    for (paramString = paramString.replace("|", "");; paramString = "")
+    
+    public final a a(a parama)
     {
-      this.h = paramString;
-      return;
-    }
-  }
-  
-  public final boolean a(md parammd)
-  {
-    if (parammd.c == -1) {}
-    for (;;)
-    {
-      md localmd;
-      synchronized (this.i)
+      if (parama == null) {
+        return null;
+      }
+      try
       {
-        if (parammd.d == -1)
+        List localList = b(parama.b);
+        if (localList != null)
         {
-          if (this.i.size() != 0)
+          int k = 0;
+          while (k < localList.size())
           {
-            li.c("TaskDivider", "first section, list size should be 0!!!");
+            if (parama == localList.get(k))
+            {
+              int m = localList.size();
+              if (k == m - 1) {
+                return null;
+              }
+              parama = (a)localList.get(k + 1);
+              return parama;
+            }
+            k += 1;
           }
-          else
-          {
-            parammd.c = 0;
-            parammd.h = this.a;
-            this.i.add(parammd);
-            return true;
+        }
+        return null;
+      }
+      finally {}
+    }
+    
+    public final void a(String paramString)
+    {
+      try
+      {
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        if (this.g == null)
+        {
+          this.g = new a(paramString, a.a.d);
+          this.g.c = mj.this.e.getAndIncrement();
+          return;
+        }
+        this.g.a = paramString;
+        return;
+      }
+      finally {}
+    }
+    
+    public final void a(String paramString, a.a parama)
+    {
+      try
+      {
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        List localList;
+        if (parama == a.a.c)
+        {
+          if (this.d == null) {
+            this.d = new ArrayList();
           }
+          localList = this.d;
+        }
+        else if (parama == a.a.e)
+        {
+          if (this.a == null) {
+            this.a = new ArrayList();
+          }
+          localList = this.a;
+        }
+        else if (parama == a.a.f)
+        {
+          if (this.e == null) {
+            this.e = new ArrayList();
+          }
+          localList = this.e;
+        }
+        else if (parama == a.a.j)
+        {
+          if (this.f == null) {
+            this.f = new ArrayList();
+          }
+          localList = this.f;
         }
         else
         {
-          if (parammd.d < this.i.size()) {
-            continue;
+          if (parama != a.a.h) {
+            break label261;
           }
-          localObject = new StringBuilder("parent id:");
-          ((StringBuilder)localObject).append(parammd.d);
-          ((StringBuilder)localObject).append(" wrong!!!");
-          li.d("TaskDivider", ((StringBuilder)localObject).toString());
+          if (this.h == null) {
+            this.h = new ArrayList();
+          }
+          localList = this.h;
         }
-        return false;
-        localObject = null;
-        Iterator localIterator = this.i.iterator();
-        if (localIterator.hasNext())
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext())
         {
-          localmd = (md)localIterator.next();
-          if (localmd.c == parammd.d)
-          {
-            if (localmd.g >= localmd.h) {
-              return false;
-            }
-            if (localmd.g + ky.e() <= parammd.e) {
-              break label334;
-            }
-            return false;
+          bool = paramString.equalsIgnoreCase(((a)localIterator.next()).a);
+          if (bool) {
+            return;
           }
-          if ((localmd.h <= parammd.e) || (localmd.e >= parammd.h)) {
-            continue;
-          }
-          return false;
         }
-        if (localObject == null) {
-          return false;
-        }
-        parammd.c = this.i.size();
-        ((md)localObject).h = parammd.e;
-        this.i.add(parammd);
-        return true;
+        paramString = new a(paramString, parama);
+        paramString.c = mj.this.e.getAndIncrement();
+        localList.add(paramString);
+        return;
+        label261:
+        return;
       }
-      Object localObject = new StringBuilder("addRealSection of id ");
-      ((StringBuilder)localObject).append(parammd.c);
-      ((StringBuilder)localObject).append(" should not happen!!!");
-      li.d("TaskDivider", ((StringBuilder)localObject).toString());
-      return false;
-      label334:
-      localObject = localmd;
+      finally {}
     }
-  }
-  
-  public final String b()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder("3.0");
-    localStringBuilder1.append("|");
-    localStringBuilder1.append(this.a);
-    localStringBuilder1.append("|");
-    localStringBuilder1.append(this.b);
-    localStringBuilder1.append("|");
-    localStringBuilder1.append(this.c);
-    localStringBuilder1.append("|");
-    localStringBuilder1.append(this.d);
-    localStringBuilder1.append("|");
-    synchronized (this.i)
+    
+    public final void b(String paramString)
     {
-      Iterator localIterator = this.i.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        md localmd = (md)localIterator.next();
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append(localmd.c);
-        localStringBuilder2.append(md.a);
-        localStringBuilder2.append(localmd.d);
-        localStringBuilder2.append(md.a);
-        localStringBuilder2.append(localmd.e);
-        localStringBuilder2.append(md.a);
-        localStringBuilder2.append(localmd.f);
-        localStringBuilder2.append(md.a);
-        localStringBuilder2.append(localmd.h);
-        localStringBuilder1.append(localStringBuilder2.toString());
-        localStringBuilder1.append(";");
+        boolean bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          return;
+        }
+        if (this.i == null)
+        {
+          this.i = new a(paramString, a.a.i);
+          this.i.c = mj.this.e.getAndIncrement();
+          return;
+        }
+        this.i.a = paramString;
+        return;
       }
-      if (this.i.size() > 0) {
-        localStringBuilder1.deleteCharAt(localStringBuilder1.length() - 1);
-      }
-      localStringBuilder1.append("|");
-      localStringBuilder1.append("null");
-      localStringBuilder1.append("|");
-      if (TextUtils.isEmpty(this.h)) {
-        ??? = "null";
-      } else {
-        ??? = this.h;
-      }
-      localStringBuilder1.append((String)???);
-      localStringBuilder1.append("|");
-      if (TextUtils.isEmpty(this.e)) {
-        ??? = "null";
-      } else {
-        ??? = this.e;
-      }
-      localStringBuilder1.append((String)???);
-      return localStringBuilder1.toString();
+      finally {}
     }
-  }
-  
-  public final void b(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
-    for (paramString = paramString.replace("|", "");; paramString = "")
+    
+    public final String toString()
     {
-      this.e = paramString;
-      return;
-    }
-  }
-  
-  final long c()
-  {
-    synchronized (this.i)
-    {
-      Iterator localIterator = this.i.iterator();
-      md localmd;
-      for (long l = 0L; localIterator.hasNext(); l += localmd.f - localmd.e) {
-        localmd = (md)localIterator.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(lq.b(this.c));
+      localStringBuilder.append(",");
+      a(localStringBuilder, this.d);
+      a(localStringBuilder, this.a);
+      a(localStringBuilder, this.e);
+      a(localStringBuilder, this.f);
+      a locala = this.g;
+      if (locala != null)
+      {
+        localStringBuilder.append(locala);
+        localStringBuilder.append(",");
       }
-      return l;
-    }
-  }
-  
-  public final long d()
-  {
-    synchronized (this.i)
-    {
-      Iterator localIterator = this.i.iterator();
-      md localmd;
-      for (long l = 0L; localIterator.hasNext(); l += localmd.g - localmd.e) {
-        localmd = (md)localIterator.next();
+      a(localStringBuilder, this.h);
+      locala = this.i;
+      if (locala != null) {
+        localStringBuilder.append(locala);
       }
-      return l;
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      return localStringBuilder.toString();
     }
-  }
-  
-  public final long e()
-  {
-    return c() - this.g;
-  }
-  
-  public final String toString()
-  {
-    return b();
   }
 }
 

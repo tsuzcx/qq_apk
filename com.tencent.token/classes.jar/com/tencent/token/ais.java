@@ -1,38 +1,64 @@
 package com.tencent.token;
 
-import java.io.Closeable;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+import javax.annotation.Nullable;
 
-public abstract class ais
-  implements Closeable
+public final class ais
 {
-  public static ais a(byte[] paramArrayOfByte)
+  public final ahr a;
+  public final Proxy b;
+  public final InetSocketAddress c;
+  
+  public ais(ahr paramahr, Proxy paramProxy, InetSocketAddress paramInetSocketAddress)
   {
-    akz localakz = new akz().b(paramArrayOfByte);
-    long l = paramArrayOfByte.length;
-    if (localakz != null) {
-      new ais()
+    if (paramahr != null)
+    {
+      if (paramProxy != null)
       {
-        public final long a()
+        if (paramInetSocketAddress != null)
         {
-          return this.b;
+          this.a = paramahr;
+          this.b = paramProxy;
+          this.c = paramInetSocketAddress;
+          return;
         }
-        
-        public final alb b()
-        {
-          return this.c;
-        }
-      };
+        throw new NullPointerException("inetSocketAddress == null");
+      }
+      throw new NullPointerException("proxy == null");
     }
-    throw new NullPointerException("source == null");
+    throw new NullPointerException("address == null");
   }
   
-  public abstract long a();
-  
-  public abstract alb b();
-  
-  public void close()
+  public final boolean a()
   {
-    aix.a(b());
+    return (this.a.i != null) && (this.b.type() == Proxy.Type.HTTP);
+  }
+  
+  public final boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof ais))
+    {
+      paramObject = (ais)paramObject;
+      if ((paramObject.a.equals(this.a)) && (paramObject.b.equals(this.b)) && (paramObject.c.equals(this.c))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return ((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode();
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Route{");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

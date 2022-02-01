@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class DeterminVerifyFactorsResult
     this.mVerifyTypeList = new ArrayList();
     Object localObject = new StringBuilder("DeterminVerifyFactorsResult jsonObject=");
     ((StringBuilder)localObject).append(paramJSONObject.toString());
-    xb.a(((StringBuilder)localObject).toString());
+    xa.a(((StringBuilder)localObject).toString());
     s_SourceId = 0;
     this.mCanVerify = paramJSONObject.getInt("can_verify");
     this.mScene = paramJSONObject.optInt("scene");

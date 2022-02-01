@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Fig
   extends break
@@ -10,18 +10,18 @@ public final class Fig
   public long nc = 0L;
   public int oc = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.mc = paramafl.a(this.mc, 0, true);
-    this.nc = paramafl.a(this.nc, 1, true);
-    this.oc = paramafl.a(this.oc, 2, true);
+    this.mc = paramafk.a(this.mc, 0, true);
+    this.nc = paramafk.a(this.nc, 1, true);
+    this.oc = paramafk.a(this.oc, 2, true);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.mc, 0);
-    paramafo.a(this.nc, 1);
-    paramafo.a(this.oc, 2);
+    paramafn.a(this.mc, 0);
+    paramafn.a(this.nc, 1);
+    paramafn.a(this.oc, 2);
   }
 }
 

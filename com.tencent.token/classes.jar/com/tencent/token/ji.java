@@ -1,177 +1,155 @@
 package com.tencent.token;
 
+import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.MotionEvent;
+import android.content.ContextWrapper;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnHoverListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewConfiguration;
-import android.view.accessibility.AccessibilityManager;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
 
 final class ji
-  implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
 {
-  private static ji i;
-  private static ji j;
-  private final View a;
-  private final CharSequence b;
-  private final Runnable c = new Runnable()
-  {
-    public final void run()
-    {
-      ji.a(ji.this);
-    }
-  };
-  private final Runnable d = new Runnable()
-  {
-    public final void run()
-    {
-      ji.b(ji.this);
-    }
-  };
-  private int e;
-  private int f;
-  private jj g;
-  private boolean h;
+  private final Context a;
+  private final View b;
+  private final TextView c;
+  private final WindowManager.LayoutParams d = new WindowManager.LayoutParams();
+  private final Rect e = new Rect();
+  private final int[] f = new int[2];
+  private final int[] g = new int[2];
   
-  private ji(View paramView, CharSequence paramCharSequence)
+  ji(Context paramContext)
   {
-    this.a = paramView;
-    this.b = paramCharSequence;
-    this.a.setOnLongClickListener(this);
-    this.a.setOnHoverListener(this);
+    this.a = paramContext;
+    this.b = LayoutInflater.from(this.a).inflate(go.g.abc_tooltip, null);
+    this.c = ((TextView)this.b.findViewById(go.f.message));
+    this.d.setTitle(getClass().getSimpleName());
+    this.d.packageName = this.a.getPackageName();
+    paramContext = this.d;
+    paramContext.type = 1002;
+    paramContext.width = -2;
+    paramContext.height = -2;
+    paramContext.format = -3;
+    paramContext.windowAnimations = go.i.Animation_AppCompat_Tooltip;
+    this.d.flags = 24;
   }
   
-  private void a()
+  private static View a(View paramView)
   {
-    if (j == this)
-    {
-      j = null;
-      jj localjj = this.g;
-      if (localjj != null)
-      {
-        localjj.a();
-        this.g = null;
-        this.a.removeOnAttachStateChangeListener(this);
+    View localView = paramView.getRootView();
+    ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
+    if (((localLayoutParams instanceof WindowManager.LayoutParams)) && (((WindowManager.LayoutParams)localLayoutParams).type == 2)) {
+      return localView;
+    }
+    for (paramView = paramView.getContext(); (paramView instanceof ContextWrapper); paramView = ((ContextWrapper)paramView).getBaseContext()) {
+      if ((paramView instanceof Activity)) {
+        return ((Activity)paramView).getWindow().getDecorView();
       }
     }
-    if (i == this) {
-      c(null);
-    }
-    this.a.removeCallbacks(this.d);
+    return localView;
   }
   
-  public static void a(View paramView, CharSequence paramCharSequence)
+  private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
   {
-    ji localji = i;
-    if ((localji != null) && (localji.a == paramView)) {
-      c(null);
+    paramLayoutParams.token = paramView.getApplicationWindowToken();
+    int i = this.a.getResources().getDimensionPixelOffset(go.d.tooltip_precise_anchor_threshold);
+    if (paramView.getWidth() < i) {
+      paramInt1 = paramView.getWidth() / 2;
     }
-    if (TextUtils.isEmpty(paramCharSequence))
+    if (paramView.getHeight() >= i)
     {
-      paramCharSequence = j;
-      if ((paramCharSequence != null) && (paramCharSequence.a == paramView)) {
-        paramCharSequence.a();
-      }
-      paramView.setOnLongClickListener(null);
-      paramView.setLongClickable(false);
-      paramView.setOnHoverListener(null);
-      return;
+      j = this.a.getResources().getDimensionPixelOffset(go.d.tooltip_precise_anchor_extra_offset);
+      i = paramInt2 + j;
+      j = paramInt2 - j;
+      paramInt2 = i;
+      i = j;
     }
-    new ji(paramView, paramCharSequence);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (!ex.s(this.a)) {
-      return;
+    else
+    {
+      paramInt2 = paramView.getHeight();
+      i = 0;
     }
-    c(null);
-    ji localji = j;
-    if (localji != null) {
-      localji.a();
-    }
-    j = this;
-    this.h = paramBoolean;
-    this.g = new jj(this.a.getContext());
-    this.g.a(this.a, this.e, this.f, this.h, this.b);
-    this.a.addOnAttachStateChangeListener(this);
-    long l;
-    if (this.h) {
-      l = 2500L;
-    } else if ((ex.i(this.a) & 0x1) == 1) {
-      l = 3000L - ViewConfiguration.getLongPressTimeout();
+    paramLayoutParams.gravity = 49;
+    Object localObject1 = this.a.getResources();
+    if (paramBoolean) {
+      j = go.d.tooltip_y_offset_touch;
     } else {
-      l = 15000L - ViewConfiguration.getLongPressTimeout();
+      j = go.d.tooltip_y_offset_non_touch;
     }
-    this.a.removeCallbacks(this.d);
-    this.a.postDelayed(this.d, l);
-  }
-  
-  private void b()
-  {
-    this.a.postDelayed(this.c, ViewConfiguration.getLongPressTimeout());
-  }
-  
-  private void c()
-  {
-    this.a.removeCallbacks(this.c);
-  }
-  
-  private static void c(ji paramji)
-  {
-    ji localji = i;
-    if (localji != null) {
-      localji.c();
+    int k = ((Resources)localObject1).getDimensionPixelOffset(j);
+    localObject1 = a(paramView);
+    if (localObject1 == null) {
+      return;
     }
-    i = paramji;
-    if (paramji != null) {
-      i.b();
-    }
-  }
-  
-  public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((this.g != null) && (this.h)) {
-      return false;
-    }
-    paramView = (AccessibilityManager)this.a.getContext().getSystemService("accessibility");
-    if ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled())) {
-      return false;
-    }
-    int k = paramMotionEvent.getAction();
-    if (k != 7)
+    ((View)localObject1).getWindowVisibleDisplayFrame(this.e);
+    if ((this.e.left < 0) && (this.e.top < 0))
     {
-      if (k != 10) {
-        return false;
+      localObject2 = this.a.getResources();
+      j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
+      if (j != 0) {
+        j = ((Resources)localObject2).getDimensionPixelSize(j);
+      } else {
+        j = 0;
       }
-      a();
-      return false;
+      localObject2 = ((Resources)localObject2).getDisplayMetrics();
+      this.e.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
     }
-    if ((this.a.isEnabled()) && (this.g == null))
+    ((View)localObject1).getLocationOnScreen(this.g);
+    paramView.getLocationOnScreen(this.f);
+    paramView = this.f;
+    int j = paramView[0];
+    Object localObject2 = this.g;
+    paramView[0] = (j - localObject2[0]);
+    paramView[1] -= localObject2[1];
+    paramLayoutParams.x = (paramView[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+    paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.b.measure(paramInt1, paramInt1);
+    paramInt1 = this.b.getMeasuredHeight();
+    paramView = this.f;
+    i = paramView[1] + i - k - paramInt1;
+    paramInt2 = paramView[1] + paramInt2 + k;
+    if (paramBoolean)
     {
-      this.e = ((int)paramMotionEvent.getX());
-      this.f = ((int)paramMotionEvent.getY());
-      c(this);
+      if (i < 0) {
+        paramLayoutParams.y = paramInt2;
+      }
     }
-    return false;
+    else if (paramInt1 + paramInt2 <= this.e.height())
+    {
+      paramLayoutParams.y = paramInt2;
+      return;
+    }
+    paramLayoutParams.y = i;
   }
   
-  public final boolean onLongClick(View paramView)
+  private boolean b()
   {
-    this.e = (paramView.getWidth() / 2);
-    this.f = (paramView.getHeight() / 2);
-    a(true);
-    return true;
+    return this.b.getParent() != null;
   }
   
-  public final void onViewAttachedToWindow(View paramView) {}
-  
-  public final void onViewDetachedFromWindow(View paramView)
+  final void a()
   {
-    a();
+    if (!b()) {
+      return;
+    }
+    ((WindowManager)this.a.getSystemService("window")).removeView(this.b);
+  }
+  
+  final void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, CharSequence paramCharSequence)
+  {
+    if (b()) {
+      a();
+    }
+    this.c.setText(paramCharSequence);
+    a(paramView, paramInt1, paramInt2, paramBoolean, this.d);
+    ((WindowManager)this.a.getSystemService("window")).addView(this.b, this.d);
   }
 }
 

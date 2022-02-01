@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceStruct;
 
 public abstract interface asm
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, JceStruct paramJceStruct);
+  public abstract asn<Long, Integer, JceStruct> a(long paramLong, int paramInt, JceStruct paramJceStruct);
 }
 
 

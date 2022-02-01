@@ -1,56 +1,60 @@
 package com.tencent.token;
 
-import android.database.Cursor;
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-final class fr
-  extends Filter
+public final class fr<T>
 {
-  a a;
+  public final ed.a<ArrayList<T>> a = new ed.b(10);
+  public final ef<T, ArrayList<T>> b = new ef();
+  private final ArrayList<T> c = new ArrayList();
+  private final HashSet<T> d = new HashSet();
   
-  fr(a parama)
+  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    this.a = parama;
-  }
-  
-  public final CharSequence convertResultToString(Object paramObject)
-  {
-    return this.a.b((Cursor)paramObject);
-  }
-  
-  protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
-  {
-    paramCharSequence = this.a.a(paramCharSequence);
-    Filter.FilterResults localFilterResults = new Filter.FilterResults();
-    if (paramCharSequence != null)
+    if (paramArrayList.contains(paramT)) {
+      return;
+    }
+    if (!paramHashSet.contains(paramT))
     {
-      localFilterResults.count = paramCharSequence.getCount();
-      localFilterResults.values = paramCharSequence;
-      return localFilterResults;
+      paramHashSet.add(paramT);
+      ArrayList localArrayList = (ArrayList)this.b.get(paramT);
+      if (localArrayList != null)
+      {
+        int i = 0;
+        int j = localArrayList.size();
+        while (i < j)
+        {
+          a(localArrayList.get(i), paramArrayList, paramHashSet);
+          i += 1;
+        }
+      }
+      paramHashSet.remove(paramT);
+      paramArrayList.add(paramT);
+      return;
     }
-    localFilterResults.count = 0;
-    localFilterResults.values = null;
-    return localFilterResults;
+    throw new RuntimeException("This graph contains cyclic dependencies");
   }
   
-  protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  public final ArrayList<T> a()
   {
-    paramCharSequence = this.a.a();
-    if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
-      this.a.a((Cursor)paramFilterResults.values);
+    this.c.clear();
+    this.d.clear();
+    int j = this.b.size();
+    int i = 0;
+    while (i < j)
+    {
+      a(this.b.b(i), this.c, this.d);
+      i += 1;
     }
+    return this.c;
   }
   
-  static abstract interface a
+  public final void a(T paramT)
   {
-    public abstract Cursor a();
-    
-    public abstract Cursor a(CharSequence paramCharSequence);
-    
-    public abstract void a(Cursor paramCursor);
-    
-    public abstract CharSequence b(Cursor paramCursor);
+    if (!this.b.containsKey(paramT)) {
+      this.b.put(paramT, null);
+    }
   }
 }
 

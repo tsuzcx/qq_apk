@@ -1,31 +1,37 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import java.util.ArrayList;
+import com.tencent.token.ui.LoginMsgReportLocationActivity;
 
 public final class ya
   extends BaseAdapter
 {
-  private Context a;
-  private ArrayList<sk> b;
-  private int c = 0;
+  public int a = -1;
+  private LayoutInflater b;
+  private int c;
+  private String[] d;
+  private LoginMsgReportLocationActivity e;
   
-  public ya(Context paramContext, ArrayList<sk> paramArrayList)
+  public ya(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity)
   {
-    this.a = paramContext;
-    this.b = paramArrayList;
+    this.e = paramLoginMsgReportLocationActivity;
+    this.b = LayoutInflater.from(paramLoginMsgReportLocationActivity);
+    this.c = rs.a().d.length;
+    this.d = rs.a().c;
+    this.e.checkMenuBtnEnable(this.a);
   }
   
   public final int getCount()
   {
-    return this.b.size();
+    return this.c;
   }
   
   public final Object getItem(int paramInt)
@@ -38,16 +44,16 @@ public final class ya
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null)
     {
-      paramView = new a();
-      paramViewGroup = LayoutInflater.from(this.a).inflate(2131296360, paramViewGroup, false);
-      paramView.d = paramViewGroup.findViewById(2131165615);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131166166));
-      paramView.b = ((ImageView)paramViewGroup.findViewById(2131165613));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131165614));
+      paramViewGroup = this.b.inflate(2131296370, null);
+      paramView = new a((byte)0);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131165276));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131165767));
+      paramView.c = ((RelativeLayout)paramViewGroup.findViewById(2131165768));
+      paramView.d = ((ImageView)paramViewGroup.findViewById(2131165972));
       paramViewGroup.setTag(paramView);
     }
     else
@@ -56,36 +62,52 @@ public final class ya
       paramViewGroup = paramView;
       paramView = (View)localObject;
     }
-    Object localObject = (sk)this.b.get(paramInt);
-    if ((localObject != null) && (((sk)localObject).e))
-    {
-      if (!TextUtils.isEmpty(((sk)localObject).c)) {
-        paramView.a.setText(((sk)localObject).c);
-      }
-      paramView.d.setOnClickListener(((sk)localObject).a);
-      if (((sk)localObject).b > 0) {
-        paramView.b.setImageResource(((sk)localObject).b);
-      } else {
-        new zt(paramView.b).execute(new String[] { ((sk)localObject).f });
-      }
-      if (((sk)localObject).d)
-      {
-        paramView.c.setVisibility(0);
-        return paramViewGroup;
-      }
-      paramView.c.setVisibility(4);
+    if (paramInt >= this.d.length) {
+      return paramViewGroup;
     }
+    paramView.b.setText(this.d[paramInt]);
+    paramView.a.setVisibility(8);
+    Object localObject = rs.a().f;
+    int[] arrayOfInt = rs.a().g;
+    int i = 0;
+    while (i < arrayOfInt.length)
+    {
+      if (paramInt == arrayOfInt[i])
+      {
+        paramView.a.setVisibility(0);
+        paramView.a.setText(localObject[i]);
+        break;
+      }
+      i += 1;
+    }
+    paramView.c.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        ya.a(ya.this, paramInt);
+        ya.b(ya.this).checkMenuBtnEnable(ya.a(ya.this));
+        ya.this.notifyDataSetChanged();
+      }
+    });
+    if (this.a == paramInt)
+    {
+      paramView.d.setVisibility(0);
+      paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968691));
+      return paramViewGroup;
+    }
+    paramView.d.setVisibility(8);
+    paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968686));
     return paramViewGroup;
   }
   
   final class a
   {
     TextView a;
-    ImageView b;
-    ImageView c;
-    View d;
+    TextView b;
+    RelativeLayout c;
+    ImageView d;
     
-    a() {}
+    private a() {}
   }
 }
 

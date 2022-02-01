@@ -1,88 +1,21 @@
 package com.tencent.token;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-
-@TargetApi(11)
 public final class atb
-  extends ValueAnimator
 {
-  private boolean a = false;
-  private float b = 0.0F;
-  private float c = 1.0F;
-  private long d;
-  
-  public atb()
+  public static float a(float paramFloat)
   {
-    setFloatValues(new float[] { 0.0F, 1.0F });
-    addListener(new AnimatorListenerAdapter()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        atb.a(atb.this);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        atb.a(atb.this);
-      }
-    });
-  }
-  
-  private void a()
-  {
-    a(this.b, this.c);
-  }
-  
-  private void a(float paramFloat1, float paramFloat2)
-  {
-    float f1 = Math.min(paramFloat1, paramFloat2);
-    paramFloat1 = Math.max(paramFloat1, paramFloat2);
-    if (this.a) {
-      paramFloat2 = paramFloat1;
-    } else {
-      paramFloat2 = f1;
+    if (paramFloat <= 0.0031308F) {
+      return paramFloat * 12.92F;
     }
-    float f2;
-    if (this.a) {
-      f2 = f1;
-    } else {
-      f2 = paramFloat1;
+    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
+  }
+  
+  public static float b(float paramFloat)
+  {
+    if (paramFloat <= 0.04045F) {
+      return paramFloat / 12.92F;
     }
-    setFloatValues(new float[] { paramFloat2, f2 });
-    super.setDuration(((float)this.d * (paramFloat1 - f1)));
-  }
-  
-  public final void a(float paramFloat)
-  {
-    this.b = paramFloat;
-    a();
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    a();
-  }
-  
-  public final void b(float paramFloat)
-  {
-    this.c = paramFloat;
-    a();
-  }
-  
-  public final long getDuration()
-  {
-    return this.d;
-  }
-  
-  public final ValueAnimator setDuration(long paramLong)
-  {
-    this.d = paramLong;
-    a();
-    return this;
+    return (float)Math.pow((paramFloat + 0.055F) / 1.055F, 2.400000095367432D);
   }
 }
 

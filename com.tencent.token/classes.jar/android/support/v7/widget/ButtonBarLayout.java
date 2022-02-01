@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.token.ex;
-import com.tencent.token.gp.j;
+import com.tencent.token.ew;
+import com.tencent.token.go.j;
 
 public class ButtonBarLayout
   extends LinearLayout
@@ -22,8 +22,8 @@ public class ButtonBarLayout
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.ButtonBarLayout);
-    this.a = paramContext.getBoolean(gp.j.ButtonBarLayout_allowStacking, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ButtonBarLayout);
+    this.a = paramContext.getBoolean(go.j.ButtonBarLayout_allowStacking, true);
     paramContext.recycle();
   }
   
@@ -120,7 +120,7 @@ public class ButtonBarLayout
         paramInt1 += getPaddingBottom();
       }
     }
-    if (ex.e(this) != paramInt1) {
+    if (ew.e(this) != paramInt1) {
       setMinimumHeight(paramInt1);
     }
   }

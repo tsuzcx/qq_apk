@@ -25,22 +25,22 @@ import com.tencent.token.au.a;
 import com.tencent.token.aw;
 import com.tencent.token.ax;
 import com.tencent.token.bh;
-import com.tencent.token.by;
-import com.tencent.token.ca;
+import com.tencent.token.bx;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
 import com.tencent.token.cc;
-import com.tencent.token.cd;
+import com.tencent.token.co;
 import com.tencent.token.cp;
-import com.tencent.token.cq;
-import com.tencent.token.dy;
-import com.tencent.token.eg;
-import com.tencent.token.el;
+import com.tencent.token.dx;
+import com.tencent.token.ef;
+import com.tencent.token.ek;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Fragment
   implements ComponentCallbacks, View.OnCreateContextMenuListener, aw
 {
-  private static final eg<String, Class<?>> V = new eg();
+  private static final ef<String, Class<?>> V = new ef();
   static final Object a = new Object();
   public String A;
   public boolean B;
@@ -80,10 +80,10 @@ public class Fragment
   public boolean p;
   public boolean q;
   public int r;
-  public cc s;
-  public ca t;
-  public cc u;
-  public cd v;
+  public cb s;
+  public bz t;
+  public cb u;
+  public cc v;
   public bh w;
   public Fragment x;
   public int y;
@@ -111,8 +111,8 @@ public class Fragment
   {
     if (this.t != null)
     {
-      this.u = new cc();
-      this.u.a(this.t, new by()
+      this.u = new cb();
+      this.u.a(this.t, new bx()
       {
         public final Fragment a(Context paramAnonymousContext, String paramAnonymousString, Bundle paramAnonymousBundle)
         {
@@ -267,9 +267,9 @@ public class Fragment
     if (paramString.equals(this.g)) {
       return this;
     }
-    cc localcc = this.u;
-    if (localcc != null) {
-      return localcc.b(paramString);
+    cb localcb = this.u;
+    if (localcb != null) {
+      return localcb.b(paramString);
     }
     return null;
   }
@@ -318,9 +318,9 @@ public class Fragment
   public final void a(Configuration paramConfiguration)
   {
     onConfigurationChanged(paramConfiguration);
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.a(paramConfiguration);
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.a(paramConfiguration);
     }
   }
   
@@ -365,9 +365,9 @@ public class Fragment
   
   public final void a(boolean paramBoolean)
   {
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.a(paramBoolean);
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.a(paramBoolean);
     }
   }
   
@@ -391,10 +391,10 @@ public class Fragment
           bool2 = true;
         }
       }
-      cc localcc = this.u;
+      cb localcb = this.u;
       bool1 = bool2;
-      if (localcc != null) {
-        bool1 = bool2 | localcc.a(paramMenu);
+      if (localcb != null) {
+        bool1 = bool2 | localcb.a(paramMenu);
       }
     }
     return bool1;
@@ -415,10 +415,10 @@ public class Fragment
           bool2 = true;
         }
       }
-      cc localcc = this.u;
+      cb localcb = this.u;
       bool1 = bool2;
-      if (localcc != null) {
-        bool1 = bool2 | localcc.a(paramMenu, paramMenuInflater);
+      if (localcb != null) {
+        bool1 = bool2 | localcb.a(paramMenu, paramMenuInflater);
       }
     }
     return bool1;
@@ -428,8 +428,8 @@ public class Fragment
   {
     if (!this.B)
     {
-      cc localcc = this.u;
-      if ((localcc != null) && (localcc.a(paramMenuItem))) {
+      cb localcb = this.u;
+      if ((localcb != null) && (localcb.a(paramMenuItem))) {
         return true;
       }
     }
@@ -441,7 +441,7 @@ public class Fragment
     Object localObject = this.t;
     if (localObject != null)
     {
-      localObject = ((ca)localObject).c();
+      localObject = ((bz)localObject).c();
       if (this.u == null)
       {
         D();
@@ -456,7 +456,7 @@ public class Fragment
           this.u.k();
         }
       }
-      el.b((LayoutInflater)localObject, this.u);
+      ek.b((LayoutInflater)localObject, this.u);
       this.S = ((LayoutInflater)localObject);
       return this.S;
     }
@@ -470,9 +470,9 @@ public class Fragment
   
   public final void b(Bundle paramBundle)
   {
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.j();
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.j();
     }
     this.b = 1;
     int i1 = 0;
@@ -498,25 +498,25 @@ public class Fragment
     paramBundle = new StringBuilder("Fragment ");
     paramBundle.append(this);
     paramBundle.append(" did not call through to super.onCreate()");
-    throw new cq(paramBundle.toString());
+    throw new cp(paramBundle.toString());
   }
   
   public final void b(Menu paramMenu)
   {
     if (!this.B)
     {
-      cc localcc = this.u;
-      if (localcc != null) {
-        localcc.b(paramMenu);
+      cb localcb = this.u;
+      if (localcb != null) {
+        localcb.b(paramMenu);
       }
     }
   }
   
   public final void b(boolean paramBoolean)
   {
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.b(paramBoolean);
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.b(paramBoolean);
     }
   }
   
@@ -524,8 +524,8 @@ public class Fragment
   {
     if (!this.B)
     {
-      cc localcc = this.u;
-      if ((localcc != null) && (localcc.b(paramMenuItem))) {
+      cb localcb = this.u;
+      if ((localcb != null) && (localcb.b(paramMenuItem))) {
         return true;
       }
     }
@@ -539,7 +539,7 @@ public class Fragment
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((ca)localObject).b;
+      localObject = ((bz)localObject).b;
     }
     if (localObject != null)
     {
@@ -553,7 +553,7 @@ public class Fragment
     Object localObject = this.u;
     if (localObject != null)
     {
-      localObject = ((cc)localObject).i();
+      localObject = ((cb)localObject).i();
       if (localObject != null) {
         paramBundle.putParcelable("android:support:fragments", (Parcelable)localObject);
       }
@@ -663,8 +663,8 @@ public class Fragment
   
   public final void l()
   {
-    cc localcc = this.s;
-    if ((localcc != null) && (localcc.m != null))
+    cb localcb = this.s;
+    if ((localcb != null) && (localcb.m != null))
     {
       if (Looper.myLooper() != this.s.m.d.getLooper())
       {
@@ -685,9 +685,9 @@ public class Fragment
   
   public final View m()
   {
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.j();
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.j();
     }
     this.q = true;
     return null;
@@ -697,7 +697,7 @@ public class Fragment
   {
     Object localObject = this.u;
     if (localObject != null) {
-      ((cc)localObject).j();
+      ((cb)localObject).j();
     }
     this.b = 2;
     this.H = false;
@@ -706,14 +706,14 @@ public class Fragment
     {
       localObject = this.u;
       if (localObject != null) {
-        ((cc)localObject).l();
+        ((cb)localObject).l();
       }
       return;
     }
     localObject = new StringBuilder("Fragment ");
     ((StringBuilder)localObject).append(this);
     ((StringBuilder)localObject).append(" did not call through to super.onActivityCreated()");
-    throw new cq(((StringBuilder)localObject).toString());
+    throw new cp(((StringBuilder)localObject).toString());
   }
   
   public final void o()
@@ -721,7 +721,7 @@ public class Fragment
     Object localObject = this.u;
     if (localObject != null)
     {
-      ((cc)localObject).j();
+      ((cb)localObject).j();
       this.u.h();
     }
     this.b = 4;
@@ -731,7 +731,7 @@ public class Fragment
     {
       localObject = this.u;
       if (localObject != null) {
-        ((cc)localObject).m();
+        ((cb)localObject).m();
       }
       this.U.a(au.a.ON_START);
       return;
@@ -739,7 +739,7 @@ public class Fragment
     localObject = new StringBuilder("Fragment ");
     ((StringBuilder)localObject).append(this);
     ((StringBuilder)localObject).append(" did not call through to super.onStart()");
-    throw new cq(((StringBuilder)localObject).toString());
+    throw new cp(((StringBuilder)localObject).toString());
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -753,7 +753,7 @@ public class Fragment
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = (FragmentActivity)((ca)localObject).b;
+      localObject = (FragmentActivity)((bz)localObject).b;
     }
     ((FragmentActivity)localObject).onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
   }
@@ -768,7 +768,7 @@ public class Fragment
     Object localObject = this.u;
     if (localObject != null)
     {
-      ((cc)localObject).j();
+      ((cb)localObject).j();
       this.u.h();
     }
     this.b = 5;
@@ -779,7 +779,7 @@ public class Fragment
       localObject = this.u;
       if (localObject != null)
       {
-        ((cc)localObject).n();
+        ((cb)localObject).n();
         this.u.h();
       }
       this.U.a(au.a.ON_RESUME);
@@ -788,23 +788,23 @@ public class Fragment
     localObject = new StringBuilder("Fragment ");
     ((StringBuilder)localObject).append(this);
     ((StringBuilder)localObject).append(" did not call through to super.onResume()");
-    throw new cq(((StringBuilder)localObject).toString());
+    throw new cp(((StringBuilder)localObject).toString());
   }
   
   public final void q()
   {
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.j();
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.j();
     }
   }
   
   public final void r()
   {
     onLowMemory();
-    cc localcc = this.u;
-    if (localcc != null) {
-      localcc.q();
+    cb localcb = this.u;
+    if (localcb != null) {
+      localcb.q();
     }
   }
   
@@ -829,7 +829,7 @@ public class Fragment
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    dy.a(this, localStringBuilder);
+    dx.a(this, localStringBuilder);
     if (this.f >= 0)
     {
       localStringBuilder.append(" #");
@@ -858,7 +858,7 @@ public class Fragment
     return locala.f;
   }
   
-  public final cp v()
+  public final co v()
   {
     a locala = this.O;
     if (locala == null) {
@@ -867,7 +867,7 @@ public class Fragment
     return locala.o;
   }
   
-  public final cp w()
+  public final co w()
   {
     a locala = this.O;
     if (locala == null) {
@@ -941,8 +941,8 @@ public class Fragment
     Object l = Fragment.a;
     Boolean m;
     Boolean n;
-    cp o = null;
-    cp p = null;
+    co o = null;
+    co p = null;
     boolean q;
     Fragment.c r;
     boolean s;

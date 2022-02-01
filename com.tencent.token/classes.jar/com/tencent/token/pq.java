@@ -1,90 +1,51 @@
 package com.tencent.token;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
 
-public final class pq
+final class pq
 {
-  private static int a = 6;
-  private static PrintStream b;
-  private static byte[] c;
-  private static final String d;
+  private static final SimpleDateFormat a = new SimpleDateFormat("MM-dd HH:mm:ss SSS");
+  private static final byte[] b = { 4, 0, 0, 0, -1, -1, -1, 0 };
   
-  static
+  public static void a(PrintStream paramPrintStream, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder("VERSION.RELEASE:[");
-    localStringBuilder2.append(Build.VERSION.RELEASE);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] VERSION.CODENAME:[");
-    localStringBuilder2.append(Build.VERSION.CODENAME);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] VERSION.INCREMENTAL:[");
-    localStringBuilder2.append(Build.VERSION.INCREMENTAL);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] BOARD:[");
-    localStringBuilder2.append(Build.BOARD);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] DEVICE:[");
-    localStringBuilder2.append(Build.DEVICE);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] DISPLAY:[");
-    localStringBuilder2.append(Build.DISPLAY);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] FINGERPRINT:[");
-    localStringBuilder2.append(Build.FINGERPRINT);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] HOST:[");
-    localStringBuilder2.append(Build.HOST);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] MANUFACTURER:[");
-    localStringBuilder2.append(Build.MANUFACTURER);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] MODEL:[");
-    localStringBuilder2.append(Build.MODEL);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] PRODUCT:[");
-    localStringBuilder2.append(Build.PRODUCT);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] TAGS:[");
-    localStringBuilder2.append(Build.TAGS);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] TYPE:[");
-    localStringBuilder2.append(Build.TYPE);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder("] USER:[");
-    localStringBuilder2.append(Build.USER);
-    localStringBuilder2.append("]");
-    localStringBuilder1.append(localStringBuilder2.toString());
-    d = localStringBuilder1.toString();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (a <= 4) {
-      pr.a(b, c, "E/".concat(String.valueOf(paramString1)), paramString2);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if (a <= 2) {
-      pr.a(b, c, "I/".concat(String.valueOf(paramString1)), paramString2);
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if (a <= 1) {
-      pr.a(b, c, "D/".concat(String.valueOf(paramString1)), paramString2);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if (a <= 0) {
-      pr.a(b, c, "V/".concat(String.valueOf(paramString1)), paramString2);
+    if ((paramPrintStream != null) && (!px.a(paramArrayOfByte)) && (!px.b(paramString1)))
+    {
+      if (px.b(paramString2)) {
+        return;
+      }
+      try
+      {
+        StringBuffer localStringBuffer = new StringBuffer();
+        localStringBuffer.append(a.format(Long.valueOf(System.currentTimeMillis())));
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString1);
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString2);
+        paramString1 = localStringBuffer.toString();
+        try
+        {
+          paramArrayOfByte = new DESKeySpec(paramArrayOfByte);
+          paramArrayOfByte = SecretKeyFactory.getInstance("DES").generateSecret(paramArrayOfByte);
+          paramString2 = Cipher.getInstance("DES");
+          paramString2.init(1, paramArrayOfByte);
+          paramArrayOfByte = paramString2.doFinal(paramString1.getBytes());
+          paramPrintStream.write(oc.a(paramArrayOfByte.length));
+          paramPrintStream.write(paramArrayOfByte);
+          paramPrintStream.write(b);
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+        paramPrintStream.flush();
+        return;
+      }
+      finally {}
     }
   }
 }

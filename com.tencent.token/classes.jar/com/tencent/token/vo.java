@@ -1,71 +1,39 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
+import android.graphics.Bitmap;
+import com.tencent.token.core.bean.ConfigResult;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vo
-  extends tk
+  extends tj
 {
-  private long d;
-  private int e;
-  private tb f;
+  private ConfigResult d;
   
   public final String a()
   {
-    sa.a();
-    this.a.a(104, null, null);
-    return null;
+    ConfigResult localConfigResult = this.d;
+    if (localConfigResult == null) {
+      return null;
+    }
+    return localConfigResult.mStartUpImgUrl;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
+    this.d = ((ConfigResult)paramaaq.c.get("param.startup.img.result"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    this.d.mStartUpImg = ((Bitmap)paramJSONObject.get("startup_img"));
+    if ((this.d.mStartUpImg != null) && (this.d.mStartUpImg.getWidth() != 0) && (this.d.mStartUpImg.getHeight() != 0))
     {
-      a(i, null);
-      return;
-    }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.e)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
-        return;
-      }
-      long l = paramJSONObject.getLong("uin");
-      if (l != this.d)
-      {
-        paramJSONObject = this.a;
-        StringBuilder localStringBuilder = new StringBuilder("uin not match=");
-        localStringBuilder.append(l);
-        localStringBuilder.append(":");
-        localStringBuilder.append(this.d);
-        paramJSONObject.a(10000, localStringBuilder.toString(), null);
-        return;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("result");
-      this.f.d(paramJSONObject);
       this.a.a = 0;
+      aad.a(this.d);
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    this.a.a(10000, null, null);
   }
 }
 

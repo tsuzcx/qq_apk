@@ -1,51 +1,38 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class tu
-  extends tk
+  extends tj
 {
-  private long d;
-  private int e;
+  private String d;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
+    aac.a(new Object[] { "uin", this.d });
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramaar.c.get("param.mbinfo.id")).intValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramaaq.c.get("param.realuin"));
+    this.d = localStringBuilder.toString();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    xa.a("ProtoDelUnverifyUin:errCode".concat(String.valueOf(i)));
     if (i != 0)
     {
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (this.c != i)
-      {
-        this.a.a(10030, null, null);
-        return;
-      }
-      this.a.a = 0;
-      return;
-    }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    this.a.a = 0;
   }
 }
 

@@ -1,259 +1,243 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.Handler;
-import android.view.LayoutInflater;
+import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.UtilsAccountLockActivity;
-import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.ui.base.UtilsAccountLockTipDialog;
+import java.util.Random;
 
 public final class xs
-  extends BaseAdapter
+  extends View
 {
-  public UtilsAccountLockActivity a;
-  public boolean b;
-  public sl c;
-  public yw d;
-  public Handler e;
-  public int f;
-  public int g;
-  public int h;
-  public boolean i = false;
-  a j = new a();
-  private LayoutInflater k;
-  private ListView l;
-  private TranslateAnimation m;
-  
-  public xs(UtilsAccountLockActivity paramUtilsAccountLockActivity, ListView paramListView, Handler paramHandler)
+  public static int a = 40;
+  public static int b = 70;
+  public static int c = 86;
+  public static int d = 100;
+  private static float w = 15.0F;
+  private Paint A;
+  private Paint B;
+  private float C;
+  private Context D;
+  private float E;
+  private float F;
+  private float G = 0.0F;
+  private float H = 0.0F;
+  private Animation I;
+  private Animation J;
+  private LinearInterpolator K = new LinearInterpolator();
+  private RectF L = new RectF();
+  private Rect M = new Rect();
+  private Random N = new Random();
+  private Handler O = new Handler()
   {
-    this.a = paramUtilsAccountLockActivity;
-    this.k = LayoutInflater.from(paramUtilsAccountLockActivity);
-    this.l = paramListView;
-    this.e = paramHandler;
-    this.g = tb.a().a(true);
-    this.h = tb.a().a(false);
-    this.f = (this.g + this.h);
-    int n = this.f;
-    if (n != 0) {
-      this.f = (n + 1);
-    }
-  }
-  
-  public static void a()
-  {
-    int i1 = tb.a().a(true);
-    int n = 0;
-    sl localsl;
-    while (n < i1)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
-      localsl = tb.a().a(n, true);
-      if (localsl != null) {
-        localsl.e = false;
-      }
-      n += 1;
-    }
-    i1 = tb.a().a(false);
-    n = 0;
-    while (n < i1)
-    {
-      localsl = tb.a().a(n, false);
-      if (localsl != null) {
-        localsl.e = false;
-      }
-      n += 1;
-    }
-  }
-  
-  public final void a(final yw paramyw, boolean paramBoolean)
-  {
-    if ((paramyw != null) && (paramyw.h != null))
-    {
-      Object localObject = this.a;
-      if (localObject != null)
-      {
-        if (((UtilsAccountLockActivity)localObject).isFinishing()) {
-          return;
-        }
-        localObject = paramyw.h;
-        TextView localTextView = paramyw.b;
-        SwitchButton localSwitchButton = paramyw.d;
-        ProgressBar localProgressBar = paramyw.c;
-        ImageView localImageView = paramyw.e;
-        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (localImageView != null))
-        {
-          if (localObject == null) {
-            return;
-          }
-          if ((paramBoolean) && (!((sl)localObject).b.equals(localTextView.getText()))) {
-            return;
-          }
-          if (((sl)localObject).c) {
-            paramyw.g.setVisibility(0);
-          } else {
-            paramyw.g.setVisibility(8);
-          }
-          if ((this.i) && (((sl)localObject).b.equals(this.c.b)) && (((sl)localObject).c == true))
-          {
-            paramyw = paramyw.f;
-            paramyw.setVisibility(0);
-            this.m = new TranslateAnimation(-300.0F, UtilsAccountLockActivity.windowWidth, 0.0F, 0.0F);
-            this.m.setDuration(800L);
-            this.m.setInterpolator(new AccelerateInterpolator());
-            this.m.setAnimationListener(new Animation.AnimationListener()
-            {
-              public final void onAnimationEnd(Animation paramAnonymousAnimation)
-              {
-                paramyw.setVisibility(8);
-              }
-              
-              public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-              
-              public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-            });
-            paramyw.startAnimation(this.m);
-            this.i = false;
-          }
-          if (((sl)localObject).f) {
-            localImageView.setVisibility(0);
-          } else {
-            localImageView.setVisibility(4);
-          }
-          if ((!((sl)localObject).e) && (tb.a().b()))
-          {
-            localProgressBar.setVisibility(4);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(true);
-            localSwitchButton.a(((sl)localObject).c ^ true, false);
-          }
-          else
-          {
-            localProgressBar.setVisibility(0);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(false);
-          }
-          if (!tb.a().b()) {
-            this.a.queryAccountLockStatus();
-          }
-          localTextView.setText(((sl)localObject).b);
-          return;
-        }
+      if (paramAnonymousMessage.what != 0) {
         return;
       }
+      postDelayed(xs.a(xs.this), 50L);
     }
-  }
-  
-  public final void b(yw paramyw, boolean paramBoolean)
+  };
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public int p = 0;
+  public ImageView q;
+  public ImageView r;
+  public boolean s = false;
+  public int t = 0;
+  public int u = 0;
+  public Runnable v = new Runnable()
   {
-    sl localsl = paramyw.h;
-    if ((localsl != null) && (paramyw.a != null) && (tb.a().b()))
+    public final void run()
     {
-      if (paramBoolean != localsl.c) {
-        return;
-      }
-      if (!localsl.e)
-      {
-        if (this.b) {
-          return;
-        }
-        this.c = localsl;
-        this.d = paramyw;
-        localsl.e = true;
-        this.b = true;
-        a(paramyw, false);
-        tf.a().a(3, this.a.getHandler());
-        return;
-      }
-      return;
+      xs.this.postInvalidate();
+      xs.b(xs.this).postDelayed(xs.a(xs.this), 50L);
     }
+  };
+  private final float x = 15.0F;
+  private final int y = 0;
+  private Paint z;
+  
+  public xs(Context paramContext, ImageView paramImageView1, ImageView paramImageView2)
+  {
+    super(paramContext);
+    this.D = paramContext;
+    this.q = paramImageView1;
+    this.r = paramImageView2;
+    this.z = new Paint();
+    this.z.setColor(this.D.getResources().getColor(2130968658));
+    this.z.setAntiAlias(true);
+    this.z.setStrokeWidth(3.0F);
+    this.z.setStyle(Paint.Style.STROKE);
+    this.A = new Paint();
+    this.A.setColor(this.D.getResources().getColor(2130968658));
+    this.A.setAntiAlias(true);
+    this.A.setStrokeWidth(3.0F);
+    this.A.setStyle(Paint.Style.STROKE);
+    this.B = new Paint();
+    this.B.setColor(this.D.getResources().getColor(2130968658));
+    this.B.setAntiAlias(true);
+    this.B.setStrokeWidth(1.0F);
+    this.B.setStyle(Paint.Style.FILL);
+    this.C = (BitmapFactory.decodeResource(getResources(), 2131099792).getWidth() / 2);
+    this.I = AnimationUtils.loadAnimation(this.D, 2130771982);
+    this.J = AnimationUtils.loadAnimation(this.D, 2130771981);
   }
   
-  public final int getCount()
+  protected final void onDraw(Canvas paramCanvas)
   {
-    return this.f;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int n = this.g;
-    if (paramInt == n) {
-      return this.k.inflate(2131296470, paramViewGroup, false);
-    }
-    if (paramInt < n)
+    super.onDraw(paramCanvas);
+    if (aac.a())
     {
-      paramView = this.k.inflate(2131296473, paramViewGroup, false);
-      paramViewGroup = tb.a().a(paramInt, true);
+      this.t += 3;
     }
     else
     {
-      paramView = this.k.inflate(2131296472, paramViewGroup, false);
-      paramViewGroup = tb.a().a(paramInt - this.g - 1, false);
+      this.u += 1;
+      if (this.u % 4 == 0) {
+        this.t += 1;
+      }
     }
-    if (paramViewGroup == null) {
-      return paramView;
+    int i1 = this.t;
+    int i2 = c;
+    if (i1 > i2) {
+      this.t = i2;
     }
-    paramViewGroup = new yw(paramView, paramViewGroup);
-    paramViewGroup.d.setTag(paramViewGroup);
-    paramViewGroup.d.setOnCheckedChangeListener(this.j);
-    a(paramViewGroup, false);
-    return paramView;
+    i1 = this.t;
+    if (this.p < i1)
+    {
+      i2 = this.N.nextInt(5);
+      this.p += i2 + 1;
+      if (this.p > i1) {
+        this.p = i1;
+      }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append("%");
+    localObject = ((StringBuilder)localObject).toString();
+    this.B.setTextAlign(Paint.Align.CENTER);
+    this.B.setTextSize(45.0F);
+    this.B.getTextBounds((String)localObject, 0, ((String)localObject).length(), this.M);
+    i1 = this.M.bottom;
+    i2 = this.M.top;
+    paramCanvas.drawText((String)localObject, this.E, this.F + (i1 - i2) / 2, this.B);
+    float f1 = this.i;
+    float f2 = this.e;
+    float f4 = f2 / 2.0F;
+    float f3 = this.C;
+    if (f1 > f4 + f3)
+    {
+      f4 = w;
+      this.i = (f1 - f4);
+      this.j += f4;
+      if (this.i < f2 / 2.0F + f3) {
+        this.i = (f2 / 2.0F + f3);
+      }
+      f1 = this.j;
+      f2 = this.e;
+      f3 = f2 / 2.0F;
+      f4 = this.C;
+      if (f1 > f3 - f4) {
+        this.j = (f2 / 2.0F - f4);
+      }
+      f1 = this.e;
+      f2 = this.f;
+      paramCanvas.drawLine(f1, f2 / 2.0F, this.i, f2 / 2.0F, this.A);
+      f1 = this.f;
+      paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
+      return;
+    }
+    f3 = this.f;
+    paramCanvas.drawLine(f2, f3 / 2.0F, f1, f3 / 2.0F, this.A);
+    f1 = this.f;
+    paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
+    f1 = this.o;
+    if (f1 > -90.0F)
+    {
+      this.o = (f1 - 15.0F);
+      this.n -= 15.0F;
+      if (this.o < -90.0F)
+      {
+        this.o = -90.0F;
+        this.n = -90.0F;
+      }
+    }
+    else
+    {
+      this.q.setVisibility(0);
+      this.r.setVisibility(0);
+      this.o -= 15.0F;
+      this.n -= 15.0F;
+      if (this.o < -180.0F)
+      {
+        this.o = -180.0F;
+        this.n = -180.0F;
+      }
+      if (!this.s)
+      {
+        this.r.setVisibility(0);
+        this.q.setVisibility(0);
+        this.I.setInterpolator(this.K);
+        this.q.startAnimation(this.I);
+        this.J.setInterpolator(this.K);
+        this.r.startAnimation(this.J);
+        this.s = true;
+      }
+    }
+    paramCanvas.drawArc(this.L, this.m, this.o, false, this.A);
+    paramCanvas.drawArc(this.L, this.l, this.n, false, this.z);
   }
   
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
+  protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    a() {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      paramCompoundButton = (yw)paramCompoundButton.getTag();
-      if (paramCompoundButton == null) {
-        return;
-      }
-      if ((!xc.c()) && (!paramBoolean))
-      {
-        try
-        {
-          SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
-          localEditor.putBoolean("utils_account_lock_tip", true);
-          localEditor.commit();
-        }
-        catch (Exception localException)
-        {
-          StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-          localStringBuilder.append(localException.getMessage());
-          xb.c(localStringBuilder.toString());
-        }
-        new UtilsAccountLockTipDialog(xs.a(xs.this), xs.b(xs.this), paramCompoundButton, paramBoolean).show();
-        return;
-      }
-      xs.this.b(paramCompoundButton, paramBoolean);
-    }
+    super.onMeasure(paramInt1, paramInt2);
+    this.f = getMeasuredHeight();
+    this.e = getMeasuredWidth();
+    float f1 = this.e;
+    this.E = (f1 / 2.0F);
+    float f2 = this.f;
+    this.F = (f2 / 2.0F);
+    this.j = 0.0F;
+    this.g = f1;
+    this.i = f1;
+    this.h = (f2 / 2.0F);
+    this.k = (f2 / 2.0F);
+    this.m = 0.0F;
+    this.l = 180.0F;
+    this.n = 0.0F;
+    this.o = 0.0F;
+    RectF localRectF = this.L;
+    f1 = this.E;
+    f2 = this.C;
+    localRectF.left = (f1 - f2);
+    float f3 = this.F;
+    localRectF.top = (f3 - f2);
+    localRectF.right = (f1 + f2);
+    localRectF.bottom = (f3 + f2);
+    w = (f1 - f2) / 6.0F;
   }
 }
 

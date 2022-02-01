@@ -1,151 +1,91 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.os.Bundle;
+import android.os.Build;
+import android.os.Build.VERSION;
+import java.io.PrintStream;
 
-final class pp
-  implements pm
+public final class pp
 {
-  private Context a;
-  private String b;
-  private boolean c = false;
+  private static int a = 6;
+  private static PrintStream b;
+  private static byte[] c;
+  private static final String d;
   
-  protected pp(Context paramContext, String paramString)
+  static
   {
-    this.a = paramContext;
-    this.b = paramString;
-    this.c = false;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("VERSION.RELEASE:[");
+    localStringBuilder2.append(Build.VERSION.RELEASE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.CODENAME:[");
+    localStringBuilder2.append(Build.VERSION.CODENAME);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.INCREMENTAL:[");
+    localStringBuilder2.append(Build.VERSION.INCREMENTAL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] BOARD:[");
+    localStringBuilder2.append(Build.BOARD);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DEVICE:[");
+    localStringBuilder2.append(Build.DEVICE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DISPLAY:[");
+    localStringBuilder2.append(Build.DISPLAY);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] FINGERPRINT:[");
+    localStringBuilder2.append(Build.FINGERPRINT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] HOST:[");
+    localStringBuilder2.append(Build.HOST);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MANUFACTURER:[");
+    localStringBuilder2.append(Build.MANUFACTURER);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MODEL:[");
+    localStringBuilder2.append(Build.MODEL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] PRODUCT:[");
+    localStringBuilder2.append(Build.PRODUCT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TAGS:[");
+    localStringBuilder2.append(Build.TAGS);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TYPE:[");
+    localStringBuilder2.append(Build.TYPE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] USER:[");
+    localStringBuilder2.append(Build.USER);
+    localStringBuilder2.append("]");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    d = localStringBuilder1.toString();
   }
   
-  private boolean a(Signature[] paramArrayOfSignature)
+  public static void a(String paramString1, String paramString2)
   {
-    if (!this.c)
-    {
-      paramArrayOfSignature = "ignore wechat app signature validation";
-      pq.c("MicroMsg.SDK.WXApiImplV10", paramArrayOfSignature);
-      return true;
+    if (a <= 4) {
+      pq.a(b, c, "E/".concat(String.valueOf(paramString1)), paramString2);
     }
-    int j = paramArrayOfSignature.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label74;
-      }
-      String str = paramArrayOfSignature[i].toCharsString();
-      pq.c("MicroMsg.SDK.WXApiImplV10", "check signature:".concat(String.valueOf(str)));
-      if (str.equals("308202eb30820254a00302010202044d36f7a4300d06092a864886f70d01010505003081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e74301e170d3131303131393134333933325a170d3431303131313134333933325a3081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e7430819f300d06092a864886f70d010101050003818d0030818902818100c05f34b231b083fb1323670bfbe7bdab40c0c0a6efc87ef2072a1ff0d60cc67c8edb0d0847f210bea6cbfaa241be70c86daf56be08b723c859e52428a064555d80db448cdcacc1aea2501eba06f8bad12a4fa49d85cacd7abeb68945a5cb5e061629b52e3254c373550ee4e40cb7c8ae6f7a8151ccd8df582d446f39ae0c5e930203010001300d06092a864886f70d0101050500038181009c8d9d7f2f908c42081b4c764c377109a8b2c70582422125ce545842d5f520aea69550b6bd8bfd94e987b75a3077eb04ad341f481aac266e89d3864456e69fba13df018acdc168b9a19dfd7ad9d9cc6f6ace57c746515f71234df3a053e33ba93ece5cd0fc15f3e389a3f365588a9fcb439e069d3629cd7732a13fff7b891499"))
-      {
-        paramArrayOfSignature = "pass";
-        break;
-      }
-      i += 1;
-    }
-    label74:
-    return false;
   }
   
-  private boolean b(String paramString)
+  public static void b(String paramString1, String paramString2)
   {
-    if (!this.c)
-    {
-      pq.c("MicroMsg.SDK.WXApiImplV10", "ignore wechat app signature validation");
-      return true;
+    if (a <= 2) {
+      pq.a(b, c, "I/".concat(String.valueOf(paramString1)), paramString2);
     }
-    try
-    {
-      paramString = this.a.getPackageManager().getPackageInfo(paramString, 64);
-      return a(paramString.signatures);
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      label39:
-      break label39;
-    }
-    return false;
   }
   
-  public final boolean a()
+  public static void c(String paramString1, String paramString2)
   {
-    try
-    {
-      PackageInfo localPackageInfo = this.a.getPackageManager().getPackageInfo("com.tencent.mm", 64);
-      if (localPackageInfo == null) {
-        return false;
-      }
-      boolean bool = a(localPackageInfo.signatures);
-      return bool;
+    if (a <= 1) {
+      pq.a(b, c, "D/".concat(String.valueOf(paramString1)), paramString2);
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-    return false;
   }
   
-  public final boolean a(pl parampl)
+  public static void d(String paramString1, String paramString2)
   {
-    if (!b("com.tencent.mm")) {}
-    for (parampl = "sendReq failed for wechat app signature check failed";; parampl = "sendReq checkArgs fail")
-    {
-      pq.a("MicroMsg.SDK.WXApiImplV10", parampl);
-      return false;
-      if (parampl.a()) {
-        break;
-      }
+    if (a <= 0) {
+      pq.a(b, c, "V/".concat(String.valueOf(paramString1)), paramString2);
     }
-    Bundle localBundle = new Bundle();
-    parampl.a(localBundle);
-    parampl = this.a;
-    StringBuilder localStringBuilder = new StringBuilder("weixin://sendreq?appid=");
-    localStringBuilder.append(this.b);
-    return pj.a(parampl, "com.tencent.mm", "com.tencent.mm.plugin.base.stub.WXEntryActivity", localStringBuilder.toString(), localBundle);
-  }
-  
-  public final boolean a(String paramString)
-  {
-    if (!b("com.tencent.mm"))
-    {
-      pq.a("MicroMsg.SDK.WXApiImplV10", "register app failed for wechat app signature check failed");
-      return false;
-    }
-    this.b = paramString;
-    paramString = new StringBuilder("register app ");
-    paramString.append(this.a.getPackageName());
-    pq.c("MicroMsg.SDK.WXApiImplV10", paramString.toString());
-    paramString = this.a;
-    Object localObject1 = new StringBuilder("weixin://registerapp?appid=");
-    ((StringBuilder)localObject1).append(this.b);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("com.tencent.mm");
-    ((StringBuilder)localObject2).append(".permission.MM_MESSAGE");
-    localObject2 = ((StringBuilder)localObject2).toString();
-    Intent localIntent = new Intent("com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_REGISTER");
-    String str = paramString.getPackageName();
-    localIntent.putExtra("_mmessage_sdkVersion", 553910273);
-    localIntent.putExtra("_mmessage_appPackage", str);
-    localIntent.putExtra("_mmessage_content", (String)localObject1);
-    localIntent.putExtra("_mmessage_checksum", pk.a((String)localObject1, str));
-    paramString.sendBroadcast(localIntent, (String)localObject2);
-    paramString = new StringBuilder("send mm message, intent=");
-    paramString.append(localIntent);
-    paramString.append(", perm=");
-    paramString.append((String)localObject2);
-    pq.c("MicroMsg.SDK.MMessage", paramString.toString());
-    return true;
-  }
-  
-  public final int b()
-  {
-    if (!a())
-    {
-      pq.a("MicroMsg.SDK.WXApiImplV10", "open wx app failed, not installed or signature check failed");
-      return 0;
-    }
-    return new pi(this.a).getInt("_build_info_sdk_int_", 0);
   }
 }
 

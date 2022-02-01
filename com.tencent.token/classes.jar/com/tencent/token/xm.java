@@ -1,65 +1,183 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import com.tencent.token.global.taiji.CSReportProfile;
-import com.tencent.token.global.taiji.KeyValueProfile;
-import com.tencent.token.global.taiji.SCReportProfile;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.utils.SDKUtil;
+import java.lang.reflect.Method;
 
 public final class xm
   implements asg
 {
-  public final void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final asg.a parama)
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
+  private boolean c;
+  
+  public xm(String paramString)
   {
-    CSReportProfile localCSReportProfile = new CSReportProfile();
-    localCSReportProfile.profileID = 4;
-    localCSReportProfile.actionID = 0;
-    localCSReportProfile.param = new ArrayList();
-    Object localObject1;
-    Object localObject2;
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    try
     {
-      localObject1 = paramHashMap.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Integer)((Iterator)localObject1).next();
-        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
-        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
-        localKeyValueProfile.valueType = 3;
-        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
-        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
-      }
+      this.a = RqdApplication.n().getSharedPreferences(paramString, 0);
+      return;
     }
-    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
+    catch (Exception paramString)
     {
-      paramHashMap = paramHashMap1.keySet().iterator();
-      while (paramHashMap.hasNext())
-      {
-        localObject1 = (Integer)paramHashMap.next();
-        localObject2 = new KeyValueProfile();
-        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
-        ((KeyValueProfile)localObject2).valueType = 1;
-        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
-        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
-      }
+      paramString.printStackTrace();
     }
-    xo.a.a().a(1053, localCSReportProfile, new SCReportProfile(), 18, new asm()
-    {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, JceStruct paramAnonymousJceStruct)
-      {
-        if ((paramAnonymousInt2 == 0) && (paramAnonymousInt3 == 0)) {
-          parama.a();
-        }
-      }
-    });
   }
   
-  static final class a
+  private static boolean a(SharedPreferences.Editor paramEditor)
   {
-    private static final xm a = new xm();
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
+    try
+    {
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
+    return paramEditor.commit();
+  }
+  
+  private SharedPreferences.Editor d()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
+  }
+  
+  public final int a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
+    }
+    return 0;
+  }
+  
+  public final long a(String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
+    }
+    return 0L;
+  }
+  
+  public final String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, null);
+    }
+    return null;
+  }
+  
+  public final String a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
+    }
+    return null;
+  }
+  
+  public final void a()
+  {
+    if (this.a != null) {
+      a(d().clear());
+    }
+  }
+  
+  public final boolean a(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean(paramString, paramBoolean);
+    }
+    return false;
+  }
+  
+  public final void b()
+  {
+    this.c = true;
+  }
+  
+  public final boolean b(String paramString)
+  {
+    if (this.a != null) {
+      return a(d().remove(paramString));
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, int paramInt)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putInt(paramString, paramInt);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, long paramLong)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putLong(paramString, paramLong);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString1, String paramString2)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putString(paramString1, paramString2);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putBoolean(paramString, paramBoolean);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean c()
+  {
+    this.c = false;
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
+    }
+    return true;
   }
 }
 

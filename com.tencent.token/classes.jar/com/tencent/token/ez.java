@@ -1,277 +1,231 @@
 package com.tencent.token;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewParent;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.Interpolator;
+import java.lang.ref.WeakReference;
 
 public final class ez
 {
-  static final c a = new c();
+  Runnable a = null;
+  Runnable b = null;
+  int c = -1;
+  private WeakReference<View> d;
   
-  static
+  ez(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 21)
+    this.d = new WeakReference(paramView);
+  }
+  
+  private void a(final View paramView, final fa paramfa)
+  {
+    if (paramfa != null)
     {
-      a = new b();
+      paramView.animate().setListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationCancel(Animator paramAnonymousAnimator)
+        {
+          paramfa.c(paramView);
+        }
+        
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          paramfa.b(paramView);
+        }
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          paramfa.a(paramView);
+        }
+      });
       return;
     }
-    if (Build.VERSION.SDK_INT >= 19)
+    paramView.animate().setListener(null);
+  }
+  
+  public final long a()
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      return localView.animate().getDuration();
+    }
+    return 0L;
+  }
+  
+  public final ez a(float paramFloat)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().alpha(paramFloat);
+    }
+    return this;
+  }
+  
+  public final ez a(long paramLong)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setDuration(paramLong);
+    }
+    return this;
+  }
+  
+  public final ez a(Interpolator paramInterpolator)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setInterpolator(paramInterpolator);
+    }
+    return this;
+  }
+  
+  public final ez a(fa paramfa)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null)
     {
-      a = new a();
-      return;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        a(localView, paramfa);
+        return this;
+      }
+      localView.setTag(2113929216, paramfa);
+      a(localView, new a(this));
+    }
+    return this;
+  }
+  
+  public final ez a(final fc paramfc)
+  {
+    final View localView = (View)this.d.get();
+    if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
+    {
+      ValueAnimator.AnimatorUpdateListener local2 = null;
+      if (paramfc != null) {
+        local2 = new ValueAnimator.AnimatorUpdateListener()
+        {
+          public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+          {
+            paramfc.a();
+          }
+        };
+      }
+      localView.animate().setUpdateListener(local2);
+    }
+    return this;
+  }
+  
+  public final ez b(float paramFloat)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().translationY(paramFloat);
+    }
+    return this;
+  }
+  
+  public final ez b(long paramLong)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setStartDelay(paramLong);
+    }
+    return this;
+  }
+  
+  public final void b()
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().cancel();
     }
   }
   
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt)
+  public final void c()
   {
-    if ((paramViewParent instanceof es))
-    {
-      ((es)paramViewParent).c(paramInt);
-      return;
-    }
-    if (paramInt == 0) {
-      a.a(paramViewParent, paramView);
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().start();
     }
   }
   
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  static final class a
+    implements fa
   {
-    if ((paramViewParent instanceof es))
+    ez a;
+    boolean b;
+    
+    a(ez paramez)
     {
-      ((es)paramViewParent).d(paramInt5);
-      return;
-    }
-    if (paramInt5 == 0) {
-      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
-  {
-    if ((paramViewParent instanceof es))
-    {
-      ((es)paramViewParent).a(paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      return;
-    }
-    if (paramInt3 == 0) {
-      a.a(paramViewParent, paramView, paramInt1, paramInt2, paramArrayOfInt);
-    }
-  }
-  
-  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
-  {
-    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2);
-  }
-  
-  public static boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-  {
-    return a.a(paramViewParent, paramView, paramFloat1, paramFloat2, paramBoolean);
-  }
-  
-  public static boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
-  {
-    if ((paramViewParent instanceof es)) {
-      return ((es)paramViewParent).b(paramInt2);
-    }
-    if (paramInt2 == 0) {
-      return a.a(paramViewParent, paramView1, paramView2, paramInt1);
-    }
-    return false;
-  }
-  
-  public static void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
-  {
-    if ((paramViewParent instanceof es))
-    {
-      ((es)paramViewParent).a(paramView2, paramInt1);
-      return;
-    }
-    if (paramInt2 == 0) {
-      a.b(paramViewParent, paramView1, paramView2, paramInt1);
-    }
-  }
-  
-  static class a
-    extends ez.c
-  {}
-  
-  static final class b
-    extends ez.a
-  {
-    public final void a(ViewParent paramViewParent, View paramView)
-    {
-      try
-      {
-        paramViewParent.onStopNestedScroll(paramView);
-        return;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label8:
-        break label8;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onStopNestedScroll");
+      this.a = paramez;
     }
     
-    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    public final void a(View paramView)
     {
-      try
-      {
-        paramViewParent.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-        return;
+      this.b = false;
+      int i = this.a.c;
+      fa localfa = null;
+      if (i >= 0) {
+        paramView.setLayerType(2, null);
       }
-      catch (AbstractMethodError paramView)
+      if (this.a.a != null)
       {
-        label15:
-        break label15;
+        localObject = this.a.a;
+        this.a.a = null;
+        ((Runnable)localObject).run();
       }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedScroll");
-    }
-    
-    public final void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
-    {
-      try
-      {
-        paramViewParent.onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
-        return;
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof fa)) {
+        localfa = (fa)localObject;
       }
-      catch (AbstractMethodError paramView)
-      {
-        label13:
-        break label13;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedPreScroll");
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
-    {
-      try
-      {
-        boolean bool = paramViewParent.onNestedPreFling(paramView, paramFloat1, paramFloat2);
-        return bool;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label15:
-        break label15;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedPreFling");
-      return false;
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-    {
-      try
-      {
-        paramBoolean = paramViewParent.onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-        return paramBoolean;
-      }
-      catch (AbstractMethodError paramView)
-      {
-        label17:
-        break label17;
-      }
-      paramView = new StringBuilder("ViewParent ");
-      paramView.append(paramViewParent);
-      paramView.append(" does not implement interface method onNestedFling");
-      return false;
-    }
-    
-    public final boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      try
-      {
-        boolean bool = paramViewParent.onStartNestedScroll(paramView1, paramView2, paramInt);
-        return bool;
-      }
-      catch (AbstractMethodError paramView1)
-      {
-        label15:
-        break label15;
-      }
-      paramView1 = new StringBuilder("ViewParent ");
-      paramView1.append(paramViewParent);
-      paramView1.append(" does not implement interface method onStartNestedScroll");
-      return false;
-    }
-    
-    public final void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      try
-      {
-        paramViewParent.onNestedScrollAccepted(paramView1, paramView2, paramInt);
-        return;
-      }
-      catch (AbstractMethodError paramView1)
-      {
-        label11:
-        break label11;
-      }
-      paramView1 = new StringBuilder("ViewParent ");
-      paramView1.append(paramViewParent);
-      paramView1.append(" does not implement interface method onNestedScrollAccepted");
-    }
-  }
-  
-  static class c
-  {
-    public void a(ViewParent paramViewParent, View paramView)
-    {
-      if ((paramViewParent instanceof er)) {
-        ((er)paramViewParent).onStopNestedScroll(paramView);
+      if (localfa != null) {
+        localfa.a(paramView);
       }
     }
     
-    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    public final void b(View paramView)
     {
-      if ((paramViewParent instanceof er)) {
-        ((er)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      int i = this.a.c;
+      fa localfa = null;
+      if (i >= 0)
+      {
+        paramView.setLayerType(this.a.c, null);
+        this.a.c = -1;
+      }
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.b))
+      {
+        if (this.a.b != null)
+        {
+          localObject = this.a.b;
+          this.a.b = null;
+          ((Runnable)localObject).run();
+        }
+        Object localObject = paramView.getTag(2113929216);
+        if ((localObject instanceof fa)) {
+          localfa = (fa)localObject;
+        }
+        if (localfa != null) {
+          localfa.b(paramView);
+        }
+        this.b = true;
       }
     }
     
-    public void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
+    public final void c(View paramView)
     {
-      if ((paramViewParent instanceof er)) {
-        ((er)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof fa)) {
+        localObject = (fa)localObject;
+      } else {
+        localObject = null;
       }
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
-    {
-      if ((paramViewParent instanceof er)) {
-        return ((er)paramViewParent).onNestedPreFling(paramView, paramFloat1, paramFloat2);
-      }
-      return false;
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
-    {
-      if ((paramViewParent instanceof er)) {
-        return ((er)paramViewParent).onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
-      }
-      return false;
-    }
-    
-    public boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      if ((paramViewParent instanceof er)) {
-        return ((er)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt);
-      }
-      return false;
-    }
-    
-    public void b(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
-    {
-      if ((paramViewParent instanceof er)) {
-        ((er)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt);
+      if (localObject != null) {
+        ((fa)localObject).c(paramView);
       }
     }
   }

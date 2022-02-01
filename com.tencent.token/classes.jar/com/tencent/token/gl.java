@@ -1,280 +1,62 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.Toolbar.b;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window.Callback;
-import java.util.ArrayList;
-
-public final class gl
-  extends ActionBar
+final class gl
 {
-  iq a;
-  boolean b;
-  public Window.Callback c;
-  private boolean d;
-  private boolean e;
-  private ArrayList<Object> f = new ArrayList();
-  private final Runnable g = new Runnable()
+  private static gl d;
+  public long a;
+  public long b;
+  public int c;
+  
+  static gl a()
   {
-    public final void run()
+    if (d == null) {
+      d = new gl();
+    }
+    return d;
+  }
+  
+  public final void a(long paramLong, double paramDouble1, double paramDouble2)
+  {
+    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
+    float f2 = 0.01720197F * f1 + 6.24006F;
+    double d1 = f2;
+    double d2 = Math.sin(d1);
+    Double.isNaN(d1);
+    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
+    paramDouble2 = -paramDouble2 / 360.0D;
+    double d3 = f1 - 0.0009F;
+    Double.isNaN(d3);
+    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
+    Double.isNaN(d3);
+    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
+    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
+    paramDouble1 = 0.0174532923847437D * paramDouble1;
+    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
+    if (paramDouble1 >= 1.0D)
     {
-      gl localgl = gl.this;
-      Menu localMenu = localgl.i();
-      hm localhm;
-      if ((localMenu instanceof hm)) {
-        localhm = (hm)localMenu;
-      } else {
-        localhm = null;
-      }
-      if (localhm != null) {
-        localhm.d();
-      }
-      try
-      {
-        localMenu.clear();
-        if ((!localgl.c.onCreatePanelMenu(0, localMenu)) || (!localgl.c.onPreparePanel(0, null, localMenu))) {
-          localMenu.clear();
-        }
-        return;
-        return;
-      }
-      finally
-      {
-        if (localhm != null) {
-          localhm.e();
-        }
-      }
-    }
-  };
-  private final Toolbar.b h = new Toolbar.b()
-  {
-    public final boolean a(MenuItem paramAnonymousMenuItem)
-    {
-      return gl.this.c.onMenuItemSelected(0, paramAnonymousMenuItem);
-    }
-  };
-  
-  public gl(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
-  {
-    this.a = new jg(paramToolbar, false);
-    this.c = new c(paramCallback);
-    this.a.a(this.c);
-    paramToolbar.setOnMenuItemClickListener(this.h);
-    this.a.a(paramCharSequence);
-  }
-  
-  public final int a()
-  {
-    return this.a.m();
-  }
-  
-  public final void a(float paramFloat)
-  {
-    ex.a(this.a.a(), paramFloat);
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.a.d(paramInt);
-  }
-  
-  public final void a(Configuration paramConfiguration)
-  {
-    super.a(paramConfiguration);
-  }
-  
-  public final void a(CharSequence paramCharSequence)
-  {
-    this.a.a(paramCharSequence);
-  }
-  
-  public final void a(boolean paramBoolean) {}
-  
-  public final boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    Menu localMenu = i();
-    if (localMenu != null)
-    {
-      if (paramKeyEvent != null) {
-        i = paramKeyEvent.getDeviceId();
-      } else {
-        i = -1;
-      }
-      int i = KeyCharacterMap.load(i).getKeyboardType();
-      boolean bool = true;
-      if (i == 1) {
-        bool = false;
-      }
-      localMenu.setQwertyMode(bool);
-      return localMenu.performShortcut(paramInt, paramKeyEvent, 0);
-    }
-    return false;
-  }
-  
-  public final boolean a(KeyEvent paramKeyEvent)
-  {
-    if (paramKeyEvent.getAction() == 1) {
-      d();
-    }
-    return true;
-  }
-  
-  public final Context b()
-  {
-    return this.a.b();
-  }
-  
-  public final void b(boolean paramBoolean) {}
-  
-  public final void c(boolean paramBoolean)
-  {
-    if (paramBoolean == this.e) {
+      this.c = 1;
+      this.a = -1L;
+      this.b = -1L;
       return;
     }
-    this.e = paramBoolean;
-    int j = this.f.size();
-    int i = 0;
-    while (i < j)
+    if (paramDouble1 <= -1.0D)
     {
-      this.f.get(i);
-      i += 1;
+      this.c = 0;
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
-  }
-  
-  public final boolean d()
-  {
-    return this.a.i();
-  }
-  
-  public final boolean e()
-  {
-    return this.a.j();
-  }
-  
-  public final boolean f()
-  {
-    this.a.a().removeCallbacks(this.g);
-    ex.a(this.a.a(), this.g);
-    return true;
-  }
-  
-  public final boolean g()
-  {
-    if (this.a.c())
+    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
+    Double.isNaN(paramDouble1);
+    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
+    Double.isNaN(paramDouble1);
+    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
+    if ((this.b < paramLong) && (this.a > paramLong))
     {
-      this.a.d();
-      return true;
+      this.c = 0;
+      return;
     }
-    return false;
-  }
-  
-  public final void h()
-  {
-    this.a.a().removeCallbacks(this.g);
-  }
-  
-  final Menu i()
-  {
-    if (!this.d)
-    {
-      this.a.a(new a(), new b());
-      this.d = true;
-    }
-    return this.a.o();
-  }
-  
-  final class a
-    implements ht.a
-  {
-    private boolean b;
-    
-    a() {}
-    
-    public final void a(hm paramhm, boolean paramBoolean)
-    {
-      if (this.b) {
-        return;
-      }
-      this.b = true;
-      gl.this.a.l();
-      if (gl.this.c != null) {
-        gl.this.c.onPanelClosed(108, paramhm);
-      }
-      this.b = false;
-    }
-    
-    public final boolean a(hm paramhm)
-    {
-      if (gl.this.c != null)
-      {
-        gl.this.c.onMenuOpened(108, paramhm);
-        return true;
-      }
-      return false;
-    }
-  }
-  
-  final class b
-    implements hm.a
-  {
-    b() {}
-    
-    public final void a(hm paramhm)
-    {
-      if (gl.this.c != null)
-      {
-        if (gl.this.a.g())
-        {
-          gl.this.c.onPanelClosed(108, paramhm);
-          return;
-        }
-        if (gl.this.c.onPreparePanel(0, null, paramhm)) {
-          gl.this.c.onMenuOpened(108, paramhm);
-        }
-      }
-    }
-    
-    public final boolean a(hm paramhm, MenuItem paramMenuItem)
-    {
-      return false;
-    }
-  }
-  
-  final class c
-    extends he
-  {
-    public c(Window.Callback paramCallback)
-    {
-      super();
-    }
-    
-    public final View onCreatePanelView(int paramInt)
-    {
-      if (paramInt == 0) {
-        return new View(gl.this.a.b());
-      }
-      return super.onCreatePanelView(paramInt);
-    }
-    
-    public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
-    {
-      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
-      if ((bool) && (!gl.this.b))
-      {
-        gl.this.a.k();
-        gl.this.b = true;
-      }
-      return bool;
-    }
+    this.c = 1;
   }
 }
 

@@ -1,31 +1,44 @@
 package com.tencent.token;
 
-import java.nio.channels.WritableByteChannel;
+import java.io.InputStream;
+import java.nio.channels.ReadableByteChannel;
 
 public abstract interface ala
-  extends alo, WritableByteChannel
+  extends alo, ReadableByteChannel
 {
-  public abstract akz b();
+  public abstract void a(long paramLong);
   
-  public abstract ala b(String paramString);
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public abstract ala c(byte[] paramArrayOfByte);
+  public abstract aky b();
   
-  public abstract ala c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract alb c(long paramLong);
   
-  public abstract ala f(int paramInt);
+  public abstract boolean c();
   
-  public abstract void flush();
+  public abstract InputStream d();
   
-  public abstract ala g(int paramInt);
+  public abstract String d(long paramLong);
   
-  public abstract ala h(int paramInt);
+  public abstract byte f();
   
-  public abstract ala j(long paramLong);
+  public abstract byte[] f(long paramLong);
   
-  public abstract ala k(long paramLong);
+  public abstract short g();
   
-  public abstract ala r();
+  public abstract void g(long paramLong);
+  
+  public abstract int h();
+  
+  public abstract short i();
+  
+  public abstract int j();
+  
+  public abstract long k();
+  
+  public abstract String n();
+  
+  public abstract long q();
 }
 
 

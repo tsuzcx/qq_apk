@@ -3,92 +3,100 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.ConfigResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ux
-  extends tk
+  extends tj
 {
-  private int d;
-  private int e;
-  private int f;
-  private ConfigResult g;
+  public byte[] d;
+  public long e;
+  public DeterminVerifyFactorsResult f;
+  private int g;
   private int h;
+  private int i;
   
   public final String a()
   {
-    sa.a();
+    xa.c("upgrade url: ");
+    rz.a();
     this.a.a(104, null, null);
+    xa.c("upgrade url: ");
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Integer)paramaar.c.get("param.config.width")).intValue();
-    this.e = ((Integer)paramaar.c.get("param.config.height")).intValue();
-    this.f = ((Integer)paramaar.c.get("param.config.dpi")).intValue();
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.d = ((byte[])paramaaq.c.get("param.wtlogin.a2"));
+    this.g = ((Integer)paramaaq.c.get("param.common.seq")).intValue();
+    this.h = ((Integer)paramaaq.c.get("param.wtlogin.type")).intValue();
+    this.i = ((Integer)paramaaq.c.get("param.scene_id")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int j = paramJSONObject.getInt("err");
+    Object localObject;
+    if (j != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject = new StringBuilder("error");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(",error code =");
+      ((StringBuilder)localObject).append(j);
+      xa.a(((StringBuilder)localObject).toString());
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((wy)localObject).a(j, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    StringBuilder localStringBuilder;
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      localStringBuilder = new StringBuilder("parseJSON  decodeData=");
-      localStringBuilder.append(paramJSONObject.toString());
-      xb.a(localStringBuilder.toString());
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.h)
+      xa.c("mbtoken3_determine_verify_factors=".concat(String.valueOf(paramJSONObject)));
+      if (paramJSONObject.getInt("seq_id") != this.g)
       {
         this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
+        localObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
+        ((StringBuilder)localObject).append(",right = ");
+        ((StringBuilder)localObject).append(this.g);
+        xa.c(((StringBuilder)localObject).toString());
         return;
       }
-      this.g = new ConfigResult(paramJSONObject);
+      long l = paramJSONObject.getLong("uin");
+      if (this.e != l)
+      {
+        paramJSONObject = this.a;
+        localObject = new StringBuilder("uin not match ");
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(l);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
+        return;
+      }
+      this.f = new DeterminVerifyFactorsResult(paramJSONObject);
+      try
+      {
+        l = paramJSONObject.getLong("server_time");
+        sb.b();
+        sb.a(l);
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
       this.a.a = 0;
-      aae.c(this.g);
-      aae.b(this.g);
-      if (TextUtils.isEmpty(this.g.schemaKey)) {}
-    }
-    try
-    {
-      paramJSONObject = new String(aad.d(this.g.schemaKey));
-      localStringBuilder = new StringBuilder("schemaKey=");
-      localStringBuilder.append(this.g.schemaKey);
-      localStringBuilder.append(" save as=");
-      localStringBuilder.append(paramJSONObject);
-      xb.b(localStringBuilder.toString());
-      aae.a(paramJSONObject, this.g.schemaTimeout);
       return;
     }
-    catch (Exception paramJSONObject)
-    {
-      label268:
-      break label268;
-    }
-    paramJSONObject = new StringBuilder("decode schemakey failed! schemaKey=");
-    paramJSONObject.append(this.g.schemaKey);
-    paramJSONObject.append(" key=");
-    paramJSONObject.append(ss.a(ta.a().a));
-    xb.b(paramJSONObject.toString());
-    return;
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -98,7 +106,7 @@ public final class ux
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.g;
+      localMessage.obj = this.f;
       localMessage.sendToTarget();
       this.b.e = true;
     }

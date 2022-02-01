@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class instanceof
   extends break
@@ -10,7 +10,7 @@ public final class instanceof
   public byte[] mb = null;
   public String nb = "";
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
     if (lb == null)
     {
@@ -18,19 +18,19 @@ public final class instanceof
       lb = arrayOfByte;
       arrayOfByte[0] = 0;
     }
-    this.mb = paramafl.b(0, false);
-    this.nb = paramafl.a(1, false);
+    this.mb = paramafk.b(0, false);
+    this.nb = paramafk.a(1, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
     Object localObject = this.mb;
     if (localObject != null) {
-      paramafo.a((byte[])localObject, 0);
+      paramafn.a((byte[])localObject, 0);
     }
     localObject = this.nb;
     if (localObject != null) {
-      paramafo.a((String)localObject, 1);
+      paramafn.a((String)localObject, 1);
     }
   }
 }

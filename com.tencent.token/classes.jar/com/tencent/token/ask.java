@@ -2,9 +2,9 @@ package com.tencent.token;
 
 public abstract interface ask
 {
-  public abstract byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  public abstract void a(Runnable paramRunnable, String paramString);
   
-  public abstract byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  public abstract void b(Runnable paramRunnable, String paramString);
 }
 
 

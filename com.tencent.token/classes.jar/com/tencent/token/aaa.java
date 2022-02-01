@@ -1,50 +1,38 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.token.global.RqdApplication;
-
 public final class aaa
 {
-  private static final String a;
-  private static SharedPreferences b;
-  private static SharedPreferences.Editor c;
+  public static int a = 109;
+  public static String b = "6.9.22";
+  public static int c = 1;
+  public static boolean d = true;
+  public static boolean e = true;
+  public static boolean f = true;
+  public static boolean g = false;
+  public static int h = 63;
+  public static boolean i = true;
+  public static boolean j = true;
+  public static boolean k = false;
+  public static boolean l = true;
+  public static boolean m = true;
+  public static boolean n = true;
+  public static boolean o = true;
+  public static boolean p = true;
+  public static boolean q = true;
   
   static
   {
-    Object localObject = new StringBuilder("SharedPreferencesHelper.for.");
-    ((StringBuilder)localObject).append(RqdApplication.n().getPackageName());
-    a = ((StringBuilder)localObject).toString();
-    localObject = RqdApplication.n().getSharedPreferences(a, 0);
-    b = (SharedPreferences)localObject;
-    c = ((SharedPreferences)localObject).edit();
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    return b.getInt(paramString, paramInt);
-  }
-  
-  public static long a(String paramString)
-  {
-    return b.getLong(paramString, 604800000L);
-  }
-  
-  public static void a(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
-  {
-    b.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
-  }
-  
-  public static SharedPreferences.Editor b(String paramString)
-  {
-    return c.remove(paramString);
-  }
-  
-  public static SharedPreferences.Editor b(String paramString, int paramInt)
-  {
-    return c.putInt(paramString, paramInt);
+    if (c != 0)
+    {
+      d = false;
+      e = false;
+      i = false;
+      l = false;
+      m = false;
+      n = false;
+      q = false;
+      return;
+    }
   }
 }
 

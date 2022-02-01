@@ -1,71 +1,88 @@
 package com.tencent.token;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Process;
+import android.util.TypedValue;
+import java.io.File;
 
-public final class cr
-  implements Iterable<Intent>
+public class cr
 {
-  private static final c c = new c();
-  public final ArrayList<Intent> a = new ArrayList();
-  public final Context b;
+  private static final Object a = new Object();
+  private static TypedValue b;
   
-  static
+  public static int a(Context paramContext, String paramString)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      c = new b();
-      return;
+    if (paramString != null) {
+      return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
     }
+    throw new IllegalArgumentException("permission is null");
   }
   
-  private cr(Context paramContext)
+  public static Drawable a(Context paramContext, int paramInt)
   {
-    this.b = paramContext;
-  }
-  
-  public static cr a(Context paramContext)
-  {
-    return new cr(paramContext);
-  }
-  
-  public final cr a(ComponentName paramComponentName)
-  {
-    int i = this.a.size();
-    try
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramContext.getDrawable(paramInt);
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return paramContext.getResources().getDrawable(paramInt);
+    }
+    synchronized (a)
     {
-      for (paramComponentName = cj.a(this.b, paramComponentName); paramComponentName != null; paramComponentName = cj.a(this.b, paramComponentName.getComponent())) {
-        this.a.add(i, paramComponentName);
+      if (b == null) {
+        b = new TypedValue();
       }
-      return this;
-    }
-    catch (PackageManager.NameNotFoundException paramComponentName)
-    {
-      throw new IllegalArgumentException(paramComponentName);
+      paramContext.getResources().getValue(paramInt, b, true);
+      paramInt = b.resourceId;
+      return paramContext.getResources().getDrawable(paramInt);
     }
   }
   
-  @Deprecated
-  public final Iterator<Intent> iterator()
+  public static boolean a(Context paramContext, Intent[] paramArrayOfIntent)
   {
-    return this.a.iterator();
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramContext.startActivities(paramArrayOfIntent, null);
+    } else {
+      paramContext.startActivities(paramArrayOfIntent);
+    }
+    return true;
   }
   
-  public static abstract interface a
+  public static File[] a(Context paramContext)
   {
-    public abstract Intent getSupportParentActivityIntent();
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramContext.getExternalFilesDirs(null);
+    }
+    return new File[] { paramContext.getExternalFilesDir(null) };
   }
   
-  static final class b
-    extends cr.c
-  {}
+  public static ColorStateList b(Context paramContext, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColorStateList(paramInt);
+    }
+    return paramContext.getResources().getColorStateList(paramInt);
+  }
   
-  static class c {}
+  public static File[] b(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramContext.getExternalCacheDirs();
+    }
+    return new File[] { paramContext.getExternalCacheDir() };
+  }
+  
+  public static int c(Context paramContext, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColor(paramInt);
+    }
+    return paramContext.getResources().getColor(paramInt);
+  }
 }
 
 

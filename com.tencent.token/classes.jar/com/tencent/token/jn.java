@@ -1,30 +1,52 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class jn
-  implements Serializable
+  extends JceStruct
 {
-  public static final jn a = new jn(0, 0, "CT_NONE");
-  public static final jn b = new jn(1, 1, "CT_GPRS");
-  public static final jn c = new jn(2, 2, "CT_WIFI");
-  public static final jn d = new jn(3, 3, "CT_GPRS_WAP");
-  public static final jn e = new jn(4, 4, "CT_GPRS_NET");
-  public static final jn f = new jn(5, 5, "CT_3G_NET");
-  private static jn[] h = new jn[6];
-  private int i;
-  private String j = new String();
+  static byte[] g;
+  static byte[] h;
+  public long a = 0L;
+  public long b = 0L;
+  public String c = "";
+  public byte[] d = null;
+  public byte[] e = null;
+  public int f = 0;
   
-  private jn(int paramInt1, int paramInt2, String paramString)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.j = paramString;
-    this.i = paramInt2;
-    h[paramInt1] = this;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, true);
+    this.c = paramJceInputStream.readString(2, true);
+    byte[] arrayOfByte;
+    if (g == null)
+    {
+      arrayOfByte = (byte[])new byte[1];
+      g = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.d = ((byte[])paramJceInputStream.read(g, 3, true));
+    if (h == null)
+    {
+      arrayOfByte = (byte[])new byte[1];
+      h = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.e = ((byte[])paramJceInputStream.read(h, 4, true));
+    this.f = paramJceInputStream.read(this.f, 5, true);
   }
   
-  public final String toString()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    return this.j;
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
+    paramJceOutputStream.write(this.e, 4);
+    paramJceOutputStream.write(this.f, 5);
   }
 }
 

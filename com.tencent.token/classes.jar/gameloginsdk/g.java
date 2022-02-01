@@ -1,8 +1,8 @@
 package gameloginsdk;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.agw;
-import com.tencent.token.js;
+import com.tencent.token.agv;
+import com.tencent.token.jr;
 
 class g
   extends p
@@ -28,18 +28,18 @@ class g
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = agw.a;
+      paramInt1 = agv.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = agw.a;
+      paramInt1 = agv.a;
       a(paramInt3, (int)this.d);
       return;
     }
-    paramJceStruct = (js)paramJceStruct;
-    paramInt1 = agw.a;
+    paramJceStruct = (jr)paramJceStruct;
+    paramInt1 = agv.a;
     long l = paramJceStruct.a;
     l = paramJceStruct.b;
     paramInt1 = paramJceStruct.d;
@@ -55,7 +55,7 @@ class g
       if (!this.a.g.a(paramJceStruct.a))
       {
         new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ").append(paramJceStruct.a);
-        paramInt1 = agw.a;
+        paramInt1 = agv.a;
         localObject = new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);
         ((StringBuilder)localObject).toString();

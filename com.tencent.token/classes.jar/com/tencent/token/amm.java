@@ -1,12 +1,23 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
-
 public final class amm
+  extends amw<Integer, Integer>
 {
-  public final PointF a = new PointF();
-  public final PointF b = new PointF();
-  public final PointF c = new PointF();
+  public final alz<Integer> a()
+  {
+    if (!super.b()) {
+      return new amg(this.b);
+    }
+    return new alw(this.a);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AnimatableColorValue{initialValue=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 

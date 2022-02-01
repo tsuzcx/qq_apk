@@ -1,155 +1,127 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.Collection;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class du
+public class du<K, V>
+  extends ef<K, V>
+  implements Map<K, V>
 {
-  final Object a = new Object();
-  HandlerThread b;
-  Handler c;
-  final int d;
-  private int e;
-  private Handler.Callback f = new Handler.Callback()
+  eb<K, V> a;
+  
+  private eb<K, V> a()
   {
-    public final boolean handleMessage(Message arg1)
-    {
-      switch (???.what)
+    if (this.a == null) {
+      this.a = new eb()
       {
-      default: 
-        return true;
-      case 1: 
-        du localdu1 = du.this;
-        ((Runnable)???.obj).run();
-        synchronized (localdu1.a)
+        protected final int a()
         {
-          localdu1.c.removeMessages(0);
-          localdu1.c.sendMessageDelayed(localdu1.c.obtainMessage(0), localdu1.d);
-          return true;
+          return du.this.h;
         }
-      }
-      du localdu2 = du.this;
-      synchronized (localdu2.a)
-      {
-        if (localdu2.c.hasMessages(1)) {
-          return true;
+        
+        protected final int a(Object paramAnonymousObject)
+        {
+          return du.this.a(paramAnonymousObject);
         }
-        localdu2.b.quit();
-        localdu2.b = null;
-        localdu2.c = null;
-        return true;
-      }
+        
+        protected final Object a(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return du.this.g[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+        }
+        
+        protected final V a(int paramAnonymousInt, V paramAnonymousV)
+        {
+          du localdu = du.this;
+          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
+          Object localObject = localdu.g[paramAnonymousInt];
+          localdu.g[paramAnonymousInt] = paramAnonymousV;
+          return localObject;
+        }
+        
+        protected final void a(int paramAnonymousInt)
+        {
+          du.this.d(paramAnonymousInt);
+        }
+        
+        protected final void a(K paramAnonymousK, V paramAnonymousV)
+        {
+          du.this.put(paramAnonymousK, paramAnonymousV);
+        }
+        
+        protected final int b(Object paramAnonymousObject)
+        {
+          return du.this.b(paramAnonymousObject);
+        }
+        
+        protected final Map<K, V> b()
+        {
+          return du.this;
+        }
+        
+        protected final void c()
+        {
+          du.this.clear();
+        }
+      };
     }
-  };
-  private final int g;
-  private final String h;
-  
-  public du(String paramString)
-  {
-    this.h = paramString;
-    this.g = 10;
-    this.d = 10000;
-    this.e = 0;
+    return this.a;
   }
   
-  public final <T> T a(final Callable<T> paramCallable, int paramInt)
+  public Set<Map.Entry<K, V>> entrySet()
   {
-    localReentrantLock = new ReentrantLock();
-    final Condition localCondition = localReentrantLock.newCondition();
-    final AtomicReference localAtomicReference = new AtomicReference();
-    final AtomicBoolean localAtomicBoolean = new AtomicBoolean(true);
-    a(new Runnable()
-    {
-      public final void run()
-      {
-        try
-        {
-          localAtomicReference.set(paramCallable.call());
-          label16:
-          localReentrantLock.lock();
-          try
-          {
-            localAtomicBoolean.set(false);
-            localCondition.signal();
-            return;
-          }
-          finally
-          {
-            localReentrantLock.unlock();
-          }
-        }
-        catch (Exception localException)
-        {
-          break label16;
-        }
-      }
-    });
-    localReentrantLock.lock();
-    label104:
-    do
-    {
-      try
-      {
-        if (!localAtomicBoolean.get())
-        {
-          paramCallable = localAtomicReference.get();
-          return paramCallable;
-        }
-        l1 = TimeUnit.MILLISECONDS.toNanos(paramInt);
-      }
-      finally
-      {
-        long l1;
-        long l2;
-        localReentrantLock.unlock();
-      }
-      try
-      {
-        l2 = localCondition.awaitNanos(l1);
-        l1 = l2;
-      }
-      catch (InterruptedException paramCallable)
-      {
-        break label104;
-      }
-      if (!localAtomicBoolean.get())
-      {
-        paramCallable = localAtomicReference.get();
-        localReentrantLock.unlock();
-        return paramCallable;
-      }
-    } while (l1 > 0L);
-    throw new InterruptedException("timeout");
+    eb localeb = a();
+    if (localeb.b == null) {
+      localeb.b = new eb.b(localeb);
+    }
+    return localeb.b;
   }
   
-  final void a(Runnable paramRunnable)
+  public Set<K> keySet()
   {
-    synchronized (this.a)
+    return a().d();
+  }
+  
+  public void putAll(Map<? extends K, ? extends V> paramMap)
+  {
+    int i = this.h + paramMap.size();
+    int j = this.h;
+    Object localObject;
+    if (this.f.length < i)
     {
-      if (this.b == null)
+      localObject = this.f;
+      Object[] arrayOfObject = this.g;
+      super.a(i);
+      if (this.h > 0)
       {
-        this.b = new HandlerThread(this.h, this.g);
-        this.b.start();
-        this.c = new Handler(this.b.getLooper(), this.f);
-        this.e += 1;
+        System.arraycopy(localObject, 0, this.f, 0, j);
+        System.arraycopy(arrayOfObject, 0, this.g, 0, j << 1);
       }
-      this.c.removeMessages(0);
-      this.c.sendMessage(this.c.obtainMessage(1, paramRunnable));
+      ef.a((int[])localObject, arrayOfObject, j);
+    }
+    if (this.h == j)
+    {
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        localObject = (Map.Entry)paramMap.next();
+        put(((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+      }
       return;
     }
+    throw new ConcurrentModificationException();
   }
   
-  public static abstract interface a<T>
+  public Collection<V> values()
   {
-    public abstract void a(T paramT);
+    eb localeb = a();
+    if (localeb.d == null) {
+      localeb.d = new eb.e(localeb);
+    }
+    return localeb.d;
   }
 }
 

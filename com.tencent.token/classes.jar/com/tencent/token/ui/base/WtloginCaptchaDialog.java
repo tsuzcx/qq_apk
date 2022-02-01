@@ -20,14 +20,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aae;
+import com.tencent.token.aad;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.rz;
-import com.tencent.token.rz.3;
+import com.tencent.token.ry;
+import com.tencent.token.ry.3;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xb;
-import com.tencent.token.yj;
+import com.tencent.token.xa;
+import com.tencent.token.yi;
 import java.util.Timer;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
@@ -36,7 +36,7 @@ public class WtloginCaptchaDialog
   extends Dialog
 {
   private static Handler g;
-  rz a;
+  ry a;
   @SuppressLint({"HandlerLeak"})
   Handler b = new Handler()
   {
@@ -47,12 +47,12 @@ public class WtloginCaptchaDialog
         if (WtloginCaptchaDialog.a() == null) {
           return;
         }
-        ((yj)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
+        ((yi)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
         Object localObject = new StringBuilder("wtlogin : ret=");
         ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
         ((StringBuilder)localObject).append(", what=");
         ((StringBuilder)localObject).append(paramAnonymousMessage.what);
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         int i = paramAnonymousMessage.what;
         StringBuilder localStringBuilder;
         if (i != 4104)
@@ -64,7 +64,7 @@ public class WtloginCaptchaDialog
           case 4100: 
             localObject = new StringBuilder("K_MSGCODE_REFRESH_PICTURE ret=");
             ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
-            xb.b(((StringBuilder)localObject).toString());
+            xa.b(((StringBuilder)localObject).toString());
             WtloginCaptchaDialog.f(WtloginCaptchaDialog.this);
             return;
           }
@@ -175,7 +175,7 @@ public class WtloginCaptchaDialog
     if (localObject == null) {
       return;
     }
-    localObject = aae.a((byte[])localObject);
+    localObject = aad.a((byte[])localObject);
     this.h.setImageBitmap((Bitmap)localObject);
   }
   
@@ -221,7 +221,7 @@ public class WtloginCaptchaDialog
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      this.a = rz.a(RqdApplication.n());
+      this.a = ry.a(RqdApplication.n());
       setContentView(2131296508);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
@@ -249,7 +249,7 @@ public class WtloginCaptchaDialog
           {
             ((InputMethodManager)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getSystemService("input_method")).hideSoftInputFromWindow(WtloginCaptchaDialog.this.getWindow().peekDecorView().getWindowToken(), 0);
             Object localObject = paramAnonymousView.trim();
-            ((yj)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492986, null);
+            ((yi)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492986, null);
             paramAnonymousView = WtloginCaptchaDialog.this.a;
             String str = WtloginCaptchaDialog.c(WtloginCaptchaDialog.this);
             localObject = ((String)localObject).getBytes();
@@ -260,7 +260,7 @@ public class WtloginCaptchaDialog
               paramAnonymousView.a.CheckPictureAndGetSt(str, (byte[])localObject, new WUserSigInfo());
               paramAnonymousView.b = localHandler;
               paramAnonymousView.c = new Timer();
-              paramAnonymousView.c.schedule(new rz.3(paramAnonymousView), 30000L);
+              paramAnonymousView.c.schedule(new ry.3(paramAnonymousView), 30000L);
             }
             return;
           }

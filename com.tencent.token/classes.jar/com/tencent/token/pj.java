@@ -1,43 +1,17 @@
 package com.tencent.token;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 public final class pj
 {
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public static byte[] a(String paramString1, String paramString2)
   {
-    Intent localIntent;
-    if ((paramContext != null) && (paramString1.length() != 0) && (paramString2.length() != 0))
-    {
-      localIntent = new Intent();
-      localIntent.setClassName(paramString1, paramString2);
-      localIntent.putExtras(paramBundle);
-      paramString1 = paramContext.getPackageName();
-      localIntent.putExtra("_mmessage_sdkVersion", 553910273);
-      localIntent.putExtra("_mmessage_appPackage", paramString1);
-      localIntent.putExtra("_mmessage_content", paramString3);
-      localIntent.putExtra("_mmessage_checksum", pk.a(paramString3, paramString1));
-      localIntent.addFlags(268435456).addFlags(134217728);
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString1 != null) {
+      localStringBuffer.append(paramString1);
     }
-    try
-    {
-      paramContext.startActivity(localIntent);
-      pq.c("MicroMsg.SDK.MMessageAct", "send mm message, intent=".concat(String.valueOf(localIntent)));
-      return true;
-    }
-    catch (ActivityNotFoundException paramContext)
-    {
-      label128:
-      break label128;
-    }
-    for (paramContext = "send fail, target ActivityNotFound";; paramContext = "send fail, invalid arguments")
-    {
-      pq.a("MicroMsg.SDK.MMessageAct", paramContext);
-      return false;
-    }
+    localStringBuffer.append(553910273);
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append("mMcShCsTr");
+    return ob.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 

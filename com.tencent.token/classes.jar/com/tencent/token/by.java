@@ -1,20 +1,30 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
 
-public abstract class by
+public final class by
 {
-  public Fragment a(Context paramContext, String paramString, Bundle paramBundle)
+  public final bz<?> a;
+  
+  public by(bz<?> parambz)
   {
-    return Fragment.a(paramContext, paramString, paramBundle);
+    this.a = parambz;
   }
   
-  public abstract View a(int paramInt);
+  public final Fragment a(String paramString)
+  {
+    return this.a.f.b(paramString);
+  }
   
-  public abstract boolean a();
+  public final void a()
+  {
+    this.a.f.j();
+  }
+  
+  public final boolean b()
+  {
+    return this.a.f.h();
+  }
 }
 
 

@@ -3,50 +3,100 @@ package com.tencent.token;
 import android.os.Bundle;
 
 public final class ot
-  implements ou.b
 {
-  int a = 10485760;
-  public byte[] b = null;
-  public String c = null;
+  public int a;
+  public String b;
+  public String c;
+  public byte[] d;
+  public b e = null;
+  public String f;
+  public String g;
+  public String h;
+  
+  public ot()
+  {
+    this((byte)0);
+  }
+  
+  private ot(byte paramByte) {}
   
   public final int a()
   {
-    return 6;
+    b localb = this.e;
+    if (localb == null) {
+      return 0;
+    }
+    return localb.a();
   }
   
-  public final void a(Bundle paramBundle)
+  public static final class a
   {
-    paramBundle.putByteArray("_wxfileobject_fileData", this.b);
-    paramBundle.putString("_wxfileobject_filePath", this.c);
-  }
-  
-  public final void b(Bundle paramBundle)
-  {
-    this.b = paramBundle.getByteArray("_wxfileobject_fileData");
-    this.c = paramBundle.getString("_wxfileobject_filePath");
-  }
-  
-  public final boolean b()
-  {
-    Object localObject = this.b;
-    if ((localObject == null) || (localObject.length == 0))
+    public static ot a(Bundle paramBundle)
     {
-      localObject = this.c;
-      if (localObject == null) {
-        break label76;
+      ot localot = new ot();
+      localot.a = paramBundle.getInt("_wxobject_sdkVer");
+      localot.b = paramBundle.getString("_wxobject_title");
+      localot.c = paramBundle.getString("_wxobject_description");
+      localot.d = paramBundle.getByteArray("_wxobject_thumbdata");
+      localot.f = paramBundle.getString("_wxobject_mediatagname");
+      localot.g = paramBundle.getString("_wxobject_message_action");
+      localot.h = paramBundle.getString("_wxobject_message_ext");
+      Object localObject2 = paramBundle.getString("_wxobject_identifier_");
+      "pathOldToNew, oldPath = ".concat(String.valueOf(localObject2));
+      Object localObject1 = localObject2;
+      if (localObject2 != null) {
+        if (((String)localObject2).length() == 0)
+        {
+          localObject1 = localObject2;
+        }
+        else
+        {
+          int i = ((String)localObject2).lastIndexOf('.');
+          if (i == -1)
+          {
+            "pathOldToNew fail, invalid pos, oldPath = ".concat(String.valueOf(localObject2));
+            localObject1 = localObject2;
+          }
+          else
+          {
+            localObject1 = new StringBuilder("com.tencent.mm.opensdk.modelmsg");
+            ((StringBuilder)localObject1).append(((String)localObject2).substring(i));
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
+        }
       }
-      if (((String)localObject).length() == 0) {
-        return false;
+      if (localObject1 != null)
+      {
+        if (((String)localObject1).length() <= 0) {
+          return localot;
+        }
+        try
+        {
+          localot.e = ((ot.b)Class.forName((String)localObject1).newInstance());
+          localot.e.b(paramBundle);
+          return localot;
+        }
+        catch (Exception paramBundle)
+        {
+          localObject2 = new StringBuilder("get media object from bundle failed: unknown ident ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(", ex = ");
+          ((StringBuilder)localObject2).append(paramBundle.getMessage());
+        }
       }
+      return localot;
     }
-    localObject = this.b;
-    if ((localObject != null) && (localObject.length > this.a)) {
-      return false;
-    }
-    localObject = this.c;
-    return (localObject == null) || (ph.b((String)localObject) <= this.a);
-    label76:
-    return false;
+  }
+  
+  public static abstract interface b
+  {
+    public abstract int a();
+    
+    public abstract void a(Bundle paramBundle);
+    
+    public abstract void b(Bundle paramBundle);
+    
+    public abstract boolean b();
   }
 }
 

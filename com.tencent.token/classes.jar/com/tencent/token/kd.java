@@ -1,56 +1,22 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
-
-public class kd
-  implements aha
+public final class kd
 {
-  private static aqr b;
-  private long a = 0L;
+  static Object a = new Object();
+  static ke b = null;
+  private static boolean c = false;
   
-  public kd()
+  public static ke a()
   {
     if (b == null) {
-      try
+      synchronized (a)
       {
         if (b == null) {
-          b = new aqr();
+          b = new ke();
         }
-        return;
       }
-      finally {}
     }
-  }
-  
-  public final agy a(int paramInt1, int paramInt2)
-  {
-    return b.a(paramInt1, paramInt2);
-  }
-  
-  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agx paramagx)
-  {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagx);
-  }
-  
-  public final WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agx paramagx, long paramLong)
-  {
-    return b.a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagx, paramLong);
-  }
-  
-  public final void a()
-  {
-    aqk.a(5);
-  }
-  
-  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agy paramagy)
-  {
-    b.a(paramInt1, paramJceStruct, paramInt2, paramagy);
-  }
-  
-  public final void b()
-  {
-    aqk.b(1);
+    return b;
   }
 }
 

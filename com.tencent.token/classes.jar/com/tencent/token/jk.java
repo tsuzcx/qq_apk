@@ -1,44 +1,67 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public final class jk
-  extends Resources
 {
-  private final WeakReference<Context> a;
+  private static Method a;
   
-  public jk(Context paramContext, Resources paramResources)
+  static
   {
-    super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public static boolean a()
-  {
-    return (gf.l()) && (Build.VERSION.SDK_INT <= 20);
-  }
-  
-  public final Drawable getDrawable(int paramInt)
-  {
-    Context localContext = (Context)this.a.get();
-    if (localContext != null)
+    if (Build.VERSION.SDK_INT >= 18) {}
+    try
     {
-      ih localih = ih.a();
-      Drawable localDrawable2 = localih.a(localContext, paramInt);
-      Drawable localDrawable1 = localDrawable2;
-      if (localDrawable2 == null) {
-        localDrawable1 = super.getDrawable(paramInt);
+      Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
+      a = localMethod;
+      if (!localMethod.isAccessible()) {
+        a.setAccessible(true);
       }
-      if (localDrawable1 != null) {
-        return localih.a(localContext, paramInt, false, localDrawable1);
-      }
-      return null;
+      return;
     }
-    return super.getDrawable(paramInt);
+    catch (NoSuchMethodException localNoSuchMethodException) {}
+    return;
+  }
+  
+  public static void a(View paramView, Rect paramRect1, Rect paramRect2)
+  {
+    Method localMethod = a;
+    if (localMethod != null) {}
+    try
+    {
+      localMethod.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+      return;
+    }
+    catch (Exception paramView) {}
+    return;
+  }
+  
+  public static boolean a(View paramView)
+  {
+    return ew.c(paramView) == 1;
+  }
+  
+  public static void b(View paramView)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {}
+    try
+    {
+      Method localMethod = paramView.getClass().getMethod("makeOptionalFitsSystemWindows", new Class[0]);
+      if (!localMethod.isAccessible()) {
+        localMethod.setAccessible(true);
+      }
+      localMethod.invoke(paramView, new Object[0]);
+      return;
+    }
+    catch (NoSuchMethodException|InvocationTargetException paramView)
+    {
+      return;
+    }
+    catch (IllegalAccessException paramView) {}
+    return;
   }
 }
 

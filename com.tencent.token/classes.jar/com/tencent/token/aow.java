@@ -1,10 +1,13 @@
 package com.tencent.token;
 
 public final class aow
+  extends Exception
 {
-  public static arl a()
+  private int a = -56;
+  
+  public aow(String paramString)
   {
-    return (arl)aov.a(ark.class);
+    super(paramString);
   }
 }
 

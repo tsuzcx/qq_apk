@@ -2,64 +2,25 @@ package com.tencent.token;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public final class no
 {
-  private static no d;
-  public nq a;
-  public nr b = new nr();
-  public np c;
+  public String a;
+  public String b;
   
-  private no()
+  public static void a(String paramString1, String paramString2)
   {
-    this.b.a();
-    this.a = new nq();
-    this.a.a();
-    this.c = new np();
-    np localnp = this.c;
-    SharedPreferences localSharedPreferences = lp.a().getSharedPreferences("Access_Preferences", 0);
-    localnp.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
-    localnp.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
+    lo.a().getSharedPreferences("Access_Preferences", 0).edit().putString(paramString1, paramString2).commit();
   }
   
-  public static no a()
+  public final String toString()
   {
-    try
-    {
-      if (d == null) {
-        d = new no();
-      }
-      no localno = d;
-      return localno;
-    }
-    finally {}
-  }
-  
-  public final void a(nr paramnr)
-  {
-    if (paramnr == null) {
-      return;
-    }
-    li.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:".concat(String.valueOf(paramnr)));
-    StringBuilder localStringBuilder;
-    if ((paramnr.a < 2000) || (paramnr.a > 60000))
-    {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
-      localStringBuilder.append(paramnr.a);
-      localStringBuilder.append(" is checked to 20s");
-      li.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      paramnr.a = 20000;
-    }
-    if ((paramnr.b < 2000) || (paramnr.b > 60000))
-    {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
-      localStringBuilder.append(paramnr.b);
-      localStringBuilder.append(" is checked to 20s");
-      li.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      paramnr.b = 20000;
-    }
-    this.b = paramnr;
-    this.b.b();
+    StringBuilder localStringBuilder = new StringBuilder("detectTaskCode:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("ipInfo:");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

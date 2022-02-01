@@ -6,64 +6,56 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class tq
-  extends tk
+  extends tj
 {
   private long d;
-  private String e;
+  private long e;
+  private int f;
+  private int g;
+  private int h;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.e = ((String)paramaar.c.get("param.bind.sig"));
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramaaq.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((Integer)paramaaq.c.get("param.type")).intValue();
+    this.f = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    Object localObject;
     if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wz)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      if (paramJSONObject.getInt("seed_available") == 1)
+      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
+      if (i != this.f)
       {
-        localObject = aad.e(paramJSONObject.getString("seed"));
-        if (localObject != null)
-        {
-          sc.b().c();
-          sc.b().a((byte[])localObject);
-          sc.b().a.a();
-        }
-      }
-      long l = paramJSONObject.getLong("server_time");
-      sc.b();
-      sc.a(l);
-      paramJSONObject = ta.a().d(this.d);
-      if (paramJSONObject != null) {
-        ta.a().b(paramJSONObject);
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.f);
+        xa.c(paramJSONObject.toString());
+        return;
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
 }

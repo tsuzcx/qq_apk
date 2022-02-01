@@ -1,19 +1,10 @@
 package com.tencent.token;
 
-import java.util.Hashtable;
-
-public final class ahp
+public abstract interface ahp
 {
-  final String a;
-  String b;
-  int c;
-  final ahq d;
-  final byte[] e;
-  Hashtable f;
-  public String g;
-  long h;
-  long i;
-  final boolean j;
+  public abstract void a();
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

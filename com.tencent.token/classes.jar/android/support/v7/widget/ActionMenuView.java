@@ -15,26 +15,26 @@ import android.view.View.MeasureSpec;
 import android.view.ViewDebug.ExportedProperty;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
-import com.tencent.token.hm;
-import com.tencent.token.hm.a;
-import com.tencent.token.hm.b;
-import com.tencent.token.ho;
-import com.tencent.token.ht.a;
-import com.tencent.token.hu;
-import com.tencent.token.jl;
+import com.tencent.token.hl;
+import com.tencent.token.hl.a;
+import com.tencent.token.hl.b;
+import com.tencent.token.hn;
+import com.tencent.token.hs.a;
+import com.tencent.token.ht;
+import com.tencent.token.jk;
 
 public class ActionMenuView
   extends LinearLayoutCompat
-  implements hm.b, hu
+  implements hl.b, ht
 {
-  public hm a;
+  public hl a;
   public boolean b;
   public ActionMenuPresenter c;
-  hm.a d;
+  hl.a d;
   d e;
   private Context f;
   private int g;
-  private ht.a h;
+  private hs.a h;
   private boolean i;
   private int j;
   private int k;
@@ -162,20 +162,20 @@ public class ActionMenuView
     return localLayoutParams;
   }
   
-  public final void a(hm paramhm)
+  public final void a(hl paramhl)
   {
-    this.a = paramhm;
+    this.a = paramhl;
   }
   
-  public final void a(ht.a parama, hm.a parama1)
+  public final void a(hs.a parama, hl.a parama1)
   {
     this.h = parama;
     this.d = parama1;
   }
   
-  public final boolean a(ho paramho)
+  public final boolean a(hn paramhn)
   {
-    return this.a.a(paramho, null, 0);
+    return this.a.a(paramhn, null, 0);
   }
   
   public final void b()
@@ -201,7 +201,7 @@ public class ActionMenuView
     if (this.a == null)
     {
       Object localObject = getContext();
-      this.a = new hm((Context)localObject);
+      this.a = new hl((Context)localObject);
       this.a.a(new c());
       this.c = new ActionMenuPresenter((Context)localObject);
       this.c.c();
@@ -210,7 +210,7 @@ public class ActionMenuView
       if (localObject == null) {
         localObject = new b();
       }
-      localActionMenuPresenter.f = ((ht.a)localObject);
+      localActionMenuPresenter.f = ((hs.a)localObject);
       this.a.a(this.c, this.f);
       this.c.a(this);
     }
@@ -274,7 +274,7 @@ public class ActionMenuView
     int i5 = paramInt3 - paramInt1;
     paramInt1 = getPaddingRight();
     paramInt2 = getPaddingLeft();
-    paramBoolean = jl.a(this);
+    paramBoolean = jk.a(this);
     paramInt4 = i5 - paramInt1 - paramInt2;
     paramInt3 = 0;
     int m = 0;
@@ -420,7 +420,7 @@ public class ActionMenuView
       if ((localObject != null) && (m != this.j))
       {
         this.j = m;
-        ((hm)localObject).b(true);
+        ((hl)localObject).b(true);
       }
     }
     int n = getChildCount();
@@ -800,29 +800,29 @@ public class ActionMenuView
   }
   
   static final class b
-    implements ht.a
+    implements hs.a
   {
-    public final void a(hm paramhm, boolean paramBoolean) {}
+    public final void a(hl paramhl, boolean paramBoolean) {}
     
-    public final boolean a(hm paramhm)
+    public final boolean a(hl paramhl)
     {
       return false;
     }
   }
   
   final class c
-    implements hm.a
+    implements hl.a
   {
     c() {}
     
-    public final void a(hm paramhm)
+    public final void a(hl paramhl)
     {
       if (ActionMenuView.this.d != null) {
-        ActionMenuView.this.d.a(paramhm);
+        ActionMenuView.this.d.a(paramhl);
       }
     }
     
-    public final boolean a(hm paramhm, MenuItem paramMenuItem)
+    public final boolean a(hl paramhl, MenuItem paramMenuItem)
     {
       return (ActionMenuView.this.e != null) && (ActionMenuView.this.e.a(paramMenuItem));
     }

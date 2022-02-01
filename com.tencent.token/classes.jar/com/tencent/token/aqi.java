@@ -1,23 +1,35 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
-
 public final class aqi
-  implements Runnable
+  implements apx
 {
-  public aqi(aqh paramaqh) {}
+  private Object a = new Object();
+  private int b = 1;
   
-  public final void run()
+  public final int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    AtomicReference localAtomicReference = new AtomicReference();
-    int i = this.a.a(null, localArrayList, localAtomicReference);
-    if (-10 != i)
+    synchronized (this.a)
     {
-      if (i == 0) {
-        return;
-      }
+      int i = this.b;
+      this.b += 1;
+      return i;
+    }
+  }
+  
+  public final int b()
+  {
+    synchronized (this.a)
+    {
+      int i = this.b;
+      return i;
+    }
+  }
+  
+  public final void c()
+  {
+    synchronized (this.a)
+    {
+      this.b += 1;
       return;
     }
   }

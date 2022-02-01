@@ -4,47 +4,54 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.widget.Toast;
 import btmsdkobf.bw;
+import btmsdkobf.cx;
+import btmsdkobf.cy;
+import btmsdkobf.db;
 import com.android.safeguard.Safeguard;
 import com.tencent.feedback.anr.ANRReport;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.feedback.eup.CrashStrategyBean;
-import com.tencent.token.aab;
+import com.tencent.token.aaa;
+import com.tencent.token.aac;
 import com.tencent.token.aad;
-import com.tencent.token.aae;
+import com.tencent.token.aaf;
 import com.tencent.token.aag;
-import com.tencent.token.aah;
-import com.tencent.token.abi;
-import com.tencent.token.abk;
+import com.tencent.token.abh;
+import com.tencent.token.abj;
+import com.tencent.token.ahg;
 import com.tencent.token.ahh;
-import com.tencent.token.ahi;
-import com.tencent.token.arz;
+import com.tencent.token.ary;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.qm;
-import com.tencent.token.qm.a;
+import com.tencent.token.ql;
+import com.tencent.token.ql.a;
+import com.tencent.token.qx;
 import com.tencent.token.qy;
-import com.tencent.token.qz;
-import com.tencent.token.qz.b;
-import com.tencent.token.rc;
-import com.tencent.token.rc.b;
-import com.tencent.token.rp;
-import com.tencent.token.rx;
-import com.tencent.token.rz;
+import com.tencent.token.qy.b;
+import com.tencent.token.rb;
+import com.tencent.token.rb.b;
+import com.tencent.token.ro;
+import com.tencent.token.rw;
+import com.tencent.token.ry;
+import com.tencent.token.sa;
 import com.tencent.token.sb;
 import com.tencent.token.sc;
-import com.tencent.token.sd;
-import com.tencent.token.ss;
-import com.tencent.token.ta;
-import com.tencent.token.wx;
-import com.tencent.token.xb;
-import com.tencent.token.xf;
-import com.tencent.token.xl;
+import com.tencent.token.sr;
+import com.tencent.token.sz;
+import com.tencent.token.ww;
+import com.tencent.token.xa;
+import com.tencent.token.xe;
+import com.tencent.token.xk;
 import com.tmsdk.TMSDKContext;
+import com.tmsdk.base.utils.MD5Util;
+import com.tmsdk.base.utils.NetworkUtil;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -58,26 +65,44 @@ public class RqdApplication
   public static String e;
   public static boolean f = false;
   public static boolean g = false;
-  public static final boolean h = aab.d;
+  public static final boolean h = aaa.d;
   public static boolean i = false;
-  private static Context l;
-  private static RqdApplication m;
-  private static aag n;
-  private static int o = -1;
+  private static Context m;
+  private static RqdApplication n;
+  private static aaf o;
+  private static int p = -1;
   AtomicBoolean j = new AtomicBoolean(false);
   public boolean k = false;
+  int l = 0;
   
   public static RqdApplication a()
   {
-    return m;
+    return n;
   }
   
-  private static boolean a(Context paramContext)
+  public static String a(Context paramContext)
   {
-    return b(paramContext) == c(paramContext);
+    String str = paramContext.getPackageName();
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext = paramContext.getApplicationInfo(str, 0).publicSourceDir;
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label22:
+      break label22;
+    }
+    return null;
   }
   
-  private static long b(Context paramContext)
+  private static boolean b(Context paramContext)
+  {
+    return c(paramContext) == d(paramContext);
+  }
+  
+  private static long c(Context paramContext)
   {
     String str = paramContext.getPackageName();
     try
@@ -92,7 +117,7 @@ public class RqdApplication
     return 0L;
   }
   
-  private static long c(Context paramContext)
+  private static long d(Context paramContext)
   {
     String str = paramContext.getPackageName();
     try
@@ -114,7 +139,7 @@ public class RqdApplication
   
   public static boolean e()
   {
-    return (p()) && (a(n()));
+    return (p()) && (b(n()));
   }
   
   public static void f()
@@ -126,10 +151,10 @@ public class RqdApplication
   public static void g()
   {
     a = 0;
-    if ((sd.a().c()) && (sd.a().a == 2)) {
+    if ((sc.a().c()) && (sc.a().a == 2)) {
       a |= 0x1;
     }
-    if (aae.e() != 0L) {
+    if (aad.e() != 0L) {
       a |= 0x2;
     }
   }
@@ -155,11 +180,11 @@ public class RqdApplication
   
   public static boolean j()
   {
-    ta localta = ta.a();
-    if ((localta != null) && (localta.k.b() != null)) {
+    sz localsz = sz.a();
+    if ((localsz != null) && (localsz.k.b() != null)) {
       return (a & 0x2) == 2;
     }
-    aae.b(0L);
+    aad.b(0L);
     return false;
   }
   
@@ -171,32 +196,32 @@ public class RqdApplication
   public static String l()
   {
     String str;
-    if ((o == 0) && (!wx.j())) {
-      str = new Safeguard(l, "safeguard_pref").getSafeguardInfo();
+    if ((p == 0) && (!ww.j())) {
+      str = new Safeguard(m, "safeguard_pref").getSafeguardInfo();
     } else {
       str = null;
     }
-    o += 1;
+    p += 1;
     return str;
   }
   
-  public static aag m()
+  public static aaf m()
   {
-    Object localObject = n;
+    Object localObject = o;
     if (localObject != null) {
       return localObject;
     }
-    localObject = new aah(n());
-    n = (aag)localObject;
+    localObject = new aag(n());
+    o = (aaf)localObject;
     return localObject;
   }
   
   public static Context n()
   {
     if (g) {
-      return m;
+      return n;
     }
-    return l;
+    return m;
   }
   
   private static void o()
@@ -215,14 +240,14 @@ public class RqdApplication
   private static String q()
   {
     Object localObject = "testUserId";
-    if ((ta.a().k.b() != null) && (ta.a().k.b().mRealUin != 0L))
+    if ((sz.a().k.b() != null) && (sz.a().k.b().mRealUin != 0L))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(ta.a().k.b().mRealUin);
+      ((StringBuilder)localObject).append(sz.a().k.b().mRealUin);
       return ((StringBuilder)localObject).toString();
     }
-    String str1 = aad.b(l);
-    String str2 = aad.c(l);
+    String str1 = aac.b(m);
+    String str2 = aac.c(m);
     int i2 = 1;
     int i1;
     if (str1 == null) {
@@ -251,14 +276,14 @@ public class RqdApplication
         localObject = str1;
       }
     }
-    xb.c("RqdApplication: userId =".concat(String.valueOf(localObject)));
+    xa.c("RqdApplication: userId =".concat(String.valueOf(localObject)));
     return localObject;
   }
   
   private static CrashStrategyBean r()
   {
     CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
-    localCrashStrategyBean.setStoreCrashSdcard(aab.o);
+    localCrashStrategyBean.setStoreCrashSdcard(aaa.o);
     localCrashStrategyBean.setCrashSdcardMaxSize(5000);
     localCrashStrategyBean.setMaxStoredNum(10);
     localCrashStrategyBean.setMaxUploadNum_GPRS(2);
@@ -272,7 +297,7 @@ public class RqdApplication
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
-    com.tencent.token.zk.b = System.currentTimeMillis();
+    com.tencent.token.zj.b = System.currentTimeMillis();
   }
   
   public final void b()
@@ -280,23 +305,23 @@ public class RqdApplication
     if (!this.j.compareAndSet(false, true)) {
       return;
     }
-    CrashReport.setLogAble(aab.l, aab.m);
-    CrashReport.setUserId(l, "testUserId");
+    CrashReport.setLogAble(aaa.l, aaa.m);
+    CrashReport.setUserId(m, "testUserId");
     Object localObject = r();
-    CrashReport.initCrashReport(l, null, null, true, (CrashStrategyBean)localObject);
-    localObject = abk.b().getAbsolutePath();
-    CrashReport.initNativeCrashReport(l, (String)localObject, aab.p);
-    if (aab.n) {
-      ANRReport.startANRMonitor(l);
+    CrashReport.initCrashReport(m, null, null, true, (CrashStrategyBean)localObject);
+    localObject = abj.b().getAbsolutePath();
+    CrashReport.initNativeCrashReport(m, (String)localObject, aaa.p);
+    if (aaa.n) {
+      ANRReport.startANRMonitor(m);
     }
-    CrashReport.setUserId(l, q());
+    CrashReport.setUserId(m, q());
     TMSDKContext.setTMSDKLogEnable(false);
-    i = TMSDKContext.init(l, null);
-    TMSDKContext.setAutoConnectionSwitch(l, true);
-    xf.a();
-    arz.a(this, new xl());
-    qm.a.a().a();
-    rc.b.a().a(l);
+    i = TMSDKContext.init(m, null);
+    TMSDKContext.setAutoConnectionSwitch(m, true);
+    xe.a();
+    ary.a(this, new xk());
+    ql.a.a().a();
+    rb.b.a().a(m);
     o();
     c();
   }
@@ -309,6 +334,20 @@ public class RqdApplication
     String str = bw.ah().aj();
     if (TextUtils.isEmpty(str))
     {
+      this.l += 1;
+      if (this.l > 10)
+      {
+        if (!NetworkUtil.isNetworkConnected())
+        {
+          Toast.makeText(m, "网络连接失败，请检查网络", 0).show();
+        }
+        else if (cx.iT)
+        {
+          db.bZ().hF.jy.sendEmptyMessage(2);
+          db.bZ().hF.jy.sendEmptyMessageDelayed(3, 1000L);
+        }
+        this.l = 0;
+      }
       new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
       {
         public final void run()
@@ -318,18 +357,18 @@ public class RqdApplication
       }, 500L);
       return;
     }
-    sc.b(wx.h());
+    sb.b(ww.h());
     try
     {
-      rx localrx = new rx();
-      Object localObject1 = localrx.a;
+      rw localrw = new rw();
+      Object localObject1 = localrw.a;
       if ((localObject1 != null) && (localObject1.length != 0))
       {
-        Object localObject2 = rx.c();
+        Object localObject2 = rw.c();
         long l1 = ((SharedPreferences)localObject2).getLong("seed_expire_time", 0L);
         long l2 = Long.parseLong(((SharedPreferences)localObject2).getString("token_seq_sp", ""));
-        localObject1 = ss.a((byte[])localObject1);
-        boolean bool = qz.a().a((String)localObject1, l1, l2);
+        localObject1 = sr.a((byte[])localObject1);
+        boolean bool = qy.a().a((String)localObject1, l1, l2);
         localObject2 = new StringBuilder("init initCodeStr:");
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append(", expireTime:");
@@ -338,11 +377,11 @@ public class RqdApplication
         ((StringBuilder)localObject2).append(bool);
         if (bool)
         {
-          localrx.a = null;
-          localrx.a();
+          localrw.a = null;
+          localrw.a();
         }
       }
-      qz.a();
+      qy.a();
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
@@ -350,19 +389,19 @@ public class RqdApplication
     }
     catch (Throwable localThrowable)
     {
-      label208:
-      break label208;
+      label291:
+      break label291;
     }
-    qz.a().a(l, "com.tencent.token", str, sc.a(), new qz.b()
+    qy.a().a(m, "com.tencent.token", str, sb.a(), new qy.b()
     {
       public final String a()
       {
-        return xf.b();
+        return xe.b();
       }
       
       public final void a(long paramAnonymousLong, String paramAnonymousString1, String paramAnonymousString2)
       {
-        QQUser localQQUser = ta.a().d(paramAnonymousLong);
+        QQUser localQQUser = sz.a().d(paramAnonymousLong);
         if (localQQUser != null) {}
         try
         {
@@ -381,15 +420,40 @@ public class RqdApplication
       
       public final void a(String paramAnonymousString)
       {
-        CrashReport.handleCatchException(Thread.currentThread(), new Throwable("galtrack_token:".concat(String.valueOf(paramAnonymousString))), "自定义上报", null);
+        Object localObject = paramAnonymousString;
+        if (paramAnonymousString != null)
+        {
+          localObject = paramAnonymousString;
+          if (paramAnonymousString.contains("[AP]"))
+          {
+            localObject = RqdApplication.a(RqdApplication.this.getApplicationContext());
+            if (localObject != null)
+            {
+              localObject = MD5Util.getFileMD5(new File((String)localObject));
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramAnonymousString);
+              localStringBuilder.append(", md5:");
+              localStringBuilder.append((String)localObject);
+              localObject = localStringBuilder.toString();
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramAnonymousString);
+              ((StringBuilder)localObject).append(", md5 file null");
+              localObject = ((StringBuilder)localObject).toString();
+            }
+          }
+        }
+        CrashReport.handleCatchException(Thread.currentThread(), new Throwable("galtrack_token:".concat(String.valueOf(localObject))), "自定义上报", null);
       }
       
       public final boolean a(long paramAnonymousLong)
       {
         int i = 0;
-        while (i < ta.a().k.a())
+        while (i < sz.a().k.a())
         {
-          QQUser localQQUser = ta.a().a(i);
+          QQUser localQQUser = sz.a().a(i);
           if (localQQUser.mRealUin == paramAnonymousLong) {
             return localQQUser.mIsBinded;
           }
@@ -398,31 +462,31 @@ public class RqdApplication
         return false;
       }
       
-      public final qy b()
+      public final qx b()
       {
-        qy localqy = new qy();
-        Object localObject = rz.a(RqdApplication.n());
-        QQUser localQQUser = ta.a().k.b();
+        qx localqx = new qx();
+        Object localObject = ry.a(RqdApplication.n());
+        QQUser localQQUser = sz.a().k.b();
         if (localQQUser == null) {
-          return localqy;
+          return localqx;
         }
         if (localQQUser.mRealUin != 0L)
         {
-          localObject = ((rz)localObject).a(localQQUser.mRealUin);
+          localObject = ((ry)localObject).a(localQQUser.mRealUin);
           if (localObject != null) {
-            localqy.c = aad.a((byte[])localObject);
+            localqx.c = aac.a((byte[])localObject);
           }
         }
-        localqy.a = localQQUser.mRealUin;
-        localqy.b = localQQUser.mUin;
-        if (localqy.b == localqy.a) {
-          localqy.b = aad.f(localqy.a);
+        localqx.a = localQQUser.mRealUin;
+        localqx.b = localQQUser.mUin;
+        if (localqx.b == localqx.a) {
+          localqx.b = aac.f(localqx.a);
         }
-        return localqy;
+        return localqx;
       }
     });
     this.k = true;
-    sb.a().c();
+    sa.a().c();
   }
   
   public Context getApplicationContext()
@@ -430,28 +494,28 @@ public class RqdApplication
     if (g) {
       return super.getApplicationContext();
     }
-    return l;
+    return m;
   }
   
   public void onCreate()
   {
     super.onCreate();
+    n = this;
     m = this;
-    l = this;
-    l = abi.a(getApplicationContext());
-    wx.a(getApplicationContext());
-    ahi.a(getApplicationContext());
-    if (rp.a().b())
+    m = abh.a(getApplicationContext());
+    ww.a(getApplicationContext());
+    ahh.a(getApplicationContext());
+    if (ro.a().b())
     {
       g = true;
       b();
     }
-    boolean bool = aae.c();
+    boolean bool = aad.c();
     if (!bool) {
       g();
     }
     if (bool) {
-      aae.a(false);
+      aad.a(false);
     }
     new Thread()
     {
@@ -461,7 +525,7 @@ public class RqdApplication
         {
           for (;;)
           {
-            if ((!sd.a().d()) && (aae.e() == 0L))
+            if ((!sc.a().d()) && (aad.e() == 0L))
             {
               Thread.sleep(60000L);
             }
@@ -474,7 +538,7 @@ public class RqdApplication
             else
             {
               Thread.sleep(1000L);
-              if (aad.d()) {
+              if (aac.d()) {
                 RqdApplication.c = 1;
               } else {
                 RqdApplication.c = 0;
@@ -485,12 +549,12 @@ public class RqdApplication
         }
         catch (Exception localException)
         {
-          xb.b(localException.toString());
+          xa.b(localException.toString());
           localException.printStackTrace();
         }
       }
     }.start();
-    xb.a("rqd start");
+    xa.a("rqd start");
   }
 }
 

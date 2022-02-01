@@ -1,62 +1,140 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.RectF;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
-final class anh
-  extends anf
+public class anh
 {
-  private final Paint g = new Paint(3);
-  private final Rect h = new Rect();
-  private final Rect i = new Rect();
-  private final float j;
+  private static final String v = "anh";
+  final List<amy> a;
+  final ass b;
+  final String c;
+  final long d;
+  final b e;
+  final long f;
+  final String g;
+  final List<ana> h;
+  final amu i;
+  final int j;
+  final int k;
+  final int l;
+  final float m;
+  final float n;
+  final int o;
+  final int p;
+  final ams q;
+  final amt r;
+  final amn s;
+  final List<aly<Float>> t;
+  final int u;
   
-  anh(asw paramasw, ani paramani, float paramFloat)
+  private anh(List<amy> paramList, ass paramass, String paramString, b paramb, List<ana> paramList1, amu paramamu, int paramInt1, int paramInt2, List<aly<Float>> paramList2, int paramInt3)
   {
-    super(paramasw, paramani);
-    this.j = paramFloat;
+    this.a = paramList;
+    this.b = paramass;
+    this.c = paramString;
+    this.d = -1L;
+    this.e = paramb;
+    this.f = -1L;
+    this.g = null;
+    this.h = paramList1;
+    this.i = paramamu;
+    this.j = 0;
+    this.k = 0;
+    this.l = 0;
+    this.m = 0.0F;
+    this.n = 0.0F;
+    this.o = paramInt1;
+    this.p = paramInt2;
+    this.q = null;
+    this.r = null;
+    this.t = paramList2;
+    this.u = paramInt3;
+    this.s = null;
   }
   
-  private Bitmap c()
+  public final String a(String paramString)
   {
-    String str = this.c.g;
-    return this.b.a(str);
-  }
-  
-  public final void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    super.a(paramRectF, paramMatrix);
-    paramMatrix = c();
-    if (paramMatrix != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\n");
+    Object localObject1 = this.b.a(this.f);
+    if (localObject1 != null)
     {
-      paramRectF.set(paramRectF.left, paramRectF.top, Math.min(paramRectF.right, paramMatrix.getWidth()), Math.min(paramRectF.bottom, paramMatrix.getHeight()));
-      this.a.mapRect(paramRectF);
+      localStringBuilder.append("\t\tParents: ");
+      localStringBuilder.append(((anh)localObject1).c);
+      for (localObject1 = this.b.a(((anh)localObject1).f); localObject1 != null; localObject1 = this.b.a(((anh)localObject1).f))
+      {
+        localStringBuilder.append("->");
+        localStringBuilder.append(((anh)localObject1).c);
+      }
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\n");
+    }
+    if (!this.h.isEmpty())
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tMasks: ");
+      localStringBuilder.append(this.h.size());
+      localStringBuilder.append("\n");
+    }
+    if ((this.j != 0) && (this.k != 0))
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tBackground: ");
+      localStringBuilder.append(String.format(Locale.US, "%dx%d %X\n", new Object[] { Integer.valueOf(this.j), Integer.valueOf(this.k), Integer.valueOf(this.l) }));
+    }
+    if (!this.a.isEmpty())
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tShapes:\n");
+      localObject1 = this.a.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\t\t");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append("\n");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    return a("");
+  }
+  
+  public static final class a
+  {
+    public static anh a(ass paramass)
+    {
+      Rect localRect = paramass.g;
+      return new anh(Collections.emptyList(), paramass, "root", anh.b.a, Collections.emptyList(), new amu(new amp(), new amp(), new amq((byte)0), amn.a.a(), new amo((byte)0), amn.a.a(), amn.a.a(), (byte)0), localRect.width(), localRect.height(), Collections.emptyList(), anh.c.a, (byte)0);
     }
   }
   
-  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public static enum b
   {
-    this.g.setColorFilter(paramColorFilter);
+    private b() {}
   }
   
-  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  static enum c
   {
-    Bitmap localBitmap = c();
-    if (localBitmap == null) {
-      return;
+    public static final int a = 1;
+    public static final int b = 2;
+    public static final int c = 3;
+    public static final int d = 4;
+    
+    public static int[] a()
+    {
+      return (int[])e.clone();
     }
-    this.g.setAlpha(paramInt);
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.h.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.i.set(0, 0, (int)(localBitmap.getWidth() * this.j), (int)(localBitmap.getHeight() * this.j));
-    paramCanvas.drawBitmap(localBitmap, this.h, this.i, this.g);
-    paramCanvas.restore();
   }
 }
 

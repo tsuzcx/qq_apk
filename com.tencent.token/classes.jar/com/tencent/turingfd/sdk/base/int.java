@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class int
   extends break
@@ -25,53 +25,53 @@ public final class int
     arrayOfByte[0] = 0;
   }
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Za = paramafl.a(this.Za, 0, true);
-    this._a = paramafl.a(this._a, 1, false);
-    this.ab = paramafl.a(this.ab, 2, false);
-    this.data = paramafl.b(3, false);
-    this.bb = paramafl.a(this.bb, 4, false);
-    this.cb = paramafl.a(this.cb, 5, false);
-    this.db = paramafl.a(this.db, 6, false);
-    this.eb = ((for)paramafl.a(Ya, 7, false));
-    this.fb = paramafl.a(this.fb, 8, false);
+    this.Za = paramafk.a(this.Za, 0, true);
+    this._a = paramafk.a(this._a, 1, false);
+    this.ab = paramafk.a(this.ab, 2, false);
+    this.data = paramafk.b(3, false);
+    this.bb = paramafk.a(this.bb, 4, false);
+    this.cb = paramafk.a(this.cb, 5, false);
+    this.db = paramafk.a(this.db, 6, false);
+    this.eb = ((for)paramafk.a(Ya, 7, false));
+    this.fb = paramafk.a(this.fb, 8, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Za, 0);
+    paramafn.a(this.Za, 0);
     int i = this._a;
     if (i != 0) {
-      paramafo.a(i, 1);
+      paramafn.a(i, 1);
     }
     i = this.ab;
     if (i != 0) {
-      paramafo.a(i, 2);
+      paramafn.a(i, 2);
     }
     Object localObject = this.data;
     if (localObject != null) {
-      paramafo.a((byte[])localObject, 3);
+      paramafn.a((byte[])localObject, 3);
     }
     long l = this.bb;
     if (l != 0L) {
-      paramafo.a(l, 4);
+      paramafn.a(l, 4);
     }
     i = this.cb;
     if (i != 0) {
-      paramafo.a(i, 5);
+      paramafn.a(i, 5);
     }
     i = this.db;
     if (i != 0) {
-      paramafo.a(i, 6);
+      paramafn.a(i, 6);
     }
     localObject = this.eb;
     if (localObject != null) {
-      paramafo.a((break)localObject, 7);
+      paramafn.a((break)localObject, 7);
     }
     i = this.fb;
     if (i != 0) {
-      paramafo.a(i, 8);
+      paramafn.a(i, 8);
     }
   }
 }

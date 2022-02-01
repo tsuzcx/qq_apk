@@ -1,90 +1,31 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.Socket;
+import javax.net.ssl.SSLSocket;
 
-public enum aiu
+public abstract class aiu
 {
-  final String f;
+  public static aiu a;
   
-  private aiu(String paramString)
-  {
-    this.f = paramString;
-  }
+  public abstract int a(aiq.a parama);
   
-  public static aiu a(String paramString)
-  {
-    int i = paramString.hashCode();
-    if (i != 79201641)
-    {
-      if (i != 79923350)
-      {
-        switch (i)
-        {
-        default: 
-          break;
-        case -503070501: 
-          if (!paramString.equals("TLSv1.3")) {
-            break;
-          }
-          i = 0;
-          break;
-        case -503070502: 
-          if (!paramString.equals("TLSv1.2")) {
-            break;
-          }
-          i = 1;
-          break;
-        case -503070503: 
-          if (!paramString.equals("TLSv1.1")) {
-            break;
-          }
-          i = 2;
-          break;
-        }
-      }
-      else if (paramString.equals("TLSv1"))
-      {
-        i = 3;
-        break label119;
-      }
-    }
-    else if (paramString.equals("SSLv3"))
-    {
-      i = 4;
-      break label119;
-    }
-    i = -1;
-    switch (i)
-    {
-    default: 
-      throw new IllegalArgumentException("Unexpected TLS version: ".concat(String.valueOf(paramString)));
-    case 4: 
-      return e;
-    case 3: 
-      return d;
-    case 2: 
-      return c;
-    case 1: 
-      label119:
-      return b;
-    }
-    return a;
-  }
+  public abstract aje a(ahz paramahz, ahr paramahr, aji paramaji, ais paramais);
   
-  static List<aiu> a(String... paramVarArgs)
-  {
-    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(a(paramVarArgs[i]));
-      i += 1;
-    }
-    return Collections.unmodifiableList(localArrayList);
-  }
+  public abstract ajf a(ahz paramahz);
+  
+  public abstract Socket a(ahz paramahz, ahr paramahr, aji paramaji);
+  
+  public abstract void a(aia paramaia, SSLSocket paramSSLSocket, boolean paramBoolean);
+  
+  public abstract void a(aih.a parama, String paramString);
+  
+  public abstract void a(aih.a parama, String paramString1, String paramString2);
+  
+  public abstract boolean a(ahr paramahr1, ahr paramahr2);
+  
+  public abstract boolean a(ahz paramahz, aje paramaje);
+  
+  public abstract void b(ahz paramahz, aje paramaje);
 }
 
 

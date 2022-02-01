@@ -1,186 +1,109 @@
 package com.tencent.token;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.CompoundButton;
 
 public final class if
 {
-  private final View a;
-  private final ih b;
-  private int c = -1;
-  private jd d;
-  private jd e;
-  private jd f;
+  public ColorStateList a = null;
+  public PorterDuff.Mode b = null;
+  private final CompoundButton c;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f;
   
-  public if(View paramView)
+  public if(CompoundButton paramCompoundButton)
   {
-    this.a = paramView;
-    this.b = ih.a();
+    this.c = paramCompoundButton;
   }
   
-  private boolean a(Drawable paramDrawable)
+  private void b()
   {
-    if (this.f == null) {
-      this.f = new jd();
-    }
-    jd localjd = this.f;
-    localjd.a();
-    Object localObject = ex.m(this.a);
-    if (localObject != null)
+    Drawable localDrawable = fo.a(this.c);
+    if ((localDrawable != null) && ((this.d) || (this.e)))
     {
-      localjd.d = true;
-      localjd.a = ((ColorStateList)localObject);
-    }
-    localObject = ex.n(this.a);
-    if (localObject != null)
-    {
-      localjd.c = true;
-      localjd.b = ((PorterDuff.Mode)localObject);
-    }
-    if ((!localjd.d) && (!localjd.c)) {
-      return false;
-    }
-    ih.a(paramDrawable, localjd, this.a.getDrawableState());
-    return true;
-  }
-  
-  private void b(ColorStateList paramColorStateList)
-  {
-    if (paramColorStateList != null)
-    {
-      if (this.d == null) {
-        this.d = new jd();
+      localDrawable = dg.d(localDrawable).mutate();
+      if (this.d) {
+        dg.a(localDrawable, this.a);
       }
-      jd localjd = this.d;
-      localjd.a = paramColorStateList;
-      localjd.d = true;
+      if (this.e) {
+        dg.a(localDrawable, this.b);
+      }
+      if (localDrawable.isStateful()) {
+        localDrawable.setState(this.c.getDrawableState());
+      }
+      this.c.setButtonDrawable(localDrawable);
     }
-    else
-    {
-      this.d = null;
-    }
-    d();
   }
   
-  private boolean e()
+  public final int a(int paramInt)
   {
-    int i = Build.VERSION.SDK_INT;
-    if (i > 21) {
-      return this.d != null;
+    int i = paramInt;
+    if (Build.VERSION.SDK_INT < 17)
+    {
+      Drawable localDrawable = fo.a(this.c);
+      i = paramInt;
+      if (localDrawable != null) {
+        i = paramInt + localDrawable.getIntrinsicWidth();
+      }
     }
-    return i == 21;
+    return i;
   }
   
   public final void a()
   {
-    this.c = -1;
-    b(null);
-    d();
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.c = paramInt;
-    Object localObject = this.b;
-    if (localObject != null) {
-      localObject = ((ih)localObject).b(this.a.getContext(), paramInt);
-    } else {
-      localObject = null;
+    if (this.f)
+    {
+      this.f = false;
+      return;
     }
-    b((ColorStateList)localObject);
-    d();
+    this.f = true;
+    b();
   }
   
   public final void a(ColorStateList paramColorStateList)
   {
-    if (this.e == null) {
-      this.e = new jd();
-    }
-    jd localjd = this.e;
-    localjd.a = paramColorStateList;
-    localjd.d = true;
-    d();
+    this.a = paramColorStateList;
+    this.d = true;
+    b();
   }
   
   public final void a(PorterDuff.Mode paramMode)
   {
-    if (this.e == null) {
-      this.e = new jd();
-    }
-    jd localjd = this.e;
-    localjd.b = paramMode;
-    localjd.c = true;
-    d();
+    this.b = paramMode;
+    this.e = true;
+    b();
   }
   
   public final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = jf.a(this.a.getContext(), paramAttributeSet, gp.j.ViewBackgroundHelper, paramInt, 0);
+    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, go.j.CompoundButton, paramInt, 0);
     try
     {
-      if (paramAttributeSet.f(gp.j.ViewBackgroundHelper_android_background))
+      if (paramAttributeSet.hasValue(go.j.CompoundButton_android_button))
       {
-        this.c = paramAttributeSet.g(gp.j.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.b.b(this.a.getContext(), this.c);
-        if (localColorStateList != null) {
-          b(localColorStateList);
+        paramInt = paramAttributeSet.getResourceId(go.j.CompoundButton_android_button, 0);
+        if (paramInt != 0) {
+          this.c.setButtonDrawable(gq.b(this.c.getContext(), paramInt));
         }
       }
-      if (paramAttributeSet.f(gp.j.ViewBackgroundHelper_backgroundTint)) {
-        ex.a(this.a, paramAttributeSet.e(gp.j.ViewBackgroundHelper_backgroundTint));
+      if (paramAttributeSet.hasValue(go.j.CompoundButton_buttonTint)) {
+        fo.a(this.c, paramAttributeSet.getColorStateList(go.j.CompoundButton_buttonTint));
       }
-      if (paramAttributeSet.f(gp.j.ViewBackgroundHelper_backgroundTintMode)) {
-        ex.a(this.a, ir.a(paramAttributeSet.a(gp.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
+      if (paramAttributeSet.hasValue(go.j.CompoundButton_buttonTintMode)) {
+        fo.a(this.c, iq.a(paramAttributeSet.getInt(go.j.CompoundButton_buttonTintMode, -1), null));
       }
       return;
     }
     finally
     {
-      paramAttributeSet.a.recycle();
-    }
-  }
-  
-  public final ColorStateList b()
-  {
-    jd localjd = this.e;
-    if (localjd != null) {
-      return localjd.a;
-    }
-    return null;
-  }
-  
-  public final PorterDuff.Mode c()
-  {
-    jd localjd = this.e;
-    if (localjd != null) {
-      return localjd.b;
-    }
-    return null;
-  }
-  
-  public final void d()
-  {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null)
-    {
-      if ((e()) && (a(localDrawable))) {
-        return;
-      }
-      jd localjd = this.e;
-      if (localjd != null)
-      {
-        ih.a(localDrawable, localjd, this.a.getDrawableState());
-        return;
-      }
-      localjd = this.d;
-      if (localjd != null) {
-        ih.a(localDrawable, localjd, this.a.getDrawableState());
-      }
+      paramAttributeSet.recycle();
     }
   }
 }

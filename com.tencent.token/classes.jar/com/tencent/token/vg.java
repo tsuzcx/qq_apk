@@ -3,71 +3,132 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.AbnormalLoginMsgResult;
+import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.global.RqdApplication;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class vg
-  extends tk
+  extends tj
 {
-  private long d;
-  private String e;
-  private int f;
-  private String g;
-  private String h;
+  tb d;
+  td e;
+  private long f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
+  private Object k;
+  private String l;
+  private int m;
+  private int n;
+  private String o;
+  private String p;
+  private int q;
   
   public final String a()
   {
-    sa.a();
+    sb.b().i();
+    System.currentTimeMillis();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.f = ((Integer)paramaar.c.get("param.mbmobile.getcode")).intValue();
-    this.g = ((String)paramaar.c.get("param.mbmobile.mobile"));
-    this.h = ((String)paramaar.c.get("param.mbmoible.areacode"));
+    this.f = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.g = ((Integer)paramaaq.c.get("param.msg.source")).intValue();
+    this.h = ((Integer)paramaaq.c.get("param.msg.num")).intValue();
+    this.i = ((Integer)paramaaq.c.get("param.msg.type")).intValue();
+    this.j = ((Integer)paramaaq.c.get("param.msg.filter")).intValue();
+    if ((this.j == 0) && (this.i == 1))
+    {
+      this.l = ((String)paramaaq.c.get("param.device.lock.guid"));
+      this.m = ((Integer)paramaaq.c.get("param.device.lock.appid")).intValue();
+      this.n = ((Integer)paramaaq.c.get("param.device.lock.subappid")).intValue();
+      this.o = ((String)paramaaq.c.get("param.device.lock.appname"));
+      this.p = ((String)paramaaq.c.get("param.skey"));
+    }
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int i1 = paramJSONObject.getInt("err");
+    if (i1 != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(i1, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (this.c != i)
+      i1 = paramJSONObject.getInt("seq_id");
+      if (i1 != this.q)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
+        paramJSONObject.append(i1);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xb.c(paramJSONObject.toString());
+        paramJSONObject.append(this.q);
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.e = paramJSONObject.getString("sms_prefix");
-      this.a.a = 0;
+      long l1 = paramJSONObject.getLong("uin");
+      long l2 = this.f;
+      Object localObject;
+      if (l1 != l2)
+      {
+        paramJSONObject = this.a;
+        localObject = new StringBuilder("uin not match=");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.f);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
+        return;
+      }
+      if (this.i == 1)
+      {
+        this.d.a(l2);
+        if (this.j == 1)
+        {
+          this.k = new AbnormalLoginMsgResult(paramJSONObject);
+          this.a.a = 0;
+          return;
+        }
+        this.d.b = null;
+        localObject = new ArrayList();
+        if (paramJSONObject.has("devs"))
+        {
+          OnlineDeviceResult localOnlineDeviceResult = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
+          if (localOnlineDeviceResult.mDevicesList != null) {
+            ((ArrayList)localObject).addAll(localOnlineDeviceResult.mDevicesList);
+          }
+          this.d.b = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
+        }
+        rh.a.a().a(this.f, (List)localObject);
+        this.a = this.d.f.a(paramJSONObject, l1, this.i);
+        return;
+      }
+      this.e.a(l2);
+      this.a = this.e.f.a(paramJSONObject, l1, this.i);
       return;
     }
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
   public final void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.e;
+      localMessage.obj = this.k;
       localMessage.sendToTarget();
       this.b.e = true;
     }

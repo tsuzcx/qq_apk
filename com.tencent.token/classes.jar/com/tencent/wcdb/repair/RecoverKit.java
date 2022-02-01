@@ -1,9 +1,9 @@
 package com.tencent.wcdb.repair;
 
-import com.tencent.token.agt.a;
+import com.tencent.token.ags.a;
 
 public class RecoverKit
-  implements agt.a
+  implements ags.a
 {
   private long a;
   

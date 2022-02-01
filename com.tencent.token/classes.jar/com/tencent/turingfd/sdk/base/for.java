@@ -1,23 +1,23 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class for
   extends break
 {
   public long Wa = 0L;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Wa = paramafl.a(this.Wa, 0, false);
+    this.Wa = paramafk.a(this.Wa, 0, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
     long l = this.Wa;
     if (l != 0L) {
-      paramafo.a(l, 0);
+      paramafn.a(l, 0);
     }
   }
 }

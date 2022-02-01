@@ -1,165 +1,96 @@
 package com.tencent.token;
 
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
+import java.security.GeneralSecurityException;
+import java.security.Principal;
+import java.security.cert.Certificate;
+import java.security.cert.X509Certificate;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
-public class akr
+public final class akr
+  extends akt
 {
-  private static final Logger a = Logger.getLogger(aim.class.getName());
-  static final akr c;
+  private final akv a;
   
-  static
+  public akr(akv paramakv)
   {
-    Object localObject = akm.a();
-    if (localObject == null)
+    this.a = paramakv;
+  }
+  
+  private static boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
+  {
+    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
+      return false;
+    }
+    try
     {
-      boolean bool;
-      if ("conscrypt".equals(System.getProperty("okhttp.platform"))) {
-        bool = true;
-      } else {
-        bool = "Conscrypt".equals(java.security.Security.getProviders()[0].getName());
-      }
-      if (bool)
+      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
+      return true;
+    }
+    catch (GeneralSecurityException paramX509Certificate1) {}
+    return false;
+  }
+  
+  public final List<Certificate> a(List<Certificate> paramList, String paramString)
+  {
+    paramList = new ArrayDeque(paramList);
+    paramString = new ArrayList();
+    paramString.add(paramList.removeFirst());
+    int i = 0;
+    int j = 0;
+    while (i < 9)
+    {
+      X509Certificate localX509Certificate1 = (X509Certificate)paramString.get(paramString.size() - 1);
+      Object localObject = this.a.a(localX509Certificate1);
+      if (localObject != null)
       {
-        localObject = akn.a();
-        if (localObject != null) {}
+        if ((paramString.size() > 1) || (!localX509Certificate1.equals(localObject))) {
+          paramString.add(localObject);
+        }
+        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
+          return paramString;
+        }
+        j = 1;
       }
       else
       {
-        localObject = ako.a();
-        if (localObject == null)
+        localObject = paramList.iterator();
+        X509Certificate localX509Certificate2;
+        do
         {
-          localObject = akp.a();
-          if (localObject == null) {
-            localObject = new akr();
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-        }
-      }
-    }
-    c = (akr)localObject;
-  }
-  
-  public static List<String> a(List<ain> paramList)
-  {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
-    {
-      ain localain = (ain)paramList.get(i);
-      if (localain != ain.a) {
-        localArrayList.add(localain.toString());
+          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
+        } while (!a(localX509Certificate1, localX509Certificate2));
+        ((Iterator)localObject).remove();
+        paramString.add(localX509Certificate2);
       }
       i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static akr c()
-  {
-    return c;
-  }
-  
-  public aku a(X509TrustManager paramX509TrustManager)
-  {
-    return new aks(b(paramX509TrustManager));
-  }
-  
-  public Object a(String paramString)
-  {
-    if (a.isLoggable(Level.FINE)) {
-      return new Throwable(paramString);
-    }
-    return null;
-  }
-  
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    Level localLevel;
-    if (paramInt == 5) {
-      localLevel = Level.WARNING;
-    } else {
-      localLevel = Level.INFO;
-    }
-    a.log(localLevel, paramString, paramThrowable);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    Object localObject = paramString;
-    if (paramObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    a(5, (String)localObject, (Throwable)paramObject);
-  }
-  
-  public void a(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
-  {
-    paramSocket.connect(paramInetSocketAddress, paramInt);
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List<ain> paramList) {}
-  
-  public void a(SSLSocketFactory paramSSLSocketFactory) {}
-  
-  public akw b(X509TrustManager paramX509TrustManager)
-  {
-    return new akt(paramX509TrustManager.getAcceptedIssuers());
-  }
-  
-  public SSLContext b()
-  {
-    if ("1.7".equals(System.getProperty("java.specification.version"))) {}
-    for (;;)
-    {
-      try
-      {
-        localSSLContext = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext;
+      continue;
+      if (j != 0) {
+        return paramString;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-      {
-        SSLContext localSSLContext;
-        continue;
-      }
-      try
-      {
-        localSSLContext = SSLContext.getInstance("TLS");
-        return localSSLContext;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
-      {
-        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
-      }
+      throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed ".concat(String.valueOf(localX509Certificate1)));
     }
+    throw new SSLPeerUnverifiedException("Certificate chain too long: ".concat(String.valueOf(paramString)));
   }
   
-  public void b(SSLSocket paramSSLSocket) {}
-  
-  public boolean b(String paramString)
+  public final boolean equals(Object paramObject)
   {
-    return true;
+    if (paramObject == this) {
+      return true;
+    }
+    return ((paramObject instanceof akr)) && (((akr)paramObject).a.equals(this.a));
+  }
+  
+  public final int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 

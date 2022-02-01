@@ -1,228 +1,171 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteConnectionPool;
+import com.tencent.wcdb.database.SQLiteConnection;
+import com.tencent.wcdb.database.SQLiteConnection.c;
 import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
-import com.tencent.wcdb.database.SQLiteException;
-import com.tencent.wcdb.database.SQLiteGlobal;
-import com.tencent.wcdb.support.Log;
+import com.tencent.wcdb.database.SQLiteDebug;
+import com.tencent.wcdb.database.SQLiteMisuseException;
+import java.util.Arrays;
 
 public abstract class agk
+  extends age
 {
-  private final Context a;
-  private final String b;
-  private final SQLiteDatabase.a c;
-  private final int d;
-  private SQLiteDatabase e;
-  private boolean f;
-  private boolean g;
-  private final afy h;
-  private byte[] i;
-  private SQLiteCipherSpec j;
-  private int k;
-  private boolean l;
+  private static final String[] g = new String[0];
+  final SQLiteDatabase a;
+  final String b;
+  final boolean c;
+  final String[] d;
+  final Object[] e;
+  protected SQLiteConnection.c f;
+  private final int h;
+  private agn i;
   
-  static {}
-  
-  public agk(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, afy paramafy)
+  protected agk(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, ags paramags)
   {
-    this.a = paramContext;
-    this.b = paramString;
-    paramContext = null;
-    this.c = null;
-    this.d = 1;
-    this.h = paramafy;
-    this.i = paramArrayOfByte;
-    if (paramSQLiteCipherSpec != null) {
-      paramContext = new SQLiteCipherSpec(paramSQLiteCipherSpec);
-    }
-    this.j = paramContext;
-    this.l = false;
-  }
-  
-  private SQLiteDatabase a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    int m = paramSQLiteDatabase.k();
-    StringBuilder localStringBuilder2;
-    if (m != this.d) {
-      if (!paramSQLiteDatabase.l())
-      {
-        paramSQLiteDatabase.g();
-        if (m != 0) {}
-        try
-        {
-          if (m > this.d)
-          {
-            int n = this.d;
-            StringBuilder localStringBuilder1 = new StringBuilder("Can't downgrade database from version ");
-            localStringBuilder1.append(m);
-            localStringBuilder1.append(" to ");
-            localStringBuilder1.append(n);
-            throw new SQLiteException(localStringBuilder1.toString());
-          }
-          paramSQLiteDatabase.b("PRAGMA user_version = ".concat(String.valueOf(this.d)));
-          paramSQLiteDatabase.i();
-        }
-        finally
-        {
-          paramSQLiteDatabase.h();
-        }
-      }
-      else
-      {
-        localStringBuilder2 = new StringBuilder("Can't upgrade read-only database from version ");
-        localStringBuilder2.append(paramSQLiteDatabase.k());
-        localStringBuilder2.append(" to ");
-        localStringBuilder2.append(this.d);
-        localStringBuilder2.append(": ");
-        localStringBuilder2.append(this.b);
-        throw new SQLiteException(localStringBuilder2.toString());
-      }
-    }
-    if (paramSQLiteDatabase.l())
+    this.a = paramSQLiteDatabase;
+    this.b = paramString.trim();
+    int j = afy.b(this.b);
+    switch (j)
     {
-      localStringBuilder2 = new StringBuilder("Opened ");
-      localStringBuilder2.append(this.b);
-      localStringBuilder2.append(" in read-only mode");
-      Log.b("WCDB.SQLiteOpenHelper", localStringBuilder2.toString());
-    }
-    this.e = paramSQLiteDatabase;
-    return paramSQLiteDatabase;
-  }
-  
-  private SQLiteDatabase c()
-  {
-    Object localObject1 = this.e;
-    if (localObject1 != null) {
-      if (!((SQLiteDatabase)localObject1).n()) {
-        this.e = null;
-      } else if (!this.e.l()) {
-        return this.e;
+    default: 
+      bool = true;
+      if (j != 1) {
+        break;
       }
+      break;
+    case 4: 
+    case 5: 
+    case 6: 
+      this.c = false;
+      this.d = g;
+      this.h = 0;
+      break;
     }
-    SQLiteDatabase localSQLiteDatabase2;
-    SQLiteDatabase localSQLiteDatabase1;
-    if (!this.f)
+    boolean bool = false;
+    paramString = new agp();
+    paramSQLiteDatabase = paramSQLiteDatabase.b();
+    String str = this.b;
+    j = SQLiteDatabase.a(bool);
+    if (str != null)
     {
-      localSQLiteDatabase2 = this.e;
-      localSQLiteDatabase1 = localSQLiteDatabase2;
-    }
-    for (;;)
-    {
+      if (paramags != null) {
+        paramags.a();
+      }
+      paramSQLiteDatabase.a(str, j, paramags);
       try
       {
-        this.f = true;
-        Object localObject3;
-        if (localSQLiteDatabase2 != null)
+        paramSQLiteDatabase.a.a(str, paramString);
+        paramSQLiteDatabase.b();
+        this.c = paramString.c;
+        this.d = paramString.b;
+        this.h = paramString.a;
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > this.h))
         {
-          localObject1 = localSQLiteDatabase2;
-          localSQLiteDatabase1 = localSQLiteDatabase2;
-          if (localSQLiteDatabase2.l())
-          {
-            localSQLiteDatabase1 = localSQLiteDatabase2;
-            localObject1 = localSQLiteDatabase2.a;
-            localSQLiteDatabase1 = localSQLiteDatabase2;
-            try
-            {
-              localSQLiteDatabase2.r();
-              if (!localSQLiteDatabase2.m())
-              {
-                localObject1 = localSQLiteDatabase2;
-                continue;
-              }
-              m = localSQLiteDatabase2.b.d;
-              localSQLiteDatabase2.b.d = (localSQLiteDatabase2.b.d & 0xFFFFFFFE | 0x0);
-              try
-              {
-                localSQLiteDatabase2.c.a(localSQLiteDatabase2.b);
-              }
-              catch (RuntimeException localRuntimeException)
-              {
-                localSQLiteDatabase2.b.d = m;
-                throw localRuntimeException;
-              }
-              localObject3 = localSQLiteDatabase2;
-            }
-            finally
-            {
-              localObject3 = localSQLiteDatabase2;
-            }
-          }
+          paramSQLiteDatabase = new StringBuilder("Too many bind arguments.  ");
+          paramSQLiteDatabase.append(paramArrayOfObject.length);
+          paramSQLiteDatabase.append(" arguments were provided but the statement needs ");
+          paramSQLiteDatabase.append(this.h);
+          paramSQLiteDatabase.append(" arguments.");
+          throw new IllegalArgumentException(paramSQLiteDatabase.toString());
         }
-        else if (this.b == null)
+        j = this.h;
+        if (j != 0)
         {
-          localObject3 = localSQLiteDatabase2;
-          localObject1 = SQLiteDatabase.j();
+          this.e = new Object[j];
+          if (paramArrayOfObject != null) {
+            System.arraycopy(paramArrayOfObject, 0, this.e, 0, paramArrayOfObject.length);
+          }
         }
         else
         {
-          localObject3 = localSQLiteDatabase2;
+          this.e = null;
         }
-        try
-        {
-          this.l = true;
-          localObject3 = localSQLiteDatabase2;
-          if (!this.g) {
-            break label347;
-          }
-          m = 8;
-          localObject3 = localSQLiteDatabase2;
-          this.k = m;
-          localObject3 = localSQLiteDatabase2;
-          localObject1 = agu.a(this.a, this.b, this.i, this.j, this.k, this.c, this.h);
-          localObject3 = localObject1;
-          localSQLiteDatabase2 = a((SQLiteDatabase)localObject1);
-          this.f = false;
-          if ((localObject1 != null) && (localObject1 != this.e)) {
-            ((SQLiteDatabase)localObject1).close();
-          }
-          return localSQLiteDatabase2;
-        }
-        catch (SQLiteException localSQLiteException)
-        {
-          localObject3 = localSQLiteDatabase2;
-          throw localSQLiteException;
-        }
-        throw new IllegalStateException("getDatabase called recursively");
+        this.f = null;
+        this.i = null;
+        return;
       }
       finally
       {
-        this.f = false;
-        if ((localObject3 != null) && (localObject3 != this.e)) {
-          ((SQLiteDatabase)localObject3).close();
-        }
+        paramSQLiteDatabase.b();
       }
-      label347:
-      int m = 0;
     }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
-  public final SQLiteDatabase a()
+  private void b()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = c();
-      return localSQLiteDatabase;
+      Object localObject1;
+      if (this.i == null)
+      {
+        localObject1 = this.f;
+        if (localObject1 == null) {
+          return;
+        }
+      }
+      if ((this.i != null) && (this.f != null))
+      {
+        if (this.i == this.a.b())
+        {
+          localObject1 = this.i;
+          SQLiteConnection.c localc = this.f;
+          if (((agn)localObject1).a != null)
+          {
+            ((agn)localObject1).a.a(localc);
+            ((agn)localObject1).b();
+          }
+          this.f = null;
+          this.i = null;
+          return;
+        }
+        throw new IllegalStateException("SQLiteProgram has bound to another thread.");
+      }
+      throw new IllegalStateException("Internal state error.");
     }
     finally {}
   }
   
-  public final void b()
+  protected final void a()
+  {
+    SQLiteDebug.a(this.a);
+    this.a.a();
+  }
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if ((paramInt > 0) && (paramInt <= this.h))
+    {
+      this.e[(paramInt - 1)] = paramObject;
+      return;
+    }
+    paramObject = new StringBuilder("Cannot bind argument at index ");
+    paramObject.append(paramInt);
+    paramObject.append(" because the index is out of range.  The statement has ");
+    paramObject.append(this.h);
+    paramObject.append(" parameters.");
+    throw new IllegalArgumentException(paramObject.toString());
+  }
+  
+  protected void c()
+  {
+    b();
+    Object[] arrayOfObject = this.e;
+    if (arrayOfObject != null) {
+      Arrays.fill(arrayOfObject, null);
+    }
+  }
+  
+  protected void finalize()
   {
     try
     {
-      if (!this.f)
+      if ((this.i == null) && (this.f == null))
       {
-        if ((this.e != null) && (this.e.n()))
-        {
-          this.e.close();
-          this.e = null;
-        }
+        super.finalize();
         return;
       }
-      throw new IllegalStateException("Closed during initialization");
+      throw new SQLiteMisuseException("Acquired prepared statement is not released.");
     }
     finally {}
   }

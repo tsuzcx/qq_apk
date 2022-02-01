@@ -1,18 +1,14 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-
-public abstract class pl
+public abstract interface pl
 {
-  public String a;
+  public abstract boolean a();
   
-  public void a(Bundle paramBundle)
-  {
-    paramBundle.putInt("_wxapi_command_type", 2);
-    paramBundle.putString("_wxapi_basereq_transaction", this.a);
-  }
+  public abstract boolean a(pk parampk);
   
-  abstract boolean a();
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
 }
 
 

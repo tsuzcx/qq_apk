@@ -1,13 +1,10 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
-
 public abstract interface asj
 {
-  public abstract WeakReference<Object> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, asm paramasm);
+  public abstract byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void a(JceStruct paramJceStruct, asn paramasn);
+  public abstract byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 }
 
 

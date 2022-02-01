@@ -1,46 +1,56 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.Context;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
 
 public final class aem
-  extends afh
 {
-  public static a a(Context paramContext, String paramString)
+  public static a a(aer paramaer)
   {
-    return new a(paramContext, paramString);
+    return new b(paramaer);
   }
   
-  public static final class a
+  public static abstract interface a
   {
-    public String a;
-    public int b;
-    public int c;
-    public int d;
-    public int e;
-    public Context f;
-    public String g;
-    public String h;
-    public String i;
-    public WeakReference<Activity> j;
-    public int k;
-    public String l;
-    public int m;
-    public int n;
-    public String o;
-    public int p;
-    public acv q;
-    public acw r;
-    public String s;
-    public boolean t;
-    public String u;
-    public int v;
-    public boolean w;
+    public abstract String a();
     
-    public final aem a()
+    public abstract int b();
+    
+    public abstract String c();
+  }
+  
+  public static final class b
+    implements aem.a
+  {
+    public b(aer paramaer) {}
+    
+    public final String a()
     {
-      return new aem(this);
+      return ((ada)this.a).b;
+    }
+    
+    public final int b()
+    {
+      return ((ada)this.a).d;
+    }
+    
+    public final String c()
+    {
+      String str3 = ((ada)this.a).g;
+      String str1 = "";
+      if (TextUtils.isEmpty(str3)) {
+        return "";
+      }
+      try
+      {
+        String str2 = str3.substring(0, 2);
+        str3 = str3.substring(2);
+        if (Integer.parseInt(str2, 16) == 1) {
+          str1 = aey.a(str3);
+        }
+        return str1;
+      }
+      catch (Throwable localThrowable) {}
+      return "";
     }
   }
 }

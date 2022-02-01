@@ -1,115 +1,61 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class uz
-  extends tk
+  extends tj
 {
   private long d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private String i;
-  private String j;
-  private String k;
+  private JSONArray e;
   
   public final String a()
   {
-    sa.a();
-    StringBuilder localStringBuilder = new StringBuilder("sessId=");
-    localStringBuilder.append(null);
-    xb.c(localStringBuilder.toString());
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramaar.c.get("param.device.lock.id")).intValue();
-    this.i = ((String)paramaar.c.get("param.device.lock.guid"));
-    this.f = ((Integer)paramaar.c.get("param.device.lock.appid")).intValue();
-    this.g = ((Integer)paramaar.c.get("param.device.lock.subappid")).intValue();
-    this.j = ((String)paramaar.c.get("param.device.lock.appname"));
-    this.k = ((String)paramaar.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramaar.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int m = paramJSONObject.getInt("err");
-    if (m != 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      a(m, paramJSONObject.getString("info"));
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.a("decode json=".concat(String.valueOf(paramJSONObject)));
-      m = paramJSONObject.getInt("seq_id");
-      if (m != this.h)
-      {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(m);
-        paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
-        return;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        m = paramJSONObject.getInt("id");
-        paramJSONObject = paramJSONObject.getJSONArray("result");
-        if (m == 70)
-        {
-          tb.a().b(paramJSONObject);
-        }
-        else if (m == 71)
-        {
-          tb.a().c(paramJSONObject);
-        }
-        else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
-        {
-          m = 0;
-          if (m < paramJSONObject.length())
-          {
-            JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-            if (localJSONObject.getInt("id") == 71)
-            {
-              tb.a().a(localJSONObject);
-              break label306;
-            }
-            localJSONObject.getInt("id");
-            break label306;
-          }
-        }
-        this.a.a = 0;
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        a(201, RqdApplication.n().getString(2131492910));
-        paramJSONObject.printStackTrace();
-        return;
-      }
-      xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-      a(10022, RqdApplication.n().getString(2131493068));
+      xa.a("domain name:".concat(String.valueOf(paramJSONObject)));
+      this.e = paramJSONObject.optJSONArray("domain_list");
+      this.a.a = 0;
       return;
-      label306:
-      m += 1;
+    }
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.e;
+      localMessage.sendToTarget();
+      this.b.e = true;
     }
   }
 }

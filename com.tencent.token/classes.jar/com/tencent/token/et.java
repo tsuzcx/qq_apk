@@ -1,16 +1,10 @@
 package com.tencent.token;
 
-import android.view.ViewGroup;
+import android.view.View;
 
-public final class et
+public abstract interface et
 {
-  public int a;
-  private final ViewGroup b;
-  
-  public et(ViewGroup paramViewGroup)
-  {
-    this.b = paramViewGroup;
-  }
+  public abstract fd a(View paramView, fd paramfd);
 }
 
 

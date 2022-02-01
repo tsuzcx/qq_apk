@@ -1,68 +1,101 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Environment;
+import android.text.TextUtils;
+import java.io.File;
 
-public final class yx
-  extends RelativeLayout
+public class yx
 {
-  private Context a;
-  private LayoutInflater b;
-  private View c;
-  private CheckBox d;
-  private a e;
+  private static yx c;
+  public zb a;
+  private String b;
   
-  public yx(Context paramContext, final int paramInt)
+  public static String b()
   {
-    super(paramContext);
-    this.a = paramContext;
-    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
-    if (paramInt == 0)
-    {
-      this.c = this.b.inflate(2131296423, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = ((CheckBox)findViewById(2131165367));
-      xc.a(paramInt, false);
-      this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    return "gallerymanager_102322.apk";
+  }
+  
+  public static yx g()
+  {
+    if (c == null) {
+      try
       {
-        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-        {
-          xc.a(paramInt, paramAnonymousBoolean ^ true);
-        }
-      });
-    }
-    else
-    {
-      this.c = this.b.inflate(2131296424, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-    }
-    findViewById(2131165946).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        yx.this.setVisibility(8);
-        if (yx.a(yx.this) != null) {
-          yx.a(yx.this).a();
+        if (c == null) {
+          c = new yx();
         }
       }
-    });
+      finally {}
+    }
+    return c;
   }
   
-  public final void setViewListener(a parama)
+  public final void a()
   {
-    this.e = parama;
+    zb localzb = this.a;
+    if (localzb == null) {
+      return;
+    }
+    localzb.a();
   }
   
-  public static abstract interface a
+  public final void c()
   {
-    public abstract void a();
+    zb localzb = this.a;
+    if (localzb == null) {
+      return;
+    }
+    localzb.b();
+  }
+  
+  public final boolean d()
+  {
+    try
+    {
+      boolean bool = new File(f(), "gallerymanager_102322.apk").exists();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public final String e()
+  {
+    try
+    {
+      String str = new File(f(), "gallerymanager_102322.apk").getAbsolutePath();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
+  }
+  
+  public final String f()
+  {
+    if (TextUtils.isEmpty(this.b))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("gallerymanager");
+      localStringBuilder.append(File.separator);
+      this.b = localStringBuilder.toString();
+    }
+    return this.b;
+  }
+  
+  public final boolean h()
+  {
+    zb localzb = this.a;
+    if (localzb == null) {
+      return false;
+    }
+    return localzb.a;
   }
 }
 

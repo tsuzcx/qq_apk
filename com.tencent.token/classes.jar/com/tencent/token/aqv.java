@@ -1,25 +1,8 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-
-final class aqv
-  extends BroadcastReceiver
+public abstract interface aqv
 {
-  aqv(aqu paramaqu) {}
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {
-      return;
-    }
-    if (paramContext.equals("com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE")) {
-      this.a.b.sendEmptyMessage(0);
-    }
-  }
+  public abstract void e();
 }
 
 

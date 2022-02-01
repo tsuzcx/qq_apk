@@ -1,30 +1,23 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.util.Pair;
+import com.qq.taf.jce.JceStruct;
 
 final class apm
-  extends Handler
+  implements agx
 {
-  apm(aqs paramaqs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  apm(aqr paramaqr) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2: 
-      paramMessage = (aqg)paramMessage.obj;
-      aqs.a(this.a, paramMessage);
-      return;
+    if (paramJceStruct == null) {
+      return null;
     }
-    aqs.a((aqf)paramMessage.obj);
+    if (paramInt2 != 10001) {
+      return null;
+    }
+    paramJceStruct = (aa)paramJceStruct;
+    return aqr.a(this.a, paramJceStruct);
   }
 }
 

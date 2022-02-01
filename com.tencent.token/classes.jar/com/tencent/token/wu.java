@@ -1,12 +1,8 @@
 package com.tencent.token;
 
 public final class wu
-  extends wp
 {
-  long m;
-  long n;
-  byte[] o;
-  byte[] p;
+  public static final byte[] a = { 114, 101, 97, 108 };
 }
 
 

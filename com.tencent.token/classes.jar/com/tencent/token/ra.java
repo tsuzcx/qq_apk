@@ -1,10 +1,16 @@
 package com.tencent.token;
 
-final class ra
+public final class ra
 {
-  protected qz.a a;
-  long b = qz.j();
+  protected long a;
+  public int b;
   public String c;
+  public String d;
+  
+  public final String toString()
+  {
+    return super.toString();
+  }
 }
 
 

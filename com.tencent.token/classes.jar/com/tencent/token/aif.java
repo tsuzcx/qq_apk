@@ -1,34 +1,24 @@
 package com.tencent.token;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.List;
-
-public abstract interface aif
+public abstract class aif
 {
-  public static final aif a = new aif()
-  {
-    public final List<InetAddress> a(String paramAnonymousString)
-    {
-      if (paramAnonymousString != null) {
-        try
-        {
-          List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
-          return localList;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          paramAnonymousString = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(String.valueOf(paramAnonymousString)));
-          paramAnonymousString.initCause(localNullPointerException);
-          throw paramAnonymousString;
-        }
-      }
-      throw new UnknownHostException("hostname == null");
-    }
-  };
+  public static final aif a = new aif() {};
   
-  public abstract List<InetAddress> a(String paramString);
+  static a a(aif paramaif)
+  {
+    new a()
+    {
+      public final aif a()
+      {
+        return aif.this;
+      }
+    };
+  }
+  
+  public static abstract interface a
+  {
+    public abstract aif a();
+  }
 }
 
 

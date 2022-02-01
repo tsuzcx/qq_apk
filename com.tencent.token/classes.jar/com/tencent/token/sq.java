@@ -1,12 +1,22 @@
 package com.tencent.token;
 
 public class sq
-  extends sr
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  public byte[] f = null;
+  public long g;
+  public short h;
+  public byte i = 1;
+  public short j = 0;
+  public short k = 0;
+  public int l;
+  public int m;
+  public short n;
+  public short o = ww.b();
+  public short p = ww.c();
+  public short q = ww.d();
+  public String r = "";
+  public byte[] s = new byte[32];
+  public byte[] t = new byte[32];
 }
 
 

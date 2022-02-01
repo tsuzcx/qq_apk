@@ -1,57 +1,28 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutorService;
+import com.qq.taf.jce.JceStruct;
 
 final class aql
-  extends Handler
 {
-  aql(aqk paramaqk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public long a;
+  public int b;
+  public JceStruct c;
+  public JceStruct d;
+  public int e;
+  public agw f;
+  public int g;
+  public agy h;
+  public long i = -1L;
   
-  public final void handleMessage(Message arg1)
+  aql(aqj paramaqj, long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw)
   {
-    switch (???.what)
-    {
-    default: 
-      return;
-    case 2: 
-      ??? = (Object[])???.obj;
-      localObject1 = (aqm)???[0];
-      ((aqm)localObject1).f.a(((aqm)localObject1).g, ((aqm)localObject1).b, ((Integer)???[1]).intValue(), ((Integer)???[2]).intValue(), ((aqm)localObject1).d);
-      return;
-    }
-    aqk.a(this.a).removeMessages(1);
-    Object localObject1 = new aqn(this.a, (byte)0);
-    synchronized (aqk.b(this.a))
-    {
-      Iterator localIterator = aqk.b(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        aqm localaqm = (aqm)localIterator.next();
-        if ((localaqm.e & 0x40000000) == 0)
-        {
-          if (!localaqm.h.a)
-          {
-            int i = localaqm.g;
-            ((aqn)localObject1).a.put(Integer.valueOf(i), localaqm);
-          }
-        }
-        else {
-          ((aqn)localObject1).b.add(localaqm);
-        }
-      }
-      aqk.b(this.a).clear();
-      aqk.c(this.a).submit((Runnable)localObject1);
-      return;
-    }
+    this.a = paramLong;
+    this.b = paramInt1;
+    this.c = paramJceStruct1;
+    this.d = paramJceStruct2;
+    this.e = paramInt2;
+    this.f = paramagw;
+    this.h = new agy();
   }
 }
 

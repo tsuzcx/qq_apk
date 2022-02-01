@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pq;
+import com.tencent.token.pp;
 
 public class WXTextObject
   implements WXMediaMessage.a
@@ -24,7 +24,7 @@ public class WXTextObject
     if ((str != null) && (str.length() != 0) && (this.text.length() <= 10240)) {
       return true;
     }
-    pq.a("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
+    pp.a("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
     return false;
   }
   

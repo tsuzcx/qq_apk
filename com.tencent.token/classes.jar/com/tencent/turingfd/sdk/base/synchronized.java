@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class synchronized
   extends break
@@ -9,21 +9,21 @@ public final class synchronized
   public String A = "";
   public int ob = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.A = paramafl.a(0, false);
-    this.ob = paramafl.a(this.ob, 1, false);
+    this.A = paramafk.a(0, false);
+    this.ob = paramafk.a(this.ob, 1, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
     String str = this.A;
     if (str != null) {
-      paramafo.a(str, 0);
+      paramafn.a(str, 0);
     }
     int i = this.ob;
     if (i != 0) {
-      paramafo.a(i, 1);
+      paramafn.a(i, 1);
     }
   }
 }

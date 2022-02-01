@@ -1,28 +1,102 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
+
 public final class ano
+  extends JceStruct
 {
-  final float a;
-  final float b;
+  static ArrayList<String> l = new ArrayList();
+  static ArrayList<amz> m;
+  public String a = "";
+  public int b = 3;
+  public ArrayList<String> c = null;
+  public int d = 0;
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public ArrayList<amz> j = null;
+  public int k = 0;
   
-  public ano()
+  static
   {
-    this(1.0F, 1.0F);
+    l.add("");
+    m = new ArrayList();
+    amz localamz = new amz();
+    m.add(localamz);
   }
   
-  public ano(float paramFloat1, float paramFloat2)
+  public final JceStruct newInit()
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    return new ano();
   }
   
-  public final String toString()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a);
-    localStringBuilder.append("x");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = ((ArrayList)paramJceInputStream.read(l, 2, false));
+    this.d = paramJceInputStream.read(this.d, 3, false);
+    this.e = paramJceInputStream.readString(4, false);
+    this.f = paramJceInputStream.readString(5, false);
+    this.g = paramJceInputStream.readString(6, false);
+    this.h = paramJceInputStream.readString(7, false);
+    this.i = paramJceInputStream.readString(8, false);
+    this.j = ((ArrayList)paramJceInputStream.read(m, 9, false));
+    this.k = paramJceInputStream.read(this.k, 10, false);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
+    }
+    int n = this.b;
+    if (3 != n) {
+      paramJceOutputStream.write(n, 1);
+    }
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
+    }
+    n = this.d;
+    if (n != 0) {
+      paramJceOutputStream.write(n, 3);
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
+    }
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
+    }
+    localObject = this.i;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
+    }
+    localObject = this.j;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
+    }
+    n = this.k;
+    if (n != 0) {
+      paramJceOutputStream.write(n, 10);
+    }
   }
 }
 

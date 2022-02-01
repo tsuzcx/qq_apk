@@ -12,10 +12,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import com.tencent.token.qc;
+import com.tencent.token.qc.a;
 import com.tencent.token.qd;
-import com.tencent.token.qd.a;
 import com.tencent.token.qe;
-import com.tencent.token.qf;
 import com.tmsdk.base.utils.SDKUtil;
 
 public class PActivity
@@ -23,7 +23,7 @@ public class PActivity
 {
   private a mContainerLayout;
   private boolean mMonitorBottom = true;
-  private qe mPush;
+  private qd mPush;
   private WindowManager.LayoutParams mSavePushLp;
   
   private void shrinkArea()
@@ -62,7 +62,7 @@ public class PActivity
   {
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    this.mPush = qd.a.a().a;
+    this.mPush = qc.a.a().a;
     if (this.mPush == null)
     {
       finish();
@@ -79,12 +79,12 @@ public class PActivity
     WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
     paramBundle.token = localLayoutParams.token;
     paramBundle.type = localLayoutParams.type;
-    if (qf.a) {
-      paramBundle.y += qf.a();
+    if (qe.a) {
+      paramBundle.y += qe.a();
     }
     if (this.mMonitorBottom)
     {
-      paramBundle.height = (qf.c() - paramBundle.y);
+      paramBundle.height = (qe.c() - paramBundle.y);
       paramBundle.x = 0;
       paramBundle.width = -1;
       a.a(this.mContainerLayout, true);
@@ -118,12 +118,12 @@ public class PActivity
   protected void onStop()
   {
     super.onStop();
-    qe localqe = this.mPush;
-    if ((localqe != null) && (localqe.z == 4))
+    qd localqd = this.mPush;
+    if ((localqd != null) && (localqd.z == 4))
     {
-      localqe = this.mPush;
-      localqe.v = null;
-      localqe.a(true);
+      localqd = this.mPush;
+      localqd.v = null;
+      localqd.a(true);
     }
     finish();
   }
@@ -149,7 +149,7 @@ public class PActivity
       if ((this.b) && (paramMotionEvent.getActionMasked() == 0))
       {
         float f = paramMotionEvent.getRawY();
-        if (qf.c() - f <= qf.a(getContext(), 60.0F))
+        if (qe.c() - f <= qe.a(getContext(), 60.0F))
         {
           if ((PActivity.this.mPush != null) && (PActivity.this.mPush.z == 4))
           {

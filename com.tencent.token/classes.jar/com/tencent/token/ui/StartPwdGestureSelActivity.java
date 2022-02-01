@@ -13,10 +13,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aad;
+import com.tencent.token.aac;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ru;
-import com.tencent.token.sd;
+import com.tencent.token.rt;
+import com.tencent.token.sc;
 import com.tencent.token.ui.base.SwitchButton;
 
 public class StartPwdGestureSelActivity
@@ -39,20 +39,20 @@ public class StartPwdGestureSelActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        ru.a().a(System.currentTimeMillis(), 15);
+        rt.a().a(System.currentTimeMillis(), 15);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureModifyActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 258);
-        aad.a(StartPwdGestureSelActivity.this, 1);
+        aac.a(StartPwdGestureSelActivity.this, 1);
       }
     });
     this.mButtonClear.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        ru.a().a(System.currentTimeMillis(), 21);
+        rt.a().a(System.currentTimeMillis(), 21);
         paramAnonymousView = new Intent(StartPwdGestureSelActivity.this, StartPwdGestureDeleteActivity.class);
         StartPwdGestureSelActivity.this.startActivityForResult(paramAnonymousView, 256);
-        aad.a(StartPwdGestureSelActivity.this, 1);
+        aac.a(StartPwdGestureSelActivity.this, 1);
       }
     });
     try
@@ -85,7 +85,7 @@ public class StartPwdGestureSelActivity
           paramAnonymousCompoundButton = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).edit();
           if (StartPwdGestureSelActivity.this.mSetStartPwd == 1)
           {
-            ru.a().a(System.currentTimeMillis(), 65);
+            rt.a().a(System.currentTimeMillis(), 65);
             paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 0);
             StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 0);
             StartPwdGestureSelActivity.this.mSwitchStartPwd.a(true, false);
@@ -119,13 +119,13 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 257)
       {
-        ru.a().a(System.currentTimeMillis(), 22);
+        rt.a().a(System.currentTimeMillis(), 22);
         startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
         showOrangeToast(2131493245, 2131100170);
         finish();
         return;
       }
-      if (!sd.a().c()) {
+      if (!sc.a().c()) {
         finish();
       }
     }
@@ -133,11 +133,11 @@ public class StartPwdGestureSelActivity
     {
       if (paramInt2 == 259)
       {
-        ru.a().a(System.currentTimeMillis(), 16);
+        rt.a().a(System.currentTimeMillis(), 16);
         showOrangeToast(2131493234, 2131100170);
         return;
       }
-      if (!sd.a().c()) {
+      if (!sc.a().c()) {
         finish();
       }
     }

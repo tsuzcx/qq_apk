@@ -1,23 +1,28 @@
 package com.tencent.token;
 
-import java.util.List;
-
 public final class ann
 {
-  final List<and> a;
-  final double b;
-  private final char c;
-  private final String d;
-  private final String e;
+  final float a;
+  final float b;
   
-  public static int a(char paramChar, String paramString1, String paramString2)
+  public ann()
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    this(1.0F, 1.0F);
   }
   
-  public final int hashCode()
+  public ann(float paramFloat1, float paramFloat2)
   {
-    return a(this.c, this.e, this.d);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("x");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

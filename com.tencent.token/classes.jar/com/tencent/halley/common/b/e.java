@@ -1,7 +1,7 @@
 package com.tencent.halley.common.b;
 
+import com.tencent.token.li;
 import com.tencent.token.lj;
-import com.tencent.token.lk;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,21 +21,21 @@ public final class e
   private Map i;
   private Map j;
   
-  public final void a(lj paramlj)
+  public final void a(li paramli)
   {
     try
     {
-      this.a = paramlj.a(this.a, 1, true);
-      this.f = paramlj.a(this.f, 2, true);
-      this.g = paramlj.a(this.g, 3, true);
-      this.b = paramlj.a(this.b, 4, true);
-      this.c = paramlj.a(5, true);
-      this.d = paramlj.a(6, true);
+      this.a = paramli.a(this.a, 1, true);
+      this.f = paramli.a(this.f, 2, true);
+      this.g = paramli.a(this.g, 3, true);
+      this.b = paramli.a(this.b, 4, true);
+      this.c = paramli.a(5, true);
+      this.d = paramli.a(6, true);
       if (k == null) {
         k = new byte[] { 0 };
       }
-      this.e = ((byte[])paramlj.b(7, true));
-      this.h = paramlj.a(this.h, 8, true);
+      this.e = ((byte[])paramli.b(7, true));
+      this.h = paramli.a(this.h, 8, true);
       HashMap localHashMap;
       if (l == null)
       {
@@ -43,35 +43,35 @@ public final class e
         l = localHashMap;
         localHashMap.put("", "");
       }
-      this.i = ((Map)paramlj.a(l, 9, true));
+      this.i = ((Map)paramli.a(l, 9, true));
       if (l == null)
       {
         localHashMap = new HashMap();
         l = localHashMap;
         localHashMap.put("", "");
       }
-      this.j = ((Map)paramlj.a(l, 10, true));
+      this.j = ((Map)paramli.a(l, 10, true));
       return;
     }
-    catch (Exception paramlj)
+    catch (Exception paramli)
     {
-      paramlj.printStackTrace();
-      throw new RuntimeException(paramlj);
+      paramli.printStackTrace();
+      throw new RuntimeException(paramli);
     }
   }
   
-  public final void a(lk paramlk)
+  public final void a(lj paramlj)
   {
-    paramlk.a(this.a, 1);
-    paramlk.a(this.f, 2);
-    paramlk.a(this.g, 3);
-    paramlk.a(this.b, 4);
-    paramlk.a(this.c, 5);
-    paramlk.a(this.d, 6);
-    paramlk.a(this.e, 7);
-    paramlk.a(this.h, 8);
-    paramlk.a(this.i, 9);
-    paramlk.a(this.j, 10);
+    paramlj.a(this.a, 1);
+    paramlj.a(this.f, 2);
+    paramlj.a(this.g, 3);
+    paramlj.a(this.b, 4);
+    paramlj.a(this.c, 5);
+    paramlj.a(this.d, 6);
+    paramlj.a(this.e, 7);
+    paramlj.a(this.h, 8);
+    paramlj.a(this.i, 9);
+    paramlj.a(this.j, 10);
   }
 }
 

@@ -16,22 +16,22 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.token.afr;
-import com.tencent.token.ck.b;
+import com.tencent.token.afq;
+import com.tencent.token.cj.b;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.rh;
-import com.tencent.token.rh.1;
-import com.tencent.token.rh.a;
-import com.tencent.token.sy;
+import com.tencent.token.rg;
+import com.tencent.token.rg.1;
+import com.tencent.token.rg.a;
+import com.tencent.token.sx;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.LoginMsgActivity;
 import com.tencent.token.ui.OpreateMsgActivity;
 import com.tencent.token.ui.PushTransitionActivity;
 import com.tencent.token.ui.base.DualMsgShowDialog;
-import com.tencent.token.wo;
-import com.tencent.token.ws;
-import com.tencent.token.xb;
+import com.tencent.token.wn;
+import com.tencent.token.wr;
+import com.tencent.token.xa;
 import com.tmsdk.common.util.TmsLog;
 
 public class PushService
@@ -47,20 +47,20 @@ public class PushService
         if (i != 4014) {
           return;
         }
-        paramAnonymousMessage = (ws)paramAnonymousMessage.obj;
+        paramAnonymousMessage = (wr)paramAnonymousMessage.obj;
         PushService.a(PushService.this, paramAnonymousMessage);
         return;
       }
-      if ((paramAnonymousMessage.arg1 == 0) && (sy.a().b() > 0))
+      if ((paramAnonymousMessage.arg1 == 0) && (sx.a().b() > 0))
       {
         paramAnonymousMessage = new StringBuilder("push:getIsAppForeground");
         paramAnonymousMessage.append(BaseActivity.getIsAppForeground());
-        xb.b(paramAnonymousMessage.toString());
+        xa.b(paramAnonymousMessage.toString());
         if (BaseActivity.getIsAppForeground())
         {
           paramAnonymousMessage = new StringBuilder("isshowingverify");
           paramAnonymousMessage.append(RqdApplication.b);
-          xb.c(paramAnonymousMessage.toString());
+          xa.c(paramAnonymousMessage.toString());
           if (RqdApplication.b) {
             break label137;
           }
@@ -106,7 +106,7 @@ public class PushService
           paramAnonymousContext = paramAnonymousContext.getActiveNetworkInfo();
           if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()))
           {
-            wo.a().a(1);
+            wn.a().a(1);
             boolean bool = this.b;
             if (bool)
             {
@@ -116,7 +116,7 @@ public class PushService
               }
               catch (Exception paramAnonymousContext)
               {
-                xb.c(paramAnonymousContext.getMessage());
+                xa.c(paramAnonymousContext.getMessage());
               }
               this.b = false;
             }
@@ -124,7 +124,7 @@ public class PushService
           else
           {
             this.b = true;
-            wo.a().a(7);
+            wn.a().a(7);
             PushService.c(PushService.this).cancel(PushService.b(PushService.this));
           }
         }
@@ -135,7 +135,7 @@ public class PushService
         paramAnonymousContext.printStackTrace();
         paramAnonymousIntent = new StringBuilder("Push Service");
         paramAnonymousIntent.append(paramAnonymousContext.toString());
-        xb.c(paramAnonymousIntent.toString());
+        xa.c(paramAnonymousIntent.toString());
       }
     }
   };
@@ -149,7 +149,7 @@ public class PushService
         this.l = 0L;
         ((NotificationManager)getSystemService("notification")).cancel(2);
       }
-      wo.a().a(this.a);
+      wn.a().a(this.a);
       long l1 = System.currentTimeMillis();
       this.b.set(1, l1 + 4000L, this.c);
       return;
@@ -192,7 +192,7 @@ public class PushService
       {
         this.j = ((int)System.currentTimeMillis());
         Object localObject2 = PendingIntent.getActivity(this, 0, this.e, 134217728);
-        ck.b localb = new ck.b(this, (byte)0);
+        cj.b localb = new cj.b(this, (byte)0);
         localb.e = ((PendingIntent)localObject2);
         localObject2 = localb.b().d();
         startForeground(this.j, (Notification)localObject2);
@@ -218,7 +218,7 @@ public class PushService
     {
       localException.printStackTrace();
     }
-    wo.a().d();
+    wn.a().d();
     if (Build.VERSION.SDK_INT < 18) {
       ((NotificationManager)getSystemService("notification")).cancel(this.j);
     }
@@ -231,22 +231,22 @@ public class PushService
       try
       {
         a();
-        rh localrh = rh.a.a();
-        if (localrh.c) {
+        rg localrg = rg.a.a();
+        if (localrg.c) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, has job doing, cancel this time.");
-        } else if (System.currentTimeMillis() - afr.a("login_trace_push_timestamp") < 432000000L) {
+        } else if (System.currentTimeMillis() - afq.a("login_trace_push_timestamp") < 432000000L) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, time since last push is less than 5 day, cancel this time.");
-        } else if (afr.c()) {
+        } else if (afq.c()) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, user has launch today, cancel this time.");
-        } else if (afr.a()) {
+        } else if (afq.a()) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, qqpimsecure is installed, cancel this time.");
         } else {
-          localrh.a.post(new rh.1(localrh, this));
+          localrg.a.post(new rg.1(localrg, this));
         }
       }
       catch (Exception localException)
       {
-        xb.c(localException.getMessage());
+        xa.c(localException.getMessage());
       }
     }
     if (Build.VERSION.SDK_INT < 18) {

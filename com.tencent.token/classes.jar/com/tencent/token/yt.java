@@ -1,57 +1,46 @@
 package com.tencent.token;
 
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
 
 public final class yt
-  extends Animation
+  extends Drawable
 {
-  private final float a;
-  private final float b;
-  private final float c;
-  private final float d;
-  private final float e;
-  private final boolean f;
-  private Camera g;
+  private int a;
+  private Paint b;
+  private float c;
+  private float d;
+  private float e;
   
-  public yt(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
+  public yt(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = 310.0F;
-    this.f = paramBoolean;
+    this.a = paramInt;
+    this.b = new Paint();
+    this.b.setColor(this.a);
+    this.b.setAlpha(154);
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.FILL);
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = paramFloat3;
   }
   
-  protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public final void draw(Canvas paramCanvas)
   {
-    float f1 = this.a;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.g;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.f) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    } else {
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
-    }
-    localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-    localCamera.getMatrix(paramTransformation);
-    localCamera.restore();
-    paramTransformation.preTranslate(-f3, -f4);
-    paramTransformation.postTranslate(f3, f4);
+    paramCanvas.drawCircle(this.c, this.d, this.e, this.b);
   }
   
-  public final void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final int getOpacity()
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.g = new Camera();
+    return 0;
   }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

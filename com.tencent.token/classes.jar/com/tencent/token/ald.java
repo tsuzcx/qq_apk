@@ -3,36 +3,31 @@ package com.tencent.token;
 public abstract class ald
   implements alo
 {
-  private final alo a;
+  protected final alo d;
   
   public ald(alo paramalo)
   {
     if (paramalo != null)
     {
-      this.a = paramalo;
+      this.d = paramalo;
       return;
     }
     throw new IllegalArgumentException("delegate == null");
   }
   
-  public final alq a()
+  public long a(aky paramaky, long paramLong)
   {
-    return this.a.a();
+    return this.d.a(paramaky, paramLong);
   }
   
-  public void a_(akz paramakz, long paramLong)
+  public final alp a()
   {
-    this.a.a_(paramakz, paramLong);
+    return this.d.a();
   }
   
   public void close()
   {
-    this.a.close();
-  }
-  
-  public void flush()
-  {
-    this.a.flush();
+    this.d.close();
   }
   
   public String toString()
@@ -40,7 +35,7 @@ public abstract class ald
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append("(");
-    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(this.d.toString());
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }

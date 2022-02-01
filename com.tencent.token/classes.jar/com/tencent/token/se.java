@@ -1,103 +1,52 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.os.AsyncTask;
-import android.os.Handler;
-import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class se
 {
-  private static se c;
-  public SoundPool a = null;
-  public boolean b = false;
-  private Context d = null;
-  private HashMap<Integer, Integer> e = null;
-  private Handler f = null;
+  public long a;
+  public int b;
+  public long c;
+  public int d;
+  public long e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  private String j;
+  private int k;
+  private int l;
+  private String m;
+  private String n;
   
-  public static se a(Context paramContext)
+  public final boolean a(JSONObject paramJSONObject)
   {
-    if (c == null) {
-      c = new se();
-    }
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        se localse = c;
-        if (localse.d != paramContext)
-        {
-          localse.d = paramContext;
-          localse.a = new SoundPool(1, 3, 100);
-          localse.e = new HashMap();
-          i = 1;
-          if (i <= 10)
-          {
-            int j = localse.a.load(localse.d, i - 1 + 2131427329, 1);
-            if (j == 0)
-            {
-              paramContext = new StringBuilder("load audio number=");
-              paramContext.append(i);
-              paramContext.append(" fail");
-              xb.c(paramContext.toString());
-              break label199;
-            }
-            localse.e.put(Integer.valueOf(i), Integer.valueOf(j));
-            break label199;
-          }
-          i = localse.a.load(localse.d, 2131427328, 100);
-          if (i == 0) {
-            xb.c("load audio door_open fail");
-          } else {
-            localse.e.put(Integer.valueOf(11), Integer.valueOf(i));
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-      }
-      return c;
-      label199:
-      i += 1;
+      this.a = paramJSONObject.getLong("msg_id");
+      this.b = paramJSONObject.getInt("app_id");
+      this.c = paramJSONObject.getLong("uin_hash");
+      this.j = paramJSONObject.getString("uin_mask");
+      this.d = paramJSONObject.getInt("msg_type");
+      this.e = paramJSONObject.getLong("msg_create_time");
+      this.k = paramJSONObject.getInt("msg_live_time");
+      this.l = paramJSONObject.getInt("msg_status");
+      this.f = paramJSONObject.getString("msg_head");
+      this.g = paramJSONObject.getString("msg_body");
+      this.m = paramJSONObject.getString("return_btn_label");
+      this.n = paramJSONObject.getString("return_uri");
+      this.h = paramJSONObject.getString("accept_btn");
+      this.i = paramJSONObject.getString("reject_btn");
+      return true;
     }
-  }
-  
-  public final int a(int paramInt)
-  {
-    AudioManager localAudioManager = (AudioManager)this.d.getSystemService("audio");
-    float f1 = localAudioManager.getStreamVolume(3) / localAudioManager.getStreamMaxVolume(3);
-    return this.a.play(paramInt, f1, f1, 1, 0, 1.0F);
-  }
-  
-  public final void a()
-  {
-    if (!this.b)
+    catch (JSONException paramJSONObject)
     {
-      this.b = true;
-      new AsyncTask()
-      {
-        private String a()
-        {
-          try
-          {
-            Integer localInteger = (Integer)se.a(se.this).get(Integer.valueOf(11));
-            if (localInteger == null) {
-              return null;
-            }
-            int i = se.this.a(localInteger.intValue());
-            Thread.sleep(600L);
-            se.b(se.this).stop(i);
-            se.c(se.this);
-            return null;
-          }
-          catch (Exception localException) {}
-          return null;
-        }
-      }.execute(new String[] { "" });
+      StringBuilder localStringBuilder = new StringBuilder("JSONException: ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      xa.c(localStringBuilder.toString());
     }
+    return false;
   }
 }
 

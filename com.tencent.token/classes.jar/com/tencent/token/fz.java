@@ -5,9 +5,13 @@ import android.graphics.PorterDuff.Mode;
 
 public abstract interface fz
 {
-  public abstract void setSupportButtonTintList(ColorStateList paramColorStateList);
+  public abstract ColorStateList getSupportImageTintList();
   
-  public abstract void setSupportButtonTintMode(PorterDuff.Mode paramMode);
+  public abstract PorterDuff.Mode getSupportImageTintMode();
+  
+  public abstract void setSupportImageTintList(ColorStateList paramColorStateList);
+  
+  public abstract void setSupportImageTintMode(PorterDuff.Mode paramMode);
 }
 
 

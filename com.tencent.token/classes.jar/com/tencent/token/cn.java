@@ -1,57 +1,33 @@
 package com.tencent.token;
 
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.app.RemoteInput;
+import android.app.RemoteInput.Builder;
+import android.os.Bundle;
+import java.util.Set;
 
-final class cn
-  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
+public final class cn
 {
-  private final View a;
-  private ViewTreeObserver b;
-  private final Runnable c;
+  final String a;
+  final CharSequence b;
+  final CharSequence[] c;
+  final boolean d;
+  final Bundle e;
+  final Set<String> f;
   
-  private cn(View paramView, Runnable paramRunnable)
+  static RemoteInput[] a(cn[] paramArrayOfcn)
   {
-    this.a = paramView;
-    this.b = paramView.getViewTreeObserver();
-    this.c = paramRunnable;
-  }
-  
-  public static cn a(View paramView, Runnable paramRunnable)
-  {
-    paramRunnable = new cn(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    return paramRunnable;
-  }
-  
-  private void a()
-  {
-    if (this.b.isAlive()) {
-      this.b.removeOnPreDrawListener(this);
-    } else {
-      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    if (paramArrayOfcn == null) {
+      return null;
     }
-    this.a.removeOnAttachStateChangeListener(this);
-  }
-  
-  public final boolean onPreDraw()
-  {
-    a();
-    this.c.run();
-    return true;
-  }
-  
-  public final void onViewAttachedToWindow(View paramView)
-  {
-    this.b = paramView.getViewTreeObserver();
-  }
-  
-  public final void onViewDetachedFromWindow(View paramView)
-  {
-    a();
+    RemoteInput[] arrayOfRemoteInput = new RemoteInput[paramArrayOfcn.length];
+    int i = 0;
+    while (i < paramArrayOfcn.length)
+    {
+      cn localcn = paramArrayOfcn[i];
+      arrayOfRemoteInput[i] = new RemoteInput.Builder(localcn.a).setLabel(localcn.b).setChoices(localcn.c).setAllowFreeFormInput(localcn.d).addExtras(localcn.e).build();
+      i += 1;
+    }
+    return arrayOfRemoteInput;
   }
 }
 

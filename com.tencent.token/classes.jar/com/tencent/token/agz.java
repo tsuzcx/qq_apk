@@ -1,17 +1,8 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-public final class agz
-{
-  public boolean a = false;
-  AtomicInteger b = new AtomicInteger();
-  
-  public final void a(int paramInt)
-  {
-    this.b.set(paramInt);
-  }
-}
+public abstract interface agz
+  extends aqp
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

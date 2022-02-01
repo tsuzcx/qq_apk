@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 
 public final class Virgo
@@ -16,31 +16,31 @@ public final class Virgo
   public int vb = 0;
   public ArrayList<Long> wb = null;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.qb = paramafl.a(this.qb, 0, true);
-    this.rb = paramafl.a(this.rb, 1, true);
-    this.sb = paramafl.a(this.sb, 2, true);
-    this.tb = paramafl.a(this.tb, 3, true);
-    this.ub = paramafl.a(this.ub, 4, true);
-    this.vb = paramafl.a(this.vb, 5, true);
+    this.qb = paramafk.a(this.qb, 0, true);
+    this.rb = paramafk.a(this.rb, 1, true);
+    this.sb = paramafk.a(this.sb, 2, true);
+    this.tb = paramafk.a(this.tb, 3, true);
+    this.ub = paramafk.a(this.ub, 4, true);
+    this.vb = paramafk.a(this.vb, 5, true);
     if (pb == null)
     {
       pb = new ArrayList();
       pb.add(Long.valueOf(0L));
     }
-    this.wb = ((ArrayList)paramafl.a(pb, 6, true));
+    this.wb = ((ArrayList)paramafk.a(pb, 6, true));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.qb, 0);
-    paramafo.a(this.rb, 1);
-    paramafo.a(this.sb, 2);
-    paramafo.a(this.tb, 3);
-    paramafo.a(this.ub, 4);
-    paramafo.a(this.vb, 5);
-    paramafo.a(this.wb, 6);
+    paramafn.a(this.qb, 0);
+    paramafn.a(this.rb, 1);
+    paramafn.a(this.sb, 2);
+    paramafn.a(this.tb, 3);
+    paramafn.a(this.ub, 4);
+    paramafn.a(this.vb, 5);
+    paramafn.a(this.wb, 6);
   }
 }
 

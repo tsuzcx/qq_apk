@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Grapefruit
   extends break
@@ -10,21 +10,21 @@ public final class Grapefruit
   public Grape Jc = null;
   public int hc = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.hc = paramafl.a(this.hc, 0, true);
+    this.hc = paramafk.a(this.hc, 0, true);
     if (Ic == null) {
       Ic = new Grape();
     }
-    this.Jc = ((Grape)paramafl.a(Ic, 1, false));
+    this.Jc = ((Grape)paramafk.a(Ic, 1, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.hc, 0);
+    paramafn.a(this.hc, 0);
     Grape localGrape = this.Jc;
     if (localGrape != null) {
-      paramafo.a(localGrape, 1);
+      paramafn.a(localGrape, 1);
     }
   }
 }

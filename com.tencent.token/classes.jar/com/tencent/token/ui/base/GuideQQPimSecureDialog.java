@@ -9,9 +9,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.kt;
-import com.tencent.token.kt.a;
-import com.tencent.token.zt;
+import com.tencent.token.ks;
+import com.tencent.token.ks.a;
+import com.tencent.token.zs;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -64,8 +64,8 @@ public class GuideQQPimSecureDialog
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = kt.a.a;
-        kt.a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
+        paramAnonymousView = ks.a.a;
+        ks.a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
         GuideQQPimSecureDialog.this.a();
         TMSDKContext.SaveStringData(1150162, GuideQQPimSecureDialog.this.c);
       }
@@ -73,7 +73,7 @@ public class GuideQQPimSecureDialog
     paramBundle.setText((CharSequence)this.a.get(0));
     localTextView.setText((CharSequence)this.a.get(1));
     localButton.setText((CharSequence)this.a.get(2));
-    new zt((ImageView)findViewById(2131166150)).execute(new String[] { this.d });
+    new zs((ImageView)findViewById(2131166150)).execute(new String[] { this.d });
   }
 }
 

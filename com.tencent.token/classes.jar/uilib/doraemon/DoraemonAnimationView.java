@@ -7,16 +7,16 @@ import android.os.Build.VERSION;
 import android.provider.Settings.Global;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import com.tencent.token.ass;
 import com.tencent.token.ast;
 import com.tencent.token.asu;
 import com.tencent.token.asv;
+import com.tencent.token.asv.3;
+import com.tencent.token.asv.4;
 import com.tencent.token.asw;
-import com.tencent.token.asw.3;
-import com.tencent.token.asw.4;
-import com.tencent.token.asx;
+import com.tencent.token.asy;
 import com.tencent.token.asz;
 import com.tencent.token.ata;
-import com.tencent.token.atb;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,14 +26,14 @@ public class DoraemonAnimationView
   extends ImageView
 {
   private static final String a = "DoraemonAnimationView";
-  private static final Map<String, ast> b = new HashMap();
-  private static final Map<String, WeakReference<ast>> c = new HashMap();
-  private final asw d = new asw(this);
+  private static final Map<String, ass> b = new HashMap();
+  private static final Map<String, WeakReference<ass>> c = new HashMap();
+  private final asv d = new asv(this);
   private int e;
   private boolean f = false;
   private boolean g = false;
   private boolean h = false;
-  private ast i;
+  private ass i;
   
   public DoraemonAnimationView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -78,9 +78,9 @@ public class DoraemonAnimationView
   
   public long getDuration()
   {
-    ast localast = this.i;
-    if (localast != null) {
-      return localast.a();
+    ass localass = this.i;
+    if (localass != null) {
+      return localass.a();
     }
     return 0L;
   }
@@ -90,11 +90,11 @@ public class DoraemonAnimationView
     return this.d.g;
   }
   
-  public asz getPerformanceTracker()
+  public asy getPerformanceTracker()
   {
-    asw localasw = this.d;
-    if (localasw.a != null) {
-      return localasw.a.f;
+    asv localasv = this.d;
+    if (localasv.a != null) {
+      return localasv.a.f;
     }
     return null;
   }
@@ -112,10 +112,10 @@ public class DoraemonAnimationView
   public void invalidateDrawable(Drawable paramDrawable)
   {
     Drawable localDrawable = getDrawable();
-    asw localasw = this.d;
-    if (localDrawable == localasw)
+    asv localasv = this.d;
+    if (localDrawable == localasv)
     {
-      super.invalidateDrawable(localasw);
+      super.invalidateDrawable(localasv);
       return;
     }
     super.invalidateDrawable(paramDrawable);
@@ -135,9 +135,9 @@ public class DoraemonAnimationView
   {
     if (this.d.b.isRunning())
     {
-      asw localasw = this.d;
-      localasw.e.clear();
-      localasw.b.cancel();
+      asv localasv = this.d;
+      localasv.e.clear();
+      localasv.b.cancel();
       b();
       this.f = true;
     }
@@ -149,36 +149,36 @@ public class DoraemonAnimationView
     this.d.o = parama;
   }
   
-  public void setComposition(ast paramast)
+  public void setComposition(ass paramass)
   {
-    new StringBuilder("Set Composition \n").append(paramast);
+    new StringBuilder("Set Composition \n").append(paramass);
     this.d.setCallback(this);
-    boolean bool = this.d.a(paramast);
+    boolean bool = this.d.a(paramass);
     b();
     if (!bool) {
       return;
     }
     setImageDrawable(null);
     setImageDrawable(this.d);
-    this.i = paramast;
+    this.i = paramass;
     requestLayout();
   }
   
-  public void setFontAssetDelegate(asx paramasx)
+  public void setFontAssetDelegate(asw paramasw)
   {
-    asw localasw = this.d;
-    localasw.j = paramasx;
-    if (localasw.i != null) {
-      localasw.i.a = paramasx;
+    asv localasv = this.d;
+    localasv.j = paramasw;
+    if (localasv.i != null) {
+      localasv.i.a = paramasw;
     }
   }
   
-  public void setImageAssetDelegate(asu paramasu)
+  public void setImageAssetDelegate(ast paramast)
   {
-    asw localasw = this.d;
-    localasw.h = paramasu;
-    if (localasw.f != null) {
-      localasw.f.a = paramasu;
+    asv localasv = this.d;
+    localasv.h = paramast;
+    if (localasv.f != null) {
+      localasv.f.a = paramast;
     }
   }
   
@@ -189,13 +189,13 @@ public class DoraemonAnimationView
   
   public void setMaxFrame(int paramInt)
   {
-    asw localasw = this.d;
-    if (localasw.a == null)
+    asv localasv = this.d;
+    if (localasv.a == null)
     {
-      localasw.e.add(new asw.4(localasw, paramInt));
+      localasv.e.add(new asv.4(localasv, paramInt));
       return;
     }
-    localasw.b(paramInt / localasw.a.b());
+    localasv.b(paramInt / localasv.a.b());
   }
   
   public void setMaxProgress(float paramFloat)
@@ -205,13 +205,13 @@ public class DoraemonAnimationView
   
   public void setMinFrame(int paramInt)
   {
-    asw localasw = this.d;
-    if (localasw.a == null)
+    asv localasv = this.d;
+    if (localasv.a == null)
     {
-      localasw.e.add(new asw.3(localasw, paramInt));
+      localasv.e.add(new asv.3(localasv, paramInt));
       return;
     }
-    localasw.a(paramInt / localasw.a.b());
+    localasv.a(paramInt / localasv.a.b());
   }
   
   public void setMinProgress(float paramFloat)
@@ -221,10 +221,10 @@ public class DoraemonAnimationView
   
   public void setPerformanceTrackingEnabled(boolean paramBoolean)
   {
-    asw localasw = this.d;
-    localasw.n = paramBoolean;
-    if (localasw.a != null) {
-      localasw.a.a(paramBoolean);
+    asv localasv = this.d;
+    localasv.n = paramBoolean;
+    if (localasv.a != null) {
+      localasv.a.a(paramBoolean);
     }
   }
   
@@ -235,9 +235,9 @@ public class DoraemonAnimationView
   
   public void setScale(float paramFloat)
   {
-    asw localasw = this.d;
-    localasw.d = paramFloat;
-    localasw.e();
+    asv localasv = this.d;
+    localasv.d = paramFloat;
+    localasv.e();
     if (getDrawable() == this.d)
     {
       setImageDrawable(null);
@@ -245,9 +245,9 @@ public class DoraemonAnimationView
     }
   }
   
-  public void setShapeStrokeDelegate(ata paramata)
+  public void setShapeStrokeDelegate(asz paramasz)
   {
-    this.d.l = paramata;
+    this.d.l = paramasz;
   }
   
   public void setSpeed(float paramFloat)
@@ -255,9 +255,9 @@ public class DoraemonAnimationView
     this.d.c(paramFloat);
   }
   
-  public void setTextDelegate(asv paramasv)
+  public void setTextDelegate(asu paramasu)
   {
-    this.d.k = paramasv;
+    this.d.k = paramasu;
   }
   
   public static enum a

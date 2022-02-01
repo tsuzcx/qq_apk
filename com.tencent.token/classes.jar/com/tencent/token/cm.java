@@ -1,128 +1,57 @@
 package com.tencent.token;
 
-import android.app.Notification;
-import android.app.Notification.Builder;
-import android.os.Bundle;
-import android.util.SparseArray;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
 final class cm
+  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
-  private static final Object a = new Object();
-  private static Field b;
-  private static boolean c;
-  private static final Object d = new Object();
+  private final View a;
+  private ViewTreeObserver b;
+  private final Runnable c;
   
-  public static Bundle a(Notification.Builder paramBuilder, ck.a parama)
+  private cm(View paramView, Runnable paramRunnable)
   {
-    paramBuilder.addAction(parama.e, parama.f, parama.g);
-    paramBuilder = new Bundle(parama.a);
-    if (parama.b != null) {
-      paramBuilder.putParcelableArray("android.support.remoteInputs", a(parama.b));
-    }
-    if (parama.c != null) {
-      paramBuilder.putParcelableArray("android.support.dataRemoteInputs", a(parama.c));
-    }
-    paramBuilder.putBoolean("android.support.allowGeneratedReplies", parama.d);
-    return paramBuilder;
+    this.a = paramView;
+    this.b = paramView.getViewTreeObserver();
+    this.c = paramRunnable;
   }
   
-  public static Bundle a(Notification paramNotification)
+  public static cm a(View paramView, Runnable paramRunnable)
   {
-    synchronized (a)
-    {
-      if (c) {
-        return null;
-      }
-      try
-      {
-        if (b == null)
-        {
-          localObject1 = Notification.class.getDeclaredField("extras");
-          if (!Bundle.class.isAssignableFrom(((Field)localObject1).getType()))
-          {
-            c = true;
-            return null;
-          }
-          ((Field)localObject1).setAccessible(true);
-          b = (Field)localObject1;
-        }
-        Bundle localBundle = (Bundle)b.get(paramNotification);
-        Object localObject1 = localBundle;
-        if (localBundle == null)
-        {
-          localObject1 = new Bundle();
-          b.set(paramNotification, localObject1);
-        }
-        return localObject1;
-      }
-      catch (IllegalAccessException|NoSuchFieldException paramNotification)
-      {
-        label96:
-        break label96;
-      }
-      c = true;
-      return null;
-    }
+    paramRunnable = new cm(paramView, paramRunnable);
+    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+    paramView.addOnAttachStateChangeListener(paramRunnable);
+    return paramRunnable;
   }
   
-  public static SparseArray<Bundle> a(List<Bundle> paramList)
+  private void a()
   {
-    int j = paramList.size();
-    Object localObject1 = null;
-    int i = 0;
-    while (i < j)
-    {
-      Bundle localBundle = (Bundle)paramList.get(i);
-      Object localObject2 = localObject1;
-      if (localBundle != null)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new SparseArray();
-        }
-        ((SparseArray)localObject2).put(i, localBundle);
-      }
-      i += 1;
-      localObject1 = localObject2;
+    if (this.b.isAlive()) {
+      this.b.removeOnPreDrawListener(this);
+    } else {
+      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    return localObject1;
+    this.a.removeOnAttachStateChangeListener(this);
   }
   
-  private static Bundle[] a(co[] paramArrayOfco)
+  public final boolean onPreDraw()
   {
-    if (paramArrayOfco == null) {
-      return null;
-    }
-    Bundle[] arrayOfBundle = new Bundle[paramArrayOfco.length];
-    int i = 0;
-    while (i < paramArrayOfco.length)
-    {
-      Object localObject1 = paramArrayOfco[i];
-      Bundle localBundle = new Bundle();
-      localBundle.putString("resultKey", ((co)localObject1).a);
-      localBundle.putCharSequence("label", ((co)localObject1).b);
-      localBundle.putCharSequenceArray("choices", ((co)localObject1).c);
-      localBundle.putBoolean("allowFreeFormInput", ((co)localObject1).d);
-      localBundle.putBundle("extras", ((co)localObject1).e);
-      Object localObject2 = ((co)localObject1).f;
-      if ((localObject2 != null) && (!((Set)localObject2).isEmpty()))
-      {
-        localObject1 = new ArrayList(((Set)localObject2).size());
-        localObject2 = ((Set)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          ((ArrayList)localObject1).add((String)((Iterator)localObject2).next());
-        }
-        localBundle.putStringArrayList("allowedDataTypes", (ArrayList)localObject1);
-      }
-      arrayOfBundle[i] = localBundle;
-      i += 1;
-    }
-    return arrayOfBundle;
+    a();
+    this.c.run();
+    return true;
+  }
+  
+  public final void onViewAttachedToWindow(View paramView)
+  {
+    this.b = paramView.getViewTreeObserver();
+  }
+  
+  public final void onViewDetachedFromWindow(View paramView)
+  {
+    a();
   }
 }
 

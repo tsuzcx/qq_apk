@@ -3,11 +3,11 @@ package com.tencent.token;
 final class apq
   implements Runnable
 {
-  apq(aqs paramaqs, aqf paramaqf) {}
+  apq(aqr paramaqr, aqf paramaqf) {}
   
   public final void run()
   {
-    aqs.a(this.a);
+    aqr.a(this.b, this.a);
   }
 }
 

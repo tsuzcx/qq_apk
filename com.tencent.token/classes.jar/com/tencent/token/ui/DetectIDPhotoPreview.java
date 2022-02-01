@@ -10,8 +10,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.jni.FaceDetector.IdCardDirection;
-import com.tencent.token.xb;
-import com.tencent.token.xu;
+import com.tencent.token.xa;
+import com.tencent.token.xt;
 
 public class DetectIDPhotoPreview
   extends SurfaceView
@@ -19,7 +19,7 @@ public class DetectIDPhotoPreview
 {
   private Context a;
   private SurfaceHolder b;
-  private xu c;
+  private xt c;
   private Handler d;
   private FaceDetector.IdCardDirection e;
   
@@ -31,10 +31,10 @@ public class DetectIDPhotoPreview
   
   public final void a()
   {
-    xu localxu = this.c;
-    if (localxu != null)
+    xt localxt = this.c;
+    if (localxt != null)
     {
-      localxu.b();
+      localxt.b();
       this.c = null;
     }
   }
@@ -55,9 +55,9 @@ public class DetectIDPhotoPreview
   
   public void setStop(boolean paramBoolean)
   {
-    xu localxu = this.c;
-    if (localxu != null) {
-      localxu.a = paramBoolean;
+    xt localxt = this.c;
+    if (localxt != null) {
+      localxt.a = paramBoolean;
     }
   }
   
@@ -68,7 +68,7 @@ public class DetectIDPhotoPreview
     }
     if (this.c == null)
     {
-      this.c = new xu(getContext(), paramSurfaceHolder, this.d, this.e);
+      this.c = new xt(getContext(), paramSurfaceHolder, this.d, this.e);
       paramSurfaceHolder = this.c;
       if (paramSurfaceHolder.d == null)
       {
@@ -87,7 +87,7 @@ public class DetectIDPhotoPreview
             {
               StringBuilder localStringBuilder = new StringBuilder("CameraOpen camera=");
               localStringBuilder.append(paramSurfaceHolder.d);
-              xb.c(localStringBuilder.toString());
+              xa.c(localStringBuilder.toString());
               localRuntimeException.printStackTrace();
             }
           }
@@ -97,7 +97,7 @@ public class DetectIDPhotoPreview
         {
           localObject = new StringBuilder("CameraOpen camera=");
           ((StringBuilder)localObject).append(paramSurfaceHolder.d);
-          xb.c(((StringBuilder)localObject).toString());
+          xa.c(((StringBuilder)localObject).toString());
           localObject = paramSurfaceHolder.b.obtainMessage(0);
           ((Message)localObject).what = 2;
           ((Message)localObject).sendToTarget();
@@ -112,7 +112,7 @@ public class DetectIDPhotoPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    xb.c("surfaceDestroyed!");
+    xa.c("surfaceDestroyed!");
     try
     {
       a();

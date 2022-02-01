@@ -1,73 +1,153 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import com.tencent.wcdb.FileUtils;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
-import com.tencent.wcdb.database.SQLiteGlobal;
-import java.io.File;
+import android.annotation.SuppressLint;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class agu
+public class agu<K, V>
 {
-  static {}
+  private final LinkedHashMap<K, V> a;
+  public int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  public static SQLiteDatabase a(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, SQLiteDatabase.a parama, afy paramafy)
+  public agu(int paramInt)
   {
-    if (paramString.charAt(0) == File.separatorChar)
+    if (paramInt > 0)
     {
-      paramContext = new File(paramString.substring(0, paramString.lastIndexOf(File.separatorChar)));
-      paramString = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
+      this.b = paramInt;
+      this.a = new LinkedHashMap(0, 0.75F, true);
+      return;
     }
-    else
+    throw new IllegalArgumentException("maxSize <= 0");
+  }
+  
+  public final V a(K paramK, V paramV)
+  {
+    if ((paramK != null) && (paramV != null)) {
+      try
+      {
+        this.d += 1;
+        this.c += 1;
+        paramK = this.a.put(paramK, paramV);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        a(this.b);
+        return paramK;
+      }
+      finally {}
+    }
+    throw new NullPointerException("key == null || value == null");
+  }
+  
+  public final void a()
+  {
+    a(-1);
+  }
+  
+  public final void a(int paramInt)
+  {
+    for (;;)
     {
-      if (paramContext == null) {
-        break label289;
+      try
+      {
+        if ((this.c >= 0) && ((!this.a.isEmpty()) || (this.c == 0)))
+        {
+          if ((this.c > paramInt) && (!this.a.isEmpty()))
+          {
+            localObject1 = null;
+            if (this.a.entrySet().iterator().hasNext()) {
+              localObject1 = (Map.Entry)this.a.entrySet().iterator().next();
+            }
+            if (localObject1 == null) {
+              return;
+            }
+            Object localObject3 = ((Map.Entry)localObject1).getKey();
+            localObject1 = ((Map.Entry)localObject1).getValue();
+            this.a.remove(localObject3);
+            this.c -= 1;
+            this.e += 1;
+            a(localObject1);
+            continue;
+          }
+          return;
+        }
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getClass().getName());
+        ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
+        throw new IllegalStateException(((StringBuilder)localObject1).toString());
       }
-      paramContext = paramContext.getApplicationInfo().dataDir;
-      if (paramContext != null) {
-        paramContext = new File(paramContext);
-      } else {
-        paramContext = null;
+      finally {}
+    }
+  }
+  
+  protected void a(V paramV) {}
+  
+  public final V b(K paramK)
+  {
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.get(paramK);
+        if (paramK != null)
+        {
+          this.f += 1;
+          return paramK;
+        }
+        this.g += 1;
+        return null;
       }
-      File localFile = new File(paramContext, "databases");
-      paramContext = localFile;
-      if (localFile.getPath().equals("databases")) {
-        paramContext = new File("/data/system");
+      finally {}
+    }
+    throw new NullPointerException("key == null");
+  }
+  
+  public final V c(K paramK)
+  {
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.remove(paramK);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        return paramK;
       }
-      if (paramString.indexOf(File.separatorChar) >= 0) {
-        break label254;
+      finally {}
+    }
+    throw new NullPointerException("key == null");
+  }
+  
+  @SuppressLint({"DefaultLocale"})
+  public final String toString()
+  {
+    for (;;)
+    {
+      try
+      {
+        i = this.f + this.g;
+        if (i != 0)
+        {
+          i = this.f * 100 / i;
+          String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
+          return str;
+        }
       }
-      paramString = new File(paramContext, paramString);
+      finally {}
+      int i = 0;
     }
-    if ((!paramContext.isDirectory()) && (paramContext.mkdir())) {
-      FileUtils.setPermissions(paramContext.getPath(), 505, -1, -1);
-    }
-    if ((paramInt & 0x8) != 0) {
-      i = 805306368;
-    } else {
-      i = 268435456;
-    }
-    paramContext = SQLiteDatabase.a(paramString.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, parama, i, paramafy);
-    paramString = paramString.getPath();
-    int i = 432;
-    if ((paramInt & 0x1) != 0) {
-      i = 436;
-    }
-    int j = i;
-    if ((paramInt & 0x2) != 0) {
-      j = i | 0x2;
-    }
-    FileUtils.setPermissions(paramString, j, -1, -1);
-    return paramContext;
-    label254:
-    paramContext = new StringBuilder("File ");
-    paramContext.append(paramString);
-    paramContext.append(" contains a path separator");
-    throw new IllegalArgumentException(paramContext.toString());
-    label289:
-    throw new RuntimeException("Not supported in system context");
   }
 }
 

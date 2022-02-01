@@ -1,38 +1,76 @@
 package com.tencent.token;
 
-import android.content.SharedPreferences.Editor;
-import java.io.File;
+import android.content.Context;
+import com.tencent.token.global.RqdApplication;
 import org.json.JSONObject;
 
 public final class wj
-  extends tk
+  extends tj
 {
-  private static String d;
+  public static String d = "";
+  public static String e = "";
+  public static long f;
+  public static long g;
+  public static int h;
+  private static int i;
   
   public final String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(wx.e());
-    localStringBuilder.append("/cn/mbtoken3/mbtoken3_log_upload");
+    localStringBuilder.append(ww.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_realname_check");
     return localStringBuilder.toString();
   }
   
-  public final void a(aar paramaar) {}
+  public final void a(aaq paramaaq) {}
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i == 0)
+    int j = paramJSONObject.getInt("err");
+    if (j == 0)
     {
-      paramJSONObject = new File(d);
-      if ((paramJSONObject.exists()) && (paramJSONObject.isFile())) {
-        zx.a(paramJSONObject);
+      paramJSONObject = aac.d(paramJSONObject.getString("data"));
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = new JSONObject(new String(paramJSONObject));
+        StringBuilder localStringBuilder = new StringBuilder("parseJSON  decodeData=");
+        localStringBuilder.append(paramJSONObject.toString());
+        xa.c(localStringBuilder.toString());
+        int k = i;
+        if (k == 1)
+        {
+          if (paramJSONObject.getInt("live_result") == 0) {
+            a(j, paramJSONObject.getString("info"));
+          } else {
+            this.a.a = 0;
+          }
+        }
+        else
+        {
+          if (k == 2)
+          {
+            d = paramJSONObject.getString("ocr_name");
+            e = paramJSONObject.getString("ocr_card");
+          }
+          else if (k == 5)
+          {
+            f = paramJSONObject.getLong("submit_time");
+            g = paramJSONObject.getLong("complete_time");
+            h = paramJSONObject.getInt("time_left");
+          }
+          this.a.a = 0;
+        }
       }
-      aaa.b("debug.file.uploadfiledate").commit();
-      xb.a("log upload success");
+      else
+      {
+        xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+        a(10022, RqdApplication.n().getString(2131493068));
+      }
+      xa.a("ProtoUploadRealNameFile upload success");
       return;
     }
-    xb.a("log upload fail errCode=".concat(String.valueOf(i)));
+    a(j, paramJSONObject.getString("info"));
+    xa.a("ProtoUploadRealNameFile upload fail errCode=".concat(String.valueOf(j)));
   }
 }
 

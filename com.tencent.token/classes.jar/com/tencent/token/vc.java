@@ -1,39 +1,28 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class vc
-  extends tk
+  extends tj
 {
-  EvalAccountResult d;
-  private long e;
-  private int f;
+  private long d;
+  private int e;
+  private ta f;
   
   public final String a()
   {
-    sa.a();
-    StringBuilder localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xb.c(localStringBuilder.toString());
+    rz.a();
     this.a.a(104, null, null);
-    localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xb.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    paramaar = new StringBuilder("account page ProtoGetEvalAccountResult unpacketParams: user =");
-    paramaar.append(this.e);
-    xb.c(paramaar.toString());
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -41,43 +30,53 @@ public final class vc
     int i = paramJSONObject.getInt("err");
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(i, null);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    Object localObject = aac.d(paramJSONObject.getString("data"));
+    if (localObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
+      localObject = new JSONObject(new String((byte[])localObject));
+      i = ((JSONObject)localObject).getInt("seq_id");
+      if (i != this.e)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
+      long l = ((JSONObject)localObject).getLong("uin");
+      if (l != this.d)
+      {
+        paramJSONObject = this.a;
+        localObject = new StringBuilder("uin not match=");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.d);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
+        return;
+      }
+      localObject = ((JSONObject)localObject).getJSONArray("result");
+      if (!this.f.c.a((JSONArray)localObject))
+      {
+        paramJSONObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
+        localStringBuilder.append(((JSONArray)localObject).toString());
+        paramJSONObject.a(10000, localStringBuilder.toString(), null);
+        return;
+      }
+      xb.a("game_lock", new String(paramJSONObject.toString()));
+      this.f.c.d = true;
+      this.f.c.e = false;
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
     a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
   }
 }
 

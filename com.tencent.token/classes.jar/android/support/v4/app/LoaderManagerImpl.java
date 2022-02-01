@@ -14,17 +14,17 @@ import com.tencent.token.bf;
 import com.tencent.token.bg;
 import com.tencent.token.bg.a;
 import com.tencent.token.bh;
-import com.tencent.token.ci;
-import com.tencent.token.ci.a;
-import com.tencent.token.ct;
-import com.tencent.token.ct.a;
-import com.tencent.token.dy;
-import com.tencent.token.eh;
+import com.tencent.token.ch;
+import com.tencent.token.ch.a;
+import com.tencent.token.cs;
+import com.tencent.token.cs.a;
+import com.tencent.token.dx;
+import com.tencent.token.eg;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
 public final class LoaderManagerImpl
-  extends ci
+  extends ch
 {
   static boolean a = false;
   public final LoaderViewModel b;
@@ -47,7 +47,7 @@ public final class LoaderManagerImpl
     localStringBuilder.append("LoaderManager{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" in ");
-    dy.a(this.c, localStringBuilder);
+    dx.a(this.c, localStringBuilder);
     localStringBuilder.append("}}");
     return localStringBuilder.toString();
   }
@@ -62,7 +62,7 @@ public final class LoaderManagerImpl
         return new LoaderManagerImpl.LoaderViewModel();
       }
     };
-    private eh<LoaderManagerImpl.a> b = new eh();
+    private eg<LoaderManagerImpl.a> b = new eg();
     
     static LoaderViewModel a(bh parambh)
     {
@@ -92,17 +92,17 @@ public final class LoaderManagerImpl
         ((LoaderManagerImpl.a)this.b.d(i)).d();
         i += 1;
       }
-      eh localeh = this.b;
-      j = localeh.d;
-      Object[] arrayOfObject = localeh.c;
+      eg localeg = this.b;
+      j = localeg.d;
+      Object[] arrayOfObject = localeg.c;
       i = 0;
       while (i < j)
       {
         arrayOfObject[i] = null;
         i += 1;
       }
-      localeh.d = 0;
-      localeh.a = false;
+      localeg.d = 0;
+      localeg.a = false;
     }
     
     public final void a(String paramString, PrintWriter paramPrintWriter)
@@ -144,24 +144,24 @@ public final class LoaderManagerImpl
   
   public static final class a<D>
     extends bb<D>
-    implements ct.a<D>
+    implements cs.a<D>
   {
     private final int e;
     private final Bundle f;
-    private final ct<D> g;
+    private final cs<D> g;
     private aw h;
     private LoaderManagerImpl.b<D> i;
-    private ct<D> j;
+    private cs<D> j;
     
     public final void a()
     {
       if (LoaderManagerImpl.a) {
         new StringBuilder("  Starting: ").append(this);
       }
-      ct localct = this.g;
-      localct.c = true;
-      localct.e = false;
-      localct.d = false;
+      cs localcs = this.g;
+      localcs.c = true;
+      localcs.e = false;
+      localcs.d = false;
     }
     
     public final void a(bc<D> parambc)
@@ -188,26 +188,26 @@ public final class LoaderManagerImpl
       localObject2 = ((StringBuilder)localObject2).toString();
       paramPrintWriter.print((String)localObject2);
       paramPrintWriter.print("mId=");
-      paramPrintWriter.print(((ct)localObject1).a);
+      paramPrintWriter.print(((cs)localObject1).a);
       paramPrintWriter.print(" mListener=");
-      paramPrintWriter.println(((ct)localObject1).b);
-      if ((((ct)localObject1).c) || (((ct)localObject1).f) || (((ct)localObject1).g))
+      paramPrintWriter.println(((cs)localObject1).b);
+      if ((((cs)localObject1).c) || (((cs)localObject1).f) || (((cs)localObject1).g))
       {
         paramPrintWriter.print((String)localObject2);
         paramPrintWriter.print("mStarted=");
-        paramPrintWriter.print(((ct)localObject1).c);
+        paramPrintWriter.print(((cs)localObject1).c);
         paramPrintWriter.print(" mContentChanged=");
-        paramPrintWriter.print(((ct)localObject1).f);
+        paramPrintWriter.print(((cs)localObject1).f);
         paramPrintWriter.print(" mProcessingChange=");
-        paramPrintWriter.println(((ct)localObject1).g);
+        paramPrintWriter.println(((cs)localObject1).g);
       }
-      if ((((ct)localObject1).d) || (((ct)localObject1).e))
+      if ((((cs)localObject1).d) || (((cs)localObject1).e))
       {
         paramPrintWriter.print((String)localObject2);
         paramPrintWriter.print("mAbandoned=");
-        paramPrintWriter.print(((ct)localObject1).d);
+        paramPrintWriter.print(((cs)localObject1).d);
         paramPrintWriter.print(" mReset=");
-        paramPrintWriter.println(((ct)localObject1).e);
+        paramPrintWriter.println(((cs)localObject1).e);
       }
       if (this.i != null)
       {
@@ -228,7 +228,7 @@ public final class LoaderManagerImpl
       if (localObject1 == LiveData.a) {
         localObject1 = null;
       }
-      paramPrintWriter.println(ct.a(localObject1));
+      paramPrintWriter.println(cs.a(localObject1));
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mStarted=");
       boolean bool;
@@ -269,7 +269,7 @@ public final class LoaderManagerImpl
       }
     }
     
-    final ct<D> d()
+    final cs<D> d()
     {
       if (LoaderManagerImpl.a) {
         new StringBuilder("  Destroying: ").append(this);
@@ -284,17 +284,17 @@ public final class LoaderManagerImpl
         }
       }
       localObject = this.g;
-      if (((ct)localObject).b != null)
+      if (((cs)localObject).b != null)
       {
-        if (((ct)localObject).b == this)
+        if (((cs)localObject).b == this)
         {
-          ((ct)localObject).b = null;
+          ((cs)localObject).b = null;
           localObject = this.g;
-          ((ct)localObject).e = true;
-          ((ct)localObject).c = false;
-          ((ct)localObject).d = false;
-          ((ct)localObject).f = false;
-          ((ct)localObject).g = false;
+          ((cs)localObject).e = true;
+          ((cs)localObject).c = false;
+          ((cs)localObject).d = false;
+          ((cs)localObject).f = false;
+          ((cs)localObject).g = false;
           return this.j;
         }
         throw new IllegalArgumentException("Attempting to unregister the wrong listener");
@@ -310,7 +310,7 @@ public final class LoaderManagerImpl
       localStringBuilder.append(" #");
       localStringBuilder.append(this.e);
       localStringBuilder.append(" : ");
-      dy.a(this.g, localStringBuilder);
+      dx.a(this.g, localStringBuilder);
       localStringBuilder.append("}}");
       return localStringBuilder.toString();
     }
@@ -319,9 +319,9 @@ public final class LoaderManagerImpl
   static final class b<D>
     implements bc<D>
   {
-    final ct<D> a;
+    final cs<D> a;
     boolean b;
-    private final ci.a<D> c;
+    private final ch.a<D> c;
     
     public final void a(D paramD)
     {
@@ -330,7 +330,7 @@ public final class LoaderManagerImpl
         StringBuilder localStringBuilder = new StringBuilder("  onLoadFinished in ");
         localStringBuilder.append(this.a);
         localStringBuilder.append(": ");
-        localStringBuilder.append(ct.a(paramD));
+        localStringBuilder.append(cs.a(paramD));
       }
       this.b = true;
     }

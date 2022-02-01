@@ -1,239 +1,103 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
-import com.oasisfeng.condom.CondomContext;
-import com.oasisfeng.condom.CondomOptions;
-import com.oasisfeng.condom.OutboundJudge;
-import com.oasisfeng.condom.OutboundType;
-import com.oasisfeng.condom.PackageManagerWrapper;
-import com.tencent.token.global.RqdApplication;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.util.List;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class abi
+  implements Iterable<String>
 {
-  public static Context a(Context paramContext)
+  public ConcurrentLinkedQueue<String> a = null;
+  public AtomicInteger b = null;
+  
+  public final void a()
   {
-    if (rp.a().b()) {
-      return paramContext;
-    }
-    Object localObject = new CondomOptions();
-    ((CondomOptions)localObject).preventBroadcastToBackgroundPackages(false);
-    ((CondomOptions)localObject).preventServiceInBackgroundPackages(false);
-    ((CondomOptions)localObject).setOutboundJudge(new OutboundJudge()
-    {
-      public final boolean shouldAllow(OutboundType paramAnonymousOutboundType, Intent paramAnonymousIntent, String paramAnonymousString)
-      {
-        return true;
-      }
-    });
-    ((CondomOptions)localObject).setPackageManagerFactory(new kn()
-    {
-      public final PackageManagerWrapper a(final PackageManager paramAnonymousPackageManager)
-      {
-        new PackageManagerWrapper(paramAnonymousPackageManager)
-        {
-          public final List<ApplicationInfo> getInstalledApplications(int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.getInstalledApplications(paramAnonymous2Int);
-          }
-          
-          public final List<PackageInfo> getInstalledPackages(int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.getInstalledPackages(paramAnonymous2Int);
-          }
-          
-          public final List<ResolveInfo> queryBroadcastReceivers(Intent paramAnonymous2Intent, int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.queryBroadcastReceivers(paramAnonymous2Intent, paramAnonymous2Int);
-          }
-          
-          public final List<ResolveInfo> queryIntentActivities(Intent paramAnonymous2Intent, int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.queryIntentActivities(paramAnonymous2Intent, paramAnonymous2Int);
-          }
-          
-          public final List<ResolveInfo> queryIntentActivityOptions(ComponentName paramAnonymous2ComponentName, Intent[] paramAnonymous2ArrayOfIntent, Intent paramAnonymous2Intent, int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.queryIntentActivityOptions(paramAnonymous2ComponentName, paramAnonymous2ArrayOfIntent, paramAnonymous2Intent, paramAnonymous2Int);
-          }
-          
-          public final List<ResolveInfo> queryIntentServices(Intent paramAnonymous2Intent, int paramAnonymous2Int)
-          {
-            PackageManager localPackageManager = paramAnonymousPackageManager;
-            if (!rp.a().b()) {
-              return null;
-            }
-            return localPackageManager.queryIntentServices(paramAnonymous2Intent, paramAnonymous2Int);
-          }
-        };
-      }
-    });
-    ((CondomOptions)localObject).addKit(new kj()
-    {
-      public final void a(kj.a paramAnonymousa)
-      {
-        paramAnonymousa.a("phone", new kj.b()
-        {
-          public final Object a(Context paramAnonymous2Context)
-          {
-            TelephonyManager localTelephonyManager = (TelephonyManager)RqdApplication.a().getSystemService("phone");
-            try
-            {
-              paramAnonymous2Context = new kl(paramAnonymous2Context, localTelephonyManager)
-              {
-                @SuppressLint({"MissingPermission"})
-                public final String getDeviceId()
-                {
-                  if (rp.a().b()) {
-                    return super.getDeviceId();
-                  }
-                  return "00000000000000";
-                }
-                
-                @SuppressLint({"MissingPermission"})
-                public final String getDeviceId(int paramAnonymous3Int)
-                {
-                  if (rp.a().b()) {
-                    return super.getDeviceId(paramAnonymous3Int);
-                  }
-                  return "00000000000000";
-                }
-                
-                @SuppressLint({"MissingPermission"})
-                public final String getImei()
-                {
-                  if (rp.a().b()) {
-                    return super.getImei();
-                  }
-                  return "00000000000000";
-                }
-                
-                @SuppressLint({"MissingPermission"})
-                public final String getImei(int paramAnonymous3Int)
-                {
-                  if (rp.a().b()) {
-                    return super.getImei(paramAnonymous3Int);
-                  }
-                  return "00000000000000";
-                }
-                
-                @SuppressLint({"MissingPermission"})
-                public final String getMeid()
-                {
-                  if (rp.a().b()) {
-                    return super.getMeid();
-                  }
-                  return "00000000000000";
-                }
-              };
-              return paramAnonymous2Context;
-            }
-            catch (Exception paramAnonymous2Context)
-            {
-              paramAnonymous2Context.printStackTrace();
-            }
-            return localTelephonyManager;
-          }
-        });
-      }
-    });
-    ((CondomOptions)localObject).addKit(new kj()
-    {
-      public final void a(kj.a paramAnonymousa)
-      {
-        paramAnonymousa.a("wifi", new kj.b()
-        {
-          public final Object a(Context paramAnonymous2Context)
-          {
-            paramAnonymous2Context = (WifiManager)RqdApplication.a().getSystemService("wifi");
-            try
-            {
-              km local1 = new km(paramAnonymous2Context)
-              {
-                public final WifiInfo getConnectionInfo()
-                {
-                  WifiInfo localWifiInfo;
-                  if (rp.a().b()) {
-                    localWifiInfo = super.getConnectionInfo();
-                  } else {
-                    localWifiInfo = abi.a();
-                  }
-                  if (localWifiInfo != null) {
-                    new StringBuilder("intercepting...getConnectionInfo mac:").append(localWifiInfo.getMacAddress());
-                  }
-                  return localWifiInfo;
-                }
-              };
-              return local1;
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-            }
-            return paramAnonymous2Context;
-          }
-        });
-      }
-    });
-    try
-    {
-      localObject = CondomContext.wrap(paramContext, "intercept_pm", (CondomOptions)localObject);
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return paramContext;
+    this.a.clear();
+    this.b.set(0);
   }
   
-  static WifiInfo a()
+  public final void a(Writer paramWriter, char[] paramArrayOfChar)
   {
-    try
+    int i1;
+    int i2;
+    int k;
+    int m;
+    int j;
+    int i;
+    if (paramArrayOfChar != null)
     {
-      WifiInfo localWifiInfo = (WifiInfo)WifiInfo.class.getConstructor(new Class[0]).newInstance(new Object[0]);
-      Field localField = localWifiInfo.getClass().getDeclaredField("mMacAddress");
-      localField.setAccessible(true);
-      localField.set(localWifiInfo, "");
-      return localWifiInfo;
+      if (paramArrayOfChar.length == 0) {
+        return;
+      }
+      int n = paramArrayOfChar.length;
+      try
+      {
+        Iterator localIterator = iterator();
+        i1 = n;
+        i2 = 0;
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          k = str.length();
+          m = 0;
+          j = i2;
+          i = i1;
+          break label157;
+          label69:
+          i1 = m + i2;
+          str.getChars(m, i1, paramArrayOfChar, j);
+          i -= i2;
+          j += i2;
+          k -= i2;
+          if (i != 0) {
+            break label188;
+          }
+          paramWriter.write(paramArrayOfChar, 0, n);
+          i = n;
+          m = i1;
+          j = 0;
+          break label157;
+        }
+        if (i2 > 0) {
+          paramWriter.write(paramArrayOfChar, 0, i2);
+        }
+        paramWriter.flush();
+        return;
+      }
+      catch (Exception paramWriter)
+      {
+        paramWriter.printStackTrace();
+        return;
+      }
     }
-    catch (Exception localException)
+    else
     {
-      localException.printStackTrace();
+      return;
     }
-    return null;
+    for (;;)
+    {
+      label157:
+      i2 = j;
+      i1 = i;
+      if (k <= 0) {
+        break;
+      }
+      if (i > k)
+      {
+        i2 = k;
+        break label69;
+      }
+      i2 = i;
+      break label69;
+      label188:
+      m = i1;
+    }
+  }
+  
+  public final Iterator<String> iterator()
+  {
+    return this.a.iterator();
   }
 }
 

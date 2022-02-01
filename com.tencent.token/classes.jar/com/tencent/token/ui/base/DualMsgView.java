@@ -24,11 +24,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.sd;
 import com.tencent.token.se;
-import com.tencent.token.sf;
-import com.tencent.token.ta;
+import com.tencent.token.sz;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.zz;
+import com.tencent.token.zy;
 
 public class DualMsgView
   extends RelativeLayout
@@ -116,7 +116,7 @@ public class DualMsgView
   private void b()
   {
     this.v.post(new c(this.p, this.q, this.r, this.s));
-    se.a(RqdApplication.n()).a();
+    sd.a(RqdApplication.n()).a();
   }
   
   private void c()
@@ -146,28 +146,28 @@ public class DualMsgView
     b();
   }
   
-  public final void a(sf paramsf)
+  public final void a(se paramse)
   {
-    this.c.setText(Html.fromHtml(paramsf.f));
-    this.d.setText(Html.fromHtml(paramsf.g));
-    this.h.setText(a(paramsf.h, " "));
-    this.i.setText(a(paramsf.i, " "));
-    paramsf = ta.a().c(paramsf.c);
-    if (paramsf != null)
+    this.c.setText(Html.fromHtml(paramse.f));
+    this.d.setText(Html.fromHtml(paramse.g));
+    this.h.setText(a(paramse.h, " "));
+    this.i.setText(a(paramse.i, " "));
+    paramse = sz.a().c(paramse.c);
+    if (paramse != null)
     {
       ImageView localImageView = this.j;
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramsf.mRealUin);
+      ((StringBuilder)localObject).append(paramse.mRealUin);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramsf.mUin);
-      localImageView.setImageDrawable(zz.a((String)localObject, localStringBuilder.toString()));
-      if (paramsf.mIsZzb)
+      localStringBuilder.append(paramse.mUin);
+      localImageView.setImageDrawable(zy.a((String)localObject, localStringBuilder.toString()));
+      if (paramse.mIsZzb)
       {
         this.k.setImageDrawable(getResources().getDrawable(2131100227));
         this.l.setVisibility(0);
       }
-      this.g.setText(paramsf.mNickName);
+      this.g.setText(paramse.mNickName);
       return;
     }
     this.g.setText("");

@@ -1,23 +1,16 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public final class adr
 {
-  public static adr a = new adr();
+  public static final afj<adr> a = new a();
   
-  public static adr a()
+  public static final class a
+    extends afj<adr>
   {
-    return a;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    long l1 = adj.c(paramContext, "112");
-    long l2 = System.currentTimeMillis();
-    adp localadp = adp.a;
-    long l3 = adp.e(paramContext);
-    return Math.abs(l1 - l2) >= l3;
+    public final Object a()
+    {
+      return new adr();
+    }
   }
 }
 

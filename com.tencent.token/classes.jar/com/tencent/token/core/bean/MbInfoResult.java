@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -15,7 +15,7 @@ public class MbInfoResult
   
   public MbInfoResult(JSONArray paramJSONArray)
   {
-    xb.c(paramJSONArray.toString());
+    xa.c(paramJSONArray.toString());
     int i = 0;
     while (i < paramJSONArray.length())
     {

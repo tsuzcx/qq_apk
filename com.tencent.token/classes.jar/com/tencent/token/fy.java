@@ -1,87 +1,13 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.widget.TextView;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-public final class fy
+public abstract interface fy
 {
-  static final g a = new g();
+  public abstract void setSupportButtonTintList(ColorStateList paramColorStateList);
   
-  static
-  {
-    if (dq.a())
-    {
-      a = new f();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      a = new e();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      a = new d();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      a = new c();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      a = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      a = new a();
-      return;
-    }
-  }
-  
-  public static void a(TextView paramTextView, int paramInt)
-  {
-    a.a(paramTextView, paramInt);
-  }
-  
-  static class a
-    extends fy.g
-  {}
-  
-  static class b
-    extends fy.a
-  {}
-  
-  static class c
-    extends fy.b
-  {}
-  
-  static class d
-    extends fy.c
-  {
-    public final void a(TextView paramTextView, int paramInt)
-    {
-      paramTextView.setTextAppearance(paramInt);
-    }
-  }
-  
-  static class e
-    extends fy.d
-  {}
-  
-  static final class f
-    extends fy.e
-  {}
-  
-  static class g
-  {
-    public void a(TextView paramTextView, int paramInt)
-    {
-      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
-    }
-  }
+  public abstract void setSupportButtonTintMode(PorterDuff.Mode paramMode);
 }
 
 

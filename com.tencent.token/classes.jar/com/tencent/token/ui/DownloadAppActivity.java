@@ -13,19 +13,19 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.token.aae;
-import com.tencent.token.afr;
+import com.tencent.token.aad;
+import com.tencent.token.afq;
 import com.tencent.token.r;
-import com.tencent.token.rc;
-import com.tencent.token.rc.a;
-import com.tencent.token.rc.b;
-import com.tencent.token.rc.c;
+import com.tencent.token.rb;
+import com.tencent.token.rb.a;
+import com.tencent.token.rb.b;
+import com.tencent.token.rb.c;
 import com.tencent.token.t;
 import com.tencent.token.ui.qqpim.ProgressTextView;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
-import com.tencent.token.zf;
-import com.tencent.token.zf.a;
-import com.tencent.token.zt;
+import com.tencent.token.ze;
+import com.tencent.token.ze.a;
+import com.tencent.token.zs;
 import java.io.File;
 
 public class DownloadAppActivity
@@ -36,24 +36,24 @@ public class DownloadAppActivity
   private TextView descriptionText;
   private FrameLayout flProgress;
   private FrameLayout ivBack;
-  rc.c listener = new rc.c()
+  rb.c listener = new rb.c()
   {
-    public final void a(rc.a paramAnonymousa)
+    public final void a(rb.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public final void b(rc.a paramAnonymousa)
+    public final void b(rb.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public final void c(rc.a paramAnonymousa)
+    public final void c(rb.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public final void d(rc.a paramAnonymousa)
+    public final void d(rb.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
       DownloadAppActivity.this.mHandler.postDelayed(new Runnable()
@@ -61,14 +61,14 @@ public class DownloadAppActivity
         public final void run()
         {
           if ((DownloadAppActivity.this.mDownloadInfo != null) && (DownloadAppActivity.this.mDownloadInfo.f == DownloaderTaskStatus.COMPLETE)) {
-            rc.a(DownloadAppActivity.this, new File(rc.a(), DownloadAppActivity.this.mDownloadInfo.d));
+            rb.a(DownloadAppActivity.this, new File(rb.a(), DownloadAppActivity.this.mDownloadInfo.d));
           }
         }
       }, 500L);
     }
   };
   private LayoutAppKeyInfo mAppLayout;
-  rc.a mDownloadInfo;
+  rb.a mDownloadInfo;
   Handler mHandler = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -142,7 +142,7 @@ public class DownloadAppActivity
     this.subDescriptionText.setText(str3);
     this.tvDownload.setText(str4);
     if (!TextUtils.isEmpty(str5)) {
-      new zt(this.centerImage).execute(new String[] { str5 });
+      new zs(this.centerImage).execute(new String[] { str5 });
     }
   }
   
@@ -156,23 +156,23 @@ public class DownloadAppActivity
     default: 
       return;
     case 7: 
-      rc.b.a().c(this.mDownloadInfo);
+      rb.b.a().c(this.mDownloadInfo);
       return;
     case 6: 
-      rc.b.a().d(this.mDownloadInfo);
+      rb.b.a().d(this.mDownloadInfo);
       return;
     case 5: 
-      rc.b.a().c(this.mDownloadInfo);
+      rb.b.a().c(this.mDownloadInfo);
       return;
     case 4: 
-      rc.a(this, new File(rc.a(), this.mDownloadInfo.d));
+      rb.a(this, new File(rb.a(), this.mDownloadInfo.d));
       return;
     case 2: 
     case 3: 
-      rc.b.a().b(this.mDownloadInfo);
+      rb.b.a().b(this.mDownloadInfo);
       return;
     }
-    rc.b.a().c(this.mDownloadInfo);
+    rb.b.a().c(this.mDownloadInfo);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -180,7 +180,7 @@ public class DownloadAppActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     setContentView(2131296296);
-    aae.a(this, this.mTitleBar, 2130968771);
+    aad.a(this, this.mTitleBar, 2130968771);
     this.mPageTitle = ((TextView)findViewById(2131165807));
     this.pbProgress = ((ProgressBar)findViewById(2131165549));
     this.flProgress = ((FrameLayout)findViewById(2131165548));
@@ -212,19 +212,19 @@ public class DownloadAppActivity
       }
     });
     paramBundle = getIntent().getStringExtra("downloadurl");
-    this.mDownloadInfo = rc.b.a().a(paramBundle);
+    this.mDownloadInfo = rb.b.a().a(paramBundle);
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = afr.a(getIntent().getStringExtra("pkg"), paramBundle);
+      this.mDownloadInfo = afq.a(getIntent().getStringExtra("pkg"), paramBundle);
     }
-    if (rc.b.a().a(this.mDownloadInfo)) {
+    if (rb.b.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
     }
     updateUIFromBundle();
     refreshUIByState();
-    rc.b.a().a(this.listener);
+    rb.b.a().a(this.listener);
     this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
     this.mAppLayout.setVisibility(8);
-    zf.a(getIntent().getStringExtra("pkg"), new zf.a()
+    ze.a(getIntent().getStringExtra("pkg"), new ze.a()
     {
       public final void a(final r paramAnonymousr)
       {
@@ -242,7 +242,7 @@ public class DownloadAppActivity
   
   protected void onDestroy()
   {
-    rc.b.a().b(this.listener);
+    rb.b.a().b(this.listener);
     super.onDestroy();
   }
   

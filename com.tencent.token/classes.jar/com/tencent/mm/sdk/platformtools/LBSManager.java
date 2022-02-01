@@ -7,11 +7,11 @@ import android.location.Location;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import com.tencent.token.pq;
+import com.tencent.token.pp;
+import com.tencent.token.pr;
 import com.tencent.token.ps;
-import com.tencent.token.pt;
-import com.tencent.token.pt.b;
-import com.tencent.token.py;
+import com.tencent.token.ps.b;
+import com.tencent.token.px;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class LBSManager
   int d;
   private b f;
   private Context g;
-  private ps h;
+  private pr h;
   
   private String a()
   {
@@ -33,7 +33,7 @@ public class LBSManager
     if (localObject2 == null) {}
     for (Object localObject1 = "no wifi service";; localObject1 = "WIFILocation wifi info null")
     {
-      pq.a("MicroMsg.LBSManager", (String)localObject1);
+      pp.a("MicroMsg.LBSManager", (String)localObject1);
       return "";
       if (((WifiManager)localObject2).getConnectionInfo() != null) {
         break;
@@ -49,11 +49,11 @@ public class LBSManager
         String str = ((ScanResult)((List)localObject2).get(i)).BSSID;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(((ScanResult)((List)localObject2).get(i)).level);
-        ((List)localObject1).add(new pt.b(str, localStringBuilder.toString()));
+        ((List)localObject1).add(new ps.b(str, localStringBuilder.toString()));
         i += 1;
       }
     }
-    return pt.a((List)localObject1);
+    return ps.a((List)localObject1);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -79,7 +79,7 @@ public class LBSManager
           paramContext.append(j);
           paramContext.append(" source:");
           paramContext.append(i);
-          pq.d("MicroMsg.LBSManager", paramContext.toString());
+          pp.d("MicroMsg.LBSManager", paramContext.toString());
           if (e == null) {
             e = new a();
           }
@@ -92,8 +92,8 @@ public class LBSManager
         }
         if ((this.f != null) && ((!this.a) || (!this.b) || (!this.c)))
         {
-          py.a(a());
-          py.a(pt.b(pt.a(this.g)));
+          px.a(a());
+          px.a(ps.b(ps.a(this.g)));
           if (!this.a)
           {
             this.h.a();
@@ -112,7 +112,7 @@ public class LBSManager
             paramContext.append(this.d);
             paramContext.append(" isGpsProvider:");
             paramContext.append(bool);
-            pq.d("MicroMsg.LBSManager", paramContext.toString());
+            pp.d("MicroMsg.LBSManager", paramContext.toString());
             paramIntent.getLatitude();
             paramIntent.getLongitude();
             paramIntent.getAccuracy();

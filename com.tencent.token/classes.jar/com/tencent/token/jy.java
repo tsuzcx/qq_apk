@@ -2,11 +2,20 @@ package com.tencent.token;
 
 public final class jy
 {
-  public int a;
+  private static Object a = new Object();
+  private static kc b;
   
-  public jy(int paramInt)
+  public static Object a()
   {
-    this.a = paramInt;
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new kc();
+        }
+      }
+    }
+    return b;
   }
 }
 

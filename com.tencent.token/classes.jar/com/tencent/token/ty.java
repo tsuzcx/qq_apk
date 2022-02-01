@@ -8,93 +8,70 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ty
-  extends tk
+  extends tj
 {
-  private String d;
-  private String e;
-  private long f;
-  private int g;
-  private int h;
-  private sc i;
-  private int j;
+  private long d;
+  private int e;
+  private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.f = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramaar.c.get("param.bind.type")).intValue();
-    this.d = ((String)paramaar.c.get("param.bind.mobile"));
-    this.e = ((String)paramaar.c.get("param.bind.areacode"));
+    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramaaq.c.get("param.type")).intValue();
+    this.e = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int k = paramJSONObject.getInt("err");
-    if (k != 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(k);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wz)localObject).a(k, localStringBuilder.toString(), paramJSONObject);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    Object localObject = aad.d(paramJSONObject.getString("data"));
-    if (localObject != null)
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
     {
-      localObject = new JSONObject(new String((byte[])localObject));
-      k = ((JSONObject)localObject).getInt("seq_id");
-      if (k != this.j)
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(k);
+        paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sb.a();
-        paramJSONObject.append(sb.b());
-        xb.c(paramJSONObject.toString());
+        paramJSONObject.append(this.e);
+        xa.c(paramJSONObject.toString());
         return;
       }
-      this.h = ((JSONObject)localObject).getInt("bind_mobile_succ");
-      if (1 != this.h) {
-        try
-        {
-          this.a.a(paramJSONObject.getString("info"));
-        }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-      long l = ((JSONObject)localObject).getLong("server_time");
-      sc.b();
-      sc.a(l);
-      if (((JSONObject)localObject).getInt("seed_available") == 1)
+      long l = paramJSONObject.getLong("server_time");
+      sb.b();
+      sb.a(l);
+      if (paramJSONObject.getInt("seed_available") == 1)
       {
-        paramJSONObject = aad.e(((JSONObject)localObject).getString("seed"));
+        paramJSONObject = aac.e(paramJSONObject.getString("seed"));
         if (paramJSONObject != null)
         {
-          this.i.c();
-          this.i.a(paramJSONObject);
-          sc.b().a.a();
+          sb.b().c();
+          sb.b().a(paramJSONObject);
+          sb.b().a.a();
         }
       }
-      paramJSONObject = ta.a().d(this.f);
+      paramJSONObject = sz.a().d(this.d);
       if (paramJSONObject != null) {
-        ta.a().b(paramJSONObject);
+        sz.a().a(paramJSONObject);
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -102,11 +79,12 @@ public final class ty
   {
     if ((!this.b.e) && (this.b.d != null))
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.a;
-      localMessage.arg2 = this.h;
-      localMessage.sendToTarget();
+      Object localObject = new StringBuilder("handleSuccess");
+      ((StringBuilder)localObject).append(this.b.f);
+      xa.c(((StringBuilder)localObject).toString());
+      localObject = this.b.d.obtainMessage(this.b.f);
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).sendToTarget();
       this.b.e = true;
     }
   }

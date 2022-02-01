@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,36 +22,36 @@ public final class new
     hb.add(localint);
   }
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this._a = paramafl.a(this._a, 0, false);
-    this.ab = paramafl.a(this.ab, 1, false);
-    this.ib = paramafl.a(this.ib, 2, false);
-    this.jb = ((do)paramafl.a(gb, 3, false));
-    this.kb = ((ArrayList)paramafl.a(hb, 4, false));
+    this._a = paramafk.a(this._a, 0, false);
+    this.ab = paramafk.a(this.ab, 1, false);
+    this.ib = paramafk.a(this.ib, 2, false);
+    this.jb = ((do)paramafk.a(gb, 3, false));
+    this.kb = ((ArrayList)paramafk.a(hb, 4, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
     int i = this._a;
     if (i != 0) {
-      paramafo.a(i, 0);
+      paramafn.a(i, 0);
     }
     i = this.ab;
     if (i != 0) {
-      paramafo.a(i, 1);
+      paramafn.a(i, 1);
     }
     i = this.ib;
     if (i != 1) {
-      paramafo.a(i, 2);
+      paramafn.a(i, 2);
     }
     Object localObject = this.jb;
     if (localObject != null) {
-      paramafo.a((break)localObject, 3);
+      paramafn.a((break)localObject, 3);
     }
     localObject = this.kb;
     if (localObject != null) {
-      paramafo.a((Collection)localObject, 4);
+      paramafn.a((Collection)localObject, 4);
     }
   }
 }

@@ -7,20 +7,20 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import com.tencent.token.yw;
+import com.tencent.token.yv;
 
 public class UtilsAccountLockTipDialog
   extends Dialog
 {
   private Handler a;
-  private yw b;
+  private yv b;
   private boolean c;
   
-  public UtilsAccountLockTipDialog(Context paramContext, Handler paramHandler, yw paramyw, boolean paramBoolean)
+  public UtilsAccountLockTipDialog(Context paramContext, Handler paramHandler, yv paramyv, boolean paramBoolean)
   {
     super(paramContext, 2131558791);
     this.a = paramHandler;
-    this.b = paramyw;
+    this.b = paramyv;
     this.c = paramBoolean;
   }
   

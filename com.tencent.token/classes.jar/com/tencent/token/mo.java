@@ -1,12 +1,9 @@
 package com.tencent.token;
 
 final class mo
-  implements Thread.UncaughtExceptionHandler
+  extends Thread
 {
-  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
-  {
-    paramThrowable.printStackTrace();
-  }
+  final long a;
 }
 
 

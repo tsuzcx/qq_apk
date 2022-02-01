@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 
 public class SafeListView
   extends ListView
@@ -31,7 +31,7 @@ public class SafeListView
     {
       StringBuilder localStringBuilder = new StringBuilder("SafeListView dispatchDraw");
       localStringBuilder.append(paramCanvas.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
   }
   
@@ -46,14 +46,14 @@ public class SafeListView
     {
       localStringBuilder = new StringBuilder("SafeListView dispatchTouchEvent");
       localStringBuilder.append(paramMotionEvent.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       return false;
     }
     catch (IndexOutOfBoundsException paramMotionEvent)
     {
       StringBuilder localStringBuilder = new StringBuilder("SafeListView dispatchTouchEvent");
       localStringBuilder.append(paramMotionEvent.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
     }
     return false;
   }
@@ -69,7 +69,7 @@ public class SafeListView
     {
       localStringBuilder = new StringBuilder("SafeListView onLayout");
       localStringBuilder.append(localException.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       localException.printStackTrace();
       return;
     }
@@ -77,7 +77,7 @@ public class SafeListView
     {
       StringBuilder localStringBuilder = new StringBuilder("SafeListView onLayout");
       localStringBuilder.append(localIndexOutOfBoundsException.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       localIndexOutOfBoundsException.printStackTrace();
     }
   }

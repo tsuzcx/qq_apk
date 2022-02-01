@@ -1,11 +1,15 @@
 package com.tencent.token;
 
+import android.graphics.Path;
 import java.util.List;
 
 public final class ame
-  extends ama<ano>
+  extends alv<anb, Path>
 {
-  public ame(List<alz<ano>> paramList)
+  private final anb c = new anb();
+  private final Path d = new Path();
+  
+  public ame(List<aly<anb>> paramList)
   {
     super(paramList);
   }

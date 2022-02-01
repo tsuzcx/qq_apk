@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.token.xb;
-import com.tencent.token.zs;
+import com.tencent.token.xa;
+import com.tencent.token.zr;
 
 public class CustomerEditText
   extends EditText
@@ -43,7 +43,7 @@ public class CustomerEditText
   
   public final void a(boolean paramBoolean)
   {
-    this.b = zs.a().j;
+    this.b = zr.a().j;
     this.c = 0L;
     if (this.b != null)
     {
@@ -69,30 +69,30 @@ public class CustomerEditText
       {
         localStringBuilder = new StringBuilder("focus start:");
         localStringBuilder.append(getText().toString());
-        xb.c(localStringBuilder.toString());
-        zs.a().a(zs.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-        zs.a().b();
+        xa.c(localStringBuilder.toString());
+        zr.a().a(zr.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+        zr.a().b();
       }
     }
     else if (getText() != null)
     {
       localStringBuilder = new StringBuilder("focus end");
       localStringBuilder.append(getText().toString());
-      xb.c(localStringBuilder.toString());
-      zs.a().a(zs.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+      xa.c(localStringBuilder.toString());
+      zr.a().a(zr.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
     }
     StringBuilder localStringBuilder = new StringBuilder("pagename:");
     localStringBuilder.append(this.f);
-    xb.c(localStringBuilder.toString());
+    xa.c(localStringBuilder.toString());
     localStringBuilder = new StringBuilder("ctrlName:");
     localStringBuilder.append(getClass().getName());
-    xb.c(localStringBuilder.toString());
+    xa.c(localStringBuilder.toString());
     localStringBuilder = new StringBuilder("getRawX:");
     localStringBuilder.append(this.d);
-    xb.c(localStringBuilder.toString());
+    xa.c(localStringBuilder.toString());
     localStringBuilder = new StringBuilder("getRawY:");
     localStringBuilder.append(this.e);
-    xb.c(localStringBuilder.toString());
+    xa.c(localStringBuilder.toString());
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)

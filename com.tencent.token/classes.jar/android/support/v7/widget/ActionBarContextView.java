@@ -13,19 +13,19 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.token.ex;
-import com.tencent.token.gp.a;
-import com.tencent.token.gp.f;
-import com.tencent.token.gp.g;
-import com.tencent.token.gp.j;
-import com.tencent.token.gx;
-import com.tencent.token.hm;
-import com.tencent.token.ib;
-import com.tencent.token.jf;
-import com.tencent.token.jl;
+import com.tencent.token.ew;
+import com.tencent.token.go.a;
+import com.tencent.token.go.f;
+import com.tencent.token.go.g;
+import com.tencent.token.go.j;
+import com.tencent.token.gw;
+import com.tencent.token.hl;
+import com.tencent.token.ia;
+import com.tencent.token.je;
+import com.tencent.token.jk;
 
 public class ActionBarContextView
-  extends ib
+  extends ia
 {
   public boolean g;
   private CharSequence h;
@@ -46,18 +46,18 @@ public class ActionBarContextView
   
   public ActionBarContextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.actionModeStyle);
+    this(paramContext, paramAttributeSet, go.a.actionModeStyle);
   }
   
   public ActionBarContextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = jf.a(paramContext, paramAttributeSet, gp.j.ActionMode, paramInt, 0);
-    ex.a(this, paramContext.a(gp.j.ActionMode_background));
-    this.o = paramContext.g(gp.j.ActionMode_titleTextStyle, 0);
-    this.p = paramContext.g(gp.j.ActionMode_subtitleTextStyle, 0);
-    this.e = paramContext.f(gp.j.ActionMode_height, 0);
-    this.q = paramContext.g(gp.j.ActionMode_closeItemLayout, gp.g.abc_action_mode_close_item_material);
+    paramContext = je.a(paramContext, paramAttributeSet, go.j.ActionMode, paramInt, 0);
+    ew.a(this, paramContext.a(go.j.ActionMode_background));
+    this.o = paramContext.g(go.j.ActionMode_titleTextStyle, 0);
+    this.p = paramContext.g(go.j.ActionMode_subtitleTextStyle, 0);
+    this.e = paramContext.f(go.j.ActionMode_height, 0);
+    this.q = paramContext.g(go.j.ActionMode_closeItemLayout, go.g.abc_action_mode_close_item_material);
     paramContext.a.recycle();
   }
   
@@ -65,10 +65,10 @@ public class ActionBarContextView
   {
     if (this.l == null)
     {
-      LayoutInflater.from(getContext()).inflate(gp.g.abc_action_bar_title_item, this);
+      LayoutInflater.from(getContext()).inflate(go.g.abc_action_bar_title_item, this);
       this.l = ((LinearLayout)getChildAt(getChildCount() - 1));
-      this.m = ((TextView)this.l.findViewById(gp.f.action_bar_title));
-      this.n = ((TextView)this.l.findViewById(gp.f.action_bar_subtitle));
+      this.m = ((TextView)this.l.findViewById(go.f.action_bar_title));
+      this.n = ((TextView)this.l.findViewById(go.f.action_bar_subtitle));
       if (this.o != 0) {
         this.m.setTextAppearance(getContext(), this.o);
       }
@@ -103,7 +103,7 @@ public class ActionBarContextView
     }
   }
   
-  public final void a(final gx paramgx)
+  public final void a(final gw paramgw)
   {
     Object localObject = this.j;
     if (localObject == null)
@@ -115,23 +115,23 @@ public class ActionBarContextView
     {
       addView(this.j);
     }
-    this.j.findViewById(gp.f.action_mode_close_button).setOnClickListener(new View.OnClickListener()
+    this.j.findViewById(go.f.action_mode_close_button).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramgx.c();
+        paramgw.c();
       }
     });
-    paramgx = (hm)paramgx.b();
+    paramgw = (hl)paramgw.b();
     if (this.d != null) {
       this.d.f();
     }
     this.d = new ActionMenuPresenter(getContext());
     this.d.c();
     localObject = new ViewGroup.LayoutParams(-2, -1);
-    paramgx.a(this.d, this.b);
+    paramgw.a(this.d, this.b);
     this.c = ((ActionMenuView)this.d.a(this));
-    ex.a(this.c, null);
+    ew.a(this.c, null);
     addView(this.c, (ViewGroup.LayoutParams)localObject);
   }
   
@@ -204,7 +204,7 @@ public class ActionBarContextView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramBoolean = jl.a(this);
+    paramBoolean = jk.a(this);
     int i1;
     if (paramBoolean) {
       i1 = paramInt3 - paramInt1 - getPaddingRight();

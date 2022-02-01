@@ -1,22 +1,27 @@
 package com.tencent.token;
 
 public final class amn
-  extends amx<Integer, Integer>
+  extends amw<Float, Float>
 {
-  public final ama<Integer> a()
+  private amn()
+  {
+    super(Float.valueOf(0.0F));
+  }
+  
+  public final alz<Float> a()
   {
     if (!super.b()) {
-      return new amh(this.b);
+      return new amg(this.b);
     }
     return new alx(this.a);
   }
   
-  public final String toString()
+  public static final class a
   {
-    StringBuilder localStringBuilder = new StringBuilder("AnimatableColorValue{initialValue=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    public static amn a()
+    {
+      return new amn((byte)0);
+    }
   }
 }
 

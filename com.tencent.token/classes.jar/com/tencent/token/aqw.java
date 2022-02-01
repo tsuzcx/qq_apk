@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public abstract interface aqw
 {
-  public abstract void e();
+  public abstract aqy a();
 }
 
 

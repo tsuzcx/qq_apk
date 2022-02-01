@@ -1,104 +1,176 @@
 package com.tencent.token;
 
-import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
 import com.tencent.wcdb.CursorWindow;
 
-public abstract class afu
-  extends Binder
-  implements agb
+final class afu
+  implements aga
 {
-  public static agb a(IBinder paramIBinder)
+  private IBinder a;
+  private Bundle b;
+  
+  public afu(IBinder paramIBinder)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    agb localagb = (agb)paramIBinder.queryLocalInterface("android.content.IBulkCursor");
-    if (localagb != null) {
-      return localagb;
-    }
-    return new afv(paramIBinder);
+    this.a = paramIBinder;
+    this.b = null;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public final int a(agb paramagb)
   {
-    switch (paramInt1)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-    default: 
-      break;
-    case 7: 
-    case 6: 
-    case 5: 
-    case 4: 
-    case 3: 
-    case 2: 
-    case 1: 
-      try
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      localParcel1.writeStrongInterface(paramagb);
+      boolean bool = this.a.transact(3, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      int i;
+      if (!bool)
       {
-        paramParcel1.enforceInterface("android.content.IBulkCursor");
-        b();
-        paramParcel2.writeNoException();
-        return true;
-      }
-      catch (Exception paramParcel1)
-      {
-        IInterface localIInterface;
-        afz.a(paramParcel2, paramParcel1);
-        return true;
-      }
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      paramParcel1 = a(paramParcel1.readBundle(getClass().getClassLoader()));
-      paramParcel2.writeNoException();
-      paramParcel2.writeBundle(paramParcel1);
-      return true;
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      paramParcel1 = c();
-      paramParcel2.writeNoException();
-      paramParcel2.writeBundle(paramParcel1);
-      return true;
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      b(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      paramParcel1 = paramParcel1.readStrongBinder();
-      if (paramParcel1 == null)
-      {
-        paramParcel1 = null;
+        i = -1;
       }
       else
       {
-        localIInterface = paramParcel1.queryLocalInterface("com.tencent.wcdb.IContentObserver");
-        if ((localIInterface != null) && ((localIInterface instanceof agc))) {
-          paramParcel1 = (agc)localIInterface;
-        } else {
-          paramParcel1 = new agc.a.a(paramParcel1);
-        }
+        i = localParcel2.readInt();
+        this.b = localParcel2.readBundle(getClass().getClassLoader());
       }
-      paramInt1 = a(paramParcel1);
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      paramParcel2.writeBundle(c());
-      return true;
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      paramParcel1 = a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      if (paramParcel1 == null)
-      {
-        paramParcel2.writeInt(0);
-        return true;
-      }
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-      return true;
+      return i;
     }
-    return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final Bundle a(Bundle paramBundle)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      localParcel1.writeBundle(paramBundle);
+      this.a.transact(6, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      paramBundle = localParcel2.readBundle(getClass().getClassLoader());
+      return paramBundle;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final CursorWindow a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      CursorWindow localCursorWindow = null;
+      if (localParcel2.readInt() == 1) {
+        localCursorWindow = CursorWindow.a(localParcel2);
+      }
+      return localCursorWindow;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      return;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public final void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      this.a.transact(7, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      return;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final void b(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      afy.a(localParcel2);
+      return;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
+  }
+  
+  public final Bundle c()
+  {
+    if (this.b == null)
+    {
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
+      {
+        localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+        this.a.transact(5, localParcel1, localParcel2, 0);
+        afy.a(localParcel2);
+        this.b = localParcel2.readBundle(getClass().getClassLoader());
+        localParcel1.recycle();
+        localParcel2.recycle();
+      }
+      finally
+      {
+        localParcel1.recycle();
+        localParcel2.recycle();
+      }
+    }
+    return this.b;
   }
 }
 

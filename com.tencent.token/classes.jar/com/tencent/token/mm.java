@@ -1,115 +1,96 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.d.a.a;
-import com.tencent.halley.downloader.d.a.d;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public final class mm
-  implements mt
+  extends ThreadPoolExecutor
 {
-  private static mm e;
-  private mn a;
-  private mn b;
-  private mq c;
-  private mq d;
+  public final AtomicInteger a = new AtomicInteger(0);
+  private final AtomicLong b = new AtomicLong(0L);
+  private final AtomicLong c = new AtomicLong(0L);
+  private long d = 1000L;
   
-  private mm()
+  public mm(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    Object localObject = new a((byte)0);
-    this.a = new mn(ky.a(), ky.a(), TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-MassTaskPool"));
-    ((a)localObject).a = this.a;
-    localObject = new a((byte)0);
-    this.b = new mn(1, ky.b(), TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-EaseTaskPool"));
-    ((a)localObject).a = this.b;
-    localObject = new d((byte)0);
-    this.c = new mq(ky.a() + ky.b() + 1, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-DirectPool"));
-    ((d)localObject).a = this.c;
-    localObject = new d((byte)0);
-    this.d = new mq((ky.a() << 1) + 1, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-SchedulePool"));
-    ((d)localObject).a = this.d;
+    super(paramInt1, paramInt2, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new b((byte)0));
   }
   
-  public static mm a()
+  public final void a()
   {
-    try
+    if (b())
     {
-      if (e == null) {
-        e = new mm();
-      }
-      mm localmm = e;
-      return localmm;
-    }
-    finally {}
-  }
-  
-  public final ms a(Runnable paramRunnable)
-  {
-    return new ms(this.a.submit(paramRunnable));
-  }
-  
-  public final ms b(Runnable paramRunnable)
-  {
-    return new ms(this.b.submit(paramRunnable));
-  }
-  
-  public final ms c(Runnable paramRunnable)
-  {
-    return new ms(this.c.submit(paramRunnable));
-  }
-  
-  public final ms d(Runnable paramRunnable)
-  {
-    return new ms(this.d.submit(paramRunnable));
-  }
-  
-  static final class a
-    implements ThreadFactory
-  {
-    private static final AtomicInteger a = new AtomicInteger(1);
-    private final ThreadGroup b;
-    private final AtomicInteger c = new AtomicInteger(1);
-    private final String d;
-    
-    a(String paramString)
-    {
-      Object localObject = System.getSecurityManager();
-      if (localObject != null) {
-        localObject = ((SecurityManager)localObject).getThreadGroup();
-      } else {
-        localObject = Thread.currentThread().getThreadGroup();
-      }
-      this.b = ((ThreadGroup)localObject);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("-");
-      ((StringBuilder)localObject).append(a.getAndIncrement());
-      ((StringBuilder)localObject).append("-thread-");
-      this.d = ((StringBuilder)localObject).toString();
-    }
-    
-    public final Thread newThread(Runnable paramRunnable)
-    {
-      ThreadGroup localThreadGroup = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(this.c.getAndIncrement());
-      paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
-      if (paramRunnable.isDaemon()) {
-        paramRunnable.setDaemon(false);
-      }
-      try
+      long l = this.c.longValue();
+      if (this.d + l < System.currentTimeMillis())
       {
-        paramRunnable.setPriority(ky.d);
-        return paramRunnable;
+        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
+          return;
+        }
+        Thread.currentThread().setUncaughtExceptionHandler(new mn());
+        throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      return paramRunnable;
+    }
+  }
+  
+  protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    this.a.decrementAndGet();
+    if (paramThrowable == null) {
+      a();
+    }
+  }
+  
+  public final boolean b()
+  {
+    return (this.d >= 0L) && ((Thread.currentThread() instanceof mo)) && (((mo)Thread.currentThread()).a < this.b.longValue());
+  }
+  
+  public final void execute(Runnable paramRunnable)
+  {
+    super.execute(new a(paramRunnable));
+  }
+  
+  protected final RunnableFuture newTaskFor(Runnable paramRunnable, Object paramObject)
+  {
+    return (RunnableFuture)paramRunnable;
+  }
+  
+  protected final RunnableFuture newTaskFor(Callable paramCallable)
+  {
+    return (RunnableFuture)paramCallable;
+  }
+  
+  public final Future submit(Runnable paramRunnable)
+  {
+    return super.submit(new a(paramRunnable));
+  }
+  
+  public final class a
+    extends FutureTask
+    implements Comparable
+  {
+    public a()
+    {
+      super(null);
+    }
+  }
+  
+  static final class b
+    implements RejectedExecutionHandler
+  {
+    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+    {
+      throw new RejectedExecutionException();
     }
   }
 }

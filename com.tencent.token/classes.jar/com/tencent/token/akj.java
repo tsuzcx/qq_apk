@@ -1,44 +1,16 @@
 package com.tencent.token;
 
+import java.io.IOException;
+
 public final class akj
+  extends IOException
 {
-  int a;
-  final int[] b = new int[10];
+  public final ajx a;
   
-  final int a()
+  public akj(ajx paramajx)
   {
-    if ((this.a & 0x2) != 0) {
-      return this.b[1];
-    }
-    return -1;
-  }
-  
-  final akj a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 >= 0)
-    {
-      int[] arrayOfInt = this.b;
-      if (paramInt1 >= arrayOfInt.length) {
-        return this;
-      }
-      this.a = (1 << paramInt1 | this.a);
-      arrayOfInt[paramInt1] = paramInt2;
-      return this;
-    }
-    return this;
-  }
-  
-  final boolean a(int paramInt)
-  {
-    return (1 << paramInt & this.a) != 0;
-  }
-  
-  final int b()
-  {
-    if ((this.a & 0x80) != 0) {
-      return this.b[7];
-    }
-    return 65535;
+    super("stream was reset: ".concat(String.valueOf(paramajx)));
+    this.a = paramajx;
   }
 }
 

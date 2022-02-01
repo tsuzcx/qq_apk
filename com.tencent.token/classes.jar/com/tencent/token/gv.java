@@ -1,32 +1,52 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.method.TransformationMethod;
-import android.view.View;
-import java.util.Locale;
 
 public final class gv
-  implements TransformationMethod
 {
-  private Locale a;
+  public Context a;
   
-  public gv(Context paramContext)
+  private gv(Context paramContext)
   {
-    this.a = paramContext.getResources().getConfiguration().locale;
+    this.a = paramContext;
   }
   
-  public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
+  public static gv a(Context paramContext)
   {
-    if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.a);
+    return new gv(paramContext);
+  }
+  
+  public final int a()
+  {
+    Configuration localConfiguration = this.a.getResources().getConfiguration();
+    int i = localConfiguration.screenWidthDp;
+    int j = localConfiguration.screenHeightDp;
+    if ((localConfiguration.smallestScreenWidthDp <= 600) && (i <= 600) && ((i <= 960) || (j <= 720)) && ((i <= 720) || (j <= 960)))
+    {
+      if ((i < 500) && ((i <= 640) || (j <= 480)) && ((i <= 480) || (j <= 640)))
+      {
+        if (i >= 360) {
+          return 3;
+        }
+        return 2;
+      }
+      return 4;
     }
-    return null;
+    return 5;
   }
   
-  public final void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
+  public final boolean b()
+  {
+    return this.a.getResources().getBoolean(go.b.abc_action_bar_embed_tabs);
+  }
+  
+  public final boolean c()
+  {
+    return this.a.getApplicationInfo().targetSdkVersion < 14;
+  }
 }
 
 

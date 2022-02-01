@@ -1,29 +1,8 @@
 package com.tencent.token;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import tmsdk.common.d.a.c.j;
-
-public final class arb
-  implements Runnable
+public abstract interface arb
 {
-  public arb(j paramj) {}
-  
-  public final void run()
-  {
-    synchronized (j.a(this.a))
-    {
-      LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-      if (localLinkedList != null)
-      {
-        ??? = localLinkedList.iterator();
-        while (((Iterator)???).hasNext()) {
-          ((Iterator)???).next();
-        }
-      }
-      return;
-    }
-  }
+  public abstract void f();
 }
 
 

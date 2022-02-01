@@ -1,145 +1,65 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.ListView;
 
 public final class fu
+  extends fk
 {
-  static final b a = new a();
+  private final ListView f;
   
-  static
+  public fu(ListView paramListView)
   {
-    if (Build.VERSION.SDK_INT >= 21)
+    super(paramListView);
+    this.f = paramListView;
+  }
+  
+  public final void a(int paramInt)
+  {
+    ListView localListView = this.f;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      a = new c();
+      localListView.scrollListBy(paramInt);
       return;
     }
-  }
-  
-  public static ColorStateList a(ImageView paramImageView)
-  {
-    return a.a(paramImageView);
-  }
-  
-  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
-  {
-    a.a(paramImageView, paramColorStateList);
-  }
-  
-  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
-  {
-    a.a(paramImageView, paramMode);
-  }
-  
-  public static PorterDuff.Mode b(ImageView paramImageView)
-  {
-    return a.b(paramImageView);
-  }
-  
-  static class a
-    implements fu.b
-  {
-    public ColorStateList a(ImageView paramImageView)
+    int i = localListView.getFirstVisiblePosition();
+    if (i != -1)
     {
-      if ((paramImageView instanceof ga)) {
-        return ((ga)paramImageView).getSupportImageTintList();
-      }
-      return null;
-    }
-    
-    public void a(ImageView paramImageView, ColorStateList paramColorStateList)
-    {
-      if ((paramImageView instanceof ga)) {
-        ((ga)paramImageView).setSupportImageTintList(paramColorStateList);
+      View localView = localListView.getChildAt(0);
+      if (localView != null) {
+        localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
       }
     }
-    
-    public void a(ImageView paramImageView, PorterDuff.Mode paramMode)
-    {
-      if ((paramImageView instanceof ga)) {
-        ((ga)paramImageView).setSupportImageTintMode(paramMode);
-      }
-    }
-    
-    public PorterDuff.Mode b(ImageView paramImageView)
-    {
-      if ((paramImageView instanceof ga)) {
-        return ((ga)paramImageView).getSupportImageTintMode();
-      }
-      return null;
-    }
   }
   
-  static abstract interface b
+  public final boolean b(int paramInt)
   {
-    public abstract ColorStateList a(ImageView paramImageView);
-    
-    public abstract void a(ImageView paramImageView, ColorStateList paramColorStateList);
-    
-    public abstract void a(ImageView paramImageView, PorterDuff.Mode paramMode);
-    
-    public abstract PorterDuff.Mode b(ImageView paramImageView);
-  }
-  
-  static final class c
-    extends fu.a
-  {
-    public final ColorStateList a(ImageView paramImageView)
-    {
-      return paramImageView.getImageTintList();
+    ListView localListView = this.f;
+    int i = localListView.getCount();
+    if (i == 0) {
+      return false;
     }
-    
-    public final void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    int j = localListView.getChildCount();
+    int k = localListView.getFirstVisiblePosition();
+    if (paramInt > 0)
     {
-      paramImageView.setImageTintList(paramColorStateList);
-      if (Build.VERSION.SDK_INT == 21)
-      {
-        paramColorStateList = paramImageView.getDrawable();
-        int i;
-        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        if ((paramColorStateList != null) && (i != 0))
-        {
-          if (paramColorStateList.isStateful()) {
-            paramColorStateList.setState(paramImageView.getDrawableState());
-          }
-          paramImageView.setImageDrawable(paramColorStateList);
-        }
+      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
+        return false;
       }
     }
-    
-    public final void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    else
     {
-      paramImageView.setImageTintMode(paramMode);
-      if (Build.VERSION.SDK_INT == 21)
-      {
-        paramMode = paramImageView.getDrawable();
-        int i;
-        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        if ((paramMode != null) && (i != 0))
-        {
-          if (paramMode.isStateful()) {
-            paramMode.setState(paramImageView.getDrawableState());
-          }
-          paramImageView.setImageDrawable(paramMode);
-        }
+      if (paramInt >= 0) {
+        break label89;
+      }
+      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
+        return false;
       }
     }
-    
-    public final PorterDuff.Mode b(ImageView paramImageView)
-    {
-      return paramImageView.getImageTintMode();
-    }
+    return true;
+    label89:
+    return false;
   }
 }
 

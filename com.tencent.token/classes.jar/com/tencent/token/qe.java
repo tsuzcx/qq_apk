@@ -1,240 +1,179 @@
 package com.tencent.token;
 
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewManager;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.push.PActivity;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.token.global.RqdApplication;
+import java.lang.reflect.Field;
 
-public abstract class qe
+public final class qe
 {
-  protected Context A;
-  protected Handler B;
-  private View a;
-  private int b = 0;
-  long t = -1L;
-  Animation u;
-  public Animation v;
-  boolean w = true;
-  ViewManager x;
-  FrameLayout y;
-  public volatile int z = 0;
+  public static final boolean a;
+  public static int b;
+  public static int c = 0;
+  private static final Long d;
+  private static int e;
+  private static int f;
+  private static float g = 0.0F;
   
-  private void a(int paramInt)
+  static
   {
-    int i = this.b;
-    paramInt = 1 << paramInt | i;
-    if (paramInt != i)
-    {
-      this.b = paramInt;
-      if (this.b == 15) {
-        e();
-      }
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 19) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a = bool;
+    d = Long.valueOf(60000L);
+    b = 0;
+    e = 0;
+    f = 0;
   }
   
-  private void b()
+  public static int a()
   {
-    Object localObject = new Intent(this.A, PActivity.class);
-    ((Intent)localObject).setFlags(402653184);
-    localObject = PendingIntent.getActivity(this.A, 0, (Intent)localObject, 268435456);
+    if (b == 0) {
+      b = a(RqdApplication.n());
+    }
+    return b;
+  }
+  
+  private static int a(Context paramContext)
+  {
+    int j = a(paramContext, 25.0F);
+    Object localObject4 = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
     try
     {
-      this.B.removeMessages(65282);
-      this.B.sendEmptyMessageDelayed(65282, 6000L);
-      ((PendingIntent)localObject).send();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      a(3);
-    }
-  }
-  
-  protected void a()
-  {
-    final WindowManager localWindowManager = (WindowManager)this.A.getSystemService("window");
-    if (localWindowManager == null)
-    {
-      e();
-      return;
-    }
-    this.B.post(new Runnable()
-    {
-      public final void run()
+      Class localClass = Class.forName("com.android.internal.R$dimen");
+      Object localObject3 = localClass.newInstance();
+      localObject1 = localObject4;
+      try
       {
-        qe.a(qe.this, 0);
-        qe.a(qe.this, 1);
-        if ((Build.VERSION.SDK_INT != 25) && (Build.VERSION.SDK_INT >= 19)) {
-          int i = Build.VERSION.SDK_INT;
-        }
-        qe.a(qe.this, 2);
-        qe.a(qe.this);
-      }
-    });
-  }
-  
-  public final void a(Context paramContext)
-  {
-    qf.d();
-    this.A = paramContext;
-    this.B = new Handler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        qe.this.a(paramAnonymousMessage);
-      }
-    };
-    a();
-  }
-  
-  protected final void a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 65283: 
-      b();
-      return;
-    case 65282: 
-      a(3);
-      return;
-    case 65281: 
-      if ((paramMessage.obj instanceof a))
-      {
-        a.a((a)paramMessage.obj);
-        a(2);
-        return;
-      }
-      break;
-    case 65280: 
-      if ((this.y != null) && (this.a != null))
-      {
-        a(true);
-        return;
-      }
-      break;
-    }
-  }
-  
-  public final void a(ViewManager paramViewManager)
-  {
-    this.B.removeMessages(65281);
-    this.B.removeMessages(65282);
-    this.B.removeMessages(65283);
-    if (this.z == 0)
-    {
-      this.x = paramViewManager;
-      this.a = g();
-      if (this.a != null)
-      {
-        paramViewManager = h();
-        this.y = new FrameLayout(this.A);
-        this.y.addView(this.a, new FrameLayout.LayoutParams(paramViewManager.width, paramViewManager.height));
-      }
-    }
-    try
-    {
-      this.x.addView(this.y, paramViewManager);
-      if ((this.w) && (this.u != null)) {
-        this.a.startAnimation(this.u);
-      }
-      if (this.t > 0L)
-      {
-        this.B.removeMessages(65280);
-        this.B.sendEmptyMessageDelayed(65280, this.t);
-      }
-      this.z = 4;
-      return;
-    }
-    catch (Throwable paramViewManager)
-    {
-      label177:
-      break label177;
-    }
-    e();
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.B.removeMessages(65281);
-    this.B.removeMessages(65282);
-    if ((this.z != 0) && (this.z != 1) && (this.z != 2))
-    {
-      if (this.w)
-      {
-        Animation localAnimation = this.v;
-        if (localAnimation != null)
-        {
-          localAnimation.setAnimationListener(new Animation.AnimationListener()
+        boolean bool = Build.BRAND.toLowerCase().contains("meizu");
+        localObject1 = localObject2;
+        if (bool) {
+          try
           {
-            public final void onAnimationEnd(Animation paramAnonymousAnimation)
-            {
-              qe.this.x.removeView(qe.this.y);
-              qe.this.y = null;
-            }
-            
-            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-            
-            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-          });
-          this.a.startAnimation(this.v);
-          break label101;
+            localObject1 = localClass.getField("status_bar_height_large");
+          }
+          catch (Throwable localThrowable4)
+          {
+            localObject1 = localObject4;
+            localThrowable4.printStackTrace();
+            localObject1 = localObject2;
+          }
         }
+        localObject2 = localObject1;
+        localObject4 = localObject3;
+        if (localObject1 != null) {
+          break label139;
+        }
+        localObject2 = localClass.getField("status_bar_height");
+        localObject4 = localObject3;
       }
-      this.x.removeView(this.y);
-      this.y = null;
-      label101:
-      if ((this.z != 3) && (this.z != 8))
+      catch (Throwable localThrowable2)
       {
-        if (paramBoolean)
+        localObject2 = localObject3;
+      }
+      localThrowable3.printStackTrace();
+    }
+    catch (Throwable localThrowable3)
+    {
+      localObject2 = null;
+    }
+    Object localObject5 = localObject2;
+    localObject2 = localObject1;
+    label139:
+    int i = j;
+    if (localObject2 != null)
+    {
+      i = j;
+      if (localObject5 != null) {
+        try
         {
-          d();
-          return;
+          i = Integer.parseInt(((Field)localObject2).get(localObject5).toString());
+          i = paramContext.getResources().getDimensionPixelSize(i);
         }
-        this.z = 2;
+        catch (Throwable localThrowable1)
+        {
+          localThrowable1.printStackTrace();
+          i = j;
+        }
       }
     }
-  }
-  
-  protected void d()
-  {
-    this.z = 1;
-  }
-  
-  protected void e()
-  {
-    if (this.z != 7) {
-      this.z = 7;
+    String str = Build.MODEL;
+    if (TextUtils.isEmpty(str)) {
+      str = "";
+    } else {
+      str = str.toLowerCase();
     }
-    this.B.removeCallbacksAndMessages(null);
+    int k = 0;
+    j = k;
+    if (!TextUtils.isEmpty(str))
+    {
+      j = k;
+      if (str.equals("sm-g8870")) {
+        j = 1;
+      }
+    }
+    if (i > 0)
+    {
+      k = i;
+      if (i > a(paramContext, 50.0F))
+      {
+        k = i;
+        if (j != 0) {}
+      }
+    }
+    else
+    {
+      float f1 = paramContext.getResources().getDisplayMetrics().density;
+      if (f1 == -1.0F) {
+        return a(paramContext, 25.0F);
+      }
+      k = (int)(f1 * 25.0F + 0.5F);
+    }
+    return k;
   }
   
-  protected void f()
+  public static int a(Context paramContext, float paramFloat)
   {
-    this.z = 3;
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  protected abstract View g();
-  
-  public abstract WindowManager.LayoutParams h();
-  
-  final class a
-    extends FrameLayout
+  public static int b()
   {
-    private boolean a;
+    return e;
+  }
+  
+  public static int c()
+  {
+    return f;
+  }
+  
+  public static boolean d()
+  {
+    DisplayMetrics localDisplayMetrics = RqdApplication.n().getResources().getDisplayMetrics();
+    if (RqdApplication.n().getResources().getConfiguration().orientation == 2)
+    {
+      e = localDisplayMetrics.heightPixels;
+      f = localDisplayMetrics.widthPixels;
+    }
+    else
+    {
+      e = localDisplayMetrics.widthPixels;
+      f = localDisplayMetrics.heightPixels;
+    }
+    c = localDisplayMetrics.densityDpi;
+    g = localDisplayMetrics.density;
+    return true;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Durian
   extends break
@@ -12,22 +12,22 @@ public final class Durian
   public int kc = 0;
   public int lc = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.hc = paramafl.a(this.hc, 0, true);
-    this.ic = paramafl.a(this.ic, 1, true);
-    this.jc = paramafl.a(this.jc, 2, true);
-    this.kc = paramafl.a(this.kc, 3, true);
-    this.lc = paramafl.a(this.lc, 4, true);
+    this.hc = paramafk.a(this.hc, 0, true);
+    this.ic = paramafk.a(this.ic, 1, true);
+    this.jc = paramafk.a(this.jc, 2, true);
+    this.kc = paramafk.a(this.kc, 3, true);
+    this.lc = paramafk.a(this.lc, 4, true);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.hc, 0);
-    paramafo.a(this.ic, 1);
-    paramafo.a(this.jc, 2);
-    paramafo.a(this.kc, 3);
-    paramafo.a(this.lc, 4);
+    paramafn.a(this.hc, 0);
+    paramafn.a(this.ic, 1);
+    paramafn.a(this.jc, 2);
+    paramafn.a(this.kc, 3);
+    paramafn.a(this.lc, 4);
   }
 }
 

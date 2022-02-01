@@ -1,35 +1,44 @@
 package com.tencent.token;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public final class afp
 {
-  public static String[] a = { afg.a(afg.o), afg.a(afg.p), afg.a(afg.q), afg.a(afg.r), afg.a(afg.s), afg.a(afg.t), afg.a(afg.u), afg.a(afg.v), afg.a(afg.w), afg.a(afg.x), afg.a(afg.y), afg.a(afg.z), afg.a(afg.A), afg.a(afg.B), afg.a(afg.C), afg.a(afg.D), afg.a(afg.E), afg.a(afg.F), afg.a(afg.G), afg.a(afg.H), afg.a(afg.I) };
-  
-  public static Set<String> a(Set<String> paramSet)
+  private static byte[] a(int paramInt)
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = paramSet.iterator();
-    while (localIterator.hasNext())
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
+  }
+  
+  public static byte[] a(ArrayList<byte[]> paramArrayList)
+  {
+    int m = paramArrayList.size();
+    int i = m * 4 + 4;
+    int k = i;
+    int j = 0;
+    while (j < m)
     {
-      String str = (String)localIterator.next();
-      String[] arrayOfString = a;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (Pattern.compile(arrayOfString[i]).matcher(str).find()) {
-          localHashSet.add(str);
-        }
-        i += 1;
-      }
+      k += ((byte[])paramArrayList.get(j)).length;
+      j += 1;
     }
-    paramSet.removeAll(localHashSet);
-    return paramSet;
+    byte[] arrayOfByte = new byte[k];
+    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
+    j = 0;
+    while (j < m)
+    {
+      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
+      j += 1;
+    }
+    k = 0;
+    j = i;
+    i = k;
+    while (i < m)
+    {
+      k = ((byte[])paramArrayList.get(i)).length;
+      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
+      j += k;
+      i += 1;
+    }
+    return arrayOfByte;
   }
 }
 

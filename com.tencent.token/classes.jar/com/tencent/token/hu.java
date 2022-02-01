@@ -1,16 +1,23 @@
 package com.tencent.token;
 
-public abstract interface hu
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public final class hu
 {
-  public abstract void a(hm paramhm);
-  
-  public static abstract interface a
+  public static Menu a(Context paramContext, dm paramdm)
   {
-    public abstract void a(ho paramho);
-    
-    public abstract boolean a();
-    
-    public abstract ho getItemData();
+    return new hv(paramContext, paramdm);
+  }
+  
+  public static MenuItem a(Context paramContext, dn paramdn)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      return new hp(paramContext, paramdn);
+    }
+    return new ho(paramContext, paramdn);
   }
 }
 

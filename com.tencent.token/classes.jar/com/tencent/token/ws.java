@@ -1,15 +1,10 @@
 package com.tencent.token;
 
 public final class ws
+  extends wo
 {
-  long a;
-  public byte[] b;
-  long c;
-  public byte d;
-  public byte e;
-  public long f;
-  byte[] g;
-  public byte[] h;
+  public short m;
+  public byte[] n;
 }
 
 

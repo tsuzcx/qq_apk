@@ -2,20 +2,19 @@ package com.tencent.token;
 
 public final class atc
 {
-  public static float a(float paramFloat)
-  {
-    if (paramFloat <= 0.0031308F) {
-      return paramFloat * 12.92F;
-    }
-    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
-  }
+  private float a;
+  private int b;
   
-  public static float b(float paramFloat)
+  public final void a(float paramFloat)
   {
-    if (paramFloat <= 0.04045F) {
-      return paramFloat / 12.92F;
+    this.a += paramFloat;
+    this.b += 1;
+    int i = this.b;
+    if (i == 2147483647)
+    {
+      this.a /= 2.0F;
+      this.b = (i / 2);
     }
-    return (float)Math.pow((paramFloat + 0.055F) / 1.055F, 2.400000095367432D);
   }
 }
 

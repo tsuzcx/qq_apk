@@ -1,15 +1,8 @@
 package com.tencent.token;
 
-import android.view.View;
-
-public class fc
-  implements fb
+public abstract interface fc
 {
-  public void a(View paramView) {}
-  
-  public void b(View paramView) {}
-  
-  public void c(View paramView) {}
+  public abstract void a();
 }
 
 

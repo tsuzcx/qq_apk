@@ -1,71 +1,25 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
+import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.List;
 
-public abstract class ca<E>
-  extends by
+public abstract class ca
 {
-  public final Activity b;
-  public final Context c;
-  public final Handler d;
-  final int e;
-  public final cc f = new cc();
+  public abstract Fragment a(String paramString);
   
-  private ca(Activity paramActivity, Context paramContext, Handler paramHandler)
-  {
-    this.b = paramActivity;
-    this.c = paramContext;
-    this.d = paramHandler;
-    this.e = 0;
-  }
+  public abstract cd a();
   
-  protected ca(FragmentActivity paramFragmentActivity)
-  {
-    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
-  }
+  public abstract void a(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public View a(int paramInt)
-  {
-    return null;
-  }
+  public abstract boolean b();
   
-  protected void a(Fragment paramFragment) {}
+  public abstract boolean c();
   
-  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
+  public abstract List<Fragment> d();
   
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public LayoutInflater c()
-  {
-    return LayoutInflater.from(this.c);
-  }
-  
-  public void d() {}
-  
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public int f()
-  {
-    return this.e;
-  }
+  public abstract boolean e();
 }
 
 

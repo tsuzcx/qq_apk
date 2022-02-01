@@ -1,27 +1,13 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
 final class aqo
-  extends Handler
+  implements Runnable
 {
-  aqo(aqn paramaqn, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aqo(aqm paramaqm, aql paramaql, Integer paramInteger1, Integer paramInteger2) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void run()
   {
-    super.handleMessage(paramMessage);
-    al localal = new al();
-    localal.d = -50004;
-    localal.c = paramMessage.what;
-    StringBuilder localStringBuilder = new StringBuilder("seq : ");
-    localStringBuilder.append(paramMessage.what);
-    localStringBuilder.append("超时");
-    aqn.a(this.a, localal);
+    this.a.f.a(this.a.g, this.a.b, this.b.intValue(), this.c.intValue(), this.a.d);
   }
 }
 

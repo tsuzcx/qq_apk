@@ -1,10 +1,40 @@
 package com.tencent.token;
 
+import java.util.ArrayList;
+
 public final class apc
 {
-  public static boolean a(long paramLong1, long paramLong2, int paramInt)
+  private static volatile boolean a = false;
+  private static volatile String b;
+  private static volatile boolean c = false;
+  private static volatile boolean d = false;
+  private static volatile long e;
+  private static volatile long f;
+  private static Object g = new Object();
+  private static ArrayList h = new ArrayList();
+  
+  public static boolean a()
   {
-    return paramLong1 - paramLong2 > paramInt * 60 * 1000;
+    for (;;)
+    {
+      synchronized (g)
+      {
+        long l = System.currentTimeMillis();
+        if (f - l > 5184000L)
+        {
+          i = 1;
+          if (f - l < 0L) {
+            break label75;
+          }
+          j = 1;
+          return (i == 0) && (j != 0);
+        }
+      }
+      int i = 0;
+      continue;
+      label75:
+      int j = 0;
+    }
   }
 }
 

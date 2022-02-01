@@ -1,234 +1,254 @@
 package com.tencent.token;
 
-import java.security.Principal;
-import java.security.PublicKey;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.List<Ljava.security.cert.Certificate;>;
-import java.util.Set;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import java.util.Map;
+import java.util.TreeMap;
 
 public final class ahy
 {
-  public static final ahy a = new ahy(new LinkedHashSet(new a().a), null);
-  final Set<b> b;
-  @Nullable
-  final aku c;
+  public static final ahy A;
+  public static final ahy B;
+  public static final ahy C;
+  public static final ahy D;
+  public static final ahy E;
+  public static final ahy F;
+  public static final ahy G;
+  public static final ahy H;
+  public static final ahy I;
+  public static final ahy J;
+  public static final ahy K;
+  public static final ahy L;
+  public static final ahy M;
+  public static final ahy N;
+  public static final ahy O;
+  public static final ahy P;
+  public static final ahy Q;
+  public static final ahy R;
+  public static final ahy S;
+  public static final ahy T;
+  public static final ahy U;
+  public static final ahy V;
+  public static final ahy W;
+  public static final ahy X;
+  public static final ahy Y;
+  public static final ahy Z;
+  static final Comparator<String> a = new Comparator() {};
+  public static final ahy aA = a("TLS_ECDH_RSA_WITH_NULL_SHA");
+  public static final ahy aB = a("TLS_ECDH_RSA_WITH_RC4_128_SHA");
+  public static final ahy aC = a("TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final ahy aD = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA");
+  public static final ahy aE = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA");
+  public static final ahy aF = a("TLS_ECDHE_RSA_WITH_NULL_SHA");
+  public static final ahy aG = a("TLS_ECDHE_RSA_WITH_RC4_128_SHA");
+  public static final ahy aH = a("TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final ahy aI = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
+  public static final ahy aJ = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA");
+  public static final ahy aK = a("TLS_ECDH_anon_WITH_NULL_SHA");
+  public static final ahy aL = a("TLS_ECDH_anon_WITH_RC4_128_SHA");
+  public static final ahy aM = a("TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA");
+  public static final ahy aN = a("TLS_ECDH_anon_WITH_AES_128_CBC_SHA");
+  public static final ahy aO = a("TLS_ECDH_anon_WITH_AES_256_CBC_SHA");
+  public static final ahy aP = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final ahy aQ = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final ahy aR = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final ahy aS = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final ahy aT = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256");
+  public static final ahy aU = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384");
+  public static final ahy aV = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256");
+  public static final ahy aW = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384");
+  public static final ahy aX = a("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final ahy aY = a("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final ahy aZ = a("TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final ahy aa;
+  public static final ahy ab;
+  public static final ahy ac;
+  public static final ahy ad;
+  public static final ahy ae;
+  public static final ahy af;
+  public static final ahy ag;
+  public static final ahy ah;
+  public static final ahy ai;
+  public static final ahy aj;
+  public static final ahy ak;
+  public static final ahy al;
+  public static final ahy am;
+  public static final ahy an;
+  public static final ahy ao;
+  public static final ahy ap;
+  public static final ahy aq;
+  public static final ahy ar;
+  public static final ahy as;
+  public static final ahy at;
+  public static final ahy au;
+  public static final ahy av;
+  public static final ahy aw;
+  public static final ahy ax;
+  public static final ahy ay;
+  public static final ahy az;
+  public static final ahy b;
+  public static final ahy ba = a("TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final ahy bb = a("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256");
+  public static final ahy bc = a("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
+  public static final ahy bd = a("TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256");
+  public static final ahy be = a("TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384");
+  public static final ahy bf = a("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA");
+  public static final ahy bg = a("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA");
+  public static final ahy bh = a("TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final ahy bi = a("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final ahy bj = a("TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256");
+  private static final Map<String, ahy> bl = new TreeMap(a);
+  public static final ahy c;
+  public static final ahy d;
+  public static final ahy e;
+  public static final ahy f;
+  public static final ahy g;
+  public static final ahy h;
+  public static final ahy i;
+  public static final ahy j;
+  public static final ahy k;
+  public static final ahy l;
+  public static final ahy m;
+  public static final ahy n;
+  public static final ahy o;
+  public static final ahy p;
+  public static final ahy q;
+  public static final ahy r;
+  public static final ahy s;
+  public static final ahy t;
+  public static final ahy u;
+  public static final ahy v;
+  public static final ahy w;
+  public static final ahy x;
+  public static final ahy y;
+  public static final ahy z;
+  final String bk;
   
-  ahy(Set<b> paramSet, @Nullable aku paramaku)
+  static
   {
-    this.b = paramSet;
-    this.c = paramaku;
+    b = a("SSL_RSA_WITH_NULL_MD5");
+    c = a("SSL_RSA_WITH_NULL_SHA");
+    d = a("SSL_RSA_EXPORT_WITH_RC4_40_MD5");
+    e = a("SSL_RSA_WITH_RC4_128_MD5");
+    f = a("SSL_RSA_WITH_RC4_128_SHA");
+    g = a("SSL_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    h = a("SSL_RSA_WITH_DES_CBC_SHA");
+    i = a("SSL_RSA_WITH_3DES_EDE_CBC_SHA");
+    j = a("SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA");
+    k = a("SSL_DHE_DSS_WITH_DES_CBC_SHA");
+    l = a("SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA");
+    m = a("SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    n = a("SSL_DHE_RSA_WITH_DES_CBC_SHA");
+    o = a("SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA");
+    p = a("SSL_DH_anon_EXPORT_WITH_RC4_40_MD5");
+    q = a("SSL_DH_anon_WITH_RC4_128_MD5");
+    r = a("SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA");
+    s = a("SSL_DH_anon_WITH_DES_CBC_SHA");
+    t = a("SSL_DH_anon_WITH_3DES_EDE_CBC_SHA");
+    u = a("TLS_KRB5_WITH_DES_CBC_SHA");
+    v = a("TLS_KRB5_WITH_3DES_EDE_CBC_SHA");
+    w = a("TLS_KRB5_WITH_RC4_128_SHA");
+    x = a("TLS_KRB5_WITH_DES_CBC_MD5");
+    y = a("TLS_KRB5_WITH_3DES_EDE_CBC_MD5");
+    z = a("TLS_KRB5_WITH_RC4_128_MD5");
+    A = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA");
+    B = a("TLS_KRB5_EXPORT_WITH_RC4_40_SHA");
+    C = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5");
+    D = a("TLS_KRB5_EXPORT_WITH_RC4_40_MD5");
+    E = a("TLS_RSA_WITH_AES_128_CBC_SHA");
+    F = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA");
+    G = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA");
+    H = a("TLS_DH_anon_WITH_AES_128_CBC_SHA");
+    I = a("TLS_RSA_WITH_AES_256_CBC_SHA");
+    J = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA");
+    K = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA");
+    L = a("TLS_DH_anon_WITH_AES_256_CBC_SHA");
+    M = a("TLS_RSA_WITH_NULL_SHA256");
+    N = a("TLS_RSA_WITH_AES_128_CBC_SHA256");
+    O = a("TLS_RSA_WITH_AES_256_CBC_SHA256");
+    P = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA256");
+    Q = a("TLS_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    R = a("TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA");
+    S = a("TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    T = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA256");
+    U = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA256");
+    V = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA256");
+    W = a("TLS_DH_anon_WITH_AES_128_CBC_SHA256");
+    X = a("TLS_DH_anon_WITH_AES_256_CBC_SHA256");
+    Y = a("TLS_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    Z = a("TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA");
+    aa = a("TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    ab = a("TLS_PSK_WITH_RC4_128_SHA");
+    ac = a("TLS_PSK_WITH_3DES_EDE_CBC_SHA");
+    ad = a("TLS_PSK_WITH_AES_128_CBC_SHA");
+    ae = a("TLS_PSK_WITH_AES_256_CBC_SHA");
+    af = a("TLS_RSA_WITH_SEED_CBC_SHA");
+    ag = a("TLS_RSA_WITH_AES_128_GCM_SHA256");
+    ah = a("TLS_RSA_WITH_AES_256_GCM_SHA384");
+    ai = a("TLS_DHE_RSA_WITH_AES_128_GCM_SHA256");
+    aj = a("TLS_DHE_RSA_WITH_AES_256_GCM_SHA384");
+    ak = a("TLS_DHE_DSS_WITH_AES_128_GCM_SHA256");
+    al = a("TLS_DHE_DSS_WITH_AES_256_GCM_SHA384");
+    am = a("TLS_DH_anon_WITH_AES_128_GCM_SHA256");
+    an = a("TLS_DH_anon_WITH_AES_256_GCM_SHA384");
+    ao = a("TLS_EMPTY_RENEGOTIATION_INFO_SCSV");
+    ap = a("TLS_FALLBACK_SCSV");
+    aq = a("TLS_ECDH_ECDSA_WITH_NULL_SHA");
+    ar = a("TLS_ECDH_ECDSA_WITH_RC4_128_SHA");
+    as = a("TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    at = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA");
+    au = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA");
+    av = a("TLS_ECDHE_ECDSA_WITH_NULL_SHA");
+    aw = a("TLS_ECDHE_ECDSA_WITH_RC4_128_SHA");
+    ax = a("TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    ay = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA");
+    az = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA");
   }
   
-  private static alc a(X509Certificate paramX509Certificate)
+  private ahy(String paramString)
   {
-    return alc.a(paramX509Certificate.getPublicKey().getEncoded()).d();
-  }
-  
-  public static String a(Certificate paramCertificate)
-  {
-    if ((paramCertificate instanceof X509Certificate))
+    if (paramString != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder("sha256/");
-      localStringBuilder.append(a((X509Certificate)paramCertificate).b());
-      return localStringBuilder.toString();
-    }
-    throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
-  }
-  
-  public final void a(String paramString, List<Certificate> paramList)
-  {
-    Object localObject3 = Collections.emptyList();
-    Object localObject2 = this.b.iterator();
-    int k;
-    Object localObject4;
-    for (;;)
-    {
-      boolean bool1 = ((Iterator)localObject2).hasNext();
-      k = 0;
-      boolean bool2 = false;
-      if (!bool1) {
-        break;
-      }
-      localObject4 = (b)((Iterator)localObject2).next();
-      if (((b)localObject4).a.startsWith("*."))
-      {
-        i = paramString.indexOf('.');
-        bool1 = bool2;
-        if (paramString.length() - i - 1 == ((b)localObject4).b.length())
-        {
-          bool1 = bool2;
-          if (paramString.regionMatches(false, i + 1, ((b)localObject4).b, 0, ((b)localObject4).b.length())) {
-            bool1 = true;
-          }
-        }
-      }
-      else
-      {
-        bool1 = paramString.equals(((b)localObject4).b);
-      }
-      if (bool1)
-      {
-        localObject1 = localObject3;
-        if (((List)localObject3).isEmpty()) {
-          localObject1 = new ArrayList();
-        }
-        ((List)localObject1).add(localObject4);
-        localObject3 = localObject1;
-      }
-    }
-    if (((List)localObject3).isEmpty()) {
+      this.bk = paramString;
       return;
     }
-    Object localObject1 = this.c;
-    if (localObject1 != null) {
-      localObject4 = ((aku)localObject1).a(paramList, paramString);
-    } else {
-      localObject4 = paramList;
-    }
-    int m = ((List)localObject4).size();
-    int i = 0;
-    while (i < m)
+    throw new NullPointerException();
+  }
+  
+  public static ahy a(String paramString)
+  {
+    try
     {
-      X509Certificate localX509Certificate = (X509Certificate)((List)localObject4).get(i);
-      int n = ((List)localObject3).size();
-      localObject1 = null;
-      paramList = (List<Certificate>)localObject1;
-      j = 0;
-      while (j < n)
+      ahy localahy2 = (ahy)bl.get(paramString);
+      ahy localahy1 = localahy2;
+      if (localahy2 == null)
       {
-        b localb = (b)((List)localObject3).get(j);
-        if (localb.c.equals("sha256/"))
-        {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = a(localX509Certificate);
-          }
-          localObject1 = localObject2;
-          if (!localb.d.equals(localObject2)) {}
-        }
-        else
-        {
-          if (!localb.c.equals("sha1/")) {
-            break label399;
-          }
-          localObject2 = paramList;
-          if (paramList == null) {
-            localObject2 = alc.a(localX509Certificate.getPublicKey().getEncoded()).c();
-          }
-          paramList = (List<Certificate>)localObject2;
-          if (localb.d.equals(localObject2)) {
-            return;
-          }
-        }
-        j += 1;
-        continue;
-        label399:
-        paramString = new StringBuilder("unsupported hashAlgorithm: ");
-        paramString.append(localb.c);
-        throw new AssertionError(paramString.toString());
+        localahy1 = new ahy(paramString);
+        bl.put(paramString, localahy1);
       }
-      i += 1;
+      return localahy1;
     }
-    paramList = new StringBuilder("Certificate pinning failure!\n  Peer certificate chain:");
-    int j = ((List)localObject4).size();
-    i = 0;
-    while (i < j)
-    {
-      localObject1 = (X509Certificate)((List)localObject4).get(i);
-      paramList.append("\n    ");
-      paramList.append(a((Certificate)localObject1));
-      paramList.append(": ");
-      paramList.append(((X509Certificate)localObject1).getSubjectDN().getName());
-      i += 1;
-    }
-    paramList.append("\n  Pinned certificates for ");
-    paramList.append(paramString);
-    paramList.append(":");
-    j = ((List)localObject3).size();
-    i = k;
-    while (i < j)
-    {
-      paramString = (b)((List)localObject3).get(i);
-      paramList.append("\n    ");
-      paramList.append(paramString);
-      i += 1;
-    }
-    throw new SSLPeerUnverifiedException(paramList.toString());
+    finally {}
   }
   
-  public final boolean equals(@Nullable Object paramObject)
+  static List<ahy> a(String... paramVarArgs)
   {
-    if (paramObject == this) {
-      return true;
-    }
-    if ((paramObject instanceof ahy))
+    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
+    int i2 = paramVarArgs.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      aku localaku = this.c;
-      paramObject = (ahy)paramObject;
-      if ((aix.a(localaku, paramObject.c)) && (this.b.equals(paramObject.b))) {
-        return true;
-      }
+      localArrayList.add(a(paramVarArgs[i1]));
+      i1 += 1;
     }
-    return false;
+    return Collections.unmodifiableList(localArrayList);
   }
   
-  public final int hashCode()
+  public final String toString()
   {
-    aku localaku = this.c;
-    int i;
-    if (localaku != null) {
-      i = localaku.hashCode();
-    } else {
-      i = 0;
-    }
-    return i * 31 + this.b.hashCode();
-  }
-  
-  public static final class a
-  {
-    final List<ahy.b> a = new ArrayList();
-  }
-  
-  static final class b
-  {
-    final String a;
-    final String b;
-    final String c;
-    final alc d;
-    
-    public final boolean equals(Object paramObject)
-    {
-      if ((paramObject instanceof b))
-      {
-        String str = this.a;
-        paramObject = (b)paramObject;
-        if ((str.equals(paramObject.a)) && (this.c.equals(paramObject.c)) && (this.d.equals(paramObject.d))) {
-          return true;
-        }
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return ((this.a.hashCode() + 527) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.c);
-      localStringBuilder.append(this.d.b());
-      return localStringBuilder.toString();
-    }
+    return this.bk;
   }
 }
 

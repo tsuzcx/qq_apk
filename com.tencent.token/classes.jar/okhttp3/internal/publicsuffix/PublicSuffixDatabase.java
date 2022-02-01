@@ -1,6 +1,6 @@
 package okhttp3.internal.publicsuffix;
 
-import com.tencent.token.aix;
+import com.tencent.token.aiw;
 import java.net.IDN;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -109,7 +109,7 @@ public final class PublicSuffixDatabase
         } else if (i > n) {
           k = i7 + 1;
         } else {
-          return new String(paramArrayOfByte, i6, i8, aix.e);
+          return new String(paramArrayOfByte, i6, i8, aiw.e);
         }
       }
     }
@@ -147,12 +147,12 @@ public final class PublicSuffixDatabase
     //   37: astore 5
     //   39: aload 5
     //   41: ifnull +108 -> 149
-    //   44: new 85	com/tencent/token/alg
+    //   44: new 85	com/tencent/token/alf
     //   47: dup
     //   48: aload 5
-    //   50: invokestatic 90	com/tencent/token/ali:a	(Ljava/io/InputStream;)Lcom/tencent/token/alp;
-    //   53: invokespecial 93	com/tencent/token/alg:<init>	(Lcom/tencent/token/alp;)V
-    //   56: invokestatic 96	com/tencent/token/ali:a	(Lcom/tencent/token/alp;)Lcom/tencent/token/alb;
+    //   50: invokestatic 90	com/tencent/token/alh:a	(Ljava/io/InputStream;)Lcom/tencent/token/alo;
+    //   53: invokespecial 93	com/tencent/token/alf:<init>	(Lcom/tencent/token/alo;)V
+    //   56: invokestatic 96	com/tencent/token/alh:a	(Lcom/tencent/token/alo;)Lcom/tencent/token/ala;
     //   59: astore 5
     //   61: aload 5
     //   63: invokeinterface 101 1 0
@@ -169,7 +169,7 @@ public final class PublicSuffixDatabase
     //   94: aload 7
     //   96: invokeinterface 104 2 0
     //   101: aload 5
-    //   103: invokestatic 107	com/tencent/token/aix:a	(Ljava/io/Closeable;)V
+    //   103: invokestatic 107	com/tencent/token/aiw:a	(Ljava/io/Closeable;)V
     //   106: aload_0
     //   107: monitorenter
     //   108: aload_0
@@ -191,7 +191,7 @@ public final class PublicSuffixDatabase
     //   138: athrow
     //   139: astore 6
     //   141: aload 5
-    //   143: invokestatic 107	com/tencent/token/aix:a	(Ljava/io/Closeable;)V
+    //   143: invokestatic 107	com/tencent/token/aiw:a	(Ljava/io/Closeable;)V
     //   146: aload 6
     //   148: athrow
     //   149: iload_2
@@ -202,11 +202,11 @@ public final class PublicSuffixDatabase
     //   162: astore_1
     //   163: goto +23 -> 186
     //   166: astore 5
-    //   168: invokestatic 128	com/tencent/token/akr:c	()Lcom/tencent/token/akr;
+    //   168: invokestatic 128	com/tencent/token/akq:c	()Lcom/tencent/token/akq;
     //   171: iconst_5
     //   172: ldc 130
     //   174: aload 5
-    //   176: invokevirtual 133	com/tencent/token/akr:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   176: invokevirtual 133	com/tencent/token/akq:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
     //   179: iload_2
     //   180: ifeq +39 -> 219
     //   183: goto -30 -> 153
@@ -247,7 +247,7 @@ public final class PublicSuffixDatabase
     //   248: aload_1
     //   249: iload_2
     //   250: aaload
-    //   251: getstatic 56	com/tencent/token/aix:e	Ljava/nio/charset/Charset;
+    //   251: getstatic 56	com/tencent/token/aiw:e	Ljava/nio/charset/Charset;
     //   254: invokevirtual 141	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
     //   257: aastore
     //   258: iload_2

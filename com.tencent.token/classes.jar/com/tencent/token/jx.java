@@ -1,15 +1,12 @@
 package com.tencent.token;
 
-import btmsdkobf.cy.b;
-
-public abstract class jx
-  implements cy.b
+public final class jx
 {
-  public String e = "";
+  public int a;
   
-  public jx(String paramString)
+  public jx(int paramInt)
   {
-    this.e = paramString;
+    this.a = paramInt;
   }
 }
 

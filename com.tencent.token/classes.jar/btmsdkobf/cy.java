@@ -238,7 +238,7 @@ public class cy
   };
   private boolean jw = true;
   private boolean jx = true;
-  private Handler jy = new Handler(cx.getLooper())
+  public Handler jy = new Handler(cx.getLooper())
   {
     private void a(final boolean paramAnonymousBoolean, final cy.f paramAnonymousf)
     {

@@ -1,18 +1,22 @@
 package com.tencent.token;
 
-public final class aqe
+final class aqe
 {
-  public volatile String a = "";
-  public volatile String b = "";
+  int a;
+  int b;
+  int c;
+  int d;
+  byte[] e;
+  aps f;
   
-  public final String toString()
+  aqe(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte, aps paramaps)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mSessionId: ");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(" mEncodeKey: ");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramArrayOfByte;
+    this.f = paramaps;
   }
 }
 

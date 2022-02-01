@@ -5,10 +5,10 @@ import android.database.CharArrayBuffer;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.token.agf;
+import com.tencent.token.age;
 
 public class CursorWindow
-  extends agf
+  extends age
   implements Parcelable
 {
   public static final Parcelable.Creator<CursorWindow> CREATOR = new Parcelable.Creator() {};

@@ -1,14 +1,18 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public abstract interface ase
 {
-  public abstract int a(Context paramContext);
+  public abstract asg a(String paramString);
   
-  public abstract void a();
+  public abstract asi a();
   
-  public abstract void a(Context paramContext, amg paramamg, aof.a parama);
+  public abstract asf b();
+  
+  public abstract ask c();
+  
+  public abstract ash d();
+  
+  public abstract asj e();
 }
 
 

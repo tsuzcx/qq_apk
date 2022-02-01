@@ -3,19 +3,19 @@ package btmsdkobf;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aoj;
+import com.tencent.token.aoi;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public final class at
   extends JceStruct
 {
-  static aoj jdField_do = new aoj();
+  static aoi jdField_do = new aoi();
   static ArrayList<as> dp = new ArrayList();
   public int dc = 0;
   public int dd = 0;
   public int dl = 1;
-  public aoj dm = null;
+  public aoi dm = null;
   public ArrayList<as> dn = null;
   
   static
@@ -34,7 +34,7 @@ public final class at
     this.dc = paramJceInputStream.read(this.dc, 0, false);
     this.dd = paramJceInputStream.read(this.dd, 1, false);
     this.dl = paramJceInputStream.read(this.dl, 2, false);
-    this.dm = ((aoj)paramJceInputStream.read(jdField_do, 3, false));
+    this.dm = ((aoi)paramJceInputStream.read(jdField_do, 3, false));
     this.dn = ((ArrayList)paramJceInputStream.read(dp, 4, false));
   }
   

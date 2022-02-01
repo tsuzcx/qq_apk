@@ -1,84 +1,55 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteCustomFunction;
-import java.util.ArrayList;
-import java.util.Locale;
+import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteDatabase.a;
 
 public final class agi
+  implements agg
 {
-  public final String a;
-  public final String b;
-  public String c;
-  public int d;
-  public int e;
-  public Locale f;
-  public boolean g;
-  public boolean h;
-  public int i;
-  public boolean j;
-  public boolean k;
-  public final ArrayList<SQLiteCustomFunction> l = new ArrayList();
+  private static SQLiteDatabase.a f = agf.j;
+  private final SQLiteDatabase a;
+  private final String b;
+  private final String c;
+  private final ags d;
+  private agk e;
   
-  public agi(agi paramagi)
+  public agi(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
   {
-    if (paramagi != null)
-    {
-      this.a = paramagi.a;
-      this.b = paramagi.b;
-      a(paramagi);
-      return;
-    }
-    throw new IllegalArgumentException("other must not be null.");
+    this.a = paramSQLiteDatabase;
+    this.b = paramString2;
+    this.c = paramString1;
+    this.d = null;
   }
   
-  public agi(String paramString, int paramInt)
+  public final afw a(SQLiteDatabase.a parama, String[] paramArrayOfString)
   {
-    if (paramString != null)
+    Object localObject = parama;
+    if (parama == null) {
+      localObject = f;
+    }
+    parama = null;
+    try
     {
-      this.a = paramString;
-      this.b = paramString;
-      this.d = paramInt;
-      this.i = 2;
-      this.e = 25;
-      this.f = Locale.getDefault();
-      if ((paramInt & 0x100) != 0) {
-        paramString = "vfslog";
-      } else {
-        paramString = null;
+      paramArrayOfString = ((SQLiteDatabase.a)localObject).a(this.a, this.c, paramArrayOfString, this.d);
+      parama = paramArrayOfString;
+      localObject = ((SQLiteDatabase.a)localObject).a(this, this.b, paramArrayOfString);
+      this.e = paramArrayOfString;
+      return localObject;
+    }
+    catch (RuntimeException paramArrayOfString)
+    {
+      if (parama != null) {
+        parama.close();
       }
-      this.c = paramString;
-      return;
+      throw paramArrayOfString;
     }
-    throw new IllegalArgumentException("path must not be null.");
   }
   
-  public final void a(agi paramagi)
+  public final String toString()
   {
-    if (paramagi != null)
-    {
-      if (this.a.equals(paramagi.a))
-      {
-        this.d = paramagi.d;
-        this.e = paramagi.e;
-        this.f = paramagi.f;
-        this.g = paramagi.g;
-        this.h = paramagi.h;
-        this.j = paramagi.j;
-        this.k = paramagi.k;
-        this.i = paramagi.i;
-        this.c = paramagi.c;
-        this.l.clear();
-        this.l.addAll(paramagi.l);
-        return;
-      }
-      throw new IllegalArgumentException("other configuration must refer to the same database.");
-    }
-    throw new IllegalArgumentException("other must not be null.");
-  }
-  
-  public final boolean a()
-  {
-    return this.a.equalsIgnoreCase(":memory:");
+    StringBuilder localStringBuilder = new StringBuilder("SQLiteDirectCursorDriver: ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

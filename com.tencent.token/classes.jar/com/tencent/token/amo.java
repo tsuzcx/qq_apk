@@ -1,27 +1,19 @@
 package com.tencent.token;
 
 public final class amo
-  extends amx<Float, Float>
+  extends amw<Integer, Integer>
 {
   private amo()
   {
-    super(Float.valueOf(0.0F));
+    super(Integer.valueOf(100));
   }
   
-  public final ama<Float> a()
+  public final alz<Integer> a()
   {
     if (!super.b()) {
-      return new amh(this.b);
+      return new amg(this.b);
     }
-    return new aly(this.a);
-  }
-  
-  public static final class a
-  {
-    public static amo a()
-    {
-      return new amo((byte)0);
-    }
+    return new alt(this.a);
   }
 }
 

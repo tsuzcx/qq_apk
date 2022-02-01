@@ -1,29 +1,29 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class va
-  extends tk
+  extends tj
 {
   private long d;
-  private JSONArray e;
+  private byte e;
+  private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.realuin")).longValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.e = ((Byte)paramaaq.c.get("param.msg.source")).byteValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -34,29 +34,37 @@ public final class va
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.a("domain name:".concat(String.valueOf(paramJSONObject)));
-      this.e = paramJSONObject.optJSONArray("domain_list");
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.f)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
+        return;
+      }
+      paramJSONObject = paramJSONObject.getJSONArray("msgs");
+      if (!sx.a().a(paramJSONObject, this.d))
+      {
+        wy localwy = this.a;
+        StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
+        localStringBuilder.append(paramJSONObject.toString());
+        localwy.a(10000, localStringBuilder.toString(), null);
+        return;
+      }
+      sz.a().g();
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
   }
 }
 

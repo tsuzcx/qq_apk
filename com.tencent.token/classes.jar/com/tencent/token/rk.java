@@ -1,204 +1,166 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Looper;
+import java.lang.reflect.Method;
 
 public final class rk
-  implements SensorEventListener
+  implements rm
 {
-  boolean a = false;
-  protected SensorManager b;
-  private long c = 0L;
-  private double[] d = new double[3];
-  private float[] e = new float[3];
-  private float[] f = new float[3];
-  private double g;
-  private ArrayList<Sensor> h = new ArrayList();
-  private Context i;
-  private boolean j = false;
-  private boolean k = false;
-  private boolean l = false;
-  private int m = 0;
-  private int n = 0;
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
+  private boolean c;
   
-  rk(Context paramContext)
+  public rk(Context paramContext, String paramString)
   {
-    this.i = paramContext;
+    this.a = paramContext.getSharedPreferences(paramString, 0);
+  }
+  
+  private static boolean a(SharedPreferences.Editor paramEditor)
+  {
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (Build.VERSION.SDK_INT >= 9)) {}
+    try
+    {
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
+    return paramEditor.commit();
+  }
+  
+  private SharedPreferences.Editor c()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
+  }
+  
+  public final int a(String paramString)
+  {
+    try
+    {
+      int i = this.a.getInt(paramString, 0);
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public final int a(String paramString, int paramInt)
+  {
+    try
+    {
+      System.nanoTime();
+      int i = this.a.getInt(paramString, paramInt);
+      System.nanoTime();
+      return i;
+    }
+    catch (Exception paramString) {}
+    return paramInt;
+  }
+  
+  public final long a(String paramString, long paramLong)
+  {
+    try
+    {
+      System.nanoTime();
+      long l = this.a.getLong(paramString, paramLong);
+      return l;
+    }
+    catch (Exception paramString) {}
+    return paramLong;
+  }
+  
+  public final String a(String paramString1, String paramString2)
+  {
+    try
+    {
+      System.nanoTime();
+      paramString1 = this.a.getString(paramString1, paramString2);
+      return paramString1;
+    }
+    catch (Exception paramString1) {}
+    return paramString2;
   }
   
   public final void a()
   {
-    if (this.j) {
-      return;
-    }
-    this.b = ((SensorManager)this.i.getSystemService("sensor"));
-    Sensor localSensor = this.b.getDefaultSensor(4);
-    if (localSensor == null)
-    {
-      this.l = false;
-    }
-    else
-    {
-      this.b.registerListener(this, localSensor, 0);
-      this.h.add(localSensor);
-    }
-    localSensor = this.b.getDefaultSensor(1);
-    if (localSensor == null)
-    {
-      this.k = false;
-    }
-    else
-    {
-      this.h.add(localSensor);
-      this.b.registerListener(this, localSensor, 0);
-    }
-    this.j = true;
+    this.c = true;
   }
   
-  public final void b()
+  public final boolean a(String paramString, boolean paramBoolean)
   {
-    int i1 = 0;
-    while (i1 < this.h.size())
+    try
     {
-      this.b.unregisterListener(this, (Sensor)this.h.get(i1));
-      i1 += 1;
+      boolean bool = this.a.getBoolean(paramString, paramBoolean);
+      return bool;
     }
-    this.a = false;
-    this.j = false;
+    catch (Exception paramString) {}
+    return paramBoolean;
   }
   
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  public final boolean b()
   {
-    int i1 = paramSensorEvent.sensor.getType();
-    double d1;
-    Object localObject;
-    double d2;
-    if (i1 != 1)
+    this.c = false;
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
+    }
+    return true;
+  }
+  
+  public final boolean b(String paramString, int paramInt)
+  {
+    System.nanoTime();
+    SharedPreferences.Editor localEditor = c();
+    localEditor.putInt(paramString, paramInt);
+    if (!this.c)
     {
-      if (i1 != 4) {
-        return;
-      }
-      if (this.c != 0L)
-      {
-        d1 = paramSensorEvent.timestamp - this.c;
-        Double.isNaN(d1);
-        d1 *= 9.999999717180685E-010D;
-        localObject = this.d;
-        d2 = localObject[0];
-        double d3 = paramSensorEvent.values[0];
-        Double.isNaN(d3);
-        localObject[0] = (d2 + d3 * d1);
-        localObject = this.d;
-        d2 = localObject[1];
-        d3 = paramSensorEvent.values[1];
-        Double.isNaN(d3);
-        localObject[1] = (d2 + d3 * d1);
-        localObject = this.d;
-        d2 = localObject[2];
-        d3 = paramSensorEvent.values[2];
-        Double.isNaN(d3);
-        localObject[2] = (d2 + d3 * d1);
-        i1 = 0;
-        while (i1 < 3) {
-          if ((paramSensorEvent.values[i1] <= 1.0D) && (paramSensorEvent.values[i1] >= -1.0D))
-          {
-            i1 += 1;
-          }
-          else
-          {
-            i1 = 1;
-            break label225;
-          }
-        }
-        i1 = 0;
-        label225:
-        if (i1 != 0)
-        {
-          this.l = true;
-          this.n = 0;
-        }
-        else
-        {
-          i1 = this.n + 1;
-          this.n = i1;
-          if (i1 == 1)
-          {
-            this.n = 0;
-            this.l = false;
-          }
-        }
-        if ((!this.k) && (!this.l)) {
-          bool = false;
-        } else {
-          bool = true;
-        }
-        this.a = bool;
-      }
-      this.c = paramSensorEvent.timestamp;
-      return;
+      boolean bool = a(localEditor);
+      System.nanoTime();
+      return bool;
     }
-    i1 = 0;
-    while (i1 < 3)
-    {
-      localObject = this.e;
-      d1 = paramSensorEvent.values[i1];
-      Double.isNaN(d1);
-      d2 = this.e[i1];
-      Double.isNaN(d2);
-      localObject[i1] = ((float)(d1 * 0.1D + d2 * 0.9D));
-      this.f[i1] = (paramSensorEvent.values[i1] - this.e[i1]);
-      i1 += 1;
+    return true;
+  }
+  
+  public final boolean b(String paramString, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = c();
+    localEditor.putLong(paramString, paramLong);
+    if (!this.c) {
+      return a(localEditor);
     }
-    this.g = (this.e[1] / 9.80665F);
-    if (this.g > 1.0D) {
-      this.g = 1.0D;
+    return true;
+  }
+  
+  public final boolean b(String paramString1, String paramString2)
+  {
+    System.nanoTime();
+    SharedPreferences.Editor localEditor = c();
+    localEditor.putString(paramString1, paramString2);
+    if (!this.c) {
+      return a(localEditor);
     }
-    if (this.g < -1.0D) {
-      this.g = -1.0D;
+    return true;
+  }
+  
+  public final boolean b(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = c();
+    localEditor.putBoolean(paramString, paramBoolean);
+    if (!this.c) {
+      return a(localEditor);
     }
-    Math.toDegrees(Math.acos(this.g));
-    i1 = 0;
-    while (i1 < 3)
-    {
-      paramSensorEvent = this.f;
-      if ((paramSensorEvent[i1] <= 1.0D) && (paramSensorEvent[i1] >= -1.0D))
-      {
-        i1 += 1;
-      }
-      else
-      {
-        i1 = 1;
-        break label522;
-      }
-    }
-    i1 = 0;
-    label522:
-    if (i1 != 0)
-    {
-      this.m = 0;
-      this.k = true;
-    }
-    else
-    {
-      i1 = this.m + 1;
-      this.m = i1;
-      if (i1 == 1)
-      {
-        this.m = 0;
-        this.k = false;
-      }
-    }
-    boolean bool = false;
-    if ((this.k) || (this.l)) {
-      bool = true;
-    }
-    this.a = bool;
+    return true;
   }
 }
 

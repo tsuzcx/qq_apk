@@ -10,31 +10,31 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
-import com.tencent.token.als;
-import com.tencent.token.amg;
-import com.tencent.token.anw;
-import com.tencent.token.aof.a;
-import com.tencent.token.arw;
-import com.tencent.token.ary;
-import com.tencent.token.asb;
+import com.tencent.token.alr;
+import com.tencent.token.amf;
+import com.tencent.token.anv;
+import com.tencent.token.aoe.a;
+import com.tencent.token.arv;
+import com.tencent.token.arx;
+import com.tencent.token.asa;
+import com.tencent.token.asc;
+import com.tencent.token.asc.b;
 import com.tencent.token.asd;
-import com.tencent.token.asd.b;
-import com.tencent.token.ase;
-import com.tencent.token.asi;
+import com.tencent.token.ash;
 import com.tencent.token.b;
 import com.tencent.token.c;
 import com.tencent.token.d;
 import com.tencent.token.e;
+import com.tencent.token.qf;
 import com.tencent.token.qg;
-import com.tencent.token.qh;
+import com.tencent.token.qi;
+import com.tencent.token.qi.a;
 import com.tencent.token.qj;
-import com.tencent.token.qj.a;
 import com.tencent.token.qk;
 import com.tencent.token.ql;
-import com.tencent.token.qm;
-import com.tencent.token.qm.a;
-import com.tencent.token.qq;
-import com.tencent.token.qq.a;
+import com.tencent.token.ql.a;
+import com.tencent.token.qp;
+import com.tencent.token.qp.a;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -80,12 +80,12 @@ public class PermissionGuideActivity
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(String.valueOf(this.d));
     localArrayList.add(String.valueOf(paramInt1));
-    qq.a.a().b().a(paramInt2, localArrayList);
+    qp.a.a().b().a(paramInt2, localArrayList);
   }
   
-  private void a(e parame, qm paramqm, int[] paramArrayOfInt, ary paramary)
+  private void a(e parame, ql paramql, int[] paramArrayOfInt, arx paramarx)
   {
-    if (paramqm.f == null) {
+    if (paramql.f == null) {
       return;
     }
     int i1 = parame.e;
@@ -131,7 +131,7 @@ public class PermissionGuideActivity
     }
   }
   
-  private void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, ArrayList<amg> paramArrayList)
+  private void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, ArrayList<amf> paramArrayList)
   {
     if (paramBoolean)
     {
@@ -173,7 +173,7 @@ public class PermissionGuideActivity
         else
         {
           this.k.add(Integer.valueOf(5));
-          ql.b(0);
+          qk.b(0);
           break label185;
         }
       }
@@ -184,15 +184,15 @@ public class PermissionGuideActivity
       }
       ((HashSet)localObject).add(Integer.valueOf(i1));
       label185:
-      Object localObject = anw.c(paramInt1);
-      qm localqm = qm.a.a();
+      Object localObject = anv.c(paramInt1);
+      ql localql = ql.a.a();
       int i2 = localObject.length;
       int i1 = 0;
       int i3;
       while (i1 < i2)
       {
         i3 = localObject[i1];
-        i3 = localqm.c.a(i3);
+        i3 = localql.c.a(i3);
         bool1 = bool2;
         if (i3 == -1) {
           break label267;
@@ -219,7 +219,7 @@ public class PermissionGuideActivity
         i2 = this.d;
         i3 = -1;
       }
-      qg.a(this, paramInt1, i1, i2, i3, paramString);
+      qf.a(this, paramInt1, i1, i2, i3, paramString);
     }
     if ((paramInt2 < paramArrayList.size()) && (!this.j))
     {
@@ -231,16 +231,16 @@ public class PermissionGuideActivity
     startActivity(paramString);
   }
   
-  private boolean a(final int paramInt, final ArrayList<amg> paramArrayList)
+  private boolean a(final int paramInt, final ArrayList<amf> paramArrayList)
   {
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()) && (paramInt < paramArrayList.size()))
     {
-      if (qm.a.a().d != null) {
+      if (ql.a.a().d != null) {
         paramArrayList.size();
       }
-      final amg localamg = (amg)paramArrayList.get(paramInt);
-      a(localamg.b, 271336);
-      asd.b.a().a().a(this, localamg, new aof.a()
+      final amf localamf = (amf)paramArrayList.get(paramInt);
+      a(localamf.b, 271336);
+      asc.b.a().a().a(this, localamf, new aoe.a()
       {
         String a;
         boolean b;
@@ -258,14 +258,14 @@ public class PermissionGuideActivity
         
         public final void a(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          als localals = (als)localamg.c.get(paramAnonymousInt1);
-          if (localals.a == 1) {
-            this.a = localals.f;
+          alr localalr = (alr)localamf.c.get(paramAnonymousInt1);
+          if (localalr.a == 1) {
+            this.a = localalr.f;
           }
           if (paramAnonymousInt2 == 2)
           {
             this.b = true;
-            qg.a(PermissionGuideActivity.this, localamg.b, 0, PermissionGuideActivity.a(PermissionGuideActivity.this), paramAnonymousInt1, this.a);
+            qf.a(PermissionGuideActivity.this, localamf.b, 0, PermissionGuideActivity.a(PermissionGuideActivity.this), paramAnonymousInt1, this.a);
           }
         }
       });
@@ -275,7 +275,7 @@ public class PermissionGuideActivity
   }
   
   /* Error */
-  private boolean a(final Intent paramIntent, e parame, qm paramqm, final int[] paramArrayOfInt)
+  private boolean a(final Intent paramIntent, e parame, ql paramql, final int[] paramArrayOfInt)
   {
     // Byte code:
     //   0: aload_2
@@ -287,7 +287,7 @@ public class PermissionGuideActivity
     //   14: ifeq +6 -> 20
     //   17: goto +50 -> 67
     //   20: aload_3
-    //   21: getfield 114	com/tencent/token/qm:f	Lcom/tencent/token/arx;
+    //   21: getfield 114	com/tencent/token/ql:f	Lcom/tencent/token/arw;
     //   24: ifnull +18 -> 42
     //   27: new 10	com/tencent/qqpimsecure/pg/PermissionGuideActivity$2
     //   30: dup
@@ -304,10 +304,10 @@ public class PermissionGuideActivity
     //   50: aload_0
     //   51: aload_1
     //   52: invokevirtual 229	com/tencent/qqpimsecure/pg/PermissionGuideActivity:startActivity	(Landroid/content/Intent;)V
-    //   55: invokestatic 273	com/tencent/token/qj$a:a	()Lcom/tencent/token/qj;
+    //   55: invokestatic 273	com/tencent/token/qi$a:a	()Lcom/tencent/token/qi;
     //   58: aload 4
     //   60: aload_0
-    //   61: invokevirtual 278	com/tencent/token/qj:a	([ILandroid/app/Activity;)V
+    //   61: invokevirtual 278	com/tencent/token/qi:a	([ILandroid/app/Activity;)V
     //   64: goto +10 -> 74
     //   67: aload_0
     //   68: aload_1
@@ -326,7 +326,7 @@ public class PermissionGuideActivity
     //   0	82	0	this	PermissionGuideActivity
     //   0	82	1	paramIntent	Intent
     //   0	82	2	parame	e
-    //   0	82	3	paramqm	qm
+    //   0	82	3	paramql	ql
     //   0	82	4	paramArrayOfInt	int[]
     // Exception table:
     //   from	to	target	type
@@ -340,7 +340,7 @@ public class PermissionGuideActivity
     if (parame == null) {
       return false;
     }
-    Intent localIntent = qk.a(parame);
+    Intent localIntent = qj.a(parame);
     if (localIntent == null) {
       return false;
     }
@@ -359,21 +359,21 @@ public class PermissionGuideActivity
       }
     }
     Object localObject1 = this.c;
-    Object localObject2 = qm.a.a();
+    Object localObject2 = ql.a.a();
     boolean bool;
     if (parame.e == 0)
     {
-      bool = a(localIntent, parame, (qm)localObject2, (int[])localObject1);
+      bool = a(localIntent, parame, (ql)localObject2, (int[])localObject1);
     }
-    else if ((((qm)localObject2).c.a(37) != 0) && (((qm)localObject2).c.a(5) != 0))
+    else if ((((ql)localObject2).c.a(37) != 0) && (((ql)localObject2).c.a(5) != 0))
     {
       localIntent.setFlags(411140096);
-      bool = c(localIntent, parame, (qm)localObject2, (int[])localObject1);
+      bool = c(localIntent, parame, (ql)localObject2, (int[])localObject1);
     }
     else
     {
       localIntent.setFlags(411140096);
-      bool = b(localIntent, parame, (qm)localObject2, (int[])localObject1);
+      bool = b(localIntent, parame, (ql)localObject2, (int[])localObject1);
     }
     this.p = parame.a.d;
     return bool;
@@ -381,12 +381,12 @@ public class PermissionGuideActivity
   
   private void b()
   {
-    if (asd.b.a().a().a(this) != 0)
+    if (asc.b.a().a().a(this) != 0)
     {
       h();
       return;
     }
-    qm localqm = qm.a.a();
+    ql localql = ql.a.a();
     ArrayList localArrayList = new ArrayList();
     int[] arrayOfInt = this.c;
     int i2 = arrayOfInt.length;
@@ -394,7 +394,7 @@ public class PermissionGuideActivity
     while (i1 < i2)
     {
       int i3 = arrayOfInt[i1];
-      if ((this.h) || (localqm.c.a(i3) != 0)) {
+      if ((this.h) || (localql.c.a(i3) != 0)) {
         localArrayList.add(Integer.valueOf(i3));
       }
       i1 += 1;
@@ -404,7 +404,7 @@ public class PermissionGuideActivity
       g();
       return;
     }
-    if (!a(0, qh.a(this, localArrayList)))
+    if (!a(0, qg.a(this, localArrayList)))
     {
       h();
       return;
@@ -440,9 +440,9 @@ public class PermissionGuideActivity
     }
   }
   
-  private void b(e parame, qm paramqm, int[] paramArrayOfInt, ary paramary)
+  private void b(e parame, ql paramql, int[] paramArrayOfInt, arx paramarx)
   {
-    if (paramqm.e == null) {
+    if (paramql.e == null) {
       return;
     }
     int i1 = parame.e;
@@ -459,13 +459,13 @@ public class PermissionGuideActivity
     a(parame, new ArrayList(), new ArrayList(), new ArrayList());
   }
   
-  private boolean b(Intent paramIntent, e parame, qm paramqm, int[] paramArrayOfInt)
+  private boolean b(Intent paramIntent, e parame, ql paramql, int[] paramArrayOfInt)
   {
     try
     {
       startActivity(paramIntent);
-      qj.a.a().a(paramArrayOfInt, this);
-      if (paramqm.g != null)
+      qi.a.a().a(paramArrayOfInt, this);
+      if (paramql.g != null)
       {
         int i1 = parame.e;
         if (i1 != 5) {}
@@ -479,9 +479,9 @@ public class PermissionGuideActivity
       }
       if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5))
       {
-        ql.b(2);
-        ql.a(System.currentTimeMillis());
-        ql.c(this.d);
+        qk.b(2);
+        qk.a(System.currentTimeMillis());
+        qk.c(this.d);
       }
       this.i = true;
       return true;
@@ -492,7 +492,7 @@ public class PermissionGuideActivity
   
   private void c()
   {
-    qm localqm = qm.a.a();
+    ql localql = ql.a.a();
     Object localObject1 = null;
     int i3 = 0;
     int i1 = 1;
@@ -504,7 +504,7 @@ public class PermissionGuideActivity
       {
         i4 = i1;
         localObject2 = localObject1;
-        if (localqm.c.a(this.c[i3]) == 0) {}
+        if (localql.c.a(this.c[i3]) == 0) {}
       }
       else
       {
@@ -515,18 +515,18 @@ public class PermissionGuideActivity
         }
         if (localObject1 == null)
         {
-          localObject2 = qk.a(this, this.c[i3]);
+          localObject2 = qj.a(this, this.c[i3]);
           this.m.clear();
           this.m.add(Integer.valueOf(this.c[i3]));
           this.n = i3;
-          this.o = anw.b(this.c[i3]);
+          this.o = anv.b(this.c[i3]);
           i4 = i2;
         }
         else
         {
           i4 = i2;
           localObject2 = localObject1;
-          if (anw.b(this.c[i3]) == this.o)
+          if (anv.b(this.c[i3]) == this.o)
           {
             this.m.add(Integer.valueOf(this.c[i3]));
             localObject2 = localObject1;
@@ -552,9 +552,9 @@ public class PermissionGuideActivity
     this.b = 3;
   }
   
-  private boolean c(final Intent paramIntent, final e parame, final qm paramqm, final int[] paramArrayOfInt)
+  private boolean c(final Intent paramIntent, final e parame, final ql paramql, final int[] paramArrayOfInt)
   {
-    paramIntent = new ary()
+    paramIntent = new arx()
     {
       public final void a()
       {
@@ -562,34 +562,34 @@ public class PermissionGuideActivity
         {
           PermissionGuideActivity.this.startActivity(paramIntent);
           PermissionGuideActivity.this.overridePendingTransition(0, 0);
-          qj.a.a().a(paramArrayOfInt, PermissionGuideActivity.this);
+          qi.a.a().a(paramArrayOfInt, PermissionGuideActivity.this);
           if ((!PermissionGuideActivity.c(PermissionGuideActivity.this).isEmpty()) && (((Integer)PermissionGuideActivity.c(PermissionGuideActivity.this).get(0)).intValue() == 5))
           {
-            ql.b(2);
-            ql.a(System.currentTimeMillis());
-            ql.c(PermissionGuideActivity.a(PermissionGuideActivity.this));
+            qk.b(2);
+            qk.a(System.currentTimeMillis());
+            qk.c(PermissionGuideActivity.a(PermissionGuideActivity.this));
           }
           return;
         }
         catch (Throwable localThrowable) {}
       }
     };
-    if (paramqm.e != null)
+    if (paramql.e != null)
     {
       this.q = new Runnable()
       {
         public final void run()
         {
-          if (paramqm.f != null) {
-            PermissionGuideActivity.a(PermissionGuideActivity.this, parame, paramqm, paramArrayOfInt, paramIntent);
+          if (paramql.f != null) {
+            PermissionGuideActivity.a(PermissionGuideActivity.this, parame, paramql, paramArrayOfInt, paramIntent);
           }
         }
       };
-      b(parame, paramqm, paramArrayOfInt, paramIntent);
+      b(parame, paramql, paramArrayOfInt, paramIntent);
     }
-    else if (paramqm.f != null)
+    else if (paramql.f != null)
     {
-      a(parame, paramqm, paramArrayOfInt, paramIntent);
+      a(parame, paramql, paramArrayOfInt, paramIntent);
     }
     else
     {
@@ -601,20 +601,20 @@ public class PermissionGuideActivity
   private void d()
   {
     if (this.i) {
-      qm.a.a();
+      ql.a.a();
     }
     if (this.f == 2)
     {
-      qm localqm = qm.a.a();
+      ql localql = ql.a.a();
       Object localObject1;
       for (;;)
       {
         i1 = this.n;
         localObject1 = this.c;
-        if ((i1 >= localObject1.length) || (anw.b(localObject1[i1]) != this.o)) {
+        if ((i1 >= localObject1.length) || (anv.b(localObject1[i1]) != this.o)) {
           break;
         }
-        if (localqm.c.a(this.c[this.n]) != 0)
+        if (localql.c.a(this.c[this.n]) != 0)
         {
           i1 = 1;
           break label98;
@@ -626,9 +626,9 @@ public class PermissionGuideActivity
       if (i1 == 0)
       {
         if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5)) {
-          ql.a(0L);
+          qk.a(0L);
         }
-        if (localqm.c.a(((Integer)this.m.get(0)).intValue()) == 2) {
+        if (localql.c.a(((Integer)this.m.get(0)).intValue()) == 2) {
           i1 = -1;
         } else {
           i1 = 1;
@@ -636,7 +636,7 @@ public class PermissionGuideActivity
         if (i1 == 1) {
           a(this.o, 271337);
         }
-        qg.a(this, this.o, i1, this.d, 0, this.p);
+        qf.a(this, this.o, i1, this.d, 0, this.p);
         int i3 = this.n;
         localObject1 = null;
         i1 = 1;
@@ -644,7 +644,7 @@ public class PermissionGuideActivity
         {
           int i4 = i1;
           Object localObject2 = localObject1;
-          if (localqm.c.a(this.c[i3]) != 0)
+          if (localql.c.a(this.c[i3]) != 0)
           {
             this.l.add(Integer.valueOf(this.c[this.n]));
             int i2 = i1;
@@ -653,18 +653,18 @@ public class PermissionGuideActivity
             }
             if (localObject1 == null)
             {
-              localObject2 = qk.a(this, this.c[i3]);
+              localObject2 = qj.a(this, this.c[i3]);
               this.m.clear();
               this.m.add(Integer.valueOf(this.c[i3]));
               this.n = i3;
-              this.o = anw.b(this.c[i3]);
+              this.o = anv.b(this.c[i3]);
               i4 = i2;
             }
             else
             {
               i4 = i2;
               localObject2 = localObject1;
-              if (anw.b(this.c[i3]) == this.o)
+              if (anv.b(this.c[i3]) == this.o)
               {
                 this.m.add(Integer.valueOf(this.c[i3]));
                 localObject2 = localObject1;
@@ -699,7 +699,7 @@ public class PermissionGuideActivity
       d();
       return;
     }
-    qm localqm = qm.a.a();
+    ql localql = ql.a.a();
     int i1 = this.f;
     int i2 = 0;
     if (i1 == 2)
@@ -721,7 +721,7 @@ public class PermissionGuideActivity
     i1 = 0;
     while (i1 < arrayOfInt1.length)
     {
-      if (localqm.c.a(arrayOfInt1[i1]) != 0)
+      if (localql.c.a(arrayOfInt1[i1]) != 0)
       {
         i1 = i2;
         break label131;
@@ -742,12 +742,12 @@ public class PermissionGuideActivity
   private void f()
   {
     finish();
-    qm localqm = qm.a.a();
-    asb localasb = (asb)localqm.h.get(Integer.valueOf(this.e));
-    if (localasb != null)
+    ql localql = ql.a.a();
+    asa localasa = (asa)localql.h.get(Integer.valueOf(this.e));
+    if (localasa != null)
     {
-      localasb.a(null);
-      localqm.h.remove(Integer.valueOf(this.e));
+      localasa.a(null);
+      localql.h.remove(Integer.valueOf(this.e));
     }
   }
   
@@ -761,19 +761,19 @@ public class PermissionGuideActivity
       arrayOfInt[i1] = 0;
       i1 += 1;
     }
-    qm localqm = qm.a.a();
-    asb localasb = (asb)localqm.h.get(Integer.valueOf(this.e));
-    if (localasb != null)
+    ql localql = ql.a.a();
+    asa localasa = (asa)localql.h.get(Integer.valueOf(this.e));
+    if (localasa != null)
     {
-      localasb.a(arrayOfInt);
-      localqm.h.remove(Integer.valueOf(this.e));
+      localasa.a(arrayOfInt);
+      localql.h.remove(Integer.valueOf(this.e));
     }
   }
   
   private void h()
   {
     finish();
-    qm localqm = qm.a.a();
+    ql localql = ql.a.a();
     if (this.f == 1)
     {
       localObject2 = new int[this.c.length];
@@ -785,15 +785,15 @@ public class PermissionGuideActivity
         if (i1 >= arrayOfInt.length) {
           break;
         }
-        if ((this.k.contains(Integer.valueOf(arrayOfInt[i1]))) && (localqm.c.a(this.c[i1]) == 2)) {
+        if ((this.k.contains(Integer.valueOf(arrayOfInt[i1]))) && (localql.c.a(this.c[i1]) == 2)) {
           localObject2[i1] = 0;
         } else {
-          localObject2[i1] = localqm.c.a(this.c[i1]);
+          localObject2[i1] = localql.c.a(this.c[i1]);
         }
         i1 += 1;
       }
     }
-    Object localObject2 = localqm.b(this.c);
+    Object localObject2 = localql.b(this.c);
     int i2 = 0;
     int i1 = 1;
     int i3;
@@ -820,25 +820,25 @@ public class PermissionGuideActivity
       i2 += 1;
     }
     if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5) && (i3 != -1)) {
-      ql.a(0L);
+      qk.a(0L);
     }
-    i1 = anw.b(((Integer)this.m.get(0)).intValue());
+    i1 = anv.b(((Integer)this.m.get(0)).intValue());
     if (i3 == 1) {
       a(i1, 271337);
     }
     Object localObject1 = localObject2;
     if (!this.h)
     {
-      qg.a(this, i1, i3, this.d, 0, this.p);
+      qf.a(this, i1, i3, this.d, 0, this.p);
       localObject1 = localObject2;
     }
-    localObject2 = (asb)localqm.h.get(Integer.valueOf(this.e));
+    localObject2 = (asa)localql.h.get(Integer.valueOf(this.e));
     if (localObject2 != null)
     {
       if (this.f != 2) {
-        ((asb)localObject2).a((int[])localObject1);
+        ((asa)localObject2).a((int[])localObject1);
       }
-      localqm.h.remove(Integer.valueOf(this.e));
+      localql.h.remove(Integer.valueOf(this.e));
     }
   }
   
@@ -851,7 +851,7 @@ public class PermissionGuideActivity
   
   public void onCallback()
   {
-    asd.b.a().a().a();
+    asc.b.a().a().a();
     this.j = true;
   }
   
@@ -902,7 +902,7 @@ public class PermissionGuideActivity
     if (paramIntent.getBooleanExtra("e_mab", false)) {
       return;
     }
-    qm.a.a();
+    ql.a.a();
     h();
   }
   

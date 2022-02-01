@@ -1,24 +1,11 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.pm.PackageManager;
+import com.oasisfeng.condom.PackageManagerWrapper;
 
-public class km
-  extends WifiManager
+public abstract interface km
 {
-  private WifiManager a;
-  
-  public km(WifiManager paramWifiManager)
-  {
-    this.a = paramWifiManager;
-  }
-  
-  @SuppressLint({"MissingPermission"})
-  public WifiInfo getConnectionInfo()
-  {
-    return this.a.getConnectionInfo();
-  }
+  public abstract PackageManagerWrapper a(PackageManager paramPackageManager);
 }
 
 

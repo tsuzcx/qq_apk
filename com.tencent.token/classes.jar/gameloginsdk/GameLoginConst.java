@@ -1,9 +1,9 @@
 package gameloginsdk;
 
-import com.tencent.token.apf;
+import com.tencent.token.ape;
 
 public class GameLoginConst
-  extends apf
+  extends ape
 {
   public static final int APPID_TYPE_DOUBLE_CONFIRM = 1;
   public static final int APPID_TYPE_NONE = 0;

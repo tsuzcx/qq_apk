@@ -1,39 +1,23 @@
 package com.tencent.token;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.telephony.TelephonyManager;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 
-@SuppressLint({"MissingPermission"})
 public class kl
-  extends TelephonyManager
+  extends WifiManager
 {
-  private TelephonyManager a;
+  private WifiManager a;
   
-  public kl(Context paramContext, TelephonyManager paramTelephonyManager)
+  public kl(WifiManager paramWifiManager)
   {
-    super(paramContext);
-    this.a = paramTelephonyManager;
+    this.a = paramWifiManager;
   }
   
-  public String getDeviceId()
+  @SuppressLint({"MissingPermission"})
+  public WifiInfo getConnectionInfo()
   {
-    return this.a.getDeviceId();
-  }
-  
-  public String getDeviceId(int paramInt)
-  {
-    return this.a.getDeviceId(paramInt);
-  }
-  
-  public String getImei()
-  {
-    return this.a.getImei();
-  }
-  
-  public String getImei(int paramInt)
-  {
-    return this.a.getImei(paramInt);
+    return this.a.getConnectionInfo();
   }
 }
 

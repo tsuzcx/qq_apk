@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 
 public final class Guava
@@ -17,9 +17,9 @@ public final class Guava
   public int action = 0;
   public int oc = 0;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Mc = paramafl.a(this.Mc, 0, true);
+    this.Mc = paramafk.a(this.Mc, 0, true);
     Object localObject;
     if (Kc == null)
     {
@@ -27,43 +27,43 @@ public final class Guava
       localObject = new Herbaceous();
       Kc.add(localObject);
     }
-    this.Nc = ((ArrayList)paramafl.a(Kc, 1, true));
-    this.oc = paramafl.a(this.oc, 2, false);
-    this.action = paramafl.a(this.action, 3, false);
-    this.Oc = paramafl.a(this.Oc, 4, false);
-    this.Pc = paramafl.a(this.Pc, 5, false);
+    this.Nc = ((ArrayList)paramafk.a(Kc, 1, true));
+    this.oc = paramafk.a(this.oc, 2, false);
+    this.action = paramafk.a(this.action, 3, false);
+    this.Oc = paramafk.a(this.Oc, 4, false);
+    this.Pc = paramafk.a(this.Pc, 5, false);
     if (Lc == null)
     {
       Lc = new ArrayList();
       localObject = new Lemon();
       Lc.add(localObject);
     }
-    this.Qc = ((ArrayList)paramafl.a(Lc, 6, false));
+    this.Qc = ((ArrayList)paramafk.a(Lc, 6, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Mc, 0);
-    paramafo.a(this.Nc, 1);
+    paramafn.a(this.Mc, 0);
+    paramafn.a(this.Nc, 1);
     int i = this.oc;
     if (i != 0) {
-      paramafo.a(i, 2);
+      paramafn.a(i, 2);
     }
     i = this.action;
     if (i != 0) {
-      paramafo.a(i, 3);
+      paramafn.a(i, 3);
     }
     double d = this.Oc;
     if (d != 0.0D) {
-      paramafo.a(d, 4);
+      paramafn.a(d, 4);
     }
     d = this.Pc;
     if (d != 0.0D) {
-      paramafo.a(d, 5);
+      paramafn.a(d, 5);
     }
     ArrayList localArrayList = this.Qc;
     if (localArrayList != null) {
-      paramafo.a(localArrayList, 6);
+      paramafn.a(localArrayList, 6);
     }
   }
 }

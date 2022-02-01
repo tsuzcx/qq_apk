@@ -1,52 +1,18 @@
 package com.tencent.token;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.io.IOException;
 
 public final class ajg
+  extends RuntimeException
 {
-  private final Set<ait> a = new LinkedHashSet();
+  public IOException a;
+  public IOException b;
   
-  public final void a(ait paramait)
+  public ajg(IOException paramIOException)
   {
-    try
-    {
-      this.a.add(paramait);
-      return;
-    }
-    finally
-    {
-      paramait = finally;
-      throw paramait;
-    }
-  }
-  
-  public final void b(ait paramait)
-  {
-    try
-    {
-      this.a.remove(paramait);
-      return;
-    }
-    finally
-    {
-      paramait = finally;
-      throw paramait;
-    }
-  }
-  
-  public final boolean c(ait paramait)
-  {
-    try
-    {
-      boolean bool = this.a.contains(paramait);
-      return bool;
-    }
-    finally
-    {
-      paramait = finally;
-      throw paramait;
-    }
+    super(paramIOException);
+    this.a = paramIOException;
+    this.b = paramIOException;
   }
 }
 

@@ -1,85 +1,64 @@
 package com.tencent.token;
 
-import android.view.View;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.turingfd.sdk.base.instanceof;
+import com.tencent.turingfd.sdk.base.synchronized;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.SecureRandom;
+import java.security.spec.X509EncodedKeySpec;
+import javax.crypto.Cipher;
 
 public final class abp
 {
-  public static final afk<abp> a = new a();
-  public Map<String, d> b = new HashMap();
-  public Map<String, b> c = new HashMap();
-  public abs d;
+  public String a = "";
+  public String b = "";
+  public long c = 0L;
+  public long d = 0L;
+  public String e = new String(aey.b());
   
-  public static final class a
-    extends afk<abp>
+  public final acb a()
   {
-    public final Object a()
+    Object localObject1 = new SecureRandom();
+    Object localObject2 = new StringBuilder();
+    int i = 0;
+    while (i < 16)
     {
-      return new abp((byte)0);
+      ((StringBuilder)localObject2).append("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(((SecureRandom)localObject1).nextInt(62)));
+      i += 1;
     }
+    this.b = ((StringBuilder)localObject2).toString();
+    localObject2 = this.b;
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+    localObject1 = null;
+    if (!bool) {
+      try
+      {
+        Object localObject3 = aeg.a("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDb49jFnNqMDLdl87UtY5jOMqqdMuvQg65Zuva3Qm1tORQGBuM04u7fqygA64XbOx9e/KPNkDNDmqS8SlsAPL1fV2lqM/phgV0NY62TJqSR+PLngwJd2rhYR8wQ1N0JE+R59a5c08EGsd6axStjHsVu2+evCf/SWU9Y/oQpEtOjGwIDAQAB");
+        localObject3 = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject3));
+        Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+        localCipher.init(1, (Key)localObject3);
+        localObject2 = localCipher.doFinal(((String)localObject2).getBytes());
+        localObject1 = localObject2;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    instanceof localinstanceof = new instanceof();
+    localinstanceof.mb = ((byte[])localObject1);
+    localObject1 = new acb.a(152, 10152, 0);
+    ((acb.a)localObject1).d = localinstanceof;
+    ((acb.a)localObject1).f = new synchronized();
+    return ((acb.a)localObject1).a();
   }
   
-  public final class b
-    implements abt
+  public final void a(synchronized paramsynchronized)
   {
-    public int a;
-    
-    public b(int paramInt)
-    {
-      this.a = paramInt;
-    }
-    
-    public final void a(String paramString, View paramView)
-    {
-      abp.a(abp.this).a(paramString, this.a, 3, null);
-    }
-  }
-  
-  public final class c
-  {
-    public final int a;
-    public final float b;
-    public final float c;
-    public final float d;
-    public final float e;
-    
-    public c(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-    {
-      this.a = this$1;
-      this.b = paramFloat1;
-      this.c = paramFloat2;
-      this.d = paramFloat3;
-      this.e = paramFloat4;
-    }
-  }
-  
-  public final class d
-  {
-    public int a;
-    public long b = -1L;
-    public long c;
-    public List<abp.c> d = new ArrayList();
-    public String e;
-    public boolean f = false;
-    public boolean g = false;
-    
-    public d(String paramString, int paramInt)
-    {
-      this.a = paramInt;
-      this.e = paramString;
-    }
-    
-    public final void a()
-    {
-      this.b = -1L;
-      this.c = 0L;
-      this.d.clear();
-      this.f = false;
-      this.g = false;
-    }
+    this.c = System.currentTimeMillis();
+    this.d = (paramsynchronized.ob * 1000 / 10);
+    this.a = paramsynchronized.A;
   }
 }
 

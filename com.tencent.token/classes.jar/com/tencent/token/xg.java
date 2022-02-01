@@ -1,37 +1,48 @@
 package com.tencent.token;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public final class xg
-  implements xj, ThreadFactory
+  extends ThreadPoolExecutor
 {
-  private final ThreadGroup b = new ThreadGroup("TMS-COMMON");
-  private final AtomicInteger c = new AtomicInteger(1);
-  private final String d;
+  a a = null;
   
-  xg()
+  public xg(int paramInt, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, RejectedExecutionHandler paramRejectedExecutionHandler)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CTPl-");
-    localStringBuilder.append(a.getAndIncrement());
-    localStringBuilder.append("-Td-");
-    this.d = localStringBuilder.toString();
+    super(0, paramInt, 3L, paramTimeUnit, paramBlockingQueue, new xf(), paramRejectedExecutionHandler);
   }
   
-  public final Thread newThread(Runnable paramRunnable)
+  protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    ThreadGroup localThreadGroup = this.b;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(this.c.getAndIncrement());
-    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    super.afterExecute(paramRunnable, paramThrowable);
+    paramThrowable = this.a;
+    if (paramThrowable != null) {
+      paramThrowable.a(paramRunnable);
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
+  }
+  
+  protected final void beforeExecute(Thread paramThread, Runnable paramRunnable)
+  {
+    super.beforeExecute(paramThread, paramRunnable);
+    a locala = this.a;
+    if (locala != null) {
+      locala.a(paramThread, paramRunnable);
     }
-    return paramRunnable;
+  }
+  
+  public final void execute(Runnable paramRunnable)
+  {
+    super.execute(paramRunnable);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(Runnable paramRunnable);
+    
+    public abstract void a(Thread paramThread, Runnable paramRunnable);
   }
 }
 

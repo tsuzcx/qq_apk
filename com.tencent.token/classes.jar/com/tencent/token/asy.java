@@ -1,55 +1,35 @@
 package com.tencent.token;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public final class asy
 {
-  private static boolean a = false;
-  private static String[] b;
-  private static long[] c;
-  private static int d;
-  private static int e;
+  boolean a;
+  private final List<Object> b;
+  private Map<String, atc> c;
   
-  public static void a(String paramString)
+  public final void a(String paramString, float paramFloat)
   {
-    if (!a) {
+    if (!this.a) {
       return;
     }
-    int i = d;
-    if (i == 20)
+    atc localatc2 = (atc)this.c.get(paramString);
+    atc localatc1 = localatc2;
+    if (localatc2 == null)
     {
-      e += 1;
-      return;
+      localatc1 = new atc();
+      this.c.put(paramString, localatc1);
     }
-    b[i] = paramString;
-    c[i] = System.nanoTime();
-    d += 1;
-  }
-  
-  public static float b(String paramString)
-  {
-    int i = e;
-    if (i > 0)
+    localatc1.a(paramFloat);
+    if (paramString.equals("root"))
     {
-      e = i - 1;
-      return 0.0F;
-    }
-    if (!a) {
-      return 0.0F;
-    }
-    i = d - 1;
-    d = i;
-    if (i != -1)
-    {
-      if (paramString.equals(b[d])) {
-        return (float)(System.nanoTime() - c[d]) / 1000000.0F;
+      paramString = this.b.iterator();
+      while (paramString.hasNext()) {
+        paramString.next();
       }
-      StringBuilder localStringBuilder = new StringBuilder("Unbalanced trace call ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(". Expected ");
-      localStringBuilder.append(b[d]);
-      localStringBuilder.append(".");
-      throw new IllegalStateException(localStringBuilder.toString());
     }
-    throw new IllegalStateException("Can't end trace section. There are none.");
   }
 }
 

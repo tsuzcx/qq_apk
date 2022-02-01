@@ -1,26 +1,32 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
+import java.util.TimeZone;
 
-final class px
-  extends PhoneStateListener
+public final class px
 {
-  px(pw parampw) {}
+  private static final long[] a = { 300L, 200L, 300L, 200L };
+  private static final TimeZone b = TimeZone.getTimeZone("GMT");
+  private static final char[] c = { 9, 10, 13 };
+  private static final char[] d = { 60, 62, 34, 39, 38 };
+  private static final String[] e = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;" };
   
-  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public static String a(String paramString)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    if (pw.a(this.a) == 2) {
-      pw.a(paramSignalStrength.getCdmaDbm());
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if (pw.a(this.a) == 1) {
-      pw.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
-    }
-    if (pw.b(this.a) != null) {
-      pw.b(this.a).listen(pw.c(this.a), 0);
-    }
+    return str;
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte)
+  {
+    return (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0);
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return (paramString == null) || (paramString.length() <= 0);
   }
 }
 

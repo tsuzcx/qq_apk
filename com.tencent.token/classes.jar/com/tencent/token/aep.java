@@ -2,10 +2,15 @@ package com.tencent.token;
 
 public final class aep
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  static
+  {
+    new String(aey.d("414553"));
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    return aey.e(aey.d(paramArrayOfByte)).getBytes();
+  }
 }
 
 

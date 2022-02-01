@@ -1,35 +1,44 @@
 package com.tencent.token;
 
-public abstract interface apz
-  extends apw, apx
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class apz
 {
-  public abstract void a(long paramLong);
+  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct)
+  {
+    if (paramJceStruct == null) {
+      return null;
+    }
+    paramJceStruct.recyle();
+    paramJceStruct.readFrom(b(paramArrayOfByte));
+    return paramJceStruct;
+  }
   
-  public abstract void a(ag paramag);
+  public static am a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = a(paramArrayOfByte, new am());
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return (am)paramArrayOfByte;
+  }
   
-  public abstract void a(String paramString);
+  public static byte[] a(JceStruct paramJceStruct)
+  {
+    JceOutputStream localJceOutputStream = new JceOutputStream();
+    localJceOutputStream.setServerEncoding("UTF-8");
+    paramJceStruct.writeTo(localJceOutputStream);
+    return localJceOutputStream.toByteArray();
+  }
   
-  public abstract void b(long paramLong);
-  
-  public abstract void b(String paramString);
-  
-  public abstract String c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract String d();
-  
-  public abstract String e();
-  
-  public abstract String f();
-  
-  public abstract ag g();
-  
-  public abstract ag h();
-  
-  public abstract long i();
-  
-  public abstract long j();
+  private static JceInputStream b(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+    paramArrayOfByte.setServerEncoding("UTF-8");
+    return paramArrayOfByte;
+  }
 }
 
 

@@ -12,8 +12,8 @@ import com.tencent.token.ui.base.DualMsgShowDialog;
 import com.tencent.token.ui.base.DualMsgView;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.wz;
-import com.tencent.token.xb;
+import com.tencent.token.wy;
+import com.tencent.token.xa;
 
 public class GetBarcodeVerifyMsgActivity
   extends BaseActivity
@@ -27,7 +27,7 @@ public class GetBarcodeVerifyMsgActivity
     }
   };
   private DualMsgShowDialog mDualMsgShowDialog = null;
-  private UserTask<String, String, wz> mGetDualMsgTask = null;
+  private UserTask<String, String, wy> mGetDualMsgTask = null;
   private ProgressBar mPreparePro;
   private TextView mPrepareText;
   private boolean mQueryingDualMsg = false;
@@ -85,7 +85,7 @@ public class GetBarcodeVerifyMsgActivity
       this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
       paramBundle = new StringBuilder(", aq verify: ");
       paramBundle.append(this.mAqVerifyBarcodeContent);
-      xb.a(paramBundle.toString());
+      xa.a(paramBundle.toString());
       hideTitle();
       return;
     }

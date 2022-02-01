@@ -1,209 +1,279 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.util.LongSparseArray;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.Toolbar.b;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window.Callback;
+import java.util.ArrayList;
 
-final class gk
+public final class gk
+  extends ActionBar
 {
-  private static Field a;
-  private static boolean b;
-  private static Class c;
-  private static boolean d;
-  private static Field e;
-  private static boolean f;
-  private static Field g;
-  private static boolean h;
-  
-  static boolean a(Resources paramResources)
+  ip a;
+  boolean b;
+  public Window.Callback c;
+  private boolean d;
+  private boolean e;
+  private ArrayList<Object> f = new ArrayList();
+  private final Runnable g = new Runnable()
   {
-    if (!b) {}
-    try
+    public final void run()
     {
-      Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      a = localField;
-      localField.setAccessible(true);
-      label23:
-      b = true;
-      localField = a;
-      if (localField != null) {}
+      gk localgk = gk.this;
+      Menu localMenu = localgk.i();
+      hl localhl;
+      if ((localMenu instanceof hl)) {
+        localhl = (hl)localMenu;
+      } else {
+        localhl = null;
+      }
+      if (localhl != null) {
+        localhl.d();
+      }
       try
       {
-        paramResources = (Map)localField.get(paramResources);
+        localMenu.clear();
+        if ((!localgk.c.onCreatePanelMenu(0, localMenu)) || (!localgk.c.onPreparePanel(0, null, localMenu))) {
+          localMenu.clear();
+        }
+        return;
+        return;
       }
-      catch (IllegalAccessException paramResources)
+      finally
       {
-        label47:
-        break label47;
+        if (localhl != null) {
+          localhl.e();
+        }
       }
-      paramResources = null;
-      if (paramResources != null)
+    }
+  };
+  private final Toolbar.b h = new Toolbar.b()
+  {
+    public final boolean a(MenuItem paramAnonymousMenuItem)
+    {
+      return gk.this.c.onMenuItemSelected(0, paramAnonymousMenuItem);
+    }
+  };
+  
+  public gk(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
+  {
+    this.a = new jf(paramToolbar, false);
+    this.c = new c(paramCallback);
+    this.a.a(this.c);
+    paramToolbar.setOnMenuItemClickListener(this.h);
+    this.a.a(paramCharSequence);
+  }
+  
+  public final int a()
+  {
+    return this.a.m();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    ew.a(this.a.a(), paramFloat);
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.a.d(paramInt);
+  }
+  
+  public final void a(Configuration paramConfiguration)
+  {
+    super.a(paramConfiguration);
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.a.a(paramCharSequence);
+  }
+  
+  public final void a(boolean paramBoolean) {}
+  
+  public final boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    Menu localMenu = i();
+    if (localMenu != null)
+    {
+      if (paramKeyEvent != null) {
+        i = paramKeyEvent.getDeviceId();
+      } else {
+        i = -1;
+      }
+      int i = KeyCharacterMap.load(i).getKeyboardType();
+      boolean bool = true;
+      if (i == 1) {
+        bool = false;
+      }
+      localMenu.setQwertyMode(bool);
+      return localMenu.performShortcut(paramInt, paramKeyEvent, 0);
+    }
+    return false;
+  }
+  
+  public final boolean a(KeyEvent paramKeyEvent)
+  {
+    if (paramKeyEvent.getAction() == 1) {
+      d();
+    }
+    return true;
+  }
+  
+  public final Context b()
+  {
+    return this.a.b();
+  }
+  
+  public final void b(boolean paramBoolean) {}
+  
+  public final void c(boolean paramBoolean)
+  {
+    if (paramBoolean == this.e) {
+      return;
+    }
+    this.e = paramBoolean;
+    int j = this.f.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.f.get(i);
+      i += 1;
+    }
+  }
+  
+  public final boolean d()
+  {
+    return this.a.i();
+  }
+  
+  public final boolean e()
+  {
+    return this.a.j();
+  }
+  
+  public final boolean f()
+  {
+    this.a.a().removeCallbacks(this.g);
+    ew.a(this.a.a(), this.g);
+    return true;
+  }
+  
+  public final boolean g()
+  {
+    if (this.a.c())
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
+  
+  public final void h()
+  {
+    this.a.a().removeCallbacks(this.g);
+  }
+  
+  final Menu i()
+  {
+    if (!this.d)
+    {
+      this.a.a(new a(), new b());
+      this.d = true;
+    }
+    return this.a.o();
+  }
+  
+  final class a
+    implements hs.a
+  {
+    private boolean b;
+    
+    a() {}
+    
+    public final void a(hl paramhl, boolean paramBoolean)
+    {
+      if (this.b) {
+        return;
+      }
+      this.b = true;
+      gk.this.a.l();
+      if (gk.this.c != null) {
+        gk.this.c.onPanelClosed(108, paramhl);
+      }
+      this.b = false;
+    }
+    
+    public final boolean a(hl paramhl)
+    {
+      if (gk.this.c != null)
       {
-        paramResources.clear();
+        gk.this.c.onMenuOpened(108, paramhl);
         return true;
       }
       return false;
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+  }
+  
+  final class b
+    implements hl.a
+  {
+    b() {}
+    
+    public final void a(hl paramhl)
     {
-      break label23;
+      if (gk.this.c != null)
+      {
+        if (gk.this.a.g())
+        {
+          gk.this.c.onPanelClosed(108, paramhl);
+          return;
+        }
+        if (gk.this.c.onPreparePanel(0, null, paramhl)) {
+          gk.this.c.onMenuOpened(108, paramhl);
+        }
+      }
+    }
+    
+    public final boolean a(hl paramhl, MenuItem paramMenuItem)
+    {
+      return false;
     }
   }
   
-  private static boolean a(Object paramObject)
+  final class c
+    extends hd
   {
-    if (!d) {}
-    try
+    public c(Window.Callback paramCallback)
     {
-      c = Class.forName("android.content.res.ThemedResourceCache");
-      d = true;
-      localObject = c;
-      if (localObject == null) {
-        return false;
-      }
-      if (f) {}
+      super();
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    
+    public final View onCreatePanelView(int paramInt)
     {
-      try
-      {
-        Object localObject = ((Class)localObject).getDeclaredField("mUnthemedEntries");
-        e = (Field)localObject;
-        ((Field)localObject).setAccessible(true);
-        label50:
-        f = true;
-        localObject = e;
-        if (localObject == null) {
-          return false;
-        }
-        try
-        {
-          paramObject = (LongSparseArray)((Field)localObject).get(paramObject);
-        }
-        catch (IllegalAccessException paramObject)
-        {
-          label76:
-          break label76;
-        }
-        paramObject = null;
-        if (paramObject != null)
-        {
-          paramObject.clear();
-          return true;
-        }
-        return false;
-        localClassNotFoundException = localClassNotFoundException;
+      if (paramInt == 0) {
+        return new View(gk.this.a.b());
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        break label50;
-      }
+      return super.onCreatePanelView(paramInt);
     }
-  }
-  
-  static boolean b(Resources paramResources)
-  {
-    if (!b) {}
-    try
+    
+    public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
     {
-      localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      a = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      b = true;
-      localObject3 = null;
-      localField = a;
-      localObject1 = localObject3;
-      if (localField == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      try
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if ((bool) && (!gk.this.b))
       {
-        Field localField;
-        Object localObject1 = localField.get(paramResources);
-        if (localObject1 == null) {
-          return false;
-        }
-        return (localObject1 != null) && (a(localObject1));
-        localNoSuchFieldException = localNoSuchFieldException;
+        gk.this.a.k();
+        gk.this.b = true;
       }
-      catch (IllegalAccessException paramResources)
-      {
-        for (;;)
-        {
-          Object localObject3;
-          Object localObject2 = localObject3;
-        }
-      }
-    }
-  }
-  
-  static boolean c(Resources paramResources)
-  {
-    if (!h) {}
-    try
-    {
-      localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      g = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      h = true;
-      localObject1 = g;
-      if (localObject1 == null) {
-        return false;
-      }
-      localObject3 = null;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException2)
-    {
-      try
-      {
-        paramResources = ((Field)localObject1).get(paramResources);
-        break label50;
-        paramResources = null;
-        label50:
-        if (paramResources == null) {
-          return false;
-        }
-        if (b) {}
-      }
-      catch (IllegalAccessException localNoSuchFieldException2)
-      {
-        try
-        {
-          localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-          a = (Field)localObject1;
-          ((Field)localObject1).setAccessible(true);
-          b = true;
-          localField = a;
-          localObject1 = localObject3;
-          if (localField == null) {}
-        }
-        catch (NoSuchFieldException localNoSuchFieldException2)
-        {
-          try
-          {
-            for (;;)
-            {
-              Field localField;
-              Object localObject1 = localField.get(paramResources);
-              return (localObject1 != null) && (a(localObject1));
-              localNoSuchFieldException1 = localNoSuchFieldException1;
-              continue;
-              paramResources = paramResources;
-            }
-            localNoSuchFieldException2 = localNoSuchFieldException2;
-          }
-          catch (IllegalAccessException paramResources)
-          {
-            for (;;)
-            {
-              Object localObject3;
-              Object localObject2 = localObject3;
-            }
-          }
-        }
-      }
+      return bool;
     }
   }
 }

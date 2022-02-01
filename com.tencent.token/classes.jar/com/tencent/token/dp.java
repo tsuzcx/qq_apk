@@ -1,10 +1,15 @@
 package com.tencent.token;
 
-import android.view.SubMenu;
+import android.os.Build.VERSION;
 
-public abstract interface dp
-  extends SubMenu, dn
-{}
+public final class dp
+{
+  @Deprecated
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 27;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

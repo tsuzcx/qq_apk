@@ -1,40 +1,25 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public final class apd
 {
-  private static volatile boolean a = false;
-  private static volatile String b;
-  private static volatile boolean c = false;
-  private static volatile boolean d = false;
-  private static volatile long e;
-  private static volatile long f;
-  private static Object g = new Object();
-  private static ArrayList h = new ArrayList();
+  public SharedPreferences a;
+  private SharedPreferences.Editor b;
   
-  public static boolean a()
+  public apd(String paramString)
   {
-    for (;;)
-    {
-      synchronized (g)
-      {
-        long l = System.currentTimeMillis();
-        if (f - l > 5184000L)
-        {
-          i = 1;
-          if (f - l < 0L) {
-            break label75;
-          }
-          j = 1;
-          return (i == 0) && (j != 0);
-        }
-      }
-      int i = 0;
-      continue;
-      label75:
-      int j = 0;
+    this.a = aos.a().getSharedPreferences(paramString, 0);
+  }
+  
+  public final SharedPreferences.Editor a()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
     }
+    return this.b;
   }
 }
 

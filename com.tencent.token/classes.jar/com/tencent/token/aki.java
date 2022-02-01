@@ -1,17 +1,45 @@
 package com.tencent.token;
 
-public abstract interface aki
+public final class aki
 {
-  public static final aki a = new aki()
-  {
-    public final boolean a(alb paramAnonymousalb, int paramAnonymousInt)
-    {
-      paramAnonymousalb.g(paramAnonymousInt);
-      return true;
-    }
-  };
+  int a;
+  final int[] b = new int[10];
   
-  public abstract boolean a(alb paramalb, int paramInt);
+  final int a()
+  {
+    if ((this.a & 0x2) != 0) {
+      return this.b[1];
+    }
+    return -1;
+  }
+  
+  final aki a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 >= 0)
+    {
+      int[] arrayOfInt = this.b;
+      if (paramInt1 >= arrayOfInt.length) {
+        return this;
+      }
+      this.a = (1 << paramInt1 | this.a);
+      arrayOfInt[paramInt1] = paramInt2;
+      return this;
+    }
+    return this;
+  }
+  
+  final boolean a(int paramInt)
+  {
+    return (1 << paramInt & this.a) != 0;
+  }
+  
+  final int b()
+  {
+    if ((this.a & 0x80) != 0) {
+      return this.b[7];
+    }
+    return 65535;
+  }
 }
 
 

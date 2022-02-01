@@ -9,51 +9,60 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class wg
-  extends tk
+  extends tj
 {
   private long d;
   private String e;
-  private int f;
+  private String f;
+  private String g;
+  private int h;
+  private String i;
+  private String j;
+  private String k;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramaar.c.get("param.loginmsg.reportlocation"));
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.h = ((Integer)paramaaq.c.get("param.mbmobile.set")).intValue();
+    this.i = ((String)paramaaq.c.get("param.mbmobile.mobile"));
+    this.j = ((String)paramaaq.c.get("param.mbmoible.areacode"));
+    this.k = ((String)paramaaq.c.get("param.wtlogin.a2"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int m = paramJSONObject.getInt("err");
+    if (m == 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = aac.d(paramJSONObject.getString("data"));
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = new JSONObject(new String(paramJSONObject));
+        if (paramJSONObject.getInt("seq_id") != this.c)
+        {
+          a(10000, RqdApplication.n().getString(2131493068));
+          return;
+        }
+        this.a.a = 0;
+        this.f = paramJSONObject.getString("time1");
+        this.g = paramJSONObject.getString("time2");
+        this.e = paramJSONObject.optString("extraInfo");
+        return;
+      }
+      xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      this.a.a(10022, RqdApplication.n().getString(2131493068), RqdApplication.n().getString(2131493068));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      try
-      {
-        this.f = paramJSONObject.getInt("is_priv_ip_user");
-      }
-      catch (JSONException paramJSONObject)
-      {
-        this.f = -1;
-        paramJSONObject.printStackTrace();
-      }
-      this.a.a = 0;
-      return;
-    }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    paramJSONObject = paramJSONObject.getString("info");
+    this.e = paramJSONObject;
+    a(m, paramJSONObject);
   }
   
   public final void b()
@@ -62,7 +71,18 @@ public final class wg
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.arg2 = this.f;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("info", this.e);
+        localJSONObject.put("time1", this.f);
+        localJSONObject.put("time2", this.g);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      localMessage.obj = localJSONObject;
       localMessage.sendToTarget();
       this.b.e = true;
     }

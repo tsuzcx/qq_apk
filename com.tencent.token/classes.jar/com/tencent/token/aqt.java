@@ -1,26 +1,70 @@
 package com.tencent.token;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
 
 public final class aqt
 {
-  public static PendingIntent a(Context paramContext, String paramString, long paramLong)
+  public Context a = null;
+  Handler b = null;
+  public long c = 180000L;
+  aqv d = null;
+  private boolean e = false;
+  private aqu f = null;
+  private long g = 10000L;
+  
+  public aqt(Context paramContext, aqv paramaqv)
   {
-    StringBuilder localStringBuilder = new StringBuilder("添加闹钟 : ");
-    localStringBuilder.append(paramLong / 1000L);
-    localStringBuilder.append("s");
-    paramString = PendingIntent.getBroadcast(paramContext, 0, new Intent(paramString), 0);
-    ((AlarmManager)paramContext.getSystemService("alarm")).set(0, System.currentTimeMillis() + paramLong, paramString);
-    return paramString;
+    this.a = paramContext;
+    this.f = new aqu(this);
+    if (this.a == null) {
+      return;
+    }
+    this.d = paramaqv;
+    this.b = new aqx(this);
   }
   
-  public static void a(Context paramContext, String paramString)
+  public final void a()
   {
-    paramString = PendingIntent.getBroadcast(paramContext, 0, new Intent(paramString), 0);
-    ((AlarmManager)paramContext.getSystemService("alarm")).cancel(paramString);
+    try
+    {
+      b();
+      if (!this.e)
+      {
+        this.a.registerReceiver(this.f, new IntentFilter("com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE"));
+        this.e = true;
+      }
+      aqs.a(this.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE", this.c);
+      return;
+    }
+    finally {}
+  }
+  
+  public final void a(long paramLong)
+  {
+    long l2 = this.g;
+    long l1 = paramLong;
+    if (paramLong < l2) {
+      l1 = l2;
+    }
+    this.c = l1;
+  }
+  
+  public final void b()
+  {
+    try
+    {
+      if (this.e)
+      {
+        this.a.unregisterReceiver(this.f);
+        this.e = false;
+      }
+      aqs.a(this.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE");
+      this.b.removeMessages(0);
+      return;
+    }
+    finally {}
   }
 }
 

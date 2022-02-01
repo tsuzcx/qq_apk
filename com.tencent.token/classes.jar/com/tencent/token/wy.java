@@ -1,232 +1,153 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.token.global.RqdApplication;
+
 public final class wy
 {
-  public static String[] a = { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z" };
-  public static String[][] b;
-  public static String[][] c;
+  public int a;
+  public String b;
+  public String c;
+  public Object d;
+  public Object e;
   
-  static
+  public wy()
   {
-    String[] arrayOfString1 = { "852", "中国香港" };
-    b = new String[][] { { "86", "中国大陆" }, arrayOfString1, { "853", "中国澳门" }, { "886", "中国台湾" }, { "1", "美国" }, { "81", "日本" }, { "82", "韩国" }, { "65", "新加坡" }, { "1", "加拿大" }, { "61", "澳大利亚" } };
-    arrayOfString1 = new String[] { "86", "中国" };
-    String[] arrayOfString2 = { "1", "美国" };
-    String[] arrayOfString3 = { "81", "日本" };
-    String[] arrayOfString4 = { "82", "韩国" };
-    String[] arrayOfString5 = { "65", "新加坡" };
-    String[] arrayOfString6 = { "1", "加拿大" };
-    String[] arrayOfString7 = { "61", "澳大利亚" };
-    String[] arrayOfString8 = { "7", "俄罗斯" };
-    String[] arrayOfString9 = { "20", "埃及" };
-    String[] arrayOfString10 = { "27", "南非\t" };
-    String[] arrayOfString11 = { "30", "希腊" };
-    String[] arrayOfString12 = { "31", "荷兰\t" };
-    String[] arrayOfString13 = { "32", "比利时" };
-    String[] arrayOfString14 = { "33", "法国" };
-    String[] arrayOfString15 = { "34", "西班牙" };
-    String[] arrayOfString16 = { "36", "匈牙利" };
-    String[] arrayOfString17 = { "39", "意大利" };
-    String[] arrayOfString18 = { "40", "罗马尼亚" };
-    String[] arrayOfString19 = { "41", "瑞士" };
-    String[] arrayOfString20 = { "43", "奥地利" };
-    String[] arrayOfString21 = { "44", "英国" };
-    String[] arrayOfString22 = { "45", "丹麦" };
-    String[] arrayOfString23 = { "46", "瑞典" };
-    String[] arrayOfString24 = { "47", "挪威" };
-    String[] arrayOfString25 = { "48", "波兰" };
-    String[] arrayOfString26 = { "49", "德国" };
-    String[] arrayOfString27 = { "51", "秘鲁" };
-    String[] arrayOfString28 = { "52", "墨西哥" };
-    String[] arrayOfString29 = { "53", "古巴" };
-    String[] arrayOfString30 = { "55", "巴西" };
-    String[] arrayOfString31 = { "56", "智利" };
-    String[] arrayOfString32 = { "57", "哥伦比亚" };
-    String[] arrayOfString33 = { "58", "委内瑞拉" };
-    String[] arrayOfString34 = { "60", "马来西亚" };
-    String[] arrayOfString35 = { "62", "印度尼西亚" };
-    String[] arrayOfString36 = { "63", "菲律宾" };
-    String[] arrayOfString37 = { "64", "新西兰" };
-    String[] arrayOfString38 = { "66", "泰国" };
-    String[] arrayOfString39 = { "84", "越南" };
-    String[] arrayOfString40 = { "90", "土耳其" };
-    String[] arrayOfString41 = { "91", "印度" };
-    String[] arrayOfString42 = { "92", "巴基斯坦" };
-    String[] arrayOfString43 = { "93", "阿富汗" };
-    String[] arrayOfString44 = { "94", "斯里兰卡" };
-    String[] arrayOfString45 = { "95", "缅甸" };
-    String[] arrayOfString46 = { "98", "伊朗" };
-    String[] arrayOfString47 = { "212", "摩洛哥" };
-    String[] arrayOfString48 = { "213", "阿尔及利亚" };
-    String[] arrayOfString49 = { "216", "突尼斯" };
-    String[] arrayOfString50 = { "218", "利比亚" };
-    String[] arrayOfString51 = { "220", "冈比亚" };
-    String[] arrayOfString52 = { "221", "塞内加尔" };
-    String[] arrayOfString53 = { "223", "马里" };
-    String[] arrayOfString54 = { "224", "几内亚" };
-    String[] arrayOfString55 = { "225", "科特迪瓦共和国" };
-    String[] arrayOfString56 = { "226", "布基纳法索国" };
-    String[] arrayOfString57 = { "227", "尼日尔" };
-    String[] arrayOfString58 = { "228", "多哥" };
-    String[] arrayOfString59 = { "229", "贝宁" };
-    String[] arrayOfString60 = { "230", "毛里求斯" };
-    String[] arrayOfString61 = { "231", "利比里亚" };
-    String[] arrayOfString62 = { "232", "塞拉利昂" };
-    String[] arrayOfString63 = { "233", "加纳" };
-    String[] arrayOfString64 = { "234", "尼日利亚" };
-    String[] arrayOfString65 = { "235", "乍得" };
-    String[] arrayOfString66 = { "236", "中非共和国" };
-    String[] arrayOfString67 = { "237", "喀麦隆" };
-    String[] arrayOfString68 = { "239", "圣多美和普林西比" };
-    String[] arrayOfString69 = { "241", "加蓬" };
-    String[] arrayOfString70 = { "242", "刚果共和国（布）" };
-    String[] arrayOfString71 = { "243", "刚果民主共和国（金）" };
-    String[] arrayOfString72 = { "244", "安哥拉" };
-    String[] arrayOfString73 = { "248", "塞舌尔" };
-    String[] arrayOfString74 = { "249", "苏丹" };
-    String[] arrayOfString75 = { "251", "埃塞俄比亚" };
-    String[] arrayOfString76 = { "252", "索马里" };
-    String[] arrayOfString77 = { "253", "吉布提" };
-    String[] arrayOfString78 = { "254", "肯尼亚" };
-    String[] arrayOfString79 = { "255", "坦桑尼亚" };
-    String[] arrayOfString80 = { "256", "乌干达" };
-    String[] arrayOfString81 = { "257", "布隆迪" };
-    String[] arrayOfString82 = { "258", "莫桑比克" };
-    String[] arrayOfString83 = { "260", "赞比亚" };
-    String[] arrayOfString84 = { "261", "马达加斯加" };
-    String[] arrayOfString85 = { "263", "津巴布韦" };
-    String[] arrayOfString86 = { "264", "纳米比亚" };
-    String[] arrayOfString87 = { "265", "马拉维" };
-    String[] arrayOfString88 = { "266", "莱索托" };
-    String[] arrayOfString89 = { "267", "博茨瓦纳" };
-    String[] arrayOfString90 = { "350", "直布罗陀" };
-    String[] arrayOfString91 = { "351", "葡萄牙" };
-    String[] arrayOfString92 = { "352", "卢森堡" };
-    String[] arrayOfString93 = { "353", "爱尔兰" };
-    String[] arrayOfString94 = { "354", "冰岛" };
-    String[] arrayOfString95 = { "355", "阿尔巴尼亚" };
-    String[] arrayOfString96 = { "356", "马耳他" };
-    String[] arrayOfString97 = { "357", "塞浦路斯" };
-    String[] arrayOfString98 = { "358", "芬兰" };
-    String[] arrayOfString99 = { "359", "保加利亚" };
-    String[] arrayOfString100 = { "370", "立陶宛" };
-    String[] arrayOfString101 = { "372", "爱沙尼亚" };
-    String[] arrayOfString102 = { "373", "摩尔多瓦" };
-    String[] arrayOfString103 = { "374", "亚美尼亚" };
-    String[] arrayOfString104 = { "375", "白俄罗斯" };
-    String[] arrayOfString105 = { "376", "安道尔" };
-    String[] arrayOfString106 = { "377", "摩纳哥" };
-    String[] arrayOfString107 = { "378", "圣马力诺" };
-    String[] arrayOfString108 = { "380", "乌克兰" };
-    String[] arrayOfString109 = { "386", "斯洛文尼亚" };
-    String[] arrayOfString110 = { "420", "捷克共和国" };
-    String[] arrayOfString111 = { "421", "斯洛伐克" };
-    String[] arrayOfString112 = { "423", "列支敦士登" };
-    String[] arrayOfString113 = { "501", "伯利兹" };
-    String[] arrayOfString114 = { "502", "危地马拉" };
-    String[] arrayOfString115 = { "503", "萨尔瓦多" };
-    String[] arrayOfString116 = { "504", "洪都拉斯" };
-    String[] arrayOfString117 = { "505", "尼加拉瓜" };
-    String[] arrayOfString118 = { "506", "哥斯达黎加" };
-    String[] arrayOfString119 = { "507", "巴拿马" };
-    String[] arrayOfString120 = { "509", "海地" };
-    String[] arrayOfString121 = { "591", "玻利维亚" };
-    String[] arrayOfString122 = { "592", "圭亚那" };
-    String[] arrayOfString123 = { "593", "厄瓜多尔" };
-    String[] arrayOfString124 = { "595", "巴拉圭" };
-    String[] arrayOfString125 = { "594", "法属圭亚那" };
-    String[] arrayOfString126 = { "597", "苏里南" };
-    String[] arrayOfString127 = { "598", "乌拉圭" };
-    String[] arrayOfString128 = { "673", "文莱" };
-    String[] arrayOfString129 = { "674", "瑙鲁" };
-    String[] arrayOfString130 = { "675", "巴布亚新几内亚" };
-    String[] arrayOfString131 = { "676", "汤加" };
-    String[] arrayOfString132 = { "677", "所罗门群岛" };
-    String[] arrayOfString133 = { "679", "斐济" };
-    String[] arrayOfString134 = { "682", "库克群岛" };
-    String[] arrayOfString135 = { "689", "法属波利尼西亚" };
-    String[] arrayOfString136 = { "850", "朝鲜" };
-    String[] arrayOfString137 = { "855", "柬埔寨" };
-    String[] arrayOfString138 = { "856", "老挝" };
-    String[] arrayOfString139 = { "880", "孟加拉国" };
-    String[] arrayOfString140 = { "960", "马尔代夫" };
-    String[] arrayOfString141 = { "961", "黎巴嫩" };
-    String[] arrayOfString142 = { "962", "约旦" };
-    String[] arrayOfString143 = { "963", "叙利亚" };
-    String[] arrayOfString144 = { "964", "伊拉克" };
-    String[] arrayOfString145 = { "965", "科威特" };
-    String[] arrayOfString146 = { "966", "沙特阿拉伯" };
-    String[] arrayOfString147 = { "967", "也门" };
-    String[] arrayOfString148 = { "968", "阿曼" };
-    String[] arrayOfString149 = { "971", "阿拉伯联合酋长国" };
-    String[] arrayOfString150 = { "972", "以色列" };
-    String[] arrayOfString151 = { "973", "巴林" };
-    String[] arrayOfString152 = { "974", "卡塔尔" };
-    String[] arrayOfString153 = { "976", "蒙古" };
-    String[] arrayOfString154 = { "977", "尼泊尔" };
-    String[] arrayOfString155 = { "992", "塔吉克斯坦" };
-    String[] arrayOfString156 = { "993", "土库曼斯坦" };
-    String[] arrayOfString157 = { "994", "阿塞拜疆" };
-    String[] arrayOfString158 = { "995", "格鲁吉亚" };
-    String[] arrayOfString159 = { "996", "吉尔吉斯斯坦" };
-    String[] arrayOfString160 = { "998", "乌兹别克斯坦" };
-    String[] arrayOfString161 = { "1242", "巴哈马" };
-    String[] arrayOfString162 = { "1246", "巴巴多斯" };
-    String[] arrayOfString163 = { "1264", "安圭拉岛" };
-    String[] arrayOfString164 = { "1441", "百慕大" };
-    String[] arrayOfString165 = { "1473", "格林纳达" };
-    String[] arrayOfString166 = { "1671", "关岛" };
-    String[] arrayOfString167 = { "1758", "圣卢西亚" };
-    String[] arrayOfString168 = { "1767", "多米尼克" };
-    String[] arrayOfString169 = { "1784", "圣文森特和格林纳丁斯" };
-    String[] arrayOfString170 = { "1787", "波多黎各+1787" };
-    String[] arrayOfString171 = { "1809", "多米尼加共和国" };
-    String[] arrayOfString172 = { "1868", "特立尼达和多巴哥" };
-    String[] arrayOfString173 = { "1939", "波多黎各+1939" };
-    String[] arrayOfString174 = { "684", "美属萨摩亚" };
-    String[] arrayOfString175 = { "268", "安提瓜及巴布达" };
-    String[] arrayOfString176 = { "297", "阿鲁巴" };
-    String[] arrayOfString177 = { "975", "不丹" };
-    String[] arrayOfString178 = { "387", "波斯尼亚和黑塞哥维那" };
-    String[] arrayOfString179 = { "238", "佛得角" };
-    String[] arrayOfString180 = { "1345", "开曼群岛" };
-    String[] arrayOfString181 = { "269", "科摩洛" };
-    String[] arrayOfString182 = { "385", "克罗地亚共和国" };
-    String[] arrayOfString183 = { "240", "赤道几内亚" };
-    String[] arrayOfString184 = { "291", "厄立特里亚省" };
-    String[] arrayOfString185 = { "500", "福克兰群岛" };
-    String[] arrayOfString186 = { "298", "法罗群岛" };
-    String[] arrayOfString187 = { "299", "格陵兰岛" };
-    String[] arrayOfString188 = { "590", "瓜德罗普" };
-    String[] arrayOfString189 = { "245", "几内亚比绍" };
-    String[] arrayOfString190 = { "7", "哈萨克斯坦" };
-    String[] arrayOfString191 = { "686", "基里巴斯共和国" };
-    String[] arrayOfString192 = { "389", "马其顿" };
-    String[] arrayOfString193 = { "222", "毛里塔尼亚" };
-    String[] arrayOfString194 = { "262", "马约特" };
-    String[] arrayOfString195 = { "691", "密克罗尼西亚" };
-    String[] arrayOfString196 = { "382", "黑山共和国" };
-    String[] arrayOfString197 = { "1664", "蒙特塞拉特" };
-    String[] arrayOfString198 = { "599", "荷属安的列斯" };
-    String[] arrayOfString199 = { "687", "新喀里多尼亚岛" };
-    String[] arrayOfString200 = { "167", "北马里亚纳" };
-    String[] arrayOfString201 = { "970", "巴勒斯坦" };
-    String[] arrayOfString202 = { "250", "卢旺达" };
-    String[] arrayOfString203 = { "1869", "圣基茨和尼维斯" };
-    String[] arrayOfString204 = { "685", "萨摩亚" };
-    String[] arrayOfString205 = { "381", "塞尔维亚" };
-    String[] arrayOfString206 = { "670", "东帝汶" };
-    String[] arrayOfString207 = { "690", "托克劳" };
-    String[] arrayOfString208 = { "868", "特立尼达岛和多巴哥" };
-    String[] arrayOfString209 = { "1649", "特克斯和凯科斯群岛" };
-    String[] arrayOfString210 = { "678", "瓦努阿图" };
-    String[] arrayOfString211 = { "379", "梵蒂冈" };
-    String[] arrayOfString212 = { "1284", "英属维尔京群岛" };
-    String[] arrayOfString213 = { "1340", "美属维尔京群岛" };
-    String[] arrayOfString214 = { "681", "沃利斯和富图纳群岛" };
-    String[] arrayOfString215 = { "692", "马绍尔群岛共和国" };
-    String[] arrayOfString216 = { "683", "纽埃" };
-    c = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, arrayOfString15, arrayOfString16, arrayOfString17, arrayOfString18, arrayOfString19, arrayOfString20, arrayOfString21, arrayOfString22, arrayOfString23, arrayOfString24, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, arrayOfString29, { "54", "阿根廷" }, arrayOfString30, arrayOfString31, arrayOfString32, arrayOfString33, arrayOfString34, arrayOfString35, arrayOfString36, arrayOfString37, arrayOfString38, arrayOfString39, arrayOfString40, arrayOfString41, arrayOfString42, arrayOfString43, arrayOfString44, arrayOfString45, arrayOfString46, arrayOfString47, arrayOfString48, arrayOfString49, arrayOfString50, arrayOfString51, arrayOfString52, arrayOfString53, arrayOfString54, arrayOfString55, arrayOfString56, arrayOfString57, arrayOfString58, arrayOfString59, arrayOfString60, arrayOfString61, arrayOfString62, arrayOfString63, arrayOfString64, arrayOfString65, arrayOfString66, arrayOfString67, arrayOfString68, arrayOfString69, arrayOfString70, arrayOfString71, arrayOfString72, arrayOfString73, arrayOfString74, arrayOfString75, arrayOfString76, arrayOfString77, arrayOfString78, arrayOfString79, arrayOfString80, arrayOfString81, arrayOfString82, arrayOfString83, arrayOfString84, arrayOfString85, arrayOfString86, arrayOfString87, arrayOfString88, arrayOfString89, arrayOfString90, arrayOfString91, arrayOfString92, arrayOfString93, arrayOfString94, arrayOfString95, arrayOfString96, arrayOfString97, arrayOfString98, arrayOfString99, arrayOfString100, { "371", "拉脱维亚" }, arrayOfString101, arrayOfString102, arrayOfString103, arrayOfString104, arrayOfString105, arrayOfString106, arrayOfString107, arrayOfString108, arrayOfString109, arrayOfString110, arrayOfString111, arrayOfString112, arrayOfString113, arrayOfString114, arrayOfString115, arrayOfString116, arrayOfString117, arrayOfString118, arrayOfString119, arrayOfString120, arrayOfString121, arrayOfString122, arrayOfString123, arrayOfString124, arrayOfString125, arrayOfString126, arrayOfString127, arrayOfString128, arrayOfString129, arrayOfString130, arrayOfString131, arrayOfString132, arrayOfString133, arrayOfString134, arrayOfString135, arrayOfString136, arrayOfString137, arrayOfString138, arrayOfString139, arrayOfString140, arrayOfString141, arrayOfString142, arrayOfString143, arrayOfString144, arrayOfString145, arrayOfString146, arrayOfString147, arrayOfString148, arrayOfString149, arrayOfString150, arrayOfString151, arrayOfString152, arrayOfString153, arrayOfString154, arrayOfString155, arrayOfString156, arrayOfString157, arrayOfString158, arrayOfString159, arrayOfString160, arrayOfString161, arrayOfString162, arrayOfString163, arrayOfString164, arrayOfString165, arrayOfString166, arrayOfString167, arrayOfString168, arrayOfString169, arrayOfString170, arrayOfString171, arrayOfString172, { "1876", "牙买加" }, arrayOfString173, arrayOfString174, arrayOfString175, arrayOfString176, arrayOfString177, arrayOfString178, arrayOfString179, arrayOfString180, arrayOfString181, arrayOfString182, arrayOfString183, arrayOfString184, arrayOfString185, arrayOfString186, arrayOfString187, arrayOfString188, arrayOfString189, arrayOfString190, arrayOfString191, arrayOfString192, arrayOfString193, arrayOfString194, arrayOfString195, arrayOfString196, arrayOfString197, arrayOfString198, arrayOfString199, arrayOfString200, arrayOfString201, arrayOfString202, arrayOfString203, arrayOfString204, arrayOfString205, arrayOfString206, arrayOfString207, arrayOfString208, arrayOfString209, { "688", "吐瓦鲁" }, arrayOfString210, arrayOfString211, arrayOfString212, arrayOfString213, arrayOfString214, arrayOfString215, arrayOfString216 };
+    a();
+  }
+  
+  public wy(byte paramByte)
+  {
+    this();
+    a(0, null, null);
+  }
+  
+  public wy(String paramString1, String paramString2)
+  {
+    this();
+    a(10000, paramString1, paramString2);
+  }
+  
+  public static void a(Resources paramResources, wy paramwy)
+  {
+    Object localObject1 = paramwy.c;
+    if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
+      return;
+    }
+    localObject1 = null;
+    int i = paramwy.a;
+    if (i != 103)
+    {
+      if (i != 10005)
+      {
+        if (i != 100004)
+        {
+          switch (i)
+          {
+          default: 
+            break;
+          case 10001: 
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(paramResources.getString(2131493104));
+            ((StringBuilder)localObject1).append("(");
+            ((StringBuilder)localObject1).append(paramwy.a);
+            ((StringBuilder)localObject1).append(")");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            break;
+          }
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramResources.getString(2131493103));
+          ((StringBuilder)localObject1).append("(");
+          ((StringBuilder)localObject1).append(paramwy.a);
+          ((StringBuilder)localObject1).append(")");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramResources.getString(2131493106));
+        ((StringBuilder)localObject1).append("(");
+        ((StringBuilder)localObject1).append(paramwy.a);
+        ((StringBuilder)localObject1).append(")");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    else {
+      localObject1 = paramResources.getString(2131493105);
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramResources.getString(2131493106));
+      ((StringBuilder)localObject1).append("(");
+      ((StringBuilder)localObject1).append(paramwy.a);
+      ((StringBuilder)localObject1).append(")");
+      localObject2 = ((StringBuilder)localObject1).toString();
+    }
+    paramwy.c = ((String)localObject2);
+  }
+  
+  public final void a()
+  {
+    this.a = -1;
+    this.b = "";
+    this.c = "";
+    this.d = null;
+  }
+  
+  public final void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a = paramInt;
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    this.b = paramString1;
+    if (paramString2 != null) {
+      paramString1 = paramString2;
+    } else {
+      paramString1 = "";
+    }
+    this.c = paramString1;
+    if ((this.c.indexOf("(") == -1) && (this.c.indexOf(")") == -1))
+    {
+      if (paramString2 != null)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(paramString2);
+        paramString1.append("(");
+        paramString1.append(paramInt);
+        paramString1.append(")");
+        paramString1 = paramString1.toString();
+      }
+      else
+      {
+        paramString1 = "";
+      }
+      this.c = paramString1;
+    }
+    a(RqdApplication.n().getResources(), this);
+  }
+  
+  public final void a(wy paramwy)
+  {
+    a(paramwy.a, paramwy.b, paramwy.c);
+  }
+  
+  public final void a(String paramString)
+  {
+    this.a = 0;
+    this.c = paramString;
+  }
+  
+  public final boolean b()
+  {
+    return this.a == 0;
   }
 }
 

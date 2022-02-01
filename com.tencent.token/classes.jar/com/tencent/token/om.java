@@ -5,24 +5,33 @@ import android.os.Bundle;
 public final class om
 {
   public static final class a
-    extends oh
+    extends og
   {
     public String c;
     
     public final int a()
     {
-      return 29;
+      return 21;
     }
     
     public final void a(Bundle paramBundle)
     {
-      super.a(paramBundle);
-      paramBundle.putString("_launch_wxminiprogram_token", this.c);
+      super.b(paramBundle);
+      paramBundle.putString("_wxapi_nontax_pay_req_url", this.c);
+    }
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getString("_wxapi_nontax_pay_req_url");
     }
     
     public final boolean b()
     {
-      return !ph.a(this.c);
+      if (pg.a(this.c)) {
+        return false;
+      }
+      return this.c.length() <= 10240;
     }
   }
 }

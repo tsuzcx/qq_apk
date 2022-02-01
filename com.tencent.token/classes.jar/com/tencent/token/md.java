@@ -1,70 +1,20 @@
 package com.tencent.token;
 
-public final class md
+import com.tencent.halley.downloader.c.d.a;
+
+public abstract interface md
 {
-  public static String a = ",";
-  public boolean b = true;
-  public int c = -1;
-  public int d = -1;
-  public volatile long e;
-  public volatile long f;
-  public volatile long g;
-  public volatile long h;
-  public volatile boolean i = false;
-  public mj j;
+  public abstract ln a(me paramme, a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5);
   
-  public md(mj parammj, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    this.j = parammj;
-    this.e = paramLong1;
-    this.h = paramLong4;
-    this.f = paramLong2;
-    this.g = Math.max(paramLong2, paramLong3);
-  }
+  public abstract mc a(me paramme);
   
-  public md(mj parammj, String paramString)
-  {
-    this.j = parammj;
-    parammj = paramString.split(a);
-    if ((parammj != null) && (parammj.length == 5))
-    {
-      this.c = Integer.valueOf(parammj[0]).intValue();
-      this.d = Integer.valueOf(parammj[1]).intValue();
-      this.e = Long.valueOf(parammj[2]).longValue();
-      this.f = Long.valueOf(parammj[3]).longValue();
-      this.g = this.f;
-      this.h = Long.valueOf(parammj[4]).longValue();
-      return;
-    }
-    li.c("DataSection", "new BDRange(String) pattern fail.");
-    this.b = false;
-  }
+  public abstract boolean a();
   
-  public final long a(long paramLong)
-  {
-    if (this.h != -1L) {
-      paramLong = this.h;
-    }
-    return paramLong - this.g;
-  }
+  public abstract boolean a(me paramme, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
   
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("[");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(a);
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(a);
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(a);
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(a);
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(a);
-    localStringBuilder.append(this.h);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
-  }
+  public abstract void b(me paramme);
+  
+  public abstract void c(me paramme);
 }
 
 

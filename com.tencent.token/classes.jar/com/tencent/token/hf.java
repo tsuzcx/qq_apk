@@ -1,389 +1,163 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.ActionProvider;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnActionExpandListener;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.SubMenu;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
 
-public final class hf
-  implements do
+public abstract class hf
+  implements hs
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private CharSequence e;
-  private CharSequence f;
-  private Intent g;
-  private char h;
-  private int i = 4096;
-  private char j;
-  private int k = 4096;
-  private Drawable l;
-  private int m = 0;
-  private Context n;
-  private MenuItem.OnMenuItemClickListener o;
-  private CharSequence p;
-  private CharSequence q;
-  private ColorStateList r = null;
-  private PorterDuff.Mode s = null;
-  private boolean t = false;
-  private boolean u = false;
-  private int v = 16;
+  protected Context a;
+  protected Context b;
+  public hl c;
+  protected LayoutInflater d;
+  protected LayoutInflater e;
+  public hs.a f;
+  public ht g;
+  public int h;
+  private int i;
+  private int j;
   
-  public hf(Context paramContext, CharSequence paramCharSequence)
+  public hf(Context paramContext, int paramInt1, int paramInt2)
   {
-    this.n = paramContext;
-    this.a = 16908332;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-    this.e = paramCharSequence;
+    this.a = paramContext;
+    this.d = LayoutInflater.from(paramContext);
+    this.i = paramInt1;
+    this.j = paramInt2;
   }
   
-  private void b()
+  public View a(hn paramhn, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.l != null) && ((this.t) || (this.u)))
-    {
-      this.l = dh.d(this.l);
-      this.l = this.l.mutate();
-      if (this.t) {
-        dh.a(this.l, this.r);
-      }
-      if (this.u) {
-        dh.a(this.l, this.s);
-      }
+    if ((paramView instanceof ht.a)) {
+      paramView = (ht.a)paramView;
+    } else {
+      paramView = (ht.a)this.d.inflate(this.j, paramViewGroup, false);
     }
+    a(paramhn, paramView);
+    return (View)paramView;
   }
   
-  public final do a(ej paramej)
+  public ht a(ViewGroup paramViewGroup)
   {
-    throw new UnsupportedOperationException();
-  }
-  
-  public final do a(CharSequence paramCharSequence)
-  {
-    this.p = paramCharSequence;
-    return this;
-  }
-  
-  public final ej a()
-  {
-    return null;
-  }
-  
-  public final do b(CharSequence paramCharSequence)
-  {
-    this.q = paramCharSequence;
-    return this;
-  }
-  
-  public final boolean collapseActionView()
-  {
-    return false;
-  }
-  
-  public final boolean expandActionView()
-  {
-    return false;
-  }
-  
-  public final ActionProvider getActionProvider()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public final View getActionView()
-  {
-    return null;
-  }
-  
-  public final int getAlphabeticModifiers()
-  {
-    return this.k;
-  }
-  
-  public final char getAlphabeticShortcut()
-  {
-    return this.j;
-  }
-  
-  public final CharSequence getContentDescription()
-  {
-    return this.p;
-  }
-  
-  public final int getGroupId()
-  {
-    return this.b;
-  }
-  
-  public final Drawable getIcon()
-  {
-    return this.l;
-  }
-  
-  public final ColorStateList getIconTintList()
-  {
-    return this.r;
-  }
-  
-  public final PorterDuff.Mode getIconTintMode()
-  {
-    return this.s;
-  }
-  
-  public final Intent getIntent()
-  {
+    if (this.g == null)
+    {
+      this.g = ((ht)this.d.inflate(this.i, paramViewGroup, false));
+      this.g.a(this.c);
+      b(true);
+    }
     return this.g;
   }
   
-  public final int getItemId()
+  public void a(Context paramContext, hl paramhl)
   {
-    return this.a;
+    this.b = paramContext;
+    this.e = LayoutInflater.from(this.b);
+    this.c = paramhl;
   }
   
-  public final ContextMenu.ContextMenuInfo getMenuInfo()
+  public void a(hl paramhl, boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public final int getNumericModifiers()
-  {
-    return this.i;
-  }
-  
-  public final char getNumericShortcut()
-  {
-    return this.h;
-  }
-  
-  public final int getOrder()
-  {
-    return this.d;
-  }
-  
-  public final SubMenu getSubMenu()
-  {
-    return null;
-  }
-  
-  public final CharSequence getTitle()
-  {
-    return this.e;
-  }
-  
-  public final CharSequence getTitleCondensed()
-  {
-    CharSequence localCharSequence = this.f;
-    if (localCharSequence != null) {
-      return localCharSequence;
+    hs.a locala = this.f;
+    if (locala != null) {
+      locala.a(paramhl, paramBoolean);
     }
-    return this.e;
   }
   
-  public final CharSequence getTooltipText()
+  public abstract void a(hn paramhn, ht.a parama);
+  
+  public final void a(hs.a parama)
   {
-    return this.q;
+    this.f = parama;
   }
   
-  public final boolean hasSubMenu()
+  public boolean a()
   {
     return false;
   }
   
-  public final boolean isActionViewExpanded()
+  protected boolean a(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.removeViewAt(paramInt);
+    return true;
+  }
+  
+  public boolean a(hn paramhn)
+  {
+    return true;
+  }
+  
+  public boolean a(hy paramhy)
+  {
+    hs.a locala = this.f;
+    if (locala != null) {
+      return locala.a(paramhy);
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.g;
+    if (localViewGroup == null) {
+      return;
+    }
+    Object localObject = this.c;
+    int k = 0;
+    if (localObject != null)
+    {
+      ((hl)localObject).i();
+      ArrayList localArrayList = this.c.h();
+      int i1 = localArrayList.size();
+      int m = 0;
+      int n;
+      for (k = 0; m < i1; k = n)
+      {
+        hn localhn = (hn)localArrayList.get(m);
+        n = k;
+        if (a(localhn))
+        {
+          View localView1 = localViewGroup.getChildAt(k);
+          if ((localView1 instanceof ht.a)) {
+            localObject = ((ht.a)localView1).getItemData();
+          } else {
+            localObject = null;
+          }
+          View localView2 = a(localhn, localView1, localViewGroup);
+          if (localhn != localObject)
+          {
+            localView2.setPressed(false);
+            localView2.jumpDrawablesToCurrentState();
+          }
+          if (localView2 != localView1)
+          {
+            localObject = (ViewGroup)localView2.getParent();
+            if (localObject != null) {
+              ((ViewGroup)localObject).removeView(localView2);
+            }
+            ((ViewGroup)this.g).addView(localView2, k);
+          }
+          n = k + 1;
+        }
+        m += 1;
+      }
+    }
+    while (k < localViewGroup.getChildCount()) {
+      if (!a(localViewGroup, k)) {
+        k += 1;
+      }
+    }
+  }
+  
+  public final boolean b(hn paramhn)
   {
     return false;
   }
   
-  public final boolean isCheckable()
+  public final boolean c(hn paramhn)
   {
-    return (this.v & 0x1) != 0;
-  }
-  
-  public final boolean isChecked()
-  {
-    return (this.v & 0x2) != 0;
-  }
-  
-  public final boolean isEnabled()
-  {
-    return (this.v & 0x10) != 0;
-  }
-  
-  public final boolean isVisible()
-  {
-    return (this.v & 0x8) == 0;
-  }
-  
-  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public final MenuItem setAlphabeticShortcut(char paramChar)
-  {
-    this.j = Character.toLowerCase(paramChar);
-    return this;
-  }
-  
-  public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
-  {
-    this.j = Character.toLowerCase(paramChar);
-    this.k = KeyEvent.normalizeMetaState(paramInt);
-    return this;
-  }
-  
-  public final MenuItem setCheckable(boolean paramBoolean)
-  {
-    this.v = (paramBoolean | this.v & 0xFFFFFFFE);
-    return this;
-  }
-  
-  public final MenuItem setChecked(boolean paramBoolean)
-  {
-    int i2 = this.v;
-    int i1;
-    if (paramBoolean) {
-      i1 = 2;
-    } else {
-      i1 = 0;
-    }
-    this.v = (i1 | i2 & 0xFFFFFFFD);
-    return this;
-  }
-  
-  public final MenuItem setEnabled(boolean paramBoolean)
-  {
-    int i2 = this.v;
-    int i1;
-    if (paramBoolean) {
-      i1 = 16;
-    } else {
-      i1 = 0;
-    }
-    this.v = (i1 | i2 & 0xFFFFFFEF);
-    return this;
-  }
-  
-  public final MenuItem setIcon(int paramInt)
-  {
-    this.m = paramInt;
-    this.l = cs.a(this.n, paramInt);
-    b();
-    return this;
-  }
-  
-  public final MenuItem setIcon(Drawable paramDrawable)
-  {
-    this.l = paramDrawable;
-    this.m = 0;
-    b();
-    return this;
-  }
-  
-  public final MenuItem setIconTintList(ColorStateList paramColorStateList)
-  {
-    this.r = paramColorStateList;
-    this.t = true;
-    b();
-    return this;
-  }
-  
-  public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
-  {
-    this.s = paramMode;
-    this.u = true;
-    b();
-    return this;
-  }
-  
-  public final MenuItem setIntent(Intent paramIntent)
-  {
-    this.g = paramIntent;
-    return this;
-  }
-  
-  public final MenuItem setNumericShortcut(char paramChar)
-  {
-    this.h = paramChar;
-    return this;
-  }
-  
-  public final MenuItem setNumericShortcut(char paramChar, int paramInt)
-  {
-    this.h = paramChar;
-    this.i = KeyEvent.normalizeMetaState(paramInt);
-    return this;
-  }
-  
-  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.o = paramOnMenuItemClickListener;
-    return this;
-  }
-  
-  public final MenuItem setShortcut(char paramChar1, char paramChar2)
-  {
-    this.h = paramChar1;
-    this.j = Character.toLowerCase(paramChar2);
-    return this;
-  }
-  
-  public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
-  {
-    this.h = paramChar1;
-    this.i = KeyEvent.normalizeMetaState(paramInt1);
-    this.j = Character.toLowerCase(paramChar2);
-    this.k = KeyEvent.normalizeMetaState(paramInt2);
-    return this;
-  }
-  
-  public final void setShowAsAction(int paramInt) {}
-  
-  public final MenuItem setTitle(int paramInt)
-  {
-    this.e = this.n.getResources().getString(paramInt);
-    return this;
-  }
-  
-  public final MenuItem setTitle(CharSequence paramCharSequence)
-  {
-    this.e = paramCharSequence;
-    return this;
-  }
-  
-  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
-  {
-    this.f = paramCharSequence;
-    return this;
-  }
-  
-  public final MenuItem setVisible(boolean paramBoolean)
-  {
-    int i2 = this.v;
-    int i1 = 8;
-    if (paramBoolean) {
-      i1 = 0;
-    }
-    this.v = (i2 & 0x8 | i1);
-    return this;
+    return false;
   }
 }
 

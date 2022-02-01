@@ -9,9 +9,9 @@ import android.content.IntentFilter;
 import android.media.SoundPool;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.qz;
-import com.tencent.token.se;
-import com.tencent.token.xb;
+import com.tencent.token.qy;
+import com.tencent.token.sd;
+import com.tencent.token.xa;
 
 public class TokenService
   extends Service
@@ -45,8 +45,8 @@ public class TokenService
   
   private void a()
   {
-    Object localObject2 = qz.a();
-    if (!((qz)localObject2).d())
+    Object localObject2 = qy.a();
+    if (!((qy)localObject2).d())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       Object localObject1 = localAppWidgetManager.getAppWidgetIds(this.e);
@@ -55,7 +55,7 @@ public class TokenService
       int i1 = 0;
       if (!bool)
       {
-        this.b = ((qz)localObject2).f();
+        this.b = ((qy)localObject2).f();
         if (this.g) {
           this.c.setImageViewResource(2131166286, 2131100204);
         }
@@ -96,7 +96,7 @@ public class TokenService
         localException.printStackTrace();
         localObject1 = new StringBuilder("TokenService ");
         ((StringBuilder)localObject1).append(localException.toString());
-        xb.c(((StringBuilder)localObject1).toString());
+        xa.c(((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -108,7 +108,7 @@ public class TokenService
   
   public void onCreate()
   {
-    xb.a("onCreate");
+    xa.a("onCreate");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -120,7 +120,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    se.a(this).a.release();
+    sd.a(this).a.release();
     unregisterReceiver(this.k);
   }
   
@@ -193,7 +193,7 @@ public class TokenService
     //   124: getfield 50	com/tencent/token/widget/TokenService:j	Landroid/app/PendingIntent;
     //   127: invokevirtual 109	android/widget/RemoteViews:setOnClickPendingIntent	(ILandroid/app/PendingIntent;)V
     //   130: aload_0
-    //   131: invokestatic 169	com/tencent/token/se:a	(Landroid/content/Context;)Lcom/tencent/token/se;
+    //   131: invokestatic 169	com/tencent/token/sd:a	(Landroid/content/Context;)Lcom/tencent/token/sd;
     //   134: pop
     //   135: invokestatic 218	java/lang/System:currentTimeMillis	()J
     //   138: lstore 5
@@ -204,13 +204,13 @@ public class TokenService
     //   146: monitorenter
     //   147: ldc2_w 219
     //   150: lstore_3
-    //   151: invokestatic 73	com/tencent/token/qz:a	()Lcom/tencent/token/qz;
-    //   154: invokevirtual 76	com/tencent/token/qz:d	()Z
+    //   151: invokestatic 73	com/tencent/token/qy:a	()Lcom/tencent/token/qy;
+    //   154: invokevirtual 76	com/tencent/token/qy:d	()Z
     //   157: ifne +75 -> 232
-    //   160: invokestatic 225	com/tencent/token/sd:a	()Lcom/tencent/token/sd;
-    //   163: invokevirtual 227	com/tencent/token/sd:c	()Z
+    //   160: invokestatic 225	com/tencent/token/sc:a	()Lcom/tencent/token/sc;
+    //   163: invokevirtual 227	com/tencent/token/sc:c	()Z
     //   166: ifne +53 -> 219
-    //   169: invokestatic 231	com/tencent/token/aae:e	()J
+    //   169: invokestatic 231	com/tencent/token/aad:e	()J
     //   172: lconst_0
     //   173: lcmp
     //   174: ifeq +6 -> 180
@@ -218,7 +218,7 @@ public class TokenService
     //   180: aload_0
     //   181: iconst_0
     //   182: putfield 42	com/tencent/token/widget/TokenService:f	Z
-    //   185: invokestatic 235	com/tencent/token/sc:h	()J
+    //   185: invokestatic 235	com/tencent/token/sb:h	()J
     //   188: lstore_3
     //   189: lload_3
     //   190: ldc2_w 236

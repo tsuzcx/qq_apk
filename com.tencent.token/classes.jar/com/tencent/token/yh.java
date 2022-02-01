@@ -1,120 +1,127 @@
 package com.tencent.token;
 
-import android.view.InflateException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ui.ScanLoginAccountListActivity;
+import com.tencent.token.ui.StartPwdDigitSelActivity;
+import com.tencent.token.ui.StartPwdDigitVerifyActivity;
+import java.util.List;
+import java.util.Map;
 
 public final class yh
   extends BaseAdapter
 {
-  public boolean a;
-  ScanLoginAccountListActivity b;
-  private LayoutInflater c;
-  private View.OnClickListener d = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      yh.this.b.addUser();
-    }
-  };
+  private Context a;
+  private LayoutInflater b;
+  private List<Map<String, Object>> c;
   
-  public yh(ScanLoginAccountListActivity paramScanLoginAccountListActivity)
+  public yh(Context paramContext, List<Map<String, Object>> paramList)
   {
-    this.b = paramScanLoginAccountListActivity;
-    this.c = LayoutInflater.from(this.b);
+    this.a = paramContext;
+    this.b = LayoutInflater.from(paramContext);
+    this.c = paramList;
   }
   
   public final int getCount()
   {
-    int i = ta.a().k.a();
-    if (i >= 3) {
-      return 3;
-    }
-    return i + 1;
+    return this.c.size();
   }
   
   public final Object getItem(int paramInt)
   {
-    return Integer.valueOf(paramInt);
+    return null;
   }
   
   public final long getItemId(int paramInt)
   {
-    return paramInt;
+    return 0L;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = ta.a().k.a();
-    if ((paramInt != 0) || (i == 0)) {}
-    try
-    {
-      paramViewGroup = this.c.inflate(2131296425, paramViewGroup, false);
-      paramViewGroup.findViewById(2131165448).setVisibility(0);
-      paramViewGroup.setOnClickListener(this.d);
-      return paramViewGroup;
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.b.inflate(2131296439, null);
     }
-    catch (InflateException paramViewGroup)
-    {
-      ImageView localImageView1;
-      Object localObject1;
-      Object localObject2;
-      ImageView localImageView2;
-      ImageView localImageView3;
-      paramViewGroup.printStackTrace();
-    }
-    paramViewGroup = this.c.inflate(2131296427, paramViewGroup, false);
-    paramView = paramViewGroup;
-    if (paramInt < i)
-    {
-      paramViewGroup = this.c.inflate(2131296426, paramViewGroup, false);
-      paramView = paramViewGroup;
-      paramViewGroup = ta.a().a(paramInt);
-      if (paramViewGroup == null) {
-        return paramView;
-      }
-      localImageView1 = (ImageView)paramView.findViewById(2131165855);
-      localObject1 = (TextView)paramView.findViewById(2131165856);
-      localObject2 = (TextView)paramView.findViewById(2131165866);
-      localImageView2 = (ImageView)paramView.findViewById(2131165800);
-      localImageView3 = (ImageView)paramView.findViewById(2131165433);
-      ((TextView)localObject1).setText(paramViewGroup.mNickName);
-      if ((paramViewGroup.mUinMask != null) && (paramViewGroup.mUinMask.length() > 0)) {
-        ((TextView)localObject2).setText(paramViewGroup.mUinMask);
-      } else {
-        ((TextView)localObject2).setText(aad.e(paramViewGroup.mRealUin));
-      }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramViewGroup.mRealUin);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramViewGroup.mUin);
-      localImageView1.setImageDrawable(zz.a((String)localObject1, ((StringBuilder)localObject2).toString()));
-      if (this.a)
-      {
-        localImageView3.setVisibility(0);
-        localImageView2.setVisibility(4);
-        localImageView3.setTag(paramViewGroup);
-        localImageView3.setOnClickListener(this.b.mDeleteListener);
-        return paramView;
-      }
-      localImageView2.setVisibility(0);
-      localImageView3.setVisibility(4);
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(this.b.mLoginListener);
-      return paramView;
-    }
-    paramViewGroup = this.c.inflate(2131296425, paramViewGroup, false);
-    paramViewGroup.setOnClickListener(this.d);
+    ((TextView)paramViewGroup.findViewById(2131165992)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
+    paramViewGroup.setOnClickListener(new a(paramInt));
+    paramViewGroup.setOnTouchListener(new b());
     return paramViewGroup;
-    return paramView;
+  }
+  
+  final class a
+    implements View.OnClickListener
+  {
+    public final int a = 0;
+    public final int b = 1;
+    private int d = 0;
+    
+    public a(int paramInt)
+    {
+      this.d = paramInt;
+    }
+    
+    public final void onClick(View paramView)
+    {
+      paramView = new StringBuilder("conf modify onClick=");
+      paramView.append(this.d);
+      xa.a(paramView.toString());
+      paramView = (StartPwdDigitSelActivity)yh.a(yh.this);
+      paramView.finish();
+      switch (this.d)
+      {
+      default: 
+        return;
+      case 1: 
+        localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
+        localBundle = new Bundle();
+        localBundle.putInt("enter_type", 3);
+        localIntent.putExtra("com.tencent.input_param", localBundle);
+        paramView.startActivity(localIntent);
+        return;
+      }
+      Intent localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("enter_type", 2);
+      localIntent.putExtra("com.tencent.input_param", localBundle);
+      paramView.startActivity(localIntent);
+    }
+  }
+  
+  final class b
+    implements View.OnTouchListener
+  {
+    b() {}
+    
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      paramView = (TextView)paramView.findViewById(2131165992);
+      int i = yh.a(yh.this).getResources().getColor(2130968657);
+      int j = yh.a(yh.this).getResources().getColor(2130968665);
+      int k = paramMotionEvent.getAction();
+      if (k != 3) {
+        switch (k)
+        {
+        default: 
+          break;
+        case 0: 
+          paramView.setTextColor(j);
+          break;
+        }
+      } else {
+        paramView.setTextColor(i);
+      }
+      return false;
+    }
   }
 }
 

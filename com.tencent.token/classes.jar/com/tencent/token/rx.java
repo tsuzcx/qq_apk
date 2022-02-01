@@ -1,511 +1,610 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.encrypt.TknEncManager;
-import com.tencent.token.utils.encrypt.random.PRNGFixes;
-import com.tencent.token.utils.encrypt.random.SecureRandom;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tmsdk.common.util.TmsLog;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import com.tencent.token.utils.UserTask;
+import java.net.URLEncoder;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class rx
 {
-  public byte[] a;
-  long b = 0L;
-  int c = 30;
-  public int[] d = new int[6];
-  long e = 0L;
-  public String f = "";
-  Handler g = new Handler(Looper.getMainLooper())
+  private static int d = 10;
+  private static int e = 15;
+  private static int f = d;
+  private static rx g = null;
+  private static boolean i = false;
+  public boolean a = true;
+  protected JSONArray b = new JSONArray();
+  protected String c;
+  private boolean h = false;
+  private boolean j;
+  private UserTask<String, String, wy> k = null;
+  
+  public static int a(int paramInt)
   {
-    public final void handleMessage(Message paramAnonymousMessage)
+    if (paramInt != 103)
     {
-      if (paramAnonymousMessage.what == 4016)
+      if (paramInt != 10005)
       {
-        if (paramAnonymousMessage.arg1 == 0)
+        if (paramInt != 100004)
         {
-          TmsLog.i("mod_seed", "mod seed done, success.");
-          return;
-        }
-        if (ta.a().k.b() == null) {
-          return;
-        }
-        paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
-        StringBuilder localStringBuilder = new StringBuilder("mod seed failed, errcode:");
-        localStringBuilder.append(paramAnonymousMessage.a);
-        TmsLog.e("mod_seed", localStringBuilder.toString());
-      }
-    }
-  };
-  Runnable h = new Runnable()
-  {
-    public final void run()
-    {
-      if (System.currentTimeMillis() - rx.this.i > 1000L)
-      {
-        TmsLog.i("mod_seed", "auto mod is excuting.");
-        rv.a.a().b(rx.this.g);
-        rx.this.i = System.currentTimeMillis();
-      }
-    }
-  };
-  long i = 0L;
-  private int j = 0;
-  
-  public rx()
-  {
-    h();
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      String str = c().getString("token_info", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      label15:
-      break label15;
-    }
-    return null;
-  }
-  
-  public static SharedPreferences c()
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.n().getSharedPreferences("token_save_info", 0);
-    case 3: 
-      return RqdApplication.n().getSharedPreferences("token_save_info_gray", 0);
-    case 2: 
-      return RqdApplication.n().getSharedPreferences("token_save_info_exp", 0);
-    case 1: 
-      return RqdApplication.n().getSharedPreferences("token_save_info", 0);
-    }
-    return RqdApplication.n().getSharedPreferences("token_save_info_test", 0);
-  }
-  
-  private int[] f()
-  {
-    int[] arrayOfInt2 = new int[16];
-    int k = 0;
-    while (k < 16)
-    {
-      arrayOfInt2[k] = 0;
-      k += 1;
-    }
-    Object localObject2 = c().getString("token_seq_sp", "");
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = e();
-    }
-    localObject2 = arrayOfInt2;
-    if (16 == ((String)localObject1).length())
-    {
-      k = 0;
-      int[] arrayOfInt1;
-      for (;;)
-      {
-        localObject2 = arrayOfInt2;
-        if (k >= 16) {
-          return localObject2;
-        }
-        try
-        {
-          arrayOfInt2[k] = Integer.parseInt(String.valueOf(((String)localObject1).charAt(k)));
-          k += 1;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          arrayOfInt1 = new int[16];
-          k = 0;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = arrayOfInt1;
-        if (k >= 16) {
-          break;
-        }
-        arrayOfInt1[k] = 0;
-        k += 1;
-      }
-    }
-    return localObject2;
-  }
-  
-  private static String g()
-  {
-    byte[] arrayOfByte = new byte[16];
-    Object localObject2 = sc.a();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() != 0) {}
-    }
-    else
-    {
-      localObject1 = System.getProperty("microedition.platform");
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
-    }
-    int m = Runtime.getRuntime().hashCode();
-    try
-    {
-      PRNGFixes.a();
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    SecureRandom localSecureRandom1 = new SecureRandom();
-    SecureRandom localSecureRandom2 = new SecureRandom();
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((String)localObject2);
-    localStringBuffer.append(localSecureRandom2.nextInt());
-    localStringBuffer.append(System.currentTimeMillis());
-    localStringBuffer.append(m);
-    localStringBuffer.append(new Object().hashCode());
-    localSecureRandom1.a(localStringBuffer.toString().getBytes());
-    int k = 1;
-    while (k < 16)
-    {
-      arrayOfByte[k] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
-      localSecureRandom2.a(localSecureRandom2.a(k));
-      localStringBuffer = new StringBuffer();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuffer.append(localStringBuilder.toString());
-      localStringBuffer.append(localSecureRandom2.nextInt());
-      localStringBuffer.append(m);
-      localStringBuffer.append(new Object().hashCode());
-      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), (String)localObject2);
-      localSecureRandom1.a(localStringBuffer.toString().getBytes());
-      k += 1;
-    }
-    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
-    return ss.a(arrayOfByte);
-  }
-  
-  private void h()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = ahi.a();
-        Object localObject3 = new ahl();
-        ((SQLiteDatabase)localObject1).b("CREATE TABLE IF NOT EXISTS token_conf(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,plusTime INTEGER,tokenIntVTime INTEGER,data BLOB);");
-        Object localObject4 = (ahl)ahi.a((ahk)localObject3, "token_conf", new String[] { "plusTime", "tokenIntVTime", "data" });
-        int k;
-        if (localObject4 == null)
-        {
-          k = 0;
-        }
-        else
-        {
-          ((ahl)localObject3).b = ((ahl)localObject4).b;
-          ((ahl)localObject3).c = ((ahl)localObject4).c;
-          ((ahl)localObject3).d = ((ahl)localObject4).d;
-          k = 1;
-        }
-        if (k == 0)
-        {
-          ((ahl)localObject3).b = 0L;
-          ((ahl)localObject3).d = null;
-          ((ahl)localObject3).c = 30;
-          ((ahl)localObject3).b((SQLiteDatabase)localObject1);
-        }
-        localObject4 = new ahe();
-        ((SQLiteDatabase)localObject1).b("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-        Object localObject5 = (ahe)ahi.a((ahk)localObject4, "ksid_data", new String[] { "ksid" });
-        if (localObject5 == null)
-        {
-          k = 0;
-        }
-        else
-        {
-          ((ahe)localObject4).c = ((ahe)localObject5).c;
-          k = 1;
-        }
-        if (k == 0)
-        {
-          ((ahe)localObject4).c = "";
-          ((ahe)localObject4).b((SQLiteDatabase)localObject1);
-        }
-        this.b = ((ahl)localObject3).b;
-        this.a = ((ahl)localObject3).d;
-        this.c = ((ahl)localObject3).c;
-        this.f = ((ahe)localObject4).c;
-        localObject1 = c();
-        if (localObject1 != null)
-        {
-          bool = true;
-          xb.a(bool);
-          localObject3 = ((SharedPreferences)localObject1).edit();
-          ((SharedPreferences.Editor)localObject3).putBoolean("token_status", true);
-          ((SharedPreferences.Editor)localObject3).commit();
-          if ((this.a != null) && (this.a.length > 0))
+          switch (paramInt)
           {
-            this.j = ((SharedPreferences)localObject1).getInt("token_type", 0);
-            if (2 == this.j)
-            {
-              localObject4 = ((SharedPreferences)localObject1).getString("token_info", "");
-              if ((localObject4 != null) && (((String)localObject4).length() != 0))
-              {
-                localObject5 = new aaw();
-                localObject3 = ((aaw)localObject5).a(this.a, aay.a((String)localObject4));
-                localObject1 = localObject3;
-                if (localObject3 == null) {
-                  localObject1 = ((aaw)localObject5).a(this.a, aay.a((String)localObject4));
-                }
-                this.a = ((byte[])localObject1);
-                return;
-              }
-              this.a = null;
-              return;
-            }
-            if (1 == this.j) {
-              this.a = TknEncManager.a().decInitCode(this.a);
-            }
-            a();
+          default: 
+            return 40001;
+          case 10003: 
+            return 10003;
+          case 10002: 
+            return 10002;
           }
-          return;
+          return 10001;
         }
+        return 10004;
       }
-      finally {}
-      boolean bool = false;
+      return 10005;
     }
+    return 30001;
   }
   
-  public final void a()
+  public static rx a()
   {
-    for (;;)
+    if (g == null) {
+      g = new rx();
+    }
+    if ((!ww.j()) && (!i))
     {
-      try
-      {
-        ahl localahl = new ahl();
-        if ((this.a != null) && (this.a.length > 0))
-        {
-          String str = g();
-          aaw localaaw = new aaw();
-          Object localObject3 = localaaw.b(this.a, aay.a(str));
-          Object localObject1 = localObject3;
-          if (localObject3 == null) {
-            localObject1 = localaaw.b(this.a, aay.a(str));
-          }
-          localObject3 = c();
-          if (localObject3 != null)
-          {
-            bool = true;
-            xb.a(bool);
-            localObject3 = ((SharedPreferences)localObject3).edit();
-            ((SharedPreferences.Editor)localObject3).putInt("token_type", 2);
-            ((SharedPreferences.Editor)localObject3).putString("token_info", str);
-            ((SharedPreferences.Editor)localObject3).commit();
-            localahl.a(this.b, this.c, (byte[])localObject1);
-          }
-        }
-        else
-        {
-          localahl.a(this.b, this.c, this.a);
-          return;
-        }
-      }
-      finally {}
-      boolean bool = false;
+      i = true;
+      g.f();
     }
+    return g;
   }
   
-  final void a(long paramLong)
+  /* Error */
+  private wy a(String paramString)
   {
-    Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).setTime(new Date(paramLong));
-    ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1));
-    ((StringBuffer)localObject2).append('-');
-    ((StringBuffer)localObject2).append(aad.a(((Calendar)localObject1).get(2) + 1));
-    ((StringBuffer)localObject2).append('-');
-    ((StringBuffer)localObject2).append(aad.a(((Calendar)localObject1).get(5)));
-    ((StringBuffer)localObject2).append(' ');
-    ((StringBuffer)localObject2).append(aad.a(((Calendar)localObject1).get(11)));
-    ((StringBuffer)localObject2).append(':');
-    ((StringBuffer)localObject2).append(aad.a(((Calendar)localObject1).get(12)));
-    ((StringBuffer)localObject2).append(':');
-    ((StringBuffer)localObject2).append(aad.a(((Calendar)localObject1).get(13) / 30 * 30));
-    localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    localObject2 = this.a;
-    if (localObject2 == null) {
+    // Byte code:
+    //   0: new 77	com/tencent/token/wy
+    //   3: dup
+    //   4: invokespecial 78	com/tencent/token/wy:<init>	()V
+    //   7: astore_3
+    //   8: invokestatic 83	com/tencent/token/sz:a	()Lcom/tencent/token/sz;
+    //   11: astore 4
+    //   13: aload 4
+    //   15: invokevirtual 85	com/tencent/token/sz:i	()Z
+    //   18: ifne +26 -> 44
+    //   21: aload_3
+    //   22: sipush 30001
+    //   25: aconst_null
+    //   26: aconst_null
+    //   27: invokevirtual 88	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   30: aload_0
+    //   31: getfield 90	com/tencent/token/rx:j	Z
+    //   34: ifeq +8 -> 42
+    //   37: aload_0
+    //   38: invokespecial 92	com/tencent/token/rx:e	()Z
+    //   41: pop
+    //   42: aload_3
+    //   43: areturn
+    //   44: aload 4
+    //   46: invokevirtual 95	com/tencent/token/sz:f	()Lcom/tencent/token/core/bean/QQUser;
+    //   49: ifnonnull +12 -> 61
+    //   52: aload 4
+    //   54: getfield 98	com/tencent/token/sz:k	Lcom/tencent/token/ahg;
+    //   57: invokevirtual 102	com/tencent/token/ahg:b	()Lcom/tencent/token/core/bean/QQUser;
+    //   60: pop
+    //   61: ldc 104
+    //   63: aload_1
+    //   64: invokestatic 110	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   67: invokevirtual 114	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   70: invokestatic 119	com/tencent/token/xa:a	(Ljava/lang/String;)V
+    //   73: new 121	java/util/concurrent/CountDownLatch
+    //   76: dup
+    //   77: iconst_1
+    //   78: invokespecial 124	java/util/concurrent/CountDownLatch:<init>	(I)V
+    //   81: astore 5
+    //   83: new 126	java/util/concurrent/atomic/AtomicReference
+    //   86: dup
+    //   87: aconst_null
+    //   88: invokespecial 129	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
+    //   91: astore 4
+    //   93: invokestatic 134	com/tencent/token/qy:a	()Lcom/tencent/token/qy;
+    //   96: aload_1
+    //   97: new 6	com/tencent/token/rx$1
+    //   100: dup
+    //   101: aload_0
+    //   102: aload 4
+    //   104: aload 5
+    //   106: invokespecial 137	com/tencent/token/rx$1:<init>	(Lcom/tencent/token/rx;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/CountDownLatch;)V
+    //   109: invokevirtual 140	com/tencent/token/qy:d	(Ljava/lang/String;Lcom/tencent/token/qy$a;)V
+    //   112: aload 5
+    //   114: invokevirtual 143	java/util/concurrent/CountDownLatch:await	()V
+    //   117: goto +8 -> 125
+    //   120: astore_1
+    //   121: aload_1
+    //   122: invokevirtual 146	java/lang/InterruptedException:printStackTrace	()V
+    //   125: aload 4
+    //   127: invokevirtual 150	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   130: checkcast 152	com/tencent/token/ra
+    //   133: astore_1
+    //   134: aload_1
+    //   135: ifnonnull +26 -> 161
+    //   138: aload_0
+    //   139: getfield 90	com/tencent/token/rx:j	Z
+    //   142: ifeq +8 -> 150
+    //   145: aload_0
+    //   146: invokespecial 92	com/tencent/token/rx:e	()Z
+    //   149: pop
+    //   150: aload_3
+    //   151: sipush -799
+    //   154: aconst_null
+    //   155: aconst_null
+    //   156: invokevirtual 88	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   159: aload_3
+    //   160: areturn
+    //   161: aload_1
+    //   162: getfield 154	com/tencent/token/ra:b	I
+    //   165: istore_2
+    //   166: iload_2
+    //   167: ifeq +18 -> 185
+    //   170: aload_1
+    //   171: getfield 156	com/tencent/token/ra:d	Ljava/lang/String;
+    //   174: astore_1
+    //   175: aload_3
+    //   176: iload_2
+    //   177: aload_1
+    //   178: aload_1
+    //   179: invokevirtual 88	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   182: goto +101 -> 283
+    //   185: aload_3
+    //   186: iconst_0
+    //   187: putfield 158	com/tencent/token/wy:a	I
+    //   190: aload_0
+    //   191: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   194: invokevirtual 162	org/json/JSONArray:length	()I
+    //   197: getstatic 164	com/tencent/token/rx:e	I
+    //   200: if_icmple +10 -> 210
+    //   203: getstatic 164	com/tencent/token/rx:e	I
+    //   206: istore_2
+    //   207: goto +11 -> 218
+    //   210: aload_0
+    //   211: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   214: invokevirtual 162	org/json/JSONArray:length	()I
+    //   217: istore_2
+    //   218: iload_2
+    //   219: getstatic 164	com/tencent/token/rx:e	I
+    //   222: if_icmpgt +17 -> 239
+    //   225: aload_0
+    //   226: new 50	org/json/JSONArray
+    //   229: dup
+    //   230: invokespecial 51	org/json/JSONArray:<init>	()V
+    //   233: putfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   236: goto +47 -> 283
+    //   239: new 50	org/json/JSONArray
+    //   242: dup
+    //   243: invokespecial 51	org/json/JSONArray:<init>	()V
+    //   246: astore_1
+    //   247: iload_2
+    //   248: aload_0
+    //   249: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   252: invokevirtual 162	org/json/JSONArray:length	()I
+    //   255: if_icmpge +23 -> 278
+    //   258: aload_1
+    //   259: aload_0
+    //   260: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   263: iload_2
+    //   264: invokevirtual 167	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   267: invokevirtual 171	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   270: pop
+    //   271: iload_2
+    //   272: iconst_1
+    //   273: iadd
+    //   274: istore_2
+    //   275: goto -28 -> 247
+    //   278: aload_0
+    //   279: aload_1
+    //   280: putfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   283: aload_0
+    //   284: getfield 90	com/tencent/token/rx:j	Z
+    //   287: ifeq +162 -> 449
+    //   290: aload_0
+    //   291: invokespecial 92	com/tencent/token/rx:e	()Z
+    //   294: pop
+    //   295: aload_3
+    //   296: areturn
+    //   297: astore_1
+    //   298: goto +153 -> 451
+    //   301: astore_1
+    //   302: new 173	java/lang/StringBuilder
+    //   305: dup
+    //   306: ldc 175
+    //   308: invokespecial 177	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   311: astore 4
+    //   313: aload 4
+    //   315: aload_1
+    //   316: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
+    //   319: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: pop
+    //   323: aload 4
+    //   325: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 188	com/tencent/token/xa:c	(Ljava/lang/String;)V
+    //   331: new 173	java/lang/StringBuilder
+    //   334: dup
+    //   335: ldc 190
+    //   337: invokespecial 177	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   340: astore 4
+    //   342: aload 4
+    //   344: aload_1
+    //   345: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
+    //   348: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: pop
+    //   352: aload_3
+    //   353: sipush 10021
+    //   356: aload 4
+    //   358: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   361: aconst_null
+    //   362: invokevirtual 88	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   365: aload_0
+    //   366: getfield 90	com/tencent/token/rx:j	Z
+    //   369: ifeq +80 -> 449
+    //   372: goto -82 -> 290
+    //   375: astore_1
+    //   376: new 173	java/lang/StringBuilder
+    //   379: dup
+    //   380: ldc 192
+    //   382: invokespecial 177	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   385: astore 4
+    //   387: aload 4
+    //   389: aload_1
+    //   390: invokevirtual 193	org/json/JSONException:toString	()Ljava/lang/String;
+    //   393: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: pop
+    //   397: aload 4
+    //   399: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   402: invokestatic 188	com/tencent/token/xa:c	(Ljava/lang/String;)V
+    //   405: new 173	java/lang/StringBuilder
+    //   408: dup
+    //   409: ldc 190
+    //   411: invokespecial 177	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   414: astore 4
+    //   416: aload 4
+    //   418: aload_1
+    //   419: invokevirtual 193	org/json/JSONException:toString	()Ljava/lang/String;
+    //   422: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   425: pop
+    //   426: aload_3
+    //   427: sipush 10020
+    //   430: aload 4
+    //   432: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   435: aconst_null
+    //   436: invokevirtual 88	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   439: aload_0
+    //   440: getfield 90	com/tencent/token/rx:j	Z
+    //   443: ifeq +6 -> 449
+    //   446: goto -156 -> 290
+    //   449: aload_3
+    //   450: areturn
+    //   451: aload_0
+    //   452: getfield 90	com/tencent/token/rx:j	Z
+    //   455: ifeq +8 -> 463
+    //   458: aload_0
+    //   459: invokespecial 92	com/tencent/token/rx:e	()Z
+    //   462: pop
+    //   463: aload_1
+    //   464: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	465	0	this	rx
+    //   0	465	1	paramString	String
+    //   165	110	2	m	int
+    //   7	443	3	localwy	wy
+    //   11	420	4	localObject	Object
+    //   81	32	5	localCountDownLatch	CountDownLatch
+    // Exception table:
+    //   from	to	target	type
+    //   112	117	120	java/lang/InterruptedException
+    //   161	166	297	finally
+    //   170	182	297	finally
+    //   185	207	297	finally
+    //   210	218	297	finally
+    //   218	236	297	finally
+    //   239	247	297	finally
+    //   247	271	297	finally
+    //   278	283	297	finally
+    //   302	365	297	finally
+    //   376	439	297	finally
+    //   161	166	301	java/lang/Exception
+    //   170	182	301	java/lang/Exception
+    //   185	207	301	java/lang/Exception
+    //   210	218	301	java/lang/Exception
+    //   218	236	301	java/lang/Exception
+    //   239	247	301	java/lang/Exception
+    //   247	271	301	java/lang/Exception
+    //   278	283	301	java/lang/Exception
+    //   161	166	375	org/json/JSONException
+    //   170	182	375	org/json/JSONException
+    //   185	207	375	org/json/JSONException
+    //   210	218	375	org/json/JSONException
+    //   218	236	375	org/json/JSONException
+    //   239	247	375	org/json/JSONException
+    //   247	271	375	org/json/JSONException
+    //   278	283	375	org/json/JSONException
+  }
+  
+  /* Error */
+  private boolean a(android.content.Context paramContext)
+  {
+    // Byte code:
+    //   0: invokestatic 63	com/tencent/token/ww:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   12: ifnonnull +5 -> 17
+    //   15: iconst_0
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: putstatic 38	com/tencent/token/rx:i	Z
+    //   21: aload_0
+    //   22: getfield 44	com/tencent/token/rx:a	Z
+    //   25: ifne +5 -> 30
+    //   28: iconst_1
+    //   29: ireturn
+    //   30: aload_1
+    //   31: ldc 200
+    //   33: iconst_0
+    //   34: invokevirtual 206	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   37: astore_1
+    //   38: aload_1
+    //   39: ifnonnull +5 -> 44
+    //   42: iconst_0
+    //   43: ireturn
+    //   44: aload_1
+    //   45: aload_0
+    //   46: getfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   49: invokevirtual 207	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   52: invokevirtual 211	java/lang/String:getBytes	()[B
+    //   55: invokevirtual 217	java/io/FileOutputStream:write	([B)V
+    //   58: aload_1
+    //   59: invokevirtual 220	java/io/FileOutputStream:close	()V
+    //   62: iconst_1
+    //   63: ireturn
+    //   64: aload_1
+    //   65: invokevirtual 220	java/io/FileOutputStream:close	()V
+    //   68: iconst_0
+    //   69: ireturn
+    //   70: astore_1
+    //   71: iconst_0
+    //   72: ireturn
+    //   73: astore_2
+    //   74: goto -10 -> 64
+    //   77: astore_1
+    //   78: iconst_1
+    //   79: ireturn
+    //   80: astore_1
+    //   81: iconst_0
+    //   82: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	rx
+    //   0	83	1	paramContext	android.content.Context
+    //   73	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   30	38	70	java/io/FileNotFoundException
+    //   44	58	73	java/lang/Exception
+    //   58	62	77	java/io/IOException
+    //   64	68	80	java/io/IOException
+  }
+  
+  private boolean e()
+  {
+    if (ww.j()) {
+      return false;
+    }
+    return a(RqdApplication.n());
+  }
+  
+  /* Error */
+  private boolean f()
+  {
+    // Byte code:
+    //   0: invokestatic 63	com/tencent/token/ww:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 44	com/tencent/token/rx:a	Z
+    //   12: ifne +5 -> 17
+    //   15: iconst_1
+    //   16: ireturn
+    //   17: invokestatic 227	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+    //   20: ldc 200
+    //   22: invokevirtual 233	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnonnull +5 -> 32
+    //   30: iconst_0
+    //   31: ireturn
+    //   32: sipush 2000
+    //   35: newarray byte
+    //   37: astore_2
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokevirtual 239	java/io/FileInputStream:read	([B)I
+    //   43: pop
+    //   44: aload_0
+    //   45: new 50	org/json/JSONArray
+    //   48: dup
+    //   49: new 106	java/lang/String
+    //   52: dup
+    //   53: aload_2
+    //   54: invokespecial 241	java/lang/String:<init>	([B)V
+    //   57: invokespecial 242	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   60: putfield 53	com/tencent/token/rx:b	Lorg/json/JSONArray;
+    //   63: aload_1
+    //   64: invokevirtual 243	java/io/FileInputStream:close	()V
+    //   67: iconst_1
+    //   68: ireturn
+    //   69: aload_1
+    //   70: invokevirtual 243	java/io/FileInputStream:close	()V
+    //   73: iconst_0
+    //   74: ireturn
+    //   75: astore_1
+    //   76: iconst_0
+    //   77: ireturn
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    //   82: astore_1
+    //   83: iconst_1
+    //   84: ireturn
+    //   85: astore_1
+    //   86: iconst_0
+    //   87: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	88	0	this	rx
+    //   25	45	1	localFileInputStream	java.io.FileInputStream
+    //   75	1	1	localFileNotFoundException	java.io.FileNotFoundException
+    //   82	1	1	localIOException1	java.io.IOException
+    //   85	1	1	localIOException2	java.io.IOException
+    //   37	17	2	arrayOfByte	byte[]
+    //   78	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   17	26	75	java/io/FileNotFoundException
+    //   32	63	78	java/lang/Exception
+    //   63	67	82	java/io/IOException
+    //   69	73	85	java/io/IOException
+  }
+  
+  public final void a(long paramLong, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (ww.j()) {
       return;
     }
-    byte[] arrayOfByte = new byte[localObject2.length + localObject1.length];
-    System.arraycopy(localObject2, 0, arrayOfByte, 0, localObject2.length);
-    System.arraycopy(localObject1, 0, arrayOfByte, this.a.length, localObject1.length);
-    localObject1 = new abb().b(arrayOfByte);
-    localObject2 = new byte[localObject1.length * 2];
-    int k = 0;
-    int m;
-    while (k < localObject1.length)
-    {
-      m = k * 2;
-      localObject2[m] = ((byte)((localObject1[k] & 0xFF) >>> 4));
-      localObject2[(m + 1)] = ((byte)(localObject1[k] & 0xF));
-      k += 1;
+    if (this.b == null) {
+      return;
     }
-    k = 0;
-    while (k < 6)
+    try
     {
-      m = 0;
-      int n = 0;
-      while (m < 9)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", paramLong);
+      localJSONObject.put("e", paramInt1);
+      localJSONObject.put("p", paramString1);
+      localJSONObject.put("s", paramInt2);
+      localJSONObject.put("d", paramString2);
+      localJSONObject.put("nt", paramString3);
+      try
       {
-        n += localObject2[(k + 1 + m * 7)];
-        m += 1;
+        this.b.put(localJSONObject);
       }
-      this.d[k] = (n % 10);
-      k += 1;
+      finally {}
     }
-    paramLong /= 1000L;
-    k = this.c;
-    this.e = (paramLong / k * k * 1000L);
+    catch (Exception paramString1)
+    {
+      label110:
+      break label110;
+    }
+    if (this.b.length() >= f) {
+      a(false);
+    }
   }
   
   public final void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (System.currentTimeMillis() - this.i > 1000L)
-      {
-        TmsLog.i("mod_seed", "handle mod is excuting.");
-        rv.a.a().b(this.g);
-        this.i = System.currentTimeMillis();
-      }
+    if (ww.j()) {
       return;
     }
-    Object localObject = c();
-    long l2 = 0L;
-    long l1 = ((SharedPreferences)localObject).getLong("seed_expire_time", 0L);
-    long l3 = System.currentTimeMillis();
-    long l4 = this.b;
-    if (l1 == 0L) {
-      l1 = 31536000000L;
-    } else {
-      l1 -= l3 + l4;
-    }
-    if (l1 >= 31536000000L) {
+    this.j = paramBoolean;
+    if (this.h) {
       return;
     }
-    if (l1 < 0L) {
-      l1 = l2;
-    }
-    this.g.removeCallbacks(this.h);
-    this.g.postDelayed(this.h, l1);
-    localObject = new StringBuilder("auto mod will excute in ");
-    ((StringBuilder)localObject).append(l1);
-    ((StringBuilder)localObject).append(" ms later.");
-    TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
-  }
-  
-  public final long d()
-  {
-    try
+    JSONArray localJSONArray;
+    int n;
+    int m;
+    if (this.a)
     {
-      int[] arrayOfInt = f();
-      StringBuffer localStringBuffer = new StringBuffer();
-      int k = 0;
-      while (k < 16)
-      {
-        localStringBuffer.append(arrayOfInt[k]);
-        k += 1;
+      if (this.b.length() == 0) {
+        return;
       }
-      l = Long.parseLong(localStringBuffer.toString());
+      this.h = true;
+      localJSONArray = new JSONArray();
+      n = this.b.length();
+      m = e;
+      if (n <= m) {
+        m = this.b.length();
+      }
+      n = 0;
     }
-    catch (Exception localException)
-    {
-      long l;
-      label52:
-      break label52;
-    }
-    l = 0L;
-    TmsLog.i("mod_seed", "tokenseq: ".concat(String.valueOf(l)));
-    return l;
-  }
-  
-  public final String e()
-  {
-    Object localObject1 = new int[16];
-    Object localObject2 = new abb();
-    Object localObject3 = new abb();
-    int i1 = 0;
     for (;;)
     {
-      int m;
+      if (n < m) {}
       try
       {
-        localObject2 = ((abb)localObject2).b(((abb)localObject3).b(this.a));
-        localObject3 = new byte[localObject2.length * 2];
-        k = 0;
-        if (k >= localObject2.length) {
-          continue;
-        }
-        m = k * 2;
-        localObject3[m] = ((byte)((localObject2[k] & 0xFF) >>> 4));
-        localObject3[(m + 1)] = ((byte)(localObject2[k] & 0xF));
-        k += 1;
-        continue;
-        if (localObject1[0] == 0) {
-          localObject1[0] = 1;
-        }
+        localJSONArray.put(this.b.get(n));
+        n += 1;
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
-        continue;
-        k = 0;
-      }
-      localObject2 = new StringBuilder();
-      int k = i1;
-      if (k < 16)
-      {
-        ((StringBuilder)localObject2).append(localObject1[k]);
-        k += 1;
-      }
-      else
-      {
-        localObject1 = c().edit();
-        ((SharedPreferences.Editor)localObject1).putString("token_seq_sp", ((StringBuilder)localObject2).toString());
-        ((SharedPreferences.Editor)localObject1).commit();
-        return ((StringBuilder)localObject2).toString();
-        while (k < 16)
-        {
-          m = 0;
-          int n = 0;
-          while (m < 4)
-          {
-            n += localObject3[(m * 16 + k)];
-            m += 1;
-          }
-          localObject1[k] = (n % 10);
-          k += 1;
-        }
+        label108:
+        JSONObject localJSONObject;
+        Object localObject2;
+        break label108;
       }
     }
+    try
+    {
+      localJSONObject = new JSONObject();
+      try
+      {
+        if (sz.a().k.b() != null) {
+          localJSONObject.put("uin", sz.a().k.b().mRealUin);
+        }
+        localObject2 = aac.c(RqdApplication.n());
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localJSONObject.put("mac", localObject2);
+        }
+        localObject2 = aac.b(RqdApplication.n());
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localJSONObject.put("device_id", localObject2);
+        }
+        localJSONObject.put("model", URLEncoder.encode(Build.MODEL));
+        localJSONObject.put("release", URLEncoder.encode(Build.VERSION.RELEASE));
+        localJSONObject.put("platfrom", "android");
+        localJSONObject.put("guid", aac.a(ry.a(RqdApplication.n()).a.GetGuid()));
+        localObject2 = aac.d(RqdApplication.n());
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localJSONObject.put("router_id", localObject2);
+        }
+        localJSONObject.put("event_list", localJSONArray);
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+        localObject2 = new StringBuilder("JSONException:");
+        ((StringBuilder)localObject2).append(localException2.getMessage());
+        xa.c(((StringBuilder)localObject2).toString());
+      }
+      this.c = localJSONObject.toString();
+      this.k = new UserTask()
+      {
+        public final void a()
+        {
+          rx.a(rx.this);
+        }
+      };
+      this.k.a(new String[0]);
+      return;
+    }
+    finally {}
   }
 }
 

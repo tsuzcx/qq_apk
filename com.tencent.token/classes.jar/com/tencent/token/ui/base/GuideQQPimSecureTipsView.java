@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.kt;
-import com.tencent.token.kt.a;
-import com.tencent.token.zt;
+import com.tencent.token.ks;
+import com.tencent.token.ks.a;
+import com.tencent.token.zs;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -37,14 +37,14 @@ public class GuideQQPimSecureTipsView
     this.b.setText(paramString2);
     this.c.setText(paramString3);
     if (!TextUtils.isEmpty(paramString4)) {
-      new zt(this.d).execute(new String[] { paramString4 });
+      new zs(this.d).execute(new String[] { paramString4 });
     }
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = kt.a.a;
-        kt.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
+        paramAnonymousView = ks.a.a;
+        ks.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
         GuideQQPimSecureTipsView.this.setVisibility(8);
         GuideQQPimSecureTipsView.a = true;
         if (paramBoolean)

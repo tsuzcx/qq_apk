@@ -1,32 +1,86 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.os.Process;
+import java.io.File;
 
 public final class adv
 {
-  public static Map<Integer, Long> a = new HashMap();
+  public static final String a = aff.a(aff.ay);
+  public static final String b = aff.a(aff.az);
+  public static boolean c = false;
   
-  public static String a()
+  public static void a(Context paramContext, adi paramadi)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = a.keySet().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      int i = ((Integer)localIterator.next()).intValue();
-      localStringBuilder.append(",");
-      localStringBuilder.append(i);
-      localStringBuilder.append("_");
-      localStringBuilder.append(a.get(Integer.valueOf(i)));
+      if (c) {
+        return;
+      }
+      c = true;
+      long l = adi.c(paramContext, "502");
+      int i = Process.myUid();
+      if ((l != 0L) && (i != l))
+      {
+        paramadi.a(paramContext, "101", "", true);
+        paramContext = paramContext.getDir(a, 0);
+        if (paramContext == null)
+        {
+          paramContext = "";
+        }
+        else
+        {
+          paramadi = new StringBuilder();
+          paramadi.append(paramContext.getAbsolutePath());
+          paramContext = new File(aeu.a(paramadi, File.separator, "1"));
+          if ((!paramContext.exists()) && (!paramContext.mkdirs()))
+          {
+            paramContext = "";
+          }
+          else
+          {
+            paramadi = new StringBuilder();
+            paramadi.append(paramContext.getAbsolutePath());
+            paramadi.append(File.separator);
+            paramadi.append(b);
+            paramContext = paramadi.toString();
+          }
+        }
+        new File(paramContext).delete();
+        return;
+      }
     }
-    return localStringBuilder.toString();
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
-  public static void a(int paramInt, long paramLong)
+  public static void b(Context paramContext, adi paramadi)
   {
-    a.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    long l = adi.c(paramContext, "502");
+    int i = Process.myUid();
+    boolean bool = l < 0L;
+    if (!bool)
+    {
+      paramadi.c(paramContext, 0L);
+      return;
+    }
+    if ((bool) && (i != l))
+    {
+      paramadi.c(paramContext, -1L);
+      return;
+    }
+    paramadi.c(paramContext, 1L);
+  }
+  
+  public static void c(Context paramContext, adi paramadi)
+  {
+    long l1 = adi.c(paramContext, "502");
+    long l2 = Process.myUid();
+    if (l1 != l2) {
+      paramadi.a(paramContext, "502", String.valueOf(l2), false);
+    }
   }
 }
 

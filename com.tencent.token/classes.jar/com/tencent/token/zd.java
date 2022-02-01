@@ -1,16 +1,38 @@
 package com.tencent.token;
 
-public final class zd
+import java.util.concurrent.TimeUnit;
+
+public class zd
 {
-  String a;
-  String b;
-  String c;
+  private static zd b;
+  private ail a;
   
-  public zd(String paramString1, String paramString2, String paramString3)
+  public zd()
   {
-    this.b = paramString1;
-    this.c = paramString2;
-    this.a = paramString3;
+    ail.a locala = new ail.a();
+    locala.x = aiw.a("timeout", TimeUnit.SECONDS);
+    locala.z = aiw.a("timeout", TimeUnit.SECONDS);
+    locala.y = aiw.a("timeout", TimeUnit.SECONDS);
+    this.a = new ail(locala);
+  }
+  
+  public static zd a()
+  {
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new zd();
+        }
+      }
+      finally {}
+    }
+    return b;
+  }
+  
+  final void a(aio paramaio, ahw paramahw)
+  {
+    ain.a(this.a, paramaio, false).a(paramahw);
   }
 }
 

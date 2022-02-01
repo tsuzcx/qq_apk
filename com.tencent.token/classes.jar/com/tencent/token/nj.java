@@ -1,54 +1,98 @@
 package com.tencent.token;
 
 import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public final class nj
 {
-  public String a = "";
-  public int b = -1;
+  String a;
+  Map b;
   
-  public nj() {}
-  
-  public nj(String paramString, int paramInt)
+  public nj(String paramString)
   {
     this.a = paramString;
-    this.b = paramInt;
+    this.b = new HashMap();
   }
   
-  public final String a()
+  public final void a(a parama)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(":");
-    localStringBuilder.append(this.b);
-    return localStringBuilder.toString();
+    this.b.put(parama.a, parama);
   }
   
-  public final boolean a(String paramString)
+  public static final class a
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    paramString = paramString.split(":");
-    if (paramString.length != 2) {
-      return false;
-    }
-    this.a = paramString[0];
-    try
+    String a;
+    String b;
+    public List c;
+    long d;
+    
+    public a(String paramString1, long paramLong, String paramString2)
     {
-      this.b = Integer.parseInt(paramString[1]);
-      return true;
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString2;
+      this.c = new ArrayList();
     }
-    catch (NumberFormatException paramString)
+    
+    public a(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
     {
-      paramString.printStackTrace();
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString3;
+      this.c = a(paramString2);
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        paramString1 = paramString4.split(":");
+        if ((paramString1 != null) && (paramString1.length > 0)) {
+          new ni(paramString1[0], Integer.parseInt(paramString1[1]));
+        }
+      }
     }
-    return false;
-  }
-  
-  public final String toString()
-  {
-    return a();
+    
+    private static ArrayList a(String paramString)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = paramString.split(",");
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          int j = paramString.length;
+          int i = 0;
+          while (i < j)
+          {
+            String[] arrayOfString = paramString[i].split(":");
+            if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+              localArrayList.add(new ni(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+            }
+            i += 1;
+          }
+        }
+      }
+      return localArrayList;
+    }
+    
+    public final String a()
+    {
+      Object localObject = this.c;
+      if ((localObject != null) && (((List)localObject).size() != 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append(((ni)((Iterator)localObject).next()).a());
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        return localStringBuilder.toString();
+      }
+      return "";
+    }
   }
 }
 

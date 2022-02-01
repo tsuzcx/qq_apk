@@ -1,11 +1,6 @@
 package com.tencent.token;
 
-public final class agq
-{
-  public int a;
-  public String[] b;
-  public boolean c;
-}
+public abstract interface agq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

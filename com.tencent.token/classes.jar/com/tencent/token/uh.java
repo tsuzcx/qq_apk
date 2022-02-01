@@ -4,24 +4,24 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class uh
-  extends tk
+  extends tj
 {
-  private long d;
-  private int e;
+  public String d;
+  public long e;
   private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramaar.c.get("param.unbind.type")).intValue();
-    this.f = paramaar.j;
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.d = ((String)paramaaq.c.get("param.mbmobile.mobile"));
+    this.f = ((Integer)paramaaq.c.get("param.type")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -30,12 +30,7 @@ public final class uh
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      wz localwz = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      localwz.a(i, localStringBuilder.toString(), paramJSONObject);
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
     this.a.a = 0;

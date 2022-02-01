@@ -25,12 +25,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.token.cs;
-import com.tencent.token.ei;
-import com.tencent.token.ex;
-import com.tencent.token.ff;
-import com.tencent.token.gb;
-import com.tencent.token.gb.a;
+import com.tencent.token.cr;
+import com.tencent.token.eh;
+import com.tencent.token.ew;
+import com.tencent.token.fe;
+import com.tencent.token.ga;
+import com.tencent.token.ga.a;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class SlidingPaneLayout
   int d;
   boolean e;
   int f;
-  final gb g;
+  final ga g;
   boolean h;
   final ArrayList<b> i = new ArrayList();
   private int k;
@@ -85,9 +85,9 @@ public class SlidingPaneLayout
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.n = ((int)(32.0F * f1 + 0.5F));
     setWillNotDraw(false);
-    ex.a(this, new a());
-    ex.a(this, 1);
-    this.g = gb.a(this, 0.5F, new c());
+    ew.a(this, new a());
+    ew.a(this, 1);
+    this.g = ga.a(this, 0.5F, new c());
     this.g.g = (f1 * 400.0F);
   }
   
@@ -112,10 +112,10 @@ public class SlidingPaneLayout
     }
     localObject = this.g;
     View localView = this.b;
-    if (((gb)localObject).a(localView, i1, localView.getTop()))
+    if (((ga)localObject).a(localView, i1, localView.getTop()))
     {
       a();
-      ex.a(this);
+      ew.a(this);
       return true;
     }
     return false;
@@ -307,7 +307,7 @@ public class SlidingPaneLayout
       }
       paramView = new b(paramView);
       this.i.add(paramView);
-      ex.a(this, paramView);
+      ew.a(this, paramView);
     }
   }
   
@@ -318,7 +318,7 @@ public class SlidingPaneLayout
   
   final boolean b()
   {
-    return ex.c(this) == 1;
+    return ew.c(this) == 1;
   }
   
   final boolean c(View paramView)
@@ -344,7 +344,7 @@ public class SlidingPaneLayout
         this.g.b();
         return;
       }
-      ex.a(this);
+      ew.a(this);
     }
   }
   
@@ -476,7 +476,7 @@ public class SlidingPaneLayout
     {
       View localView = getChildAt(1);
       if (localView != null) {
-        this.h = (gb.b(localView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) ^ true);
+        this.h = (ga.b(localView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) ^ true);
       }
     }
     if ((this.o) && ((!this.e) || (i1 == 0)))
@@ -508,7 +508,7 @@ public class SlidingPaneLayout
           f2 = paramMotionEvent.getY();
           this.q = f1;
           this.r = f2;
-          if ((gb.b(this.b, (int)f1, (int)f2)) && (c(this.b)))
+          if ((ga.b(this.b, (int)f1, (int)f2)) && (c(this.b)))
           {
             i1 = 1;
             break label232;
@@ -959,7 +959,7 @@ public class SlidingPaneLayout
         float f3 = f1 - this.q;
         float f4 = f2 - this.r;
         int i1 = this.g.b;
-        if ((f3 * f3 + f4 * f4 < i1 * i1) && (gb.b(this.b, (int)f1, (int)f2))) {
+        if ((f3 * f3 + f4 * f4 < i1 * i1) && (ga.b(this.b, (int)f1, (int)f2))) {
           c();
         }
       }
@@ -1028,12 +1028,12 @@ public class SlidingPaneLayout
   
   public void setShadowResourceLeft(int paramInt)
   {
-    setShadowDrawableLeft(cs.a(getContext(), paramInt));
+    setShadowDrawableLeft(cr.a(getContext(), paramInt));
   }
   
   public void setShadowResourceRight(int paramInt)
   {
-    setShadowDrawableRight(cs.a(getContext(), paramInt));
+    setShadowDrawableRight(cr.a(getContext(), paramInt));
   }
   
   public void setSliderFadeColor(int paramInt)
@@ -1104,7 +1104,7 @@ public class SlidingPaneLayout
   }
   
   final class a
-    extends ei
+    extends eh
   {
     private final Rect c = new Rect();
     
@@ -1115,43 +1115,43 @@ public class SlidingPaneLayout
       return SlidingPaneLayout.this.c(paramView);
     }
     
-    public final void a(View paramView, ff paramff)
+    public final void a(View paramView, fe paramfe)
     {
-      ff localff = ff.a(paramff);
-      super.a(paramView, localff);
+      fe localfe = fe.a(paramfe);
+      super.a(paramView, localfe);
       Rect localRect = this.c;
-      localff.a(localRect);
-      paramff.b(localRect);
-      localff.c(localRect);
-      paramff.d(localRect);
-      paramff.c(localff.a());
-      paramff.a(localff.a.getPackageName());
-      paramff.b(localff.a.getClassName());
-      paramff.c(localff.a.getContentDescription());
-      paramff.h(localff.a.isEnabled());
-      paramff.f(localff.a.isClickable());
-      paramff.a(localff.a.isFocusable());
-      paramff.b(localff.a.isFocused());
-      paramff.d(localff.b());
-      paramff.e(localff.a.isSelected());
-      paramff.g(localff.a.isLongClickable());
-      paramff.a(localff.a.getActions());
+      localfe.a(localRect);
+      paramfe.b(localRect);
+      localfe.c(localRect);
+      paramfe.d(localRect);
+      paramfe.c(localfe.a());
+      paramfe.a(localfe.a.getPackageName());
+      paramfe.b(localfe.a.getClassName());
+      paramfe.c(localfe.a.getContentDescription());
+      paramfe.h(localfe.a.isEnabled());
+      paramfe.f(localfe.a.isClickable());
+      paramfe.a(localfe.a.isFocusable());
+      paramfe.b(localfe.a.isFocused());
+      paramfe.d(localfe.b());
+      paramfe.e(localfe.a.isSelected());
+      paramfe.g(localfe.a.isLongClickable());
+      paramfe.a(localfe.a.getActions());
       int i = Build.VERSION.SDK_INT;
       int j = 0;
       if (i >= 16) {
-        i = localff.a.getMovementGranularities();
+        i = localfe.a.getMovementGranularities();
       } else {
         i = 0;
       }
       if (Build.VERSION.SDK_INT >= 16) {
-        paramff.a.setMovementGranularities(i);
+        paramfe.a.setMovementGranularities(i);
       }
-      localff.a.recycle();
-      paramff.b(SlidingPaneLayout.class.getName());
-      paramff.a(paramView);
-      paramView = ex.d(paramView);
+      localfe.a.recycle();
+      paramfe.b(SlidingPaneLayout.class.getName());
+      paramfe.a(paramView);
+      paramView = ew.d(paramView);
       if ((paramView instanceof View)) {
-        paramff.c((View)paramView);
+        paramfe.c((View)paramView);
       }
       int k = SlidingPaneLayout.this.getChildCount();
       i = j;
@@ -1160,8 +1160,8 @@ public class SlidingPaneLayout
         paramView = SlidingPaneLayout.this.getChildAt(i);
         if ((!b(paramView)) && (paramView.getVisibility() == 0))
         {
-          ex.a(paramView, 1);
-          paramff.b(paramView);
+          ew.a(paramView, 1);
+          paramfe.b(paramView);
         }
         i += 1;
       }
@@ -1204,7 +1204,7 @@ public class SlidingPaneLayout
   }
   
   final class c
-    extends gb.a
+    extends ga.a
   {
     c() {}
     
@@ -1363,7 +1363,7 @@ public class SlidingPaneLayout
   {
     public void a(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
     {
-      ex.a(paramSlidingPaneLayout, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
+      ew.a(paramSlidingPaneLayout, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
     }
   }
   
@@ -1425,7 +1425,7 @@ public class SlidingPaneLayout
   {
     public final void a(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
     {
-      ex.a(paramView, ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).d);
+      ew.a(paramView, ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).d);
     }
   }
 }

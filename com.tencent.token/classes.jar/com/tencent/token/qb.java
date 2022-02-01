@@ -1,129 +1,155 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.IndexActivity;
-import com.tmsdk.TMSDKContext;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 
-public final class qb
-  extends qc
-  implements View.OnClickListener
+public abstract class qb
+  extends qd
 {
-  protected TextView a;
-  protected LinearLayout b;
-  protected TextView c;
-  protected ImageView d;
-  protected TextView e;
-  protected TextView f;
-  protected Button g;
-  protected ImageView h;
-  protected String i;
-  protected String j;
-  protected String k;
-  protected String l;
-  protected String m;
-  protected String n;
+  float o = -1.0F;
+  float p = -1.0F;
+  int q;
+  int r;
+  int s = 0;
   
-  protected final void a()
+  static TranslateAnimation a(int paramInt)
   {
-    super.a();
-    this.t = 8000L;
+    TranslateAnimation localTranslateAnimation;
+    switch (paramInt)
+    {
+    default: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
+      break;
+    case 3: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 1.0F, 1, 0.0F, 1, 0.0F);
+      break;
+    case 2: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
+    }
+    localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    return localTranslateAnimation;
   }
   
-  protected final View b()
+  protected void a()
   {
-    this.l = "QQ帐号持续保护中";
-    this.m = "你的帐号今天有新的登录足迹";
-    this.k = "";
-    this.n = "查看";
-    this.j = "";
-    this.i = "";
-    if (TextUtils.isEmpty(this.l)) {
-      return null;
-    }
-    View localView = View.inflate(this.A, 2131296359, null);
-    this.a = ((TextView)localView.findViewById(2131166109));
-    this.b = ((LinearLayout)localView.findViewById(2131165545));
-    this.c = ((TextView)localView.findViewById(2131165546));
-    this.d = ((ImageView)localView.findViewById(2131165583));
-    this.e = ((TextView)localView.findViewById(2131166112));
-    this.f = ((TextView)localView.findViewById(2131166043));
-    this.g = ((Button)localView.findViewById(2131165344));
-    this.h = ((ImageView)localView.findViewById(2131165383));
-    if (!TextUtils.isEmpty(this.i))
+    this.q = qe.a(this.A, 40.0F);
+    this.r = (qe.b() / 4);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -this.A.getResources().getDimensionPixelOffset(2131034209), 0.0F);
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setInterpolator(new Interpolator()
     {
-      this.a.setVisibility(0);
-      this.a.setText(this.i);
-    }
-    if (!TextUtils.isEmpty(this.j))
-    {
-      this.b.setVisibility(0);
-      TextView localTextView = this.c;
-      StringBuilder localStringBuilder = new StringBuilder("·");
-      localStringBuilder.append(this.j);
-      localTextView.setText(localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(this.k))
-    {
-      this.d.setVisibility(0);
-      this.d.setImageResource(2131099894);
-    }
-    if (!TextUtils.isEmpty(this.n))
-    {
-      this.g.setVisibility(0);
-      this.g.setText(this.n);
-    }
-    this.e.setText(this.l);
-    this.f.setText(this.m);
-    localView.setOnClickListener(this);
-    this.g.setOnClickListener(this);
-    this.h.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+      public final float getInterpolation(float paramAnonymousFloat)
       {
-        qb.this.a(false);
+        double d1 = Math.pow(2.0D, -10.0F * paramAnonymousFloat);
+        double d2 = paramAnonymousFloat - 0.1F;
+        Double.isNaN(d2);
+        return (float)(d1 * Math.sin(d2 * 6.283185307179586D / 0.4000000059604645D) + 1.0D);
       }
     });
-    TMSDKContext.saveActionData(1150174);
-    return localView;
+    this.u = localTranslateAnimation;
+    this.v = a(1);
+    super.a();
   }
   
-  protected final int c()
+  protected abstract View b();
+  
+  protected abstract int c();
+  
+  protected final View g()
   {
-    return qf.a(this.A, 104.0F);
+    View localView = b();
+    Object localObject = localView;
+    if (localView != null)
+    {
+      if (!localView.isClickable()) {
+        localView.setClickable(true);
+      }
+      localView.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          if (paramAnonymousMotionEvent != null) {
+            switch (paramAnonymousMotionEvent.getAction())
+            {
+            default: 
+              return false;
+            case 2: 
+              float f = Math.abs(paramAnonymousMotionEvent.getX() - qb.this.o);
+              if (f >= Math.abs(paramAnonymousMotionEvent.getY() - qb.this.p))
+              {
+                if (f > qb.this.r)
+                {
+                  if (paramAnonymousMotionEvent.getX() > qb.this.o)
+                  {
+                    j = 1;
+                    i = 3;
+                    break label159;
+                  }
+                  j = 1;
+                  i = 2;
+                  break label159;
+                }
+              }
+              else if (qb.this.p - paramAnonymousMotionEvent.getY() > qb.this.q)
+              {
+                j = 1;
+                i = 1;
+                break label159;
+              }
+              int j = 0;
+              int i = 0;
+              if (j != 0)
+              {
+                paramAnonymousView = qb.this;
+                paramAnonymousView.s = i;
+                paramAnonymousView.v = qb.a(paramAnonymousView.s);
+                qb.this.a(false);
+                return true;
+              }
+              break;
+            case 1: 
+              return qb.this.s != 0;
+            case 0: 
+              label159:
+              qb.this.o = paramAnonymousMotionEvent.getX();
+              qb.this.p = paramAnonymousMotionEvent.getY();
+            }
+          }
+          return false;
+        }
+      });
+      localObject = new FrameLayout(this.A);
+      ((FrameLayout)localObject).addView(localView);
+      ((FrameLayout)localObject).setBackgroundResource(2131100071);
+    }
+    return localObject;
   }
   
-  protected final void d()
+  protected final WindowManager.LayoutParams h()
   {
-    super.d();
-  }
-  
-  protected final void e()
-  {
-    super.e();
-  }
-  
-  protected final void f()
-  {
-    super.f();
-    Intent localIntent = new Intent(this.A, IndexActivity.class);
-    localIntent.addFlags(67108864);
-    RqdApplication.n().startActivity(localIntent);
-    TMSDKContext.saveActionData(1150175);
-  }
-  
-  public final void onClick(View paramView)
-  {
-    f();
-    a(true);
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {
+      localLayoutParams.type = 2038;
+    } else {
+      localLayoutParams.type = 2003;
+    }
+    localLayoutParams.format = 1;
+    localLayoutParams.flags = 40;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.height = c();
+    return localLayoutParams;
   }
 }
 

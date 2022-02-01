@@ -3,8 +3,6 @@ package com.tencent.token;
 public final class aox
   extends Exception
 {
-  private int a = -56;
-  
   public aox(String paramString)
   {
     super(paramString);

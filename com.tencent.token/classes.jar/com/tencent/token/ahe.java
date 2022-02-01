@@ -1,45 +1,28 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.content.Context;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
 
 public final class ahe
-  implements ahk
+  extends agj
 {
-  public final String a = "ksid_data";
-  public int b = 12;
-  public String c = "";
+  Context a;
   
-  public final ahk a(afx paramafx)
+  ahe(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    ahe localahe = new ahe();
-    localahe.c = paramafx.getString(paramafx.getColumnIndex("ksid"));
-    return localahe;
+    super(paramContext, str, paramString.getBytes(), paramSQLiteCipherSpec, new ahc());
+    this.a = paramContext;
   }
   
-  public final String a()
+  protected final void finalize()
   {
-    return "ksid_data";
-  }
-  
-  public final void a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-  }
-  
-  public final long b(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-    new ContentValues();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("key", Integer.valueOf(this.b));
-    localContentValues.put("ksid", this.c);
-    return paramSQLiteDatabase.a("ksid_data", localContentValues);
-  }
-  
-  public final ContentValues b()
-  {
-    return null;
+    try
+    {
+      b();
+      return;
+    }
+    catch (Exception localException) {}
+    return;
   }
 }
 

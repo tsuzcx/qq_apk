@@ -1,22 +1,32 @@
 package com.tencent.token;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vw
-  extends tk
+  extends tj
 {
-  private a d;
+  public QueryCaptchaResult d;
+  private long e;
+  private int f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar) {}
+  public final void a(aaq paramaaq)
+  {
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramaaq.c.get("param.scene.id")).intValue();
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
@@ -26,25 +36,18 @@ public final class vw
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (this.c != i)
-      {
-        this.a.a(10030, null, null);
-        return;
-      }
-      this.d = new a();
-      this.d.a = paramJSONObject.getInt("is_have_msg");
-      if (this.d.a == 1)
-      {
-        this.d.b = paramJSONObject.getString("content");
-        this.d.c = paramJSONObject.getLong("uin");
-      }
-      this.a.a(this.d.b);
+      this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
+      paramJSONObject = this.d;
+      paramJSONObject.mRealUin = this.e;
+      paramJSONObject.mSceneId = this.f;
+      this.a.a = 0;
+      return;
     }
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
   
   public final void b()
@@ -57,13 +60,6 @@ public final class vw
       localMessage.sendToTarget();
       this.b.e = true;
     }
-  }
-  
-  public static final class a
-  {
-    public int a;
-    public String b;
-    public long c;
   }
 }
 

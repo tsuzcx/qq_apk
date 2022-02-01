@@ -1,124 +1,157 @@
 package com.tencent.token;
 
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.KeyEvent;
+import android.view.KeyboardShortcutGroup;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.Window.Callback;
+import android.view.WindowManager.LayoutParams;
+import android.view.accessibility.AccessibilityEvent;
+import java.util.List;
 
-public final class hd
+public class hd
+  implements Window.Callback
 {
-  final ArrayList<fa> a = new ArrayList();
-  fb b;
-  boolean c;
-  private long d = -1L;
-  private Interpolator e;
-  private final fc f = new fc()
+  final Window.Callback e;
+  
+  public hd(Window.Callback paramCallback)
   {
-    private boolean b = false;
-    private int c = 0;
-    
-    public final void a(View paramAnonymousView)
+    if (paramCallback != null)
     {
-      if (this.b) {
-        return;
-      }
-      this.b = true;
-      if (hd.this.b != null) {
-        hd.this.b.a(null);
-      }
-    }
-    
-    public final void b(View paramAnonymousView)
-    {
-      int i = this.c + 1;
-      this.c = i;
-      if (i == hd.this.a.size())
-      {
-        if (hd.this.b != null) {
-          hd.this.b.b(null);
-        }
-        this.c = 0;
-        this.b = false;
-        hd.this.c = false;
-      }
-    }
-  };
-  
-  public final hd a(Interpolator paramInterpolator)
-  {
-    if (!this.c) {
-      this.e = paramInterpolator;
-    }
-    return this;
-  }
-  
-  public final hd a(fa paramfa)
-  {
-    if (!this.c) {
-      this.a.add(paramfa);
-    }
-    return this;
-  }
-  
-  public final hd a(fa paramfa1, fa paramfa2)
-  {
-    this.a.add(paramfa1);
-    paramfa2.b(paramfa1.a());
-    this.a.add(paramfa2);
-    return this;
-  }
-  
-  public final hd a(fb paramfb)
-  {
-    if (!this.c) {
-      this.b = paramfb;
-    }
-    return this;
-  }
-  
-  public final void a()
-  {
-    if (this.c) {
+      this.e = paramCallback;
       return;
     }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      fa localfa = (fa)localIterator.next();
-      long l = this.d;
-      if (l >= 0L) {
-        localfa.a(l);
-      }
-      Interpolator localInterpolator = this.e;
-      if (localInterpolator != null) {
-        localfa.a(localInterpolator);
-      }
-      if (this.b != null) {
-        localfa.a(this.f);
-      }
-      localfa.c();
-    }
-    this.c = true;
+    throw new IllegalArgumentException("Window callback may not be null");
   }
   
-  public final void b()
+  public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.c) {
-      return;
-    }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((fa)localIterator.next()).b();
-    }
-    this.c = false;
+    return this.e.dispatchGenericMotionEvent(paramMotionEvent);
   }
   
-  public final hd c()
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if (!this.c) {
-      this.d = 250L;
-    }
-    return this;
+    return this.e.dispatchKeyEvent(paramKeyEvent);
+  }
+  
+  public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+  {
+    return this.e.dispatchKeyShortcutEvent(paramKeyEvent);
+  }
+  
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    return this.e.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return this.e.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
+  {
+    return this.e.dispatchTrackballEvent(paramMotionEvent);
+  }
+  
+  public void onActionModeFinished(ActionMode paramActionMode)
+  {
+    this.e.onActionModeFinished(paramActionMode);
+  }
+  
+  public void onActionModeStarted(ActionMode paramActionMode)
+  {
+    this.e.onActionModeStarted(paramActionMode);
+  }
+  
+  public void onAttachedToWindow()
+  {
+    this.e.onAttachedToWindow();
+  }
+  
+  public void onContentChanged()
+  {
+    this.e.onContentChanged();
+  }
+  
+  public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+  {
+    return this.e.onCreatePanelMenu(paramInt, paramMenu);
+  }
+  
+  public View onCreatePanelView(int paramInt)
+  {
+    return this.e.onCreatePanelView(paramInt);
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    this.e.onDetachedFromWindow();
+  }
+  
+  public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
+  {
+    return this.e.onMenuItemSelected(paramInt, paramMenuItem);
+  }
+  
+  public boolean onMenuOpened(int paramInt, Menu paramMenu)
+  {
+    return this.e.onMenuOpened(paramInt, paramMenu);
+  }
+  
+  public void onPanelClosed(int paramInt, Menu paramMenu)
+  {
+    this.e.onPanelClosed(paramInt, paramMenu);
+  }
+  
+  public void onPointerCaptureChanged(boolean paramBoolean)
+  {
+    this.e.onPointerCaptureChanged(paramBoolean);
+  }
+  
+  public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+  {
+    return this.e.onPreparePanel(paramInt, paramView, paramMenu);
+  }
+  
+  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+  {
+    this.e.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+  }
+  
+  public boolean onSearchRequested()
+  {
+    return this.e.onSearchRequested();
+  }
+  
+  public boolean onSearchRequested(SearchEvent paramSearchEvent)
+  {
+    return this.e.onSearchRequested(paramSearchEvent);
+  }
+  
+  public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
+  {
+    this.e.onWindowAttributesChanged(paramLayoutParams);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    this.e.onWindowFocusChanged(paramBoolean);
+  }
+  
+  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+  {
+    return this.e.onWindowStartingActionMode(paramCallback);
+  }
+  
+  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
+  {
+    return this.e.onWindowStartingActionMode(paramCallback, paramInt);
   }
 }
 

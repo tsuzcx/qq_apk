@@ -1,21 +1,31 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import java.lang.ref.WeakReference;
 
 final class jd
+  extends iw
 {
-  public ColorStateList a;
-  public PorterDuff.Mode b;
-  public boolean c;
-  public boolean d;
+  private final WeakReference<Context> a;
   
-  final void a()
+  public jd(Context paramContext, Resources paramResources)
   {
-    this.a = null;
-    this.d = false;
-    this.b = null;
-    this.c = false;
+    super(paramResources);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public final Drawable getDrawable(int paramInt)
+  {
+    Drawable localDrawable = super.getDrawable(paramInt);
+    Context localContext = (Context)this.a.get();
+    if ((localDrawable != null) && (localContext != null))
+    {
+      ig.a();
+      ig.a(localContext, paramInt, localDrawable);
+    }
+    return localDrawable;
   }
 }
 

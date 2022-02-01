@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.token.gp.j;
+import com.tencent.token.go.j;
 
 public class DialogTitle
   extends TextView
@@ -31,8 +31,8 @@ public class DialogTitle
       {
         setSingleLine(false);
         setMaxLines(2);
-        localObject = getContext().obtainStyledAttributes(null, gp.j.TextAppearance, 16842817, 16973892);
-        i = ((TypedArray)localObject).getDimensionPixelSize(gp.j.TextAppearance_android_textSize, 0);
+        localObject = getContext().obtainStyledAttributes(null, go.j.TextAppearance, 16842817, 16973892);
+        i = ((TypedArray)localObject).getDimensionPixelSize(go.j.TextAppearance_android_textSize, 0);
         if (i != 0) {
           setTextSize(0, i);
         }

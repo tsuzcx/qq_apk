@@ -7,16 +7,16 @@ final class aqf
   int c;
   int d;
   byte[] e;
-  apt f;
+  aqa f;
   
-  aqf(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte, apt paramapt)
+  aqf(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3, int paramInt4, aqa paramaqa)
   {
     this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.b = paramInt3;
+    this.c = paramInt4;
+    this.d = paramInt2;
     this.e = paramArrayOfByte;
-    this.f = paramapt;
+    this.f = paramaqa;
   }
 }
 

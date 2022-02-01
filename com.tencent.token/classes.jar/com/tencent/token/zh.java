@@ -1,79 +1,130 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import java.io.ByteArrayInputStream;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.util.regex.Pattern;
 
 public final class zh
 {
-  private static String a(byte[] paramArrayOfByte)
+  public static String a()
   {
     try
     {
-      paramArrayOfByte = ((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramArrayOfByte))).getPublicKey().toString();
-      return paramArrayOfByte;
+      String str = new java.io.BufferedReader(new java.io.FileReader("/proc/cpuinfo")).readLine().split(":\\s+", 2)[1];
+      return str;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Exception localException)
     {
-      paramArrayOfByte.printStackTrace();
+      localException.printStackTrace();
     }
-    return zl.a;
+    return zk.a;
   }
   
-  public static JSONArray a(Context paramContext)
+  public static String b()
   {
-    Object localObject = (ArrayList)b(paramContext);
-    paramContext = new JSONArray();
-    if (((ArrayList)localObject).size() == 0) {
-      return paramContext;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramContext.put(((zg)((Iterator)localObject).next()).a());
-    }
-    return paramContext;
-  }
-  
-  private static List<zg> b(Context paramContext)
-  {
-    localArrayList = new ArrayList();
+    str1 = zk.a;
     try
     {
-      paramContext = paramContext.getPackageManager();
-      Object localObject = paramContext.getInstalledPackages(64);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      while (i < 100)
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-          if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
-          {
-            zg localzg = new zg();
-            localzg.a = localPackageInfo.applicationInfo.loadLabel(paramContext).toString();
-            localzg.d = localPackageInfo.packageName;
-            localzg.b = localPackageInfo.versionName;
-            if ((localPackageInfo.signatures != null) && (localPackageInfo.signatures.length != 0)) {
-              localzg.c = a(localPackageInfo.signatures[0].toByteArray());
-            }
-            localArrayList.add(localzg);
-          }
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
         }
+        if (str2.indexOf("Serial") >= 0)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
+        i += 1;
       }
-      return localArrayList;
+      return str1;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
+      localException.printStackTrace();
+    }
+  }
+  
+  public static String c()
+  {
+    str1 = zk.a;
+    try
+    {
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      int i = 1;
+      while (i < 100)
+      {
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
+        }
+        if (str2.indexOf("Hardware") >= 0)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
+        i += 1;
+      }
+      return str1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public static int d()
+  {
+    try
+    {
+      int i = new File("/sys/devices/system/cpu/").listFiles(new a()).length;
+      return i;
+    }
+    catch (Exception localException)
+    {
+      label23:
+      break label23;
+    }
+    return 1;
+  }
+  
+  public static String e()
+  {
+    String str1 = "";
+    String str2;
+    try
+    {
+      InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
+      byte[] arrayOfByte = new byte[24];
+      while (localInputStream.read(arrayOfByte) != -1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(new String(arrayOfByte));
+        str1 = localStringBuilder.toString();
+      }
+      localInputStream.close();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      str2 = zk.a;
+    }
+    return str2.trim();
+  }
+  
+  final class a
+    implements FileFilter
+  {
+    public final boolean accept(File paramFile)
+    {
+      return Pattern.matches("cpu[0-9]", paramFile.getName());
     }
   }
 }

@@ -18,12 +18,12 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aae;
-import com.tencent.token.arz;
-import com.tencent.token.arz.a;
-import com.tencent.token.asb;
+import com.tencent.token.aad;
+import com.tencent.token.ary;
+import com.tencent.token.ary.a;
+import com.tencent.token.asa;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import com.tmsdk.TMSDKContext;
 
 public class PermissionGuideSubActivity
@@ -102,7 +102,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          arz.a(new int[] { 3 }).a(new asb()
+          ary.a(new int[] { 3 }).a(new asa()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -131,7 +131,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          arz.a(new int[] { 4 }).a(new asb()
+          ary.a(new int[] { 4 }).a(new asa()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -173,10 +173,10 @@ public class PermissionGuideSubActivity
     initControllers();
     if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex")))
     {
-      aae.a(this, this.mTitleBar, 2130968773);
+      aad.a(this, this.mTitleBar, 2130968773);
       return;
     }
-    aae.a(this, this.mTitleBar, 2130968641);
+    aad.a(this, this.mTitleBar, 2130968641);
   }
   
   protected void setDefaultBackArrow()
@@ -208,7 +208,7 @@ public class PermissionGuideSubActivity
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
       localNameNotFoundException.printStackTrace();
-      xb.c(localNameNotFoundException.toString());
+      xa.c(localNameNotFoundException.toString());
       localObject = null;
     }
     if ((localObject != null) && (localObject.labelRes != 0))

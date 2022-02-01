@@ -1,11 +1,37 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Handler;
+import java.util.concurrent.ConcurrentHashMap;
+import tmsdk.common.c.a.b;
+
 public final class aoy
-  extends Exception
 {
-  public aoy(String paramString)
+  private static aoy d;
+  private static Object e = new Object();
+  public Context a = aos.a();
+  public ConcurrentHashMap b = new ConcurrentHashMap();
+  private Handler c = null;
+  
+  public static aoy a()
   {
-    super(paramString);
+    if (d == null) {
+      synchronized (e)
+      {
+        if (d == null) {
+          d = new aoy();
+        }
+      }
+    }
+    return d;
+  }
+  
+  public final void a(String paramString)
+  {
+    paramString = (b)this.b.remove(paramString);
+    if (paramString != null) {
+      this.a.unregisterReceiver(paramString);
+    }
   }
 }
 

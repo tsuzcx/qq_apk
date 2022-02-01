@@ -1,179 +1,158 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.token.global.RqdApplication;
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public final class qf
 {
-  public static final boolean a;
-  public static int b;
-  public static int c = 0;
-  private static final Long d;
-  private static int e;
-  private static int f;
-  private static float g = 0.0F;
-  
-  static
+  private static k a(int paramInt)
   {
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 19) {
-      bool = true;
-    } else {
-      bool = false;
+    if ((paramInt != 30118) && (paramInt != 30123) && (paramInt != 30125)) {
+      return null;
     }
-    a = bool;
-    d = Long.valueOf(60000L);
-    b = 0;
-    e = 0;
-    f = 0;
+    k localk = new k();
+    long l = -paramInt;
+    localk.a = l;
+    localk.b = l;
+    return localk;
   }
   
-  public static int a()
+  static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (b == 0) {
-      b = a(RqdApplication.n());
+    Object localObject = qt.a(paramContext).a(paramInt1);
+    if (localObject != null)
+    {
+      paramContext = (Context)localObject;
+      if (((k)localObject).e != null) {}
     }
-    return b;
+    else
+    {
+      localObject = a(paramInt1);
+      paramContext = (Context)localObject;
+      if (localObject == null) {
+        return;
+      }
+    }
+    localObject = new StringBuilder("adapterID:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" solutionID:");
+    ((StringBuilder)localObject).append(paramContext.b);
+    ((StringBuilder)localObject).append(" validity:");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" verCode:");
+    ((StringBuilder)localObject).append(paramInt3);
+    aoc.b();
+    long l1 = System.currentTimeMillis();
+    long l2 = paramContext.b;
+    localObject = new StringBuilder("s");
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append("ct");
+    localObject = ((StringBuilder)localObject).toString();
+    if (l1 - qp.a.a().a("pgd_sp").a((String)localObject, 0L) > 86400000L)
+    {
+      l2 = paramContext.b;
+      localObject = new StringBuilder("s");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("ct");
+      localObject = ((StringBuilder)localObject).toString();
+      qp.a.a().a("pgd_sp").b((String)localObject, l1);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(String.valueOf(paramContext.a));
+      if (paramInt2 == 0) {
+        localObject = "2";
+      } else {
+        localObject = "1";
+      }
+      localArrayList.add(localObject);
+      if (paramInt3 == 0) {
+        localObject = "";
+      } else {
+        localObject = String.valueOf(paramInt3);
+      }
+      localArrayList.add(localObject);
+      localArrayList.add(String.valueOf(paramContext.b));
+      qp.a.a().b().a(265219, localArrayList);
+    }
   }
   
-  private static int a(Context paramContext)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    int j = a(paramContext, 25.0F);
-    Object localObject4 = null;
-    Object localObject1 = null;
-    Object localObject2 = null;
-    try
-    {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject3 = localClass.newInstance();
-      localObject1 = localObject4;
-      try
-      {
-        boolean bool = Build.BRAND.toLowerCase().contains("meizu");
-        localObject1 = localObject2;
-        if (bool) {
-          try
-          {
-            localObject1 = localClass.getField("status_bar_height_large");
-          }
-          catch (Throwable localThrowable4)
-          {
-            localObject1 = localObject4;
-            localThrowable4.printStackTrace();
-            localObject1 = localObject2;
-          }
-        }
-        localObject2 = localObject1;
-        localObject4 = localObject3;
-        if (localObject1 != null) {
-          break label139;
-        }
-        localObject2 = localClass.getField("status_bar_height");
-        localObject4 = localObject3;
-      }
-      catch (Throwable localThrowable2)
-      {
-        localObject2 = localObject3;
-      }
-      localThrowable3.printStackTrace();
-    }
-    catch (Throwable localThrowable3)
-    {
-      localObject2 = null;
-    }
-    Object localObject5 = localObject2;
-    localObject2 = localObject1;
-    label139:
-    int i = j;
+    Object localObject2 = qt.a(paramContext).a(paramInt1);
+    Object localObject1;
     if (localObject2 != null)
     {
-      i = j;
-      if (localObject5 != null) {
-        try
-        {
-          i = Integer.parseInt(((Field)localObject2).get(localObject5).toString());
-          i = paramContext.getResources().getDimensionPixelSize(i);
-        }
-        catch (Throwable localThrowable1)
-        {
-          localThrowable1.printStackTrace();
-          i = j;
-        }
+      localObject1 = localObject2;
+      if (((k)localObject2).e != null) {}
+    }
+    else
+    {
+      localObject2 = a(paramInt1);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        return;
       }
     }
-    String str = Build.MODEL;
-    if (TextUtils.isEmpty(str)) {
-      str = "";
-    } else {
-      str = str.toLowerCase();
-    }
-    int k = 0;
-    j = k;
-    if (!TextUtils.isEmpty(str))
+    localObject2 = new StringBuilder("adapterID:");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(" operation:");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(" source:");
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(" errCode:");
+    ((StringBuilder)localObject2).append(paramInt4);
+    ((StringBuilder)localObject2).append(" pkgName:");
+    ((StringBuilder)localObject2).append(paramString);
+    aoc.b();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(String.valueOf(localObject1.a));
+    paramInt1 = 14;
+    switch (paramInt2)
     {
-      j = k;
-      if (str.equals("sm-g8870")) {
-        j = 1;
+    default: 
+      break;
+    case 1: 
+      paramInt1 = 30;
+      break;
+    case 0: 
+      paramInt1 = 46;
+      break;
+    case -1: 
+      paramInt1 = 78;
+    }
+    localArrayList.add(String.valueOf(paramInt1 + (paramInt3 << 7) + (paramInt4 << 18)));
+    boolean bool = TextUtils.isEmpty(paramString);
+    paramInt2 = 0;
+    paramInt1 = paramInt2;
+    if (!bool) {
+      localObject2 = null;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      paramInt1 = paramInt2;
+      if (paramContext != null) {
+        paramInt1 = paramContext.versionCode;
       }
+      if (paramInt1 == 0) {
+        paramContext = "";
+      } else {
+        paramContext = String.valueOf(paramInt1);
+      }
+      localArrayList.add(paramContext);
+      localArrayList.add(String.valueOf(localObject1.b));
+      qp.a.a().b().a(265219, localArrayList);
+      return;
     }
-    if (i > 0)
+    catch (Throwable paramContext)
     {
-      k = i;
-      if (i > a(paramContext, 50.0F))
+      for (;;)
       {
-        k = i;
-        if (j != 0) {}
+        paramContext = (Context)localObject2;
       }
     }
-    else
-    {
-      float f1 = paramContext.getResources().getDisplayMetrics().density;
-      if (f1 == -1.0F) {
-        return a(paramContext, 25.0F);
-      }
-      k = (int)(f1 * 25.0F + 0.5F);
-    }
-    return k;
-  }
-  
-  public static int a(Context paramContext, float paramFloat)
-  {
-    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static int b()
-  {
-    return e;
-  }
-  
-  public static int c()
-  {
-    return f;
-  }
-  
-  public static boolean d()
-  {
-    DisplayMetrics localDisplayMetrics = RqdApplication.n().getResources().getDisplayMetrics();
-    if (RqdApplication.n().getResources().getConfiguration().orientation == 2)
-    {
-      e = localDisplayMetrics.heightPixels;
-      f = localDisplayMetrics.widthPixels;
-    }
-    else
-    {
-      e = localDisplayMetrics.widthPixels;
-      f = localDisplayMetrics.heightPixels;
-    }
-    c = localDisplayMetrics.densityDpi;
-    g = localDisplayMetrics.density;
-    return true;
   }
 }
 

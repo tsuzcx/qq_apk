@@ -1,74 +1,70 @@
 package com.tencent.token;
 
-import java.security.NoSuchAlgorithmException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import javax.annotation.Nullable;
-import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import org.conscrypt.Conscrypt;
-import org.conscrypt.OpenSSLProvider;
 
-public final class akn
-  extends akr
+final class akn
+  extends akq
 {
-  public static akr a()
+  final Method a;
+  final Method b;
+  
+  private akn(Method paramMethod1, Method paramMethod2)
+  {
+    this.a = paramMethod1;
+    this.b = paramMethod2;
+  }
+  
+  public static akn a()
   {
     try
     {
-      Class.forName("org.conscrypt.ConscryptEngineSocket");
-      if (!Conscrypt.isAvailable()) {
-        return null;
-      }
-      akn localakn = new akn();
+      akn localakn = new akn(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
       return localakn;
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label37:
+      break label37;
+    }
     return null;
   }
   
   @Nullable
   public final String a(SSLSocket paramSSLSocket)
   {
-    if (Conscrypt.isConscrypt(paramSSLSocket)) {
-      return Conscrypt.getApplicationProtocol(paramSSLSocket);
-    }
-    return super.a(paramSSLSocket);
-  }
-  
-  public final void a(SSLSocket paramSSLSocket, String paramString, List<ain> paramList)
-  {
-    if (Conscrypt.isConscrypt(paramSSLSocket))
+    try
     {
-      if (paramString != null)
+      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
+      if (paramSSLSocket != null)
       {
-        Conscrypt.setUseSessionTickets(paramSSLSocket, true);
-        Conscrypt.setHostname(paramSSLSocket, paramString);
+        boolean bool = paramSSLSocket.equals("");
+        if (!bool) {
+          return paramSSLSocket;
+        }
       }
-      Conscrypt.setApplicationProtocols(paramSSLSocket, (String[])akr.a(paramList).toArray(new String[0]));
-      return;
+      return null;
     }
-    super.a(paramSSLSocket, paramString, paramList);
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw aiw.a("unable to get selected protocols", paramSSLSocket);
   }
   
-  public final void a(SSLSocketFactory paramSSLSocketFactory)
-  {
-    if (Conscrypt.isConscrypt(paramSSLSocketFactory)) {
-      Conscrypt.setUseEngineSocket(paramSSLSocketFactory, true);
-    }
-  }
-  
-  public final SSLContext b()
+  public final void a(SSLSocket paramSSLSocket, String paramString, List<aim> paramList)
   {
     try
     {
-      SSLContext localSSLContext = SSLContext.getInstance("TLS", new OpenSSLProvider());
-      return localSSLContext;
+      paramString = paramSSLSocket.getSSLParameters();
+      paramList = a(paramList);
+      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
+      paramSSLSocket.setSSLParameters(paramString);
+      return;
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
-    {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException);
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw aiw.a("unable to set ssl parameters", paramSSLSocket);
   }
 }
 

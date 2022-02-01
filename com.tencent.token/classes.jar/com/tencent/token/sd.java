@@ -1,211 +1,103 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.global.RqdApplication;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.AsyncTask;
+import android.os.Handler;
+import java.util.HashMap;
 
 public final class sd
 {
-  private static sd b;
-  public int a = 0;
-  private Context c = null;
-  private String d = null;
+  private static sd c;
+  public SoundPool a = null;
+  public boolean b = false;
+  private Context d = null;
+  private HashMap<Integer, Integer> e = null;
+  private Handler f = null;
   
-  public static sd a()
+  public static sd a(Context paramContext)
   {
-    if (b == null) {
-      b = new sd();
+    if (c == null) {
+      c = new sd();
     }
-    sd localsd = b;
-    Object localObject = RqdApplication.n();
-    if (localsd.c != localObject)
+    for (;;)
     {
-      localsd.c = ((Context)localObject);
-      boolean bool;
-      if (localObject != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      xb.a(bool);
-      localObject = g();
-      if (localObject != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      xb.a(bool);
-      localsd.a = ((SharedPreferences)localObject).getInt("pwd_type", 0);
-      if (localsd.a == 2) {
-        localsd.d = ((SharedPreferences)localObject).getString("pwd3g", null);
-      } else {
-        localsd.d = ((SharedPreferences)localObject).getString("pwd", null);
-      }
-      if (localsd.a == 0)
+      int i;
+      try
       {
-        localsd.b(localsd.d);
-        localsd.a = 1;
+        sd localsd = c;
+        if (localsd.d != paramContext)
+        {
+          localsd.d = paramContext;
+          localsd.a = new SoundPool(1, 3, 100);
+          localsd.e = new HashMap();
+          i = 1;
+          if (i <= 10)
+          {
+            int j = localsd.a.load(localsd.d, i - 1 + 2131427329, 1);
+            if (j == 0)
+            {
+              paramContext = new StringBuilder("load audio number=");
+              paramContext.append(i);
+              paramContext.append(" fail");
+              xa.c(paramContext.toString());
+              break label199;
+            }
+            localsd.e.put(Integer.valueOf(i), Integer.valueOf(j));
+            break label199;
+          }
+          i = localsd.a.load(localsd.d, 2131427328, 100);
+          if (i == 0) {
+            xa.c("load audio door_open fail");
+          } else {
+            localsd.e.put(Integer.valueOf(11), Integer.valueOf(i));
+          }
+        }
       }
-    }
-    return b;
-  }
-  
-  public static void a(int paramInt)
-  {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xb.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("lock_time", paramInt);
-    ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public static void b()
-  {
-    b = null;
-  }
-  
-  public static void d(String paramString)
-  {
-    SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
-    localEditor.putBoolean(paramString, false);
-    localEditor.commit();
-  }
-  
-  public static int f()
-  {
-    SharedPreferences localSharedPreferences = g();
-    boolean bool;
-    if (localSharedPreferences != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xb.a(bool);
-    return localSharedPreferences.getInt("lock_time", 0);
-  }
-  
-  public static SharedPreferences g()
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.n().getSharedPreferences("token_pwd_file", 0);
-    case 3: 
-      return RqdApplication.n().getSharedPreferences("token_pwd_file_gray", 0);
-    case 2: 
-      return RqdApplication.n().getSharedPreferences("token_pwd_file_exp", 0);
-    case 1: 
-      return RqdApplication.n().getSharedPreferences("token_pwd_file", 0);
-    }
-    return RqdApplication.n().getSharedPreferences("token_pwd_file_test", 0);
-  }
-  
-  public final boolean a(String paramString)
-  {
-    if (paramString != null)
-    {
-      String str = this.d;
-      if (str == null) {
-        return false;
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
       }
-      if (this.a > 0) {
-        return str.equals(aay.b(aay.a(paramString)));
-      }
-      return false;
+      return c;
+      label199:
+      i += 1;
     }
-    return false;
   }
   
-  public final boolean b(String paramString)
+  public final int a(int paramInt)
   {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xb.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    if ((paramString != null) && (paramString.length() > 0))
+    AudioManager localAudioManager = (AudioManager)this.d.getSystemService("audio");
+    float f1 = localAudioManager.getStreamVolume(3) / localAudioManager.getStreamMaxVolume(3);
+    return this.a.play(paramInt, f1, f1, 1, 0, 1.0F);
+  }
+  
+  public final void a()
+  {
+    if (!this.b)
     {
-      this.d = aay.b(aay.a(paramString));
-      ((SharedPreferences.Editor)localObject).putString("pwd", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 1);
-      this.a = 1;
+      this.b = true;
+      new AsyncTask()
+      {
+        private String a()
+        {
+          try
+          {
+            Integer localInteger = (Integer)sd.a(sd.this).get(Integer.valueOf(11));
+            if (localInteger == null) {
+              return null;
+            }
+            int i = sd.this.a(localInteger.intValue());
+            Thread.sleep(600L);
+            sd.b(sd.this).stop(i);
+            sd.c(sd.this);
+            return null;
+          }
+          catch (Exception localException) {}
+          return null;
+        }
+      }.execute(new String[] { "" });
     }
-    else
-    {
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd");
-    }
-    ((SharedPreferences.Editor)localObject).commit();
-    return true;
-  }
-  
-  public final boolean c()
-  {
-    String str = this.d;
-    return (str != null) && (str.length() > 0);
-  }
-  
-  public final boolean c(String paramString)
-  {
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xb.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      if (this.a == 1) {
-        b(null);
-      }
-      this.d = aay.b(aay.a(paramString));
-      this.a = 2;
-      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
-    }
-    else
-    {
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd3g");
-    }
-    ((SharedPreferences.Editor)localObject).commit();
-    return true;
-  }
-  
-  public final boolean d()
-  {
-    String str = this.d;
-    return (str != null) && (str.length() > 0) && (this.a == 2);
-  }
-  
-  public final void e()
-  {
-    c(null);
-    Object localObject = g();
-    boolean bool;
-    if (localObject != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xb.a(bool);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("last_lock", 0L);
-    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

@@ -1,42 +1,162 @@
 package com.tencent.token;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Build;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import java.lang.reflect.Method;
+import java.util.Locale;
 
 public final class aoa
 {
-  private static final char[] a = "0123456789abcdef".toCharArray();
-  
-  public static String a(byte[] paramArrayOfByte)
+  public static String a()
   {
-    paramArrayOfByte = b(paramArrayOfByte);
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 3);
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfByte[i] & 0xFF;
-      localStringBuilder.append(a[(k >> 4)]);
-      localStringBuilder.append(a[(k & 0xF)]);
-      i += 1;
+    if (!ro.a().b()) {
+      return "UNKNOWN";
     }
-    return localStringBuilder.toString().toUpperCase();
+    String str2 = Build.MANUFACTURER;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "UNKNOWN";
+    }
+    return str1;
   }
   
-  private static byte[] b(byte[] paramArrayOfByte)
+  @SuppressLint({"MissingPermission"})
+  public static String a(Context paramContext)
   {
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramArrayOfByte);
-      paramArrayOfByte = localMessageDigest.digest();
-      return paramArrayOfByte;
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      if (paramContext != null) {
+        paramContext = paramContext.getDeviceId();
+      } else {
+        paramContext = null;
+      }
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte)
+    catch (Throwable paramContext)
     {
-      paramArrayOfByte.printStackTrace();
+      label27:
+      Object localObject;
+      break label27;
     }
-    return null;
+    paramContext = "00000000000001";
+    localObject = paramContext;
+    if (paramContext == null) {
+      localObject = "00000000000000";
+    }
+    return localObject;
+  }
+  
+  public static String a(String paramString)
+  {
+    try
+    {
+      localObject = Class.forName("android.os.SystemProperties");
+      paramString = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { paramString });
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = null;
+    }
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = "";
+    }
+    return localObject;
+  }
+  
+  public static String b()
+  {
+    if (!ro.a().b()) {
+      return null;
+    }
+    label274:
+    String str1;
+    for (;;)
+    {
+      try
+      {
+        Object localObject = Build.MANUFACTURER;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return null;
+        }
+        localObject = ((String)localObject).toLowerCase(Locale.ENGLISH);
+        if (((String)localObject).contains("huawei")) {
+          return a("ro.build.version.emui");
+        }
+        if (((String)localObject).contains("xiaomi")) {
+          return a("ro.miui.ui.version.name");
+        }
+        if (((String)localObject).contains("gionee"))
+        {
+          localObject = a("ro.gn.extvernumber");
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return a("ro.build.display.id");
+          }
+        }
+        else
+        {
+          if (((String)localObject).contains("vivo"))
+          {
+            localObject = a("ro.vivo.os.name");
+            String str2 = a("ro.vivo.os.version");
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("_");
+              localStringBuilder.append(str2);
+              return localStringBuilder.toString();
+            }
+            return a("ro.vivo.os.build.display.id");
+          }
+          if (((String)localObject).contains("meizu")) {
+            return a("ro.build.display.id");
+          }
+          if (((String)localObject).contains("lenovo"))
+          {
+            localObject = a("ro.lenovo.lvp.version");
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              break label281;
+            }
+            localObject = ((String)localObject).split("_");
+            if (localObject == null) {
+              break label281;
+            }
+            if (localObject.length > 0) {
+              break label274;
+            }
+            break label281;
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              break;
+            }
+            return a("ro.build.version.incremental");
+          }
+          if (((String)localObject).contains("letv")) {
+            return a("ro.letv.eui");
+          }
+          if (((String)localObject).contains("oppo"))
+          {
+            localObject = a("ro.build.version.opporom");
+            return localObject;
+          }
+          return null;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        return null;
+      }
+      return localThrowable;
+      str1 = localThrowable[0];
+      continue;
+      label281:
+      str1 = null;
+    }
+    return str1;
   }
 }
 

@@ -1,183 +1,97 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Build.VERSION;
+import android.telephony.NeighboringCellInfo;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.telephony.gsm.GsmCellLocation;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
-public final class pt
+final class pt
 {
-  private static final int a = 17;
+  private static int a = 10000;
+  private static int b = 10000;
+  private TelephonyManager c;
+  private PhoneStateListener d = new pu(this);
   
-  public static String a(List<b> paramList)
+  public static List<ps.a> a(Context paramContext)
   {
-    Object localObject1 = "";
-    if (paramList.size() <= 0) {
-      return "";
-    }
-    int i = 0;
-    while (i < paramList.size())
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject6 = (TelephonyManager)paramContext.getSystemService("phone");
+    Object localObject5 = ((TelephonyManager)localObject6).getNetworkOperator();
+    Object localObject3;
+    Object localObject2;
+    if (localObject5 != null)
     {
-      Object localObject2 = localObject1;
-      if (paramList.get(i) != null)
+      if (((String)localObject5).equals("")) {
+        return localLinkedList;
+      }
+      paramContext = "460";
+      localObject3 = "";
+      try
       {
-        localObject2 = localObject1;
-        if (((b)paramList.get(i)).a.length() == a)
+        Object localObject1 = ((String)localObject5).substring(0, 3);
+        paramContext = (Context)localObject1;
+        localObject5 = ((String)localObject5).substring(3);
+        paramContext = (Context)localObject1;
+        localObject1 = localObject5;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        localObject2 = localObject3;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject3 = (GsmCellLocation)((TelephonyManager)localObject6).getCellLocation();
+        if (localObject3 == null) {
+          break label218;
+        }
+        i = ((GsmCellLocation)localObject3).getCid();
+        j = ((GsmCellLocation)localObject3).getLac();
+        if ((j >= 65535) || (j == -1) || (i == -1)) {
+          break label218;
+        }
+        if (b == a)
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("<mac ");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("macDbm=\"");
-          ((StringBuilder)localObject2).append(((b)paramList.get(i)).b);
-          ((StringBuilder)localObject2).append("\"");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(">");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(((b)paramList.get(i)).a);
-          localObject1 = ((StringBuilder)localObject2).toString();
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append("</mac>");
-          localObject2 = ((StringBuilder)localObject2).toString();
+          localObject3 = "";
+        }
+        else
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(b);
+          localObject3 = ((StringBuilder)localObject3).toString();
         }
       }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localObject1;
-  }
-  
-  public static List<a> a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 5)
-    {
-      new pw();
-      return pw.a(paramContext);
-    }
-    new pu();
-    return pu.a(paramContext);
-  }
-  
-  public static String b(List<a> paramList)
-  {
-    String str = "";
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      int i = 0;
-      while (i < paramList.size())
+      catch (Exception localException2)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("<cell ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("mcc=\"");
-        localStringBuilder.append(((a)paramList.get(i)).a);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("mnc=\"");
-        localStringBuilder.append(((a)paramList.get(i)).b);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("lac=\"");
-        localStringBuilder.append(((a)paramList.get(i)).c);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("type=\"");
-        localStringBuilder.append(((a)paramList.get(i)).e);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("stationId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).f);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("networkId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).g);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("systemId=\"");
-        localStringBuilder.append(((a)paramList.get(i)).h);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("dbm=\"");
-        localStringBuilder.append(((a)paramList.get(i)).i);
-        localStringBuilder.append("\" ");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(" >");
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(((a)paramList.get(i)).d);
-        str = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append("</cell>");
-        str = localStringBuilder.toString();
-        i += 1;
+        int i;
+        int j;
+        localException2.printStackTrace();
       }
-      return str;
-    }
-    return "";
-  }
-  
-  public static final class a
-  {
-    public String a;
-    public String b;
-    public String c;
-    public String d;
-    public String e;
-    public String f;
-    public String g;
-    public String h;
-    public String i;
-    
-    public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-    {
-      this.a = paramString1;
-      this.b = paramString2;
-      this.c = paramString3;
-      this.e = paramString6;
-      this.d = paramString4;
-      this.f = paramString7;
-      this.g = paramString8;
-      this.h = paramString9;
-      this.i = paramString5;
-    }
-  }
-  
-  public static final class b
-  {
-    public String a;
-    public String b;
-    
-    public b(String paramString1, String paramString2)
-    {
-      this.a = paramString1;
-      this.b = paramString2;
+      localLinkedList.add(new ps.a(paramContext, localObject2, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
+      label218:
+      Object localObject4 = ((TelephonyManager)localObject6).getNeighboringCellInfo();
+      if ((localObject4 != null) && (((List)localObject4).size() > 0))
+      {
+        localObject4 = ((List)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
+          if (((NeighboringCellInfo)localObject5).getCid() != -1)
+          {
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getCid());
+            localLinkedList.add(new ps.a(paramContext, localObject2, "", ((StringBuilder)localObject6).toString(), "", "gsm", "", "", ""));
+          }
+        }
+      }
+      return localLinkedList;
     }
   }
 }

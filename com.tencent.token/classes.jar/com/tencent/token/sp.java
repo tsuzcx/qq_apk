@@ -1,9 +1,12 @@
 package com.tencent.token;
 
-public final class sp
+public class sp
   extends sq
 {
-  public String a = "";
+  public int b;
+  public String c;
+  public int d;
+  public short e;
 }
 
 

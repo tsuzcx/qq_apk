@@ -1,127 +1,81 @@
 package com.tencent.token;
 
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ClipDrawable;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
-import android.widget.ProgressBar;
+import android.widget.SeekBar;
 
-public class ik
+public final class ik
+  extends ij
 {
-  private static final int[] b = { 16843067, 16843068 };
-  public Bitmap a;
-  private final ProgressBar c;
+  public final SeekBar b;
+  public Drawable c;
+  private ColorStateList d = null;
+  private PorterDuff.Mode e = null;
+  private boolean f = false;
+  private boolean g = false;
   
-  public ik(ProgressBar paramProgressBar)
+  public ik(SeekBar paramSeekBar)
   {
-    this.c = paramProgressBar;
+    super(paramSeekBar);
+    this.b = paramSeekBar;
   }
   
-  private Drawable a(Drawable paramDrawable, boolean paramBoolean)
+  private void a()
   {
-    Object localObject1;
-    Object localObject2;
-    if ((paramDrawable instanceof dj))
+    if ((this.c != null) && ((this.f) || (this.g)))
     {
-      localObject1 = (dj)paramDrawable;
-      localObject2 = ((dj)localObject1).a();
-      if (localObject2 != null)
-      {
-        ((dj)localObject1).a(a((Drawable)localObject2, paramBoolean));
-        return paramDrawable;
+      this.c = dg.d(this.c.mutate());
+      if (this.f) {
+        dg.a(this.c, this.d);
+      }
+      if (this.g) {
+        dg.a(this.c, this.e);
+      }
+      if (this.c.isStateful()) {
+        this.c.setState(this.b.getDrawableState());
       }
     }
-    else
-    {
-      if ((paramDrawable instanceof LayerDrawable))
-      {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int k = paramDrawable.getNumberOfLayers();
-        localObject1 = new Drawable[k];
-        int j = 0;
-        int i = 0;
-        while (i < k)
-        {
-          int m = paramDrawable.getId(i);
-          localObject2 = paramDrawable.getDrawable(i);
-          if ((m != 16908301) && (m != 16908303)) {
-            paramBoolean = false;
-          } else {
-            paramBoolean = true;
-          }
-          localObject1[i] = a((Drawable)localObject2, paramBoolean);
-          i += 1;
-        }
-        localObject1 = new LayerDrawable((Drawable[])localObject1);
-        i = j;
-        while (i < k)
-        {
-          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
-          i += 1;
-        }
-        return localObject1;
-      }
-      if ((paramDrawable instanceof BitmapDrawable))
-      {
-        paramDrawable = (BitmapDrawable)paramDrawable;
-        localObject2 = paramDrawable.getBitmap();
-        if (this.a == null) {
-          this.a = ((Bitmap)localObject2);
-        }
-        localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
-        localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-        ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
-        ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
-        if (paramBoolean) {
-          return new ClipDrawable((Drawable)localObject1, 3, 1);
-        }
-        return localObject1;
-      }
-    }
-    return paramDrawable;
   }
   
-  public void a(AttributeSet paramAttributeSet, int paramInt)
+  public final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    jf localjf = jf.a(this.c.getContext(), paramAttributeSet, b, paramInt, 0);
-    Object localObject = localjf.b(0);
-    if (localObject != null)
+    super.a(paramAttributeSet, paramInt);
+    paramAttributeSet = je.a(this.b.getContext(), paramAttributeSet, go.j.AppCompatSeekBar, paramInt, 0);
+    Drawable localDrawable1 = paramAttributeSet.b(go.j.AppCompatSeekBar_android_thumb);
+    if (localDrawable1 != null) {
+      this.b.setThumb(localDrawable1);
+    }
+    localDrawable1 = paramAttributeSet.a(go.j.AppCompatSeekBar_tickMark);
+    Drawable localDrawable2 = this.c;
+    if (localDrawable2 != null) {
+      localDrawable2.setCallback(null);
+    }
+    this.c = localDrawable1;
+    if (localDrawable1 != null)
     {
-      ProgressBar localProgressBar = this.c;
-      paramAttributeSet = (AttributeSet)localObject;
-      if ((localObject instanceof AnimationDrawable))
-      {
-        localObject = (AnimationDrawable)localObject;
-        int i = ((AnimationDrawable)localObject).getNumberOfFrames();
-        paramAttributeSet = new AnimationDrawable();
-        paramAttributeSet.setOneShot(((AnimationDrawable)localObject).isOneShot());
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Drawable localDrawable = a(((AnimationDrawable)localObject).getFrame(paramInt), true);
-          localDrawable.setLevel(10000);
-          paramAttributeSet.addFrame(localDrawable, ((AnimationDrawable)localObject).getDuration(paramInt));
-          paramInt += 1;
-        }
-        paramAttributeSet.setLevel(10000);
+      localDrawable1.setCallback(this.b);
+      dg.b(localDrawable1, ew.c(this.b));
+      if (localDrawable1.isStateful()) {
+        localDrawable1.setState(this.b.getDrawableState());
       }
-      localProgressBar.setIndeterminateDrawable(paramAttributeSet);
+      a();
     }
-    paramAttributeSet = localjf.b(1);
-    if (paramAttributeSet != null) {
-      this.c.setProgressDrawable(a(paramAttributeSet, false));
+    this.b.invalidate();
+    if (paramAttributeSet.f(go.j.AppCompatSeekBar_tickMarkTintMode))
+    {
+      this.e = iq.a(paramAttributeSet.a(go.j.AppCompatSeekBar_tickMarkTintMode, -1), this.e);
+      this.g = true;
     }
-    localjf.a.recycle();
+    if (paramAttributeSet.f(go.j.AppCompatSeekBar_tickMarkTint))
+    {
+      this.d = paramAttributeSet.e(go.j.AppCompatSeekBar_tickMarkTint);
+      this.f = true;
+    }
+    paramAttributeSet.a.recycle();
+    a();
   }
 }
 

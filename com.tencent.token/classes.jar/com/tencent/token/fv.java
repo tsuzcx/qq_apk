@@ -2,64 +2,143 @@ package com.tencent.token;
 
 import android.os.Build.VERSION;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.PopupWindow;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public final class fv
-  extends fl
 {
-  private final ListView f;
+  static final d a = new d();
   
-  public fv(ListView paramListView)
+  static
   {
-    super(paramListView);
-    this.f = paramListView;
-  }
-  
-  public final void a(int paramInt)
-  {
-    ListView localListView = this.f;
-    if (Build.VERSION.SDK_INT >= 19)
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      localListView.scrollListBy(paramInt);
+      a = new c();
       return;
     }
-    int i = localListView.getFirstVisiblePosition();
-    if (i != -1)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      View localView = localListView.getChildAt(0);
-      if (localView != null) {
-        localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
-      }
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      a = new a();
+      return;
     }
   }
   
-  public final boolean b(int paramInt)
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
   {
-    ListView localListView = this.f;
-    int i = localListView.getCount();
-    if (i == 0) {
-      return false;
-    }
-    int j = localListView.getChildCount();
-    int k = localListView.getFirstVisiblePosition();
-    if (paramInt > 0)
+    a.a(paramPopupWindow, paramInt);
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+  {
+    a.a(paramPopupWindow, paramBoolean);
+  }
+  
+  static class a
+    extends fv.d
+  {
+    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
     {
-      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
-        return false;
-      }
+      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
     }
-    else
+  }
+  
+  static class b
+    extends fv.a
+  {
+    private static Field a;
+    
+    static
     {
-      if (paramInt >= 0) {
-        break label89;
+      try
+      {
+        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
+        a = localField;
+        localField.setAccessible(true);
+        return;
       }
-      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
-        return false;
+      catch (NoSuchFieldException localNoSuchFieldException) {}
+    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+    {
+      Field localField = a;
+      if (localField != null) {}
+      try
+      {
+        localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+        return;
+      }
+      catch (IllegalAccessException paramPopupWindow) {}
+      return;
+    }
+  }
+  
+  static final class c
+    extends fv.b
+  {
+    public final void a(PopupWindow paramPopupWindow, int paramInt)
+    {
+      paramPopupWindow.setWindowLayoutType(paramInt);
+    }
+    
+    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+    {
+      paramPopupWindow.setOverlapAnchor(paramBoolean);
+    }
+  }
+  
+  static class d
+  {
+    private static Method a;
+    private static boolean b;
+    
+    public void a(PopupWindow paramPopupWindow, int paramInt)
+    {
+      if (!b) {}
+      try
+      {
+        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
+        a = localMethod;
+        localMethod.setAccessible(true);
+        label33:
+        b = true;
+        localMethod = a;
+        if (localMethod != null) {}
+        try
+        {
+          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          return;
+        }
+        catch (Exception paramPopupWindow) {}
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label33;
       }
     }
-    return true;
-    label89:
-    return false;
+    
+    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+    {
+      int i = paramInt1;
+      if ((ej.a(paramInt3, ew.c(paramView)) & 0x7) == 5) {
+        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
+      }
+      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
+    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
   }
 }
 

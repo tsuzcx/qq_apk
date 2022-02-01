@@ -1,190 +1,163 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.Region;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
 
-public class gt
+public final class gt
   extends Drawable
-  implements Drawable.Callback
 {
-  public Drawable a;
+  private static final float b = (float)Math.toRadians(45.0D);
+  private final Paint a;
+  private float c;
+  private float d;
+  private float e;
+  private float f;
+  private boolean g;
+  private final Path h;
+  private final int i;
+  private boolean j;
+  private float k;
+  private float l;
+  private int m;
   
-  public gt(Drawable paramDrawable)
+  public final void a(float paramFloat)
   {
-    Drawable localDrawable = this.a;
-    if (localDrawable != null) {
-      localDrawable.setCallback(null);
+    if (this.k != paramFloat)
+    {
+      this.k = paramFloat;
+      invalidateSelf();
     }
-    this.a = paramDrawable;
-    if (paramDrawable != null) {
-      paramDrawable.setCallback(this);
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    if (this.j != paramBoolean)
+    {
+      this.j = paramBoolean;
+      invalidateSelf();
     }
   }
   
-  public void draw(Canvas paramCanvas)
+  public final void draw(Canvas paramCanvas)
   {
-    this.a.draw(paramCanvas);
+    Rect localRect = getBounds();
+    int i2 = this.m;
+    int i1 = 0;
+    int n;
+    if (i2 != 3) {
+      n = i1;
+    }
+    switch (i2)
+    {
+    default: 
+      n = i1;
+      if (dg.e(this) == 1) {
+        n = 1;
+      }
+      break;
+    case 1: 
+      n = 1;
+      break;
+      n = i1;
+      if (dg.e(this) == 0) {
+        n = 1;
+      }
+      break;
+    }
+    float f1 = this.c;
+    float f6 = (float)Math.sqrt(f1 * f1 * 2.0F);
+    float f7 = this.d;
+    float f8 = this.k;
+    float f3 = f7 + (this.e - f7) * f8;
+    float f4 = Math.round((this.l - 0.0F) * f8 + 0.0F);
+    float f9 = b;
+    float f10 = this.k;
+    if (n != 0) {
+      f1 = 0.0F;
+    } else {
+      f1 = -180.0F;
+    }
+    float f2;
+    if (n != 0) {
+      f2 = 180.0F;
+    } else {
+      f2 = 0.0F;
+    }
+    float f5 = this.k;
+    double d1 = (f6 - f7) * f8 + f7;
+    double d2 = (f9 - 0.0F) * f10 + 0.0F;
+    double d3 = Math.cos(d2);
+    Double.isNaN(d1);
+    f6 = (float)Math.round(d3 * d1);
+    d2 = Math.sin(d2);
+    Double.isNaN(d1);
+    f7 = (float)Math.round(d1 * d2);
+    this.h.rewind();
+    f8 = this.f + this.a.getStrokeWidth();
+    f8 += (-this.l - f8) * this.k;
+    f9 = -f3 / 2.0F;
+    this.h.moveTo(f9 + f4, 0.0F);
+    this.h.rLineTo(f3 - f4 * 2.0F, 0.0F);
+    this.h.moveTo(f9, f8);
+    this.h.rLineTo(f6, f7);
+    this.h.moveTo(f9, -f8);
+    this.h.rLineTo(f6, -f7);
+    this.h.close();
+    paramCanvas.save();
+    f3 = this.a.getStrokeWidth();
+    f6 = localRect.height();
+    f4 = this.f;
+    f6 = (int)(f6 - 3.0F * f3 - 2.0F * f4) / 4 * 2;
+    paramCanvas.translate(localRect.centerX(), f6 + (f3 * 1.5F + f4));
+    if (this.g)
+    {
+      if ((this.j ^ n)) {
+        n = -1;
+      } else {
+        n = 1;
+      }
+      paramCanvas.rotate((f1 + (f2 - f1) * f5) * n);
+    }
+    else if (n != 0)
+    {
+      paramCanvas.rotate(180.0F);
+    }
+    paramCanvas.drawPath(this.h, this.a);
+    paramCanvas.restore();
   }
   
-  public int getChangingConfigurations()
+  public final int getIntrinsicHeight()
   {
-    return this.a.getChangingConfigurations();
+    return this.i;
   }
   
-  public Drawable getCurrent()
+  public final int getIntrinsicWidth()
   {
-    return this.a.getCurrent();
+    return this.i;
   }
   
-  public int getIntrinsicHeight()
+  public final int getOpacity()
   {
-    return this.a.getIntrinsicHeight();
+    return -3;
   }
   
-  public int getIntrinsicWidth()
+  public final void setAlpha(int paramInt)
   {
-    return this.a.getIntrinsicWidth();
+    if (paramInt != this.a.getAlpha())
+    {
+      this.a.setAlpha(paramInt);
+      invalidateSelf();
+    }
   }
   
-  public int getMinimumHeight()
-  {
-    return this.a.getMinimumHeight();
-  }
-  
-  public int getMinimumWidth()
-  {
-    return this.a.getMinimumWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return this.a.getOpacity();
-  }
-  
-  public boolean getPadding(Rect paramRect)
-  {
-    return this.a.getPadding(paramRect);
-  }
-  
-  public int[] getState()
-  {
-    return this.a.getState();
-  }
-  
-  public Region getTransparentRegion()
-  {
-    return this.a.getTransparentRegion();
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    invalidateSelf();
-  }
-  
-  public boolean isAutoMirrored()
-  {
-    return dh.a(this.a);
-  }
-  
-  public boolean isStateful()
-  {
-    return this.a.isStateful();
-  }
-  
-  public void jumpToCurrentState()
-  {
-    this.a.jumpToCurrentState();
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    this.a.setBounds(paramRect);
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    return this.a.setLevel(paramInt);
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    scheduleSelf(paramRunnable, paramLong);
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.a.setAlpha(paramInt);
-  }
-  
-  public void setAutoMirrored(boolean paramBoolean)
-  {
-    dh.a(this.a, paramBoolean);
-  }
-  
-  public void setChangingConfigurations(int paramInt)
-  {
-    this.a.setChangingConfigurations(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public final void setColorFilter(ColorFilter paramColorFilter)
   {
     this.a.setColorFilter(paramColorFilter);
-  }
-  
-  public void setDither(boolean paramBoolean)
-  {
-    this.a.setDither(paramBoolean);
-  }
-  
-  public void setFilterBitmap(boolean paramBoolean)
-  {
-    this.a.setFilterBitmap(paramBoolean);
-  }
-  
-  public void setHotspot(float paramFloat1, float paramFloat2)
-  {
-    dh.a(this.a, paramFloat1, paramFloat2);
-  }
-  
-  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    dh.a(this.a, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean setState(int[] paramArrayOfInt)
-  {
-    return this.a.setState(paramArrayOfInt);
-  }
-  
-  public void setTint(int paramInt)
-  {
-    dh.a(this.a, paramInt);
-  }
-  
-  public void setTintList(ColorStateList paramColorStateList)
-  {
-    dh.a(this.a, paramColorStateList);
-  }
-  
-  public void setTintMode(PorterDuff.Mode paramMode)
-  {
-    dh.a(this.a, paramMode);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return (super.setVisible(paramBoolean1, paramBoolean2)) || (this.a.setVisible(paramBoolean1, paramBoolean2));
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    unscheduleSelf(paramRunnable);
+    invalidateSelf();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -25,15 +25,15 @@ public class RealNameRegResult
     this.chance_left = paramJSONObject.getInt("chance_left");
     StringBuilder localStringBuilder = new StringBuilder("chance_left:");
     localStringBuilder.append(this.chance_left);
-    xb.a(localStringBuilder.toString());
+    xa.a(localStringBuilder.toString());
     this.daily_zzb_cnt = paramJSONObject.getInt("daily_zzb_cnt");
     localStringBuilder = new StringBuilder("daily_zzb_cnt:");
     localStringBuilder.append(this.daily_zzb_cnt);
-    xb.a(localStringBuilder.toString());
+    xa.a(localStringBuilder.toString());
     this.top_msg_text = paramJSONObject.getString("top_msg_text");
     localStringBuilder = new StringBuilder("top_msg_text:");
     localStringBuilder.append(this.top_msg_text);
-    xb.a(localStringBuilder.toString());
+    xa.a(localStringBuilder.toString());
     this.dispatch_time = paramJSONObject.getInt("dispatch_time");
     this.change_face_result = paramJSONObject.getInt("change_face_result");
   }

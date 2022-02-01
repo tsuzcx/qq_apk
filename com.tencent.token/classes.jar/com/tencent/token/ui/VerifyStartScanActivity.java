@@ -9,25 +9,25 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
-import com.tencent.token.aad;
+import com.tencent.token.aac;
 import com.tencent.token.ui.base.CameraPrepareDialog;
-import com.tencent.token.xc;
-import com.tencent.token.xv;
-import com.tencent.token.yx;
-import com.tencent.token.yx.a;
+import com.tencent.token.xb;
+import com.tencent.token.xu;
+import com.tencent.token.yw;
+import com.tencent.token.yw.a;
 
 public class VerifyStartScanActivity
   extends BaseActivity
 {
   private CameraPrepareDialog mCameraDialog;
-  private yx mScanTipView;
+  private yw mScanTipView;
   private int mSource;
   
   private void gotoScan()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      xv local3 = new xv()
+      xu local3 = new xu()
       {
         public final void a()
         {
@@ -60,7 +60,7 @@ public class VerifyStartScanActivity
     View localView = new View(this);
     localView.setBackgroundColor(-16777216);
     setContentView(localView);
-    if (!xc.a(this.mSource))
+    if (!xb.a(this.mSource))
     {
       gotoScan();
       setRightTitleImage(2131100163, new View.OnClickListener()
@@ -68,13 +68,13 @@ public class VerifyStartScanActivity
         public final void onClick(View paramAnonymousView)
         {
           paramAnonymousView = VerifyStartScanActivity.this;
-          aad.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
+          aac.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
         }
       });
       return;
     }
-    this.mScanTipView = new yx(this, this.mSource);
-    this.mScanTipView.setViewListener(new yx.a()
+    this.mScanTipView = new yw(this, this.mSource);
+    this.mScanTipView.setViewListener(new yw.a()
     {
       public final void a()
       {

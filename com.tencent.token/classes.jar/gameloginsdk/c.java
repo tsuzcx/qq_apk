@@ -3,17 +3,17 @@ package gameloginsdk;
 import android.os.Handler;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.agw;
-import com.tencent.token.agy;
-import com.tencent.token.aoz;
-import com.tencent.token.jr;
-import com.tencent.token.jv;
+import com.tencent.token.agv;
+import com.tencent.token.agx;
+import com.tencent.token.aoy;
+import com.tencent.token.jq;
+import com.tencent.token.ju;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicLong;
 
 class c
-  implements agy
+  implements agx
 {
   c(GameLogin paramGameLogin) {}
   
@@ -21,14 +21,14 @@ class c
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = agw.a;
+      paramInt1 = agv.a;
       return null;
     }
-    paramJceStruct = (jv)paramJceStruct;
+    paramJceStruct = (ju)paramJceStruct;
     Object localObject = paramJceStruct.k;
     if ((!GameLogin.a(this.a).b((byte[])localObject)) && (GameLogin.b(this.a).contains(paramJceStruct.o)))
     {
-      paramInt1 = agw.a;
+      paramInt1 = agv.a;
       localObject = paramJceStruct.c;
       long l = paramJceStruct.b;
       l = paramJceStruct.a;
@@ -42,7 +42,7 @@ class c
       localObject = paramJceStruct.l;
       l = paramJceStruct.m;
       GameLogin.b(this.a).remove(paramJceStruct.o);
-      aoz.a().a(paramJceStruct.o);
+      aoy.a().a(paramJceStruct.o);
       l = paramJceStruct.m;
       if (GameLogin.c(this.a).get() < l) {
         GameLogin.c(this.a).set(l);
@@ -79,9 +79,9 @@ class c
     }
     else
     {
-      paramInt1 = agw.a;
+      paramInt1 = agv.a;
     }
-    return new Pair(Integer.valueOf(51), new jr(paramJceStruct.a, paramJceStruct.b));
+    return new Pair(Integer.valueOf(51), new jq(paramJceStruct.a, paramJceStruct.b));
   }
 }
 

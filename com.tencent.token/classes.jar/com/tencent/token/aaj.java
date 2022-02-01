@@ -4,60 +4,92 @@ import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.core.bean.QQUser;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class aaj
 {
-  public List<sl> a = Collections.synchronizedList(new ArrayList());
+  public List<sk> a = Collections.synchronizedList(new ArrayList());
   NewConfigureCacheItem b;
   public long c;
   public boolean d;
   public boolean e = false;
   
-  private void a(List<sl> paramList)
+  private void a(List<sk> paramList)
   {
     try
     {
       if (this.b == null) {
-        this.b = tb.a().h.a("game_lock");
+        this.b = ta.a().h.a("account_prot");
       }
-      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
+      if (this.b.mClientVersion > this.b.mClickVersion)
       {
-        Iterator localIterator1 = this.b.mConfIDs.iterator();
-        while (localIterator1.hasNext())
+        Object localObject;
+        Iterator localIterator;
+        sk localsk;
+        if (this.b.mClickVersion == -1)
         {
-          int i = ((Integer)localIterator1.next()).intValue();
-          Iterator localIterator2 = paramList.iterator();
-          while (localIterator2.hasNext())
+          if (this.b.mConfIDs != null)
           {
-            sl localsl = (sl)localIterator2.next();
-            if (i == localsl.a) {
-              localsl.f = true;
+            localObject = this.b.mConfIDs.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              int i = ((Integer)((Iterator)localObject).next()).intValue();
+              localIterator = paramList.iterator();
+              while (localIterator.hasNext())
+              {
+                localsk = (sk)localIterator.next();
+                if (i == localsk.a) {
+                  localsk.f = true;
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          localObject = new HashSet();
+          localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((Set)localObject).add(Integer.valueOf(((sk)localIterator.next()).a));
+          }
+          localIterator = paramList.iterator();
+          while (localIterator.hasNext())
+          {
+            localsk = (sk)localIterator.next();
+            if (!((Set)localObject).contains(Integer.valueOf(localsk.a))) {
+              localsk.f = true;
             }
           }
         }
       }
       this.a.clear();
-      this.a.addAll(paramList);
-      if (ta.a().k.b() != null) {
-        this.c = ta.a().k.b().mUin;
+      this.a = paramList;
+      if (sz.a().k.b() != null) {
+        this.c = sz.a().k.b().mUin;
       }
       return;
     }
     finally {}
   }
   
-  public final int a()
+  public final List<sk> a()
   {
-    List localList = this.a;
-    if (localList == null) {
-      return 0;
+    try
+    {
+      List localList = this.a;
+      return localList;
     }
-    return localList.size();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final boolean a(JSONArray paramJSONArray)
@@ -68,7 +100,7 @@ public final class aaj
     } else {
       bool = false;
     }
-    xb.a(bool);
+    xa.a(bool);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (paramJSONArray != null) {}
@@ -87,18 +119,18 @@ public final class aaj
             break label222;
           }
           bool = true;
-          xb.a(bool);
-          sl localsl = new sl();
-          if (!localsl.c(localJSONObject)) {
-            xb.c("object item parse failed: ".concat(String.valueOf(i)));
+          xa.a(bool);
+          sk localsk = new sk();
+          if (!localsk.a(localJSONObject)) {
+            xa.c("object item parse failed: ".concat(String.valueOf(i)));
           }
-          localArrayList1.add(localsl);
+          localArrayList1.add(localsk);
           i += 1;
           continue;
           if (i >= localArrayList1.size()) {
             break label239;
           }
-          paramJSONArray = (sl)localArrayList1.get(i);
+          paramJSONArray = (sk)localArrayList1.get(i);
           if (paramJSONArray.g) {
             break label232;
           }
@@ -106,7 +138,7 @@ public final class aaj
           break label232;
           if (i < localArrayList1.size())
           {
-            paramJSONArray = (sl)localArrayList1.get(i);
+            paramJSONArray = (sk)localArrayList1.get(i);
             if (paramJSONArray.g) {
               localArrayList2.add(paramJSONArray);
             }
@@ -137,9 +169,18 @@ public final class aaj
   
   public final int b()
   {
+    List localList = a();
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
+  }
+  
+  public final int c()
+  {
     try
     {
-      List localList = this.a;
+      List localList = a();
       int i = 0;
       if (localList == null) {
         return 0;
@@ -147,7 +188,7 @@ public final class aaj
       int k;
       for (int j = 0; i < localList.size(); j = k)
       {
-        boolean bool = ((sl)localList.get(i)).g;
+        boolean bool = ((sk)localList.get(i)).g;
         k = j;
         if (!bool) {
           k = j + 1;

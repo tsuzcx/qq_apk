@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
 import com.tencent.token.widget.ScaleImageView;
-import com.tencent.token.zt;
+import com.tencent.token.zs;
 
 public class ImageActivity
   extends BaseActivity
@@ -20,7 +20,7 @@ public class ImageActivity
     localFrameLayout.setBackgroundColor(-1);
     localFrameLayout.addView(localScaleImageView, -1, -1);
     setContentView(localFrameLayout);
-    new zt(localScaleImageView).execute(new String[] { paramBundle });
+    new zs(localScaleImageView).execute(new String[] { paramBundle });
     setTitle("隐私政策");
   }
 }

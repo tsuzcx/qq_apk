@@ -28,15 +28,15 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.CompoundButton;
-import com.tencent.token.dh;
-import com.tencent.token.ex;
-import com.tencent.token.gp.a;
-import com.tencent.token.gp.j;
-import com.tencent.token.gr;
-import com.tencent.token.gv;
-import com.tencent.token.ir;
-import com.tencent.token.jf;
-import com.tencent.token.jl;
+import com.tencent.token.dg;
+import com.tencent.token.ew;
+import com.tencent.token.go.a;
+import com.tencent.token.go.j;
+import com.tencent.token.gq;
+import com.tencent.token.gu;
+import com.tencent.token.iq;
+import com.tencent.token.je;
+import com.tencent.token.jk;
 import java.util.List;
 
 public class SwitchCompat
@@ -85,7 +85,7 @@ public class SwitchCompat
   
   public SwitchCompat(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.switchStyle);
+    this(paramContext, paramAttributeSet, go.a.switchStyle);
   }
   
   public SwitchCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -95,31 +95,31 @@ public class SwitchCompat
     this.H = new TextPaint(1);
     Object localObject = getResources();
     this.H.density = ((Resources)localObject).getDisplayMetrics().density;
-    localObject = jf.a(paramContext, paramAttributeSet, gp.j.SwitchCompat, paramInt, 0);
-    this.c = ((jf)localObject).a(gp.j.SwitchCompat_android_thumb);
+    localObject = je.a(paramContext, paramAttributeSet, go.j.SwitchCompat, paramInt, 0);
+    this.c = ((je)localObject).a(go.j.SwitchCompat_android_thumb);
     paramAttributeSet = this.c;
     if (paramAttributeSet != null) {
       paramAttributeSet.setCallback(this);
     }
-    this.h = ((jf)localObject).a(gp.j.SwitchCompat_track);
+    this.h = ((je)localObject).a(go.j.SwitchCompat_track);
     paramAttributeSet = this.h;
     if (paramAttributeSet != null) {
       paramAttributeSet.setCallback(this);
     }
-    this.q = ((jf)localObject).c(gp.j.SwitchCompat_android_textOn);
-    this.r = ((jf)localObject).c(gp.j.SwitchCompat_android_textOff);
-    this.s = ((jf)localObject).a(gp.j.SwitchCompat_showText, true);
-    this.m = ((jf)localObject).e(gp.j.SwitchCompat_thumbTextPadding, 0);
-    this.n = ((jf)localObject).e(gp.j.SwitchCompat_switchMinWidth, 0);
-    this.o = ((jf)localObject).e(gp.j.SwitchCompat_switchPadding, 0);
-    this.p = ((jf)localObject).a(gp.j.SwitchCompat_splitTrack, false);
-    paramAttributeSet = ((jf)localObject).e(gp.j.SwitchCompat_thumbTint);
+    this.q = ((je)localObject).c(go.j.SwitchCompat_android_textOn);
+    this.r = ((je)localObject).c(go.j.SwitchCompat_android_textOff);
+    this.s = ((je)localObject).a(go.j.SwitchCompat_showText, true);
+    this.m = ((je)localObject).e(go.j.SwitchCompat_thumbTextPadding, 0);
+    this.n = ((je)localObject).e(go.j.SwitchCompat_switchMinWidth, 0);
+    this.o = ((je)localObject).e(go.j.SwitchCompat_switchPadding, 0);
+    this.p = ((je)localObject).a(go.j.SwitchCompat_splitTrack, false);
+    paramAttributeSet = ((je)localObject).e(go.j.SwitchCompat_thumbTint);
     if (paramAttributeSet != null)
     {
       this.d = paramAttributeSet;
       this.f = true;
     }
-    paramAttributeSet = ir.a(((jf)localObject).a(gp.j.SwitchCompat_thumbTintMode, -1), null);
+    paramAttributeSet = iq.a(((je)localObject).a(go.j.SwitchCompat_thumbTintMode, -1), null);
     if (this.e != paramAttributeSet)
     {
       this.e = paramAttributeSet;
@@ -128,13 +128,13 @@ public class SwitchCompat
     if ((this.f) || (this.g)) {
       b();
     }
-    paramAttributeSet = ((jf)localObject).e(gp.j.SwitchCompat_trackTint);
+    paramAttributeSet = ((je)localObject).e(go.j.SwitchCompat_trackTint);
     if (paramAttributeSet != null)
     {
       this.i = paramAttributeSet;
       this.k = true;
     }
-    paramAttributeSet = ir.a(((jf)localObject).a(gp.j.SwitchCompat_trackTintMode, -1), null);
+    paramAttributeSet = iq.a(((je)localObject).a(go.j.SwitchCompat_trackTintMode, -1), null);
     if (this.j != paramAttributeSet)
     {
       this.j = paramAttributeSet;
@@ -143,17 +143,17 @@ public class SwitchCompat
     if ((this.k) || (this.l)) {
       a();
     }
-    paramInt = ((jf)localObject).g(gp.j.SwitchCompat_switchTextAppearance, 0);
+    paramInt = ((je)localObject).g(go.j.SwitchCompat_switchTextAppearance, 0);
     if (paramInt != 0)
     {
-      jf localjf = jf.a(paramContext, paramInt, gp.j.TextAppearance);
-      paramAttributeSet = localjf.e(gp.j.TextAppearance_android_textColor);
+      je localje = je.a(paramContext, paramInt, go.j.TextAppearance);
+      paramAttributeSet = localje.e(go.j.TextAppearance_android_textColor);
       if (paramAttributeSet != null) {
         this.I = paramAttributeSet;
       } else {
         this.I = getTextColors();
       }
-      paramInt = localjf.e(gp.j.TextAppearance_android_textSize, 0);
+      paramInt = localje.e(go.j.TextAppearance_android_textSize, 0);
       if (paramInt != 0)
       {
         f1 = paramInt;
@@ -163,8 +163,8 @@ public class SwitchCompat
           requestLayout();
         }
       }
-      paramInt = localjf.a(gp.j.TextAppearance_android_typeface, -1);
-      int i1 = localjf.a(gp.j.TextAppearance_android_textStyle, -1);
+      paramInt = localje.a(go.j.TextAppearance_android_typeface, -1);
+      int i1 = localje.a(go.j.TextAppearance_android_textStyle, -1);
       switch (paramInt)
       {
       default: 
@@ -211,14 +211,14 @@ public class SwitchCompat
         this.H.setTextSkewX(0.0F);
         setSwitchTypeface(paramAttributeSet);
       }
-      if (localjf.a(gp.j.TextAppearance_textAllCaps, false)) {
-        this.L = new gv(getContext());
+      if (localje.a(go.j.TextAppearance_textAllCaps, false)) {
+        this.L = new gu(getContext());
       } else {
         this.L = null;
       }
-      localjf.a.recycle();
+      localje.a.recycle();
     }
-    ((jf)localObject).a.recycle();
+    ((je)localObject).a.recycle();
     paramContext = ViewConfiguration.get(paramContext);
     this.u = paramContext.getScaledTouchSlop();
     this.y = paramContext.getScaledMinimumFlingVelocity();
@@ -249,10 +249,10 @@ public class SwitchCompat
     {
       this.h = this.h.mutate();
       if (this.k) {
-        dh.a(this.h, this.i);
+        dg.a(this.h, this.i);
       }
       if (this.l) {
-        dh.a(this.h, this.j);
+        dg.a(this.h, this.j);
       }
       if (this.h.isStateful()) {
         this.h.setState(getDrawableState());
@@ -266,10 +266,10 @@ public class SwitchCompat
     {
       this.c = this.c.mutate();
       if (this.f) {
-        dh.a(this.c, this.d);
+        dg.a(this.c, this.d);
       }
       if (this.g) {
-        dh.a(this.c, this.e);
+        dg.a(this.c, this.e);
       }
       if (this.c.isStateful()) {
         this.c.setState(getDrawableState());
@@ -285,7 +285,7 @@ public class SwitchCompat
   private int getThumbOffset()
   {
     float f1;
-    if (jl.a(this)) {
+    if (jk.a(this)) {
       f1 = 1.0F - this.z;
     } else {
       f1 = this.z;
@@ -302,9 +302,9 @@ public class SwitchCompat
       ((Drawable)localObject).getPadding(localRect);
       localObject = this.c;
       if (localObject != null) {
-        localObject = ir.a((Drawable)localObject);
+        localObject = iq.a((Drawable)localObject);
       } else {
-        localObject = ir.a;
+        localObject = iq.a;
       }
       return this.A - this.C - localRect.left - localRect.right - ((Rect)localObject).left - ((Rect)localObject).right;
     }
@@ -321,9 +321,9 @@ public class SwitchCompat
     int i3 = getThumbOffset() + i2;
     Object localObject = this.c;
     if (localObject != null) {
-      localObject = ir.a((Drawable)localObject);
+      localObject = iq.a((Drawable)localObject);
     } else {
-      localObject = ir.a;
+      localObject = iq.a;
     }
     Drawable localDrawable = this.h;
     int i1 = i3;
@@ -381,7 +381,7 @@ public class SwitchCompat
       this.c.setBounds(i2, i4, i1, i5);
       localObject = getBackground();
       if (localObject != null) {
-        dh.a((Drawable)localObject, i2, i4, i1, i5);
+        dg.a((Drawable)localObject, i2, i4, i1, i5);
       }
     }
     super.draw(paramCanvas);
@@ -394,11 +394,11 @@ public class SwitchCompat
     }
     Drawable localDrawable = this.c;
     if (localDrawable != null) {
-      dh.a(localDrawable, paramFloat1, paramFloat2);
+      dg.a(localDrawable, paramFloat1, paramFloat2);
     }
     localDrawable = this.h;
     if (localDrawable != null) {
-      dh.a(localDrawable, paramFloat1, paramFloat2);
+      dg.a(localDrawable, paramFloat1, paramFloat2);
     }
   }
   
@@ -432,7 +432,7 @@ public class SwitchCompat
   
   public int getCompoundPaddingLeft()
   {
-    if (!jl.a(this)) {
+    if (!jk.a(this)) {
       return super.getCompoundPaddingLeft();
     }
     int i2 = super.getCompoundPaddingLeft() + this.A;
@@ -445,7 +445,7 @@ public class SwitchCompat
   
   public int getCompoundPaddingRight()
   {
-    if (jl.a(this)) {
+    if (jk.a(this)) {
       return super.getCompoundPaddingRight();
     }
     int i2 = super.getCompoundPaddingRight() + this.A;
@@ -569,7 +569,7 @@ public class SwitchCompat
     if (localObject3 != null) {
       if ((this.p) && (localObject2 != null))
       {
-        localObject4 = ir.a((Drawable)localObject2);
+        localObject4 = iq.a((Drawable)localObject2);
         ((Drawable)localObject2).copyBounds((Rect)localObject1);
         ((Rect)localObject1).left += ((Rect)localObject4).left;
         ((Rect)localObject1).right -= ((Rect)localObject4).right;
@@ -665,7 +665,7 @@ public class SwitchCompat
       } else {
         ((Rect)localObject1).setEmpty();
       }
-      localObject2 = ir.a(this.c);
+      localObject2 = iq.a(this.c);
       paramInt2 = Math.max(0, ((Rect)localObject2).left - ((Rect)localObject1).left);
       paramInt1 = Math.max(0, ((Rect)localObject2).right - ((Rect)localObject1).right);
     }
@@ -673,7 +673,7 @@ public class SwitchCompat
     {
       paramInt2 = 0;
     }
-    if (jl.a(this))
+    if (jk.a(this))
     {
       paramInt3 = getPaddingLeft() + paramInt2;
       paramInt4 = this.A + paramInt3 - paramInt2 - paramInt1;
@@ -760,7 +760,7 @@ public class SwitchCompat
     int i3 = i6;
     if (localObject != null)
     {
-      localObject = ir.a((Drawable)localObject);
+      localObject = iq.a((Drawable)localObject);
       i3 = Math.max(i6, ((Rect)localObject).left);
       i4 = Math.max(i5, ((Rect)localObject).right);
     }
@@ -816,7 +816,7 @@ public class SwitchCompat
           f1 = -1.0F;
         }
         f2 = f1;
-        if (jl.a(this)) {
+        if (jk.a(this)) {
           f2 = -f1;
         }
         f2 += this.z;
@@ -869,7 +869,7 @@ public class SwitchCompat
           f1 = this.x.getXVelocity();
           if (Math.abs(f1) > this.y)
           {
-            if (jl.a(this) ? f1 < 0.0F : f1 > 0.0F) {
+            if (jk.a(this) ? f1 < 0.0F : f1 > 0.0F) {
               bool1 = true;
             } else {
               bool1 = false;
@@ -950,7 +950,7 @@ public class SwitchCompat
     paramBoolean = isChecked();
     Object localObject = getWindowToken();
     float f1 = 1.0F;
-    if ((localObject != null) && (ex.q(this)))
+    if ((localObject != null) && (ew.q(this)))
     {
       if (!paramBoolean) {
         f1 = 0.0F;
@@ -1043,7 +1043,7 @@ public class SwitchCompat
   
   public void setThumbResource(int paramInt)
   {
-    setThumbDrawable(gr.b(getContext(), paramInt));
+    setThumbDrawable(gq.b(getContext(), paramInt));
   }
   
   public void setThumbTextPadding(int paramInt)
@@ -1081,7 +1081,7 @@ public class SwitchCompat
   
   public void setTrackResource(int paramInt)
   {
-    setTrackDrawable(gr.b(getContext(), paramInt));
+    setTrackDrawable(gq.b(getContext(), paramInt));
   }
   
   public void setTrackTintList(ColorStateList paramColorStateList)

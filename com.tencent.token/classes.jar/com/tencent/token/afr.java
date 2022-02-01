@@ -1,134 +1,364 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
-import com.tencent.token.global.RqdApplication;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.content.ContentResolver;
+import android.database.CharArrayBuffer;
+import android.database.ContentObservable;
+import android.database.ContentObserver;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.wcdb.CursorIndexOutOfBoundsException;
+import com.tencent.wcdb.support.Log;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class afr
+public abstract class afr
+  implements afv
 {
-  public static String a = "sp_record";
-  public static String b = "last_req_premiss_time";
+  @Deprecated
+  protected HashMap<Long, Map<String, Object>> a = new HashMap();
+  protected int b = -1;
+  @Deprecated
+  protected int c = -1;
+  @Deprecated
+  protected Long d = null;
+  protected boolean e;
+  protected ContentResolver f;
+  final Object g = new Object();
+  final ContentObservable h = new ContentObservable();
+  private Uri i;
+  private ContentObserver j;
+  private boolean k;
+  private final DataSetObservable l = new DataSetObservable();
+  private Bundle m = Bundle.EMPTY;
   
-  public static long a(String paramString)
+  protected void a()
   {
-    SharedPreferences localSharedPreferences = d();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getLong(paramString, 0L);
-    }
-    return -1L;
-  }
-  
-  public static rc.a a(String paramString1, String paramString2)
-  {
-    rc.a locala = new rc.a();
-    locala.a = "com.tencent.qqpimsecure";
-    locala.c = paramString2;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString2.hashCode());
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(".apk");
-    locala.d = localStringBuilder.toString();
-    return locala;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    Object localObject = d();
-    if (localObject != null)
+    ContentObserver localContentObserver = this.j;
+    if (localContentObserver != null)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
+      this.f.unregisterContentObserver(localContentObserver);
+      this.k = false;
     }
+    this.l.notifyInvalidated();
   }
   
-  public static void a(String paramString, long paramLong)
+  public boolean a(int paramInt)
   {
-    Object localObject = d();
-    if (localObject != null)
+    return true;
+  }
+  
+  protected void b()
+  {
+    if ((-1 != this.b) && (getCount() != this.b)) {
+      return;
+    }
+    throw new CursorIndexOutOfBoundsException(this.b, getCount());
+  }
+  
+  public void close()
+  {
+    this.e = true;
+    this.h.unregisterAll();
+    a();
+  }
+  
+  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
+  {
+    String str = getString(paramInt);
+    if (str != null)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
-      ((SharedPreferences.Editor)localObject).commit();
+      char[] arrayOfChar = paramCharArrayBuffer.data;
+      if ((arrayOfChar != null) && (arrayOfChar.length >= str.length())) {
+        str.getChars(0, str.length(), arrayOfChar, 0);
+      } else {
+        paramCharArrayBuffer.data = str.toCharArray();
+      }
+      paramCharArrayBuffer.sizeCopied = str.length();
+      return;
     }
+    paramCharArrayBuffer.sizeCopied = 0;
   }
   
-  public static boolean a()
+  public void deactivate()
   {
-    boolean bool = false;
-    Object localObject;
+    a();
+  }
+  
+  protected void finalize()
+  {
+    ContentObserver localContentObserver = this.j;
+    if ((localContentObserver != null) && (this.k == true)) {
+      this.f.unregisterContentObserver(localContentObserver);
+    }
     try
     {
-      PackageInfo localPackageInfo = RqdApplication.n().getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      if (!this.e) {
+        close();
+      }
+      return;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    catch (Exception localException) {}
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    throw new UnsupportedOperationException("getBlob is not supported");
+  }
+  
+  public int getColumnCount()
+  {
+    return getColumnNames().length;
+  }
+  
+  public int getColumnIndex(String paramString)
+  {
+    int i1 = paramString.lastIndexOf('.');
+    int n = 0;
+    Object localObject = paramString;
+    if (i1 != -1)
     {
-      localNameNotFoundException.printStackTrace();
-      localObject = null;
+      localObject = new Exception();
+      Log.a("Cursor", "requesting column name with table name -- ".concat(String.valueOf(paramString)), new Object[] { localObject });
+      localObject = paramString.substring(i1 + 1);
     }
-    if (localObject == null) {
+    paramString = getColumnNames();
+    i1 = paramString.length;
+    while (n < i1)
+    {
+      if (paramString[n].equalsIgnoreCase((String)localObject)) {
+        return n;
+      }
+      n += 1;
+    }
+    return -1;
+  }
+  
+  public int getColumnIndexOrThrow(String paramString)
+  {
+    int n = getColumnIndex(paramString);
+    if (n >= 0) {
+      return n;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("column '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("' does not exist");
+    throw new IllegalArgumentException(localStringBuilder.toString());
+  }
+  
+  public String getColumnName(int paramInt)
+  {
+    return getColumnNames()[paramInt];
+  }
+  
+  public abstract String[] getColumnNames();
+  
+  public abstract int getCount();
+  
+  public Bundle getExtras()
+  {
+    return this.m;
+  }
+  
+  public abstract long getLong(int paramInt);
+  
+  public Uri getNotificationUri()
+  {
+    return this.i;
+  }
+  
+  public final int getPosition()
+  {
+    return this.b;
+  }
+  
+  public abstract String getString(int paramInt);
+  
+  public int getType(int paramInt)
+  {
+    return 3;
+  }
+  
+  public boolean getWantsAllOnMoveCalls()
+  {
+    return false;
+  }
+  
+  public final boolean isAfterLast()
+  {
+    if (getCount() == 0) {
+      return true;
+    }
+    return this.b == getCount();
+  }
+  
+  public final boolean isBeforeFirst()
+  {
+    if (getCount() == 0) {
+      return true;
+    }
+    return this.b == -1;
+  }
+  
+  public boolean isClosed()
+  {
+    return this.e;
+  }
+  
+  public final boolean isFirst()
+  {
+    return (this.b == 0) && (getCount() != 0);
+  }
+  
+  public final boolean isLast()
+  {
+    int n = getCount();
+    return (this.b == n - 1) && (n != 0);
+  }
+  
+  public final boolean move(int paramInt)
+  {
+    return moveToPosition(this.b + paramInt);
+  }
+  
+  public final boolean moveToFirst()
+  {
+    return moveToPosition(0);
+  }
+  
+  public final boolean moveToLast()
+  {
+    return moveToPosition(getCount() - 1);
+  }
+  
+  public final boolean moveToNext()
+  {
+    return moveToPosition(this.b + 1);
+  }
+  
+  public boolean moveToPosition(int paramInt)
+  {
+    int n = getCount();
+    if (paramInt >= n)
+    {
+      this.b = n;
       return false;
     }
-    if (localObject.versionCode >= 1352) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static void b()
-  {
-    b("user_launch_date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    Object localObject = d();
-    if (localObject != null)
+    if (paramInt < 0)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-  }
-  
-  public static String c(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = d();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString1, paramString2);
-    }
-    return null;
-  }
-  
-  public static boolean c()
-  {
-    String str = c("user_launch_date", "");
-    if (TextUtils.isEmpty(str)) {
+      this.b = -1;
       return false;
     }
-    return str.equals(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+    if (paramInt == this.b) {
+      return true;
+    }
+    a(paramInt);
+    this.b = paramInt;
+    paramInt = this.c;
+    if (paramInt != -1) {
+      this.d = Long.valueOf(getLong(paramInt));
+    }
+    return true;
   }
   
-  private static SharedPreferences d()
+  public final boolean moveToPrevious()
   {
-    try
+    return moveToPosition(this.b - 1);
+  }
+  
+  public void registerContentObserver(ContentObserver paramContentObserver)
+  {
+    this.h.registerObserver(paramContentObserver);
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.l.registerObserver(paramDataSetObserver);
+  }
+  
+  public boolean requery()
+  {
+    ContentObserver localContentObserver = this.j;
+    if ((localContentObserver != null) && (!this.k))
     {
-      SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences("com.tencent.token.com", 0);
-      return localSharedPreferences;
+      this.f.registerContentObserver(this.i, true, localContentObserver);
+      this.k = true;
     }
-    catch (Exception localException)
+    this.l.notifyChanged();
+    return true;
+  }
+  
+  public Bundle respond(Bundle paramBundle)
+  {
+    return Bundle.EMPTY;
+  }
+  
+  public void setExtras(Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = Bundle.EMPTY;
+    }
+    this.m = localBundle;
+  }
+  
+  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
+  {
+    synchronized (this.g)
     {
-      label12:
-      break label12;
+      this.i = paramUri;
+      this.f = paramContentResolver;
+      if (this.j != null) {
+        this.f.unregisterContentObserver(this.j);
+      }
+      this.j = new a(this);
+      this.f.registerContentObserver(this.i, true, this.j);
+      this.k = true;
+      return;
     }
-    return null;
+  }
+  
+  public void unregisterContentObserver(ContentObserver paramContentObserver)
+  {
+    if (!this.e) {
+      this.h.unregisterObserver(paramContentObserver);
+    }
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.l.unregisterObserver(paramDataSetObserver);
+  }
+  
+  public static final class a
+    extends ContentObserver
+  {
+    WeakReference<afr> a;
+    
+    public a(afr paramafr)
+    {
+      super();
+      this.a = new WeakReference(paramafr);
+    }
+    
+    public final boolean deliverSelfNotifications()
+    {
+      return false;
+    }
+    
+    public final void onChange(boolean paramBoolean)
+    {
+      afr localafr = (afr)this.a.get();
+      if (localafr != null) {
+        synchronized (localafr.g)
+        {
+          localafr.h.dispatchChange(false);
+          return;
+        }
+      }
+    }
   }
 }
 

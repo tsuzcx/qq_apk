@@ -1,12 +1,19 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
+import com.tencent.turingfd.sdk.base.Dew;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class adl
 {
-  public static final long a = TimeUnit.SECONDS.toMillis(1L);
-  public static final long b = TimeUnit.MILLISECONDS.toMillis(50L);
-  public static final int c = (int)(a / b);
+  public Dew a;
+  public List<String> b = new ArrayList();
+  
+  public adl(Dew paramDew, List<String> paramList)
+  {
+    this.a = paramDew;
+    this.b.addAll(paramList);
+  }
 }
 
 

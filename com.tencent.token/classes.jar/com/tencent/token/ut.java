@@ -6,101 +6,60 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ut
-  extends tk
+  extends tj
 {
-  public static String d;
-  public static String e;
-  public static String f;
-  private long g;
-  private long h;
+  private long d;
+  private long e;
+  private int f;
+  private int g;
+  private String h;
   private int i;
-  private int j;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.g = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.h = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.j = ((Integer)paramaar.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.i = paramaar.j;
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramaaq.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((String)paramaaq.c.get("param.mbmobile.vrycode"));
+    this.i = ((Integer)paramaaq.c.get("param.type")).intValue();
+    this.f = paramaaq.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int k = paramJSONObject.getInt("err");
-    Object localObject;
-    if (k != 0)
+    int j = paramJSONObject.getInt("err");
+    if (j != 0)
     {
-      localObject = paramJSONObject.getString("info");
-      if (k == 124)
-      {
-        paramJSONObject = aad.d(paramJSONObject.getString("data"));
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = new JSONObject(new String(paramJSONObject));
-          d = paramJSONObject.getString("sms_port");
-          e = paramJSONObject.getString("sms_up_code");
-          try
-          {
-            f = paramJSONObject.getString("mobile_sms_prefix");
-          }
-          catch (Exception paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-          }
-          paramJSONObject = new StringBuilder("realname port=");
-          paramJSONObject.append(d);
-          paramJSONObject.append(", content=");
-          paramJSONObject.append(e);
-          xb.b(paramJSONObject.toString());
-        }
-      }
-      a(k, (String)localObject);
+      a(j, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      localObject = new StringBuilder("json");
-      ((StringBuilder)localObject).append(paramJSONObject.toString());
-      xb.a(((StringBuilder)localObject).toString());
-      k = paramJSONObject.getInt("seq_id");
-      if (k != this.i)
+      xa.a("mbtoken3_general_verify_mobile_code ret: ".concat(String.valueOf(paramJSONObject)));
+      j = paramJSONObject.getInt("seq_id");
+      if (j != this.f)
       {
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(k);
+        paramJSONObject.append(j);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.i);
-        xb.c(paramJSONObject.toString());
+        paramJSONObject.append(this.f);
+        xa.c(paramJSONObject.toString());
         this.a.a(10030, null, null);
         return;
       }
-      d = paramJSONObject.getString("sms_port");
-      e = paramJSONObject.getString("sms_up_code");
-      try
-      {
-        f = paramJSONObject.getString("mobile_sms_prefix");
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-      paramJSONObject = new StringBuilder("realname port=");
-      paramJSONObject.append(d);
-      paramJSONObject.append(", content=");
-      paramJSONObject.append(e);
-      xb.b(paramJSONObject.toString());
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
 }

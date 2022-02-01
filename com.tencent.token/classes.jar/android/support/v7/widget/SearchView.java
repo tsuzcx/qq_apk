@@ -51,25 +51,25 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.token.ex;
-import com.tencent.token.fq;
-import com.tencent.token.gp.a;
-import com.tencent.token.gp.d;
-import com.tencent.token.gp.f;
-import com.tencent.token.gp.g;
-import com.tencent.token.gp.h;
-import com.tencent.token.gp.j;
-import com.tencent.token.gy;
-import com.tencent.token.ja;
-import com.tencent.token.jf;
-import com.tencent.token.jh;
-import com.tencent.token.jl;
+import com.tencent.token.ew;
+import com.tencent.token.fp;
+import com.tencent.token.go.a;
+import com.tencent.token.go.d;
+import com.tencent.token.go.f;
+import com.tencent.token.go.g;
+import com.tencent.token.go.h;
+import com.tencent.token.go.j;
+import com.tencent.token.gx;
+import com.tencent.token.iz;
+import com.tencent.token.je;
+import com.tencent.token.jg;
+import com.tencent.token.jk;
 import java.lang.reflect.Method;
 import java.util.WeakHashMap;
 
 public class SearchView
   extends LinearLayoutCompat
-  implements gy
+  implements gx
 {
   static final a p = new a();
   private final int A;
@@ -100,7 +100,7 @@ public class SearchView
   {
     public final void run()
     {
-      if ((SearchView.this.m != null) && ((SearchView.this.m instanceof ja))) {
+      if ((SearchView.this.m != null) && ((SearchView.this.m instanceof iz))) {
         SearchView.this.m.a(null);
       }
     }
@@ -281,7 +281,7 @@ public class SearchView
   View.OnFocusChangeListener j;
   d k;
   boolean l;
-  fq m;
+  fp m;
   SearchableInfo n;
   Bundle o;
   View.OnKeyListener q = new View.OnKeyListener()
@@ -316,35 +316,35 @@ public class SearchView
   
   public SearchView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.searchViewStyle);
+    this(paramContext, paramAttributeSet, go.a.searchViewStyle);
   }
   
   public SearchView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = jf.a(paramContext, paramAttributeSet, gp.j.SearchView, paramInt, 0);
-    LayoutInflater.from(paramContext).inflate(paramAttributeSet.g(gp.j.SearchView_layout, gp.g.abc_search_view), this, true);
-    this.a = ((SearchAutoComplete)findViewById(gp.f.search_src_text));
+    paramAttributeSet = je.a(paramContext, paramAttributeSet, go.j.SearchView, paramInt, 0);
+    LayoutInflater.from(paramContext).inflate(paramAttributeSet.g(go.j.SearchView_layout, go.g.abc_search_view), this, true);
+    this.a = ((SearchAutoComplete)findViewById(go.f.search_src_text));
     this.a.setSearchView(this);
-    this.r = findViewById(gp.f.search_edit_frame);
-    this.b = findViewById(gp.f.search_plate);
-    this.s = findViewById(gp.f.submit_area);
-    this.c = ((ImageView)findViewById(gp.f.search_button));
-    this.d = ((ImageView)findViewById(gp.f.search_go_btn));
-    this.e = ((ImageView)findViewById(gp.f.search_close_btn));
-    this.f = ((ImageView)findViewById(gp.f.search_voice_btn));
-    this.y = ((ImageView)findViewById(gp.f.search_mag_icon));
-    ex.a(this.b, paramAttributeSet.a(gp.j.SearchView_queryBackground));
-    ex.a(this.s, paramAttributeSet.a(gp.j.SearchView_submitBackground));
-    this.c.setImageDrawable(paramAttributeSet.a(gp.j.SearchView_searchIcon));
-    this.d.setImageDrawable(paramAttributeSet.a(gp.j.SearchView_goIcon));
-    this.e.setImageDrawable(paramAttributeSet.a(gp.j.SearchView_closeIcon));
-    this.f.setImageDrawable(paramAttributeSet.a(gp.j.SearchView_voiceIcon));
-    this.y.setImageDrawable(paramAttributeSet.a(gp.j.SearchView_searchIcon));
-    this.z = paramAttributeSet.a(gp.j.SearchView_searchHintIcon);
-    jh.a(this.c, getResources().getString(gp.h.abc_searchview_description_search));
-    this.A = paramAttributeSet.g(gp.j.SearchView_suggestionRowLayout, gp.g.abc_search_dropdown_item_icons_2line);
-    this.B = paramAttributeSet.g(gp.j.SearchView_commitIcon, 0);
+    this.r = findViewById(go.f.search_edit_frame);
+    this.b = findViewById(go.f.search_plate);
+    this.s = findViewById(go.f.submit_area);
+    this.c = ((ImageView)findViewById(go.f.search_button));
+    this.d = ((ImageView)findViewById(go.f.search_go_btn));
+    this.e = ((ImageView)findViewById(go.f.search_close_btn));
+    this.f = ((ImageView)findViewById(go.f.search_voice_btn));
+    this.y = ((ImageView)findViewById(go.f.search_mag_icon));
+    ew.a(this.b, paramAttributeSet.a(go.j.SearchView_queryBackground));
+    ew.a(this.s, paramAttributeSet.a(go.j.SearchView_submitBackground));
+    this.c.setImageDrawable(paramAttributeSet.a(go.j.SearchView_searchIcon));
+    this.d.setImageDrawable(paramAttributeSet.a(go.j.SearchView_goIcon));
+    this.e.setImageDrawable(paramAttributeSet.a(go.j.SearchView_closeIcon));
+    this.f.setImageDrawable(paramAttributeSet.a(go.j.SearchView_voiceIcon));
+    this.y.setImageDrawable(paramAttributeSet.a(go.j.SearchView_searchIcon));
+    this.z = paramAttributeSet.a(go.j.SearchView_searchHintIcon);
+    jg.a(this.c, getResources().getString(go.h.abc_searchview_description_search));
+    this.A = paramAttributeSet.g(go.j.SearchView_suggestionRowLayout, go.g.abc_search_dropdown_item_icons_2line);
+    this.B = paramAttributeSet.g(go.j.SearchView_commitIcon, 0);
     this.c.setOnClickListener(this.U);
     this.e.setOnClickListener(this.U);
     this.d.setOnClickListener(this.U);
@@ -364,22 +364,22 @@ public class SearchView
         }
       }
     });
-    setIconifiedByDefault(paramAttributeSet.a(gp.j.SearchView_iconifiedByDefault, true));
-    paramInt = paramAttributeSet.e(gp.j.SearchView_android_maxWidth, -1);
+    setIconifiedByDefault(paramAttributeSet.a(go.j.SearchView_iconifiedByDefault, true));
+    paramInt = paramAttributeSet.e(go.j.SearchView_android_maxWidth, -1);
     if (paramInt != -1) {
       setMaxWidth(paramInt);
     }
-    this.C = paramAttributeSet.c(gp.j.SearchView_defaultQueryHint);
-    this.I = paramAttributeSet.c(gp.j.SearchView_queryHint);
-    paramInt = paramAttributeSet.a(gp.j.SearchView_android_imeOptions, -1);
+    this.C = paramAttributeSet.c(go.j.SearchView_defaultQueryHint);
+    this.I = paramAttributeSet.c(go.j.SearchView_queryHint);
+    paramInt = paramAttributeSet.a(go.j.SearchView_android_imeOptions, -1);
     if (paramInt != -1) {
       setImeOptions(paramInt);
     }
-    paramInt = paramAttributeSet.a(gp.j.SearchView_android_inputType, -1);
+    paramInt = paramAttributeSet.a(go.j.SearchView_android_inputType, -1);
     if (paramInt != -1) {
       setInputType(paramInt);
     }
-    setFocusable(paramAttributeSet.a(gp.j.SearchView_android_focusable, true));
+    setFocusable(paramAttributeSet.a(go.j.SearchView_android_focusable, true));
     paramAttributeSet.a.recycle();
     this.h = new Intent("android.speech.action.WEB_SEARCH");
     this.h.addFlags(268435456);
@@ -399,9 +399,9 @@ public class SearchView
             Resources localResources = paramAnonymousView.getContext().getResources();
             paramAnonymousInt3 = paramAnonymousView.b.getPaddingLeft();
             Rect localRect = new Rect();
-            boolean bool = jl.a(paramAnonymousView);
+            boolean bool = jk.a(paramAnonymousView);
             if (paramAnonymousView.l) {
-              paramAnonymousInt1 = localResources.getDimensionPixelSize(gp.d.abc_dropdownitem_icon_width) + localResources.getDimensionPixelSize(gp.d.abc_dropdownitem_text_padding_left);
+              paramAnonymousInt1 = localResources.getDimensionPixelSize(go.d.abc_dropdownitem_icon_width) + localResources.getDimensionPixelSize(go.d.abc_dropdownitem_text_padding_left);
             } else {
               paramAnonymousInt1 = 0;
             }
@@ -428,7 +428,7 @@ public class SearchView
   {
     try
     {
-      localObject3 = ja.a(paramCursor, "suggest_intent_action");
+      localObject3 = iz.a(paramCursor, "suggest_intent_action");
       localObject1 = localObject3;
       if (localObject3 != null) {
         break label204;
@@ -457,7 +457,7 @@ public class SearchView
         }
       }
     }
-    localObject4 = ja.a(paramCursor, "suggest_intent_data");
+    localObject4 = iz.a(paramCursor, "suggest_intent_data");
     localObject1 = localObject4;
     if (localObject4 == null) {
       localObject1 = this.n.getSuggestIntentData();
@@ -465,7 +465,7 @@ public class SearchView
     localObject4 = localObject1;
     if (localObject1 != null)
     {
-      str = ja.a(paramCursor, "suggest_intent_data_id");
+      str = iz.a(paramCursor, "suggest_intent_data_id");
       localObject4 = localObject1;
       if (str != null)
       {
@@ -476,8 +476,8 @@ public class SearchView
         localObject4 = ((StringBuilder)localObject4).toString();
         break label219;
         localObject1 = Uri.parse((String)localObject4);
-        localObject4 = ja.a(paramCursor, "suggest_intent_query");
-        localObject1 = a((String)localObject3, (Uri)localObject1, ja.a(paramCursor, "suggest_intent_extra_data"), (String)localObject4);
+        localObject4 = iz.a(paramCursor, "suggest_intent_query");
+        localObject1 = a((String)localObject3, (Uri)localObject1, iz.a(paramCursor, "suggest_intent_extra_data"), (String)localObject4);
         return localObject1;
         try
         {
@@ -638,12 +638,12 @@ public class SearchView
   
   private int getPreferredHeight()
   {
-    return getContext().getResources().getDimensionPixelSize(gp.d.abc_search_view_preferred_height);
+    return getContext().getResources().getDimensionPixelSize(go.d.abc_search_view_preferred_height);
   }
   
   private int getPreferredWidth()
   {
-    return getContext().getResources().getDimensionPixelSize(gp.d.abc_search_view_preferred_width);
+    return getContext().getResources().getDimensionPixelSize(go.d.abc_search_view_preferred_width);
   }
   
   private boolean j()
@@ -937,7 +937,7 @@ public class SearchView
     return this.A;
   }
   
-  public fq getSuggestionsAdapter()
+  public fp getSuggestionsAdapter()
   {
     return this.m;
   }
@@ -1182,16 +1182,16 @@ public class SearchView
   {
     this.J = paramBoolean;
     Object localObject = this.m;
-    if ((localObject instanceof ja))
+    if ((localObject instanceof iz))
     {
-      localObject = (ja)localObject;
+      localObject = (iz)localObject;
       int i1;
       if (paramBoolean) {
         i1 = 2;
       } else {
         i1 = 1;
       }
-      ((ja)localObject).j = i1;
+      ((iz)localObject).j = i1;
     }
   }
   
@@ -1217,19 +1217,19 @@ public class SearchView
       this.a.setInputType(i1);
       localObject = this.m;
       if (localObject != null) {
-        ((fq)localObject).a(null);
+        ((fp)localObject).a(null);
       }
       if (this.n.getSuggestAuthority() != null)
       {
-        this.m = new ja(getContext(), this, this.n, this.T);
+        this.m = new iz(getContext(), this, this.n, this.T);
         this.a.setAdapter(this.m);
-        localObject = (ja)this.m;
+        localObject = (iz)this.m;
         if (this.J) {
           i1 = 2;
         } else {
           i1 = 1;
         }
-        ((ja)localObject).j = i1;
+        ((iz)localObject).j = i1;
       }
       n();
     }
@@ -1269,9 +1269,9 @@ public class SearchView
     a(this.G);
   }
   
-  public void setSuggestionsAdapter(fq paramfq)
+  public void setSuggestionsAdapter(fp paramfp)
   {
-    this.m = paramfq;
+    this.m = paramfp;
     this.a.setAdapter(this.m);
   }
   
@@ -1325,7 +1325,7 @@ public class SearchView
     
     public SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet)
     {
-      this(paramContext, paramAttributeSet, gp.a.autoCompleteTextViewStyle);
+      this(paramContext, paramAttributeSet, go.a.autoCompleteTextViewStyle);
     }
     
     public SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet, int paramInt)

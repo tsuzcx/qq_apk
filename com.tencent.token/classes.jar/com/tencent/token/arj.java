@@ -1,32 +1,25 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 public class arj
-  implements arg
+  extends aot
+  implements ark
 {
-  public aqh k = null;
-  
-  public void a(int paramInt, al paramal) {}
-  
-  public final void a(byte[] paramArrayOfByte)
+  public final NetworkInfo a()
   {
-    am localam = aqa.a(paramArrayOfByte);
-    Object localObject = this.k;
-    paramArrayOfByte = null;
-    if ((localObject != null) && (localam != null)) {
-      paramArrayOfByte = localam.c;
-    }
-    if (paramArrayOfByte == null) {
-      return;
-    }
-    paramArrayOfByte = paramArrayOfByte.iterator();
-    while (paramArrayOfByte.hasNext())
+    try
     {
-      localObject = (al)paramArrayOfByte.next();
-      a(localam.a, (al)localObject);
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)aos.a().getSystemService("connectivity")).getActiveNetworkInfo();
+      return localNetworkInfo;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
   }
 }
 

@@ -1,9 +1,10 @@
 package com.tencent.token;
 
 public abstract interface ahw
-  extends Cloneable
 {
-  public abstract void a(ahx paramahx);
+  public abstract void a();
+  
+  public abstract void a(aiq paramaiq);
 }
 
 

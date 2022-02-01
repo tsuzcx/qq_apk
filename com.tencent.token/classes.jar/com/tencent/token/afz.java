@@ -1,279 +1,204 @@
 package com.tencent.token;
 
-import android.content.OperationApplicationException;
-import android.os.Parcel;
-import com.tencent.wcdb.database.SQLiteAbortException;
-import com.tencent.wcdb.database.SQLiteConstraintException;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabaseCorruptException;
-import com.tencent.wcdb.database.SQLiteDiskIOException;
-import com.tencent.wcdb.database.SQLiteException;
-import com.tencent.wcdb.database.SQLiteFullException;
 import com.tencent.wcdb.support.Log;
-import com.tencent.wcdb.support.OperationCanceledException;
-import java.io.FileNotFoundException;
-import java.text.Collator;
+import java.io.File;
 
 public final class afz
+  implements afx
 {
-  private static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  private static Collator b = null;
+  private static final String[] b = { "", "-journal", "-wal", ".sm", ".bak", "-vfslog", "-vfslo1" };
+  private final boolean a;
   
-  public static int a(int paramInt1, int paramInt2)
+  public afz()
   {
-    return Math.max(paramInt1 - paramInt2 / 3, 0);
+    this.a = false;
   }
   
-  public static int a(Object paramObject)
+  public afz(byte paramByte)
   {
-    if (paramObject == null) {
-      return 0;
-    }
-    if ((paramObject instanceof byte[])) {
-      return 4;
-    }
-    if ((!(paramObject instanceof Float)) && (!(paramObject instanceof Double)))
+    this.a = true;
+  }
+  
+  private void a(String paramString)
+  {
+    if (!paramString.equalsIgnoreCase(":memory:"))
     {
-      if ((!(paramObject instanceof Long)) && (!(paramObject instanceof Integer)) && (!(paramObject instanceof Short)) && (!(paramObject instanceof Byte))) {
-        return 3;
+      if (paramString.trim().length() == 0) {
+        return;
       }
-      return 1;
-    }
-    return 2;
-  }
-  
-  public static int a(String[] paramArrayOfString)
-  {
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (paramArrayOfString[i].equals("_id")) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  public static long a(SQLiteDatabase paramSQLiteDatabase, String paramString)
-  {
-    paramSQLiteDatabase = paramSQLiteDatabase.a(paramString);
-    try
-    {
-      long l = paramSQLiteDatabase.g();
-      return l;
-    }
-    finally
-    {
-      paramSQLiteDatabase.close();
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    a(localStringBuilder, paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static final void a(Parcel paramParcel)
-  {
-    int j = paramParcel.readInt();
-    int i = j;
-    if (j == -128)
-    {
-      if (paramParcel.readInt() == 0) {
-        Log.a("WCDB.DatabaseUtils", "Unexpected zero-sized Parcel reply header.");
-      }
-      i = 0;
-    }
-    if (i == 0) {
-      return;
-    }
-    String str = paramParcel.readString();
-    switch (i)
-    {
-    case 10: 
-    default: 
-      paramParcel.readException(i, str);
-      return;
-    case 11: 
-      throw new OperationCanceledException(str);
-    case 9: 
-      throw new SQLiteException(str);
-    case 8: 
-      throw new SQLiteDiskIOException(str);
-    case 7: 
-      throw new SQLiteFullException(str);
-    case 6: 
-      throw new SQLiteDatabaseCorruptException(str);
-    case 5: 
-      throw new SQLiteConstraintException(str);
-    case 4: 
-      throw new SQLiteAbortException(str);
-    case 3: 
-      throw new UnsupportedOperationException(str);
-    }
-    throw new IllegalArgumentException(str);
-  }
-  
-  public static final void a(Parcel paramParcel, Exception paramException)
-  {
-    int i;
-    int j;
-    if ((paramException instanceof FileNotFoundException))
-    {
-      i = 1;
-      j = 0;
-    }
-    else if ((paramException instanceof IllegalArgumentException))
-    {
-      i = 2;
-      j = 1;
-    }
-    else if ((paramException instanceof UnsupportedOperationException))
-    {
-      i = 3;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteAbortException))
-    {
-      i = 4;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteConstraintException))
-    {
-      i = 5;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteDatabaseCorruptException))
-    {
-      i = 6;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteFullException))
-    {
-      i = 7;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteDiskIOException))
-    {
-      i = 8;
-      j = 1;
-    }
-    else if ((paramException instanceof SQLiteException))
-    {
-      i = 9;
-      j = 1;
-    }
-    else if ((paramException instanceof OperationApplicationException))
-    {
-      i = 10;
-      j = 1;
-    }
-    else
-    {
-      if (!(paramException instanceof OperationCanceledException)) {
-        break label190;
-      }
-      i = 11;
-      j = 0;
-    }
-    paramParcel.writeInt(i);
-    paramParcel.writeString(paramException.getMessage());
-    if (j != 0) {
-      Log.a("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
-    }
-    return;
-    label190:
-    paramParcel.writeException(paramException);
-    Log.a("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, String paramString)
-  {
-    paramStringBuilder.append('\'');
-    if (paramString.indexOf('\'') != -1)
-    {
-      int j = paramString.length();
+      Log.a("WCDB.DefaultDatabaseErrorHandler", "Remove database file: ".concat(String.valueOf(paramString)));
+      boolean bool = this.a;
+      int j = 0;
       int i = 0;
-      while (i < j)
+      Object localObject2;
+      Object localObject3;
+      if (!bool)
       {
-        char c = paramString.charAt(i);
-        if (c == '\'') {
-          paramStringBuilder.append('\'');
+        localObject1 = new File(paramString);
+        localObject2 = new File(((File)localObject1).getParentFile(), "corrupted");
+        if (!((File)localObject2).mkdirs()) {
+          Log.a("WCDB.DefaultDatabaseErrorHandler", "Could not create directory for corrupted database. Corruption backup may be unavailable.");
         }
-        paramStringBuilder.append(c);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(((File)localObject2).getPath());
+        ((StringBuilder)localObject3).append("/");
+        ((StringBuilder)localObject3).append(((File)localObject1).getName());
+        localObject1 = ((StringBuilder)localObject3).toString();
+        localObject2 = b;
+        j = localObject2.length;
+        while (i < j)
+        {
+          localObject3 = localObject2[i];
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramString);
+          ((StringBuilder)localObject4).append((String)localObject3);
+          localObject4 = ((StringBuilder)localObject4).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append((String)localObject3);
+          localObject3 = localStringBuilder.toString();
+          localObject4 = new File((String)localObject4);
+          if (!((File)localObject4).renameTo(new File((String)localObject3))) {
+            ((File)localObject4).delete();
+          }
+          i += 1;
+        }
+        return;
+      }
+      Object localObject1 = b;
+      int k = localObject1.length;
+      i = j;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(paramString);
+        ((StringBuilder)localObject3).append((String)localObject2);
+        new File(((StringBuilder)localObject3).toString()).delete();
         i += 1;
       }
+      return;
     }
-    paramStringBuilder.append(paramString);
-    paramStringBuilder.append('\'');
   }
   
-  public static boolean a(Object paramObject1, Object paramObject2)
+  /* Error */
+  public final void a(com.tencent.wcdb.database.SQLiteDatabase paramSQLiteDatabase)
   {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
-  }
-  
-  public static int b(String paramString)
-  {
-    paramString = paramString.trim();
-    if (paramString.length() < 3) {
-      return 99;
-    }
-    int m = 0;
-    int j = 0;
-    int i = 0;
-    while (j < 3)
-    {
-      int n = paramString.charAt(j);
-      int k;
-      if ((n >= 97) && (n <= 122))
-      {
-        k = n - 97 + 65;
-      }
-      else
-      {
-        k = n;
-        if (n >= 128)
-        {
-          i = m;
-          break;
-        }
-      }
-      i |= (k & 0x7F) << j * 8;
-      j += 1;
-    }
-    switch (i)
-    {
-    default: 
-      return 99;
-    case 5526593: 
-      return 3;
-    case 5001042: 
-      return 6;
-    case 4998483: 
-      return 1;
-    case 4670786: 
-      return 4;
-    case 4543043: 
-    case 5198404: 
-    case 5524545: 
-      return 8;
-    case 4477013: 
-    case 4998468: 
-    case 5260626: 
-    case 5459529: 
-      return 2;
-    case 4476485: 
-    case 5066563: 
-      return 5;
-    case 4280912: 
-      return 7;
-    }
-    return 9;
+    // Byte code:
+    //   0: new 90	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc 118
+    //   6: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   9: astore_2
+    //   10: aload_2
+    //   11: aload_1
+    //   12: invokevirtual 124	com/tencent/wcdb/database/SQLiteDatabase:o	()Ljava/lang/String;
+    //   15: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: pop
+    //   19: ldc 54
+    //   21: aload_2
+    //   22: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   25: invokestatic 69	com/tencent/wcdb/support/Log:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_1
+    //   29: invokevirtual 127	com/tencent/wcdb/database/SQLiteDatabase:n	()Z
+    //   32: ifne +12 -> 44
+    //   35: aload_0
+    //   36: aload_1
+    //   37: invokevirtual 124	com/tencent/wcdb/database/SQLiteDatabase:o	()Ljava/lang/String;
+    //   40: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   43: return
+    //   44: aconst_null
+    //   45: astore_2
+    //   46: aload_1
+    //   47: invokevirtual 133	com/tencent/wcdb/database/SQLiteDatabase:q	()Ljava/util/List;
+    //   50: astore_3
+    //   51: aload_3
+    //   52: astore_2
+    //   53: aload_1
+    //   54: invokevirtual 137	com/tencent/wcdb/database/SQLiteDatabase:p	()Lcom/tencent/token/agq;
+    //   57: pop
+    //   58: aload_1
+    //   59: invokevirtual 140	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   62: aload_2
+    //   63: ifnull +42 -> 105
+    //   66: aload_2
+    //   67: invokeinterface 146 1 0
+    //   72: astore_1
+    //   73: aload_1
+    //   74: invokeinterface 151 1 0
+    //   79: ifeq +25 -> 104
+    //   82: aload_0
+    //   83: aload_1
+    //   84: invokeinterface 155 1 0
+    //   89: checkcast 157	android/util/Pair
+    //   92: getfield 161	android/util/Pair:second	Ljava/lang/Object;
+    //   95: checkcast 14	java/lang/String
+    //   98: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   101: goto -28 -> 73
+    //   104: return
+    //   105: aload_0
+    //   106: aload_1
+    //   107: invokevirtual 124	com/tencent/wcdb/database/SQLiteDatabase:o	()Ljava/lang/String;
+    //   110: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   113: return
+    //   114: astore_3
+    //   115: aload_2
+    //   116: ifnull +41 -> 157
+    //   119: aload_2
+    //   120: invokeinterface 146 1 0
+    //   125: astore_1
+    //   126: aload_1
+    //   127: invokeinterface 151 1 0
+    //   132: ifeq +33 -> 165
+    //   135: aload_0
+    //   136: aload_1
+    //   137: invokeinterface 155 1 0
+    //   142: checkcast 157	android/util/Pair
+    //   145: getfield 161	android/util/Pair:second	Ljava/lang/Object;
+    //   148: checkcast 14	java/lang/String
+    //   151: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   154: goto -28 -> 126
+    //   157: aload_0
+    //   158: aload_1
+    //   159: invokevirtual 124	com/tencent/wcdb/database/SQLiteDatabase:o	()Ljava/lang/String;
+    //   162: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   165: aload_3
+    //   166: athrow
+    //   167: aload_2
+    //   168: ifnull -63 -> 105
+    //   171: aload_2
+    //   172: invokeinterface 146 1 0
+    //   177: astore_1
+    //   178: aload_1
+    //   179: invokeinterface 151 1 0
+    //   184: ifeq +25 -> 209
+    //   187: aload_0
+    //   188: aload_1
+    //   189: invokeinterface 155 1 0
+    //   194: checkcast 157	android/util/Pair
+    //   197: getfield 161	android/util/Pair:second	Ljava/lang/Object;
+    //   200: checkcast 14	java/lang/String
+    //   203: invokespecial 129	com/tencent/token/afz:a	(Ljava/lang/String;)V
+    //   206: goto -28 -> 178
+    //   209: return
+    //   210: astore_3
+    //   211: goto -158 -> 53
+    //   214: astore_3
+    //   215: goto -48 -> 167
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	218	0	this	afz
+    //   0	218	1	paramSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
+    //   9	163	2	localObject1	Object
+    //   50	2	3	localList	java.util.List
+    //   114	52	3	localObject2	Object
+    //   210	1	3	localSQLiteException1	com.tencent.wcdb.database.SQLiteException
+    //   214	1	3	localSQLiteException2	com.tencent.wcdb.database.SQLiteException
+    // Exception table:
+    //   from	to	target	type
+    //   58	62	114	finally
+    //   46	51	210	com/tencent/wcdb/database/SQLiteException
+    //   58	62	214	com/tencent/wcdb/database/SQLiteException
   }
 }
 

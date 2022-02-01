@@ -18,17 +18,17 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aae;
-import com.tencent.token.ru;
+import com.tencent.token.aad;
+import com.tencent.token.rt;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.xb;
-import com.tencent.token.xx;
+import com.tencent.token.xa;
+import com.tencent.token.xw;
 
 public class FaceRecognitionCameraPreview
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  xx a;
+  xw a;
   private SurfaceHolder b;
   private int c = -1;
   private Handler d;
@@ -83,11 +83,11 @@ public class FaceRecognitionCameraPreview
   public final void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
     setStop(false);
-    xx localxx = this.a;
-    if (localxx != null)
+    xw localxw = this.a;
+    if (localxw != null)
     {
-      localxx.c = 0L;
-      localxx.a(paramBoolean2, paramInt1, paramInt2, true);
+      localxw.c = 0L;
+      localxw.a(paramBoolean2, paramInt1, paramInt2, true);
       this.a.b = paramBoolean1;
     }
   }
@@ -121,10 +121,10 @@ public class FaceRecognitionCameraPreview
   
   public final void c()
   {
-    xx localxx = this.a;
-    if (localxx != null)
+    xw localxw = this.a;
+    if (localxw != null)
     {
-      localxx.a();
+      localxw.a();
       this.a = null;
     }
     this.e = null;
@@ -133,18 +133,18 @@ public class FaceRecognitionCameraPreview
   
   public Camera getCamera()
   {
-    xx localxx = this.a;
-    if (localxx != null) {
-      return localxx.d;
+    xw localxw = this.a;
+    if (localxw != null) {
+      return localxw.d;
     }
     return null;
   }
   
   public void setStop(boolean paramBoolean)
   {
-    xx localxx = this.a;
-    if (localxx != null) {
-      localxx.a = paramBoolean;
+    xw localxw = this.a;
+    if (localxw != null) {
+      localxw.a = paramBoolean;
     }
   }
   
@@ -160,7 +160,7 @@ public class FaceRecognitionCameraPreview
     localStringBuilder.append(paramInt3);
     localStringBuilder.append(", titleheight=");
     localStringBuilder.append(IndexActivity.S_STATUS_HEIGHT);
-    xb.c(localStringBuilder.toString());
+    xa.c(localStringBuilder.toString());
     if (paramInt3 != paramSurfaceHolder.c)
     {
       paramSurfaceHolder.b = paramInt2;
@@ -189,23 +189,23 @@ public class FaceRecognitionCameraPreview
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    xb.c("surfaceCreated!");
+    xa.c("surfaceCreated!");
     try
     {
       b();
       paramSurfaceHolder = new StringBuilder("set brightvalue=");
       paramSurfaceHolder.append(Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
-      xb.a(paramSurfaceHolder.toString());
+      xa.a(paramSurfaceHolder.toString());
       if (this.c != 5)
       {
         this.i = ((ImageView)((Activity)this.e).findViewById(2131165295));
         this.j = ((Activity)this.e).findViewById(2131165297);
         this.k = ((Activity)this.e).findViewById(2131165323);
-        if (!aae.v())
+        if (!aad.v())
         {
           this.k.setVisibility(0);
           this.k.bringToFront();
-          aae.w();
+          aad.w();
           this.k.postDelayed(new Runnable()
           {
             public final void run()
@@ -231,7 +231,7 @@ public class FaceRecognitionCameraPreview
                   else
                   {
                     FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099846));
-                    ru.a().a(System.currentTimeMillis(), 201);
+                    rt.a().a(System.currentTimeMillis(), 201);
                   }
                   paramAnonymousView = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this);
                   if (!bool)
@@ -263,7 +263,7 @@ public class FaceRecognitionCameraPreview
       paramSurfaceHolder.printStackTrace();
     }
     if (this.a == null) {
-      this.a = new xx(this.e, this.b, this.d, this.l, this.c, this.f, this.g, this.k);
+      this.a = new xw(this.e, this.b, this.d, this.l, this.c, this.f, this.g, this.k);
     }
     paramSurfaceHolder = this.a;
     if (paramSurfaceHolder.d == null) {
@@ -282,7 +282,7 @@ public class FaceRecognitionCameraPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    xb.c("surfaceDestroyed!");
+    xa.c("surfaceDestroyed!");
     try
     {
       if (this.a != null)

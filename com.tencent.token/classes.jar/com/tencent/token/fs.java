@@ -1,59 +1,40 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.os.Build.VERSION;
+import android.widget.EdgeEffect;
 
-public final class fs<T>
+public final class fs
 {
-  public final ee.a<ArrayList<T>> a = new ee.b(10);
-  public final eg<T, ArrayList<T>> b = new eg();
-  private final ArrayList<T> c = new ArrayList();
-  private final HashSet<T> d = new HashSet();
+  private static final b a = new b();
   
-  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
+  static
   {
-    if (paramArrayList.contains(paramT)) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
       return;
     }
-    if (!paramHashSet.contains(paramT))
-    {
-      paramHashSet.add(paramT);
-      ArrayList localArrayList = (ArrayList)this.b.get(paramT);
-      if (localArrayList != null)
-      {
-        int i = 0;
-        int j = localArrayList.size();
-        while (i < j)
-        {
-          a(localArrayList.get(i), paramArrayList, paramHashSet);
-          i += 1;
-        }
-      }
-      paramHashSet.remove(paramT);
-      paramArrayList.add(paramT);
-      return;
-    }
-    throw new RuntimeException("This graph contains cyclic dependencies");
   }
   
-  public final ArrayList<T> a()
+  public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    this.c.clear();
-    this.d.clear();
-    int j = this.b.size();
-    int i = 0;
-    while (i < j)
-    {
-      a(this.b.b(i), this.c, this.d);
-      i += 1;
-    }
-    return this.c;
+    a.a(paramEdgeEffect, paramFloat1, paramFloat2);
   }
   
-  public final void a(T paramT)
+  static final class a
+    extends fs.b
   {
-    if (!this.b.containsKey(paramT)) {
-      this.b.put(paramT, null);
+    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+    }
+  }
+  
+  static class b
+  {
+    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1);
     }
   }
 }

@@ -1,56 +1,61 @@
 package com.tencent.token;
 
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.support.v4.widget.DrawerLayout.c;
 
 public final class gc
+  implements DrawerLayout.c
 {
-  private static final ThreadLocal<Matrix> a = new ThreadLocal();
-  private static final ThreadLocal<RectF> b = new ThreadLocal();
+  boolean a;
+  private final a b;
+  private gt c;
+  private boolean d;
+  private final int e;
+  private final int f;
   
-  public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
+  private void a(int paramInt)
   {
-    paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = (Matrix)a.get();
-    if (localMatrix == null)
-    {
-      localMatrix = new Matrix();
-      a.set(localMatrix);
-    }
-    else
-    {
-      localMatrix.reset();
-    }
-    a(paramViewGroup, paramView, localMatrix);
-    paramView = (RectF)b.get();
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = new RectF();
-      b.set(paramViewGroup);
-    }
-    paramViewGroup.set(paramRect);
-    localMatrix.mapRect(paramViewGroup);
-    paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
+    this.b.a(paramInt);
   }
   
-  private static void a(ViewParent paramViewParent, View paramView, Matrix paramMatrix)
+  private void b(float paramFloat)
   {
-    Object localObject = paramView.getParent();
-    if (((localObject instanceof View)) && (localObject != paramViewParent))
+    if (paramFloat == 1.0F) {
+      this.c.a(true);
+    } else if (paramFloat == 0.0F) {
+      this.c.a(false);
+    }
+    this.c.a(paramFloat);
+  }
+  
+  public final void a()
+  {
+    b(1.0F);
+    if (this.a) {
+      a(this.f);
+    }
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (this.d)
     {
-      localObject = (View)localObject;
-      a(paramViewParent, (View)localObject, paramMatrix);
-      paramMatrix.preTranslate(-((View)localObject).getScrollX(), -((View)localObject).getScrollY());
+      b(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      return;
     }
-    paramMatrix.preTranslate(paramView.getLeft(), paramView.getTop());
-    if (!paramView.getMatrix().isIdentity()) {
-      paramMatrix.preConcat(paramView.getMatrix());
+    b(0.0F);
+  }
+  
+  public final void b()
+  {
+    b(0.0F);
+    if (this.a) {
+      a(this.e);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

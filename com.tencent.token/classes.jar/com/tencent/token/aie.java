@@ -1,125 +1,34 @@
 package com.tencent.token;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Nullable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.List;
 
-public final class aie
+public abstract interface aie
 {
-  private int a = 64;
-  private int b = 5;
-  @Nullable
-  private Runnable c;
-  @Nullable
-  private ExecutorService d;
-  private final Deque<aio.a> e = new ArrayDeque();
-  private final Deque<aio.a> f = new ArrayDeque();
-  private final Deque<aio> g = new ArrayDeque();
-  
-  private ExecutorService a()
+  public static final aie a = new aie()
   {
-    try
+    public final List<InetAddress> a(String paramAnonymousString)
     {
-      if (this.d == null) {
-        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), aix.a("OkHttp Dispatcher", false));
-      }
-      ExecutorService localExecutorService = this.d;
-      return localExecutorService;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    if (this.f.size() >= this.a) {
-      return;
-    }
-    if (this.e.isEmpty()) {
-      return;
-    }
-    Iterator localIterator = this.e.iterator();
-    while (localIterator.hasNext())
-    {
-      aio.a locala = (aio.a)localIterator.next();
-      if (c(locala) < this.b)
-      {
-        localIterator.remove();
-        this.f.add(locala);
-        a().execute(locala);
-      }
-      if (this.f.size() >= this.a) {}
-    }
-  }
-  
-  private int c()
-  {
-    try
-    {
-      int i = this.f.size();
-      int j = this.g.size();
-      return i + j;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private int c(aio.a parama)
-  {
-    Iterator localIterator = this.f.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      aio.a locala = (aio.a)localIterator.next();
-      if ((!locala.a.e) && (locala.a().equals(parama.a()))) {
-        i += 1;
-      }
-    }
-    return i;
-  }
-  
-  final void a(aio.a parama)
-  {
-    try
-    {
-      if ((this.f.size() < this.a) && (c(parama) < this.b))
-      {
-        this.f.add(parama);
-        a().execute(parama);
-        return;
-      }
-      this.e.add(parama);
-      return;
-    }
-    finally {}
-  }
-  
-  final void b(aio.a parama)
-  {
-    Deque localDeque = this.f;
-    try
-    {
-      if (localDeque.remove(parama))
-      {
-        b();
-        int i = c();
-        parama = this.c;
-        if ((i == 0) && (parama != null)) {
-          parama.run();
+      if (paramAnonymousString != null) {
+        try
+        {
+          List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
+          return localList;
         }
-        return;
+        catch (NullPointerException localNullPointerException)
+        {
+          paramAnonymousString = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(String.valueOf(paramAnonymousString)));
+          paramAnonymousString.initCause(localNullPointerException);
+          throw paramAnonymousString;
+        }
       }
-      throw new AssertionError("Call wasn't in-flight!");
+      throw new UnknownHostException("hostname == null");
     }
-    finally {}
-  }
+  };
+  
+  public abstract List<InetAddress> a(String paramString);
 }
 
 

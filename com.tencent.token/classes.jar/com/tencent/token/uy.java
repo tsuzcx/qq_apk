@@ -1,114 +1,115 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class uy
-  extends tk
+  extends tj
 {
-  public byte[] d;
-  public long e;
-  public DeterminVerifyFactorsResult f;
+  private long d;
+  private int e;
+  private int f;
   private int g;
   private int h;
-  private int i;
+  private String i;
+  private String j;
+  private String k;
   
   public final String a()
   {
-    xb.c("upgrade url: ");
-    sa.a();
+    rz.a();
+    StringBuilder localStringBuilder = new StringBuilder("sessId=");
+    localStringBuilder.append(null);
+    xa.c(localStringBuilder.toString());
     this.a.a(104, null, null);
-    xb.c("upgrade url: ");
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.e = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.d = ((byte[])paramaar.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramaar.c.get("param.common.seq")).intValue();
-    this.h = ((Integer)paramaar.c.get("param.wtlogin.type")).intValue();
-    this.i = ((Integer)paramaar.c.get("param.scene_id")).intValue();
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramaaq.c.get("param.device.lock.id")).intValue();
+    this.i = ((String)paramaaq.c.get("param.device.lock.guid"));
+    this.f = ((Integer)paramaaq.c.get("param.device.lock.appid")).intValue();
+    this.g = ((Integer)paramaaq.c.get("param.device.lock.subappid")).intValue();
+    this.j = ((String)paramaaq.c.get("param.device.lock.appname"));
+    this.k = ((String)paramaaq.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramaaq.c.get("param.common.seq")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    Object localObject;
-    if (j != 0)
+    int m = paramJSONObject.getInt("err");
+    if (m != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = new StringBuilder("error");
-      ((StringBuilder)localObject).append(paramJSONObject);
-      ((StringBuilder)localObject).append(",error code =");
-      ((StringBuilder)localObject).append(j);
-      xb.a(((StringBuilder)localObject).toString());
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(j);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wz)localObject).a(j, localStringBuilder.toString(), paramJSONObject);
+      a(m, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.c("mbtoken3_determine_verify_factors=".concat(String.valueOf(paramJSONObject)));
-      if (paramJSONObject.getInt("seq_id") != this.g)
+      xa.a("decode json=".concat(String.valueOf(paramJSONObject)));
+      m = paramJSONObject.getInt("seq_id");
+      if (m != this.h)
       {
         this.a.a(10030, null, null);
-        localObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
-        ((StringBuilder)localObject).append(",right = ");
-        ((StringBuilder)localObject).append(this.g);
-        xb.c(((StringBuilder)localObject).toString());
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(m);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      long l = paramJSONObject.getLong("uin");
-      if (this.e != l)
-      {
-        paramJSONObject = this.a;
-        localObject = new StringBuilder("uin not match ");
-        ((StringBuilder)localObject).append(this.e);
-        ((StringBuilder)localObject).append(":");
-        ((StringBuilder)localObject).append(l);
-        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
-        return;
-      }
-      this.f = new DeterminVerifyFactorsResult(paramJSONObject);
+    }
+    for (;;)
+    {
       try
       {
-        l = paramJSONObject.getLong("server_time");
-        sc.b();
-        sc.a(l);
+        m = paramJSONObject.getInt("id");
+        paramJSONObject = paramJSONObject.getJSONArray("result");
+        if (m == 70)
+        {
+          ta.a().b(paramJSONObject);
+        }
+        else if (m == 71)
+        {
+          ta.a().c(paramJSONObject);
+        }
+        else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
+        {
+          m = 0;
+          if (m < paramJSONObject.length())
+          {
+            JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
+            if (localJSONObject.getInt("id") == 71)
+            {
+              ta.a().a(localJSONObject);
+              break label306;
+            }
+            localJSONObject.getInt("id");
+            break label306;
+          }
+        }
+        this.a.a = 0;
+        return;
       }
-      catch (Exception paramJSONObject)
+      catch (JSONException paramJSONObject)
       {
+        a(201, RqdApplication.n().getString(2131492910));
         paramJSONObject.printStackTrace();
+        return;
       }
-      this.a.a = 0;
+      xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.n().getString(2131493068));
       return;
-    }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.f;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      label306:
+      m += 1;
     }
   }
 }

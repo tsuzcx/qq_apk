@@ -1,13 +1,42 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
 final class apr
-  implements Runnable
+  extends Handler
 {
-  apr(aqs paramaqs, aqg paramaqg) {}
+  WeakReference a = null;
   
-  public final void run()
+  public apr(aqr paramaqr, Context paramContext)
   {
-    aqs.a(this.b, this.a);
+    super(paramContext.getMainLooper());
+    this.a = new WeakReference(paramaqr);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    aqr localaqr = (aqr)this.a.get();
+    if (localaqr == null) {
+      return;
+    }
+    if (paramMessage.what != 0) {
+      return;
+    }
+    int i = localaqr.c + 1;
+    localaqr.c = i;
+    if (i < 20)
+    {
+      if (localaqr.d()) {
+        localaqr.c = 0;
+      }
+    }
+    else {
+      localaqr.c();
+    }
   }
 }
 

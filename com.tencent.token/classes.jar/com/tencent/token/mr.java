@@ -1,11 +1,31 @@
 package com.tencent.token;
 
-final class mr
-  implements Thread.UncaughtExceptionHandler
+import java.util.concurrent.Future;
+
+public final class mr
 {
-  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
+  private Future a;
+  
+  public mr(Future paramFuture)
   {
-    paramThrowable.printStackTrace();
+    this.a = paramFuture;
+  }
+  
+  public final boolean a()
+  {
+    Future localFuture = this.a;
+    if (localFuture != null) {
+      try
+      {
+        boolean bool = localFuture.cancel(false);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 

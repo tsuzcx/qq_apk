@@ -5,27 +5,28 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class tz
-  extends tk
+  extends tj
 {
   private long d;
   private int e;
-  private int f;
+  private String f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.d = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramaar.c.get("param.type")).intValue();
-    this.e = paramaar.j;
+    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.e = paramaaq.j;
+    this.f = ((String)paramaaq.c.get("param.bind.areacode"));
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -36,7 +37,7 @@ public final class tz
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -48,30 +49,40 @@ public final class tz
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
         paramJSONObject.append(this.e);
-        xb.c(paramJSONObject.toString());
+        xa.c(paramJSONObject.toString());
         return;
       }
       long l = paramJSONObject.getLong("server_time");
-      sc.b();
-      sc.a(l);
+      sb.b();
+      sb.a(l);
+      try
+      {
+        l = paramJSONObject.getLong("seed_expire_time");
+        sb.b();
+        sb.b(l);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
       if (paramJSONObject.getInt("seed_available") == 1)
       {
-        paramJSONObject = aad.e(paramJSONObject.getString("seed"));
+        paramJSONObject = aac.e(paramJSONObject.getString("seed"));
         if (paramJSONObject != null)
         {
-          sc.b().c();
-          sc.b().a(paramJSONObject);
-          sc.b().a.a();
+          sb.b().c();
+          sb.b().a(paramJSONObject);
+          sb.b().a.a();
         }
       }
-      paramJSONObject = ta.a().d(this.d);
+      paramJSONObject = sz.a().d(this.d);
       if (paramJSONObject != null) {
-        ta.a().b(paramJSONObject);
+        sz.a().a(paramJSONObject);
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
   }
   
@@ -81,7 +92,7 @@ public final class tz
     {
       Object localObject = new StringBuilder("handleSuccess");
       ((StringBuilder)localObject).append(this.b.f);
-      xb.c(((StringBuilder)localObject).toString());
+      xa.c(((StringBuilder)localObject).toString());
       localObject = this.b.d.obtainMessage(this.b.f);
       ((Message)localObject).arg1 = 0;
       ((Message)localObject).sendToTarget();

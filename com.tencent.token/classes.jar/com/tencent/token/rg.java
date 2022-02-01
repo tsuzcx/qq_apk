@@ -1,235 +1,168 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Debug.MemoryInfo;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.jni.FaceDetector;
-import com.tencent.jni.FaceInfo;
-import com.tencent.jni.FaceThreshold;
-import com.tencent.service.DetectType;
-import com.tencent.service.FaceServiceDelegate;
-import com.tencent.service.FaceServiceDelegate.FaceDetectErrorCode;
+import android.text.TextUtils;
+import com.tencent.token.core.bean.OnlineDeviceResult.a;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.TMSDKContext;
+import com.tmsdk.common.util.TmsLog;
 import java.util.ArrayList;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class rg
-  implements rf
 {
-  private static final int b;
-  private static final int c;
-  private static final int d;
-  public FaceThreshold a;
-  private ArrayList<FaceDetector> e = new ArrayList();
-  private ArrayList<rj> f = new ArrayList();
-  private rd g = null;
-  private rk h;
-  private ThreadPoolExecutor i;
-  private a j = null;
-  private Context k;
-  private FaceServiceDelegate l;
-  private String m;
-  private boolean n = false;
-  private long o = 0L;
-  private long p = 0L;
-  private int q = 0;
-  private int r = 0;
-  private boolean s = false;
+  public Handler a;
+  long b;
+  public volatile boolean c;
   
-  static
+  private rg()
   {
-    int i1 = Runtime.getRuntime().availableProcessors();
-    b = i1;
-    c = i1;
-    d = i1;
+    HandlerThread localHandlerThread = new HandlerThread("LoginTraceManager", 5);
+    localHandlerThread.start();
+    this.a = new Handler(localHandlerThread.getLooper());
   }
   
-  public rg(Context paramContext, FaceServiceDelegate paramFaceServiceDelegate, String paramString)
+  final b a(long paramLong, final byte[] paramArrayOfByte)
   {
-    this.k = paramContext;
-    this.l = paramFaceServiceDelegate;
-    this.m = paramString;
-  }
-  
-  public final void a()
-  {
-    this.h = new rk(this.k);
-    this.h.a();
-    int i1 = 0;
-    while (i1 < d)
+    Object localObject2 = new AtomicInteger(0);
+    Object localObject1 = new CountDownLatch(1);
+    localObject2 = new Handler(Looper.getMainLooper())
     {
-      ((android.app.ActivityManager)this.k.getSystemService("activity")).getProcessMemoryInfo(new int[] { android.os.Process.myPid() })[0].getTotalPrivateDirty();
-      FaceDetector localFaceDetector = new FaceDetector();
-      localFaceDetector.Initial(this.m, this.a);
-      this.e.add(localFaceDetector);
-      i1 += 1;
-    }
-    this.j = new a(Looper.myLooper());
-    this.i = new ThreadPoolExecutor(b, c, 3L, TimeUnit.MINUTES, new ArrayBlockingQueue(4), new b());
-    this.n = false;
-    this.s = true;
-  }
-  
-  public final void a(rd paramrd)
-  {
-    Message localMessage = new Message();
-    localMessage.what = 36865;
-    localMessage.obj = paramrd;
-    paramrd = this.j;
-    if (paramrd != null) {
-      paramrd.sendMessage(localMessage);
-    }
-  }
-  
-  public final void a(rj paramrj, DetectType paramDetectType)
-  {
-    if (this.n) {
-      return;
-    }
-    if (this.h.a) {
-      return;
-    }
-    if (this.f.size() + this.r == 0) {
-      this.o = System.currentTimeMillis();
-    }
-    if (this.f.size() + this.r == 4) {
-      return;
-    }
-    int i1 = 0;
-    while (i1 < this.e.size())
-    {
-      FaceDetector localFaceDetector = (FaceDetector)this.e.get(i1);
-      if (localFaceDetector.idle())
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        localFaceDetector.setIdle(false);
-        paramDetectType = new re(this, localFaceDetector, paramrj, paramDetectType);
-        paramDetectType.a = this.o;
-        this.i.execute(paramDetectType);
-        this.f.add(paramrj);
-        this.q += 1;
-        return;
+        StringBuilder localStringBuilder = new StringBuilder("handleMessage what:");
+        localStringBuilder.append(paramAnonymousMessage.what);
+        localStringBuilder.append(", ret:");
+        localStringBuilder.append(paramAnonymousMessage.arg1);
+        TmsLog.i("LoginTraceManager", localStringBuilder.toString());
+        if (paramAnonymousMessage.what == 3005)
+        {
+          if (paramAnonymousMessage.arg1 == 0)
+          {
+            this.a.countDown();
+            return;
+          }
+          if (((wy)paramAnonymousMessage.obj != null) && (this.b.get() < 2))
+          {
+            paramAnonymousMessage = this.b;
+            paramAnonymousMessage.set(paramAnonymousMessage.get() + 1);
+            paramAnonymousMessage = tb.a();
+            byte b1 = tc.c;
+            aac.a(paramArrayOfByte);
+            paramAnonymousMessage.a(b1, this);
+            TmsLog.i("LoginTraceManager", "K_MSG_GETSAFELGNMESSAGE retry");
+            return;
+          }
+          TmsLog.i("LoginTraceManager", "K_MSG_GETSAFELGNMESSAGE failed");
+          this.a.countDown();
+        }
       }
-      i1 += 1;
-    }
-  }
-  
-  public final void b()
-  {
-    this.n = false;
-    if (this.s) {
-      this.h.b();
-    }
-    this.h = null;
-    Object localObject = this.i;
-    if (localObject != null) {}
+    };
+    tb localtb = tb.a();
+    byte b1 = tc.c;
+    aac.a(paramArrayOfByte);
+    localtb.a(b1, (Handler)localObject2);
     try
     {
-      ((ThreadPoolExecutor)localObject).shutdown();
-      i1 = 0;
-      boolean bool;
-      do
-      {
-        xb.b("awaitTermination before");
-        bool = this.i.awaitTermination(100L, TimeUnit.MILLISECONDS);
-        localObject = new StringBuilder("awaitTermination after ");
-        i1 += 1;
-        ((StringBuilder)localObject).append(i1);
-        xb.b(((StringBuilder)localObject).toString());
-      } while (!bool);
+      ((CountDownLatch)localObject1).await(20L, TimeUnit.SECONDS);
     }
-    catch (InterruptedException localInterruptedException)
+    catch (InterruptedException paramArrayOfByte)
     {
-      int i1;
-      label90:
-      break label90;
+      paramArrayOfByte.printStackTrace();
     }
-    i1 = 0;
-    while (i1 < d)
+    paramArrayOfByte = rh.a.a().a(paramLong);
+    localObject2 = tb.a().f;
+    localObject1 = new ArrayList();
+    localObject2 = ((aam)localObject2).b();
+    if (localObject2 != null) {
+      ((List)localObject1).add(localObject2);
+    }
+    if (paramArrayOfByte == null)
     {
-      ((FaceDetector)this.e.get(i1)).Destroy();
-      i1 += 1;
+      TmsLog.i("LoginTraceManager", "@checkHasChanged, pull failed, return null this time.");
+      return null;
     }
-    this.e.clear();
-    this.n = false;
-    this.s = false;
-    this.k = null;
-    this.l = null;
+    return new b(paramArrayOfByte, (List)localObject1);
   }
   
-  final class a
-    extends Handler
+  public static final class a
   {
-    public a(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public final void handleMessage(Message paramMessage)
-    {
-      if (paramMessage.what != 36865)
-      {
-        new StringBuilder("Unknown message type ").append(paramMessage.what);
-        return;
-      }
-      paramMessage = (rd)paramMessage.obj;
-      paramMessage.a.setIdle(true);
-      if (!rg.a(rg.this).contains(paramMessage.b))
-      {
-        xb.b("Discard pic");
-        return;
-      }
-      if (rg.b(rg.this) != null)
-      {
-        if (rg.c(rg.this) == null) {
-          return;
-        }
-        if (paramMessage.c == 0)
-        {
-          if (rg.d(rg.this) == null) {
-            rg.a(rg.this, paramMessage);
-          } else if (paramMessage.d.qualityScore() > rg.d(rg.this).d.qualityScore()) {
-            rg.a(rg.this, paramMessage);
-          }
-          rg.e(rg.this);
-        }
-        else
-        {
-          FaceServiceDelegate.FaceDetectErrorCode localFaceDetectErrorCode = FaceServiceDelegate.FaceDetectErrorCode.values()[paramMessage.c];
-          rg.b(rg.this).a(localFaceDetectErrorCode);
-        }
-        rg.a(rg.this).remove(paramMessage.b);
-        if (rg.f(rg.this) == 4)
-        {
-          rg.a(rg.this, System.currentTimeMillis());
-          paramMessage = new StringBuilder("检测了");
-          paramMessage.append(rg.g(rg.this));
-          paramMessage.append("帧数据 检测到4张人脸时间: ");
-          paramMessage.append(rg.h(rg.this) - rg.i(rg.this));
-          paramMessage.append(" 最大分数: ");
-          paramMessage.append(rg.d(rg.this).d.qualityScore());
-          xb.b(paramMessage.toString());
-          rg.b(rg.this).a(rg.d(rg.this).b.a, rg.d(rg.this).d.faceData(), rg.g(rg.this));
-          rg.a(rg.this, null);
-          rg.j(rg.this);
-          rg.k(rg.this);
-          return;
-        }
-        rg.b(rg.this);
-        return;
-      }
-    }
+    private static final rg a = new rg((byte)0);
   }
   
-  final class b
-    implements RejectedExecutionHandler
+  public final class b
   {
-    public b() {}
+    public List<OnlineDeviceResult.a> a;
+    public List<SafeMsgItem> b;
     
-    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor) {}
+    public b(List<SafeMsgItem> paramList)
+    {
+      this.a = paramList;
+      Object localObject;
+      this.b = localObject;
+    }
+    
+    public final void a()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = this.a;
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (OnlineDeviceResult.a)((Iterator)localObject1).next();
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).e);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).d);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).a);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).f);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).g);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).h);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).c);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).b);
+        }
+      }
+      localObject1 = this.b;
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (SafeMsgItem)((Iterator)localObject1).next();
+          localStringBuilder.append(((SafeMsgItem)localObject2).mTitle);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((SafeMsgItem)localObject2).mContent);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((SafeMsgItem)localObject2).mTime);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((SafeMsgItem)localObject2).mTextBeforeTable);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((SafeMsgItem)localObject2).mTextAfterTable);
+          localStringBuilder.append("|");
+        }
+      }
+      TmsLog.i("trace_detail", localStringBuilder.toString());
+    }
   }
 }
 

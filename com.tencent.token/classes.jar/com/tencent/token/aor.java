@@ -1,78 +1,30 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceDisplayer;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import com.qq.taf.jce.JceUtil;
-import java.util.ArrayList;
+import java.io.Serializable;
 
 public final class aor
-  extends JceStruct
-  implements Cloneable
+  implements Serializable
 {
-  static ArrayList<aoq> b;
-  public ArrayList<aoq> a = null;
+  public static final aor b = new aor(0, 0, "CT_NONE");
+  public static final aor c = new aor(1, 1, "CT_GPRS");
+  public static final aor d = new aor(2, 2, "CT_WIFI");
+  public static final aor e = new aor(3, 3, "CT_GPRS_WAP");
+  public static final aor f = new aor(4, 4, "CT_GPRS_NET");
+  public static final aor g = new aor(5, 5, "CT_3G_NET");
+  private static aor[] i = new aor[6];
+  public int a;
+  private String j = new String();
   
-  public final Object clone()
+  private aor(int paramInt1, int paramInt2, String paramString)
   {
-    try
-    {
-      Object localObject = super.clone();
-      return localObject;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      label7:
-      break label7;
-    }
-    if (c) {
-      return null;
-    }
-    throw new AssertionError();
+    this.j = paramString;
+    this.a = paramInt2;
+    i[paramInt1] = this;
   }
   
-  public final void display(StringBuilder paramStringBuilder, int paramInt)
+  public final String toString()
   {
-    new JceDisplayer(paramStringBuilder, paramInt).display(this.a, "vctCommList");
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {
-      return false;
-    }
-    paramObject = (aor)paramObject;
-    return JceUtil.equals(this.a, paramObject.a);
-  }
-  
-  public final int hashCode()
-  {
-    try
-    {
-      throw new Exception("Need define key first!");
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 0;
-  }
-  
-  public final void readFrom(JceInputStream paramJceInputStream)
-  {
-    if (b == null)
-    {
-      b = new ArrayList();
-      aoq localaoq = new aoq();
-      b.add(localaoq);
-    }
-    this.a = ((ArrayList)paramJceInputStream.read(b, 0, true));
-  }
-  
-  public final void writeTo(JceOutputStream paramJceOutputStream)
-  {
-    paramJceOutputStream.write(this.a, 0);
+    return this.j;
   }
 }
 

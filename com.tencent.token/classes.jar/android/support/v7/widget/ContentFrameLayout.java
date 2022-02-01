@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
-import com.tencent.token.ex;
+import com.tencent.token.ew;
 
 public class ContentFrameLayout
   extends FrameLayout
@@ -40,7 +40,7 @@ public class ContentFrameLayout
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.g.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (ex.q(this)) {
+    if (ew.q(this)) {
       requestLayout();
     }
   }

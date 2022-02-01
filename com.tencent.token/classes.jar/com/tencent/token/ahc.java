@@ -1,20 +1,15 @@
 package com.tencent.token;
 
+import com.tencent.wcdb.database.SQLiteDatabase;
+
 public final class ahc
+  implements afx
 {
-  public static void a(String paramString)
+  private afz a = new afz();
+  
+  public final void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    try
-    {
-      ahi.a(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("delete database table failed: ");
-      localStringBuilder.append(paramString.toString());
-      xb.c(localStringBuilder.toString());
-    }
+    this.a.a(paramSQLiteDatabase);
   }
 }
 

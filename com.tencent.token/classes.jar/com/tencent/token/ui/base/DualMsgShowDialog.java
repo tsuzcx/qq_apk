@@ -17,23 +17,23 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aae;
-import com.tencent.token.ahc;
-import com.tencent.token.sf;
-import com.tencent.token.sw;
-import com.tencent.token.sy;
+import com.tencent.token.aad;
+import com.tencent.token.ahb;
+import com.tencent.token.se;
+import com.tencent.token.sv;
+import com.tencent.token.sx;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.ModifyQQPwdActivity;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.wz;
-import com.tencent.token.xb;
-import com.tencent.token.ye;
+import com.tencent.token.wy;
+import com.tencent.token.xa;
+import com.tencent.token.yd;
 
 public class DualMsgShowDialog
   extends Dialog
 {
   public DualMsgView a;
-  public sf b = null;
+  public se b = null;
   private Activity c;
   private boolean d = false;
   private int e;
@@ -63,14 +63,14 @@ public class DualMsgShowDialog
   public final void a()
   {
     if (this.e == 0) {
-      this.b = sy.a().a(this.f);
+      this.b = sx.a().a(this.f);
     } else {
-      this.b = sw.a().a(this.f);
+      this.b = sv.a().a(this.f);
     }
-    sf localsf = this.b;
-    if ((localsf == null) || (localsf.f == null) || (this.b.g == null) || (this.b.h == null) || (this.b.i == null))
+    se localse = this.b;
+    if ((localse == null) || (localse.f == null) || (this.b.g == null) || (this.b.h == null) || (this.b.i == null))
     {
-      xb.c("item content err");
+      xa.c("item content err");
       this.b = null;
     }
   }
@@ -94,13 +94,13 @@ public class DualMsgShowDialog
       
       public final void a(int paramAnonymousInt)
       {
-        sf localsf;
+        se localse;
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          localsf = sy.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localse = sx.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         } else {
-          localsf = sw.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localse = sv.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         }
-        DualMsgShowDialog.a(DualMsgShowDialog.this, localsf, paramAnonymousInt);
+        DualMsgShowDialog.a(DualMsgShowDialog.this, localse, paramAnonymousInt);
       }
     });
     paramBundle = this.a;
@@ -115,8 +115,8 @@ public class DualMsgShowDialog
       paramBundle.q = paramBundle.o.findViewById(2131166260);
       paramBundle.r = paramBundle.o.findViewById(2131166274);
       paramBundle.s = paramBundle.o.findViewById(2131166261);
-      paramBundle.t = aae.a(paramBundle.m.getResources(), 2131099828);
-      paramBundle.u = aae.a(paramBundle.m.getResources(), 2131099827);
+      paramBundle.t = aad.a(paramBundle.m.getResources(), 2131099828);
+      paramBundle.u = aad.a(paramBundle.m.getResources(), 2131099827);
       if (paramBundle.t != null) {
         ((LinearLayout)paramBundle.o.findViewById(2131166254)).setBackgroundDrawable(new BitmapDrawable(paramBundle.t));
       }
@@ -149,7 +149,7 @@ public class DualMsgShowDialog
     if (m == 0)
     {
       dismiss();
-      xb.a("Dual initView failed!");
+      xa.a("Dual initView failed!");
       return;
     }
     a();
@@ -163,12 +163,12 @@ public class DualMsgShowDialog
     setContentView(this.a);
     new UserTask()
     {
-      private static wz e()
+      private static wy e()
       {
         try
         {
-          ahc.a("tbl_dual_msg");
-          ahc.a("tbl_barcode_msg");
+          ahb.a("tbl_dual_msg");
+          ahb.a("tbl_barcode_msg");
           label10:
           return null;
         }

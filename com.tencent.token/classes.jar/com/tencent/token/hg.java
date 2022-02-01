@@ -1,163 +1,61 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import java.util.Map;
 
-public abstract class hg
-  implements ht
+abstract class hg<T>
+  extends hh<T>
 {
-  protected Context a;
-  protected Context b;
-  public hm c;
-  protected LayoutInflater d;
-  protected LayoutInflater e;
-  public ht.a f;
-  public hu g;
-  public int h;
-  private int i;
-  private int j;
+  final Context a;
+  Map<dn, MenuItem> b;
+  Map<do, SubMenu> c;
   
-  public hg(Context paramContext, int paramInt1, int paramInt2)
+  hg(Context paramContext, T paramT)
   {
+    super(paramT);
     this.a = paramContext;
-    this.d = LayoutInflater.from(paramContext);
-    this.i = paramInt1;
-    this.j = paramInt2;
   }
   
-  public View a(ho paramho, View paramView, ViewGroup paramViewGroup)
+  final MenuItem a(MenuItem paramMenuItem)
   {
-    if ((paramView instanceof hu.a)) {
-      paramView = (hu.a)paramView;
-    } else {
-      paramView = (hu.a)this.d.inflate(this.j, paramViewGroup, false);
-    }
-    a(paramho, paramView);
-    return (View)paramView;
-  }
-  
-  public hu a(ViewGroup paramViewGroup)
-  {
-    if (this.g == null)
+    if ((paramMenuItem instanceof dn))
     {
-      this.g = ((hu)this.d.inflate(this.i, paramViewGroup, false));
-      this.g.a(this.c);
-      b(true);
-    }
-    return this.g;
-  }
-  
-  public void a(Context paramContext, hm paramhm)
-  {
-    this.b = paramContext;
-    this.e = LayoutInflater.from(this.b);
-    this.c = paramhm;
-  }
-  
-  public void a(hm paramhm, boolean paramBoolean)
-  {
-    ht.a locala = this.f;
-    if (locala != null) {
-      locala.a(paramhm, paramBoolean);
-    }
-  }
-  
-  public abstract void a(ho paramho, hu.a parama);
-  
-  public final void a(ht.a parama)
-  {
-    this.f = parama;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected boolean a(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.removeViewAt(paramInt);
-    return true;
-  }
-  
-  public boolean a(ho paramho)
-  {
-    return true;
-  }
-  
-  public boolean a(hz paramhz)
-  {
-    ht.a locala = this.f;
-    if (locala != null) {
-      return locala.a(paramhz);
-    }
-    return false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = (ViewGroup)this.g;
-    if (localViewGroup == null) {
-      return;
-    }
-    Object localObject = this.c;
-    int k = 0;
-    if (localObject != null)
-    {
-      ((hm)localObject).i();
-      ArrayList localArrayList = this.c.h();
-      int i1 = localArrayList.size();
-      int m = 0;
-      int n;
-      for (k = 0; m < i1; k = n)
+      dn localdn = (dn)paramMenuItem;
+      if (this.b == null) {
+        this.b = new du();
+      }
+      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
+      paramMenuItem = localMenuItem;
+      if (localMenuItem == null)
       {
-        ho localho = (ho)localArrayList.get(m);
-        n = k;
-        if (a(localho))
-        {
-          View localView1 = localViewGroup.getChildAt(k);
-          if ((localView1 instanceof hu.a)) {
-            localObject = ((hu.a)localView1).getItemData();
-          } else {
-            localObject = null;
-          }
-          View localView2 = a(localho, localView1, localViewGroup);
-          if (localho != localObject)
-          {
-            localView2.setPressed(false);
-            localView2.jumpDrawablesToCurrentState();
-          }
-          if (localView2 != localView1)
-          {
-            localObject = (ViewGroup)localView2.getParent();
-            if (localObject != null) {
-              ((ViewGroup)localObject).removeView(localView2);
-            }
-            ((ViewGroup)this.g).addView(localView2, k);
-          }
-          n = k + 1;
-        }
-        m += 1;
+        paramMenuItem = hu.a(this.a, localdn);
+        this.b.put(localdn, paramMenuItem);
       }
+      return paramMenuItem;
     }
-    while (k < localViewGroup.getChildCount()) {
-      if (!a(localViewGroup, k)) {
-        k += 1;
-      }
-    }
+    return paramMenuItem;
   }
   
-  public final boolean b(ho paramho)
+  final SubMenu a(SubMenu paramSubMenu)
   {
-    return false;
-  }
-  
-  public final boolean c(ho paramho)
-  {
-    return false;
+    if ((paramSubMenu instanceof do))
+    {
+      do localdo = (do)paramSubMenu;
+      if (this.c == null) {
+        this.c = new du();
+      }
+      SubMenu localSubMenu = (SubMenu)this.c.get(localdo);
+      paramSubMenu = localSubMenu;
+      if (localSubMenu == null)
+      {
+        paramSubMenu = new hz(this.a, localdo);
+        this.c.put(localdo, paramSubMenu);
+      }
+      return paramSubMenu;
+    }
+    return paramSubMenu;
   }
 }
 

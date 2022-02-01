@@ -14,20 +14,11 @@ public final class ara
     synchronized (j.a(this.a))
     {
       LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-      ??? = new StringBuilder("copy != null ? ");
-      boolean bool;
-      if (localLinkedList != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ((StringBuilder)???).append(bool);
       if (localLinkedList != null)
       {
-        new StringBuilder("copy.size() : ").append(localLinkedList.size());
         ??? = localLinkedList.iterator();
         while (((Iterator)???).hasNext()) {
-          ((arc)((Iterator)???).next()).f();
+          ((Iterator)???).next();
         }
       }
       return;

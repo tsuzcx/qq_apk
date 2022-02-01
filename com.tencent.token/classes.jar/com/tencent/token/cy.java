@@ -1,73 +1,33 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.util.TypedValue;
-import org.xmlpull.v1.XmlPullParser;
+import android.graphics.Color;
 
 public final class cy
 {
-  public static float a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt, float paramFloat)
+  private static final ThreadLocal<double[]> a = new ThreadLocal();
+  
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (!a(paramXmlPullParser, paramString)) {
-      return paramFloat;
-    }
-    return paramTypedArray.getFloat(paramInt, paramFloat);
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = 255 - (255 - i) * (255 - j) / 255;
+    return Color.argb(k, a(Color.red(paramInt1), j, Color.red(paramInt2), i, k), a(Color.green(paramInt1), j, Color.green(paramInt2), i, k), a(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
   }
   
-  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
+  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (!a(paramXmlPullParser, paramString)) {
+    if (paramInt5 == 0) {
       return 0;
     }
-    return paramTypedArray.getResourceId(paramInt, 0);
+    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
   }
   
-  public static int a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
+  public static int b(int paramInt1, int paramInt2)
   {
-    if (!a(paramXmlPullParser, paramString)) {
-      return paramInt2;
+    if ((paramInt2 >= 0) && (paramInt2 <= 255)) {
+      return paramInt1 & 0xFFFFFF | paramInt2 << 24;
     }
-    return paramTypedArray.getInt(paramInt1, paramInt2);
-  }
-  
-  public static TypedArray a(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, int[] paramArrayOfInt)
-  {
-    if (paramTheme == null) {
-      return paramResources.obtainAttributes(paramAttributeSet, paramArrayOfInt);
-    }
-    return paramTheme.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt, 0, 0);
-  }
-  
-  public static TypedValue a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString)
-  {
-    if (!a(paramXmlPullParser, paramString)) {
-      return null;
-    }
-    return paramTypedArray.peekValue(0);
-  }
-  
-  public static boolean a(XmlPullParser paramXmlPullParser, String paramString)
-  {
-    return paramXmlPullParser.getAttributeValue("http://schemas.android.com/apk/res/android", paramString) != null;
-  }
-  
-  public static int b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt1, int paramInt2)
-  {
-    if (!a(paramXmlPullParser, paramString)) {
-      return paramInt2;
-    }
-    return paramTypedArray.getColor(paramInt1, paramInt2);
-  }
-  
-  public static String b(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
-  {
-    if (!a(paramXmlPullParser, paramString)) {
-      return null;
-    }
-    return paramTypedArray.getString(paramInt);
+    throw new IllegalArgumentException("alpha must be between 0 and 255.");
   }
 }
 

@@ -1,30 +1,22 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
 import org.json.JSONObject;
 
 public final class vv
-  extends tk
+  extends tj
 {
-  public String d;
-  public long e;
-  public int f;
+  private a d;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
-  {
-    this.e = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramaar.c.get("param.qqpwd"));
-    this.f = ((Integer)paramaar.c.get("param.scene.id")).intValue();
-  }
+  public final void a(aaq paramaaq) {}
   
   public final void a(JSONObject paramJSONObject)
   {
@@ -34,24 +26,44 @@ public final class vv
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
       if (this.c != i)
       {
         this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.c);
-        xb.c(paramJSONObject.toString());
         return;
       }
-      this.a.a = 0;
-      return;
+      this.d = new a();
+      this.d.a = paramJSONObject.getInt("is_have_msg");
+      if (this.d.a == 1)
+      {
+        this.d.b = paramJSONObject.getString("content");
+        this.d.c = paramJSONObject.getLong("uin");
+      }
+      this.a.a(this.d.b);
     }
-    a(10022, RqdApplication.n().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.d;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
+  }
+  
+  public static final class a
+  {
+    public int a;
+    public String b;
+    public long c;
   }
 }
 

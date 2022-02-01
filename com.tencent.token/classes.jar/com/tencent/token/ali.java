@@ -1,225 +1,210 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InterruptedIOException;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Nullable;
+import java.nio.ByteBuffer;
 
-public final class ali
+final class ali
+  implements akz
 {
-  static final Logger a = Logger.getLogger(ali.class.getName());
+  public final aky a = new aky();
+  public final aln b;
+  boolean c;
   
-  public static ala a(alo paramalo)
+  ali(aln paramaln)
   {
-    return new alj(paramalo);
-  }
-  
-  public static alb a(alp paramalp)
-  {
-    return new alk(paramalp);
-  }
-  
-  public static alo a(final Socket paramSocket)
-  {
-    if (paramSocket != null)
+    if (paramaln != null)
     {
-      if (paramSocket.getOutputStream() != null)
-      {
-        akx localakx = c(paramSocket);
-        paramSocket = paramSocket.getOutputStream();
-        if (paramSocket != null) {
-          new akx.1(localakx, new alo()
-          {
-            public final alq a()
-            {
-              return ali.this;
-            }
-            
-            public final void a_(akz paramAnonymousakz, long paramAnonymousLong)
-            {
-              alr.a(paramAnonymousakz.b, 0L, paramAnonymousLong);
-              while (paramAnonymousLong > 0L)
-              {
-                ali.this.f();
-                all localall = paramAnonymousakz.a;
-                int i = (int)Math.min(paramAnonymousLong, localall.c - localall.b);
-                paramSocket.write(localall.a, localall.b, i);
-                localall.b += i;
-                long l2 = i;
-                long l1 = paramAnonymousLong - l2;
-                paramAnonymousakz.b -= l2;
-                paramAnonymousLong = l1;
-                if (localall.b == localall.c)
-                {
-                  paramAnonymousakz.a = localall.b();
-                  alm.a(localall);
-                  paramAnonymousLong = l1;
-                }
-              }
-            }
-            
-            public final void close()
-            {
-              paramSocket.close();
-            }
-            
-            public final void flush()
-            {
-              paramSocket.flush();
-            }
-            
-            public final String toString()
-            {
-              StringBuilder localStringBuilder = new StringBuilder("sink(");
-              localStringBuilder.append(paramSocket);
-              localStringBuilder.append(")");
-              return localStringBuilder.toString();
-            }
-          });
-        }
-        throw new IllegalArgumentException("out == null");
-      }
-      throw new IOException("socket's output stream == null");
+      this.b = paramaln;
+      return;
     }
-    throw new IllegalArgumentException("socket == null");
+    throw new NullPointerException("sink == null");
   }
   
-  public static alp a(InputStream paramInputStream)
+  public final alp a()
   {
-    return a(paramInputStream, new alq());
+    return this.b.a();
   }
   
-  private static alp a(final InputStream paramInputStream, alq paramalq)
+  public final void a_(aky paramaky, long paramLong)
   {
-    if (paramInputStream != null)
+    if (!this.c)
     {
-      if (paramalq != null) {
-        new alp()
-        {
-          public final long a(akz paramAnonymousakz, long paramAnonymousLong)
-          {
-            if (paramAnonymousLong >= 0L)
-            {
-              if (paramAnonymousLong == 0L) {
-                return 0L;
-              }
-              try
-              {
-                ali.this.f();
-                all localall = paramAnonymousakz.e(1);
-                int i = (int)Math.min(paramAnonymousLong, 8192 - localall.c);
-                i = paramInputStream.read(localall.a, localall.c, i);
-                if (i == -1) {
-                  return -1L;
-                }
-                localall.c += i;
-                paramAnonymousLong = paramAnonymousakz.b;
-                long l = i;
-                paramAnonymousakz.b = (paramAnonymousLong + l);
-                return l;
-              }
-              catch (AssertionError paramAnonymousakz)
-              {
-                if (ali.a(paramAnonymousakz)) {
-                  throw new IOException(paramAnonymousakz);
-                }
-                throw paramAnonymousakz;
-              }
-            }
-            throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramAnonymousLong)));
-          }
-          
-          public final alq a()
-          {
-            return ali.this;
-          }
-          
-          public final void close()
-          {
-            paramInputStream.close();
-          }
-          
-          public final String toString()
-          {
-            StringBuilder localStringBuilder = new StringBuilder("source(");
-            localStringBuilder.append(paramInputStream);
-            localStringBuilder.append(")");
-            return localStringBuilder.toString();
-          }
-        };
-      }
-      throw new IllegalArgumentException("timeout == null");
+      this.a.a_(paramaky, paramLong);
+      r();
+      return;
     }
-    throw new IllegalArgumentException("in == null");
+    throw new IllegalStateException("closed");
   }
   
-  static boolean a(AssertionError paramAssertionError)
+  public final aky b()
   {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
+    return this.a;
   }
   
-  public static alp b(Socket paramSocket)
+  public final akz b(String paramString)
   {
-    if (paramSocket != null)
+    if (!this.c)
     {
-      if (paramSocket.getInputStream() != null)
-      {
-        akx localakx = c(paramSocket);
-        return new akx.2(localakx, a(paramSocket.getInputStream(), localakx));
-      }
-      throw new IOException("socket's input stream == null");
+      this.a.a(paramString);
+      return r();
     }
-    throw new IllegalArgumentException("socket == null");
+    throw new IllegalStateException("closed");
   }
   
-  private static akx c(Socket paramSocket)
+  public final akz c(byte[] paramArrayOfByte)
   {
-    new akx()
+    if (!this.c)
     {
-      protected final IOException a(@Nullable IOException paramAnonymousIOException)
+      this.a.b(paramArrayOfByte);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final akz c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (!this.c)
+    {
+      this.a.b(paramArrayOfByte, paramInt1, paramInt2);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final void close()
+  {
+    if (this.c) {
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (this.a.b > 0L)
       {
-        SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-        if (paramAnonymousIOException != null) {
-          localSocketTimeoutException.initCause(paramAnonymousIOException);
-        }
-        return localSocketTimeoutException;
+        this.b.a_(this.a, this.a.b);
+        localObject1 = localObject2;
       }
-      
-      protected final void a()
+    }
+    catch (Throwable localThrowable1) {}
+    try
+    {
+      this.b.close();
+      localObject2 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject2 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject2 = localThrowable2;
+      }
+    }
+    this.c = true;
+    if (localObject2 != null) {
+      alq.a(localObject2);
+    }
+  }
+  
+  public final akz f(int paramInt)
+  {
+    if (!this.c)
+    {
+      this.a.d(paramInt);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final void flush()
+  {
+    if (!this.c)
+    {
+      if (this.a.b > 0L)
       {
-        try
-        {
-          ali.this.close();
-          return;
-        }
-        catch (AssertionError localAssertionError)
-        {
-          if (ali.a(localAssertionError))
-          {
-            localLogger = ali.a;
-            localLevel = Level.WARNING;
-            localStringBuilder = new StringBuilder("Failed to close timed out socket ");
-            localStringBuilder.append(ali.this);
-            localLogger.log(localLevel, localStringBuilder.toString(), localAssertionError);
-            return;
-          }
-          throw localAssertionError;
-        }
-        catch (Exception localException)
-        {
-          Logger localLogger = ali.a;
-          Level localLevel = Level.WARNING;
-          StringBuilder localStringBuilder = new StringBuilder("Failed to close timed out socket ");
-          localStringBuilder.append(ali.this);
-          localLogger.log(localLevel, localStringBuilder.toString(), localException);
-        }
+        aln localaln = this.b;
+        aky localaky = this.a;
+        localaln.a_(localaky, localaky.b);
       }
-    };
+      this.b.flush();
+      return;
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final akz g(int paramInt)
+  {
+    if (!this.c)
+    {
+      this.a.c(paramInt);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final akz h(int paramInt)
+  {
+    if (!this.c)
+    {
+      this.a.b(paramInt);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final boolean isOpen()
+  {
+    return !this.c;
+  }
+  
+  public final akz j(long paramLong)
+  {
+    if (!this.c)
+    {
+      this.a.i(paramLong);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final akz k(long paramLong)
+  {
+    if (!this.c)
+    {
+      this.a.h(paramLong);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final akz r()
+  {
+    if (!this.c)
+    {
+      long l = this.a.e();
+      if (l > 0L) {
+        this.b.a_(this.a, l);
+      }
+      return this;
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("buffer(");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
+  }
+  
+  public final int write(ByteBuffer paramByteBuffer)
+  {
+    if (!this.c)
+    {
+      int i = this.a.write(paramByteBuffer);
+      r();
+      return i;
+    }
+    throw new IllegalStateException("closed");
   }
 }
 

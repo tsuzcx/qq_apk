@@ -1,17 +1,84 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
 public final class od
 {
-  public static byte[] a(int paramInt)
+  public static boolean a(Context paramContext, a parama)
   {
-    byte[] arrayOfByte = new byte[4];
-    int i = 0;
-    while (i < 4)
-    {
-      arrayOfByte[i] = ((byte)(paramInt >> i * 8 & 0xFF));
-      i += 1;
+    if (paramContext == null) {
+      return false;
     }
-    return arrayOfByte;
+    if (pg.a(parama.a))
+    {
+      new StringBuilder("send fail, invalid targetPkgName, targetPkgName = ").append(parama.a);
+      return false;
+    }
+    if (pg.a(parama.b))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(parama.a);
+      ((StringBuilder)localObject).append(".wxapi.WXEntryActivity");
+      parama.b = ((StringBuilder)localObject).toString();
+    }
+    Object localObject = new StringBuilder("send, targetPkgName = ");
+    ((StringBuilder)localObject).append(parama.a);
+    ((StringBuilder)localObject).append(", targetClassName = ");
+    ((StringBuilder)localObject).append(parama.b);
+    localObject = new Intent();
+    ((Intent)localObject).setClassName(parama.a, parama.b);
+    if (parama.f != null) {
+      ((Intent)localObject).putExtras(parama.f);
+    }
+    String str = paramContext.getPackageName();
+    ((Intent)localObject).putExtra("_mmessage_sdkVersion", 621086720);
+    ((Intent)localObject).putExtra("_mmessage_appPackage", str);
+    ((Intent)localObject).putExtra("_mmessage_content", parama.c);
+    ((Intent)localObject).putExtra("_mmessage_checksum", of.a(parama.c, str));
+    ((Intent)localObject).putExtra("_message_token", parama.d);
+    if (parama.e == -1) {
+      ((Intent)localObject).addFlags(268435456).addFlags(134217728);
+    } else {
+      ((Intent)localObject).setFlags(parama.e);
+    }
+    try
+    {
+      paramContext.startActivity((Intent)localObject);
+      "send mm message, intent=".concat(String.valueOf(localObject));
+      return true;
+    }
+    catch (Exception paramContext)
+    {
+      new StringBuilder("send fail, ex = ").append(paramContext.getMessage());
+    }
+    return false;
+  }
+  
+  public static final class a
+  {
+    public String a;
+    public String b;
+    public String c;
+    public String d;
+    public int e = -1;
+    public Bundle f;
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder("targetPkgName:");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", targetClassName:");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(", content:");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(", flags:");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(", bundle:");
+      localStringBuilder.append(this.f);
+      return localStringBuilder.toString();
+    }
   }
 }
 

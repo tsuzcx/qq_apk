@@ -1,38 +1,86 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
+import btmsdkobf.bx;
+import com.qq.taf.jce.JceStruct;
+import com.tmsdk.TMSDKContext;
+import com.tmsdk.base.ISharkCallBackOut;
+import java.util.ArrayList;
 
-public class ze
+public final class ze
 {
-  private static ze b;
-  private aim a;
-  
-  public ze()
+  public static void a(final String paramString, final a parama)
   {
-    aim.a locala = new aim.a();
-    locala.x = aix.a("timeout", TimeUnit.SECONDS);
-    locala.z = aix.a("timeout", TimeUnit.SECONDS);
-    locala.y = aix.a("timeout", TimeUnit.SECONDS);
-    this.a = new aim(locala);
-  }
-  
-  public static ze a()
-  {
-    if (b == null) {
-      try
+    l locall = new l();
+    locall.a = new ArrayList();
+    t localt = new t();
+    localt.a = paramString;
+    localt.h = 2110015L;
+    locall.a.add(localt);
+    bx.ar().getGuid();
+    xo.a.a().a(new Runnable()
+    {
+      public final void run()
       {
-        if (b == null) {
-          b = new ze();
-        }
+        TMSDKContext.sendShark(2237, this.a, new o(), new ISharkCallBackOut()
+        {
+          public final void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct)
+          {
+            if (paramAnonymous2Int3 != 0) {
+              return;
+            }
+            if (!(paramAnonymous2JceStruct instanceof o)) {
+              return;
+            }
+            paramAnonymous2JceStruct = (o)paramAnonymous2JceStruct;
+            if (paramAnonymous2JceStruct.a != 0) {
+              return;
+            }
+            paramAnonymous2JceStruct = paramAnonymous2JceStruct.b;
+            if (paramAnonymous2JceStruct != null)
+            {
+              if (paramAnonymous2JceStruct.size() <= 0) {
+                return;
+              }
+              if (ze.1.this.b != null)
+              {
+                ze.a locala = ze.1.this.b;
+                r localr = (r)paramAnonymous2JceStruct.get(0);
+                String str = ze.1.this.c;
+                if (localr == null)
+                {
+                  paramAnonymous2JceStruct = null;
+                }
+                else
+                {
+                  paramAnonymous2JceStruct = localr;
+                  if (str.equals("com.tencent.qqpimsecure"))
+                  {
+                    str = localr.r.toLowerCase();
+                    if ((!str.endsWith("png")) && (!str.endsWith("jpg")))
+                    {
+                      paramAnonymous2JceStruct = localr;
+                      if (!str.endsWith("jpeg")) {}
+                    }
+                    else
+                    {
+                      localr.r = "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11";
+                      paramAnonymous2JceStruct = localr;
+                    }
+                  }
+                }
+                locala.a(paramAnonymous2JceStruct);
+              }
+              return;
+            }
+          }
+        });
       }
-      finally {}
-    }
-    return b;
+    }, "fetchSoftwareDetail");
   }
   
-  final void a(aip paramaip, ahx paramahx)
+  public static abstract interface a
   {
-    aio.a(this.a, paramaip, false).a(paramahx);
+    public abstract void a(r paramr);
   }
 }
 

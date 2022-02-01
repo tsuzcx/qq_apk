@@ -1,123 +1,104 @@
 package com.tencent.token;
 
-import android.database.CharArrayBuffer;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 import com.tencent.wcdb.CursorWindow;
-import com.tencent.wcdb.StaleDataException;
 
 public abstract class aft
-  extends afs
+  extends Binder
+  implements aga
 {
-  protected CursorWindow i;
-  
-  protected final void a()
+  public static aga a(IBinder paramIBinder)
   {
-    super.a();
-    c();
-  }
-  
-  protected final void a(String paramString)
-  {
-    CursorWindow localCursorWindow = this.i;
-    if (localCursorWindow == null)
-    {
-      this.i = new CursorWindow(paramString);
-      return;
+    if (paramIBinder == null) {
+      return null;
     }
-    localCursorWindow.a();
-  }
-  
-  protected final void b()
-  {
-    super.b();
-    if (this.i != null) {
-      return;
+    aga localaga = (aga)paramIBinder.queryLocalInterface("android.content.IBulkCursor");
+    if (localaga != null) {
+      return localaga;
     }
-    throw new StaleDataException("Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.");
+    return new afu(paramIBinder);
   }
   
-  protected final void c()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    CursorWindow localCursorWindow = this.i;
-    if (localCursorWindow != null)
+    switch (paramInt1)
     {
-      localCursorWindow.close();
-      this.i = null;
-    }
-  }
-  
-  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
-  {
-    b();
-    CursorWindow localCursorWindow = this.i;
-    int j = this.b;
-    if (paramCharArrayBuffer != null)
-    {
-      localCursorWindow.d();
+    default: 
+      break;
+    case 7: 
+    case 6: 
+    case 5: 
+    case 4: 
+    case 3: 
+    case 2: 
+    case 1: 
       try
       {
-        CursorWindow.nativeCopyStringToBuffer(localCursorWindow.a, j - localCursorWindow.b, paramInt, paramCharArrayBuffer);
-        return;
+        paramParcel1.enforceInterface("android.content.IBulkCursor");
+        b();
+        paramParcel2.writeNoException();
+        return true;
       }
-      finally
+      catch (Exception paramParcel1)
       {
-        localCursorWindow.e();
+        IInterface localIInterface;
+        afy.a(paramParcel2, paramParcel1);
+        return true;
       }
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = a(paramParcel1.readBundle(getClass().getClassLoader()));
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = c();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      b(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = paramParcel1.readStrongBinder();
+      if (paramParcel1 == null)
+      {
+        paramParcel1 = null;
+      }
+      else
+      {
+        localIInterface = paramParcel1.queryLocalInterface("com.tencent.wcdb.IContentObserver");
+        if ((localIInterface != null) && ((localIInterface instanceof agb))) {
+          paramParcel1 = (agb)localIInterface;
+        } else {
+          paramParcel1 = new agb.a.a(paramParcel1);
+        }
+      }
+      paramInt1 = a(paramParcel1);
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      paramParcel2.writeBundle(c());
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      if (paramParcel1 == null)
+      {
+        paramParcel2.writeInt(0);
+        return true;
+      }
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
     }
-    throw new IllegalArgumentException("CharArrayBuffer should not be null");
-  }
-  
-  public byte[] getBlob(int paramInt)
-  {
-    b();
-    return this.i.b(this.b, paramInt);
-  }
-  
-  public double getDouble(int paramInt)
-  {
-    b();
-    return this.i.e(this.b, paramInt);
-  }
-  
-  public float getFloat(int paramInt)
-  {
-    b();
-    return (float)this.i.e(this.b, paramInt);
-  }
-  
-  public int getInt(int paramInt)
-  {
-    b();
-    return (int)this.i.d(this.b, paramInt);
-  }
-  
-  public long getLong(int paramInt)
-  {
-    b();
-    return this.i.d(this.b, paramInt);
-  }
-  
-  public short getShort(int paramInt)
-  {
-    b();
-    return (short)(int)this.i.d(this.b, paramInt);
-  }
-  
-  public String getString(int paramInt)
-  {
-    b();
-    return this.i.c(this.b, paramInt);
-  }
-  
-  public int getType(int paramInt)
-  {
-    b();
-    return this.i.a(this.b, paramInt);
-  }
-  
-  public boolean isNull(int paramInt)
-  {
-    b();
-    return this.i.a(this.b, paramInt) == 0;
+    return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
   }
 }
 

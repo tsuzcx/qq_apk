@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.token.xb;
-import com.tencent.token.zx;
+import com.tencent.token.xa;
+import com.tencent.token.zw;
 
 public class FaceRegConfirmActivity
   extends BaseActivity
@@ -28,7 +28,7 @@ public class FaceRegConfirmActivity
     ((StringBuilder)localObject).append(this.mBitmap1.getWidth());
     ((StringBuilder)localObject).append(",h=");
     ((StringBuilder)localObject).append(this.mBitmap1.getHeight());
-    xb.c(((StringBuilder)localObject).toString());
+    xa.c(((StringBuilder)localObject).toString());
     if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
       localObject = (ImageView)findViewById(2131165675);
@@ -48,8 +48,8 @@ public class FaceRegConfirmActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        zx.b(FaceRegConfirmActivity.this.mPath1);
-        zx.b(FaceRegConfirmActivity.this.mPath2);
+        zw.b(FaceRegConfirmActivity.this.mPath1);
+        zw.b(FaceRegConfirmActivity.this.mPath2);
         FaceRegConfirmActivity.this.setResult(10);
         FaceRegConfirmActivity.this.finish();
       }
@@ -58,9 +58,9 @@ public class FaceRegConfirmActivity
   
   private void initOriginImg()
   {
-    Object localObject = zx.a(this.mPath1);
+    Object localObject = zw.a(this.mPath1);
     this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = zx.a(this.mPath2);
+    localObject = zw.a(this.mPath2);
     this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
     localObject = (ImageView)findViewById(2131165675);
     ImageView localImageView = (ImageView)findViewById(2131165676);
@@ -134,9 +134,9 @@ public class FaceRegConfirmActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          xb.c("onBackPressed");
-          zx.b(FaceRegConfirmActivity.this.mPath1);
-          zx.b(FaceRegConfirmActivity.this.mPath2);
+          xa.c("onBackPressed");
+          zw.b(FaceRegConfirmActivity.this.mPath1);
+          zw.b(FaceRegConfirmActivity.this.mPath2);
           FaceRegConfirmActivity.this.setResult(10);
           FaceRegConfirmActivity.this.finish();
         }

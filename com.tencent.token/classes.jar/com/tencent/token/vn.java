@@ -6,74 +6,66 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vn
-  extends tk
+  extends tj
 {
-  public static String d;
-  public static String e;
-  private long f;
-  private String g;
-  private int h;
-  private int i;
-  private String j;
-  private int k;
+  private long d;
+  private int e;
+  private ta f;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.f = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.g = ((String)paramaar.c.get("param.mbmobile.mobile"));
-    this.h = ((Integer)paramaar.c.get("param.mbmoible.ismobile")).intValue();
-    this.i = ((Integer)paramaar.c.get("param.scene.id")).intValue();
-    this.j = ((String)paramaar.c.get("param.mbmoible.areacode"));
-    this.k = paramaar.j;
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int m = paramJSONObject.getInt("err");
-    if (m != 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      a(m, paramJSONObject.getString("info"));
+      a(i, null);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.a("ProtoGetSMSChannel result =".concat(String.valueOf(paramJSONObject)));
-      m = paramJSONObject.getInt("seq_id");
-      if (m != this.k)
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(m);
+        paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.k);
-        xb.c(paramJSONObject.toString());
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
         return;
       }
-      d = paramJSONObject.getString("sms_port");
-    }
-    try
-    {
-      e = paramJSONObject.getString("sms_up_code");
-      label150:
+      long l = paramJSONObject.getLong("uin");
+      if (l != this.d)
+      {
+        paramJSONObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder("uin not match=");
+        localStringBuilder.append(l);
+        localStringBuilder.append(":");
+        localStringBuilder.append(this.d);
+        paramJSONObject.a(10000, localStringBuilder.toString(), null);
+        return;
+      }
+      paramJSONObject = paramJSONObject.getJSONArray("result");
+      this.f.d(paramJSONObject);
       this.a.a = 0;
       return;
-      xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-      a(10022, RqdApplication.n().getString(2131493068));
-      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      break label150;
-    }
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

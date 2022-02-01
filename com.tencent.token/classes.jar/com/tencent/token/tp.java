@@ -1,78 +1,70 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class tp
-  extends tk
+  extends tj
 {
-  public static int d = -1;
-  public static int e = -1;
-  private long f;
-  private int g;
+  private long d;
+  private String e;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.f = ((Long)paramaar.c.get("param.realuin")).longValue();
+    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    this.e = ((String)paramaaq.c.get("param.bind.sig"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    Object localObject;
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.g = paramJSONObject.getInt("need_idcard_detect");
-      if (this.g == 1) {
-        try
+      if (paramJSONObject.getInt("seed_available") == 1)
+      {
+        localObject = aac.e(paramJSONObject.getString("seed"));
+        if (localObject != null)
         {
-          d = paramJSONObject.getInt("displayangle");
-          e = paramJSONObject.getInt("imageangle");
-          paramJSONObject = new StringBuilder("plain angle=");
-          paramJSONObject.append(d);
-          paramJSONObject.append(",angel2=");
-          paramJSONObject.append(e);
-          xb.a(paramJSONObject.toString());
+          sb.b().c();
+          sb.b().a((byte[])localObject);
+          sb.b().a.a();
         }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-        }
+      }
+      long l = paramJSONObject.getLong("server_time");
+      sb.b();
+      sb.a(l);
+      paramJSONObject = sz.a().d(this.d);
+      if (paramJSONObject != null) {
+        sz.a().a(paramJSONObject);
       }
       this.a.a = 0;
       return;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
     a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.g;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
   }
 }
 

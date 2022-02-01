@@ -1,156 +1,296 @@
 package com.tencent.token;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
-import android.net.Uri;
-import java.io.File;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.database.Cursor;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class ph
+  implements SharedPreferences
 {
-  public static Context a;
-  public static ThreadPoolExecutor b = new ThreadPoolExecutor(d, e, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-  private static final int c;
-  private static final int d;
-  private static final int e;
+  private final ContentResolver a;
+  private final String[] b = { "_id", "key", "type", "value" };
+  private final HashMap<String, Object> c = new HashMap();
+  private a d = null;
   
-  static
+  public ph(Context paramContext)
   {
-    int i = Runtime.getRuntime().availableProcessors();
-    c = i;
-    d = i + 1;
-    e = c * 2 + 1;
+    this.a = paramContext.getContentResolver();
   }
   
-  /* Error */
-  private static int a(android.content.ContentResolver paramContentResolver, Uri paramUri)
+  private Object a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +101 -> 102
-    //   4: aload_1
-    //   5: ifnonnull +5 -> 10
-    //   8: iconst_0
-    //   9: ireturn
-    //   10: aconst_null
-    //   11: astore 4
-    //   13: aconst_null
-    //   14: astore_3
-    //   15: aload_0
-    //   16: aload_1
-    //   17: invokevirtual 60	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
-    //   20: astore_0
-    //   21: aload_0
-    //   22: ifnonnull +13 -> 35
-    //   25: aload_0
-    //   26: ifnull +7 -> 33
-    //   29: aload_0
-    //   30: invokevirtual 65	java/io/InputStream:close	()V
-    //   33: iconst_0
-    //   34: ireturn
-    //   35: aload_0
-    //   36: astore_3
-    //   37: aload_0
-    //   38: astore 4
-    //   40: aload_0
-    //   41: invokevirtual 68	java/io/InputStream:available	()I
-    //   44: istore_2
-    //   45: aload_0
-    //   46: ifnull +7 -> 53
-    //   49: aload_0
-    //   50: invokevirtual 65	java/io/InputStream:close	()V
-    //   53: iload_2
-    //   54: ireturn
-    //   55: astore_0
-    //   56: goto +36 -> 92
-    //   59: astore_0
-    //   60: aload 4
-    //   62: astore_3
-    //   63: new 70	java/lang/StringBuilder
-    //   66: dup
-    //   67: ldc 72
-    //   69: invokespecial 75	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   72: aload_0
-    //   73: invokevirtual 79	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   76: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: pop
-    //   80: aload 4
-    //   82: ifnull +8 -> 90
-    //   85: aload 4
-    //   87: invokevirtual 65	java/io/InputStream:close	()V
-    //   90: iconst_0
-    //   91: ireturn
-    //   92: aload_3
-    //   93: ifnull +7 -> 100
-    //   96: aload_3
-    //   97: invokevirtual 65	java/io/InputStream:close	()V
-    //   100: aload_0
-    //   101: athrow
-    //   102: iconst_0
-    //   103: ireturn
-    //   104: astore_0
-    //   105: iconst_0
-    //   106: ireturn
-    //   107: astore_0
-    //   108: iload_2
-    //   109: ireturn
-    //   110: astore_0
-    //   111: iconst_0
-    //   112: ireturn
-    //   113: astore_1
-    //   114: goto -14 -> 100
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	paramContentResolver	android.content.ContentResolver
-    //   0	117	1	paramUri	Uri
-    //   44	65	2	i	int
-    //   14	83	3	localContentResolver1	android.content.ContentResolver
-    //   11	75	4	localContentResolver2	android.content.ContentResolver
-    // Exception table:
-    //   from	to	target	type
-    //   15	21	55	finally
-    //   40	45	55	finally
-    //   63	80	55	finally
-    //   15	21	59	java/lang/Exception
-    //   40	45	59	java/lang/Exception
-    //   29	33	104	java/io/IOException
-    //   49	53	107	java/io/IOException
-    //   85	90	110	java/io/IOException
-    //   96	100	113	java/io/IOException
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 36) || (paramInt == 46);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.length() <= 0);
-  }
-  
-  public static int b(String paramString)
-  {
-    File localFile;
-    if (paramString != null)
+    for (;;)
     {
-      if (paramString.length() == 0) {
-        return 0;
+      try
+      {
+        Cursor localCursor = this.a.query(pz.b.a, this.b, "key = ?", new String[] { paramString }, null);
+        if (localCursor == null) {
+          return null;
+        }
+        int i = localCursor.getColumnIndex("type");
+        int j = localCursor.getColumnIndex("value");
+        if (localCursor.moveToFirst())
+        {
+          paramString = pz.a.a(localCursor.getInt(i), localCursor.getString(j));
+          localCursor.close();
+          return paramString;
+        }
       }
-      localFile = new File(paramString);
-      if ((!localFile.exists()) && ((a == null) || (!paramString.startsWith("content")))) {}
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      paramString = null;
     }
+  }
+  
+  public final boolean contains(String paramString)
+  {
+    return a(paramString) != null;
+  }
+  
+  public final SharedPreferences.Editor edit()
+  {
+    if (this.d == null) {
+      this.d = new a(this.a);
+    }
+    return this.d;
+  }
+  
+  public final Map<String, ?> getAll()
+  {
     try
     {
-      int i = a(a.getContentResolver(), Uri.parse(paramString));
-      return i;
+      Object localObject1 = this.a.query(pz.b.a, this.b, null, null, null);
+      if (localObject1 == null) {
+        return null;
+      }
+      int i = ((Cursor)localObject1).getColumnIndex("key");
+      int j = ((Cursor)localObject1).getColumnIndex("type");
+      int k = ((Cursor)localObject1).getColumnIndex("value");
+      while (((Cursor)localObject1).moveToNext())
+      {
+        Object localObject2 = pz.a.a(((Cursor)localObject1).getInt(j), ((Cursor)localObject1).getString(k));
+        this.c.put(((Cursor)localObject1).getString(i), localObject2);
+      }
+      ((Cursor)localObject1).close();
+      localObject1 = this.c;
+      return localObject1;
     }
-    catch (Exception paramString) {}
-    return 0;
-    return (int)localFile.length();
-    return 0;
-    return 0;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return this.c;
+  }
+  
+  public final boolean getBoolean(String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Boolean))) {
+      return ((Boolean)paramString).booleanValue();
+    }
+    return paramBoolean;
+  }
+  
+  public final float getFloat(String paramString, float paramFloat)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Float))) {
+      return ((Float)paramString).floatValue();
+    }
+    return paramFloat;
+  }
+  
+  public final int getInt(String paramString, int paramInt)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Integer))) {
+      return ((Integer)paramString).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final long getLong(String paramString, long paramLong)
+  {
+    paramString = a(paramString);
+    if ((paramString != null) && ((paramString instanceof Long))) {
+      return ((Long)paramString).longValue();
+    }
+    return paramLong;
+  }
+  
+  public final String getString(String paramString1, String paramString2)
+  {
+    paramString1 = a(paramString1);
+    if ((paramString1 != null) && ((paramString1 instanceof String))) {
+      return (String)paramString1;
+    }
+    return paramString2;
+  }
+  
+  public final Set<String> getStringSet(String paramString, Set<String> paramSet)
+  {
+    return null;
+  }
+  
+  public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener) {}
+  
+  static final class a
+    implements SharedPreferences.Editor
+  {
+    private Map<String, Object> a = new HashMap();
+    private Set<String> b = new HashSet();
+    private boolean c = false;
+    private ContentResolver d;
+    
+    public a(ContentResolver paramContentResolver)
+    {
+      this.d = paramContentResolver;
+    }
+    
+    public final void apply() {}
+    
+    public final SharedPreferences.Editor clear()
+    {
+      this.c = true;
+      return this;
+    }
+    
+    public final boolean commit()
+    {
+      ContentValues localContentValues = new ContentValues();
+      if (this.c)
+      {
+        this.d.delete(pz.b.a, null, null);
+        this.c = false;
+      }
+      Object localObject1 = this.b.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        this.d.delete(pz.b.a, "key = ?", new String[] { localObject2 });
+      }
+      Object localObject2 = this.a.entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+        Object localObject3 = localEntry.getValue();
+        if (localObject3 == null) {}
+        int i;
+        for (localObject1 = "unresolve failed, null value";; localObject1 = ((StringBuilder)localObject1).toString())
+        {
+          pp.a("MicroMsg.SDK.PluginProvider.Resolver", (String)localObject1);
+          i = 0;
+          break;
+          if ((localObject3 instanceof Integer))
+          {
+            i = 1;
+            break;
+          }
+          if ((localObject3 instanceof Long))
+          {
+            i = 2;
+            break;
+          }
+          if ((localObject3 instanceof String))
+          {
+            i = 3;
+            break;
+          }
+          if ((localObject3 instanceof Boolean))
+          {
+            i = 4;
+            break;
+          }
+          if ((localObject3 instanceof Float))
+          {
+            i = 5;
+            break;
+          }
+          if ((localObject3 instanceof Double))
+          {
+            i = 6;
+            break;
+          }
+          localObject1 = new StringBuilder("unresolve failed, unknown type=");
+          ((StringBuilder)localObject1).append(localObject3.getClass().toString());
+        }
+        if (i == 0)
+        {
+          i = 0;
+        }
+        else
+        {
+          localContentValues.put("type", Integer.valueOf(i));
+          localContentValues.put("value", localObject3.toString());
+          i = 1;
+        }
+        if (i != 0) {
+          this.d.update(pz.b.a, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
+        }
+      }
+      return true;
+    }
+    
+    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+    {
+      this.a.put(paramString, Boolean.valueOf(paramBoolean));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+    {
+      this.a.put(paramString, Float.valueOf(paramFloat));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
+    {
+      this.a.put(paramString, Integer.valueOf(paramInt));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
+    {
+      this.a.put(paramString, Long.valueOf(paramLong));
+      this.b.remove(paramString);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
+    {
+      this.a.put(paramString1, paramString2);
+      this.b.remove(paramString1);
+      return this;
+    }
+    
+    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+    {
+      return null;
+    }
+    
+    public final SharedPreferences.Editor remove(String paramString)
+    {
+      this.b.add(paramString);
+      return this;
+    }
   }
 }
 

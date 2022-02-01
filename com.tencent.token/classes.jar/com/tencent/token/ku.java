@@ -1,17 +1,44 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.halley.downloader.DownloaderFactory;
+import java.util.List;
 
 public final class ku
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public ArrayList<String> h;
+  public static List a(String paramString, long paramLong)
+  {
+    try
+    {
+      if (na.a() != null)
+      {
+        paramString = na.a().a(paramString, paramLong);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      label19:
+      break label19;
+    }
+    return null;
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      Context localContext = lo.a();
+      if (localContext != null) {
+        return;
+      }
+      lo.a(paramContext, paramString1, paramString2, paramString3);
+      na.a(paramContext, paramString1, paramString2, paramString3);
+      DownloaderFactory.a(null);
+      return;
+    }
+    finally {}
+  }
 }
 
 

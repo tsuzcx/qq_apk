@@ -1,104 +1,64 @@
 package com.tencent.token;
 
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.util.Base64;
+import java.util.List;
 
-public abstract interface dr
-  extends IInterface
+public final class dr
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  final String a;
+  final String b;
+  final String c;
+  final List<List<byte[]>> d;
+  final int e;
+  final String f;
   
-  public static abstract class a
-    extends Binder
-    implements dr
+  public dr(String paramString1, String paramString2, String paramString3, List<List<byte[]>> paramList)
   {
-    public a()
+    this.a = ((String)ee.a(paramString1));
+    this.b = ((String)ee.a(paramString2));
+    this.c = ((String)ee.a(paramString3));
+    this.d = ((List)ee.a(paramList));
+    this.e = 0;
+    paramString1 = new StringBuilder(this.a);
+    paramString1.append("-");
+    paramString1.append(this.b);
+    paramString1.append("-");
+    paramString1.append(this.c);
+    this.f = paramString1.toString();
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = new StringBuilder("FontRequest {mProviderAuthority: ");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append(", mProviderPackage: ");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(", mQuery: ");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(", mCertificates:");
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    int i = 0;
+    while (i < this.d.size())
     {
-      attachInterface(this, "android.support.v4.os.IResultReceiver");
-    }
-    
-    public static dr a(IBinder paramIBinder)
-    {
-      if (paramIBinder == null) {
-        return null;
-      }
-      IInterface localIInterface = paramIBinder.queryLocalInterface("android.support.v4.os.IResultReceiver");
-      if ((localIInterface != null) && ((localIInterface instanceof dr))) {
-        return (dr)localIInterface;
-      }
-      return new a(paramIBinder);
-    }
-    
-    public IBinder asBinder()
-    {
-      return this;
-    }
-    
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-    {
-      if (paramInt1 != 1)
+      localStringBuilder.append(" [");
+      localObject = (List)this.d.get(i);
+      int j = 0;
+      while (j < ((List)localObject).size())
       {
-        if (paramInt1 != 1598968902) {
-          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-        }
-        paramParcel2.writeString("android.support.v4.os.IResultReceiver");
-        return true;
+        localStringBuilder.append(" \"");
+        localStringBuilder.append(Base64.encodeToString((byte[])((List)localObject).get(j), 0));
+        localStringBuilder.append("\"");
+        j += 1;
       }
-      paramParcel1.enforceInterface("android.support.v4.os.IResultReceiver");
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {
-        paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      } else {
-        paramParcel1 = null;
-      }
-      a(paramInt1, paramParcel1);
-      return true;
+      localStringBuilder.append(" ]");
+      i += 1;
     }
-    
-    static final class a
-      implements dr
-    {
-      private IBinder a;
-      
-      a(IBinder paramIBinder)
-      {
-        this.a = paramIBinder;
-      }
-      
-      public final void a(int paramInt, Bundle paramBundle)
-      {
-        Parcel localParcel = Parcel.obtain();
-        try
-        {
-          localParcel.writeInterfaceToken("android.support.v4.os.IResultReceiver");
-          localParcel.writeInt(paramInt);
-          if (paramBundle != null)
-          {
-            localParcel.writeInt(1);
-            paramBundle.writeToParcel(localParcel, 0);
-          }
-          else
-          {
-            localParcel.writeInt(0);
-          }
-          this.a.transact(1, localParcel, null, 1);
-          return;
-        }
-        finally
-        {
-          localParcel.recycle();
-        }
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.a;
-      }
-    }
+    localStringBuilder.append("}");
+    localObject = new StringBuilder("mCertificatesArray: ");
+    ((StringBuilder)localObject).append(this.e);
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    return localStringBuilder.toString();
   }
 }
 

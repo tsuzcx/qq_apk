@@ -1,16 +1,17 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-
 public final class of
 {
-  public static final class a
+  public static byte[] a(String paramString1, String paramString2)
   {
-    public String a;
-    public String b;
-    public String c;
-    public long d;
-    public Bundle e;
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString1 != null) {
+      localStringBuffer.append(paramString1);
+    }
+    localStringBuffer.append(621086720);
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append("mMcShCsTr");
+    return pe.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 

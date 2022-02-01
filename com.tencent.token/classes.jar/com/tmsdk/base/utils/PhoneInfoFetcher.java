@@ -14,7 +14,7 @@ import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import btmsdkobf.dz;
-import com.tencent.token.rp;
+import com.tencent.token.ro;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
@@ -37,7 +37,7 @@ public class PhoneInfoFetcher
   
   public static String getAndoidId(Context paramContext)
   {
-    if (!rp.a().b()) {
+    if (!ro.a().b()) {
       return "";
     }
     try
@@ -55,7 +55,7 @@ public class PhoneInfoFetcher
   
   public static int getCellId()
   {
-    boolean bool = rp.a().b();
+    boolean bool = ro.a().b();
     int j = -1;
     if (!bool) {
       return -1;
@@ -121,7 +121,7 @@ public class PhoneInfoFetcher
   @SuppressLint({"MissingPermission"})
   public static String getIMEI(Context paramContext)
   {
-    if (!rp.a().b()) {
+    if (!ro.a().b()) {
       return "00000000000000";
     }
     Object localObject = null;
@@ -144,7 +144,7 @@ public class PhoneInfoFetcher
   @SuppressLint({"MissingPermission"})
   public static String getIMSI(Context paramContext)
   {
-    if (!rp.a().b()) {
+    if (!ro.a().b()) {
       return "00000000000000";
     }
     Object localObject = null;
@@ -168,7 +168,7 @@ public class PhoneInfoFetcher
   public static Map<String, String> getImeiAndMeid(Context paramContext)
   {
     HashMap localHashMap = new HashMap();
-    if (!rp.a().b()) {
+    if (!ro.a().b()) {
       return localHashMap;
     }
     try
@@ -476,7 +476,7 @@ public class PhoneInfoFetcher
   
   public static int getLac()
   {
-    boolean bool = rp.a().b();
+    boolean bool = ro.a().b();
     int j = -1;
     if (!bool) {
       return -1;
@@ -617,7 +617,7 @@ public class PhoneInfoFetcher
   
   public static int getMcc()
   {
-    boolean bool = rp.a().b();
+    boolean bool = ro.a().b();
     int i = -1;
     if (!bool) {
       return -1;
@@ -636,7 +636,7 @@ public class PhoneInfoFetcher
   
   public static int getMnc()
   {
-    boolean bool = rp.a().b();
+    boolean bool = ro.a().b();
     int i = -1;
     if (!bool) {
       return -1;
@@ -930,7 +930,7 @@ public class PhoneInfoFetcher
   {
     try
     {
-      paramString = (String)Class.forName("com.tencent.token.bi").getMethod("get", new Class[] { String.class }).invoke(null, new Object[] { paramString });
+      paramString = (String)Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class }).invoke(null, new Object[] { paramString });
     }
     catch (Throwable paramString)
     {

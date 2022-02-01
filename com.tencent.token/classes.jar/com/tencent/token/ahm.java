@@ -1,14 +1,30 @@
 package com.tencent.token;
 
-import java.net.NetworkInterface;
-
 public final class ahm
 {
-  public NetworkInterface a;
+  private static ahn a;
   
-  public ahm(NetworkInterface paramNetworkInterface)
+  public static ahn a()
   {
-    this.a = paramNetworkInterface;
+    if (a == null)
+    {
+      ahn localahn = new ahn();
+      a = localahn;
+      int i;
+      if ((!localahn.d) && (!localahn.c))
+      {
+        localahn.c = true;
+        i = 0;
+      }
+      while (i < localahn.b)
+      {
+        localahn.a[i].start();
+        i += 1;
+        continue;
+        throw new IllegalStateException("HttpCommunicator already in using or disposed!");
+      }
+    }
+    return a;
   }
 }
 

@@ -1,73 +1,248 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tmsdk.common.util.TmsLog;
+import java.io.Serializable;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class tj
-  extends tk
+public abstract class tj
+  implements aah
 {
-  private long d;
-  private int[] e;
-  private int[] f;
-  private String g;
-  private int h;
+  protected wy a = new wy();
+  protected aaq b;
+  protected int c;
   
-  protected final String a()
+  private void d()
   {
-    sa.a();
-    this.a.a(10000, null, null);
+    StringBuilder localStringBuilder = new StringBuilder("------------------------------\nhandler:");
+    localStringBuilder.append(this.b.d);
+    localStringBuilder.append("    \nError=");
+    localStringBuilder.append(this.a.a);
+    localStringBuilder.append("    \nstrdebug:");
+    localStringBuilder.append(this.a.b);
+    localStringBuilder.append("    \nstruser:");
+    localStringBuilder.append(this.a.c);
+    xa.c(localStringBuilder.toString());
+  }
+  
+  public aar a(Serializable paramSerializable)
+  {
     return null;
   }
   
-  protected final void a(aar paramaar)
+  public Serializable a(aar paramaar)
   {
-    this.d = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.e = ((int[])paramaar.c.get("param.mbinfo.id"));
-    this.f = ((int[])paramaar.c.get("param.mbinfo.val"));
-    this.g = ((String)paramaar.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramaar.c.get("param.common.seq")).intValue();
+    return null;
   }
   
-  protected final void a(JSONObject paramJSONObject)
+  protected abstract String a();
+  
+  protected final void a(int paramInt, String paramString)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
-      return;
+    if (paramString != null) {
+      this.a.a(paramInt, paramString, paramString);
+    } else {
+      this.a.a(paramInt, null, null);
     }
-    paramJSONObject = aad.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    d();
+  }
+  
+  protected abstract void a(aaq paramaaq);
+  
+  protected abstract void a(JSONObject paramJSONObject);
+  
+  public aaq b(aaq paramaaq)
+  {
+    return paramaaq;
+  }
+  
+  protected void b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("------------------------------\nhandler:");
+    localStringBuilder.append(this.b.d);
+    xa.b(localStringBuilder.toString());
+  }
+  
+  public final wy c(aaq paramaaq)
+  {
+    this.b = paramaaq;
+    a(paramaaq);
+    String str = a();
+    if (str == null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xb.b("ProtoSetServiceStatusV2:".concat(String.valueOf(paramJSONObject)));
-      paramJSONObject.getLong("uin");
-      if (paramJSONObject.getInt("seq_id") != this.h)
+      d();
+      return this.a;
+    }
+    ahq localahq = new ahq();
+    Object localObject = new StringBuilder("cmd:");
+    ((StringBuilder)localObject).append(paramaaq.a);
+    xa.c(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder("@");
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(" start req--> [url]");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(" [seqid]");
+    ((StringBuilder)localObject).append(sa.b);
+    TmsLog.i("ProtocolBase", ((StringBuilder)localObject).toString());
+    int i = paramaaq.m;
+    StringBuilder localStringBuilder = null;
+    if (i == 0)
+    {
+      paramaaq = localahq.a(str);
+    }
+    else
+    {
+      if (paramaaq.m == 1)
       {
-        this.a.a(10030, null, null);
-        return;
+        if (paramaaq.n != null)
+        {
+          localObject = paramaaq;
+          if (paramaaq.k) {
+            localObject = b(paramaaq);
+          }
+          paramaaq = localahq.a(str, ((aaq)localObject).n);
+          break label288;
+        }
       }
-      this.a.a = 0;
-      return;
+      else if (paramaaq.m == 2)
+      {
+        if ((paramaaq.o != null) && (!TextUtils.isEmpty(paramaaq.p)))
+        {
+          paramaaq = localahq.a(str, paramaaq.o, paramaaq.n, paramaaq.p);
+          break label288;
+        }
+      }
+      else if ((paramaaq.m == 3) && (paramaaq.q != null) && (!TextUtils.isEmpty(paramaaq.p)))
+      {
+        paramaaq = localahq.a(str, paramaaq.q, paramaaq.n, paramaaq.p);
+        break label288;
+      }
+      paramaaq = null;
     }
-    xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    label288:
+    if (paramaaq == null)
+    {
+      this.a.a(localahq.a);
+      d();
+      paramaaq = new StringBuilder("@");
+      paramaaq.append(hashCode());
+      paramaaq.append(" recv response, ret: ");
+      paramaaq.append(this.a.a);
+      TmsLog.i("ProtocolBase", paramaaq.toString());
+      return this.a;
+    }
+    try
+    {
+      if (this.b.a.equals("token.getstartupimg"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("device config");
+        ((StringBuilder)localObject).append(paramaaq);
+        xa.a(((StringBuilder)localObject).toString());
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("startup_img", aad.a(paramaaq));
+        paramaaq = (aaq)localObject;
+        localObject = localStringBuilder;
+      }
+      else if (this.b.a.equals("token.getcommonimg"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("device config");
+        ((StringBuilder)localObject).append(paramaaq);
+        xa.a(((StringBuilder)localObject).toString());
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("img", aad.a(paramaaq));
+        paramaaq = (aaq)localObject;
+        localObject = localStringBuilder;
+      }
+      else
+      {
+        localObject = new String(paramaaq);
+        paramaaq = new StringBuilder();
+        paramaaq.append(this);
+        paramaaq.append("--responseString--");
+        paramaaq.append((String)localObject);
+        xa.a(paramaaq.toString());
+        paramaaq = new JSONObject((String)localObject);
+      }
+      a(paramaaq);
+      if (!this.a.b())
+      {
+        if (localObject != null)
+        {
+          paramaaq = new StringBuilder();
+          paramaaq.append(this);
+          paramaaq.append("\nR E S P O N S E: \n");
+          paramaaq.append((String)localObject);
+          xa.c(paramaaq.toString());
+        }
+        d();
+      }
+      else
+      {
+        if (localObject != null)
+        {
+          paramaaq = new StringBuilder();
+          paramaaq.append(this);
+          paramaaq.append("\nR E S P O N S E: \n");
+          paramaaq.append((String)localObject);
+          xa.a(paramaaq.toString());
+        }
+        b();
+      }
+    }
+    catch (Exception paramaaq)
+    {
+      paramaaq.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("\nE X C E P T I O N: \n");
+      ((StringBuilder)localObject).append(paramaaq.toString());
+      xa.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("cmd ");
+      ((StringBuilder)localObject).append(this.b.a);
+      ((StringBuilder)localObject).append(" has exception: ");
+      ((StringBuilder)localObject).append(paramaaq.toString());
+      TmsLog.e("mod_seed", ((StringBuilder)localObject).toString());
+      localObject = this.a;
+      localStringBuilder = new StringBuilder("Exception:");
+      localStringBuilder.append(paramaaq.toString());
+      ((wy)localObject).a(10000, localStringBuilder.toString(), ww.g().getString(2131493106));
+      d();
+    }
+    catch (JSONException paramaaq)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("\nPARSE JSON FAILED: \n");
+      ((StringBuilder)localObject).append(paramaaq.toString());
+      xa.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("cmd ");
+      ((StringBuilder)localObject).append(this.b.a);
+      ((StringBuilder)localObject).append(" has exception: ");
+      ((StringBuilder)localObject).append(paramaaq.toString());
+      TmsLog.e("mod_seed", ((StringBuilder)localObject).toString());
+      localObject = this.a;
+      localStringBuilder = new StringBuilder("JSONException:");
+      localStringBuilder.append(paramaaq.toString());
+      ((wy)localObject).a(10020, localStringBuilder.toString(), ww.g().getString(2131493106));
+      d();
+    }
+    paramaaq = new StringBuilder("@");
+    paramaaq.append(hashCode());
+    paramaaq.append(" recv response, ret: ");
+    paramaaq.append(this.a.a);
+    TmsLog.i("ProtocolBase", paramaaq.toString());
+    return this.a;
   }
   
-  protected final void b()
+  public String c()
   {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.e;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    return null;
   }
 }
 

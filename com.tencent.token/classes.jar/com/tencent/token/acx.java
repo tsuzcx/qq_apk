@@ -1,98 +1,106 @@
 package com.tencent.token;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
-import com.tencent.turingfd.sdk.base.Virgo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
+import com.tencent.turingfd.sdk.base.Lemon;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public final class acx
 {
-  public static long a = TimeUnit.DAYS.toMillis(1L);
-  public static long b = TimeUnit.HOURS.toMillis(1L);
-  public aci c;
-  public Context d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public long i;
-  public long j;
+  public static abr a;
+  public static abt b;
+  public static Set<String> c = new HashSet();
+  public static final abr d = new b();
+  public static abt e = new a();
   
-  public acx(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public static void a()
   {
-    this.d = paramContext;
-    this.c = new aci(paramInt1);
-    this.i = TimeUnit.SECONDS.toMillis(paramInt3);
-    this.h = paramInt4;
-    this.e = paramInt1;
-    this.g = paramInt5;
-    this.f = paramInt2;
+    abu.f = true;
   }
   
-  public acx(Context paramContext, Virgo paramVirgo)
+  public static void a(Activity paramActivity)
   {
-    this.d = paramContext;
-    this.j = paramVirgo.rb;
-    this.c = new aci(paramVirgo.ub);
-    paramContext = paramVirgo.wb.iterator();
-    while (paramContext.hasNext())
-    {
-      Long localLong = (Long)paramContext.next();
-      this.c.a(localLong);
-    }
-    this.i = paramVirgo.sb;
-    this.h = paramVirgo.tb;
-    this.e = paramVirgo.ub;
-    this.g = paramVirgo.qb;
-    this.f = paramVirgo.vb;
+    c.add(paramActivity.getClass().getName());
+    abu.g.add(paramActivity.getClass().getName());
   }
   
-  public final boolean a()
+  public static void a(Context paramContext, abr paramabr, abt paramabt)
   {
-    long l2 = System.currentTimeMillis();
-    long l3 = this.j;
-    long l1 = this.i;
-    l2 = Math.abs(l2 - l3);
-    boolean bool = true;
-    int k;
-    if (l2 > l1) {
-      k = 1;
-    } else {
-      k = 0;
-    }
-    if (k != 0)
+    try
     {
-      if (this.c.b.size() < this.f) {
-        return true;
+      a = paramabr;
+      b = paramabt;
+      paramContext = paramContext.getApplicationContext();
+      abu.e = e;
+      if (!abu.a)
+      {
+        abu.a = true;
+        abu.a();
+        abu.a((Application)paramContext);
       }
-      Object localObject = (Long)this.c.b.getFirst();
-      if ((Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) < a) && (this.c.b.size() >= this.e)) {
-        k = 0;
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public static final class a
+    implements abt
+  {
+    public final void a(Activity paramActivity)
+    {
+      Object localObject1 = acx.b;
+      if (localObject1 != null) {
+        ((abt)localObject1).a(paramActivity);
+      }
+      int i;
+      if (acx.c.contains(paramActivity.getClass().getName())) {
+        i = 100;
       } else {
-        k = 1;
+        i = 999;
       }
-      if (k != 0)
-      {
-        localObject = this.c;
-        localObject = (Long)((aci)localObject).a(((aci)localObject).b.size() - this.f);
-        if (Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) >= b) {}
-      }
-      else
-      {
-        bool = false;
-      }
-      return bool;
+      localObject1 = (abo)abo.a.b();
+      Object localObject2 = acx.d;
+      paramActivity.getApplicationContext();
+      ((abo)localObject1).d = ((abr)localObject2);
+      localObject2 = paramActivity.getClass().getName();
+      paramActivity = new abo.d((abo)localObject1, paramActivity.getClass().getName(), i);
+      ((abo)localObject1).b.put(localObject2, paramActivity);
+      abu.c.add(paramActivity);
+      paramActivity = new abo.b((abo)localObject1, i);
+      ((abo)localObject1).c.put(localObject2, paramActivity);
+      abu.d.add(paramActivity);
     }
-    return false;
+    
+    public final void b(Activity paramActivity)
+    {
+      abo localabo = (abo)abo.a.b();
+      paramActivity = paramActivity.getClass().getName();
+      Object localObject = (abo.d)localabo.b.get(paramActivity);
+      abu.c.remove(localObject);
+      localabo.b.remove(paramActivity);
+      localObject = (abo.b)localabo.c.get(paramActivity);
+      abu.d.remove(localObject);
+      localabo.c.remove(paramActivity);
+    }
   }
   
-  public final void b()
+  public static final class b
+    implements abr
   {
-    this.j = System.currentTimeMillis();
-    abn.a();
-    abn.a(this.d, this.g, this);
+    public final void a(String paramString, int paramInt1, int paramInt2, Lemon paramLemon)
+    {
+      abr localabr = acx.a;
+      if (localabr != null) {
+        localabr.a(paramString, paramInt1, paramInt2, paramLemon);
+      }
+    }
   }
 }
 

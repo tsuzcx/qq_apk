@@ -1,15 +1,32 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-
 public abstract interface asg
 {
-  public abstract void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, a parama);
+  public abstract int a(String paramString, int paramInt);
   
-  public static abstract interface a
-  {
-    public abstract void a();
-  }
+  public abstract long a(String paramString, long paramLong);
+  
+  public abstract String a(String paramString);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(String paramString, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean b(String paramString, int paramInt);
+  
+  public abstract boolean b(String paramString, long paramLong);
+  
+  public abstract boolean b(String paramString1, String paramString2);
+  
+  public abstract boolean b(String paramString, boolean paramBoolean);
+  
+  public abstract boolean c();
 }
 
 

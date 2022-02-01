@@ -7,13 +7,13 @@ import com.tencent.token.au.b;
 import com.tencent.token.aw;
 import com.tencent.token.ax;
 import com.tencent.token.be;
-import com.tencent.token.eg;
+import com.tencent.token.ef;
 
 public class SupportActivity
   extends Activity
   implements aw
 {
-  private eg<Class<? extends a>, a> mExtraDataMap = new eg();
+  private ef<Class<? extends a>, a> mExtraDataMap = new ef();
   private ax mLifecycleRegistry = new ax(this);
   
   public <T extends a> T getExtraData(Class<T> paramClass)

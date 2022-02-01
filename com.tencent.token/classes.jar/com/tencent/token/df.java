@@ -2,264 +2,405 @@ package com.tencent.token;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Typeface;
+import android.os.Process;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-class df
-  implements db.a
+public final class df
 {
+  public static File a(Context paramContext)
+  {
+    Object localObject = new StringBuilder(".font");
+    ((StringBuilder)localObject).append(Process.myPid());
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(Process.myTid());
+    ((StringBuilder)localObject).append("-");
+    localObject = ((StringBuilder)localObject).toString();
+    int i = 0;
+    while (i < 100)
+    {
+      File localFile = paramContext.getCacheDir();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(i);
+      localFile = new File(localFile, localStringBuilder.toString());
+      try
+      {
+        boolean bool = localFile.createNewFile();
+        if (bool) {
+          return localFile;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        label111:
+        break label111;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public static ByteBuffer a(Context paramContext, Resources paramResources, int paramInt)
+  {
+    paramContext = a(paramContext);
+    if (paramContext == null) {
+      return null;
+    }
+    try
+    {
+      boolean bool = a(paramContext, paramResources, paramInt);
+      if (!bool) {
+        return null;
+      }
+      paramResources = a(paramContext);
+      return paramResources;
+    }
+    finally
+    {
+      paramContext.delete();
+    }
+  }
+  
   /* Error */
-  protected static Typeface a(Context paramContext, java.io.InputStream paramInputStream)
+  public static ByteBuffer a(Context paramContext, android.net.Uri paramUri)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 26	com/tencent/token/dg:a	(Landroid/content/Context;)Ljava/io/File;
+    //   1: invokevirtual 76	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   4: astore_0
     //   5: aload_0
-    //   6: ifnonnull +5 -> 11
+    //   6: aload_1
+    //   7: ldc 78
     //   9: aconst_null
-    //   10: areturn
-    //   11: aload_0
-    //   12: aload_1
-    //   13: invokestatic 29	com/tencent/token/dg:a	(Ljava/io/File;Ljava/io/InputStream;)Z
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifne +10 -> 28
-    //   21: aload_0
-    //   22: invokevirtual 35	java/io/File:delete	()Z
-    //   25: pop
-    //   26: aconst_null
-    //   27: areturn
-    //   28: aload_0
-    //   29: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
-    //   32: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   35: astore_1
-    //   36: aload_0
-    //   37: invokevirtual 35	java/io/File:delete	()Z
-    //   40: pop
-    //   41: aload_1
-    //   42: areturn
-    //   43: astore_1
-    //   44: aload_0
-    //   45: invokevirtual 35	java/io/File:delete	()Z
-    //   48: pop
-    //   49: aload_1
-    //   50: athrow
-    //   51: aload_0
-    //   52: invokevirtual 35	java/io/File:delete	()Z
-    //   55: pop
-    //   56: aconst_null
-    //   57: areturn
-    //   58: astore_1
-    //   59: goto -8 -> 51
+    //   10: invokevirtual 84	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
+    //   13: astore 4
+    //   15: aload 4
+    //   17: ifnonnull +15 -> 32
+    //   20: aload 4
+    //   22: ifnull +8 -> 30
+    //   25: aload 4
+    //   27: invokevirtual 89	android/os/ParcelFileDescriptor:close	()V
+    //   30: aconst_null
+    //   31: areturn
+    //   32: new 91	java/io/FileInputStream
+    //   35: dup
+    //   36: aload 4
+    //   38: invokevirtual 95	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   41: invokespecial 98	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   44: astore 5
+    //   46: aload 5
+    //   48: invokevirtual 102	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   51: astore_0
+    //   52: aload_0
+    //   53: invokevirtual 108	java/nio/channels/FileChannel:size	()J
+    //   56: lstore_2
+    //   57: aload_0
+    //   58: getstatic 114	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   61: lconst_0
+    //   62: lload_2
+    //   63: invokevirtual 118	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   66: astore_0
+    //   67: aload 5
+    //   69: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   72: aload 4
+    //   74: ifnull +8 -> 82
+    //   77: aload 4
+    //   79: invokevirtual 89	android/os/ParcelFileDescriptor:close	()V
+    //   82: aload_0
+    //   83: areturn
+    //   84: astore_0
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: goto +7 -> 94
+    //   90: astore_1
+    //   91: aload_1
+    //   92: athrow
+    //   93: astore_0
+    //   94: aload_1
+    //   95: ifnull +22 -> 117
+    //   98: aload 5
+    //   100: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   103: goto +19 -> 122
+    //   106: astore 5
+    //   108: aload_1
+    //   109: aload 5
+    //   111: invokevirtual 123	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   114: goto +8 -> 122
+    //   117: aload 5
+    //   119: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   122: aload_0
+    //   123: athrow
+    //   124: astore_1
+    //   125: aconst_null
+    //   126: astore_0
+    //   127: goto +7 -> 134
+    //   130: astore_0
+    //   131: aload_0
+    //   132: athrow
+    //   133: astore_1
+    //   134: aload 4
+    //   136: ifnull +31 -> 167
+    //   139: aload_0
+    //   140: ifnull +22 -> 162
+    //   143: aload 4
+    //   145: invokevirtual 89	android/os/ParcelFileDescriptor:close	()V
+    //   148: goto +19 -> 167
+    //   151: astore 4
+    //   153: aload_0
+    //   154: aload 4
+    //   156: invokevirtual 123	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   159: goto +8 -> 167
+    //   162: aload 4
+    //   164: invokevirtual 89	android/os/ParcelFileDescriptor:close	()V
+    //   167: aload_1
+    //   168: athrow
+    //   169: astore_0
+    //   170: aconst_null
+    //   171: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	62	0	paramContext	Context
-    //   0	62	1	paramInputStream	java.io.InputStream
-    //   16	2	2	bool	boolean
+    //   0	172	0	paramContext	Context
+    //   0	172	1	paramUri	android.net.Uri
+    //   56	7	2	l	long
+    //   13	131	4	localParcelFileDescriptor	android.os.ParcelFileDescriptor
+    //   151	12	4	localThrowable1	java.lang.Throwable
+    //   44	55	5	localFileInputStream	java.io.FileInputStream
+    //   106	12	5	localThrowable2	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   11	17	43	finally
-    //   28	36	43	finally
-    //   11	17	58	java/lang/RuntimeException
-    //   28	36	58	java/lang/RuntimeException
-  }
-  
-  private static <T> T a(T[] paramArrayOfT, int paramInt, a<T> parama)
-  {
-    int i;
-    if ((paramInt & 0x1) == 0) {
-      i = 400;
-    } else {
-      i = 700;
-    }
-    int i1;
-    if ((paramInt & 0x2) != 0) {
-      i1 = 1;
-    } else {
-      i1 = 0;
-    }
-    int n = paramArrayOfT.length;
-    Object localObject = null;
-    paramInt = 0;
-    int k;
-    for (int j = 2147483647; paramInt < n; j = k)
-    {
-      T ? = paramArrayOfT[paramInt];
-      int m = Math.abs(parama.b(?) - i);
-      if (parama.a(?) == i1) {
-        k = 0;
-      } else {
-        k = 1;
-      }
-      m = m * 2 + k;
-      if (localObject != null)
-      {
-        k = j;
-        if (j <= m) {}
-      }
-      else
-      {
-        localObject = ?;
-        k = m;
-      }
-      paramInt += 1;
-    }
-    return localObject;
+    //   46	67	84	finally
+    //   46	67	90	java/lang/Throwable
+    //   91	93	93	finally
+    //   98	103	106	java/lang/Throwable
+    //   32	46	124	finally
+    //   67	72	124	finally
+    //   98	103	124	finally
+    //   108	114	124	finally
+    //   117	122	124	finally
+    //   122	124	124	finally
+    //   32	46	130	java/lang/Throwable
+    //   67	72	130	java/lang/Throwable
+    //   108	114	130	java/lang/Throwable
+    //   117	122	130	java/lang/Throwable
+    //   122	124	130	java/lang/Throwable
+    //   131	133	133	finally
+    //   143	148	151	java/lang/Throwable
+    //   5	15	169	java/io/IOException
+    //   25	30	169	java/io/IOException
+    //   77	82	169	java/io/IOException
+    //   143	148	169	java/io/IOException
+    //   153	159	169	java/io/IOException
+    //   162	167	169	java/io/IOException
+    //   167	169	169	java/io/IOException
   }
   
   /* Error */
-  public Typeface a(Context paramContext, Resources paramResources, int paramInt1, java.lang.String paramString, int paramInt2)
+  private static ByteBuffer a(File paramFile)
+  {
+    // Byte code:
+    //   0: new 91	java/io/FileInputStream
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 126	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   8: astore 4
+    //   10: aload 4
+    //   12: invokevirtual 102	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   15: astore_0
+    //   16: aload_0
+    //   17: invokevirtual 108	java/nio/channels/FileChannel:size	()J
+    //   20: lstore_1
+    //   21: aload_0
+    //   22: getstatic 114	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   25: lconst_0
+    //   26: lload_1
+    //   27: invokevirtual 118	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   30: astore_0
+    //   31: aload 4
+    //   33: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   36: aload_0
+    //   37: areturn
+    //   38: astore_3
+    //   39: aconst_null
+    //   40: astore_0
+    //   41: goto +7 -> 48
+    //   44: astore_0
+    //   45: aload_0
+    //   46: athrow
+    //   47: astore_3
+    //   48: aload_0
+    //   49: ifnull +22 -> 71
+    //   52: aload 4
+    //   54: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   57: goto +19 -> 76
+    //   60: astore 4
+    //   62: aload_0
+    //   63: aload 4
+    //   65: invokevirtual 123	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   68: goto +8 -> 76
+    //   71: aload 4
+    //   73: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   76: aload_3
+    //   77: athrow
+    //   78: astore_0
+    //   79: aconst_null
+    //   80: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	81	0	paramFile	File
+    //   20	7	1	l	long
+    //   38	1	3	localObject1	Object
+    //   47	30	3	localObject2	Object
+    //   8	45	4	localFileInputStream	java.io.FileInputStream
+    //   60	12	4	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   10	31	38	finally
+    //   10	31	44	java/lang/Throwable
+    //   45	47	47	finally
+    //   52	57	60	java/lang/Throwable
+    //   0	10	78	java/io/IOException
+    //   31	36	78	java/io/IOException
+    //   52	57	78	java/io/IOException
+    //   62	68	78	java/io/IOException
+    //   71	76	78	java/io/IOException
+    //   76	78	78	java/io/IOException
+  }
+  
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable) {}
+    return;
+  }
+  
+  /* Error */
+  public static boolean a(File paramFile, Resources paramResources, int paramInt)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 26	com/tencent/token/dg:a	(Landroid/content/Context;)Ljava/io/File;
-    //   4: astore_1
-    //   5: aload_1
-    //   6: ifnonnull +5 -> 11
-    //   9: aconst_null
-    //   10: areturn
-    //   11: aload_1
-    //   12: aload_2
-    //   13: iload_3
-    //   14: invokestatic 66	com/tencent/token/dg:a	(Ljava/io/File;Landroid/content/res/Resources;I)Z
-    //   17: istore 6
-    //   19: iload 6
-    //   21: ifne +10 -> 31
-    //   24: aload_1
-    //   25: invokevirtual 35	java/io/File:delete	()Z
-    //   28: pop
-    //   29: aconst_null
-    //   30: areturn
-    //   31: aload_1
-    //   32: invokevirtual 39	java/io/File:getPath	()Ljava/lang/String;
-    //   35: invokestatic 45	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   38: astore_2
-    //   39: aload_1
-    //   40: invokevirtual 35	java/io/File:delete	()Z
-    //   43: pop
-    //   44: aload_2
-    //   45: areturn
-    //   46: astore_2
-    //   47: aload_1
-    //   48: invokevirtual 35	java/io/File:delete	()Z
-    //   51: pop
-    //   52: aload_2
-    //   53: athrow
-    //   54: aload_1
-    //   55: invokevirtual 35	java/io/File:delete	()Z
-    //   58: pop
-    //   59: aconst_null
-    //   60: areturn
-    //   61: astore_2
-    //   62: goto -8 -> 54
+    //   1: iload_2
+    //   2: invokevirtual 136	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   5: astore_1
+    //   6: aload_0
+    //   7: aload_1
+    //   8: invokestatic 139	com/tencent/token/df:a	(Ljava/io/File;Ljava/io/InputStream;)Z
+    //   11: istore_3
+    //   12: aload_1
+    //   13: invokestatic 141	com/tencent/token/df:a	(Ljava/io/Closeable;)V
+    //   16: iload_3
+    //   17: ireturn
+    //   18: astore_0
+    //   19: goto +6 -> 25
+    //   22: astore_0
+    //   23: aconst_null
+    //   24: astore_1
+    //   25: aload_1
+    //   26: invokestatic 141	com/tencent/token/df:a	(Ljava/io/Closeable;)V
+    //   29: aload_0
+    //   30: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	65	0	this	df
-    //   0	65	1	paramContext	Context
-    //   0	65	2	paramResources	Resources
-    //   0	65	3	paramInt1	int
-    //   0	65	4	paramString	java.lang.String
-    //   0	65	5	paramInt2	int
-    //   17	3	6	bool	boolean
+    //   0	31	0	paramFile	File
+    //   0	31	1	paramResources	Resources
+    //   0	31	2	paramInt	int
+    //   11	6	3	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   11	19	46	finally
-    //   31	39	46	finally
-    //   11	19	61	java/lang/RuntimeException
-    //   31	39	61	java/lang/RuntimeException
-  }
-  
-  public Typeface a(Context paramContext, cw.b paramb, Resources paramResources, int paramInt)
-  {
-    paramb = (cw.c)a(paramb.a, paramInt, new a() {});
-    if (paramb == null) {
-      return null;
-    }
-    return db.a(paramContext, paramResources, paramb.d, paramb.a, paramInt);
+    //   6	12	18	finally
+    //   0	6	22	finally
   }
   
   /* Error */
-  public Typeface a(Context paramContext, dt.b[] paramArrayOfb, int paramInt)
+  public static boolean a(File paramFile, java.io.InputStream paramInputStream)
   {
     // Byte code:
-    //   0: aload_2
-    //   1: arraylength
-    //   2: istore 4
-    //   4: aconst_null
-    //   5: astore 5
-    //   7: iload 4
-    //   9: ifgt +5 -> 14
-    //   12: aconst_null
-    //   13: areturn
-    //   14: aload_0
-    //   15: aload_2
-    //   16: iload_3
-    //   17: invokevirtual 96	com/tencent/token/df:a	([Lcom/tencent/token/dt$b;I)Lcom/tencent/token/dt$b;
-    //   20: astore_2
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: new 143	java/io/FileOutputStream
+    //   8: dup
+    //   9: aload_0
+    //   10: iconst_0
+    //   11: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   14: astore_0
+    //   15: sipush 1024
+    //   18: newarray byte
+    //   20: astore_3
     //   21: aload_1
-    //   22: invokevirtual 102	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   25: aload_2
-    //   26: getfield 107	com/tencent/token/dt$b:a	Landroid/net/Uri;
-    //   29: invokevirtual 113	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
-    //   32: astore_2
-    //   33: aload_1
-    //   34: aload_2
-    //   35: invokestatic 115	com/tencent/token/df:a	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
-    //   38: astore_1
-    //   39: aload_2
-    //   40: invokestatic 118	com/tencent/token/dg:a	(Ljava/io/Closeable;)V
-    //   43: aload_1
-    //   44: areturn
-    //   45: astore 5
-    //   47: aload_2
+    //   22: aload_3
+    //   23: invokevirtual 152	java/io/InputStream:read	([B)I
+    //   26: istore_2
+    //   27: iload_2
+    //   28: iconst_m1
+    //   29: if_icmpeq +13 -> 42
+    //   32: aload_0
+    //   33: aload_3
+    //   34: iconst_0
+    //   35: iload_2
+    //   36: invokevirtual 156	java/io/FileOutputStream:write	([BII)V
+    //   39: goto -18 -> 21
+    //   42: aload_0
+    //   43: invokestatic 141	com/tencent/token/df:a	(Ljava/io/Closeable;)V
+    //   46: iconst_1
+    //   47: ireturn
     //   48: astore_1
-    //   49: aload 5
-    //   51: astore_2
-    //   52: goto +7 -> 59
-    //   55: astore_2
-    //   56: aload 5
-    //   58: astore_1
-    //   59: aload_1
-    //   60: invokestatic 118	com/tencent/token/dg:a	(Ljava/io/Closeable;)V
-    //   63: aload_2
-    //   64: athrow
-    //   65: aconst_null
-    //   66: astore_2
-    //   67: aload_2
-    //   68: invokestatic 118	com/tencent/token/dg:a	(Ljava/io/Closeable;)V
-    //   71: aconst_null
-    //   72: areturn
-    //   73: astore_1
-    //   74: goto -9 -> 65
-    //   77: astore_1
-    //   78: goto -11 -> 67
+    //   49: aload_0
+    //   50: astore_3
+    //   51: aload_1
+    //   52: astore_0
+    //   53: goto +40 -> 93
+    //   56: astore_1
+    //   57: goto +11 -> 68
+    //   60: astore_0
+    //   61: goto +32 -> 93
+    //   64: astore_1
+    //   65: aload 4
+    //   67: astore_0
+    //   68: aload_0
+    //   69: astore_3
+    //   70: new 10	java/lang/StringBuilder
+    //   73: dup
+    //   74: ldc 158
+    //   76: invokespecial 16	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   79: aload_1
+    //   80: invokevirtual 161	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   83: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload_0
+    //   88: invokestatic 141	com/tencent/token/df:a	(Ljava/io/Closeable;)V
+    //   91: iconst_0
+    //   92: ireturn
+    //   93: aload_3
+    //   94: invokestatic 141	com/tencent/token/df:a	(Ljava/io/Closeable;)V
+    //   97: aload_0
+    //   98: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	81	0	this	df
-    //   0	81	1	paramContext	Context
-    //   0	81	2	paramArrayOfb	dt.b[]
-    //   0	81	3	paramInt	int
-    //   2	6	4	i	int
-    //   5	1	5	localObject1	Object
-    //   45	12	5	localObject2	Object
+    //   0	99	0	paramFile	File
+    //   0	99	1	paramInputStream	java.io.InputStream
+    //   26	10	2	i	int
+    //   4	90	3	localObject1	Object
+    //   1	65	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   33	39	45	finally
-    //   21	33	55	finally
-    //   21	33	73	java/io/IOException
-    //   33	39	77	java/io/IOException
-  }
-  
-  protected final dt.b a(dt.b[] paramArrayOfb, int paramInt)
-  {
-    (dt.b)a(paramArrayOfb, paramInt, new a() {});
-  }
-  
-  static abstract interface a<T>
-  {
-    public abstract boolean a(T paramT);
-    
-    public abstract int b(T paramT);
+    //   15	21	48	finally
+    //   21	27	48	finally
+    //   32	39	48	finally
+    //   15	21	56	java/io/IOException
+    //   21	27	56	java/io/IOException
+    //   32	39	56	java/io/IOException
+    //   5	15	60	finally
+    //   70	87	60	finally
+    //   5	15	64	java/io/IOException
   }
 }
 

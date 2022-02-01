@@ -1,324 +1,177 @@
 package com.tencent.token;
 
 import android.graphics.Rect;
-import android.transition.Transition;
-import android.transition.Transition.EpicenterCallback;
-import android.transition.Transition.TransitionListener;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class cg
-  extends ch
+public abstract class cg
 {
-  private static boolean a(Transition paramTransition)
+  static ArrayList<String> a(ArrayList<View> paramArrayList)
   {
-    return (!a(paramTransition.getTargetIds())) || (!a(paramTransition.getTargetNames())) || (!a(paramTransition.getTargetTypes()));
-  }
-  
-  public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    TransitionSet localTransitionSet = new TransitionSet();
-    if (paramObject1 != null) {
-      localTransitionSet.addTransition((Transition)paramObject1);
-    }
-    if (paramObject2 != null) {
-      localTransitionSet.addTransition((Transition)paramObject2);
-    }
-    if (paramObject3 != null) {
-      localTransitionSet.addTransition((Transition)paramObject3);
-    }
-    return localTransitionSet;
-  }
-  
-  public final void a(ViewGroup paramViewGroup, Object paramObject)
-  {
-    TransitionManager.beginDelayedTransition(paramViewGroup, (Transition)paramObject);
-  }
-  
-  public final void a(Object paramObject, final Rect paramRect)
-  {
-    if (paramObject != null) {
-      ((Transition)paramObject).setEpicenterCallback(new Transition.EpicenterCallback()
-      {
-        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
-        {
-          paramAnonymousTransition = paramRect;
-          if ((paramAnonymousTransition != null) && (!paramAnonymousTransition.isEmpty())) {
-            return paramRect;
-          }
-          return null;
-        }
-      });
-    }
-  }
-  
-  public final void a(Object paramObject, View paramView)
-  {
-    if (paramView != null)
-    {
-      paramObject = (Transition)paramObject;
-      final Rect localRect = new Rect();
-      a(paramView, localRect);
-      paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
-      {
-        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
-        {
-          return localRect;
-        }
-      });
-    }
-  }
-  
-  public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
-  {
-    paramObject = (TransitionSet)paramObject;
-    List localList = paramObject.getTargets();
-    localList.clear();
-    int n = paramArrayList.size();
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayList.size();
     int i = 0;
-    while (i < n)
+    while (i < j)
     {
-      Object localObject = (View)paramArrayList.get(i);
-      int m = localList.size();
-      if (!ch.a(localList, (View)localObject, m))
+      View localView = (View)paramArrayList.get(i);
+      localArrayList.add(ew.h(localView));
+      ew.a(localView, null);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  protected static void a(View paramView, Rect paramRect)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
+  protected static boolean a(List paramList)
+  {
+    return (paramList == null) || (paramList.isEmpty());
+  }
+  
+  static boolean a(List<View> paramList, View paramView, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      if (paramList.get(i) == paramView) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public abstract Object a(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  final void a(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  {
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < k)
+    {
+      Object localObject = (View)paramArrayList1.get(i);
+      String str = ew.h((View)localObject);
+      localArrayList.add(str);
+      if (str != null)
       {
-        localList.add(localObject);
-        int j = m;
-        while (j < localList.size())
+        ew.a((View)localObject, null);
+        localObject = (String)paramMap.get(str);
+        int j = 0;
+        while (j < k)
         {
-          localObject = (View)localList.get(j);
-          if ((localObject instanceof ViewGroup))
+          if (((String)localObject).equals(paramArrayList.get(j)))
           {
-            localObject = (ViewGroup)localObject;
-            int i1 = ((ViewGroup)localObject).getChildCount();
-            int k = 0;
-            while (k < i1)
-            {
-              View localView = ((ViewGroup)localObject).getChildAt(k);
-              if (!ch.a(localList, localView, m)) {
-                localList.add(localView);
-              }
-              k += 1;
-            }
+            ew.a((View)paramArrayList2.get(j), str);
+            break;
           }
           j += 1;
         }
       }
       i += 1;
     }
-    localList.add(paramView);
-    paramArrayList.add(paramView);
-    a(paramObject, paramArrayList);
-  }
-  
-  public final void a(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
-  {
-    ((Transition)paramObject1).addListener(new Transition.TransitionListener()
+    cm.a(paramView, new Runnable()
     {
-      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionEnd(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionPause(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionResume(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionStart(Transition paramAnonymousTransition)
+      public final void run()
       {
-        paramAnonymousTransition = paramObject2;
-        if (paramAnonymousTransition != null) {
-          cg.this.b(paramAnonymousTransition, paramArrayList1, null);
-        }
-        paramAnonymousTransition = paramObject3;
-        if (paramAnonymousTransition != null) {
-          cg.this.b(paramAnonymousTransition, paramArrayList2, null);
-        }
-        paramAnonymousTransition = paramObject4;
-        if (paramAnonymousTransition != null) {
-          cg.this.b(paramAnonymousTransition, paramArrayList3, null);
-        }
-      }
-    });
-  }
-  
-  public final void a(Object paramObject, ArrayList<View> paramArrayList)
-  {
-    paramObject = (Transition)paramObject;
-    if (paramObject == null) {
-      return;
-    }
-    boolean bool = paramObject instanceof TransitionSet;
-    int j = 0;
-    int i = 0;
-    if (bool)
-    {
-      paramObject = (TransitionSet)paramObject;
-      j = paramObject.getTransitionCount();
-      while (i < j)
-      {
-        a(paramObject.getTransitionAt(i), paramArrayList);
-        i += 1;
-      }
-      return;
-    }
-    if ((!a(paramObject)) && (a(paramObject.getTargets())))
-    {
-      int k = paramArrayList.size();
-      i = j;
-      while (i < k)
-      {
-        paramObject.addTarget((View)paramArrayList.get(i));
-        i += 1;
-      }
-    }
-  }
-  
-  public final void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
-  {
-    paramObject = (TransitionSet)paramObject;
-    if (paramObject != null)
-    {
-      paramObject.getTargets().clear();
-      paramObject.getTargets().addAll(paramArrayList2);
-      b(paramObject, paramArrayList1, paramArrayList2);
-    }
-  }
-  
-  public final boolean a(Object paramObject)
-  {
-    return paramObject instanceof Transition;
-  }
-  
-  public final Object b(Object paramObject)
-  {
-    if (paramObject != null) {
-      return ((Transition)paramObject).clone();
-    }
-    return null;
-  }
-  
-  public final Object b(Object paramObject1, Object paramObject2, Object paramObject3)
-  {
-    paramObject1 = (Transition)paramObject1;
-    paramObject2 = (Transition)paramObject2;
-    paramObject3 = (Transition)paramObject3;
-    if ((paramObject1 != null) && (paramObject2 != null)) {
-      paramObject1 = new TransitionSet().addTransition(paramObject1).addTransition(paramObject2).setOrdering(1);
-    } else if (paramObject1 == null) {
-      if (paramObject2 != null) {
-        paramObject1 = paramObject2;
-      } else {
-        paramObject1 = null;
-      }
-    }
-    if (paramObject3 != null)
-    {
-      paramObject2 = new TransitionSet();
-      if (paramObject1 != null) {
-        paramObject2.addTransition(paramObject1);
-      }
-      paramObject2.addTransition(paramObject3);
-      return paramObject2;
-    }
-    return paramObject1;
-  }
-  
-  public final void b(Object paramObject, View paramView)
-  {
-    if (paramObject != null) {
-      ((Transition)paramObject).addTarget(paramView);
-    }
-  }
-  
-  public final void b(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
-  {
-    ((Transition)paramObject).addListener(new Transition.TransitionListener()
-    {
-      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionEnd(Transition paramAnonymousTransition)
-      {
-        paramAnonymousTransition.removeListener(this);
-        paramView.setVisibility(8);
-        int j = paramArrayList.size();
         int i = 0;
-        while (i < j)
+        while (i < k)
         {
-          ((View)paramArrayList.get(i)).setVisibility(0);
+          ew.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          ew.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
           i += 1;
         }
       }
-      
-      public final void onTransitionPause(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionResume(Transition paramAnonymousTransition) {}
-      
-      public final void onTransitionStart(Transition paramAnonymousTransition) {}
     });
   }
   
-  public final void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
+  public abstract void a(ViewGroup paramViewGroup, Object paramObject);
+  
+  public abstract void a(Object paramObject, Rect paramRect);
+  
+  public abstract void a(Object paramObject, View paramView);
+  
+  public abstract void a(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  final void a(ArrayList<View> paramArrayList, View paramView)
   {
-    paramObject = (Transition)paramObject;
-    boolean bool = paramObject instanceof TransitionSet;
-    int j = 0;
-    int i = 0;
-    if (bool)
+    if (paramView.getVisibility() == 0)
     {
-      paramObject = (TransitionSet)paramObject;
-      j = paramObject.getTransitionCount();
-      while (i < j)
+      if ((paramView instanceof ViewGroup))
       {
-        b(paramObject.getTransitionAt(i), paramArrayList1, paramArrayList2);
-        i += 1;
+        paramView = (ViewGroup)paramView;
+        if (ex.a(paramView))
+        {
+          paramArrayList.add(paramView);
+          return;
+        }
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramArrayList, paramView.getChildAt(i));
+          i += 1;
+        }
+        return;
       }
-      return;
+      paramArrayList.add(paramView);
     }
-    if (!a(paramObject))
+  }
+  
+  final void a(Map<String, View> paramMap, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
     {
-      List localList = paramObject.getTargets();
-      if ((localList != null) && (localList.size() == paramArrayList1.size()) && (localList.containsAll(paramArrayList1)))
+      String str = ew.h(paramView);
+      if (str != null) {
+        paramMap.put(str, paramView);
+      }
+      if ((paramView instanceof ViewGroup))
       {
-        if (paramArrayList2 == null) {
-          i = 0;
-        } else {
-          i = paramArrayList2.size();
-        }
-        while (j < i)
+        paramView = (ViewGroup)paramView;
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
         {
-          paramObject.addTarget((View)paramArrayList2.get(j));
-          j += 1;
-        }
-        i = paramArrayList1.size() - 1;
-        while (i >= 0)
-        {
-          paramObject.removeTarget((View)paramArrayList1.get(i));
-          i -= 1;
+          a(paramMap, paramView.getChildAt(i));
+          i += 1;
         }
       }
     }
   }
   
-  public final Object c(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    TransitionSet localTransitionSet = new TransitionSet();
-    localTransitionSet.addTransition((Transition)paramObject);
-    return localTransitionSet;
-  }
+  public abstract boolean a(Object paramObject);
   
-  public final void c(Object paramObject, View paramView)
-  {
-    if (paramObject != null) {
-      ((Transition)paramObject).removeTarget(paramView);
-    }
-  }
+  public abstract Object b(Object paramObject);
+  
+  public abstract Object b(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  public abstract void b(Object paramObject, View paramView);
+  
+  public abstract void b(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  public abstract Object c(Object paramObject);
+  
+  public abstract void c(Object paramObject, View paramView);
 }
 
 

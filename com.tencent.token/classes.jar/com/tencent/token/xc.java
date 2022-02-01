@@ -1,144 +1,122 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.global.RqdApplication;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.SectionIndexer;
+import android.widget.TextView;
+import com.tencent.token.ui.IndexActivity;
+import java.util.List;
 
 public final class xc
+  extends BaseAdapter
+  implements SectionIndexer
 {
-  public static int a()
+  public List<xd> a = null;
+  View.OnClickListener b;
+  private Context c;
+  
+  public xc(Context paramContext, List<xd> paramList, View.OnClickListener paramOnClickListener)
   {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
-    return 0;
+    this.c = paramContext;
+    this.a = paramList;
+    this.b = paramOnClickListener;
   }
   
-  public static void a(int paramInt, boolean paramBoolean)
+  public final int getCount()
   {
-    try
+    return this.a.size();
+  }
+  
+  public final Object getItem(int paramInt)
+  {
+    return this.a.get(paramInt);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getPositionForSection(int paramInt)
+  {
+    int i = 10;
+    while (i < getCount())
     {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
-      if (paramInt == 0) {
-        localEditor.putBoolean("scan_tip_next_show", paramBoolean);
-      } else {
-        localEditor.putBoolean("scan_tip_next_show_2", paramBoolean);
+      if (((xd)this.a.get(i)).b.toUpperCase().charAt(0) == paramInt) {
+        return i;
       }
-      localEditor.commit();
-      return;
+      i += 1;
     }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
+    return -1;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public final int getSectionForPosition(int paramInt)
   {
-    try
+    return ((xd)this.a.get(paramInt)).b.charAt(0);
+  }
+  
+  public final Object[] getSections()
+  {
+    return null;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (xd)this.a.get(paramInt);
+    if (paramView == null)
     {
-      Object localObject = RqdApplication.n();
-      boolean bool = false;
-      localObject = ((Context)localObject).getSharedPreferences("safe_conf_list", 0);
-      if (localObject != null) {
-        bool = true;
+      paramViewGroup = new a();
+      paramView = LayoutInflater.from(this.c).inflate(2131296421, null);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165767));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165276));
+      paramViewGroup.c = paramView.findViewById(2131165768);
+      paramView.setTag(paramViewGroup);
+    }
+    else
+    {
+      paramViewGroup = (a)paramView.getTag();
+    }
+    int i = getSectionForPosition(paramInt);
+    if ((paramInt > 9) && (paramInt == getPositionForSection(i)))
+    {
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(((xd)localObject).b);
+      localObject = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 13, 0, (int)IndexActivity.S_DENSITY * 13);
+      paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    else if (paramInt == 0)
+    {
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(this.c.getString(2131493299));
+      if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131493299))))
+      {
+        localObject = new RelativeLayout.LayoutParams(-1, -2);
+        ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 20, 0, (int)IndexActivity.S_DENSITY * 7);
+        paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      xb.a(bool);
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove("JSON_LIST");
-      if (paramString2 != null) {
-        ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
-      }
-      ((SharedPreferences.Editor)localObject).putInt("conf_type", 2);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
     }
-    catch (Exception paramString1)
+    else
     {
-      paramString2 = new StringBuilder("getSharedPreferences error=");
-      paramString2.append(paramString1.toString());
-      xb.c(paramString2.toString());
+      paramViewGroup.b.setVisibility(8);
     }
+    paramViewGroup.c.setOnClickListener(this.b);
+    paramViewGroup.c.setTag(Integer.valueOf(paramInt));
+    paramViewGroup.a.setText(((xd)this.a.get(paramInt)).a);
+    return paramView;
   }
   
-  public static void a(boolean paramBoolean)
+  static final class a
   {
-    try
-    {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("sp_name_global", 0).edit();
-      localEditor.putBoolean("utils_red_dot_show", paramBoolean);
-      localEditor.commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences("sp_name_global", 0);
-      if (paramInt == 0) {
-        return localSharedPreferences.getBoolean("scan_tip_next_show", true);
-      }
-      boolean bool = localSharedPreferences.getBoolean("scan_tip_next_show_2", true);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
-    return true;
-  }
-  
-  public static boolean b()
-  {
-    try
-    {
-      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean c()
-  {
-    try
-    {
-      boolean bool = RqdApplication.n().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xb.c(localStringBuilder.toString());
-    }
-    return false;
+    TextView a;
+    TextView b;
+    View c;
   }
 }
 

@@ -1,37 +1,20 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.halley.DownloaderConfig;
-
-public final class lw
+final class lw
+  implements Runnable
 {
-  private static boolean a = false;
-  
-  public static void a(DownloaderConfig paramDownloaderConfig)
+  public final void run()
   {
     try
     {
-      boolean bool = a;
-      if (bool) {
-        return;
-      }
-      Object localObject = lp.a();
-      if (localObject == null) {
-        return;
-      }
-      localObject = new StringBuilder("downloader init. config:");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getMassTaskNum());
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getEaseTaskNum());
-      li.b("DownloaderBaseInfo", ((StringBuilder)localObject).toString());
-      ky.a(paramDownloaderConfig.getMassTaskNum());
-      ky.b(paramDownloaderConfig.getEaseTaskNum());
-      ly.b();
-      lp.h().post(new lx());
-      a = true;
+      lc.a();
+      le.a();
       return;
     }
-    finally {}
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

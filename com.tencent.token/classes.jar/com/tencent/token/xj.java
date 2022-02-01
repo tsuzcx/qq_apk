@@ -1,10 +1,23 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public abstract interface xj
 {
-  public static final AtomicInteger a = new AtomicInteger(1);
+  public static abstract interface a {}
+  
+  public static final class b
+  {
+    public int a;
+    public long b;
+    public String c;
+    public int d;
+    public long e;
+    public long f;
+    public long g;
+    public boolean h;
+    public Runnable i;
+    public Object j;
+    public long k;
+  }
 }
 
 

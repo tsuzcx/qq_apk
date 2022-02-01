@@ -9,13 +9,13 @@ public final class jt
 {
   public long a = 0L;
   public int b = 0;
-  public String c = "";
+  public long c = 0L;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)

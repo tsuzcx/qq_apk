@@ -1,51 +1,140 @@
 package com.tencent.token;
 
-import android.util.SparseArray;
-import java.util.concurrent.ScheduledExecutorService;
+import android.content.Context;
+import android.os.Environment;
+import android.text.TextUtils;
+import java.io.File;
 
-public abstract class kx
+public final class kx
 {
-  private static kx a;
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
+  public static int d = 5;
+  public static boolean e = true;
+  public static int f = 50;
+  private static int g = 2;
+  private static int h = 3;
+  private static String i = ".temp";
+  private static volatile int j = 500;
+  private static int k = 20000;
   
-  public static kx a()
+  public static int a()
   {
-    try
-    {
-      if (a == null) {
-        a = new a();
-      }
-      kx localkx = a;
-      return localkx;
-    }
-    finally {}
+    return g;
   }
   
-  public abstract void a(Runnable paramRunnable);
-  
-  static final class a
-    extends kx
+  public static String a(String paramString)
   {
-    private ScheduledExecutorService a = null;
-    private boolean b = false;
-    
-    public a()
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".bdcfg");
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(int paramInt)
+  {
+    g = Math.min(Math.max(paramInt, 1), 4);
+  }
+  
+  public static int b()
+  {
+    return h;
+  }
+  
+  public static String b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
+  }
+  
+  public static void b(int paramInt)
+  {
+    h = Math.min(Math.max(paramInt, 1), 6);
+  }
+  
+  public static int c()
+  {
+    lc.e();
+    return 20000;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    return !lq.a(paramString);
+  }
+  
+  public static int d()
+  {
+    lc.e();
+    return 20000;
+  }
+  
+  public static int e()
+  {
+    int n = lc.e();
+    int m = 1048576;
+    switch (n)
     {
-      new SparseArray();
+    default: 
+      return 1048576;
+    case 3: 
+      m = 524288;
     }
-    
-    public final void a(Runnable paramRunnable)
+    return m;
+  }
+  
+  public static int f()
+  {
+    return 524288;
+  }
+  
+  public static String g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if ("mounted".equals(Environment.getExternalStorageState()))
     {
-      try
-      {
-        this.a.execute(paramRunnable);
-        return;
-      }
-      finally
-      {
-        paramRunnable = finally;
-        throw paramRunnable;
-      }
+      str = lq.e();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("/HalleyDownload");
+      str = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      str = "";
+    }
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = lo.a().getFilesDir().toString();
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
+  }
+  
+  public static int h()
+  {
+    return j;
+  }
+  
+  public static int i()
+  {
+    return 60000;
+  }
+  
+  public static int j()
+  {
+    return 20000;
+  }
+  
+  public static int k()
+  {
+    return k;
   }
 }
 

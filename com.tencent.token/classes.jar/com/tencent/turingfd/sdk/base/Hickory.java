@@ -1,8 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.aer;
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.aeq;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,28 +33,28 @@ public final class Hickory
     localHashMap.put("", "");
   }
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.dd = paramafl.a(this.dd, 0, true);
-    this.ed = paramafl.a(this.ed, 1, true);
-    this.version = paramafl.a(this.version, 2, true);
-    this.path = ((Map)paramafl.a(_c, 3, true));
-    this.gd = ((Map)paramafl.a(ad, 4, true));
-    this.hd = paramafl.a(this.hd, 5, true);
-    this.jd = ((Map)paramafl.a(bd, 6, false));
+    this.dd = paramafk.a(this.dd, 0, true);
+    this.ed = paramafk.a(this.ed, 1, true);
+    this.version = paramafk.a(this.version, 2, true);
+    this.path = ((Map)paramafk.a(_c, 3, true));
+    this.gd = ((Map)paramafk.a(ad, 4, true));
+    this.hd = paramafk.a(this.hd, 5, true);
+    this.jd = ((Map)paramafk.a(bd, 6, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.dd, 0);
-    paramafo.a((byte)this.ed, 1);
-    paramafo.a(this.version, 2);
-    paramafo.a(this.path, 3);
-    paramafo.a(this.gd, 4);
-    paramafo.a(this.hd, 5);
+    paramafn.a(this.dd, 0);
+    paramafn.a((byte)this.ed, 1);
+    paramafn.a(this.version, 2);
+    paramafn.a(this.path, 3);
+    paramafn.a(this.gd, 4);
+    paramafn.a(this.hd, 5);
     Map localMap = this.jd;
     if (localMap != null) {
-      paramafo.a(localMap, 6);
+      paramafn.a(localMap, 6);
     }
   }
   
@@ -82,7 +82,7 @@ public final class Hickory
       return false;
     }
     paramObject = (Hickory)paramObject;
-    return (aer.a(this.dd, paramObject.dd)) && (aer.a(this.ed, paramObject.ed)) && (aer.a(this.version, paramObject.version)) && (aer.a(this.path, paramObject.path)) && (aer.a(this.gd, paramObject.gd)) && (aer.a(this.hd, paramObject.hd)) && (aer.a(this.jd, paramObject.jd));
+    return (aeq.a(this.dd, paramObject.dd)) && (aeq.a(this.ed, paramObject.ed)) && (aeq.a(this.version, paramObject.version)) && (aeq.a(this.path, paramObject.path)) && (aeq.a(this.gd, paramObject.gd)) && (aeq.a(this.hd, paramObject.hd)) && (aeq.a(this.jd, paramObject.jd));
   }
   
   public final int hashCode()

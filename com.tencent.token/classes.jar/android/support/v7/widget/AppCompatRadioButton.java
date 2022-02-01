@@ -6,65 +6,65 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
-import com.tencent.token.fz;
-import com.tencent.token.gp.a;
-import com.tencent.token.gr;
-import com.tencent.token.ig;
-import com.tencent.token.im;
-import com.tencent.token.jc;
+import com.tencent.token.fy;
+import com.tencent.token.go.a;
+import com.tencent.token.gq;
+import com.tencent.token.if;
+import com.tencent.token.il;
+import com.tencent.token.jb;
 
 public class AppCompatRadioButton
   extends RadioButton
-  implements fz
+  implements fy
 {
-  private final ig a = new ig(this);
-  private final im b;
+  private final if a = new if(this);
+  private final il b;
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, gp.a.radioButtonStyle);
+    this(paramContext, paramAttributeSet, go.a.radioButtonStyle);
   }
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jc.a(paramContext), paramAttributeSet, paramInt);
+    super(jb.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
-    this.b = new im(this);
+    this.b = new il(this);
     this.b.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
-    ig localig = this.a;
+    if localif = this.a;
     int i = j;
-    if (localig != null) {
-      i = localig.a(j);
+    if (localif != null) {
+      i = localif.a(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    ig localig = this.a;
-    if (localig != null) {
-      return localig.a;
+    if localif = this.a;
+    if (localif != null) {
+      return localif.a;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    ig localig = this.a;
-    if (localig != null) {
-      return localig.b;
+    if localif = this.a;
+    if (localif != null) {
+      return localif.b;
     }
     return null;
   }
   
   public void setButtonDrawable(int paramInt)
   {
-    setButtonDrawable(gr.b(getContext(), paramInt));
+    setButtonDrawable(gq.b(getContext(), paramInt));
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
@@ -78,17 +78,17 @@ public class AppCompatRadioButton
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    ig localig = this.a;
-    if (localig != null) {
-      localig.a(paramColorStateList);
+    if localif = this.a;
+    if (localif != null) {
+      localif.a(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    ig localig = this.a;
-    if (localig != null) {
-      localig.a(paramMode);
+    if localif = this.a;
+    if (localif != null) {
+      localif.a(paramMode);
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.aer;
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.aeq;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class Kiwifruit
   extends break
@@ -13,21 +13,21 @@ public final class Kiwifruit
   public int ld = 0;
   public Hickory md = null;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.ld = paramafl.a(this.ld, 0, true);
-    this.md = ((Hickory)paramafl.a(kd, 1, false));
-    this.Jb = paramafl.a(this.Jb, 2, true);
+    this.ld = paramafk.a(this.ld, 0, true);
+    this.md = ((Hickory)paramafk.a(kd, 1, false));
+    this.Jb = paramafk.a(this.Jb, 2, true);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.ld, 0);
+    paramafn.a(this.ld, 0);
     Hickory localHickory = this.md;
     if (localHickory != null) {
-      paramafo.a(localHickory, 1);
+      paramafn.a(localHickory, 1);
     }
-    paramafo.a(this.Jb, 2);
+    paramafn.a(this.Jb, 2);
   }
   
   public final Object clone()
@@ -54,7 +54,7 @@ public final class Kiwifruit
       return false;
     }
     paramObject = (Kiwifruit)paramObject;
-    return (aer.a(this.ld, paramObject.ld)) && (aer.a(this.md, paramObject.md)) && (aer.a(this.Jb, paramObject.Jb));
+    return (aeq.a(this.ld, paramObject.ld)) && (aeq.a(this.md, paramObject.md)) && (aeq.a(this.Jb, paramObject.Jb));
   }
   
   public final int hashCode()

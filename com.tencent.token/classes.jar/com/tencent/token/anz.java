@@ -1,37 +1,42 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public final class anz
 {
-  public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT)
+  private static final char[] a = "0123456789abcdef".toCharArray();
+  
+  public static String a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
+    paramArrayOfByte = b(paramArrayOfByte);
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 3);
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    while (i < j)
     {
-      paramT.recyle();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("UTF-8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
+      int k = paramArrayOfByte[i] & 0xFF;
+      localStringBuilder.append(a[(k >> 4)]);
+      localStringBuilder.append(a[(k & 0xF)]);
+      i += 1;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      new StringBuilder("getJceStruct exception: ").append(paramArrayOfByte);
-    }
-    return null;
+    return localStringBuilder.toString().toUpperCase();
   }
   
-  public static byte[] a(JceStruct paramJceStruct)
+  private static byte[] b(byte[] paramArrayOfByte)
   {
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("UTF-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramArrayOfByte);
+      paramArrayOfByte = localMessageDigest.digest();
+      return paramArrayOfByte;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
 }
 

@@ -1,15 +1,47 @@
 package com.tencent.token;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.concurrent.Callable;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface tm
+public class tm
 {
-  Class<? extends tk> a();
+  public static wy a(aaq paramaaq, String paramString)
+  {
+    new wy();
+    try
+    {
+      rz.a();
+      ru.a.a();
+      wy localwy = ru.a();
+      Object localObject = localwy;
+      if (localwy.b())
+      {
+        paramString = tg.a(paramString);
+        if (paramString != null)
+        {
+          paramaaq = paramString.c(paramaaq);
+          localObject = paramaaq;
+          if (paramaaq.b())
+          {
+            rz.a();
+            sz.a().g();
+            localObject = paramaaq;
+          }
+        }
+        else
+        {
+          localwy.a(10000, null, null);
+          localObject = localwy;
+        }
+      }
+      return localObject;
+    }
+    finally {}
+  }
+  
+  public static Callable<wy> a(aaq paramaaq)
+  {
+    new Callable() {};
+  }
 }
 
 

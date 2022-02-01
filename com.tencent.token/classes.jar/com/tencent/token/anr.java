@@ -1,318 +1,225 @@
 package com.tencent.token;
 
-import android.app.AppOpsManager;
-import android.app.NotificationManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.os.Process;
-import android.provider.Settings;
-import android.provider.Settings.Secure;
-import android.provider.Settings.System;
-import android.telecom.TelecomManager;
-import android.text.TextUtils;
-import java.lang.reflect.Field;
+import android.os.IBinder;
 import java.lang.reflect.Method;
 
-public class anr
-  implements arw
+public final class anr
+  extends anq
 {
-  protected Context a;
-  protected AppOpsManager b;
-  protected Method c;
-  protected int d;
-  protected int e;
+  private IBinder f;
   
   public anr(Context paramContext)
   {
+    super(paramContext);
     if (Build.VERSION.SDK_INT < 19) {
       return;
     }
-    this.a = paramContext;
-    this.b = ((AppOpsManager)paramContext.getSystemService("appops"));
     try
     {
-      this.c = AppOpsManager.class.getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-      paramContext = AppOpsManager.class.getField("MODE_ALLOWED");
-      Field localField = AppOpsManager.class.getField("MODE_DEFAULT");
-      paramContext.setAccessible(true);
-      localField.setAccessible(true);
-      this.d = paramContext.getInt(AppOpsManager.class);
-      this.e = localField.getInt(AppOpsManager.class);
+      this.f = ((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "com.huawei.permissionmanager.service.holdservice" }));
       return;
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    catch (Throwable paramContext) {}
   }
   
-  private int a()
+  /* Error */
+  private int b(int paramInt)
   {
-    if (a("OP_SYSTEM_ALERT_WINDOW", "android.permission.SYSTEM_ALERT_WINDOW") == -1) {
-      return -1;
-    }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    try
-    {
-      boolean bool = Settings.canDrawOverlays(this.a);
-      if (!bool) {
-        return -1;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label36:
-      break label36;
-    }
-    return 0;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 48	com/tencent/token/anr:f	Landroid/os/IBinder;
+    //   4: astore_3
+    //   5: iconst_0
+    //   6: istore_2
+    //   7: aload_3
+    //   8: ifnonnull +5 -> 13
+    //   11: iconst_0
+    //   12: ireturn
+    //   13: invokestatic 57	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   16: astore_3
+    //   17: invokestatic 57	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   20: astore 4
+    //   22: aload_3
+    //   23: ldc 59
+    //   25: invokevirtual 63	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   28: aload_3
+    //   29: invokestatic 69	android/os/Process:myUid	()I
+    //   32: invokevirtual 73	android/os/Parcel:writeInt	(I)V
+    //   35: aload_3
+    //   36: invokestatic 76	android/os/Process:myPid	()I
+    //   39: invokevirtual 73	android/os/Parcel:writeInt	(I)V
+    //   42: aload_3
+    //   43: iload_1
+    //   44: invokevirtual 73	android/os/Parcel:writeInt	(I)V
+    //   47: aload_3
+    //   48: aconst_null
+    //   49: invokevirtual 79	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   52: aload_0
+    //   53: getfield 48	com/tencent/token/anr:f	Landroid/os/IBinder;
+    //   56: bipush 7
+    //   58: aload_3
+    //   59: aload 4
+    //   61: iconst_0
+    //   62: invokeinterface 83 5 0
+    //   67: pop
+    //   68: aload 4
+    //   70: invokevirtual 87	android/os/Parcel:readException	()V
+    //   73: aload 4
+    //   75: invokevirtual 90	android/os/Parcel:readInt	()I
+    //   78: istore_1
+    //   79: iload_1
+    //   80: tableswitch	default:+24 -> 104, 2:+34->114, 3:+29->109
+    //   105: istore_1
+    //   106: goto +27 -> 133
+    //   109: iconst_1
+    //   110: istore_1
+    //   111: goto +22 -> 133
+    //   114: iconst_m1
+    //   115: istore_1
+    //   116: goto +17 -> 133
+    //   119: astore 5
+    //   121: aload_3
+    //   122: invokevirtual 93	android/os/Parcel:recycle	()V
+    //   125: aload 4
+    //   127: invokevirtual 93	android/os/Parcel:recycle	()V
+    //   130: aload 5
+    //   132: athrow
+    //   133: aload_3
+    //   134: invokevirtual 93	android/os/Parcel:recycle	()V
+    //   137: aload 4
+    //   139: invokevirtual 93	android/os/Parcel:recycle	()V
+    //   142: iload_1
+    //   143: ireturn
+    //   144: astore 5
+    //   146: iload_2
+    //   147: istore_1
+    //   148: goto -15 -> 133
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	151	0	this	anr
+    //   0	151	1	paramInt	int
+    //   6	141	2	i	int
+    //   4	130	3	localObject1	Object
+    //   20	118	4	localParcel	android.os.Parcel
+    //   119	12	5	localObject2	Object
+    //   144	1	5	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   22	79	119	finally
+    //   22	79	144	java/lang/Throwable
   }
   
-  private int a(String paramString)
+  public final int a(int paramInt)
   {
-    Context localContext;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      localContext = this.a;
-      if (localContext == null) {
-        return 0;
-      }
-    }
-    try
-    {
-      int i = localContext.checkCallingOrSelfPermission(paramString);
-      return i;
-    }
-    catch (Throwable paramString) {}
-    return 0;
-    return 0;
-  }
-  
-  private int a(String paramString1, String paramString2)
-  {
-    if ((this.a != null) && (this.b != null))
-    {
-      if (this.c == null) {
-        return 0;
-      }
-      try
-      {
-        paramString1 = AppOpsManager.class.getField(paramString1);
-        if (paramString1 != null)
-        {
-          paramString1.setAccessible(true);
-          int i = paramString1.getInt(AppOpsManager.class);
-          i = ((Integer)this.c.invoke(this.b, new Object[] { Integer.valueOf(i), Integer.valueOf(Process.myUid()), this.a.getPackageName() })).intValue();
-          if ((i == this.e) && (!TextUtils.isEmpty(paramString2))) {
-            return this.a.checkCallingOrSelfPermission(paramString2);
-          }
-          int j = this.d;
-          if (i != j) {
-            return -1;
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-    return 0;
-  }
-  
-  private int b()
-  {
-    if (a("OP_POST_NOTIFICATION", "") == -1) {
-      return -1;
-    }
-    NotificationManager localNotificationManager;
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      localNotificationManager = (NotificationManager)this.a.getSystemService("notification");
-      if (localNotificationManager == null) {}
-    }
-    try
-    {
-      boolean bool = localNotificationManager.areNotificationsEnabled();
-      if (!bool) {
-        return -1;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      label50:
-      break label50;
-    }
-    return 0;
-  }
-  
-  private int c()
-  {
-    String str = this.a.getPackageName();
-    try
-    {
-      Object localObject = Settings.Secure.getString(this.a.getContentResolver(), "enabled_notification_listeners");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split(":");
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          ComponentName localComponentName = ComponentName.unflattenFromString(localObject[i]);
-          if (localComponentName != null)
-          {
-            boolean bool = TextUtils.equals(str, localComponentName.getPackageName());
-            if (bool) {
-              return 0;
-            }
-          }
-          i += 1;
-        }
-      }
-      return -1;
-    }
-    catch (Throwable localThrowable) {}
-    return 0;
-  }
-  
-  private int d()
-  {
-    if (Build.VERSION.SDK_INT < 21) {
+    int j = Build.VERSION.SDK_INT;
+    int i = 0;
+    if (j < 19) {
       return 0;
     }
-    try
-    {
-      int i = Settings.Secure.getInt(this.a.getContentResolver(), "location_mode");
-      if (i != 0) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (i != 0) {
-        return 0;
-      }
-      return -1;
-    }
-    catch (Exception localException) {}
-    return -1;
-  }
-  
-  public int a(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return 0;
-    }
-    Object localObject;
     switch (paramInt)
     {
-    case 7: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
     case 15: 
     case 17: 
-    case 18: 
     case 19: 
-    case 20: 
-    case 42: 
-    case 44: 
-    case 48: 
+    case 25: 
+    case 31: 
+    case 33: 
     default: 
-      return 0;
-    case 49: 
-      return d();
-    case 47: 
-      return 2;
-    case 46: 
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        localObject = this.a;
-        if (localObject == null) {
-          return 0;
-        }
-        String str = ((Context)localObject).getPackageName();
-        localObject = (TelecomManager)this.a.getSystemService("telecom");
-        if (localObject != null) {
-          localObject = ((TelecomManager)localObject).getDefaultDialerPackage();
-        } else {
-          localObject = "";
-        }
-        StringBuilder localStringBuilder = new StringBuilder("packageName:");
-        localStringBuilder.append(str);
-        localStringBuilder.append(", dialerPkg:");
-        localStringBuilder.append((String)localObject);
-        if ((!TextUtils.isEmpty(str)) && (!str.equals(localObject))) {
-          return -1;
-        }
-      }
-      return 0;
-    case 45: 
-      return a("OP_GET_USAGE_STATS", "android.permission.PACKAGE_USAGE_STATS");
-    case 38: 
-    case 39: 
-    case 40: 
-    case 41: 
-    case 43: 
-      return 2;
-    case 37: 
-      localObject = anq.a;
-      if (localObject != null) {
-        return ((arw)localObject).a(37);
-      }
-      return 2;
-    case 36: 
-      return 2;
+      break;
     case 35: 
-      localObject = "android.permission.BLUETOOTH";
+      if (Build.VERSION.SDK_INT > 23) {
+        break label316;
+      }
+      i = 8388608;
+      break;
+    case 34: 
+      if (Build.VERSION.SDK_INT > 23) {
+        break label316;
+      }
+      i = 2097152;
+      break;
+    case 32: 
+      return 0;
+    case 30: 
+      i = 128;
+      break;
+    case 29: 
+      i = 1024;
+      break;
+    case 27: 
+    case 28: 
+      i = 2048;
+      break;
+    case 26: 
+      i = 16777216;
+      break;
+    case 24: 
+      if (Build.VERSION.SDK_INT > 23) {
+        break label316;
+      }
+      i = 8;
+      break;
+    case 23: 
+      i = 131072;
+      break;
+    case 22: 
+      i = 16384;
+      break;
+    case 21: 
+      i = 1;
+      break;
+    case 20: 
+      i = 8192;
+      break;
+    case 16: 
+      i = 32;
+      break;
+    case 14: 
+    case 18: 
+      i = 4;
+      break;
+    case 13: 
+      i = 262144;
+      break;
+    case 12: 
+      i = 32768;
+      break;
+    case 11: 
+      i = 2;
+      break;
+    case 10: 
+      i = 64;
+      break;
+    case 7: 
+      i = 33554432;
+      break;
+    case 1: 
+      i = 16;
     }
-    for (;;)
+    i = b(i);
+    switch (i)
     {
-      return a((String)localObject);
-      localObject = "android.permission.CHANGE_WIFI_STATE";
-      continue;
-      localObject = "android.permission.CHANGE_NETWORK_STATE";
-      continue;
-      localObject = "android.permission.GET_ACCOUNTS";
-      continue;
-      if ((Build.VERSION.SDK_INT >= 23) && (!Settings.System.canWrite(this.a))) {
+    default: 
+      return i;
+    case 1: 
+      if (super.a(paramInt) == -1) {
         return -1;
       }
-      return 0;
-      localObject = "android.permission.RECORD_AUDIO";
-      continue;
-      localObject = "android.permission.CAMERA";
-      continue;
-      localObject = "android.permission.WRITE_CALENDAR";
-      continue;
-      localObject = "android.permission.READ_CALENDAR";
-      continue;
-      localObject = "com.android.launcher.permission.INSTALL_SHORTCUT";
-      continue;
-      return c();
-      localObject = "android.permission.ACCESS_FINE_LOCATION";
-      continue;
-      localObject = "android.permission.WRITE_CONTACTS";
-      continue;
-      localObject = "android.permission.READ_CONTACTS";
-      continue;
-      localObject = "android.permission.SEND_SMS";
-      continue;
-      localObject = "android.permission.READ_SMS";
-      continue;
-      localObject = "android.permission.WRITE_CALL_LOG";
-      continue;
-      localObject = "android.permission.READ_CALL_LOG";
-      continue;
-      localObject = "android.permission.CALL_PHONE";
-      continue;
-      localObject = "android.permission.PROCESS_OUTGOING_CALLS";
-      continue;
-      return b();
-      return a("OP_GET_USAGE_STATS", "android.permission.PACKAGE_USAGE_STATS");
-      return a();
-      return 2;
-      localObject = "android.permission.WRITE_EXTERNAL_STORAGE";
-      continue;
-      localObject = "android.permission.READ_PHONE_STATE";
+      break;
+    case 0: 
+      label316:
+      i = super.a(paramInt);
     }
+    return i;
   }
 }
 

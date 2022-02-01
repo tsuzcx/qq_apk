@@ -1,181 +1,116 @@
 package com.tencent.token;
 
-public final class ea<E>
-  implements Cloneable
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class ea<K, V>
 {
-  public static final Object a = new Object();
-  public boolean b = false;
-  public long[] c;
-  public Object[] d;
-  public int e;
+  private final LinkedHashMap<K, V> a;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  public ea()
+  public ea(int paramInt)
   {
-    this((byte)0);
-  }
-  
-  private ea(byte paramByte)
-  {
-    paramByte = dx.b(10);
-    this.c = new long[paramByte];
-    this.d = new Object[paramByte];
-    this.e = 0;
-  }
-  
-  private long a(int paramInt)
-  {
-    if (this.b) {
-      b();
+    if (paramInt > 0)
+    {
+      this.c = paramInt;
+      this.a = new LinkedHashMap(0, 0.75F, true);
+      return;
     }
-    return this.c[paramInt];
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
-  private ea<E> a()
+  private void a(int paramInt)
   {
     for (;;)
     {
       try
       {
-        localea = (ea)super.clone();
+        if ((this.b >= 0) && ((!this.a.isEmpty()) || (this.b == 0)))
+        {
+          if ((this.b > paramInt) && (!this.a.isEmpty()))
+          {
+            localObject1 = (Map.Entry)this.a.entrySet().iterator().next();
+            Object localObject3 = ((Map.Entry)localObject1).getKey();
+            ((Map.Entry)localObject1).getValue();
+            this.a.remove(localObject3);
+            this.b -= 1;
+            this.e += 1;
+            continue;
+          }
+          return;
+        }
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getClass().getName());
+        ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
+        throw new IllegalStateException(((StringBuilder)localObject1).toString());
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException1)
-      {
-        ea localea;
-        continue;
-        return localCloneNotSupportedException1;
-      }
+      finally {}
+    }
+  }
+  
+  public final V a(K paramK)
+  {
+    if (paramK != null) {
       try
       {
-        localea.c = ((long[])this.c.clone());
-        localea.d = ((Object[])this.d.clone());
-        return localea;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-    }
-    return null;
-  }
-  
-  private E b(int paramInt)
-  {
-    if (this.b) {
-      b();
-    }
-    return this.d[paramInt];
-  }
-  
-  private void b()
-  {
-    int m = this.e;
-    long[] arrayOfLong = this.c;
-    Object[] arrayOfObject = this.d;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      Object localObject = arrayOfObject[i];
-      k = j;
-      if (localObject != a)
-      {
-        if (i != j)
+        paramK = this.a.get(paramK);
+        if (paramK != null)
         {
-          arrayOfLong[j] = arrayOfLong[i];
-          arrayOfObject[j] = localObject;
-          arrayOfObject[i] = null;
+          this.f += 1;
+          return paramK;
         }
-        k = j + 1;
+        this.g += 1;
+        return null;
       }
-      i += 1;
+      finally {}
     }
-    this.b = false;
-    this.e = j;
+    throw new NullPointerException("key == null");
   }
   
-  public final void a(long paramLong, E paramE)
+  public final V a(K paramK, V paramV)
   {
-    int i = dx.a(this.c, this.e, paramLong);
-    if (i >= 0)
-    {
-      this.d[i] = paramE;
-      return;
-    }
-    int j = i ^ 0xFFFFFFFF;
-    Object localObject1;
-    if (j < this.e)
-    {
-      localObject1 = this.d;
-      if (localObject1[j] == a)
+    if ((paramK != null) && (paramV != null)) {
+      try
       {
-        this.c[j] = paramLong;
-        localObject1[j] = paramE;
-        return;
+        this.d += 1;
+        this.b += 1;
+        paramK = this.a.put(paramK, paramV);
+        if (paramK != null) {
+          this.b -= 1;
+        }
+        a(this.c);
+        return paramK;
       }
+      finally {}
     }
-    i = j;
-    if (this.b)
-    {
-      i = j;
-      if (this.e >= this.c.length)
-      {
-        b();
-        i = dx.a(this.c, this.e, paramLong) ^ 0xFFFFFFFF;
-      }
-    }
-    j = this.e;
-    if (j >= this.c.length)
-    {
-      j = dx.b(j + 1);
-      localObject1 = new long[j];
-      Object[] arrayOfObject = new Object[j];
-      Object localObject2 = this.c;
-      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
-      localObject2 = this.d;
-      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
-      this.c = ((long[])localObject1);
-      this.d = arrayOfObject;
-    }
-    j = this.e;
-    if (j - i != 0)
-    {
-      localObject1 = this.c;
-      int k = i + 1;
-      System.arraycopy(localObject1, i, localObject1, k, j - i);
-      localObject1 = this.d;
-      System.arraycopy(localObject1, i, localObject1, k, this.e - i);
-    }
-    this.c[i] = paramLong;
-    this.d[i] = paramE;
-    this.e += 1;
+    throw new NullPointerException("key == null || value == null");
   }
   
   public final String toString()
   {
-    if (this.b) {
-      b();
-    }
-    int i = this.e;
-    if (i <= 0) {
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(i * 28);
-    localStringBuilder.append('{');
-    i = 0;
-    while (i < this.e)
+    for (;;)
     {
-      if (i > 0) {
-        localStringBuilder.append(", ");
+      try
+      {
+        i = this.f + this.g;
+        if (i != 0)
+        {
+          i = this.f * 100 / i;
+          String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.c), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
+          return str;
+        }
       }
-      localStringBuilder.append(a(i));
-      localStringBuilder.append('=');
-      Object localObject = b(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
-      } else {
-        localStringBuilder.append("(this Map)");
-      }
-      i += 1;
+      finally {}
+      int i = 0;
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
   }
 }
 

@@ -1,18 +1,20 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-
 final class aqb
 {
-  public agy a = null;
-  public JceStruct b;
+  public int a;
+  public ai b = null;
   public int c = 0;
+  public boolean d = false;
+  public agy e = null;
+  public long f = -1L;
   
-  public aqb(int paramInt, agy paramagy, JceStruct paramJceStruct)
+  public aqb(ai paramai, int paramInt, boolean paramBoolean, agy paramagy)
   {
-    this.a = paramagy;
-    this.b = paramJceStruct;
     this.c = paramInt;
+    this.b = paramai;
+    this.d = paramBoolean;
+    this.e = paramagy;
   }
 }
 

@@ -1,31 +1,68 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.view.Window.Callback;
 
 public abstract interface ip
 {
+  public abstract ViewGroup a();
+  
+  public abstract ez a(int paramInt, long paramLong);
+  
   public abstract void a(int paramInt);
   
-  public abstract void a(Menu paramMenu, ht.a parama);
+  public abstract void a(Drawable paramDrawable);
   
-  public abstract boolean b();
+  public abstract void a(Menu paramMenu, hs.a parama);
+  
+  public abstract void a(Window.Callback paramCallback);
+  
+  public abstract void a(hs.a parama, hl.a parama1);
+  
+  public abstract void a(iy paramiy);
+  
+  public abstract void a(CharSequence paramCharSequence);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract Context b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
   
   public abstract boolean c();
   
-  public abstract boolean d();
+  public abstract void d();
   
-  public abstract boolean e();
+  public abstract void d(int paramInt);
+  
+  public abstract CharSequence e();
+  
+  public abstract void e(int paramInt);
   
   public abstract boolean f();
   
-  public abstract void g();
+  public abstract boolean g();
   
-  public abstract void h();
+  public abstract boolean h();
   
-  public abstract void setWindowCallback(Window.Callback paramCallback);
+  public abstract boolean i();
   
-  public abstract void setWindowTitle(CharSequence paramCharSequence);
+  public abstract boolean j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract int m();
+  
+  public abstract int n();
+  
+  public abstract Menu o();
 }
 
 

@@ -25,20 +25,20 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qbar.QbarNative;
+import com.tencent.token.aac;
 import com.tencent.token.aad;
-import com.tencent.token.aae;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.qz;
-import com.tencent.token.ru;
-import com.tencent.token.rw;
-import com.tencent.token.rz;
-import com.tencent.token.sb;
-import com.tencent.token.sb.28;
+import com.tencent.token.qy;
+import com.tencent.token.rt;
+import com.tencent.token.rv;
+import com.tencent.token.ry;
+import com.tencent.token.sa;
+import com.tencent.token.sa.28;
 import com.tencent.token.ui.GetBarcodeVerifyMsgActivity;
 import com.tencent.token.ui.GetOtherBarcodeActivity;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.ScanLoginAccountListActivity;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import gameloginsdk.GameLogin;
 import java.io.File;
 import java.io.IOException;
@@ -146,7 +146,7 @@ public class MainActivity
         localBundle.putString("url_txt", str);
         paramAnonymousMessage.putExtra("com.tencent.input_param", localBundle);
         MainActivity.this.startActivityForResult(paramAnonymousMessage, 1);
-        ru.a().a(System.currentTimeMillis(), 10);
+        rt.a().a(System.currentTimeMillis(), 10);
         MainActivity.this.finish();
         return;
       }
@@ -173,7 +173,7 @@ public class MainActivity
     }
     paramCollection = null;
     label45:
-    xb.b("resolution Settable value: ".concat(String.valueOf(paramCollection)));
+    xa.b("resolution Settable value: ".concat(String.valueOf(paramCollection)));
     return paramCollection;
   }
   
@@ -197,7 +197,7 @@ public class MainActivity
       StringBuilder localStringBuilder = new StringBuilder("scan string: ");
       i += 1;
       localStringBuilder.append(paramString.substring(i));
-      xb.a(localStringBuilder.toString());
+      xa.a(localStringBuilder.toString());
       return paramString.substring(i);
     }
     return null;
@@ -271,7 +271,7 @@ public class MainActivity
       localException.printStackTrace();
       localStringBuilder = new StringBuilder("camera auto focus ");
       localStringBuilder.append(localException.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       finishActivity();
       return;
     }
@@ -280,7 +280,7 @@ public class MainActivity
       localRuntimeException.printStackTrace();
       StringBuilder localStringBuilder = new StringBuilder("camera auto focus ");
       localStringBuilder.append(localRuntimeException.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       finishActivity();
     }
   }
@@ -312,7 +312,7 @@ public class MainActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    aae.a(true);
+    aad.a(true);
     requestWindowFeature(1);
     if (getIntent() != null) {
       this.mSource = getIntent().getIntExtra("source_from", 0);
@@ -328,7 +328,7 @@ public class MainActivity
       public void onClick(View paramAnonymousView)
       {
         paramAnonymousView = MainActivity.this;
-        aad.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
+        aac.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
       }
     });
     findViewById(2131165291).setOnClickListener(new View.OnClickListener()
@@ -381,26 +381,26 @@ public class MainActivity
   {
     this.mBarcodeResult = paramBundle.getString("dataInfo");
     paramBundle = paramBundle.getString("dataInfo");
-    Object localObject1 = rz.a(getApplicationContext());
+    Object localObject1 = ry.a(getApplicationContext());
     Object localObject2;
-    if (((rz)localObject1).a.IsWtLoginUrl(paramBundle))
+    if (((ry)localObject1).a.IsWtLoginUrl(paramBundle))
     {
-      ((rz)localObject1).d = paramBundle;
+      ((ry)localObject1).d = paramBundle;
       localObject2 = new Intent(this, ScanLoginAccountListActivity.class);
       int i = paramBundle.indexOf("?k=") + 3;
       paramBundle = paramBundle.substring(i, i + 32);
-      ((Intent)localObject2).putExtra("scancode", aad.a(paramBundle.getBytes(), paramBundle.length()));
+      ((Intent)localObject2).putExtra("scancode", aac.a(paramBundle.getBytes(), paramBundle.length()));
       startActivityForResult((Intent)localObject2, 1);
     }
     try
     {
-      paramBundle = rw.a(RqdApplication.n());
-      long l = ((rz)localObject1).a();
-      if (rw.h)
+      paramBundle = rv.a(RqdApplication.n());
+      long l = ((ry)localObject1).a();
+      if (rv.h)
       {
         paramBundle.b = false;
         paramBundle.c = false;
-        xb.a("game login get flow type appid=".concat(String.valueOf(l)));
+        xa.a("game login get flow type appid=".concat(String.valueOf(l)));
         paramBundle.a.sendGetFlowType(l);
       }
       label157:
@@ -412,9 +412,9 @@ public class MainActivity
         localObject1 = (ImageView)findViewById(2131165827);
         ((ImageView)localObject1).setImageResource(2131099938);
         ((AnimationDrawable)((ImageView)localObject1).getDrawable()).start();
-        localObject1 = sb.a();
+        localObject1 = sa.a();
         localObject2 = this.uiHandler;
-        qz.a().b(paramBundle, new sb.28((sb)localObject1, (Handler)localObject2));
+        qy.a().b(paramBundle, new sa.28((sa)localObject1, (Handler)localObject2));
         return;
       }
       paramBundle = new Intent(this, GetBarcodeVerifyMsgActivity.class);
@@ -449,7 +449,7 @@ public class MainActivity
       localStringBuilder.append(this.preWidth);
       localStringBuilder.append(", height=");
       localStringBuilder.append(paramInt3);
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       paramInt1 = 1;
       while (paramInt1 < ((List)localObject).size())
       {
@@ -510,7 +510,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("camera set parameter ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       catch (RuntimeException paramSurfaceHolder)
@@ -518,7 +518,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("camera set parameter ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       catch (IOException paramSurfaceHolder)
@@ -526,7 +526,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("camera set parameter ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       catch (UnsatisfiedLinkError paramSurfaceHolder)
@@ -534,7 +534,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("qbar init ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       catch (ExceptionInInitializerError paramSurfaceHolder)
@@ -542,7 +542,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("qbar init ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       double d1 = this.preHeight;
@@ -560,7 +560,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("camera start preview ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       catch (RuntimeException paramSurfaceHolder)
@@ -568,7 +568,7 @@ public class MainActivity
         paramSurfaceHolder.printStackTrace();
         localObject = new StringBuilder("camera start preview ");
         ((StringBuilder)localObject).append(paramSurfaceHolder.toString());
-        xb.c(((StringBuilder)localObject).toString());
+        xa.c(((StringBuilder)localObject).toString());
         finishActivity();
       }
       focusStart();
@@ -580,7 +580,7 @@ public class MainActivity
       paramSurfaceHolder.printStackTrace();
       paramSurfaceHolder = new StringBuilder("Camera getParameters failed");
       paramSurfaceHolder.append(this.camera);
-      xb.c(paramSurfaceHolder.toString());
+      xa.c(paramSurfaceHolder.toString());
     }
   }
   
@@ -600,10 +600,10 @@ public class MainActivity
       paramSurfaceHolder.printStackTrace();
       localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       finishActivity();
       return;
     }
@@ -613,10 +613,10 @@ public class MainActivity
       paramSurfaceHolder.printStackTrace();
       localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       finishActivity();
       return;
     }
@@ -626,10 +626,10 @@ public class MainActivity
       paramSurfaceHolder.printStackTrace();
       StringBuilder localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder("Unexpected error initializing camera");
       localStringBuilder.append(paramSurfaceHolder.toString());
-      xb.c(localStringBuilder.toString());
+      xa.c(localStringBuilder.toString());
       finishActivity();
     }
   }

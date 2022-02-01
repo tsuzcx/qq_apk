@@ -1,107 +1,132 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.AssetManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
+import android.support.v7.widget.ActionBarContextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
 public final class gz
-  extends ContextWrapper
+  extends gw
+  implements hl.a
 {
-  public int a;
-  private Resources.Theme b;
-  private LayoutInflater c;
-  private Configuration d;
-  private Resources e;
+  private Context a;
+  private ActionBarContextView b;
+  private gw.a e;
+  private WeakReference<View> f;
+  private boolean g;
+  private boolean h;
+  private hl i;
   
-  public gz()
+  public gz(Context paramContext, ActionBarContextView paramActionBarContextView, gw.a parama, boolean paramBoolean)
   {
-    super(null);
+    this.a = paramContext;
+    this.b = paramActionBarContextView;
+    this.e = parama;
+    paramContext = new hl(paramActionBarContextView.getContext());
+    paramContext.e = 1;
+    this.i = paramContext;
+    this.i.a(this);
+    this.h = paramBoolean;
   }
   
-  public gz(Context paramContext, int paramInt)
+  public final MenuInflater a()
   {
-    super(paramContext);
-    this.a = paramInt;
+    return new hb(this.b.getContext());
   }
   
-  private void a()
+  public final void a(int paramInt)
   {
-    int i;
-    if (this.b == null) {
-      i = 1;
+    b(this.a.getString(paramInt));
+  }
+  
+  public final void a(View paramView)
+  {
+    this.b.setCustomView(paramView);
+    if (paramView != null) {
+      paramView = new WeakReference(paramView);
     } else {
-      i = 0;
+      paramView = null;
     }
-    if (i != 0)
-    {
-      this.b = getResources().newTheme();
-      Resources.Theme localTheme = getBaseContext().getTheme();
-      if (localTheme != null) {
-        this.b.setTo(localTheme);
-      }
-    }
-    this.b.applyStyle(this.a, true);
+    this.f = paramView;
   }
   
-  protected final void attachBaseContext(Context paramContext)
+  public final void a(hl paramhl)
   {
-    super.attachBaseContext(paramContext);
+    d();
+    this.b.a();
   }
   
-  public final AssetManager getAssets()
+  public final void a(CharSequence paramCharSequence)
   {
-    return getResources().getAssets();
+    this.b.setSubtitle(paramCharSequence);
   }
   
-  public final Resources getResources()
+  public final void a(boolean paramBoolean)
   {
-    if (this.e == null) {
-      if (this.d == null) {
-        this.e = super.getResources();
-      } else if (Build.VERSION.SDK_INT >= 17) {
-        this.e = createConfigurationContext(this.d).getResources();
-      }
-    }
-    return this.e;
+    super.a(paramBoolean);
+    this.b.setTitleOptional(paramBoolean);
   }
   
-  public final Object getSystemService(String paramString)
+  public final boolean a(hl paramhl, MenuItem paramMenuItem)
   {
-    if ("layout_inflater".equals(paramString))
-    {
-      if (this.c == null) {
-        this.c = LayoutInflater.from(getBaseContext()).cloneInContext(this);
-      }
-      return this.c;
-    }
-    return getBaseContext().getSystemService(paramString);
+    return this.e.a(this, paramMenuItem);
   }
   
-  public final Resources.Theme getTheme()
+  public final Menu b()
   {
-    Resources.Theme localTheme = this.b;
-    if (localTheme != null) {
-      return localTheme;
-    }
-    if (this.a == 0) {
-      this.a = gp.i.Theme_AppCompat_Light;
-    }
-    a();
-    return this.b;
+    return this.i;
   }
   
-  public final void setTheme(int paramInt)
+  public final void b(int paramInt)
   {
-    if (this.a != paramInt)
-    {
-      this.a = paramInt;
-      a();
+    a(this.a.getString(paramInt));
+  }
+  
+  public final void b(CharSequence paramCharSequence)
+  {
+    this.b.setTitle(paramCharSequence);
+  }
+  
+  public final void c()
+  {
+    if (this.g) {
+      return;
     }
+    this.g = true;
+    this.b.sendAccessibilityEvent(32);
+    this.e.a(this);
+  }
+  
+  public final void d()
+  {
+    this.e.b(this, this.i);
+  }
+  
+  public final CharSequence f()
+  {
+    return this.b.getTitle();
+  }
+  
+  public final CharSequence g()
+  {
+    return this.b.getSubtitle();
+  }
+  
+  public final boolean h()
+  {
+    return this.b.g;
+  }
+  
+  public final View i()
+  {
+    WeakReference localWeakReference = this.f;
+    if (localWeakReference != null) {
+      return (View)localWeakReference.get();
+    }
+    return null;
   }
 }
 

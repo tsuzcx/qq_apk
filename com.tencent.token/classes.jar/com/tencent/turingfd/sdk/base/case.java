@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 
 public final class case
   extends break
@@ -24,45 +24,45 @@ public final class case
     arrayOfByte[0] = 0;
   }
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.Za = paramafl.a(this.Za, 0, true);
-    this._a = paramafl.a(this._a, 1, false);
-    this.ab = paramafl.a(this.ab, 2, false);
-    this.cb = paramafl.a(this.cb, 3, false);
-    this.db = paramafl.a(this.db, 4, false);
-    this.data = paramafl.b(5, false);
-    this.eb = ((byte)paramafl.a(Ya, 6, false));
-    this.fb = paramafl.a(this.fb, 7, false);
+    this.Za = paramafk.a(this.Za, 0, true);
+    this._a = paramafk.a(this._a, 1, false);
+    this.ab = paramafk.a(this.ab, 2, false);
+    this.cb = paramafk.a(this.cb, 3, false);
+    this.db = paramafk.a(this.db, 4, false);
+    this.data = paramafk.b(5, false);
+    this.eb = ((byte)paramafk.a(Ya, 6, false));
+    this.fb = paramafk.a(this.fb, 7, false);
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.Za, 0);
+    paramafn.a(this.Za, 0);
     int i = this._a;
     if (i != 0) {
-      paramafo.a(i, 1);
+      paramafn.a(i, 1);
     }
     i = this.ab;
     if (i != 0) {
-      paramafo.a(i, 2);
+      paramafn.a(i, 2);
     }
-    paramafo.a(this.cb, 3);
+    paramafn.a(this.cb, 3);
     i = this.db;
     if (i != 0) {
-      paramafo.a(i, 4);
+      paramafn.a(i, 4);
     }
     Object localObject = this.data;
     if (localObject != null) {
-      paramafo.a((byte[])localObject, 5);
+      paramafn.a((byte[])localObject, 5);
     }
     localObject = this.eb;
     if (localObject != null) {
-      paramafo.a((break)localObject, 6);
+      paramafn.a((break)localObject, 6);
     }
     i = this.fb;
     if (i != 0) {
-      paramafo.a(i, 7);
+      paramafn.a(i, 7);
     }
   }
 }

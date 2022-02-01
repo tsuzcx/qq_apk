@@ -135,7 +135,7 @@ public class i
   {
     try
     {
-      Class localClass = Class.forName("com.tencent.token.bi");
+      Class localClass = Class.forName("android.os.SystemProperties");
       paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, "unknown" });
       return paramString1;
     }

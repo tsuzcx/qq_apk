@@ -1,71 +1,65 @@
 package com.tencent.token;
 
-import com.tmsdk.TMSDKContext;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.token.global.taiji.CSReportProfile;
+import com.tencent.token.global.taiji.KeyValueProfile;
+import com.tencent.token.global.taiji.SCReportProfile;
 import java.util.ArrayList;
-import tmsdk.common.tcc.TccCryptor;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class xl
   implements asf
 {
-  public final ash a(String paramString)
+  public final void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final asf.a parama)
   {
-    return new xn(paramString);
-  }
-  
-  public final asj a()
-  {
-    return xo.a.a();
-  }
-  
-  public final asg b()
-  {
-    return xm.a.a();
-  }
-  
-  public final asl c()
-  {
-    return xp.a.a();
-  }
-  
-  public final asi d()
-  {
-    new asi()
+    CSReportProfile localCSReportProfile = new CSReportProfile();
+    localCSReportProfile.profileID = 4;
+    localCSReportProfile.actionID = 0;
+    localCSReportProfile.param = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      public final void a(int paramAnonymousInt, ArrayList<String> paramAnonymousArrayList)
+      localObject1 = paramHashMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (paramAnonymousArrayList.size() > 0)
-        {
-          int j = paramAnonymousArrayList.size();
-          int i = 0;
-          while (i < j)
-          {
-            localStringBuilder.append((String)paramAnonymousArrayList.get(i));
-            if (i != j - 1) {
-              localStringBuilder.append(",");
-            }
-            i += 1;
-          }
+        localObject2 = (Integer)((Iterator)localObject1).next();
+        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
+        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
+        localKeyValueProfile.valueType = 3;
+        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
+        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
+      }
+    }
+    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
+    {
+      paramHashMap = paramHashMap1.keySet().iterator();
+      while (paramHashMap.hasNext())
+      {
+        localObject1 = (Integer)paramHashMap.next();
+        localObject2 = new KeyValueProfile();
+        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
+        ((KeyValueProfile)localObject2).valueType = 1;
+        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
+        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
+      }
+    }
+    xn.a.a().a(1053, localCSReportProfile, new SCReportProfile(), 18, new asl()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt2 == 0) && (paramAnonymousInt3 == 0)) {
+          parama.a();
         }
-        TMSDKContext.SaveStringData(paramAnonymousInt, localStringBuilder.toString());
       }
-    };
+    });
   }
   
-  public final ask e()
+  static final class a
   {
-    new ask()
-    {
-      public final byte[] a(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
-      {
-        return TccCryptor.encrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
-      }
-      
-      public final byte[] b(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
-      {
-        return TccCryptor.decrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
-      }
-    };
+    private static final xl a = new xl();
   }
 }
 

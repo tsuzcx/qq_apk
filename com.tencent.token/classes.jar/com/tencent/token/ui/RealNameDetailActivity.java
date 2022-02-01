@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aae;
+import com.tencent.token.aad;
 import com.tencent.token.core.bean.ZzbIntroItem;
 import com.tencent.token.ui.base.ScrollLayout;
 import com.tencent.token.ui.base.ScrollLayout.a;
@@ -34,7 +34,7 @@ public class RealNameDetailActivity
   
   private String formatText(String paramString)
   {
-    return aae.a(paramString, getResources().getDimension(2131034251), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
+    return aad.a(paramString, getResources().getDimension(2131034251), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
   }
   
   private void initTextInfo()
@@ -47,7 +47,7 @@ public class RealNameDetailActivity
     this.desc2 = ((TextView)findViewById(2131166191).findViewById(2131166062));
     this.desc3 = ((TextView)findViewById(2131166083).findViewById(2131166062));
     this.desc4 = ((TextView)findViewById(2131165506).findViewById(2131166062));
-    ArrayList localArrayList = aae.l();
+    ArrayList localArrayList = aad.l();
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       try
       {

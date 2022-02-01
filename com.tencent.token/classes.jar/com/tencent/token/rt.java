@@ -1,21 +1,677 @@
 package com.tencent.token;
 
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.UserTask;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public final class rt
 {
-  static rt a;
-  public String[] b = { "其他", "北京市", "天津市", "河北省", "山西省", "内蒙古", "江苏省", "安徽省", "山东省", "辽宁省", "吉林省", "黑龙江省", "上海市", "浙江省", "江西省", "福建省", "湖北省", "湖南省", "河南省", "广东省", "广西省", "海南省", "重庆市", "四川省", "贵州省", "云南省", "西藏", "陕西省", "甘肃省", "宁夏", "青海省", "新疆", "香港", "澳门", "台湾省" };
-  public String[] c = { "阿坝州", "阿克苏地区", "阿拉尔市", "阿拉善盟", "阿勒泰地区", "阿里地区", "安康市", "安庆市", "安顺市", "安阳市", "鞍山市", "澳门", "巴彦淖尔市", "巴音郭楞州", "巴中市", "白城市", "白沙黎族自治县", "白山市", "白银市", "百色市", "蚌埠市", "包头市", "宝鸡市", "保定市", "保山市", "保亭黎族苗族自治县", "北海市", "北京市", "本溪市", "毕节地区", "滨州市", "亳州市", "博尔塔拉州", "沧州市", "昌都地区", "昌吉州", "昌江黎族自治县", "长春市", "常德市", "长沙市", "长治市", "常州市", "巢湖市", "朝阳市", "潮州市", "重庆市", "郴州市", "成都市", "承德市", "澄迈县", "池州市", "赤峰市", "崇左市", "滁州市", "楚雄州", "达州市", "大理州", "大连市", "大庆市", "大同市", "大兴安岭地区", "丹东市", "儋州市", "德宏州", "德阳市", "德州市", "迪庆州", "定安县", "定西市", "东方市", "东莞市", "东营市", "鄂尔多斯市", "鄂州市", "恩施州", "防城港市", "佛山市", "福州市", "抚顺市", "抚州市", "阜新市", "阜阳市", "甘南州", "甘孜州", "赣州市", "高雄", "固原市", "广安市", "广元市", "广州市", "贵港市", "贵阳市", "桂林市", "果洛州", "哈尔滨市", "哈密地区", "海北州", "海东地区", "海口市", "海南州", "海西州", "邯郸市", "汉中市", "杭州市", "合肥市", "和田地区", "河池市", "河源市", "菏泽市", "贺州市", "鹤壁市", "鹤岗市", "黑河市", "衡水市", "衡阳市", "红河州", "呼和浩特市", "呼伦贝尔市", "湖州市", "葫芦岛市", "花莲", "怀化市", "淮安市", "淮北市", "淮南市", "黄冈市", "黄南州", "黄山市", "黄石市", "惠州市", "鸡西市", "基隆", "吉安市", "吉林市", "济南市", "济宁市", "济源市", "佳木斯市", "嘉兴市", "嘉义", "嘉峪关市", "江门市", "焦作市", "揭阳市", "金昌市", "金华市", "金门", "锦州市", "晋城市", "晋中市", "荆门市", "荆州市", "景德镇市", "九江市", "酒泉市", "喀什地区", "开封市", "克拉玛依市", "克孜勒苏柯州", "昆明市", "拉萨市", "来宾市", "莱芜市", "兰州市", "廊坊市", "乐东黎族自治县", "乐山市", "丽江市", "丽水市", "连江", "连云港市", "凉山州", "辽阳市", "辽源市", "聊城市", "林芝地区", "临沧市", "临汾市", "临高县", "临夏州", "临沂市", "陵水黎族自治县", "柳州市", "六安市", "六盘水市", "龙岩市", "陇南市", "娄底市", "泸州市", "吕梁市", "洛阳市", "漯河市", "马鞍山市", "茂名市", "眉山市", "梅州市", "绵阳市", "苗栗", "牡丹江市", "那曲地区", "南昌市", "南充市", "南京市", "南宁市", "南平市", "南通市", "南投", "南阳市", "内江市", "宁波市", "宁德市", "怒江州", "攀枝花市", "盘锦市", "澎湖", "平顶山市", "平凉市", "屏东", "萍乡市", "莆田市", "濮阳市", "七台河市", "齐齐哈尔市", "潜江市", "黔东南州", "黔南州", "黔西南州", "钦州市", "秦皇岛市", "青岛市", "清远市", "庆阳市", "琼海市", "琼中黎族苗族自治县", "曲靖市", "衢州市", "泉州市", "日喀则地区", "日照市", "三门峡市", "三明市", "三亚市", "山南地区", "汕头市", "汕尾市", "商洛市", "商丘市", "上海市", "上饶市", "韶关市", "邵阳市", "绍兴市", "沈阳市", "深圳市", "神农架林区", "十堰市", "石河子市", "石家庄市", "石嘴山市", "双鸭山市", "朔州市", "思茅市", "四平市", "松原市", "苏州市", "宿迁市", "宿州市", "绥化市", "随州市", "遂宁市", "塔城地区", "台北", "台东", "台南", "台中", "台州市", "太原市", "泰安市", "泰州市", "唐山市", "桃园", "天津市", "天门市", "天水市", "铁岭市", "通化市", "通辽市", "铜川市", "铜陵市", "铜仁地区", "图木舒克市", "吐鲁番地区", "屯昌县", "万宁市", "威海市", "潍坊市", "渭南市", "温州市", "文昌市", "文山州", "乌海市", "乌兰察布市", "乌鲁木齐市", "无锡市", "吴忠市", "芜湖市", "梧州市", "五家渠市", "五指山市", "武汉市", "武威市", "锡林郭勒盟", "西安市", "西宁市", "西双版纳州", "厦门市", "咸宁市", "咸阳市", "仙桃市", "香港", "湘潭市", "湘西州", "襄樊市", "孝感市", "忻州市", "新乡市", "新余市", "新竹", "信阳市", "邢台市", "兴安盟", "徐州市", "许昌市", "宣城市", "雅安市", "烟台市", "延安市", "延边州", "盐城市", "扬州市", "阳江市", "阳泉市", "伊春市", "伊犁州", "益阳市", "宜宾市", "宜昌市", "宜春市", "宜兰", "银川市", "鹰潭市", "营口市", "永州市", "榆林市", "玉林市", "玉树州", "玉溪市", "岳阳市", "云浮市", "云林", "运城市", "枣庄市", "湛江市", "张家界市", "张家口市", "张掖市", "彰化", "漳州市", "昭通市", "肇庆市", "镇江市", "郑州市", "中山市", "中卫市", "舟山市", "周口市", "株洲市", "珠海市", "驻马店市", "资阳市", "淄博市", "自贡市", "遵义市" };
-  public int[] d = { 294, 371, 381, 33, 379, 327, 337, 55, 300, 187, 84, 407, 30, 374, 292, 103, 245, 101, 341, 228, 50, 24, 331, 6, 309, 249, 223, 403, 86, 302, 80, 62, 376, 9, 324, 375, 246, 96, 172, 166, 15, 38, 60, 94, 216, 0, 175, 276, 8, 241, 63, 26, 232, 57, 317, 289, 318, 83, 110, 13, 117, 87, 237, 319, 280, 78, 321, 242, 349, 240, 207, 69, 28, 156, 161, 224, 210, 140, 85, 138, 90, 58, 352, 295, 135, 385, 356, 288, 282, 198, 226, 297, 221, 363, 105, 369, 360, 359, 233, 362, 365, 4, 335, 118, 48, 370, 230, 203, 81, 229, 185, 108, 115, 11, 169, 315, 23, 29, 122, 95, 387, 177, 42, 53, 51, 158, 361, 56, 150, 205, 107, 388, 136, 97, 65, 73, 197, 113, 121, 389, 343, 209, 184, 217, 340, 124, 390, 88, 16, 18, 155, 153, 130, 132, 347, 372, 181, 367, 373, 306, 322, 231, 76, 339, 10, 247, 285, 311, 128, 391, 41, 296, 91, 99, 79, 328, 313, 21, 244, 351, 77, 248, 220, 61, 298, 147, 350, 178, 279, 22, 182, 190, 52, 213, 290, 204, 281, 392, 112, 323, 129, 286, 35, 219, 146, 40, 393, 192, 284, 119, 148, 320, 278, 92, 394, 183, 346, 395, 131, 142, 188, 114, 106, 164, 304, 305, 303, 225, 3, 66, 215, 348, 236, 250, 307, 125, 144, 326, 75, 191, 143, 234, 325, 201, 206, 338, 193, 405, 139, 202, 170, 123, 82, 199, 165, 152, 380, 1, 354, 109, 17, 312, 98, 102, 39, 47, 59, 116, 160, 283, 378, 384, 396, 397, 386, 127, 12, 74, 46, 2, 398, 404, 163, 342, 93, 100, 27, 330, 54, 301, 382, 368, 243, 239, 72, 70, 333, 120, 238, 314, 25, 31, 366, 36, 355, 49, 222, 383, 235, 149, 344, 32, 329, 358, 316, 141, 159, 332, 162, 406, 168, 179, 151, 157, 20, 186, 133, 399, 194, 5, 34, 37, 189, 64, 291, 71, 334, 104, 43, 44, 211, 14, 111, 377, 174, 287, 154, 137, 400, 353, 134, 89, 176, 336, 227, 364, 308, 171, 218, 401, 19, 68, 212, 173, 7, 345, 402, 145, 310, 214, 45, 180, 208, 357, 126, 195, 167, 200, 196, 293, 67, 277, 299 };
-  public int[] e = { 23, 31, 31, 5, 31, 26, 27, 7, 24, 18, 9, 33, 5, 31, 23, 10, 21, 10, 28, 20, 7, 5, 27, 3, 25, 21, 20, 1, 9, 24, 8, 7, 31, 3, 26, 31, 21, 10, 17, 17, 4, 6, 7, 9, 19, 22, 17, 23, 3, 21, 7, 5, 20, 7, 25, 23, 25, 9, 11, 4, 11, 9, 21, 25, 23, 8, 25, 21, 28, 21, 19, 8, 5, 16, 16, 20, 19, 15, 9, 14, 9, 7, 28, 23, 14, 34, 29, 23, 23, 19, 20, 24, 20, 30, 11, 31, 30, 30, 21, 30, 30, 3, 27, 13, 7, 31, 20, 19, 8, 20, 18, 11, 11, 3, 17, 25, 5, 5, 13, 9, 34, 17, 6, 7, 7, 16, 30, 7, 16, 19, 11, 34, 14, 10, 8, 8, 18, 11, 13, 34, 28, 19, 18, 19, 28, 13, 34, 9, 4, 4, 16, 16, 14, 14, 28, 31, 18, 31, 31, 25, 26, 20, 8, 28, 3, 21, 23, 25, 13, 34, 6, 23, 9, 10, 8, 26, 25, 4, 21, 28, 8, 21, 20, 7, 24, 15, 28, 17, 23, 4, 18, 18, 7, 19, 23, 19, 23, 34, 11, 26, 14, 23, 6, 20, 15, 6, 34, 18, 23, 13, 15, 25, 23, 9, 34, 18, 28, 34, 14, 15, 18, 11, 11, 16, 24, 24, 24, 20, 3, 8, 19, 28, 21, 21, 25, 13, 15, 26, 8, 18, 15, 21, 26, 19, 19, 27, 18, 12, 14, 19, 17, 13, 9, 19, 16, 16, 31, 3, 29, 11, 4, 25, 10, 10, 6, 6, 7, 11, 16, 23, 31, 34, 34, 34, 34, 13, 4, 8, 6, 3, 34, 2, 16, 28, 9, 10, 5, 27, 7, 24, 31, 31, 21, 21, 8, 8, 27, 13, 21, 25, 5, 5, 31, 6, 29, 7, 20, 31, 21, 16, 28, 5, 27, 30, 25, 15, 16, 27, 16, 32, 17, 17, 16, 16, 4, 18, 14, 34, 18, 3, 5, 6, 18, 7, 23, 8, 27, 10, 6, 6, 19, 4, 11, 31, 17, 23, 16, 14, 34, 29, 14, 9, 17, 27, 20, 30, 25, 17, 19, 34, 4, 8, 19, 17, 3, 28, 34, 15, 25, 19, 6, 18, 19, 29, 13, 18, 17, 19, 18, 23, 8, 23, 24 };
-  public String[] f = { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z" };
-  public int[] g = { 0, 12, 33, 56, 72, 75, 82, 94, 130, 155, 160, 192, 199, 212, 221, 237, 239, 270, 293, 311, 334, 361 };
+  private static int d = 20;
+  private static int e = 30;
+  private static int f = d;
+  private static rt g = null;
+  private static boolean i = false;
+  public boolean a = true;
+  protected JSONArray b = new JSONArray();
+  protected String c;
+  private boolean h = false;
+  private boolean j;
+  private UserTask<String, String, wy> k = null;
   
   public static rt a()
   {
-    if (a == null) {
-      a = new rt();
+    if (g == null) {
+      g = new rt();
     }
-    return a;
+    if ((!ww.j()) && (!i))
+    {
+      i = true;
+      g.f();
+    }
+    return g;
+  }
+  
+  /* Error */
+  private wy a(String paramString)
+  {
+    // Byte code:
+    //   0: new 75	com/tencent/token/wy
+    //   3: dup
+    //   4: invokespecial 76	com/tencent/token/wy:<init>	()V
+    //   7: astore_3
+    //   8: invokestatic 81	com/tencent/token/sz:a	()Lcom/tencent/token/sz;
+    //   11: invokevirtual 83	com/tencent/token/sz:i	()Z
+    //   14: ifne +26 -> 40
+    //   17: aload_0
+    //   18: getfield 85	com/tencent/token/rt:j	Z
+    //   21: ifeq +8 -> 29
+    //   24: aload_0
+    //   25: invokevirtual 87	com/tencent/token/rt:b	()Z
+    //   28: pop
+    //   29: aload_3
+    //   30: sipush 30001
+    //   33: aconst_null
+    //   34: aconst_null
+    //   35: invokevirtual 90	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   38: aload_3
+    //   39: areturn
+    //   40: new 92	java/util/concurrent/CountDownLatch
+    //   43: dup
+    //   44: iconst_1
+    //   45: invokespecial 95	java/util/concurrent/CountDownLatch:<init>	(I)V
+    //   48: astore 5
+    //   50: new 97	java/util/concurrent/atomic/AtomicReference
+    //   53: dup
+    //   54: aconst_null
+    //   55: invokespecial 100	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
+    //   58: astore 4
+    //   60: invokestatic 105	com/tencent/token/qy:a	()Lcom/tencent/token/qy;
+    //   63: aload_1
+    //   64: new 6	com/tencent/token/rt$1
+    //   67: dup
+    //   68: aload_0
+    //   69: aload 4
+    //   71: aload 5
+    //   73: invokespecial 108	com/tencent/token/rt$1:<init>	(Lcom/tencent/token/rt;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/CountDownLatch;)V
+    //   76: invokevirtual 111	com/tencent/token/qy:c	(Ljava/lang/String;Lcom/tencent/token/qy$a;)V
+    //   79: aload 5
+    //   81: invokevirtual 114	java/util/concurrent/CountDownLatch:await	()V
+    //   84: goto +8 -> 92
+    //   87: astore_1
+    //   88: aload_1
+    //   89: invokevirtual 117	java/lang/InterruptedException:printStackTrace	()V
+    //   92: aload 4
+    //   94: invokevirtual 121	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   97: checkcast 123	com/tencent/token/ra
+    //   100: astore_1
+    //   101: aload_1
+    //   102: ifnonnull +26 -> 128
+    //   105: aload_0
+    //   106: getfield 85	com/tencent/token/rt:j	Z
+    //   109: ifeq +8 -> 117
+    //   112: aload_0
+    //   113: invokevirtual 87	com/tencent/token/rt:b	()Z
+    //   116: pop
+    //   117: aload_3
+    //   118: sipush -766
+    //   121: aconst_null
+    //   122: aconst_null
+    //   123: invokevirtual 90	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   126: aload_3
+    //   127: areturn
+    //   128: aload_1
+    //   129: getfield 125	com/tencent/token/ra:b	I
+    //   132: istore_2
+    //   133: iload_2
+    //   134: ifeq +18 -> 152
+    //   137: aload_1
+    //   138: getfield 127	com/tencent/token/ra:d	Ljava/lang/String;
+    //   141: astore_1
+    //   142: aload_3
+    //   143: iload_2
+    //   144: aload_1
+    //   145: aload_1
+    //   146: invokevirtual 90	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   149: goto +101 -> 250
+    //   152: aload_3
+    //   153: iconst_0
+    //   154: putfield 129	com/tencent/token/wy:a	I
+    //   157: aload_0
+    //   158: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   161: invokevirtual 133	org/json/JSONArray:length	()I
+    //   164: getstatic 135	com/tencent/token/rt:e	I
+    //   167: if_icmple +10 -> 177
+    //   170: getstatic 135	com/tencent/token/rt:e	I
+    //   173: istore_2
+    //   174: goto +11 -> 185
+    //   177: aload_0
+    //   178: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   181: invokevirtual 133	org/json/JSONArray:length	()I
+    //   184: istore_2
+    //   185: iload_2
+    //   186: getstatic 135	com/tencent/token/rt:e	I
+    //   189: if_icmpgt +17 -> 206
+    //   192: aload_0
+    //   193: new 50	org/json/JSONArray
+    //   196: dup
+    //   197: invokespecial 51	org/json/JSONArray:<init>	()V
+    //   200: putfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   203: goto +47 -> 250
+    //   206: new 50	org/json/JSONArray
+    //   209: dup
+    //   210: invokespecial 51	org/json/JSONArray:<init>	()V
+    //   213: astore_1
+    //   214: iload_2
+    //   215: aload_0
+    //   216: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   219: invokevirtual 133	org/json/JSONArray:length	()I
+    //   222: if_icmpge +23 -> 245
+    //   225: aload_1
+    //   226: aload_0
+    //   227: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   230: iload_2
+    //   231: invokevirtual 138	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   234: invokevirtual 142	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   237: pop
+    //   238: iload_2
+    //   239: iconst_1
+    //   240: iadd
+    //   241: istore_2
+    //   242: goto -28 -> 214
+    //   245: aload_0
+    //   246: aload_1
+    //   247: putfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   250: aload_0
+    //   251: getfield 85	com/tencent/token/rt:j	Z
+    //   254: ifeq +162 -> 416
+    //   257: aload_0
+    //   258: invokevirtual 87	com/tencent/token/rt:b	()Z
+    //   261: pop
+    //   262: aload_3
+    //   263: areturn
+    //   264: astore_1
+    //   265: goto +153 -> 418
+    //   268: astore_1
+    //   269: new 144	java/lang/StringBuilder
+    //   272: dup
+    //   273: ldc 146
+    //   275: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   278: astore 4
+    //   280: aload 4
+    //   282: aload_1
+    //   283: invokevirtual 153	java/lang/Exception:toString	()Ljava/lang/String;
+    //   286: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: pop
+    //   290: aload 4
+    //   292: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   295: invokestatic 162	com/tencent/token/xa:c	(Ljava/lang/String;)V
+    //   298: new 144	java/lang/StringBuilder
+    //   301: dup
+    //   302: ldc 164
+    //   304: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   307: astore 4
+    //   309: aload 4
+    //   311: aload_1
+    //   312: invokevirtual 153	java/lang/Exception:toString	()Ljava/lang/String;
+    //   315: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: pop
+    //   319: aload_3
+    //   320: sipush 10021
+    //   323: aload 4
+    //   325: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: aconst_null
+    //   329: invokevirtual 90	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   332: aload_0
+    //   333: getfield 85	com/tencent/token/rt:j	Z
+    //   336: ifeq +80 -> 416
+    //   339: goto -82 -> 257
+    //   342: astore_1
+    //   343: new 144	java/lang/StringBuilder
+    //   346: dup
+    //   347: ldc 166
+    //   349: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   352: astore 4
+    //   354: aload 4
+    //   356: aload_1
+    //   357: invokevirtual 167	org/json/JSONException:toString	()Ljava/lang/String;
+    //   360: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: pop
+    //   364: aload 4
+    //   366: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   369: invokestatic 162	com/tencent/token/xa:c	(Ljava/lang/String;)V
+    //   372: new 144	java/lang/StringBuilder
+    //   375: dup
+    //   376: ldc 164
+    //   378: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   381: astore 4
+    //   383: aload 4
+    //   385: aload_1
+    //   386: invokevirtual 167	org/json/JSONException:toString	()Ljava/lang/String;
+    //   389: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: pop
+    //   393: aload_3
+    //   394: sipush 10020
+    //   397: aload 4
+    //   399: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   402: aconst_null
+    //   403: invokevirtual 90	com/tencent/token/wy:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   406: aload_0
+    //   407: getfield 85	com/tencent/token/rt:j	Z
+    //   410: ifeq +6 -> 416
+    //   413: goto -156 -> 257
+    //   416: aload_3
+    //   417: areturn
+    //   418: aload_0
+    //   419: getfield 85	com/tencent/token/rt:j	Z
+    //   422: ifeq +8 -> 430
+    //   425: aload_0
+    //   426: invokevirtual 87	com/tencent/token/rt:b	()Z
+    //   429: pop
+    //   430: aload_1
+    //   431: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	432	0	this	rt
+    //   0	432	1	paramString	String
+    //   132	110	2	m	int
+    //   7	410	3	localwy	wy
+    //   58	340	4	localObject	Object
+    //   48	32	5	localCountDownLatch	CountDownLatch
+    // Exception table:
+    //   from	to	target	type
+    //   79	84	87	java/lang/InterruptedException
+    //   128	133	264	finally
+    //   137	149	264	finally
+    //   152	174	264	finally
+    //   177	185	264	finally
+    //   185	203	264	finally
+    //   206	214	264	finally
+    //   214	238	264	finally
+    //   245	250	264	finally
+    //   269	332	264	finally
+    //   343	406	264	finally
+    //   128	133	268	java/lang/Exception
+    //   137	149	268	java/lang/Exception
+    //   152	174	268	java/lang/Exception
+    //   177	185	268	java/lang/Exception
+    //   185	203	268	java/lang/Exception
+    //   206	214	268	java/lang/Exception
+    //   214	238	268	java/lang/Exception
+    //   245	250	268	java/lang/Exception
+    //   128	133	342	org/json/JSONException
+    //   137	149	342	org/json/JSONException
+    //   152	174	342	org/json/JSONException
+    //   177	185	342	org/json/JSONException
+    //   185	203	342	org/json/JSONException
+    //   206	214	342	org/json/JSONException
+    //   214	238	342	org/json/JSONException
+    //   245	250	342	org/json/JSONException
+  }
+  
+  /* Error */
+  private boolean f()
+  {
+    // Byte code:
+    //   0: invokestatic 61	com/tencent/token/ww:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 44	com/tencent/token/rt:a	Z
+    //   12: ifne +5 -> 17
+    //   15: iconst_1
+    //   16: ireturn
+    //   17: invokestatic 178	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
+    //   20: ldc 180
+    //   22: invokevirtual 186	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnonnull +5 -> 32
+    //   30: iconst_0
+    //   31: ireturn
+    //   32: sipush 2000
+    //   35: newarray byte
+    //   37: astore_2
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokevirtual 192	java/io/FileInputStream:read	([B)I
+    //   43: pop
+    //   44: aload_0
+    //   45: new 50	org/json/JSONArray
+    //   48: dup
+    //   49: new 194	java/lang/String
+    //   52: dup
+    //   53: aload_2
+    //   54: invokespecial 197	java/lang/String:<init>	([B)V
+    //   57: invokespecial 198	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   60: putfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   63: aload_1
+    //   64: invokevirtual 201	java/io/FileInputStream:close	()V
+    //   67: iconst_1
+    //   68: ireturn
+    //   69: aload_1
+    //   70: invokevirtual 201	java/io/FileInputStream:close	()V
+    //   73: iconst_0
+    //   74: ireturn
+    //   75: astore_1
+    //   76: iconst_0
+    //   77: ireturn
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    //   82: astore_1
+    //   83: iconst_1
+    //   84: ireturn
+    //   85: astore_1
+    //   86: iconst_0
+    //   87: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	88	0	this	rt
+    //   25	45	1	localFileInputStream	java.io.FileInputStream
+    //   75	1	1	localFileNotFoundException	java.io.FileNotFoundException
+    //   82	1	1	localIOException1	java.io.IOException
+    //   85	1	1	localIOException2	java.io.IOException
+    //   37	17	2	arrayOfByte	byte[]
+    //   78	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   17	26	75	java/io/FileNotFoundException
+    //   32	63	78	java/lang/Exception
+    //   63	67	82	java/io/IOException
+    //   69	73	85	java/io/IOException
+  }
+  
+  public final void a(long paramLong, int paramInt)
+  {
+    if (ww.j()) {
+      return;
+    }
+    if (this.b == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("t", paramLong / 1000L);
+        localJSONObject.put("e", paramInt);
+        localObject2 = sz.a().k.b();
+        if (localObject2 != null) {
+          localJSONObject.put("u", ((QQUser)localObject2).mUin);
+        }
+        m = 0;
+      }
+      catch (Exception localException)
+      {
+        JSONObject localJSONObject;
+        Object localObject2;
+        int m;
+        continue;
+        m += 1;
+        continue;
+        paramInt = 1;
+        continue;
+      }
+      try
+      {
+        if (m >= this.b.length()) {
+          continue;
+        }
+        localObject2 = this.b.getJSONObject(m);
+        if ((((JSONObject)localObject2).getInt("e") != paramInt) || (((JSONObject)localObject2).getLong("t") != paramLong / 1000L)) {
+          continue;
+        }
+        paramInt = 0;
+        if (paramInt != 0) {
+          this.b.put(localJSONObject);
+        }
+      }
+      finally {}
+    }
+    if (this.b.length() >= f) {
+      a(false);
+    }
+  }
+  
+  /* Error */
+  public final void a(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: invokestatic 61	com/tencent/token/ww:j	()Z
+    //   3: ifeq +4 -> 7
+    //   6: return
+    //   7: aload_0
+    //   8: iload_1
+    //   9: putfield 85	com/tencent/token/rt:j	Z
+    //   12: aload_0
+    //   13: getfield 46	com/tencent/token/rt:h	Z
+    //   16: ifeq +4 -> 20
+    //   19: return
+    //   20: aload_0
+    //   21: getfield 44	com/tencent/token/rt:a	Z
+    //   24: ifeq +250 -> 274
+    //   27: aload_0
+    //   28: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   31: invokevirtual 133	org/json/JSONArray:length	()I
+    //   34: ifne +4 -> 38
+    //   37: return
+    //   38: aload_0
+    //   39: iconst_1
+    //   40: putfield 46	com/tencent/token/rt:h	Z
+    //   43: new 50	org/json/JSONArray
+    //   46: dup
+    //   47: invokespecial 51	org/json/JSONArray:<init>	()V
+    //   50: astore 6
+    //   52: aload_0
+    //   53: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   56: invokevirtual 133	org/json/JSONArray:length	()I
+    //   59: istore_3
+    //   60: getstatic 135	com/tencent/token/rt:e	I
+    //   63: istore_2
+    //   64: iload_3
+    //   65: iload_2
+    //   66: if_icmple +6 -> 72
+    //   69: goto +11 -> 80
+    //   72: aload_0
+    //   73: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   76: invokevirtual 133	org/json/JSONArray:length	()I
+    //   79: istore_2
+    //   80: iconst_0
+    //   81: istore_3
+    //   82: iload_3
+    //   83: iload_2
+    //   84: if_icmpge +24 -> 108
+    //   87: aload 6
+    //   89: aload_0
+    //   90: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   93: iload_3
+    //   94: invokevirtual 138	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   97: invokevirtual 142	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   100: pop
+    //   101: iload_3
+    //   102: iconst_1
+    //   103: iadd
+    //   104: istore_3
+    //   105: goto -23 -> 82
+    //   108: aload_0
+    //   109: monitorenter
+    //   110: new 204	org/json/JSONObject
+    //   113: dup
+    //   114: invokespecial 205	org/json/JSONObject:<init>	()V
+    //   117: astore 7
+    //   119: lconst_0
+    //   120: lstore 4
+    //   122: invokestatic 81	com/tencent/token/sz:a	()Lcom/tencent/token/sz;
+    //   125: astore 8
+    //   127: aload 8
+    //   129: invokevirtual 249	com/tencent/token/sz:f	()Lcom/tencent/token/core/bean/QQUser;
+    //   132: astore 9
+    //   134: aload 9
+    //   136: ifnull +13 -> 149
+    //   139: aload 9
+    //   141: getfield 232	com/tencent/token/core/bean/QQUser:mUin	J
+    //   144: lstore 4
+    //   146: goto +25 -> 171
+    //   149: aload 8
+    //   151: getfield 219	com/tencent/token/sz:k	Lcom/tencent/token/ahg;
+    //   154: invokevirtual 224	com/tencent/token/ahg:b	()Lcom/tencent/token/core/bean/QQUser;
+    //   157: astore 8
+    //   159: aload 8
+    //   161: ifnull +10 -> 171
+    //   164: aload 8
+    //   166: getfield 232	com/tencent/token/core/bean/QQUser:mUin	J
+    //   169: lstore 4
+    //   171: aload 7
+    //   173: ldc 251
+    //   175: invokestatic 105	com/tencent/token/qy:a	()Lcom/tencent/token/qy;
+    //   178: invokevirtual 254	com/tencent/token/qy:h	()J
+    //   181: l2i
+    //   182: invokevirtual 216	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   185: pop
+    //   186: getstatic 257	com/tencent/token/sa:b	I
+    //   189: iconst_1
+    //   190: iadd
+    //   191: istore_2
+    //   192: iload_2
+    //   193: putstatic 257	com/tencent/token/sa:b	I
+    //   196: aload 7
+    //   198: ldc_w 259
+    //   201: iload_2
+    //   202: invokevirtual 216	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   205: pop
+    //   206: aload 7
+    //   208: ldc_w 261
+    //   211: lload 4
+    //   213: invokevirtual 212	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   216: pop
+    //   217: aload 7
+    //   219: ldc_w 263
+    //   222: aload 6
+    //   224: invokevirtual 266	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   227: pop
+    //   228: aload_0
+    //   229: aload 7
+    //   231: invokevirtual 267	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   234: putfield 269	com/tencent/token/rt:c	Ljava/lang/String;
+    //   237: aload_0
+    //   238: monitorexit
+    //   239: aload_0
+    //   240: new 8	com/tencent/token/rt$2
+    //   243: dup
+    //   244: aload_0
+    //   245: invokespecial 272	com/tencent/token/rt$2:<init>	(Lcom/tencent/token/rt;)V
+    //   248: putfield 48	com/tencent/token/rt:k	Lcom/tencent/token/utils/UserTask;
+    //   251: aload_0
+    //   252: getfield 48	com/tencent/token/rt:k	Lcom/tencent/token/utils/UserTask;
+    //   255: iconst_0
+    //   256: anewarray 194	java/lang/String
+    //   259: invokevirtual 277	com/tencent/token/utils/UserTask:a	([Ljava/lang/Object;)Lcom/tencent/token/utils/UserTask;
+    //   262: pop
+    //   263: return
+    //   264: aload_0
+    //   265: monitorexit
+    //   266: return
+    //   267: astore 6
+    //   269: aload_0
+    //   270: monitorexit
+    //   271: aload 6
+    //   273: athrow
+    //   274: return
+    //   275: astore 7
+    //   277: goto -169 -> 108
+    //   280: astore 6
+    //   282: goto -18 -> 264
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	285	0	this	rt
+    //   0	285	1	paramBoolean	boolean
+    //   63	139	2	m	int
+    //   59	46	3	n	int
+    //   120	92	4	l	long
+    //   50	173	6	localJSONArray	JSONArray
+    //   267	5	6	localObject1	Object
+    //   280	1	6	localJSONException	org.json.JSONException
+    //   117	113	7	localJSONObject	JSONObject
+    //   275	1	7	localException	Exception
+    //   125	40	8	localObject2	Object
+    //   132	8	9	localQQUser	QQUser
+    // Exception table:
+    //   from	to	target	type
+    //   110	119	267	finally
+    //   122	134	267	finally
+    //   139	146	267	finally
+    //   149	159	267	finally
+    //   164	171	267	finally
+    //   171	228	267	finally
+    //   228	239	267	finally
+    //   264	266	267	finally
+    //   269	271	267	finally
+    //   87	101	275	java/lang/Exception
+    //   122	134	280	org/json/JSONException
+    //   139	146	280	org/json/JSONException
+    //   149	159	280	org/json/JSONException
+    //   164	171	280	org/json/JSONException
+    //   171	228	280	org/json/JSONException
+  }
+  
+  /* Error */
+  public final boolean a(android.content.Context paramContext)
+  {
+    // Byte code:
+    //   0: invokestatic 61	com/tencent/token/ww:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   12: ifnonnull +5 -> 17
+    //   15: iconst_0
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: putstatic 38	com/tencent/token/rt:i	Z
+    //   21: aload_0
+    //   22: getfield 44	com/tencent/token/rt:a	Z
+    //   25: ifne +5 -> 30
+    //   28: iconst_1
+    //   29: ireturn
+    //   30: aload_1
+    //   31: ldc 180
+    //   33: iconst_0
+    //   34: invokevirtual 282	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   37: astore_1
+    //   38: aload_1
+    //   39: ifnonnull +5 -> 44
+    //   42: iconst_0
+    //   43: ireturn
+    //   44: aload_1
+    //   45: aload_0
+    //   46: getfield 53	com/tencent/token/rt:b	Lorg/json/JSONArray;
+    //   49: invokevirtual 283	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   52: invokevirtual 287	java/lang/String:getBytes	()[B
+    //   55: invokevirtual 292	java/io/FileOutputStream:write	([B)V
+    //   58: aload_1
+    //   59: invokevirtual 293	java/io/FileOutputStream:close	()V
+    //   62: iconst_1
+    //   63: ireturn
+    //   64: aload_1
+    //   65: invokevirtual 293	java/io/FileOutputStream:close	()V
+    //   68: iconst_0
+    //   69: ireturn
+    //   70: astore_1
+    //   71: iconst_0
+    //   72: ireturn
+    //   73: astore_2
+    //   74: goto -10 -> 64
+    //   77: astore_1
+    //   78: iconst_1
+    //   79: ireturn
+    //   80: astore_1
+    //   81: iconst_0
+    //   82: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	rt
+    //   0	83	1	paramContext	android.content.Context
+    //   73	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   30	38	70	java/io/FileNotFoundException
+    //   44	58	73	java/lang/Exception
+    //   58	62	77	java/io/IOException
+    //   64	68	80	java/io/IOException
+  }
+  
+  public final boolean b()
+  {
+    if (ww.j()) {
+      return false;
+    }
+    return a(RqdApplication.n());
   }
 }
 

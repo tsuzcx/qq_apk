@@ -2,21 +2,14 @@ package com.tencent.token;
 
 public final class ke
 {
-  static Object a = new Object();
-  static kf b = null;
-  private static boolean c = false;
-  
-  public static kf a()
+  public static void a(Runnable paramRunnable, String paramString)
   {
-    if (b == null) {
-      synchronized (a)
-      {
-        if (b == null) {
-          b = new kf();
-        }
-      }
-    }
-    return b;
+    new Thread(paramRunnable, paramString).start();
+  }
+  
+  public static void b(Runnable paramRunnable, String paramString)
+  {
+    new Thread(paramRunnable, paramString).start();
   }
 }
 

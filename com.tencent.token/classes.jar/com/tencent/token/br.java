@@ -1,173 +1,194 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.util.AttributeSet;
-import android.view.InflateException;
-import android.view.animation.Interpolator;
-import org.xmlpull.v1.XmlPullParser;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 
-public final class br
-  implements Interpolator
+abstract class br
+  extends Drawable
+  implements dh
 {
-  private float[] a;
-  private float[] b;
+  Drawable b;
   
-  public br(Context paramContext, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
+  public void applyTheme(Resources.Theme paramTheme)
   {
-    this(paramContext.getResources(), paramContext.getTheme(), paramAttributeSet, paramXmlPullParser);
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dg.a(localDrawable, paramTheme);
+      return;
+    }
   }
   
-  private br(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
+  public void clearColorFilter()
   {
-    paramResources = cy.a(paramResources, paramTheme, paramAttributeSet, bl.l);
-    if (cy.a(paramXmlPullParser, "pathData"))
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
     {
-      paramTheme = cy.b(paramResources, paramXmlPullParser, "pathData", 4);
-      paramAttributeSet = da.a(paramTheme);
-      if (paramAttributeSet != null) {
-        a(paramAttributeSet);
-      } else {
-        throw new InflateException("The path is null, which is created from ".concat(String.valueOf(paramTheme)));
-      }
+      localDrawable.clearColorFilter();
+      return;
     }
-    else
-    {
-      if (!cy.a(paramXmlPullParser, "controlX1")) {
-        break label252;
-      }
-      if (!cy.a(paramXmlPullParser, "controlY1")) {
-        break label242;
-      }
-      float f1 = cy.a(paramResources, paramXmlPullParser, "controlX1", 0, 0.0F);
-      float f2 = cy.a(paramResources, paramXmlPullParser, "controlY1", 1, 0.0F);
-      boolean bool = cy.a(paramXmlPullParser, "controlX2");
-      if (bool != cy.a(paramXmlPullParser, "controlY2")) {
-        break label232;
-      }
-      if (!bool)
-      {
-        paramTheme = new Path();
-        paramTheme.moveTo(0.0F, 0.0F);
-        paramTheme.quadTo(f1, f2, 1.0F, 1.0F);
-        a(paramTheme);
-      }
-      else
-      {
-        float f3 = cy.a(paramResources, paramXmlPullParser, "controlX2", 2, 0.0F);
-        float f4 = cy.a(paramResources, paramXmlPullParser, "controlY2", 3, 0.0F);
-        paramTheme = new Path();
-        paramTheme.moveTo(0.0F, 0.0F);
-        paramTheme.cubicTo(f1, f2, f3, f4, 1.0F, 1.0F);
-        a(paramTheme);
-      }
-    }
-    paramResources.recycle();
-    return;
-    label232:
-    throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
-    label242:
-    throw new InflateException("pathInterpolator requires the controlY1 attribute");
-    label252:
-    throw new InflateException("pathInterpolator requires the controlX1 attribute");
+    super.clearColorFilter();
   }
   
-  private void a(Path paramPath)
+  public ColorFilter getColorFilter()
   {
-    int j = 0;
-    paramPath = new PathMeasure(paramPath, false);
-    float f1 = paramPath.getLength();
-    int k = Math.min(3000, (int)(f1 / 0.002F) + 1);
-    if (k > 0)
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
     {
-      this.a = new float[k];
-      this.b = new float[k];
-      float[] arrayOfFloat = new float[2];
-      int i = 0;
-      while (i < k)
-      {
-        paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
-        this.a[i] = arrayOfFloat[0];
-        this.b[i] = arrayOfFloat[1];
-        i += 1;
+      if (Build.VERSION.SDK_INT >= 21) {
+        return localDrawable.getColorFilter();
       }
-      if ((Math.abs(this.a[0]) <= 1.E-005D) && (Math.abs(this.b[0]) <= 1.E-005D))
-      {
-        arrayOfFloat = this.a;
-        i = k - 1;
-        if ((Math.abs(arrayOfFloat[i] - 1.0F) <= 1.E-005D) && (Math.abs(this.b[i] - 1.0F) <= 1.E-005D))
-        {
-          i = 0;
-          f1 = 0.0F;
-          while (j < k)
-          {
-            arrayOfFloat = this.a;
-            float f2 = arrayOfFloat[i];
-            if (f2 >= f1)
-            {
-              arrayOfFloat[j] = f2;
-              j += 1;
-              f1 = f2;
-              i += 1;
-            }
-            else
-            {
-              throw new IllegalArgumentException("The Path cannot loop back on itself, x :".concat(String.valueOf(f2)));
-            }
-          }
-          if (!paramPath.nextContour()) {
-            return;
-          }
-          throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
-        }
-      }
-      paramPath = new StringBuilder("The Path must start at (0,0) and end at (1,1) start: ");
-      paramPath.append(this.a[0]);
-      paramPath.append(",");
-      paramPath.append(this.b[0]);
-      paramPath.append(" end:");
-      arrayOfFloat = this.a;
-      i = k - 1;
-      paramPath.append(arrayOfFloat[i]);
-      paramPath.append(",");
-      paramPath.append(this.b[i]);
-      throw new IllegalArgumentException(paramPath.toString());
+      return null;
     }
-    throw new IllegalArgumentException("The Path has a invalid length ".concat(String.valueOf(f1)));
+    return null;
   }
   
-  public final float getInterpolation(float paramFloat)
+  public Drawable getCurrent()
   {
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getCurrent();
     }
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    return super.getCurrent();
+  }
+  
+  public int getMinimumHeight()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumHeight();
     }
-    int j = 0;
-    int i = this.a.length - 1;
-    while (i - j > 1)
+    return super.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumWidth();
+    }
+    return super.getMinimumWidth();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getPadding(paramRect);
+    }
+    return super.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getState();
+    }
+    return super.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getTransparentRegion();
+    }
+    return super.getTransparentRegion();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
     {
-      int k = (j + i) / 2;
-      if (paramFloat < this.a[k]) {
-        i = k;
-      } else {
-        j = k;
-      }
+      localDrawable.jumpToCurrentState();
+      return;
     }
-    float[] arrayOfFloat = this.a;
-    float f = arrayOfFloat[i] - arrayOfFloat[j];
-    if (f == 0.0F) {
-      return this.b[j];
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setBounds(paramRect);
+      return;
     }
-    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
-    arrayOfFloat = this.b;
-    f = arrayOfFloat[j];
-    return f + paramFloat * (arrayOfFloat[i] - f);
+    super.onBoundsChange(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setLevel(paramInt);
+    }
+    return super.onLevelChange(paramInt);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setChangingConfigurations(paramInt);
+      return;
+    }
+    super.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setColorFilter(paramInt, paramMode);
+      return;
+    }
+    super.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setFilterBitmap(paramBoolean);
+      return;
+    }
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      dg.a(localDrawable, paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dg.a(localDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setState(paramArrayOfInt);
+    }
+    return super.setState(paramArrayOfInt);
   }
 }
 

@@ -1,101 +1,61 @@
 package com.tencent.token;
 
-import android.os.Environment;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.support.v4.content.FileProvider;
 import java.io.File;
 
-public class yy
+public final class yy
 {
-  private static yy c;
-  public zc a;
-  private String b;
-  
-  public static String b()
+  public static boolean a(Context paramContext, String paramString)
   {
-    return "gallerymanager_102322.apk";
-  }
-  
-  public static yy g()
-  {
-    if (c == null) {
-      try
+    paramString = new File(paramString);
+    if ((paramString.exists()) && (paramString.isFile()))
+    {
+      Intent localIntent = new Intent("android.intent.action.VIEW");
+      localIntent.addFlags(268435456);
+      if (Build.VERSION.SDK_INT >= 24)
       {
-        if (c == null) {
-          c = new yy();
-        }
+        paramString = FileProvider.a(paramContext, "com.tencent.token.FileProvider", paramString);
+        localIntent.addFlags(1);
       }
-      finally {}
-    }
-    return c;
-  }
-  
-  public final void a()
-  {
-    zc localzc = this.a;
-    if (localzc == null) {
-      return;
-    }
-    localzc.a();
-  }
-  
-  public final void c()
-  {
-    zc localzc = this.a;
-    if (localzc == null) {
-      return;
-    }
-    localzc.b();
-  }
-  
-  public final boolean d()
-  {
-    try
-    {
-      boolean bool = new File(f(), "gallerymanager_102322.apk").exists();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      else
+      {
+        paramString = Uri.fromFile(paramString);
+      }
+      localIntent.setDataAndType(paramString, "application/vnd.android.package-archive");
+      paramContext.startActivity(localIntent);
+      return true;
     }
     return false;
   }
   
-  public final String e()
+  public static boolean b(Context paramContext, String paramString)
   {
     try
     {
-      String str = new File(f(), "gallerymanager_102322.apk").getAbsolutePath();
-      return str;
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      return paramContext != null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
   }
   
-  public final String f()
+  public static void c(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(this.b))
+    try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("gallerymanager");
-      localStringBuilder.append(File.separator);
-      this.b = localStringBuilder.toString();
+      paramContext.startActivity(paramContext.getPackageManager().getLaunchIntentForPackage(paramString));
+      return;
     }
-    return this.b;
-  }
-  
-  public final boolean h()
-  {
-    zc localzc = this.a;
-    if (localzc == null) {
-      return false;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
     }
-    return localzc.a;
   }
 }
 

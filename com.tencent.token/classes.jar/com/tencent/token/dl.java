@@ -1,40 +1,126 @@
 package com.tencent.token;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Outline;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.os.Build.VERSION;
+import java.lang.reflect.Method;
 
-class dl
+final class dl
   extends dk
 {
+  private static Method d;
+  
   dl(Drawable paramDrawable)
   {
     super(paramDrawable);
+    d();
   }
   
-  dl(dk.a parama, Resources paramResources)
+  dl(dj.a parama, Resources paramResources)
   {
     super(parama, paramResources);
+    d();
   }
   
-  dk.a b()
+  private static void d()
+  {
+    if (d == null) {}
+    try
+    {
+      d = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+      return;
+    }
+    catch (Exception localException) {}
+    return;
+  }
+  
+  final dj.a b()
   {
     return new a(this.b);
   }
   
-  public boolean isAutoMirrored()
+  protected final boolean c()
   {
-    return this.c.isAutoMirrored();
+    if (Build.VERSION.SDK_INT == 21)
+    {
+      Drawable localDrawable = this.c;
+      return ((localDrawable instanceof GradientDrawable)) || ((localDrawable instanceof DrawableContainer)) || ((localDrawable instanceof InsetDrawable)) || ((localDrawable instanceof RippleDrawable));
+    }
+    return false;
   }
   
-  public void setAutoMirrored(boolean paramBoolean)
+  public final Rect getDirtyBounds()
   {
-    this.c.setAutoMirrored(paramBoolean);
+    return this.c.getDirtyBounds();
+  }
+  
+  public final void getOutline(Outline paramOutline)
+  {
+    this.c.getOutline(paramOutline);
+  }
+  
+  public final void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    this.c.setHotspot(paramFloat1, paramFloat2);
+  }
+  
+  public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public final boolean setState(int[] paramArrayOfInt)
+  {
+    if (super.setState(paramArrayOfInt))
+    {
+      invalidateSelf();
+      return true;
+    }
+    return false;
+  }
+  
+  public final void setTint(int paramInt)
+  {
+    if (c())
+    {
+      super.setTint(paramInt);
+      return;
+    }
+    this.c.setTint(paramInt);
+  }
+  
+  public final void setTintList(ColorStateList paramColorStateList)
+  {
+    if (c())
+    {
+      super.setTintList(paramColorStateList);
+      return;
+    }
+    this.c.setTintList(paramColorStateList);
+  }
+  
+  public final void setTintMode(PorterDuff.Mode paramMode)
+  {
+    if (c())
+    {
+      super.setTintMode(paramMode);
+      return;
+    }
+    this.c.setTintMode(paramMode);
   }
   
   static final class a
-    extends dk.a
+    extends dj.a
   {
-    a(dk.a parama)
+    a(dj.a parama)
     {
       super();
     }

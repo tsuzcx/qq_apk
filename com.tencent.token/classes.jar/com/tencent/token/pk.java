@@ -1,18 +1,18 @@
 package com.tencent.token;
 
-public final class pk
+import android.os.Bundle;
+
+public abstract class pk
 {
-  public static byte[] a(String paramString1, String paramString2)
+  public String a;
+  
+  public void a(Bundle paramBundle)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramString1 != null) {
-      localStringBuffer.append(paramString1);
-    }
-    localStringBuffer.append(553910273);
-    localStringBuffer.append(paramString2);
-    localStringBuffer.append("mMcShCsTr");
-    return oc.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
+    paramBundle.putInt("_wxapi_command_type", 2);
+    paramBundle.putString("_wxapi_basereq_transaction", this.a);
   }
+  
+  abstract boolean a();
 }
 
 

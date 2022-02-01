@@ -1,179 +1,252 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.support.v7.view.menu.ListMenuItemView;
-import android.support.v7.widget.ListPopupWindow;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.widget.HeaderViewListAdapter;
-import android.widget.PopupWindow;
-import java.lang.reflect.Method;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.content.res.XmlResourceParser;
+import android.graphics.Movie;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import java.io.InputStream;
 
-public final class iw
-  extends ListPopupWindow
-  implements iv
+class iw
+  extends Resources
 {
-  private static Method b;
-  public iv a;
+  private final Resources a;
   
-  static
+  public iw(Resources paramResources)
   {
-    try
-    {
-      b = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
+    this.a = paramResources;
   }
   
-  public iw(Context paramContext, int paramInt1, int paramInt2)
+  public XmlResourceParser getAnimation(int paramInt)
   {
-    super(paramContext, null, paramInt1, paramInt2);
+    return this.a.getAnimation(paramInt);
   }
   
-  public final is a(Context paramContext, boolean paramBoolean)
+  public boolean getBoolean(int paramInt)
   {
-    paramContext = new a(paramContext, paramBoolean);
-    paramContext.setHoverListener(this);
-    return paramContext;
+    return this.a.getBoolean(paramInt);
   }
   
-  public final void a()
+  public int getColor(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 23) {
-      this.q.setEnterTransition(null);
-    }
+    return this.a.getColor(paramInt);
   }
   
-  public final void a(hm paramhm, MenuItem paramMenuItem)
+  public ColorStateList getColorStateList(int paramInt)
   {
-    iv localiv = this.a;
-    if (localiv != null) {
-      localiv.a(paramhm, paramMenuItem);
-    }
+    return this.a.getColorStateList(paramInt);
   }
   
-  public final void b(hm paramhm, MenuItem paramMenuItem)
+  public Configuration getConfiguration()
   {
-    iv localiv = this.a;
-    if (localiv != null) {
-      localiv.b(paramhm, paramMenuItem);
-    }
+    return this.a.getConfiguration();
   }
   
-  public final void l()
+  public float getDimension(int paramInt)
   {
-    Method localMethod = b;
-    if (localMethod != null) {}
-    try
-    {
-      localMethod.invoke(this.q, new Object[] { Boolean.FALSE });
-      return;
-    }
-    catch (Exception localException) {}
-    return;
+    return this.a.getDimension(paramInt);
   }
   
-  public static final class a
-    extends is
+  public int getDimensionPixelOffset(int paramInt)
   {
-    final int a;
-    final int b;
-    private iv c;
-    private MenuItem d;
-    
-    public a(Context paramContext, boolean paramBoolean)
-    {
-      super(paramBoolean);
-      paramContext = paramContext.getResources().getConfiguration();
-      if ((Build.VERSION.SDK_INT >= 17) && (1 == paramContext.getLayoutDirection()))
-      {
-        this.a = 21;
-        this.b = 22;
-        return;
-      }
-      this.a = 22;
-      this.b = 21;
-    }
-    
-    public final boolean onHoverEvent(MotionEvent paramMotionEvent)
-    {
-      if (this.c != null)
-      {
-        Object localObject1 = getAdapter();
-        int i;
-        if ((localObject1 instanceof HeaderViewListAdapter))
-        {
-          localObject1 = (HeaderViewListAdapter)localObject1;
-          i = ((HeaderViewListAdapter)localObject1).getHeadersCount();
-          localObject1 = (hl)((HeaderViewListAdapter)localObject1).getWrappedAdapter();
-        }
-        else
-        {
-          i = 0;
-          localObject1 = (hl)localObject1;
-        }
-        MenuItem localMenuItem = null;
-        Object localObject2 = localMenuItem;
-        if (paramMotionEvent.getAction() != 10)
-        {
-          int j = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-          localObject2 = localMenuItem;
-          if (j != -1)
-          {
-            i = j - i;
-            localObject2 = localMenuItem;
-            if (i >= 0)
-            {
-              localObject2 = localMenuItem;
-              if (i < ((hl)localObject1).getCount()) {
-                localObject2 = ((hl)localObject1).a(i);
-              }
-            }
-          }
-        }
-        localMenuItem = this.d;
-        if (localMenuItem != localObject2)
-        {
-          localObject1 = ((hl)localObject1).b;
-          if (localMenuItem != null) {
-            this.c.a((hm)localObject1, localMenuItem);
-          }
-          this.d = ((MenuItem)localObject2);
-          if (localObject2 != null) {
-            this.c.b((hm)localObject1, (MenuItem)localObject2);
-          }
-        }
-      }
-      return super.onHoverEvent(paramMotionEvent);
-    }
-    
-    public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-    {
-      ListMenuItemView localListMenuItemView = (ListMenuItemView)getSelectedView();
-      if ((localListMenuItemView != null) && (paramInt == this.a))
-      {
-        if ((localListMenuItemView.isEnabled()) && (localListMenuItemView.getItemData().hasSubMenu())) {
-          performItemClick(localListMenuItemView, getSelectedItemPosition(), getSelectedItemId());
-        }
-        return true;
-      }
-      if ((localListMenuItemView != null) && (paramInt == this.b))
-      {
-        setSelection(-1);
-        ((hl)getAdapter()).b.a(false);
-        return true;
-      }
-      return super.onKeyDown(paramInt, paramKeyEvent);
-    }
-    
-    public final void setHoverListener(iv paramiv)
-    {
-      this.c = paramiv;
+    return this.a.getDimensionPixelOffset(paramInt);
+  }
+  
+  public int getDimensionPixelSize(int paramInt)
+  {
+    return this.a.getDimensionPixelSize(paramInt);
+  }
+  
+  public DisplayMetrics getDisplayMetrics()
+  {
+    return this.a.getDisplayMetrics();
+  }
+  
+  public Drawable getDrawable(int paramInt)
+  {
+    return this.a.getDrawable(paramInt);
+  }
+  
+  public Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
+  {
+    return this.a.getDrawable(paramInt, paramTheme);
+  }
+  
+  public Drawable getDrawableForDensity(int paramInt1, int paramInt2)
+  {
+    return this.a.getDrawableForDensity(paramInt1, paramInt2);
+  }
+  
+  public Drawable getDrawableForDensity(int paramInt1, int paramInt2, Resources.Theme paramTheme)
+  {
+    return this.a.getDrawableForDensity(paramInt1, paramInt2, paramTheme);
+  }
+  
+  public float getFraction(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return this.a.getFraction(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public int getIdentifier(String paramString1, String paramString2, String paramString3)
+  {
+    return this.a.getIdentifier(paramString1, paramString2, paramString3);
+  }
+  
+  public int[] getIntArray(int paramInt)
+  {
+    return this.a.getIntArray(paramInt);
+  }
+  
+  public int getInteger(int paramInt)
+  {
+    return this.a.getInteger(paramInt);
+  }
+  
+  public XmlResourceParser getLayout(int paramInt)
+  {
+    return this.a.getLayout(paramInt);
+  }
+  
+  public Movie getMovie(int paramInt)
+  {
+    return this.a.getMovie(paramInt);
+  }
+  
+  public String getQuantityString(int paramInt1, int paramInt2)
+  {
+    return this.a.getQuantityString(paramInt1, paramInt2);
+  }
+  
+  public String getQuantityString(int paramInt1, int paramInt2, Object... paramVarArgs)
+  {
+    return this.a.getQuantityString(paramInt1, paramInt2, paramVarArgs);
+  }
+  
+  public CharSequence getQuantityText(int paramInt1, int paramInt2)
+  {
+    return this.a.getQuantityText(paramInt1, paramInt2);
+  }
+  
+  public String getResourceEntryName(int paramInt)
+  {
+    return this.a.getResourceEntryName(paramInt);
+  }
+  
+  public String getResourceName(int paramInt)
+  {
+    return this.a.getResourceName(paramInt);
+  }
+  
+  public String getResourcePackageName(int paramInt)
+  {
+    return this.a.getResourcePackageName(paramInt);
+  }
+  
+  public String getResourceTypeName(int paramInt)
+  {
+    return this.a.getResourceTypeName(paramInt);
+  }
+  
+  public String getString(int paramInt)
+  {
+    return this.a.getString(paramInt);
+  }
+  
+  public String getString(int paramInt, Object... paramVarArgs)
+  {
+    return this.a.getString(paramInt, paramVarArgs);
+  }
+  
+  public String[] getStringArray(int paramInt)
+  {
+    return this.a.getStringArray(paramInt);
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    return this.a.getText(paramInt);
+  }
+  
+  public CharSequence getText(int paramInt, CharSequence paramCharSequence)
+  {
+    return this.a.getText(paramInt, paramCharSequence);
+  }
+  
+  public CharSequence[] getTextArray(int paramInt)
+  {
+    return this.a.getTextArray(paramInt);
+  }
+  
+  public void getValue(int paramInt, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.a.getValue(paramInt, paramTypedValue, paramBoolean);
+  }
+  
+  public void getValue(String paramString, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.a.getValue(paramString, paramTypedValue, paramBoolean);
+  }
+  
+  public void getValueForDensity(int paramInt1, int paramInt2, TypedValue paramTypedValue, boolean paramBoolean)
+  {
+    this.a.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+  }
+  
+  public XmlResourceParser getXml(int paramInt)
+  {
+    return this.a.getXml(paramInt);
+  }
+  
+  public TypedArray obtainAttributes(AttributeSet paramAttributeSet, int[] paramArrayOfInt)
+  {
+    return this.a.obtainAttributes(paramAttributeSet, paramArrayOfInt);
+  }
+  
+  public TypedArray obtainTypedArray(int paramInt)
+  {
+    return this.a.obtainTypedArray(paramInt);
+  }
+  
+  public InputStream openRawResource(int paramInt)
+  {
+    return this.a.openRawResource(paramInt);
+  }
+  
+  public InputStream openRawResource(int paramInt, TypedValue paramTypedValue)
+  {
+    return this.a.openRawResource(paramInt, paramTypedValue);
+  }
+  
+  public AssetFileDescriptor openRawResourceFd(int paramInt)
+  {
+    return this.a.openRawResourceFd(paramInt);
+  }
+  
+  public void parseBundleExtra(String paramString, AttributeSet paramAttributeSet, Bundle paramBundle)
+  {
+    this.a.parseBundleExtra(paramString, paramAttributeSet, paramBundle);
+  }
+  
+  public void parseBundleExtras(XmlResourceParser paramXmlResourceParser, Bundle paramBundle)
+  {
+    this.a.parseBundleExtras(paramXmlResourceParser, paramBundle);
+  }
+  
+  public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
+  {
+    super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+    Resources localResources = this.a;
+    if (localResources != null) {
+      localResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
     }
   }
 }

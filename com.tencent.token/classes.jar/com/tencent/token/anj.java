@@ -1,24 +1,41 @@
 package com.tencent.token;
 
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import java.util.Collections;
 
-final class anj
-  extends anf
+public final class anj
+  extends ane
 {
-  anj(asw paramasw, ani paramani)
+  private final aog g;
+  
+  anj(asv paramasv, anh paramanh)
   {
-    super(paramasw, paramani);
+    super(paramasv, paramanh);
+    this.g = new aog(paramasv, this, new anc(paramanh.c, paramanh.a));
+    paramasv = this.g;
+    paramanh = Collections.emptyList();
+    Collections.emptyList();
+    paramasv.a(paramanh);
   }
   
   public final void a(RectF paramRectF, Matrix paramMatrix)
   {
     super.a(paramRectF, paramMatrix);
-    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    this.g.a(paramRectF, this.a);
   }
   
-  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt) {}
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.g.a(paramString1, paramString2, paramColorFilter);
+  }
+  
+  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    this.g.a(paramCanvas, paramMatrix, paramInt);
+  }
 }
 
 

@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.xb;
+import com.tencent.token.xa;
 import com.tmsdk.TMSDKContext;
 
 public class SlidingMenuView
@@ -221,7 +221,7 @@ public class SlidingMenuView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    xb.a("onInterceptTouchEvent");
+    xa.a("onInterceptTouchEvent");
     int n = paramMotionEvent.getAction();
     if ((n == 2) && (this.a != 0)) {
       return true;
@@ -273,7 +273,7 @@ public class SlidingMenuView
     case 0: 
       paramMotionEvent = new StringBuilder("mLastMotionX");
       paramMotionEvent.append(this.i);
-      xb.a(paramMotionEvent.toString());
+      xa.a(paramMotionEvent.toString());
       this.i = f1;
       this.j = f2;
       this.k = true;

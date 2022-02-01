@@ -7,16 +7,14 @@ import android.content.Intent;
 final class ne
   extends BroadcastReceiver
 {
-  ne(nd paramnd) {}
+  ne(nc paramnc) {}
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
-    {
-      kx.a().a(new nd.b(this.a, paramIntent));
-      return;
-    }
-    catch (Throwable paramContext) {}
+    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
+    paramContext.append(System.currentTimeMillis());
+    lh.a("AccessSchedulerTrigger", paramContext.toString());
+    kw.a().a(new nc.a(this.a, (byte)0));
   }
 }
 

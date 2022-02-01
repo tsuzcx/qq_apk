@@ -1,55 +1,68 @@
 package com.tencent.token;
 
 import android.content.Context;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vl
-  extends tk
+  extends tj
 {
-  public static String d;
-  public static int e;
-  private long f;
-  private long g;
-  private int h;
-  private int i;
+  private long d;
+  private int e;
   
   public final String a()
   {
-    sa.a();
+    rz.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aar paramaar)
+  public final void a(aaq paramaaq)
   {
-    this.f = ((Long)paramaar.c.get("param.uinhash")).longValue();
-    this.g = ((Long)paramaar.c.get("param.realuin")).longValue();
-    this.i = ((Integer)paramaar.c.get("param.scene.id")).intValue();
-    this.h = paramaar.j;
+    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j == 0)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      paramJSONObject = aad.d(paramJSONObject.getString("data"));
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = new JSONObject(new String(paramJSONObject));
-        d = paramJSONObject.getString("validate_code");
-        e = paramJSONObject.getInt("validate_id");
-        this.a.a = 0;
-        return;
-      }
-      xb.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-      a(10022, RqdApplication.n().getString(2131493068));
+      paramJSONObject = paramJSONObject.getString("info");
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
-    a(j, paramJSONObject.getString("info"));
-    xb.a("ProtoGetRealNameVerify fail errCode=".concat(String.valueOf(j)));
+    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
+      {
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        sa.a();
+        paramJSONObject.append(sa.b());
+        xa.c(paramJSONObject.toString());
+        return;
+      }
+      this.a.a = 0;
+      QQUser localQQUser = sz.a().c(this.d);
+      if (localQQUser == null)
+      {
+        this.a.a(10000, null, null);
+        return;
+      }
+      localQQUser.mRealUin = paramJSONObject.getLong("real_uin");
+      localQQUser.mMobileMask = paramJSONObject.getString("mobile");
+      localQQUser.verify_sms = paramJSONObject.optInt("verify_sms");
+      return;
+    }
+    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.n().getString(2131493068));
   }
 }
 

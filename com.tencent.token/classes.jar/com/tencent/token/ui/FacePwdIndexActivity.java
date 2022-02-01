@@ -9,21 +9,21 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.aae;
-import com.tencent.token.ahh;
+import com.tencent.token.aad;
+import com.tencent.token.ahg;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.sd;
-import com.tencent.token.ta;
+import com.tencent.token.sc;
+import com.tencent.token.sz;
 import com.tencent.token.ui.base.FacePwdVerifySelDialog;
 import com.tencent.token.ui.base.SwitchButton;
-import com.tencent.token.xw;
+import com.tencent.token.xv;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FacePwdIndexActivity
   extends BaseActivity
 {
-  private xw mAdapter;
+  private xv mAdapter;
   private View mDivider;
   private TextView mFacePwdVerifyTipTextView;
   private boolean mIsChecked = false;
@@ -36,23 +36,23 @@ public class FacePwdIndexActivity
     this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165486));
     this.mDivider = findViewById(2131165447);
     this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165376));
-    Object localObject2 = ta.a();
+    Object localObject2 = sz.a();
     Object localObject1 = this.mRegisterFacePwdUserList;
-    localObject2 = ((ta)localObject2).k;
-    if ((((ahh)localObject2).a != null) && (localObject1 != null))
+    localObject2 = ((sz)localObject2).k;
+    if ((((ahg)localObject2).a != null) && (localObject1 != null))
     {
       int i = 0;
-      while (i < ((ahh)localObject2).a.size())
+      while (i < ((ahg)localObject2).a.size())
       {
-        if (((QQUser)((ahh)localObject2).a.get(i)).mIsRegisterFacePwd) {
-          ((List)localObject1).add(((ahh)localObject2).a.get(i));
+        if (((QQUser)((ahg)localObject2).a.get(i)).mIsRegisterFacePwd) {
+          ((List)localObject1).add(((ahg)localObject2).a.get(i));
         }
         i += 1;
       }
     }
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
-      localObject1 = aae.f();
+      localObject1 = aad.f();
       if ((localObject1 != null) && (((QQUser)localObject1).mIsRegisterFacePwd))
       {
         this.mSwitchVerifySet.a(false, false);
@@ -80,7 +80,7 @@ public class FacePwdIndexActivity
         {
           FacePwdIndexActivity.this.mSwitchVerifySet.a(true, false);
           FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, false);
-          aae.b(0L);
+          aad.b(0L);
           FacePwdIndexActivity.this.mListView.setVisibility(4);
           FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(4);
           FacePwdIndexActivity.this.mDivider.setVisibility(4);
@@ -95,7 +95,7 @@ public class FacePwdIndexActivity
           {
             FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, true);
             FacePwdIndexActivity.this.mSwitchVerifySet.a(false, false);
-            aae.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
+            aad.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
             FacePwdIndexActivity.this.refreshList();
             return;
           }
@@ -113,7 +113,7 @@ public class FacePwdIndexActivity
       }
     });
     this.mListView = ((ListView)findViewById(2131165485));
-    this.mAdapter = new xw(this, this.mRegisterFacePwdUserList);
+    this.mAdapter = new xv(this, this.mRegisterFacePwdUserList);
     this.mListView.setAdapter(this.mAdapter);
     if (this.mIsChecked)
     {
@@ -129,7 +129,7 @@ public class FacePwdIndexActivity
   
   private void showGesturePwdDialog()
   {
-    if (!sd.a().c()) {
+    if (!sc.a().c()) {
       showUserDialog(2131493137, getString(2131493134), 2131493136, 2131493135, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)

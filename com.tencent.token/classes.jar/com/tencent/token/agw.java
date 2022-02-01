@@ -1,8 +1,10 @@
 package com.tencent.token;
 
-public final class agw
+import com.qq.taf.jce.JceStruct;
+
+public abstract interface agw
 {
-  public static int a;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
 }
 
 

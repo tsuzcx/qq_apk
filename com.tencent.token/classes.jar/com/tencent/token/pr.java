@@ -1,52 +1,47 @@
 package com.tencent.token;
 
-import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
+import android.os.Handler;
+import android.os.Message;
 
-final class pr
+public final class pr
+  extends Handler
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("MM-dd HH:mm:ss SSS");
-  private static final byte[] b = { 4, 0, 0, 0, -1, -1, -1, 0 };
+  private final int a;
+  private final boolean b;
+  private long c;
+  private final a d;
   
-  public static void a(PrintStream paramPrintStream, byte[] paramArrayOfByte, String paramString1, String paramString2)
+  public final void a()
   {
-    if ((paramPrintStream != null) && (!py.a(paramArrayOfByte)) && (!py.b(paramString1)))
+    removeMessages(this.a);
+  }
+  
+  protected final void finalize()
+  {
+    a();
+    super.finalize();
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == this.a)
     {
-      if (py.b(paramString2)) {
+      paramMessage = this.d;
+      if (paramMessage == null) {
         return;
       }
-      try
-      {
-        StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append(a.format(Long.valueOf(System.currentTimeMillis())));
-        localStringBuffer.append(" ");
-        localStringBuffer.append(paramString1);
-        localStringBuffer.append(" ");
-        localStringBuffer.append(paramString2);
-        paramString1 = localStringBuffer.toString();
-        try
-        {
-          paramArrayOfByte = new DESKeySpec(paramArrayOfByte);
-          paramArrayOfByte = SecretKeyFactory.getInstance("DES").generateSecret(paramArrayOfByte);
-          paramString2 = Cipher.getInstance("DES");
-          paramString2.init(1, paramArrayOfByte);
-          paramArrayOfByte = paramString2.doFinal(paramString1.getBytes());
-          paramPrintStream.write(od.a(paramArrayOfByte.length));
-          paramPrintStream.write(paramArrayOfByte);
-          paramPrintStream.write(b);
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        paramPrintStream.flush();
+      if (!paramMessage.a()) {
         return;
       }
-      finally {}
+      if (this.b) {
+        sendEmptyMessageDelayed(this.a, this.c);
+      }
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean a();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
-import com.tencent.token.afl;
-import com.tencent.token.afo;
+import com.tencent.token.afk;
+import com.tencent.token.afn;
 import java.util.ArrayList;
 
 public final class Longan
@@ -11,24 +11,24 @@ public final class Longan
   public int hc = 0;
   public ArrayList<String> td = null;
   
-  public final void a(afl paramafl)
+  public final void a(afk paramafk)
   {
-    this.hc = paramafl.a(this.hc, 0, true);
+    this.hc = paramafk.a(this.hc, 0, true);
     if (sd == null)
     {
       ArrayList localArrayList = new ArrayList();
       sd = localArrayList;
       localArrayList.add("");
     }
-    this.td = ((ArrayList)paramafl.a(sd, 1, false));
+    this.td = ((ArrayList)paramafk.a(sd, 1, false));
   }
   
-  public final void a(afo paramafo)
+  public final void a(afn paramafn)
   {
-    paramafo.a(this.hc, 0);
+    paramafn.a(this.hc, 0);
     ArrayList localArrayList = this.td;
     if (localArrayList != null) {
-      paramafo.a(localArrayList, 1);
+      paramafn.a(localArrayList, 1);
     }
   }
 }

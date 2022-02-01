@@ -1,103 +1,328 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.ComponentName;
+import android.app.Notification;
+import android.app.Notification.Builder;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.util.SparseArray;
+import android.widget.RemoteViews;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class cj
 {
-  public static Intent a(Activity paramActivity)
+  public static Bundle a(Notification paramNotification)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      localObject = paramActivity.getParentActivityIntent();
-      if (localObject != null) {
-        return localObject;
-      }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras;
     }
-    Object localObject = b(paramActivity);
-    if (localObject == null) {
-      return null;
+    if (Build.VERSION.SDK_INT >= 16) {
+      return cl.a(paramNotification);
     }
-    ComponentName localComponentName = new ComponentName(paramActivity, (String)localObject);
-    try
-    {
-      if (b(paramActivity, localComponentName) == null) {
-        return Intent.makeMainActivity(localComponentName);
-      }
-      paramActivity = new Intent().setComponent(localComponentName);
-      return paramActivity;
-    }
-    catch (PackageManager.NameNotFoundException paramActivity)
-    {
-      label67:
-      break label67;
-    }
-    paramActivity = new StringBuilder("getParentActivityIntent: bad parentActivityName '");
-    paramActivity.append((String)localObject);
-    paramActivity.append("' in manifest");
     return null;
   }
   
-  public static Intent a(Context paramContext, ComponentName paramComponentName)
+  public static final class a
   {
-    String str = b(paramContext, paramComponentName);
-    if (str == null) {
-      return null;
+    final Bundle a;
+    final cn[] b;
+    final cn[] c;
+    boolean d;
+    public int e = 2131099914;
+    public CharSequence f;
+    public PendingIntent g;
+    
+    public a(CharSequence paramCharSequence, PendingIntent paramPendingIntent)
+    {
+      this(paramCharSequence, paramPendingIntent, new Bundle());
     }
-    paramComponentName = new ComponentName(paramComponentName.getPackageName(), str);
-    if (b(paramContext, paramComponentName) == null) {
-      return Intent.makeMainActivity(paramComponentName);
+    
+    private a(CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle)
+    {
+      this.f = cj.b.c(paramCharSequence);
+      this.g = paramPendingIntent;
+      this.a = paramBundle;
+      this.b = null;
+      this.c = null;
+      this.d = true;
     }
-    return new Intent().setComponent(paramComponentName);
   }
   
-  public static String b(Activity paramActivity)
+  public static final class b
   {
-    try
+    Bundle A;
+    int B = 0;
+    int C = 0;
+    Notification D;
+    RemoteViews E;
+    RemoteViews F;
+    RemoteViews G;
+    String H;
+    int I = 0;
+    String J;
+    long K;
+    int L = 0;
+    Notification M = new Notification();
+    @Deprecated
+    public ArrayList<String> N;
+    public Context a;
+    public ArrayList<cj.a> b = new ArrayList();
+    CharSequence c;
+    CharSequence d;
+    public PendingIntent e;
+    PendingIntent f;
+    RemoteViews g;
+    Bitmap h;
+    CharSequence i;
+    int j;
+    int k;
+    boolean l = true;
+    boolean m;
+    cj.c n;
+    CharSequence o;
+    CharSequence[] p;
+    int q;
+    int r;
+    boolean s;
+    String t;
+    boolean u;
+    String v;
+    boolean w = false;
+    boolean x;
+    boolean y;
+    String z;
+    
+    private b(Context paramContext)
     {
-      paramActivity = b(paramActivity, paramActivity.getComponentName());
-      return paramActivity;
+      this.a = paramContext;
+      this.H = null;
+      this.M.when = System.currentTimeMillis();
+      this.M.audioStreamType = -1;
+      this.k = 0;
+      this.N = new ArrayList();
     }
-    catch (PackageManager.NameNotFoundException paramActivity)
+    
+    @Deprecated
+    public b(Context paramContext, byte paramByte)
     {
-      throw new IllegalArgumentException(paramActivity);
+      this(paramContext);
     }
-  }
-  
-  private static String b(Context paramContext, ComponentName paramComponentName)
-  {
-    paramComponentName = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
-    if (Build.VERSION.SDK_INT >= 16)
+    
+    protected static CharSequence c(CharSequence paramCharSequence)
     {
-      str = paramComponentName.parentActivityName;
-      if (str != null) {
-        return str;
+      if (paramCharSequence == null) {
+        return paramCharSequence;
       }
+      CharSequence localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() > 5120) {
+        localCharSequence = paramCharSequence.subSequence(0, 5120);
+      }
+      return localCharSequence;
     }
-    if (paramComponentName.metaData == null) {
-      return null;
-    }
-    String str = paramComponentName.metaData.getString("android.support.PARENT_ACTIVITY");
-    if (str == null) {
-      return null;
-    }
-    paramComponentName = str;
-    if (str.charAt(0) == '.')
+    
+    public final b a()
     {
-      paramComponentName = new StringBuilder();
-      paramComponentName.append(paramContext.getPackageName());
-      paramComponentName.append(str);
-      paramComponentName = paramComponentName.toString();
+      this.M.icon = 2131099914;
+      return this;
     }
-    return paramComponentName;
+    
+    public final b a(CharSequence paramCharSequence)
+    {
+      this.c = c(paramCharSequence);
+      return this;
+    }
+    
+    public final b b()
+    {
+      Notification localNotification = this.M;
+      localNotification.flags |= 0x10;
+      return this;
+    }
+    
+    public final b b(CharSequence paramCharSequence)
+    {
+      this.d = c(paramCharSequence);
+      return this;
+    }
+    
+    public final b c()
+    {
+      this.M.defaults = 1;
+      return this;
+    }
+    
+    public final Notification d()
+    {
+      ck localck = new ck(this);
+      cj.c localc = localck.b.n;
+      Object localObject;
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localObject = localck.a.build();
+      }
+      else
+      {
+        Notification localNotification;
+        if (Build.VERSION.SDK_INT >= 24)
+        {
+          localNotification = localck.a.build();
+          localObject = localNotification;
+          if (localck.g != 0)
+          {
+            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
+              ck.a(localNotification);
+            }
+            localObject = localNotification;
+            if (localNotification.getGroup() != null)
+            {
+              localObject = localNotification;
+              if ((localNotification.flags & 0x200) == 0)
+              {
+                localObject = localNotification;
+                if (localck.g == 1)
+                {
+                  ck.a(localNotification);
+                  localObject = localNotification;
+                }
+              }
+            }
+          }
+        }
+        else if (Build.VERSION.SDK_INT >= 21)
+        {
+          localck.a.setExtras(localck.f);
+          localNotification = localck.a.build();
+          if (localck.c != null) {
+            localNotification.contentView = localck.c;
+          }
+          if (localck.d != null) {
+            localNotification.bigContentView = localck.d;
+          }
+          if (localck.h != null) {
+            localNotification.headsUpContentView = localck.h;
+          }
+          localObject = localNotification;
+          if (localck.g != 0)
+          {
+            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
+              ck.a(localNotification);
+            }
+            localObject = localNotification;
+            if (localNotification.getGroup() != null)
+            {
+              localObject = localNotification;
+              if ((localNotification.flags & 0x200) == 0)
+              {
+                localObject = localNotification;
+                if (localck.g == 1)
+                {
+                  ck.a(localNotification);
+                  localObject = localNotification;
+                }
+              }
+            }
+          }
+        }
+        else if (Build.VERSION.SDK_INT >= 20)
+        {
+          localck.a.setExtras(localck.f);
+          localNotification = localck.a.build();
+          if (localck.c != null) {
+            localNotification.contentView = localck.c;
+          }
+          if (localck.d != null) {
+            localNotification.bigContentView = localck.d;
+          }
+          localObject = localNotification;
+          if (localck.g != 0)
+          {
+            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
+              ck.a(localNotification);
+            }
+            localObject = localNotification;
+            if (localNotification.getGroup() != null)
+            {
+              localObject = localNotification;
+              if ((localNotification.flags & 0x200) == 0)
+              {
+                localObject = localNotification;
+                if (localck.g == 1)
+                {
+                  ck.a(localNotification);
+                  localObject = localNotification;
+                }
+              }
+            }
+          }
+        }
+        else if (Build.VERSION.SDK_INT >= 19)
+        {
+          localObject = cl.a(localck.e);
+          if (localObject != null) {
+            localck.f.putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
+          }
+          localck.a.setExtras(localck.f);
+          localNotification = localck.a.build();
+          if (localck.c != null) {
+            localNotification.contentView = localck.c;
+          }
+          localObject = localNotification;
+          if (localck.d != null)
+          {
+            localNotification.bigContentView = localck.d;
+            localObject = localNotification;
+          }
+        }
+        else if (Build.VERSION.SDK_INT >= 16)
+        {
+          localNotification = localck.a.build();
+          localObject = cj.a(localNotification);
+          Bundle localBundle = new Bundle(localck.f);
+          Iterator localIterator = localck.f.keySet().iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (((Bundle)localObject).containsKey(str)) {
+              localBundle.remove(str);
+            }
+          }
+          ((Bundle)localObject).putAll(localBundle);
+          localObject = cl.a(localck.e);
+          if (localObject != null) {
+            cj.a(localNotification).putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
+          }
+          if (localck.c != null) {
+            localNotification.contentView = localck.c;
+          }
+          localObject = localNotification;
+          if (localck.d != null)
+          {
+            localNotification.bigContentView = localck.d;
+            localObject = localNotification;
+          }
+        }
+        else
+        {
+          localObject = localck.a.getNotification();
+        }
+      }
+      if (localck.b.E != null) {
+        ((Notification)localObject).contentView = localck.b.E;
+      }
+      int i1 = Build.VERSION.SDK_INT;
+      i1 = Build.VERSION.SDK_INT;
+      if ((Build.VERSION.SDK_INT >= 16) && (localc != null)) {
+        cj.a((Notification)localObject);
+      }
+      return localObject;
+    }
   }
+  
+  public static abstract class c {}
 }
 
 

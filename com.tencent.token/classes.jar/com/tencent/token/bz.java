@@ -1,29 +1,70 @@
 package com.tencent.token;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import java.io.PrintWriter;
 
-public final class bz
+public abstract class bz<E>
+  extends bx
 {
-  public final ca<?> a;
+  public final Activity b;
+  public final Context c;
+  public final Handler d;
+  final int e;
+  public final cb f = new cb();
   
-  public bz(ca<?> paramca)
+  private bz(Activity paramActivity, Context paramContext, Handler paramHandler)
   {
-    this.a = paramca;
+    this.b = paramActivity;
+    this.c = paramContext;
+    this.d = paramHandler;
+    this.e = 0;
   }
   
-  public final Fragment a(String paramString)
+  protected bz(FragmentActivity paramFragmentActivity)
   {
-    return this.a.f.b(paramString);
+    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
   }
   
-  public final void a()
+  public View a(int paramInt)
   {
-    this.a.f.j();
+    return null;
   }
   
-  public final boolean b()
+  protected void a(Fragment paramFragment) {}
+  
+  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
+  
+  public boolean a()
   {
-    return this.a.f.h();
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public LayoutInflater c()
+  {
+    return LayoutInflater.from(this.c);
+  }
+  
+  public void d() {}
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public int f()
+  {
+    return this.e;
   }
 }
 

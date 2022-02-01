@@ -1,46 +1,12 @@
 package com.tencent.token;
 
+import java.util.concurrent.TimeUnit;
+
 public final class adk
 {
-  public String a = "";
-  public boolean b;
-  public long c;
-  public long d;
-  
-  public adk(String paramString)
-  {
-    boolean bool = false;
-    this.b = false;
-    this.c = 0L;
-    this.d = 0L;
-    this.a = paramString;
-    paramString = paramString.split(":");
-    if ((paramString != null) && (paramString.length >= 4)) {}
-    for (;;)
-    {
-      try
-      {
-        Integer.valueOf(paramString[0]).intValue();
-        this.c = Long.valueOf(paramString[1]).longValue();
-        this.d = Long.valueOf(paramString[2]).longValue();
-        if (Integer.valueOf(paramString[3]).intValue() == 0)
-        {
-          this.b = bool;
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        return;
-      }
-      bool = true;
-    }
-  }
-  
-  public final String toString()
-  {
-    return this.a;
-  }
+  public static final long a = TimeUnit.SECONDS.toMillis(1L);
+  public static final long b = TimeUnit.MILLISECONDS.toMillis(50L);
+  public static final int c = (int)(a / b);
 }
 
 

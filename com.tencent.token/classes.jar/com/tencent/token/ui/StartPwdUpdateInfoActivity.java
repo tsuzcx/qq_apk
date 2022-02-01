@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.sd;
+import com.tencent.token.sc;
 
 public class StartPwdUpdateInfoActivity
   extends BaseActivity
@@ -45,7 +45,7 @@ public class StartPwdUpdateInfoActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sd.a().d())))
+    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sc.a().d())))
     {
       showOrangeToast(2131493236, 2131100170);
       setResult(259);

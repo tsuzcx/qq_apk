@@ -1,24 +1,12 @@
 package com.tencent.token;
 
-public final class aof
+import java.util.List;
+
+public abstract interface aof
 {
-  public static abstract class a
-  {
-    public abstract void a();
-    
-    public abstract void a(int paramInt1, int paramInt2);
-  }
+  public abstract String a();
   
-  public static abstract class b {}
-  
-  public static final class c
-  {
-    public int a = -1;
-    public int b = 0;
-    public long c = -1L;
-    public String d = null;
-    public String e;
-  }
+  public abstract void a(List<aof> paramList);
 }
 
 

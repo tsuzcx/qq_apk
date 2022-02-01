@@ -1,83 +1,64 @@
 package com.tencent.token;
 
-import java.security.GeneralSecurityException;
-import java.security.Principal;
-import java.security.cert.Certificate;
+import java.security.PublicKey;
 import java.security.cert.X509Certificate;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
 import java.util.Iterator;
-import java.util.List;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.security.auth.x500.X500Principal;
 
 public final class aks
-  extends aku
+  implements akv
 {
-  private final akw a;
+  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
   
-  public aks(akw paramakw)
+  public aks(X509Certificate... paramVarArgs)
   {
-    this.a = paramakw;
-  }
-  
-  private static boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
-  {
-    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
-      return false;
-    }
-    try
-    {
-      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
-      return true;
-    }
-    catch (GeneralSecurityException paramX509Certificate1) {}
-    return false;
-  }
-  
-  public final List<Certificate> a(List<Certificate> paramList, String paramString)
-  {
-    paramList = new ArrayDeque(paramList);
-    paramString = new ArrayList();
-    paramString.add(paramList.removeFirst());
+    int j = paramVarArgs.length;
     int i = 0;
-    int j = 0;
-    while (i < 9)
+    while (i < j)
     {
-      X509Certificate localX509Certificate1 = (X509Certificate)paramString.get(paramString.size() - 1);
-      Object localObject = this.a.a(localX509Certificate1);
-      if (localObject != null)
+      X509Certificate localX509Certificate = paramVarArgs[i];
+      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
+      Set localSet = (Set)this.a.get(localX500Principal);
+      Object localObject = localSet;
+      if (localSet == null)
       {
-        if ((paramString.size() > 1) || (!localX509Certificate1.equals(localObject))) {
-          paramString.add(localObject);
-        }
-        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
-          return paramString;
-        }
-        j = 1;
+        localObject = new LinkedHashSet(1);
+        this.a.put(localX500Principal, localObject);
       }
-      else
-      {
-        localObject = paramList.iterator();
-        X509Certificate localX509Certificate2;
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
-        } while (!a(localX509Certificate1, localX509Certificate2));
-        ((Iterator)localObject).remove();
-        paramString.add(localX509Certificate2);
-      }
+      ((Set)localObject).add(localX509Certificate);
       i += 1;
-      continue;
-      if (j != 0) {
-        return paramString;
-      }
-      throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed ".concat(String.valueOf(localX509Certificate1)));
     }
-    throw new SSLPeerUnverifiedException("Certificate chain too long: ".concat(String.valueOf(paramString)));
+  }
+  
+  public final X509Certificate a(X509Certificate paramX509Certificate)
+  {
+    Object localObject = paramX509Certificate.getIssuerX500Principal();
+    localObject = (Set)this.a.get(localObject);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((Set)localObject).iterator();
+    for (;;)
+    {
+      X509Certificate localX509Certificate;
+      PublicKey localPublicKey;
+      if (((Iterator)localObject).hasNext())
+      {
+        localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+        localPublicKey = localX509Certificate.getPublicKey();
+      }
+      try
+      {
+        paramX509Certificate.verify(localPublicKey);
+        return localX509Certificate;
+      }
+      catch (Exception localException) {}
+      return null;
+    }
   }
   
   public final boolean equals(Object paramObject)

@@ -8,18 +8,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import com.tencent.token.hm;
-import com.tencent.token.hm.b;
-import com.tencent.token.ho;
-import com.tencent.token.hu;
-import com.tencent.token.jf;
+import com.tencent.token.hl;
+import com.tencent.token.hl.b;
+import com.tencent.token.hn;
+import com.tencent.token.ht;
+import com.tencent.token.je;
 
 public final class ExpandedMenuView
   extends ListView
-  implements AdapterView.OnItemClickListener, hm.b, hu
+  implements AdapterView.OnItemClickListener, hl.b, ht
 {
   private static final int[] a = { 16842964, 16843049 };
-  private hm b;
+  private hl b;
   private int c;
   
   public ExpandedMenuView(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,7 +31,7 @@ public final class ExpandedMenuView
   {
     super(paramContext, paramAttributeSet);
     setOnItemClickListener(this);
-    paramContext = jf.a(paramContext, paramAttributeSet, a, paramInt, 0);
+    paramContext = je.a(paramContext, paramAttributeSet, a, paramInt, 0);
     if (paramContext.f(0)) {
       setBackgroundDrawable(paramContext.a(0));
     }
@@ -41,14 +41,14 @@ public final class ExpandedMenuView
     paramContext.a.recycle();
   }
   
-  public final void a(hm paramhm)
+  public final void a(hl paramhl)
   {
-    this.b = paramhm;
+    this.b = paramhl;
   }
   
-  public final boolean a(ho paramho)
+  public final boolean a(hn paramhn)
   {
-    return this.b.a(paramho, null, 0);
+    return this.b.a(paramhn, null, 0);
   }
   
   public final int getWindowAnimations()
@@ -64,7 +64,7 @@ public final class ExpandedMenuView
   
   public final void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a((ho)getAdapter().getItem(paramInt));
+    a((hn)getAdapter().getItem(paramInt));
   }
 }
 

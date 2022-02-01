@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aae;
-import com.tencent.token.xb;
+import com.tencent.token.aad;
+import com.tencent.token.xa;
 
 public class TakeIDPhotoComfirmActivity
   extends BaseActivity
@@ -21,7 +21,7 @@ public class TakeIDPhotoComfirmActivity
     final String str = getIntent().getStringExtra("data");
     if (TextUtils.isEmpty(str))
     {
-      xb.a("data is null");
+      xa.a("data is null");
       finish();
       return;
     }
@@ -34,7 +34,7 @@ public class TakeIDPhotoComfirmActivity
     {
       public final void run()
       {
-        Bitmap localBitmap = aae.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
+        Bitmap localBitmap = aad.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
         this.b.setImageBitmap(localBitmap);
       }
     }, 100L);
@@ -60,7 +60,7 @@ public class TakeIDPhotoComfirmActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    xb.a("TakeIDPhotoComfirmActivity");
+    xa.a("TakeIDPhotoComfirmActivity");
     this.mFlag = getIntent().getIntExtra("flag", -1);
     setContentView(2131296329);
     init();

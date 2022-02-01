@@ -1,20 +1,25 @@
 package com.tencent.token;
 
+import android.content.Context;
+import com.tencent.turingfd.sdk.base.Lemon;
+
 public final class adg
 {
-  public static final byte[] a = new byte[0];
-  public int b;
-  public byte[] c;
+  public int a;
+  public long b;
+  public Context c;
+  public int d;
+  public Lemon e;
+  public add f;
   
-  public adg(int paramInt, byte[] paramArrayOfByte)
+  public static final class a
   {
-    this.b = paramInt;
-    this.c = paramArrayOfByte;
-  }
-  
-  public static adg a(int paramInt)
-  {
-    return new adg(paramInt, a);
+    public int a;
+    public long b;
+    public Context c;
+    public add d;
+    public int e;
+    public Lemon f;
   }
 }
 

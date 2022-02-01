@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.token.ev;
-import com.tencent.token.fy;
+import com.tencent.token.eu;
+import com.tencent.token.fx;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class PagerTitleStrip
   private boolean j;
   private boolean k;
   private final a l = new a();
-  private WeakReference<ev> m;
+  private WeakReference<eu> m;
   private int p;
   
   public PagerTitleStrip(Context paramContext, AttributeSet paramAttributeSet)
@@ -60,9 +60,9 @@ public class PagerTitleStrip
     int i1 = paramAttributeSet.getResourceId(0, 0);
     if (i1 != 0)
     {
-      fy.a(this.b, i1);
-      fy.a(this.c, i1);
-      fy.a(this.d, i1);
+      fx.a(this.b, i1);
+      fx.a(this.c, i1);
+      fx.a(this.d, i1);
     }
     int i2 = paramAttributeSet.getDimensionPixelSize(1, 0);
     if (i2 != 0)
@@ -207,24 +207,24 @@ public class PagerTitleStrip
     this.k = false;
   }
   
-  final void a(ev paramev1, ev paramev2)
+  final void a(eu parameu1, eu parameu2)
   {
-    if (paramev1 != null)
+    if (parameu1 != null)
     {
-      paramev1.b(this.l);
+      parameu1.b(this.l);
       this.m = null;
     }
-    if (paramev2 != null)
+    if (parameu2 != null)
     {
-      paramev2.a(this.l);
-      this.m = new WeakReference(paramev2);
+      parameu2.a(this.l);
+      this.m = new WeakReference(parameu2);
     }
-    paramev1 = this.a;
-    if (paramev1 != null)
+    parameu1 = this.a;
+    if (parameu1 != null)
     {
       this.g = -1;
       this.e = -1.0F;
-      a(paramev1.getCurrentItem());
+      a(parameu1.getCurrentItem());
       requestLayout();
     }
   }
@@ -250,7 +250,7 @@ public class PagerTitleStrip
     if ((localObject instanceof ViewPager))
     {
       localObject = (ViewPager)localObject;
-      ev localev = ((ViewPager)localObject).getAdapter();
+      eu localeu = ((ViewPager)localObject).getAdapter();
       ((ViewPager)localObject).a(this.l);
       a locala = this.l;
       if (((ViewPager)localObject).d == null) {
@@ -260,11 +260,11 @@ public class PagerTitleStrip
       this.a = ((ViewPager)localObject);
       localObject = this.m;
       if (localObject != null) {
-        localObject = (ev)((WeakReference)localObject).get();
+        localObject = (eu)((WeakReference)localObject).get();
       } else {
         localObject = null;
       }
-      a((ev)localObject, localev);
+      a((eu)localObject, localeu);
       return;
     }
     throw new IllegalStateException("PagerTitleStrip must be a direct child of a ViewPager.");
@@ -401,9 +401,9 @@ public class PagerTitleStrip
       PagerTitleStrip.this.a(i, paramFloat, false);
     }
     
-    public final void a(ev paramev1, ev paramev2)
+    public final void a(eu parameu1, eu parameu2)
     {
-      PagerTitleStrip.this.a(paramev1, paramev2);
+      PagerTitleStrip.this.a(parameu1, parameu2);
     }
     
     public final void onChanged()

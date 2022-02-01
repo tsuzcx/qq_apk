@@ -2,9 +2,13 @@ package com.tencent.token;
 
 public final class sg
 {
-  public String a;
-  public String b;
-  public boolean c;
+  public int a;
+  public int b = 0;
+  
+  public final boolean a()
+  {
+    return this.b == 1;
+  }
 }
 
 

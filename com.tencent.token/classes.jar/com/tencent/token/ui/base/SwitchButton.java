@@ -17,7 +17,7 @@ import android.view.ViewParent;
 import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.token.utils.ImageCache;
-import com.tencent.token.yn;
+import com.tencent.token.ym;
 
 public class SwitchButton
   extends CheckBox
@@ -335,7 +335,7 @@ public class SwitchButton
         return;
       }
       SwitchButton.b(SwitchButton.this);
-      yn.a(this);
+      ym.a(this);
     }
   }
 }

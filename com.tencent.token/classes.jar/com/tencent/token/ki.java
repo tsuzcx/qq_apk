@@ -1,36 +1,19 @@
 package com.tencent.token;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.IContentProvider;
-import com.oasisfeng.condom.CondomCore;
-import com.oasisfeng.condom.ContentResolverWrapper;
 
-public final class ki
-  extends ContentResolverWrapper
+public abstract interface ki
 {
-  private final CondomCore a;
+  public abstract void a(a parama);
   
-  public ki(CondomCore paramCondomCore, Context paramContext, ContentResolver paramContentResolver)
+  public static abstract interface a
   {
-    super(paramContext, paramContentResolver);
-    this.a = paramCondomCore;
+    public abstract void a(String paramString, ki.b paramb);
   }
   
-  public final IContentProvider acquireProvider(Context paramContext, String paramString)
+  public static abstract interface b
   {
-    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
-      return null;
-    }
-    return super.acquireProvider(paramContext, paramString);
-  }
-  
-  public final IContentProvider acquireUnstableProvider(Context paramContext, String paramString)
-  {
-    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
-      return null;
-    }
-    return super.acquireUnstableProvider(paramContext, paramString);
+    public abstract Object a(Context paramContext);
   }
 }
 

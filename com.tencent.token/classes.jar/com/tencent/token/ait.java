@@ -1,64 +1,89 @@
 package com.tencent.token;
 
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.Proxy.Type;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public final class ait
+public enum ait
 {
-  public final ahs a;
-  public final Proxy b;
-  public final InetSocketAddress c;
+  final String f;
   
-  public ait(ahs paramahs, Proxy paramProxy, InetSocketAddress paramInetSocketAddress)
+  private ait(String paramString)
   {
-    if (paramahs != null)
+    this.f = paramString;
+  }
+  
+  public static ait a(String paramString)
+  {
+    int i = paramString.hashCode();
+    if (i != 79201641)
     {
-      if (paramProxy != null)
+      if (i != 79923350)
       {
-        if (paramInetSocketAddress != null)
+        switch (i)
         {
-          this.a = paramahs;
-          this.b = paramProxy;
-          this.c = paramInetSocketAddress;
-          return;
+        default: 
+          break;
+        case -503070501: 
+          if (!paramString.equals("TLSv1.3")) {
+            break;
+          }
+          i = 0;
+          break;
+        case -503070502: 
+          if (!paramString.equals("TLSv1.2")) {
+            break;
+          }
+          i = 1;
+          break;
+        case -503070503: 
+          if (!paramString.equals("TLSv1.1")) {
+            break;
+          }
+          i = 2;
+          break;
         }
-        throw new NullPointerException("inetSocketAddress == null");
       }
-      throw new NullPointerException("proxy == null");
+      else if (paramString.equals("TLSv1"))
+      {
+        i = 3;
+        break label119;
+      }
     }
-    throw new NullPointerException("address == null");
-  }
-  
-  public final boolean a()
-  {
-    return (this.a.i != null) && (this.b.type() == Proxy.Type.HTTP);
-  }
-  
-  public final boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof ait))
+    else if (paramString.equals("SSLv3"))
     {
-      paramObject = (ait)paramObject;
-      if ((paramObject.a.equals(this.a)) && (paramObject.b.equals(this.b)) && (paramObject.c.equals(this.c))) {
-        return true;
-      }
+      i = 4;
+      break label119;
     }
-    return false;
+    i = -1;
+    switch (i)
+    {
+    default: 
+      throw new IllegalArgumentException("Unexpected TLS version: ".concat(String.valueOf(paramString)));
+    case 4: 
+      return e;
+    case 3: 
+      return d;
+    case 2: 
+      return c;
+    case 1: 
+      label119:
+      return b;
+    }
+    return a;
   }
   
-  public final int hashCode()
+  static List<ait> a(String... paramVarArgs)
   {
-    return ((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode();
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("Route{");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(a(paramVarArgs[i]));
+      i += 1;
+    }
+    return Collections.unmodifiableList(localArrayList);
   }
 }
 

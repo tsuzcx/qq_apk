@@ -1,64 +1,114 @@
 package com.tencent.token;
 
+import android.content.Context;
+import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
 
 public final class arh
-  implements aqx
 {
-  public ArrayList a = new ArrayList();
-  int b = 0;
-  private boolean c = false;
+  public static String a = "TmsTcpNetwork";
+  public ard b = new ard((byte)0);
+  public Context c = null;
+  public arg d = null;
+  aqv e = null;
+  public boolean f = false;
+  public aqt g = null;
+  private long h = 180000L;
   
-  public arh()
+  public arh(Context paramContext)
   {
-    this.c = false;
-    this.a.add(new aqz("mazu.3g.qq.com", 443, 100));
-    this.a.add(new aqz("mazu.3g.qq.com", 14000, 100));
-    this.a.add(new aqz("mazu.3g.qq.com", 8080, 100));
-    this.b = 0;
+    this.c = paramContext;
   }
   
-  public arh(boolean paramBoolean)
+  public final int a(JceStruct paramJceStruct)
   {
-    this.c = paramBoolean;
-    if (paramBoolean)
+    int i = 0;
+    int j = 0;
+    while (i < 3)
     {
-      this.a.add(new aqz("mazutest.3g.qq.com", 8080, 100));
+      byte[] arrayOfByte = apz.a(paramJceStruct);
+      j = this.b.a(arrayOfByte);
+      if (j == 0) {
+        return 0;
+      }
+      i += 1;
     }
-    else
-    {
-      this.a.add(new aqz("mazu.3g.qq.com", 14000, 100));
-      this.a.add(new aqz("mazu.3g.qq.com", 443, 100));
-      this.a.add(new aqz("mazu.3g.qq.com", 8080, 100));
-    }
-    this.b = 0;
+    return j;
   }
   
-  public final aqz a()
+  public final void a()
   {
-    int i = this.b;
-    if ((i >= 0) && (i < this.a.size()))
+    this.b.a(false, false);
+    if (this.f)
     {
-      StringBuilder localStringBuilder = new StringBuilder("ip ");
-      localStringBuilder.append(((aqz)this.a.get(this.b)).b);
-      localStringBuilder.append(" port : ");
-      localStringBuilder.append(((aqz)this.a.get(this.b)).a);
-      return (aqz)this.a.get(this.b);
+      aqt localaqt = this.g;
+      if (localaqt != null) {
+        localaqt.b();
+      }
     }
-    return (aqz)this.a.get(0);
   }
   
   public final void a(int paramInt)
   {
-    if (paramInt <= 0) {
+    this.d.a(paramInt);
+  }
+  
+  public final void a(long paramLong)
+  {
+    if (this.h == paramLong) {
       return;
     }
-    if (this.c)
+    aqt localaqt = this.g;
+    if (localaqt != null) {
+      localaqt.a(paramLong);
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.d = new arg(paramBoolean);
+  }
+  
+  public final void a(boolean paramBoolean, aqv paramaqv)
+  {
+    this.f = paramBoolean;
+    this.e = paramaqv;
+    if (this.f)
     {
-      this.a.add(new aqz("mazutest.3g.qq.com", paramInt, 100));
+      this.g = new aqt(this.c, paramaqv);
+      this.g.a(this.h);
+      this.g.a();
       return;
     }
-    this.a.add(new aqz("mazu.3g.qq.com", paramInt, 100));
+    paramaqv = this.g;
+    if (paramaqv != null) {
+      paramaqv.b();
+    }
+    this.g = null;
+  }
+  
+  public final boolean b()
+  {
+    boolean bool2 = apc.a();
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    a();
+    Object localObject = this.d;
+    ((arg)localObject).b = ((((arg)localObject).b + 1) % ((arg)localObject).a.size());
+    localObject = this.b;
+    arg localarg = this.d;
+    if (((ard)localObject).a(false, true)) {
+      bool1 = ((ard)localObject).a(((ard)localObject).a, localarg);
+    }
+    a(this.f, this.e);
+    return bool1;
+  }
+  
+  public final boolean c()
+  {
+    return this.b.a();
   }
 }
 

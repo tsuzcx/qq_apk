@@ -1,31 +1,80 @@
 package com.tencent.token;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import java.io.ByteArrayInputStream;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public final class zg
 {
-  String a;
-  String b;
-  String c;
-  String d;
-  
-  public final JSONObject a()
+  private static String a(byte[] paramArrayOfByte)
   {
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("name", this.a);
-      localJSONObject.put("id", this.d);
-      localJSONObject.put("version", this.b);
-      localJSONObject.put("publickey", this.c);
-      return localJSONObject;
+      paramArrayOfByte = ((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramArrayOfByte))).getPublicKey().toString();
+      return paramArrayOfByte;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramArrayOfByte)
     {
-      localJSONException.printStackTrace();
+      paramArrayOfByte.printStackTrace();
     }
-    return localJSONObject;
+    return zk.a;
+  }
+  
+  public static JSONArray a(Context paramContext)
+  {
+    Object localObject = (ArrayList)b(paramContext);
+    paramContext = new JSONArray();
+    if (((ArrayList)localObject).size() == 0) {
+      return paramContext;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramContext.put(((zf)((Iterator)localObject).next()).a());
+    }
+    return paramContext;
+  }
+  
+  private static List<zf> b(Context paramContext)
+  {
+    localArrayList = new ArrayList();
+    try
+    {
+      paramContext = paramContext.getPackageManager();
+      Object localObject = paramContext.getInstalledPackages(64);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+          if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
+          {
+            zf localzf = new zf();
+            localzf.a = localPackageInfo.applicationInfo.loadLabel(paramContext).toString();
+            localzf.d = localPackageInfo.packageName;
+            localzf.b = localPackageInfo.versionName;
+            if ((localPackageInfo.signatures != null) && (localPackageInfo.signatures.length != 0)) {
+              localzf.c = a(localPackageInfo.signatures[0].toByteArray());
+            }
+            localArrayList.add(localzf);
+          }
+        }
+      }
+      return localArrayList;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 

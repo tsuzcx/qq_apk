@@ -1,10 +1,10 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceStruct;
+
 public abstract interface asl
 {
-  public abstract void a(Runnable paramRunnable, String paramString);
-  
-  public abstract void b(Runnable paramRunnable, String paramString);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, JceStruct paramJceStruct);
 }
 
 

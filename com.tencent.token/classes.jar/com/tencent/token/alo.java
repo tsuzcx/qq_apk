@@ -1,18 +1,15 @@
 package com.tencent.token;
 
 import java.io.Closeable;
-import java.io.Flushable;
 
 public abstract interface alo
-  extends Closeable, Flushable
+  extends Closeable
 {
-  public abstract alq a();
+  public abstract long a(aky paramaky, long paramLong);
   
-  public abstract void a_(akz paramakz, long paramLong);
+  public abstract alp a();
   
   public abstract void close();
-  
-  public abstract void flush();
 }
 
 

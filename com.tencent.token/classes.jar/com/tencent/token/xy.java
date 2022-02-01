@@ -1,6 +1,7 @@
 package com.tencent.token;
 
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,80 +13,82 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.ui.UtilsGameLockActivity;
+import com.tencent.token.ui.UtilsGameProtectActivity;
 import com.tencent.token.ui.base.SwitchButton;
+import com.tencent.token.utils.UserTask;
 
 public final class xy
   extends BaseAdapter
 {
-  public static boolean h = false;
-  public UtilsGameLockActivity a;
-  public boolean b;
-  public sl c;
-  public yw d;
-  public Handler e;
-  public boolean f = true;
-  public View g;
-  a i = new a();
-  private LayoutInflater j;
-  private ListView k;
+  public boolean a = true;
+  public View b;
+  a c = new a();
+  private UtilsGameProtectActivity d;
+  private LayoutInflater e;
+  private ListView f;
+  private Handler g;
   
-  public xy(UtilsGameLockActivity paramUtilsGameLockActivity, ListView paramListView, Handler paramHandler)
+  public xy(UtilsGameProtectActivity paramUtilsGameProtectActivity, ListView paramListView, Handler paramHandler)
   {
-    this.a = paramUtilsGameLockActivity;
-    this.j = LayoutInflater.from(paramUtilsGameLockActivity);
-    this.k = paramListView;
-    this.e = paramHandler;
+    this.d = paramUtilsGameProtectActivity;
+    this.e = LayoutInflater.from(paramUtilsGameProtectActivity);
+    this.f = paramListView;
+    this.g = paramHandler;
   }
   
   public static void a()
   {
-    int n = tb.a().c.a();
-    int m = 0;
-    while (m < n)
+    int j = ta.a().d.b();
+    int i = 0;
+    while (i < j)
     {
-      sl localsl = tb.a().a(m);
-      if (localsl != null) {
-        localsl.e = false;
+      sk localsk = ta.a().b(i);
+      if (localsk != null) {
+        localsk.e = false;
       }
-      m += 1;
+      i += 1;
     }
   }
   
-  public final void a(yw paramyw, boolean paramBoolean)
+  public final void a(b paramb, boolean paramBoolean)
   {
-    if ((paramyw != null) && (paramyw.h != null))
+    if ((paramb != null) && (paramb.f != null))
     {
-      Object localObject = this.a;
+      Object localObject = this.d;
       if (localObject != null)
       {
-        if (((UtilsGameLockActivity)localObject).isFinishing()) {
+        if (((UtilsGameProtectActivity)localObject).isFinishing()) {
           return;
         }
-        localObject = paramyw.h;
-        TextView localTextView = paramyw.b;
-        SwitchButton localSwitchButton = paramyw.d;
-        ProgressBar localProgressBar = paramyw.c;
-        paramyw = paramyw.e;
-        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramyw != null))
+        localObject = paramb.f;
+        TextView localTextView = paramb.b;
+        SwitchButton localSwitchButton = paramb.d;
+        ProgressBar localProgressBar = paramb.c;
+        paramb = paramb.e;
+        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramb != null))
         {
           if (localObject == null) {
             return;
           }
-          if ((paramBoolean) && (!((sl)localObject).b.equals(localTextView.getText()))) {
+          StringBuilder localStringBuilder = new StringBuilder("game protect: ");
+          localStringBuilder.append(((sk)localObject).b);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(localTextView.getText());
+          xa.c(localStringBuilder.toString());
+          if ((paramBoolean) && (!((sk)localObject).b.equals(localTextView.getText()))) {
             return;
           }
-          if (((sl)localObject).f) {
-            paramyw.setVisibility(0);
+          if (((sk)localObject).f) {
+            paramb.setVisibility(0);
           } else {
-            paramyw.setVisibility(4);
+            paramb.setVisibility(4);
           }
-          if ((!((sl)localObject).e) && (tb.a().c()))
+          if ((!((sk)localObject).e) && (ta.a().d()))
           {
             localProgressBar.setVisibility(4);
             localSwitchButton.setVisibility(0);
             localSwitchButton.setEnabled(true);
-            localSwitchButton.a(true ^ ((sl)localObject).c, false);
+            localSwitchButton.a(true ^ ((sk)localObject).c, false);
           }
           else
           {
@@ -93,10 +96,10 @@ public final class xy
             localSwitchButton.setVisibility(0);
             localSwitchButton.setEnabled(false);
           }
-          if (!tb.a().c()) {
-            this.a.queryGameLockStatus();
+          if ((!ta.a().d()) && (!this.d.mIsIniting)) {
+            this.d.queryGameProtectStatus();
           }
-          localTextView.setText(((sl)localObject).b);
+          localTextView.setText(((sk)localObject).b);
           return;
         }
         return;
@@ -106,10 +109,10 @@ public final class xy
   
   public final int getCount()
   {
-    if (this.f) {
-      return tb.a().c.b();
+    if (this.a) {
+      return ta.a().d.c();
     }
-    return tb.a().c.a();
+    return ta.a().d.b();
   }
   
   public final Object getItem(int paramInt)
@@ -124,13 +127,17 @@ public final class xy
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    sk localsk = ta.a().b(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = this.j.inflate(2131296472, paramViewGroup, false);
+      localView = this.e.inflate(2131296477, paramViewGroup, false);
     }
-    paramView = new yw(localView, tb.a().a(paramInt));
+    paramView = new StringBuilder("game protect getview: ");
+    paramView.append(localsk.a);
+    xa.c(paramView.toString());
+    paramView = new b(localView, localsk);
     paramView.d.setTag(paramView);
-    paramView.d.setOnCheckedChangeListener(this.i);
+    paramView.d.setOnCheckedChangeListener(this.c);
     a(paramView, false);
     return localView;
   }
@@ -142,31 +149,52 @@ public final class xy
     
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      paramCompoundButton = (yw)paramCompoundButton.getTag();
+      paramCompoundButton = (xy.b)paramCompoundButton.getTag();
       if (paramCompoundButton == null) {
         return;
       }
-      sl localsl = paramCompoundButton.h;
-      if ((localsl != null) && (paramCompoundButton.a != null) && (tb.a().c()))
+      Object localObject = paramCompoundButton.f;
+      View localView = paramCompoundButton.a;
+      if ((localObject != null) && (localView != null) && (ta.a().d()))
       {
-        if (paramBoolean != localsl.c) {
+        if (paramBoolean != ((sk)localObject).c) {
           return;
         }
-        if (!localsl.e)
-        {
-          if (xy.a(xy.this)) {
-            return;
-          }
-          xy.a(xy.this, localsl);
-          xy.a(xy.this, paramCompoundButton);
-          localsl.e = true;
-          xy.b(xy.this);
-          xy.this.a(paramCompoundButton, false);
-          tf.a().a(3, xy.c(xy.this).getHandler());
+        if (((sk)localObject).e) {
           return;
         }
+        ((sk)localObject).e = true;
+        xy.this.a(paramCompoundButton, false);
+        localObject = xy.this;
+        com.tencent.token.ui.UtilsLoginProtectActivity.mNeedRefreshLoginProtect = true;
+        com.tencent.token.ui.AccountPageActivity.mNeedRefreshEval = true;
+        new xy.1((xy)localObject, paramCompoundButton).a(new sk[0]);
         return;
       }
+    }
+  }
+  
+  final class b
+  {
+    View a;
+    TextView b;
+    ProgressBar c;
+    SwitchButton d;
+    ImageView e;
+    sk f;
+    
+    b(View paramView, sk paramsk)
+    {
+      this.a = paramView;
+      this$1 = this.a;
+      if (xy.this == null) {
+        return;
+      }
+      this.f = paramsk;
+      this.d = ((SwitchButton)xy.this.findViewById(2131165558));
+      this.b = ((TextView)this.a.findViewById(2131166229));
+      this.c = ((ProgressBar)this.a.findViewById(2131165560));
+      this.e = ((ImageView)this.a.findViewById(2131166230));
     }
   }
 }

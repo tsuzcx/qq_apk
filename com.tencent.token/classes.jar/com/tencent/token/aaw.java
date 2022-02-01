@@ -1,399 +1,107 @@
 package com.tencent.token;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.Random;
+import com.tencent.token.utils.encrypt.random.PRNGFixes;
+import com.tencent.token.utils.encrypt.random.SecureRandom;
+import oicq.wlogin_sdk.tools.MD5;
 
 public final class aaw
 {
-  private byte[] a;
-  private byte[] b;
-  private byte[] c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private byte[] h;
-  private boolean i = true;
-  private int j;
-  private Random k = new Random();
-  
-  private static long a(byte[] paramArrayOfByte, int paramInt)
+  public static aas a()
   {
-    long l = 0L;
-    int m = paramInt;
-    while (m < paramInt + 4)
-    {
-      l = l << 8 | paramArrayOfByte[m] & 0xFF;
-      m += 1;
+    byte[] arrayOfByte = new byte[14];
+    String str2 = System.getProperty("microedition.platform");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return 0xFFFFFFFF & l | l >>> 32;
+    int j = Runtime.getRuntime().hashCode();
+    try
+    {
+      PRNGFixes.a();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    SecureRandom localSecureRandom1 = new SecureRandom();
+    SecureRandom localSecureRandom2 = new SecureRandom();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(str1);
+    localStringBuffer.append(localSecureRandom2.nextInt());
+    localStringBuffer.append(System.currentTimeMillis());
+    localStringBuffer.append(j);
+    localStringBuffer.append(new Object().hashCode());
+    localSecureRandom1.a(localStringBuffer.toString().getBytes());
+    int i = 1;
+    while (i < 14)
+    {
+      arrayOfByte[i] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
+      localSecureRandom2.a(localSecureRandom2.a(i));
+      localStringBuffer = new StringBuffer();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuffer.append(localStringBuilder.toString());
+      localStringBuffer.append(localSecureRandom2.nextInt());
+      localStringBuffer.append(j);
+      localStringBuffer.append(new Object().hashCode());
+      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), str1);
+      localSecureRandom1.a(localStringBuffer.toString().getBytes());
+      i += 1;
+    }
+    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
+    return new aas(arrayOfByte);
   }
   
-  private void a()
+  public static String a(aas paramaas1, aas paramaas2)
   {
-    byte[] arrayOfByte;
-    for (this.f = 0;; this.f += 1)
+    if (paramaas1 != null)
     {
-      m = this.f;
-      if (m >= 8) {
-        break;
+      if (paramaas2 == null) {
+        return null;
       }
-      if (this.i)
-      {
-        arrayOfByte = this.a;
-        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.b[m]));
-      }
-      else
-      {
-        arrayOfByte = this.a;
-        arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ this.c[(this.e + m)]));
-      }
-    }
-    System.arraycopy(a(this.a), 0, this.c, this.d, 8);
-    for (this.f = 0;; this.f = (m + 1))
-    {
-      m = this.f;
-      if (m >= 8) {
-        break;
-      }
-      arrayOfByte = this.c;
-      int n = this.d + m;
-      arrayOfByte[n] = ((byte)(arrayOfByte[n] ^ this.b[m]));
-    }
-    System.arraycopy(this.a, 0, this.b, 0, 8);
-    int m = this.d;
-    this.e = m;
-    this.d = (m + 8);
-    this.f = 0;
-    this.i = false;
-  }
-  
-  private byte[] a(byte[] paramArrayOfByte)
-  {
-    int m = 16;
-    for (;;)
-    {
-      long l1;
-      long l2;
-      long l4;
-      long l5;
-      long l6;
-      long l7;
-      long l3;
+      aas localaas = new aas("2");
       try
       {
-        l1 = a(paramArrayOfByte, 0);
-        l2 = a(paramArrayOfByte, 4);
-        l4 = a(this.h, 0);
-        l5 = a(this.h, 4);
-        l6 = a(this.h, 8);
-        l7 = a(this.h, 12);
-        l3 = 0L;
+        paramaas1 = localaas.a(paramaas1, paramaas2);
+        return paramaas1.a().toUpperCase();
       }
-      catch (IOException paramArrayOfByte)
+      catch (Exception paramaas1)
       {
-        DataOutputStream localDataOutputStream;
-        continue;
-      }
-      paramArrayOfByte = new ByteArrayOutputStream(8);
-      localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l1);
-      localDataOutputStream.writeInt((int)l2);
-      localDataOutputStream.close();
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
-      return paramArrayOfByte;
-      return null;
-      while (m > 0)
-      {
-        l3 = l3 + 2654435769L & 0xFFFFFFFF;
-        l1 = l1 + ((l2 << 4) + l4 ^ l2 + l3 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l2 = l2 + ((l1 << 4) + l6 ^ l1 + l3 ^ (l1 >>> 5) + l7) & 0xFFFFFFFF;
-        m -= 1;
-      }
-    }
-  }
-  
-  private byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
-  {
-    this.e = 0;
-    this.d = 0;
-    this.h = paramArrayOfByte2;
-    paramArrayOfByte2 = new byte[8];
-    if (paramInt % 8 == 0)
-    {
-      if (paramInt < 16) {
+        paramaas1.printStackTrace();
         return null;
       }
-      this.b = b(paramArrayOfByte1);
-      this.f = (this.b[0] & 0x7);
-      int n = paramInt - this.f - 10;
-      if (n < 0) {
-        return null;
-      }
-      int m = 0;
-      while (m < 8)
-      {
-        paramArrayOfByte2[m] = 0;
-        m += 1;
-      }
-      this.c = new byte[n];
-      this.e = 0;
-      this.d = 8;
-      this.j = 8;
-      this.f += 1;
-      this.g = 1;
-      for (;;)
-      {
-        m = this.g;
-        if (m > 2) {
-          break;
-        }
-        i1 = this.f;
-        if (i1 < 8)
-        {
-          this.f = (i1 + 1);
-          this.g = (m + 1);
-        }
-        if (this.f == 8)
-        {
-          if (!b(paramArrayOfByte1, paramInt)) {
-            return null;
-          }
-          paramArrayOfByte2 = paramArrayOfByte1;
-        }
-      }
-      int i1 = 0;
-      m = n;
-      while (m != 0)
-      {
-        int i3 = this.f;
-        int i2 = i1;
-        n = m;
-        if (i3 < 8)
-        {
-          this.c[i1] = ((byte)(paramArrayOfByte2[(this.e + 0 + i3)] ^ this.b[i3]));
-          i2 = i1 + 1;
-          n = m - 1;
-          this.f = (i3 + 1);
-        }
-        i1 = i2;
-        m = n;
-        if (this.f == 8)
-        {
-          this.e = (this.d - 8);
-          if (!b(paramArrayOfByte1, paramInt)) {
-            return null;
-          }
-          paramArrayOfByte2 = paramArrayOfByte1;
-          i1 = i2;
-          m = n;
-        }
-      }
-      for (this.g = 1; this.g < 8; this.g += 1)
-      {
-        m = this.f;
-        if (m < 8)
-        {
-          if ((paramArrayOfByte2[(this.e + 0 + m)] ^ this.b[m]) != 0) {
-            return null;
-          }
-          this.f = (m + 1);
-        }
-        if (this.f == 8)
-        {
-          this.e = this.d;
-          if (!b(paramArrayOfByte1, paramInt)) {
-            return null;
-          }
-          paramArrayOfByte2 = paramArrayOfByte1;
-        }
-      }
-      return this.c;
     }
     return null;
   }
   
-  private boolean b(byte[] paramArrayOfByte, int paramInt)
+  public static byte[] a(aas paramaas1, aas paramaas2, aas paramaas3)
   {
-    int m;
-    for (this.f = 0;; this.f = (m + 1))
-    {
-      m = this.f;
-      if (m >= 8) {
-        break;
-      }
-      if (this.j + m >= paramInt) {
-        return true;
-      }
-      byte[] arrayOfByte = this.b;
-      arrayOfByte[m] = ((byte)(arrayOfByte[m] ^ paramArrayOfByte[(this.d + 0 + m)]));
+    paramaas1 = b(paramaas1, paramaas2, paramaas3);
+    if (paramaas1 == null) {
+      return null;
     }
-    this.b = b(this.b);
-    if (this.b == null) {
-      return false;
-    }
-    this.j += 8;
-    this.d += 8;
-    this.f = 0;
-    return true;
+    return MD5.toMD5Byte(sr.a(paramaas1.a()));
   }
   
-  private byte[] b(byte[] paramArrayOfByte)
+  public static aas b(aas paramaas1, aas paramaas2, aas paramaas3)
   {
-    int m = 16;
-    for (;;)
+    if ((paramaas1 != null) && (paramaas2 != null))
     {
-      long l1;
-      long l2;
-      long l4;
-      long l5;
-      long l6;
-      long l7;
-      long l3;
+      if (paramaas3 == null) {
+        return null;
+      }
       try
       {
-        l1 = a(paramArrayOfByte, 0);
-        l2 = a(paramArrayOfByte, 4);
-        l4 = a(this.h, 0);
-        l5 = a(this.h, 4);
-        l6 = a(this.h, 8);
-        l7 = a(this.h, 12);
-        l3 = 3816266640L;
+        paramaas1 = paramaas2.a(paramaas1, paramaas3);
+        return paramaas1;
       }
-      catch (IOException paramArrayOfByte)
+      catch (Exception paramaas1)
       {
-        DataOutputStream localDataOutputStream;
-        continue;
-      }
-      paramArrayOfByte = new ByteArrayOutputStream(8);
-      localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l1);
-      localDataOutputStream.writeInt((int)l2);
-      localDataOutputStream.close();
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
-      return paramArrayOfByte;
-      return null;
-      while (m > 0)
-      {
-        l2 = l2 - ((l1 << 4) + l6 ^ l1 + l3 ^ (l1 >>> 5) + l7) & 0xFFFFFFFF;
-        l1 = l1 - ((l2 << 4) + l4 ^ l2 + l3 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l3 = l3 - 2654435769L & 0xFFFFFFFF;
-        m -= 1;
+        paramaas1.printStackTrace();
+        return null;
       }
     }
-  }
-  
-  private byte[] b(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
-  {
-    this.a = new byte[8];
-    this.b = new byte[8];
-    this.f = 1;
-    this.g = 0;
-    this.e = 0;
-    this.d = 0;
-    this.h = paramArrayOfByte2;
-    this.i = true;
-    this.f = ((paramInt + 10) % 8);
-    int m = this.f;
-    if (m != 0) {
-      this.f = (8 - m);
-    }
-    this.c = new byte[this.f + paramInt + 10];
-    this.a[0] = ((byte)(this.k.nextInt() & 0xF8 | this.f));
-    m = 1;
-    for (;;)
-    {
-      n = this.f;
-      if (m > n) {
-        break;
-      }
-      this.a[m] = ((byte)(this.k.nextInt() & 0xFF));
-      m += 1;
-    }
-    this.f = (n + 1);
-    m = 0;
-    while (m < 8)
-    {
-      this.b[m] = 0;
-      m += 1;
-    }
-    this.g = 1;
-    while (this.g <= 2)
-    {
-      m = this.f;
-      if (m < 8)
-      {
-        paramArrayOfByte2 = this.a;
-        this.f = (m + 1);
-        paramArrayOfByte2[m] = ((byte)(this.k.nextInt() & 0xFF));
-        this.g += 1;
-      }
-      if (this.f == 8) {
-        a();
-      }
-    }
-    m = 0;
-    int n = paramInt;
-    while (n > 0)
-    {
-      int i2 = this.f;
-      int i1 = n;
-      paramInt = m;
-      if (i2 < 8)
-      {
-        paramArrayOfByte2 = this.a;
-        this.f = (i2 + 1);
-        paramArrayOfByte2[i2] = paramArrayOfByte1[m];
-        i1 = n - 1;
-        paramInt = m + 1;
-      }
-      n = i1;
-      m = paramInt;
-      if (this.f == 8)
-      {
-        a();
-        n = i1;
-        m = paramInt;
-      }
-    }
-    this.g = 1;
-    for (;;)
-    {
-      paramInt = this.g;
-      if (paramInt > 7) {
-        break;
-      }
-      m = this.f;
-      if (m < 8)
-      {
-        paramArrayOfByte1 = this.a;
-        this.f = (m + 1);
-        paramArrayOfByte1[m] = 0;
-        this.g = (paramInt + 1);
-      }
-      if (this.f == 8) {
-        a();
-      }
-    }
-    return this.c;
-  }
-  
-  public final byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (paramArrayOfByte2 == null) {
-      return null;
-    }
-    return a(paramArrayOfByte1, paramArrayOfByte1.length, paramArrayOfByte2);
-  }
-  
-  public final byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (paramArrayOfByte2 == null) {
-      return null;
-    }
-    return b(paramArrayOfByte1, paramArrayOfByte1.length, paramArrayOfByte2);
+    return null;
   }
 }
 

@@ -12,11 +12,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.token.ek;
-import com.tencent.token.ex;
-import com.tencent.token.gp.j;
-import com.tencent.token.jf;
-import com.tencent.token.jl;
+import com.tencent.token.ej;
+import com.tencent.token.ew;
+import com.tencent.token.go.j;
+import com.tencent.token.je;
+import com.tencent.token.jk;
 
 public class LinearLayoutCompat
   extends ViewGroup
@@ -45,26 +45,26 @@ public class LinearLayoutCompat
   public LinearLayoutCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = jf.a(paramContext, paramAttributeSet, gp.j.LinearLayoutCompat, paramInt, 0);
-    paramInt = paramContext.a(gp.j.LinearLayoutCompat_android_orientation, -1);
+    paramContext = je.a(paramContext, paramAttributeSet, go.j.LinearLayoutCompat, paramInt, 0);
+    paramInt = paramContext.a(go.j.LinearLayoutCompat_android_orientation, -1);
     if (paramInt >= 0) {
       setOrientation(paramInt);
     }
-    paramInt = paramContext.a(gp.j.LinearLayoutCompat_android_gravity, -1);
+    paramInt = paramContext.a(go.j.LinearLayoutCompat_android_gravity, -1);
     if (paramInt >= 0) {
       setGravity(paramInt);
     }
-    boolean bool = paramContext.a(gp.j.LinearLayoutCompat_android_baselineAligned, true);
+    boolean bool = paramContext.a(go.j.LinearLayoutCompat_android_baselineAligned, true);
     if (!bool) {
       setBaselineAligned(bool);
     }
-    paramInt = gp.j.LinearLayoutCompat_android_weightSum;
+    paramInt = go.j.LinearLayoutCompat_android_weightSum;
     this.g = paramContext.a.getFloat(paramInt, -1.0F);
-    this.b = paramContext.a(gp.j.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
-    this.h = paramContext.a(gp.j.LinearLayoutCompat_measureWithLargestChild, false);
-    setDividerDrawable(paramContext.a(gp.j.LinearLayoutCompat_divider));
-    this.n = paramContext.a(gp.j.LinearLayoutCompat_showDividers, 0);
-    this.o = paramContext.e(gp.j.LinearLayoutCompat_dividerPadding, 0);
+    this.b = paramContext.a(go.j.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
+    this.h = paramContext.a(go.j.LinearLayoutCompat_measureWithLargestChild, false);
+    setDividerDrawable(paramContext.a(go.j.LinearLayoutCompat_divider));
+    this.n = paramContext.a(go.j.LinearLayoutCompat_showDividers, 0);
+    this.o = paramContext.e(go.j.LinearLayoutCompat_dividerPadding, 0);
     paramContext.a.recycle();
   }
   
@@ -709,7 +709,7 @@ public class LinearLayoutCompat
       return;
     }
     i3 = getVirtualChildCount();
-    boolean bool = jl.a(this);
+    boolean bool = jk.a(this);
     i1 = i2;
     while (i1 < i3)
     {
@@ -813,7 +813,7 @@ public class LinearLayoutCompat
             if (paramInt4 < 0) {
               paramInt3 = 0x800007 & i6;
             }
-            paramInt3 = ek.a(paramInt3, ex.c(this)) & 0x7;
+            paramInt3 = ej.a(paramInt3, ew.c(this)) & 0x7;
             if (paramInt3 != 1)
             {
               if (paramInt3 != 5) {
@@ -840,7 +840,7 @@ public class LinearLayoutCompat
       }
       return;
     }
-    boolean bool = jl.a(this);
+    boolean bool = jk.a(this);
     int i5 = getPaddingTop();
     int i7 = paramInt4 - paramInt2;
     int i8 = getPaddingBottom();
@@ -851,7 +851,7 @@ public class LinearLayoutCompat
     paramBoolean = this.a;
     Object localObject1 = this.i;
     Object localObject2 = this.j;
-    paramInt4 = ek.a(0x800007 & paramInt4, ex.c(this));
+    paramInt4 = ej.a(0x800007 & paramInt4, ew.c(this));
     if (paramInt4 != 1)
     {
       if (paramInt4 != 5) {
@@ -1368,9 +1368,9 @@ public class LinearLayoutCompat
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.LinearLayoutCompat_Layout);
-      this.g = paramContext.getFloat(gp.j.LinearLayoutCompat_Layout_android_layout_weight, 0.0F);
-      this.h = paramContext.getInt(gp.j.LinearLayoutCompat_Layout_android_layout_gravity, -1);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.LinearLayoutCompat_Layout);
+      this.g = paramContext.getFloat(go.j.LinearLayoutCompat_Layout_android_layout_weight, 0.0F);
+      this.h = paramContext.getInt(go.j.LinearLayoutCompat_Layout_android_layout_gravity, -1);
       paramContext.recycle();
     }
     
