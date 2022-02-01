@@ -1,31 +1,53 @@
 package com.tencent.token;
 
-import java.util.concurrent.Future;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-public class ai
+public final class ai
+  extends JceStruct
 {
-  private Future a;
+  static byte[] f;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  public byte[] d = null;
+  public long e = 0L;
   
-  public ai(Future paramFuture)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramFuture;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+    if (f == null)
+    {
+      byte[] arrayOfByte = (byte[])new byte[1];
+      f = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.d = ((byte[])paramJceInputStream.read(f, 3, false));
+    this.e = paramJceInputStream.read(this.e, 4, false);
   }
   
-  public boolean a()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    Future localFuture = this.a;
-    if (localFuture != null) {
-      try
-      {
-        boolean bool = localFuture.cancel(false);
-        return bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    return false;
+    i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
+    }
+    byte[] arrayOfByte = this.d;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
+    }
+    long l = this.e;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 4);
+    }
   }
 }
 

@@ -1,155 +1,57 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.g;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class cn
-  implements cg
+final class cn
+  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
-  public long a = 0L;
-  public cl b = null;
-  private Handler d = null;
-  private ez e = null;
+  private final View a;
+  private ViewTreeObserver b;
+  private final Runnable c;
   
-  public cn()
+  private cn(View paramView, Runnable paramRunnable)
   {
-    d();
+    this.a = paramView;
+    this.b = paramView.getViewTreeObserver();
+    this.c = paramRunnable;
   }
   
-  public void a()
+  public static cn a(View paramView, Runnable paramRunnable)
   {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.sendEmptyMessage(10);
+    paramRunnable = new cn(paramView, paramRunnable);
+    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+    paramView.addOnAttachStateChangeListener(paramRunnable);
+    return paramRunnable;
   }
   
-  public void a(int paramInt)
+  private void a()
   {
-    if (this.d == null) {
-      return;
+    if (this.b.isAlive()) {
+      this.b.removeOnPreDrawListener(this);
+    } else {
+      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
     }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("serTime", paramInt);
-    localMessage.what = 13;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
+    this.a.removeOnAttachStateChangeListener(this);
   }
   
-  public void a(int paramInt, String paramString)
+  public final boolean onPreDraw()
   {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 9;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
+    a();
+    this.c.run();
+    return true;
   }
   
-  public void a(Handler paramHandler)
+  public final void onViewAttachedToWindow(View paramView)
   {
-    this.d = paramHandler;
+    this.b = paramView.getViewTreeObserver();
   }
   
-  public void a(String paramString)
+  public final void onViewDetachedFromWindow(View paramView)
   {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 14;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.sendEmptyMessage(12);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 11;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ucSmsPort", paramString);
-    localMessage.what = 1;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void c()
-  {
-    Handler localHandler = this.d;
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.sendEmptyMessage(15);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 2;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void d()
-  {
-    try
-    {
-      this.e = ey.a();
-      if ((!c) && (this.e == null)) {
-        throw new AssertionError();
-      }
-      this.b = new cl(this);
-      this.b.a(this.e);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("RESULT_ERROR!!!");
-      localStringBuilder.append(localException.getMessage());
-      g.c(localStringBuilder.toString());
-    }
+    a();
   }
 }
 

@@ -20,7 +20,7 @@ public class bk
   private bx fY = bx.ar();
   private cm fZ = new cm()
   {
-    public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+    public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
     {
       if (paramAnonymousInt2 == 10010)
       {
@@ -100,7 +100,7 @@ public class bk
     {
       ee.cT().addTask(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           for (;;)
           {
@@ -114,7 +114,7 @@ public class bk
                 if ((localx != null) && (localx.aW != null)) {
                   bk.c(bk.this).a(21, localx, new af(), 2, new cj()
                   {
-                    public void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct) {}
+                    public final void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct) {}
                   }, 0L);
                 }
                 return;
@@ -153,7 +153,7 @@ public class bk
     {
       ee.cT().addTask(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           ConchService.ConchPushInfo localConchPushInfo = paramConchPushInfo;
           int j = localConchPushInfo.mConch.cmdId;
@@ -292,7 +292,7 @@ public class bk
     localy.cmdId = paramInt;
     this.fY.a(11, localy, new ag(), 2, new cj()
     {
-      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
         if (paramAnonymousInt3 != 0) {
           localIConchPushListener.mErrorCode = (paramAnonymousInt3 - 65);
@@ -331,8 +331,7 @@ public class bk
                   StringBuilder localStringBuilder2;
                   if ((localz.cmdId != paramInt) && (bk.b(bk.this).get(localz.cmdId) == null))
                   {
-                    localStringBuilder2 = new StringBuilder();
-                    localStringBuilder2.append("2-");
+                    localStringBuilder2 = new StringBuilder("2-");
                     localStringBuilder2.append(localz.cmdId);
                     localStringBuilder2.append(";");
                     localStringBuilder1.append(localStringBuilder2.toString());
@@ -342,8 +341,7 @@ public class bk
                   {
                     bk.a(bk.this, new ConchService.ConchPushInfo(localac.bg, localac.bh, localz));
                     paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 1));
-                    localStringBuilder2 = new StringBuilder();
-                    localStringBuilder2.append("1-");
+                    localStringBuilder2 = new StringBuilder("1-");
                     localStringBuilder2.append(localz.cmdId);
                     localStringBuilder2.append(";");
                     localStringBuilder1.append(localStringBuilder2.toString());

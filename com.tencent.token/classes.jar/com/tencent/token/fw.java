@@ -1,122 +1,144 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import okhttp3.Protocol;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public final class fw
 {
-  public final Protocol a;
-  public final int b;
-  public final String c;
+  static final d a = new d();
   
-  public fw(Protocol paramProtocol, int paramInt, String paramString)
+  static
   {
-    this.a = paramProtocol;
-    this.b = paramInt;
-    this.c = paramString;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public static fw a(String paramString)
+  public static void a(PopupWindow paramPopupWindow, int paramInt)
   {
-    boolean bool = paramString.startsWith("HTTP/1.");
-    int i = 9;
-    if (bool)
-    {
-      if ((paramString.length() >= 9) && (paramString.charAt(8) == ' '))
-      {
-        j = paramString.charAt(7) - '0';
-        if (j == 0)
-        {
-          localObject = Protocol.HTTP_1_0;
-        }
-        else if (j == 1)
-        {
-          localObject = Protocol.HTTP_1_1;
-        }
-        else
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("Unexpected status line: ");
-          ((StringBuilder)localObject).append(paramString);
-          throw new ProtocolException(((StringBuilder)localObject).toString());
-        }
-      }
-      else
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("Unexpected status line: ");
-        ((StringBuilder)localObject).append(paramString);
-        throw new ProtocolException(((StringBuilder)localObject).toString());
-      }
-    }
-    else
-    {
-      if (!paramString.startsWith("ICY ")) {
-        break label343;
-      }
-      localObject = Protocol.HTTP_1_0;
-      i = 4;
-    }
-    int k = paramString.length();
-    int j = i + 3;
-    if (k >= j) {}
-    try
-    {
-      k = Integer.parseInt(paramString.substring(i, j));
-      String str = "";
-      if (paramString.length() > j) {
-        if (paramString.charAt(j) == ' ')
-        {
-          str = paramString.substring(i + 4);
-        }
-        else
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("Unexpected status line: ");
-          ((StringBuilder)localObject).append(paramString);
-          throw new ProtocolException(((StringBuilder)localObject).toString());
-        }
-      }
-      return new fw((Protocol)localObject, k, str);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      label269:
-      break label269;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Unexpected status line: ");
-    ((StringBuilder)localObject).append(paramString);
-    throw new ProtocolException(((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Unexpected status line: ");
-    ((StringBuilder)localObject).append(paramString);
-    throw new ProtocolException(((StringBuilder)localObject).toString());
-    label343:
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Unexpected status line: ");
-    ((StringBuilder)localObject).append(paramString);
-    throw new ProtocolException(((StringBuilder)localObject).toString());
+    a.a(paramPopupWindow, paramInt);
   }
   
-  public String toString()
+  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str;
-    if (this.a == Protocol.HTTP_1_0) {
-      str = "HTTP/1.0";
-    } else {
-      str = "HTTP/1.1";
-    }
-    localStringBuilder.append(str);
-    localStringBuilder.append(' ');
-    localStringBuilder.append(this.b);
-    if (this.c != null)
+    a.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+  {
+    a.a(paramPopupWindow, paramBoolean);
+  }
+  
+  static class a
+    extends fw.d
+  {
+    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
     {
-      localStringBuilder.append(' ');
-      localStringBuilder.append(this.c);
+      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
     }
-    return localStringBuilder.toString();
+  }
+  
+  static class b
+    extends fw.a
+  {
+    private static Field a;
+    
+    static
+    {
+      try
+      {
+        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
+        a = localField;
+        localField.setAccessible(true);
+        return;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException) {}
+    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+    {
+      Field localField = a;
+      if (localField != null) {}
+      try
+      {
+        localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+        return;
+      }
+      catch (IllegalAccessException paramPopupWindow) {}
+      return;
+    }
+  }
+  
+  static final class c
+    extends fw.b
+  {
+    public final void a(PopupWindow paramPopupWindow, int paramInt)
+    {
+      paramPopupWindow.setWindowLayoutType(paramInt);
+    }
+    
+    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
+    {
+      paramPopupWindow.setOverlapAnchor(paramBoolean);
+    }
+  }
+  
+  static class d
+  {
+    private static Method a;
+    private static boolean b;
+    
+    public void a(PopupWindow paramPopupWindow, int paramInt)
+    {
+      if (!b) {}
+      try
+      {
+        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
+        a = localMethod;
+        localMethod.setAccessible(true);
+        label33:
+        b = true;
+        localMethod = a;
+        if (localMethod != null) {}
+        try
+        {
+          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          return;
+        }
+        catch (Exception paramPopupWindow) {}
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label33;
+      }
+    }
+    
+    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+    {
+      int i = paramInt1;
+      if ((ek.a(paramInt3, ex.c(paramView)) & 0x7) == 5) {
+        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
+      }
+      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
+    }
+    
+    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
   }
 }
 

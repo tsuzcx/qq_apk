@@ -11,7 +11,7 @@ public class bj
   private static bj fQ;
   private ConchService.IConchPushListener fR = new ConchService.IConchPushListener()
   {
-    public void onRecvPush(ConchService.ConchPushInfo paramAnonymousConchPushInfo)
+    public final void onRecvPush(ConchService.ConchPushInfo paramAnonymousConchPushInfo)
     {
       if (paramAnonymousConchPushInfo != null) {}
       for (;;)
@@ -21,8 +21,7 @@ public class bj
           if (paramAnonymousConchPushInfo.mConch != null)
           {
             ConchServiceProxy localConchServiceProxy = ConchServiceProxy.getInstance();
-            Object localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("onRecvPush, cmdId:[");
+            Object localObject = new StringBuilder("onRecvPush, cmdId:[");
             ((StringBuilder)localObject).append(paramAnonymousConchPushInfo.mConch.cmdId);
             ((StringBuilder)localObject).append("]");
             eg.e("ConchManager", ((StringBuilder)localObject).toString());
@@ -43,12 +42,12 @@ public class bj
               if ((localObject != null) && (((ad)localObject).bm != null) && (((ad)localObject).bm.size() > 4))
               {
                 if (ConvertUtil.stringToByte((String)((ad)localObject).bm.get(0)) != 1) {
-                  break label387;
+                  break label378;
                 }
                 bool1 = true;
                 be.b(bool1);
                 if (ConvertUtil.stringToByte((String)((ad)localObject).bm.get(1)) != 1) {
-                  break label392;
+                  break label383;
                 }
                 bool1 = true;
                 du.b(bool1);
@@ -72,10 +71,10 @@ public class bj
         }
         finally {}
         return;
-        label387:
+        label378:
         boolean bool1 = false;
         continue;
-        label392:
+        label383:
         bool1 = false;
       }
     }

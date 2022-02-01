@@ -12,7 +12,7 @@ public class do
   private Context mContext = null;
   private Handler mHandler = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       eh.e("HeartBeatPlot", "[h_b]handleMessage(), nodifyOnHeartBeat()");
     }
@@ -60,10 +60,10 @@ public class do
     }
   }
   
-  private class a
+  final class a
     extends BroadcastReceiver
   {
-    public void onReceive(Context paramContext, Intent paramIntent) {}
+    public final void onReceive(Context paramContext, Intent paramIntent) {}
   }
   
   public static abstract interface b {}

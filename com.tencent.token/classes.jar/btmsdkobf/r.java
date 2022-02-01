@@ -11,18 +11,18 @@ public final class r
   public int ay = 0;
   public s az = null;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new r();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ay = paramJceInputStream.read(this.ay, 0, true);
     this.az = ((s)paramJceInputStream.read(aA, 1, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
     s locals = this.az;

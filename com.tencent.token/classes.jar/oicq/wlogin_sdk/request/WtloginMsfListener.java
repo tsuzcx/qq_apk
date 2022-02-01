@@ -72,8 +72,7 @@ public class WtloginMsfListener
   
   public static void onAsyncReceive(String paramString1, String paramString2, long paramLong, byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("rpc receive ");
+    StringBuilder localStringBuilder = new StringBuilder("rpc receive ");
     localStringBuilder.append(paramString2);
     localStringBuilder.append(" seq: ");
     localStringBuilder.append(paramLong);
@@ -93,8 +92,7 @@ public class WtloginMsfListener
   
   public static void onAsyncReceiveFail(String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("rpc receive ");
+    Object localObject = new StringBuilder("rpc receive ");
     ((StringBuilder)localObject).append(paramString2);
     ((StringBuilder)localObject).append(" seq: ");
     ((StringBuilder)localObject).append(paramLong);
@@ -120,32 +118,29 @@ public class WtloginMsfListener
   private int sendRPCData(byte[] arg1, int paramInt)
   {
     long l = allocateSeq();
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("sendRPCData seq: ");
-    ((StringBuilder)localObject1).append(l);
-    util.LOGI(((StringBuilder)localObject1).toString(), "");
+    util.LOGI("sendRPCData seq: ".concat(String.valueOf(l)), "");
     try
     {
-      localObject1 = Class.forName("mqq.manager.TicketManager");
+      Class localClass1 = Class.forName("mqq.manager.TicketManager");
       if (TicketMgr == null)
       {
-        Object localObject4 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
-        Object localObject5 = Class.forName("mqq.app.BaseActivity");
-        Class localClass = Class.forName("mqq.app.AppRuntime");
-        Object localObject3 = ((Class)localObject4).getMethod("getApplication", new Class[0]);
-        Method localMethod = ((Class)localObject4).getMethod("waitAppRuntime", new Class[] { localObject5 });
-        localObject4 = localClass.getMethod("getManager", new Class[] { Integer.TYPE });
-        localObject5 = localClass.getField("TICKET_MANAGER");
-        localObject3 = ((Method)localObject3).invoke(null, new Object[0]);
-        if (localObject3 != null)
+        Object localObject3 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
+        Object localObject4 = Class.forName("mqq.app.BaseActivity");
+        Class localClass2 = Class.forName("mqq.app.AppRuntime");
+        Object localObject2 = ((Class)localObject3).getMethod("getApplication", new Class[0]);
+        Method localMethod = ((Class)localObject3).getMethod("waitAppRuntime", new Class[] { localObject4 });
+        localObject3 = localClass2.getMethod("getManager", new Class[] { Integer.TYPE });
+        localObject4 = localClass2.getField("TICKET_MANAGER");
+        localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
+        if (localObject2 != null)
         {
-          localObject3 = localMethod.invoke(localObject3, new Object[] { null });
-          if (localObject3 != null) {
-            TicketMgr = ((Method)localObject4).invoke(localObject3, new Object[] { ((Field)localObject5).get(localClass) });
+          localObject2 = localMethod.invoke(localObject2, new Object[] { null });
+          if (localObject2 != null) {
+            TicketMgr = ((Method)localObject3).invoke(localObject2, new Object[] { ((Field)localObject4).get(localClass2) });
           }
         }
       }
-      int i = Integer.valueOf(((Class)localObject1).getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(l), this.uin, this.serviceCmd, ???.clone(), Integer.valueOf(paramInt) }).toString()).intValue();
+      int i = Integer.valueOf(localClass1.getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(l), this.uin, this.serviceCmd, ???.clone(), Integer.valueOf(paramInt) }).toString()).intValue();
       paramInt = i;
       if (i == 0) {
         synchronized (__SyncCB)
@@ -195,8 +190,7 @@ public class WtloginMsfListener
           return this.ret_data;
         }
         this.ret = -1009;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("ret_serviceCmd: ");
+        localStringBuilder = new StringBuilder("ret_serviceCmd: ");
         if (this.ret_serviceCmd == null) {
           str = "null";
         } else {
@@ -214,8 +208,7 @@ public class WtloginMsfListener
         return null;
       }
       this.ret = -1009;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("ret_uin: ");
+      StringBuilder localStringBuilder = new StringBuilder("ret_uin: ");
       if (this.ret_uin == null) {
         str = "null";
       } else {
@@ -245,10 +238,7 @@ public class WtloginMsfListener
     if (!t.ar)
     {
       localObject = t.l();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mqq process: ");
-      localStringBuilder.append((String)localObject);
-      util.LOGI(localStringBuilder.toString(), "");
+      util.LOGI("mqq process: ".concat(String.valueOf(localObject)), "");
       if (!((String)localObject).endsWith(":MSF")) {
         return sendRPCData(paramArrayOfByte, paramInt);
       }
@@ -309,8 +299,7 @@ public class WtloginMsfListener
       this.ret = SendData(this.data, this.timeout);
       if (this.ret <= 0)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("msf request send data failed, ret=");
+        StringBuilder localStringBuilder = new StringBuilder("msf request send data failed, ret=");
         localStringBuilder.append(this.ret);
         util.LOGI(localStringBuilder.toString(), "");
         return;

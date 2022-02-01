@@ -1,173 +1,173 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.halley.common.f;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.util.AttributeSet;
+import android.view.InflateException;
+import android.view.animation.Interpolator;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class br
+  implements Interpolator
 {
-  private static String a = "";
-  private static String b = "";
+  private float[] a;
+  private float[] b;
   
-  public static String a(Context paramContext)
+  public br(Context paramContext, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
-    if (paramContext == null) {
-      return null;
-    }
-    try
+    this(paramContext.getResources(), paramContext.getTheme(), paramAttributeSet, paramXmlPullParser);
+  }
+  
+  private br(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
+  {
+    paramResources = cy.a(paramResources, paramTheme, paramAttributeSet, bl.l);
+    if (cy.a(paramXmlPullParser, "pathData"))
     {
-      String str = a;
-      i = 1;
-      if (str != null) {
-        if (str.trim().length() != 0) {
-          break label65;
-        }
+      paramTheme = cy.b(paramResources, paramXmlPullParser, "pathData", 4);
+      paramAttributeSet = da.a(paramTheme);
+      if (paramAttributeSet != null) {
+        a(paramAttributeSet);
+      } else {
+        throw new InflateException("The path is null, which is created from ".concat(String.valueOf(paramTheme)));
       }
     }
-    catch (Exception paramContext)
+    else
     {
-      for (;;)
+      if (!cy.a(paramXmlPullParser, "controlX1")) {
+        break label252;
+      }
+      if (!cy.a(paramXmlPullParser, "controlY1")) {
+        break label242;
+      }
+      float f1 = cy.a(paramResources, paramXmlPullParser, "controlX1", 0, 0.0F);
+      float f2 = cy.a(paramResources, paramXmlPullParser, "controlY1", 1, 0.0F);
+      boolean bool = cy.a(paramXmlPullParser, "controlX2");
+      if (bool != cy.a(paramXmlPullParser, "controlY2")) {
+        break label232;
+      }
+      if (!bool)
       {
-        continue;
-        int i = 0;
+        paramTheme = new Path();
+        paramTheme.moveTo(0.0F, 0.0F);
+        paramTheme.quadTo(f1, f2, 1.0F, 1.0F);
+        a(paramTheme);
       }
-    }
-    if (i != 0)
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null) {
-        a = paramContext.getDeviceId();
-      }
-    }
-    return a;
-  }
-  
-  public static String a(Exception paramException)
-  {
-    String str = Log.getStackTraceString(paramException);
-    if (str != null)
-    {
-      if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
-        return str.substring(0, str.indexOf("\n"));
-      }
-      paramException = str;
-      if (str.length() > 100) {
-        paramException = str.substring(0, 100);
-      }
-      return paramException;
-    }
-    return "";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {
-      return true;
-    }
-    return paramString.trim().length() == 0;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    try
-    {
-      String str = b;
-      i = 1;
-      if (str != null) {
-        if (str.trim().length() != 0) {
-          break label74;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      else
       {
-        continue;
-        int i = 0;
+        float f3 = cy.a(paramResources, paramXmlPullParser, "controlX2", 2, 0.0F);
+        float f4 = cy.a(paramResources, paramXmlPullParser, "controlY2", 3, 0.0F);
+        paramTheme = new Path();
+        paramTheme.moveTo(0.0F, 0.0F);
+        paramTheme.cubicTo(f1, f2, f3, f4, 1.0F, 1.0F);
+        a(paramTheme);
       }
     }
-    if (i != 0)
-    {
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getConnectionInfo();
-        if (paramContext != null) {
-          b = paramContext.getMacAddress();
-        }
-      }
-    }
-    return b;
+    paramResources.recycle();
+    return;
+    label232:
+    throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
+    label242:
+    throw new InflateException("pathInterpolator requires the controlY1 attribute");
+    label252:
+    throw new InflateException("pathInterpolator requires the controlX1 attribute");
   }
   
-  public static String b(String paramString)
+  private void a(Path paramPath)
   {
-    Object localObject = f.a();
-    try
+    int j = 0;
+    paramPath = new PathMeasure(paramPath, false);
+    float f1 = paramPath.getLength();
+    int k = Math.min(3000, (int)(f1 / 0.002F) + 1);
+    if (k > 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder("");
-      String str = a((Context)localObject);
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuilder.append(str);
-      }
-      localObject = b((Context)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localStringBuilder.append((String)localObject);
-      }
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append(paramString);
-      localStringBuilder.append((int)(Math.random() * 2147483647.0D));
-      paramString = c(localStringBuilder.toString());
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  private static String c(String paramString)
-  {
-    if (paramString != null)
-    {
-      if (paramString.length() == 0) {
-        return null;
-      }
-      try
+      this.a = new float[k];
+      this.b = new float[k];
+      float[] arrayOfFloat = new float[2];
+      int i = 0;
+      while (i < k)
       {
-        Object localObject = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject).update(paramString.getBytes());
-        paramString = ((MessageDigest)localObject).digest();
-        if (paramString == null) {
-          return "";
-        }
-        localObject = new StringBuffer();
-        int i = 0;
-        while (i < paramString.length)
+        paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
+        this.a[i] = arrayOfFloat[0];
+        this.b[i] = arrayOfFloat[1];
+        i += 1;
+      }
+      if ((Math.abs(this.a[0]) <= 1.E-005D) && (Math.abs(this.b[0]) <= 1.E-005D))
+      {
+        arrayOfFloat = this.a;
+        i = k - 1;
+        if ((Math.abs(arrayOfFloat[i] - 1.0F) <= 1.E-005D) && (Math.abs(this.b[i] - 1.0F) <= 1.E-005D))
         {
-          String str = Integer.toHexString(paramString[i] & 0xFF);
-          if (str.length() == 1) {
-            ((StringBuffer)localObject).append("0");
+          i = 0;
+          f1 = 0.0F;
+          while (j < k)
+          {
+            arrayOfFloat = this.a;
+            float f2 = arrayOfFloat[i];
+            if (f2 >= f1)
+            {
+              arrayOfFloat[j] = f2;
+              j += 1;
+              f1 = f2;
+              i += 1;
+            }
+            else
+            {
+              throw new IllegalArgumentException("The Path cannot loop back on itself, x :".concat(String.valueOf(f2)));
+            }
           }
-          ((StringBuffer)localObject).append(str);
-          i += 1;
+          if (!paramPath.nextContour()) {
+            return;
+          }
+          throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
         }
-        return ((StringBuffer)localObject).toString().toUpperCase();
       }
-      catch (NoSuchAlgorithmException paramString)
-      {
-        paramString.printStackTrace();
+      paramPath = new StringBuilder("The Path must start at (0,0) and end at (1,1) start: ");
+      paramPath.append(this.a[0]);
+      paramPath.append(",");
+      paramPath.append(this.b[0]);
+      paramPath.append(" end:");
+      arrayOfFloat = this.a;
+      i = k - 1;
+      paramPath.append(arrayOfFloat[i]);
+      paramPath.append(",");
+      paramPath.append(this.b[i]);
+      throw new IllegalArgumentException(paramPath.toString());
+    }
+    throw new IllegalArgumentException("The Path has a invalid length ".concat(String.valueOf(f1)));
+  }
+  
+  public final float getInterpolation(float paramFloat)
+  {
+    if (paramFloat <= 0.0F) {
+      return 0.0F;
+    }
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
+    }
+    int j = 0;
+    int i = this.a.length - 1;
+    while (i - j > 1)
+    {
+      int k = (j + i) / 2;
+      if (paramFloat < this.a[k]) {
+        i = k;
+      } else {
+        j = k;
       }
     }
-    return null;
+    float[] arrayOfFloat = this.a;
+    float f = arrayOfFloat[i] - arrayOfFloat[j];
+    if (f == 0.0F) {
+      return this.b[j];
+    }
+    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
+    arrayOfFloat = this.b;
+    f = arrayOfFloat[j];
+    return f + paramFloat * (arrayOfFloat[i] - f);
   }
 }
 

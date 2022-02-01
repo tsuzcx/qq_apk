@@ -2,6 +2,7 @@ package btmsdkobf;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.token.aos;
 import com.tmsdk.base.utils.NetworkUtil;
 import com.tmsdk.base.utils.SDKUtil;
 import java.io.IOException;
@@ -13,7 +14,6 @@ import java.net.Proxy.Type;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.concurrent.atomic.AtomicReference;
-import tmsdk.QQPIM.ConnectType;
 
 public class ca
 {
@@ -51,485 +51,409 @@ public class ca
     //   21: aload_0
     //   22: getfield 40	btmsdkobf/ca:hc	Ljava/lang/String;
     //   25: invokevirtual 89	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   28: ifeq +6 -> 34
-    //   31: goto +46 -> 77
-    //   34: aload_0
-    //   35: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   38: astore 4
-    //   40: new 91	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   47: astore 5
-    //   49: aload 5
-    //   51: ldc 94
-    //   53: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload 5
-    //   59: aload_1
-    //   60: arraylength
-    //   61: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload 4
-    //   67: ldc 103
-    //   69: aload 5
-    //   71: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokevirtual 112	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: getstatic 117	android/os/Build$VERSION:SDK	Ljava/lang/String;
-    //   80: ifnull +22 -> 102
-    //   83: getstatic 120	android/os/Build$VERSION:SDK_INT	I
-    //   86: bipush 13
-    //   88: if_icmple +14 -> 102
-    //   91: aload_0
-    //   92: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   95: ldc 122
-    //   97: ldc 124
-    //   99: invokevirtual 112	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   102: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   105: astore 4
-    //   107: new 91	java/lang/StringBuilder
-    //   110: dup
-    //   111: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   114: astore 5
-    //   116: aload 5
-    //   118: ldc 126
-    //   120: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: pop
-    //   124: aload 5
-    //   126: aload_1
-    //   127: arraylength
-    //   128: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   131: pop
-    //   132: aload 4
-    //   134: aload 5
-    //   136: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   139: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   142: aload_0
-    //   143: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   146: invokevirtual 130	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   149: astore 4
-    //   151: aload 4
-    //   153: aload_1
-    //   154: invokevirtual 136	java/io/OutputStream:write	([B)V
-    //   157: aload 4
-    //   159: invokevirtual 139	java/io/OutputStream:flush	()V
-    //   162: aload 4
-    //   164: invokevirtual 141	java/io/OutputStream:close	()V
-    //   167: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   170: astore 4
-    //   172: new 91	java/lang/StringBuilder
-    //   175: dup
-    //   176: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   179: astore 5
-    //   181: aload 5
-    //   183: ldc 143
-    //   185: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: pop
-    //   189: aload 5
-    //   191: aload_1
-    //   192: arraylength
-    //   193: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   196: pop
-    //   197: aload 4
-    //   199: aload 5
-    //   201: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 146	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   207: aload_0
-    //   208: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   211: invokevirtual 150	java/net/HttpURLConnection:getResponseCode	()I
-    //   214: istore_3
-    //   215: aload_0
-    //   216: iload_3
-    //   217: invokespecial 154	btmsdkobf/ca:r	(I)Z
-    //   220: ifeq +76 -> 296
-    //   223: aload_0
-    //   224: aload_0
-    //   225: invokespecial 157	btmsdkobf/ca:aR	()Ljava/lang/String;
-    //   228: putfield 159	btmsdkobf/ca:hg	Ljava/lang/String;
-    //   231: aload_0
-    //   232: aload_0
-    //   233: getfield 42	btmsdkobf/ca:hh	I
-    //   236: iconst_1
-    //   237: iadd
-    //   238: putfield 42	btmsdkobf/ca:hh	I
-    //   241: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   244: astore_1
-    //   245: new 91	java/lang/StringBuilder
-    //   248: dup
-    //   249: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   252: astore_2
-    //   253: aload_2
-    //   254: ldc 161
-    //   256: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: pop
-    //   260: aload_2
-    //   261: aload_0
-    //   262: getfield 159	btmsdkobf/ca:hg	Ljava/lang/String;
-    //   265: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: pop
-    //   269: aload_2
-    //   270: ldc 163
-    //   272: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: pop
-    //   276: aload_2
-    //   277: aload_0
-    //   278: getfield 42	btmsdkobf/ca:hh	I
-    //   281: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   284: pop
-    //   285: aload_1
-    //   286: aload_2
-    //   287: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   290: invokestatic 146	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   293: ldc 164
-    //   295: ireturn
-    //   296: aload_0
-    //   297: invokespecial 167	btmsdkobf/ca:aQ	()V
-    //   300: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   303: astore_1
-    //   304: new 91	java/lang/StringBuilder
-    //   307: dup
-    //   308: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   311: astore 4
-    //   313: aload 4
-    //   315: ldc 169
-    //   317: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: pop
-    //   321: aload 4
-    //   323: iload_3
-    //   324: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   327: pop
-    //   328: aload_1
-    //   329: aload 4
-    //   331: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   334: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   337: aload_0
-    //   338: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   341: invokevirtual 173	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   344: astore_1
-    //   345: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   348: astore 4
-    //   350: new 91	java/lang/StringBuilder
-    //   353: dup
-    //   354: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   357: astore 5
-    //   359: aload 5
-    //   361: ldc 175
-    //   363: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: pop
-    //   367: aload 5
-    //   369: aload_1
-    //   370: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   373: pop
-    //   374: aload 4
-    //   376: aload 5
-    //   378: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   381: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   384: aload_0
-    //   385: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   388: ldc 180
-    //   390: invokevirtual 184	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   393: astore_1
-    //   394: aload_1
-    //   395: invokestatic 190	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   398: ifeq +43 -> 441
-    //   401: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   404: astore_2
-    //   405: new 91	java/lang/StringBuilder
-    //   408: dup
-    //   409: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   412: astore 4
-    //   414: aload 4
-    //   416: ldc 192
-    //   418: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   421: pop
-    //   422: aload 4
-    //   424: aload_1
-    //   425: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   428: pop
-    //   429: aload_2
-    //   430: aload 4
-    //   432: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   435: invokestatic 195	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   438: ldc 196
+    //   28: ifne +38 -> 66
+    //   31: aload_0
+    //   32: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   35: astore 4
+    //   37: new 91	java/lang/StringBuilder
+    //   40: dup
+    //   41: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   44: astore 5
+    //   46: aload 5
+    //   48: aload_1
+    //   49: arraylength
+    //   50: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload 4
+    //   56: ldc 98
+    //   58: aload 5
+    //   60: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokevirtual 107	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   66: getstatic 112	android/os/Build$VERSION:SDK	Ljava/lang/String;
+    //   69: ifnull +22 -> 91
+    //   72: getstatic 115	android/os/Build$VERSION:SDK_INT	I
+    //   75: bipush 13
+    //   77: if_icmple +14 -> 91
+    //   80: aload_0
+    //   81: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   84: ldc 117
+    //   86: ldc 119
+    //   88: invokevirtual 107	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   94: astore 4
+    //   96: new 91	java/lang/StringBuilder
+    //   99: dup
+    //   100: ldc 121
+    //   102: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   105: astore 5
+    //   107: aload 5
+    //   109: aload_1
+    //   110: arraylength
+    //   111: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: aload 4
+    //   117: aload 5
+    //   119: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: aload_0
+    //   126: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   129: invokevirtual 128	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   132: astore 4
+    //   134: aload 4
+    //   136: aload_1
+    //   137: invokevirtual 134	java/io/OutputStream:write	([B)V
+    //   140: aload 4
+    //   142: invokevirtual 137	java/io/OutputStream:flush	()V
+    //   145: aload 4
+    //   147: invokevirtual 139	java/io/OutputStream:close	()V
+    //   150: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   153: astore 4
+    //   155: new 91	java/lang/StringBuilder
+    //   158: dup
+    //   159: ldc 141
+    //   161: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   164: astore 5
+    //   166: aload 5
+    //   168: aload_1
+    //   169: arraylength
+    //   170: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   173: pop
+    //   174: aload 4
+    //   176: aload 5
+    //   178: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 144	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: aload_0
+    //   185: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   188: invokevirtual 148	java/net/HttpURLConnection:getResponseCode	()I
+    //   191: istore_3
+    //   192: aload_0
+    //   193: iload_3
+    //   194: invokespecial 152	btmsdkobf/ca:r	(I)Z
+    //   197: ifeq +71 -> 268
+    //   200: aload_0
+    //   201: aload_0
+    //   202: invokespecial 155	btmsdkobf/ca:aR	()Ljava/lang/String;
+    //   205: putfield 157	btmsdkobf/ca:hg	Ljava/lang/String;
+    //   208: aload_0
+    //   209: aload_0
+    //   210: getfield 42	btmsdkobf/ca:hh	I
+    //   213: iconst_1
+    //   214: iadd
+    //   215: putfield 42	btmsdkobf/ca:hh	I
+    //   218: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   221: astore_1
+    //   222: new 91	java/lang/StringBuilder
+    //   225: dup
+    //   226: ldc 159
+    //   228: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   231: astore_2
+    //   232: aload_2
+    //   233: aload_0
+    //   234: getfield 157	btmsdkobf/ca:hg	Ljava/lang/String;
+    //   237: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   240: pop
+    //   241: aload_2
+    //   242: ldc 164
+    //   244: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: aload_2
+    //   249: aload_0
+    //   250: getfield 42	btmsdkobf/ca:hh	I
+    //   253: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: aload_1
+    //   258: aload_2
+    //   259: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   262: invokestatic 144	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   265: ldc 165
+    //   267: ireturn
+    //   268: aload_0
+    //   269: invokespecial 168	btmsdkobf/ca:aQ	()V
+    //   272: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   275: ldc 170
+    //   277: iload_3
+    //   278: invokestatic 174	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   281: invokevirtual 178	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   284: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   287: aload_0
+    //   288: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   291: invokevirtual 182	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   294: astore_1
+    //   295: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   298: ldc 184
+    //   300: aload_1
+    //   301: invokestatic 187	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   304: invokevirtual 178	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   307: invokestatic 79	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   310: aload_0
+    //   311: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   314: ldc 189
+    //   316: invokevirtual 192	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   319: astore_1
+    //   320: aload_1
+    //   321: invokestatic 198	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   324: ifeq +21 -> 345
+    //   327: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   330: ldc 200
+    //   332: aload_1
+    //   333: invokestatic 187	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   336: invokevirtual 178	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   339: invokestatic 203	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   342: ldc 204
+    //   344: ireturn
+    //   345: aload_1
+    //   346: ldc 206
+    //   348: invokevirtual 210	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   351: ifne +21 -> 372
+    //   354: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   357: ldc 200
+    //   359: aload_1
+    //   360: invokestatic 187	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   363: invokevirtual 178	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   366: invokestatic 203	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   369: ldc 211
+    //   371: ireturn
+    //   372: aload_0
+    //   373: aload_0
+    //   374: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
+    //   377: invokevirtual 215	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   380: invokespecial 218	btmsdkobf/ca:a	(Ljava/io/InputStream;)[B
+    //   383: astore_1
+    //   384: aload_2
+    //   385: aload_1
+    //   386: invokevirtual 224	java/util/concurrent/atomic/AtomicReference:set	(Ljava/lang/Object;)V
+    //   389: aload_1
+    //   390: ifnull +35 -> 425
+    //   393: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   396: astore_2
+    //   397: new 91	java/lang/StringBuilder
+    //   400: dup
+    //   401: ldc 226
+    //   403: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   406: astore 4
+    //   408: aload 4
+    //   410: aload_1
+    //   411: arraylength
+    //   412: invokevirtual 96	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   415: pop
+    //   416: aload_2
+    //   417: aload 4
+    //   419: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   422: invokestatic 144	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   425: iconst_0
+    //   426: ireturn
+    //   427: astore_1
+    //   428: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   431: aload_1
+    //   432: invokevirtual 227	java/lang/Exception:toString	()Ljava/lang/String;
+    //   435: invokestatic 203	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   438: ldc 228
     //   440: ireturn
-    //   441: aload_1
-    //   442: ldc 198
-    //   444: invokevirtual 202	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   447: ifne +43 -> 490
-    //   450: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   453: astore_2
-    //   454: new 91	java/lang/StringBuilder
-    //   457: dup
-    //   458: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   461: astore 4
-    //   463: aload 4
-    //   465: ldc 192
-    //   467: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: pop
-    //   471: aload 4
-    //   473: aload_1
-    //   474: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   477: pop
-    //   478: aload_2
-    //   479: aload 4
-    //   481: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   484: invokestatic 195	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   487: ldc 203
-    //   489: ireturn
-    //   490: aload_0
-    //   491: aload_0
-    //   492: getfield 81	btmsdkobf/ca:hd	Ljava/net/HttpURLConnection;
-    //   495: invokevirtual 207	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   498: invokespecial 210	btmsdkobf/ca:a	(Ljava/io/InputStream;)[B
-    //   501: astore_1
-    //   502: aload_2
-    //   503: aload_1
-    //   504: invokevirtual 216	java/util/concurrent/atomic/AtomicReference:set	(Ljava/lang/Object;)V
-    //   507: aload_1
-    //   508: ifnull +41 -> 549
-    //   511: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   514: astore_2
-    //   515: new 91	java/lang/StringBuilder
-    //   518: dup
-    //   519: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   522: astore 4
-    //   524: aload 4
-    //   526: ldc 218
-    //   528: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   531: pop
-    //   532: aload 4
-    //   534: aload_1
-    //   535: arraylength
-    //   536: invokevirtual 101	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   539: pop
-    //   540: aload_2
-    //   541: aload 4
-    //   543: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   546: invokestatic 146	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   549: iconst_0
-    //   550: ireturn
-    //   551: astore_1
-    //   552: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   555: aload_1
-    //   556: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
-    //   559: invokestatic 195	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   562: ldc 220
-    //   564: ireturn
-    //   565: astore_1
-    //   566: goto +159 -> 725
-    //   569: astore_1
-    //   570: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   573: ldc 222
-    //   575: aload_1
-    //   576: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   579: ldc 227
-    //   581: ireturn
-    //   582: astore_1
-    //   583: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   586: ldc 229
-    //   588: aload_1
-    //   589: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   592: ldc 230
-    //   594: ireturn
-    //   595: astore_1
-    //   596: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   599: ldc 232
-    //   601: aload_1
-    //   602: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   605: ldc 233
-    //   607: ireturn
-    //   608: astore_1
-    //   609: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   612: ldc 235
-    //   614: aload_1
-    //   615: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   618: aload_1
-    //   619: invokevirtual 236	java/lang/SecurityException:toString	()Ljava/lang/String;
-    //   622: ldc 237
-    //   624: invokestatic 242	btmsdkobf/bz:a	(Ljava/lang/String;I)I
-    //   627: ireturn
-    //   628: astore_1
-    //   629: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   632: ldc 244
-    //   634: aload_1
-    //   635: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   638: aload_1
-    //   639: invokevirtual 245	java/net/SocketException:toString	()Ljava/lang/String;
-    //   642: ldc 246
-    //   644: invokestatic 242	btmsdkobf/bz:a	(Ljava/lang/String;I)I
-    //   647: ireturn
-    //   648: astore_1
-    //   649: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   652: ldc 248
-    //   654: aload_1
-    //   655: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   658: aload_1
-    //   659: invokevirtual 249	java/net/ConnectException:toString	()Ljava/lang/String;
-    //   662: ldc 250
-    //   664: invokestatic 242	btmsdkobf/bz:a	(Ljava/lang/String;I)I
-    //   667: ireturn
-    //   668: astore_1
-    //   669: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   672: ldc 252
-    //   674: aload_1
-    //   675: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   678: ldc 253
-    //   680: ireturn
-    //   681: astore_1
-    //   682: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   685: ldc 255
-    //   687: aload_1
-    //   688: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   691: ldc_w 256
-    //   694: ireturn
-    //   695: astore_1
-    //   696: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   699: ldc_w 258
-    //   702: aload_1
-    //   703: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   706: ldc_w 259
-    //   709: ireturn
-    //   710: astore_1
-    //   711: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   714: ldc_w 261
-    //   717: aload_1
-    //   718: invokestatic 226	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   721: ldc_w 262
-    //   724: ireturn
-    //   725: aload_1
-    //   726: athrow
-    //   727: astore 4
-    //   729: goto -627 -> 102
+    //   441: astore_1
+    //   442: goto +164 -> 606
+    //   445: astore_1
+    //   446: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   449: ldc 230
+    //   451: aload_1
+    //   452: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   455: ldc 235
+    //   457: ireturn
+    //   458: astore_1
+    //   459: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   462: ldc 237
+    //   464: aload_1
+    //   465: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   468: ldc 238
+    //   470: ireturn
+    //   471: astore_1
+    //   472: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   475: ldc 240
+    //   477: aload_1
+    //   478: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   481: ldc 241
+    //   483: ireturn
+    //   484: astore_1
+    //   485: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   488: ldc 243
+    //   490: aload_1
+    //   491: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   494: aload_1
+    //   495: invokevirtual 244	java/lang/SecurityException:toString	()Ljava/lang/String;
+    //   498: ldc 245
+    //   500: invokestatic 250	btmsdkobf/bz:a	(Ljava/lang/String;I)I
+    //   503: ireturn
+    //   504: astore_1
+    //   505: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   508: ldc 252
+    //   510: aload_1
+    //   511: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   514: aload_1
+    //   515: invokevirtual 253	java/net/SocketException:toString	()Ljava/lang/String;
+    //   518: ldc 254
+    //   520: invokestatic 250	btmsdkobf/bz:a	(Ljava/lang/String;I)I
+    //   523: ireturn
+    //   524: astore_1
+    //   525: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   528: ldc_w 256
+    //   531: aload_1
+    //   532: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   535: aload_1
+    //   536: invokevirtual 257	java/net/ConnectException:toString	()Ljava/lang/String;
+    //   539: ldc_w 258
+    //   542: invokestatic 250	btmsdkobf/bz:a	(Ljava/lang/String;I)I
+    //   545: ireturn
+    //   546: astore_1
+    //   547: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   550: ldc_w 260
+    //   553: aload_1
+    //   554: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   557: ldc_w 261
+    //   560: ireturn
+    //   561: astore_1
+    //   562: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   565: ldc_w 263
+    //   568: aload_1
+    //   569: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   572: ldc_w 264
+    //   575: ireturn
+    //   576: astore_1
+    //   577: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   580: ldc_w 266
+    //   583: aload_1
+    //   584: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   587: ldc_w 267
+    //   590: ireturn
+    //   591: astore_1
+    //   592: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   595: ldc_w 269
+    //   598: aload_1
+    //   599: invokestatic 234	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   602: ldc_w 270
+    //   605: ireturn
+    //   606: aload_1
+    //   607: athrow
+    //   608: astore 4
+    //   610: goto -519 -> 91
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	732	0	this	ca
-    //   0	732	1	paramArrayOfByte	byte[]
-    //   0	732	2	paramAtomicReference	AtomicReference<byte[]>
-    //   214	110	3	i	int
-    //   38	504	4	localObject	Object
-    //   727	1	4	localException	Exception
-    //   47	330	5	localStringBuilder	StringBuilder
+    //   0	613	0	this	ca
+    //   0	613	1	paramArrayOfByte	byte[]
+    //   0	613	2	paramAtomicReference	AtomicReference<byte[]>
+    //   191	87	3	i	int
+    //   35	383	4	localObject	Object
+    //   608	1	4	localException	Exception
+    //   44	133	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   337	438	551	java/lang/Exception
-    //   441	487	551	java/lang/Exception
-    //   490	507	551	java/lang/Exception
-    //   511	549	551	java/lang/Exception
-    //   19	31	565	finally
-    //   34	77	565	finally
-    //   77	102	565	finally
-    //   102	293	565	finally
-    //   296	337	565	finally
-    //   337	438	565	finally
-    //   441	487	565	finally
-    //   490	507	565	finally
-    //   511	549	565	finally
-    //   552	562	565	finally
-    //   570	579	565	finally
-    //   583	592	565	finally
-    //   596	605	565	finally
-    //   609	628	565	finally
-    //   629	648	565	finally
-    //   649	668	565	finally
-    //   669	678	565	finally
-    //   682	691	565	finally
-    //   696	706	565	finally
-    //   711	721	565	finally
-    //   19	31	569	java/lang/Exception
-    //   34	77	569	java/lang/Exception
-    //   102	293	569	java/lang/Exception
-    //   296	337	569	java/lang/Exception
-    //   552	562	569	java/lang/Exception
-    //   19	31	582	java/io/IOException
-    //   34	77	582	java/io/IOException
-    //   77	102	582	java/io/IOException
-    //   102	293	582	java/io/IOException
-    //   296	337	582	java/io/IOException
-    //   337	438	582	java/io/IOException
-    //   441	487	582	java/io/IOException
-    //   490	507	582	java/io/IOException
-    //   511	549	582	java/io/IOException
-    //   552	562	582	java/io/IOException
-    //   19	31	595	java/net/SocketTimeoutException
-    //   34	77	595	java/net/SocketTimeoutException
-    //   77	102	595	java/net/SocketTimeoutException
-    //   102	293	595	java/net/SocketTimeoutException
-    //   296	337	595	java/net/SocketTimeoutException
-    //   337	438	595	java/net/SocketTimeoutException
-    //   441	487	595	java/net/SocketTimeoutException
-    //   490	507	595	java/net/SocketTimeoutException
-    //   511	549	595	java/net/SocketTimeoutException
-    //   552	562	595	java/net/SocketTimeoutException
-    //   19	31	608	java/lang/SecurityException
-    //   34	77	608	java/lang/SecurityException
-    //   77	102	608	java/lang/SecurityException
-    //   102	293	608	java/lang/SecurityException
-    //   296	337	608	java/lang/SecurityException
-    //   337	438	608	java/lang/SecurityException
-    //   441	487	608	java/lang/SecurityException
-    //   490	507	608	java/lang/SecurityException
-    //   511	549	608	java/lang/SecurityException
-    //   552	562	608	java/lang/SecurityException
-    //   19	31	628	java/net/SocketException
-    //   34	77	628	java/net/SocketException
-    //   77	102	628	java/net/SocketException
-    //   102	293	628	java/net/SocketException
-    //   296	337	628	java/net/SocketException
-    //   337	438	628	java/net/SocketException
-    //   441	487	628	java/net/SocketException
-    //   490	507	628	java/net/SocketException
-    //   511	549	628	java/net/SocketException
-    //   552	562	628	java/net/SocketException
-    //   19	31	648	java/net/ConnectException
-    //   34	77	648	java/net/ConnectException
-    //   77	102	648	java/net/ConnectException
-    //   102	293	648	java/net/ConnectException
-    //   296	337	648	java/net/ConnectException
-    //   337	438	648	java/net/ConnectException
-    //   441	487	648	java/net/ConnectException
-    //   490	507	648	java/net/ConnectException
-    //   511	549	648	java/net/ConnectException
-    //   552	562	648	java/net/ConnectException
-    //   19	31	668	java/net/ProtocolException
-    //   34	77	668	java/net/ProtocolException
-    //   77	102	668	java/net/ProtocolException
-    //   102	293	668	java/net/ProtocolException
-    //   296	337	668	java/net/ProtocolException
-    //   337	438	668	java/net/ProtocolException
-    //   441	487	668	java/net/ProtocolException
-    //   490	507	668	java/net/ProtocolException
-    //   511	549	668	java/net/ProtocolException
-    //   552	562	668	java/net/ProtocolException
-    //   19	31	681	java/lang/IllegalStateException
-    //   34	77	681	java/lang/IllegalStateException
-    //   77	102	681	java/lang/IllegalStateException
-    //   102	293	681	java/lang/IllegalStateException
-    //   296	337	681	java/lang/IllegalStateException
-    //   337	438	681	java/lang/IllegalStateException
-    //   441	487	681	java/lang/IllegalStateException
-    //   490	507	681	java/lang/IllegalStateException
-    //   511	549	681	java/lang/IllegalStateException
-    //   552	562	681	java/lang/IllegalStateException
-    //   19	31	695	java/lang/IllegalAccessError
-    //   34	77	695	java/lang/IllegalAccessError
-    //   77	102	695	java/lang/IllegalAccessError
-    //   102	293	695	java/lang/IllegalAccessError
-    //   296	337	695	java/lang/IllegalAccessError
-    //   337	438	695	java/lang/IllegalAccessError
-    //   441	487	695	java/lang/IllegalAccessError
-    //   490	507	695	java/lang/IllegalAccessError
-    //   511	549	695	java/lang/IllegalAccessError
-    //   552	562	695	java/lang/IllegalAccessError
-    //   19	31	710	java/net/UnknownHostException
-    //   34	77	710	java/net/UnknownHostException
-    //   77	102	710	java/net/UnknownHostException
-    //   102	293	710	java/net/UnknownHostException
-    //   296	337	710	java/net/UnknownHostException
-    //   337	438	710	java/net/UnknownHostException
-    //   441	487	710	java/net/UnknownHostException
-    //   490	507	710	java/net/UnknownHostException
-    //   511	549	710	java/net/UnknownHostException
-    //   552	562	710	java/net/UnknownHostException
-    //   77	102	727	java/lang/Exception
+    //   287	342	427	java/lang/Exception
+    //   345	369	427	java/lang/Exception
+    //   372	389	427	java/lang/Exception
+    //   393	425	427	java/lang/Exception
+    //   19	66	441	finally
+    //   66	91	441	finally
+    //   91	265	441	finally
+    //   268	287	441	finally
+    //   287	342	441	finally
+    //   345	369	441	finally
+    //   372	389	441	finally
+    //   393	425	441	finally
+    //   428	438	441	finally
+    //   446	455	441	finally
+    //   459	468	441	finally
+    //   472	481	441	finally
+    //   485	504	441	finally
+    //   505	524	441	finally
+    //   525	546	441	finally
+    //   547	557	441	finally
+    //   562	572	441	finally
+    //   577	587	441	finally
+    //   592	602	441	finally
+    //   19	66	445	java/lang/Exception
+    //   91	265	445	java/lang/Exception
+    //   268	287	445	java/lang/Exception
+    //   428	438	445	java/lang/Exception
+    //   19	66	458	java/io/IOException
+    //   66	91	458	java/io/IOException
+    //   91	265	458	java/io/IOException
+    //   268	287	458	java/io/IOException
+    //   287	342	458	java/io/IOException
+    //   345	369	458	java/io/IOException
+    //   372	389	458	java/io/IOException
+    //   393	425	458	java/io/IOException
+    //   428	438	458	java/io/IOException
+    //   19	66	471	java/net/SocketTimeoutException
+    //   66	91	471	java/net/SocketTimeoutException
+    //   91	265	471	java/net/SocketTimeoutException
+    //   268	287	471	java/net/SocketTimeoutException
+    //   287	342	471	java/net/SocketTimeoutException
+    //   345	369	471	java/net/SocketTimeoutException
+    //   372	389	471	java/net/SocketTimeoutException
+    //   393	425	471	java/net/SocketTimeoutException
+    //   428	438	471	java/net/SocketTimeoutException
+    //   19	66	484	java/lang/SecurityException
+    //   66	91	484	java/lang/SecurityException
+    //   91	265	484	java/lang/SecurityException
+    //   268	287	484	java/lang/SecurityException
+    //   287	342	484	java/lang/SecurityException
+    //   345	369	484	java/lang/SecurityException
+    //   372	389	484	java/lang/SecurityException
+    //   393	425	484	java/lang/SecurityException
+    //   428	438	484	java/lang/SecurityException
+    //   19	66	504	java/net/SocketException
+    //   66	91	504	java/net/SocketException
+    //   91	265	504	java/net/SocketException
+    //   268	287	504	java/net/SocketException
+    //   287	342	504	java/net/SocketException
+    //   345	369	504	java/net/SocketException
+    //   372	389	504	java/net/SocketException
+    //   393	425	504	java/net/SocketException
+    //   428	438	504	java/net/SocketException
+    //   19	66	524	java/net/ConnectException
+    //   66	91	524	java/net/ConnectException
+    //   91	265	524	java/net/ConnectException
+    //   268	287	524	java/net/ConnectException
+    //   287	342	524	java/net/ConnectException
+    //   345	369	524	java/net/ConnectException
+    //   372	389	524	java/net/ConnectException
+    //   393	425	524	java/net/ConnectException
+    //   428	438	524	java/net/ConnectException
+    //   19	66	546	java/net/ProtocolException
+    //   66	91	546	java/net/ProtocolException
+    //   91	265	546	java/net/ProtocolException
+    //   268	287	546	java/net/ProtocolException
+    //   287	342	546	java/net/ProtocolException
+    //   345	369	546	java/net/ProtocolException
+    //   372	389	546	java/net/ProtocolException
+    //   393	425	546	java/net/ProtocolException
+    //   428	438	546	java/net/ProtocolException
+    //   19	66	561	java/lang/IllegalStateException
+    //   66	91	561	java/lang/IllegalStateException
+    //   91	265	561	java/lang/IllegalStateException
+    //   268	287	561	java/lang/IllegalStateException
+    //   287	342	561	java/lang/IllegalStateException
+    //   345	369	561	java/lang/IllegalStateException
+    //   372	389	561	java/lang/IllegalStateException
+    //   393	425	561	java/lang/IllegalStateException
+    //   428	438	561	java/lang/IllegalStateException
+    //   19	66	576	java/lang/IllegalAccessError
+    //   66	91	576	java/lang/IllegalAccessError
+    //   91	265	576	java/lang/IllegalAccessError
+    //   268	287	576	java/lang/IllegalAccessError
+    //   287	342	576	java/lang/IllegalAccessError
+    //   345	369	576	java/lang/IllegalAccessError
+    //   372	389	576	java/lang/IllegalAccessError
+    //   393	425	576	java/lang/IllegalAccessError
+    //   428	438	576	java/lang/IllegalAccessError
+    //   19	66	591	java/net/UnknownHostException
+    //   66	91	591	java/net/UnknownHostException
+    //   91	265	591	java/net/UnknownHostException
+    //   268	287	591	java/net/UnknownHostException
+    //   287	342	591	java/net/UnknownHostException
+    //   345	369	591	java/net/UnknownHostException
+    //   372	389	591	java/net/UnknownHostException
+    //   393	425	591	java/net/UnknownHostException
+    //   428	438	591	java/net/UnknownHostException
+    //   66	91	608	java/lang/Exception
   }
   
   /* Error */
@@ -539,13 +463,13 @@ public class ca
     //   0: sipush 2048
     //   3: newarray byte
     //   5: astore 4
-    //   7: new 266	java/io/ByteArrayOutputStream
+    //   7: new 274	java/io/ByteArrayOutputStream
     //   10: dup
-    //   11: invokespecial 267	java/io/ByteArrayOutputStream:<init>	()V
+    //   11: invokespecial 275	java/io/ByteArrayOutputStream:<init>	()V
     //   14: astore_3
     //   15: aload_1
     //   16: aload 4
-    //   18: invokevirtual 273	java/io/InputStream:read	([B)I
+    //   18: invokevirtual 281	java/io/InputStream:read	([B)I
     //   21: istore_2
     //   22: iload_2
     //   23: iconst_m1
@@ -554,74 +478,71 @@ public class ca
     //   28: aload 4
     //   30: iconst_0
     //   31: iload_2
-    //   32: invokevirtual 276	java/io/ByteArrayOutputStream:write	([BII)V
+    //   32: invokevirtual 284	java/io/ByteArrayOutputStream:write	([BII)V
     //   35: goto -20 -> 15
     //   38: aload_3
-    //   39: invokevirtual 280	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   39: invokevirtual 288	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   42: astore_1
     //   43: aload_3
-    //   44: invokevirtual 281	java/io/ByteArrayOutputStream:close	()V
+    //   44: invokevirtual 289	java/io/ByteArrayOutputStream:close	()V
     //   47: aload_1
     //   48: areturn
     //   49: astore_3
     //   50: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
     //   53: aload_3
-    //   54: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
-    //   57: invokestatic 195	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: invokevirtual 227	java/lang/Exception:toString	()Ljava/lang/String;
+    //   57: invokestatic 203	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
     //   60: aload_1
     //   61: areturn
     //   62: astore_1
-    //   63: goto +45 -> 108
+    //   63: goto +39 -> 102
     //   66: astore_1
     //   67: new 91	java/lang/StringBuilder
     //   70: dup
-    //   71: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   74: astore 4
-    //   76: aload 4
-    //   78: ldc_w 283
-    //   81: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: pop
-    //   85: aload 4
-    //   87: aload_1
-    //   88: invokevirtual 286	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   91: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: pop
-    //   95: new 69	java/lang/Exception
-    //   98: dup
-    //   99: aload 4
-    //   101: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokespecial 289	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   107: athrow
-    //   108: aload_3
-    //   109: invokevirtual 281	java/io/ByteArrayOutputStream:close	()V
-    //   112: goto +14 -> 126
-    //   115: astore_3
-    //   116: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
-    //   119: aload_3
-    //   120: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
-    //   123: invokestatic 195	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   126: aload_1
-    //   127: athrow
+    //   71: ldc_w 291
+    //   74: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   77: astore 4
+    //   79: aload 4
+    //   81: aload_1
+    //   82: invokevirtual 294	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   85: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: pop
+    //   89: new 69	java/lang/Exception
+    //   92: dup
+    //   93: aload 4
+    //   95: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokespecial 295	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   101: athrow
+    //   102: aload_3
+    //   103: invokevirtual 289	java/io/ByteArrayOutputStream:close	()V
+    //   106: goto +14 -> 120
+    //   109: astore_3
+    //   110: getstatic 71	btmsdkobf/ca:TAG	Ljava/lang/String;
+    //   113: aload_3
+    //   114: invokevirtual 227	java/lang/Exception:toString	()Ljava/lang/String;
+    //   117: invokestatic 203	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: aload_1
+    //   121: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	128	0	this	ca
-    //   0	128	1	paramInputStream	java.io.InputStream
+    //   0	122	0	this	ca
+    //   0	122	1	paramInputStream	java.io.InputStream
     //   21	11	2	i	int
     //   14	30	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   49	60	3	localException1	Exception
-    //   115	5	3	localException2	Exception
-    //   5	95	4	localObject	Object
+    //   49	54	3	localException1	Exception
+    //   109	5	3	localException2	Exception
+    //   5	89	4	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   43	47	49	java/lang/Exception
     //   15	22	62	finally
     //   27	35	62	finally
     //   38	43	62	finally
-    //   67	108	62	finally
+    //   67	102	62	finally
     //   15	22	66	java/io/IOException
     //   27	35	66	java/io/IOException
     //   38	43	66	java/io/IOException
-    //   108	112	115	java/lang/Exception
+    //   102	106	109	java/lang/Exception
   }
   
   private boolean aP()
@@ -661,8 +582,7 @@ public class ca
     catch (Exception localException)
     {
       String str2 = TAG;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getRedirectUrl() e: ");
+      StringBuilder localStringBuilder = new StringBuilder("getRedirectUrl() e: ");
       localStringBuilder.append(localException.toString());
       eh.h(str2, localStringBuilder.toString());
     }
@@ -690,12 +610,12 @@ public class ca
       try
       {
         localObject = NetworkUtil.getNetworkType();
-        if (ConnectType.CT_NONE == localObject)
+        if (aos.b == localObject)
         {
           eh.g(TAG, "[http_control]start() no network");
           return -220000;
         }
-        if (ConnectType.CT_GPRS_WAP == localObject)
+        if (aos.e == localObject)
         {
           this.hd = ((HttpURLConnection)paramString.openConnection(new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(NetworkUtil.getProxyHost(), NetworkUtil.getProxyPort()))));
         }
@@ -752,8 +672,7 @@ public class ca
     {
       paramString.printStackTrace();
       localObject = TAG;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[http_control]start() MalformedURLException e:");
+      localStringBuilder = new StringBuilder("[http_control]start() MalformedURLException e:");
       localStringBuilder.append(paramString.toString());
       eh.h((String)localObject, localStringBuilder.toString());
     }
@@ -768,7 +687,7 @@ public class ca
       {
         eh.f(TAG, "[http_control]sendData()");
         if ((paramf.jH != 2048) || (this.hi)) {
-          break label527;
+          break label461;
         }
         j = 1;
       }
@@ -776,7 +695,7 @@ public class ca
       if (m < k)
       {
         Object localObject = NetworkUtil.getNetworkType();
-        if (ConnectType.CT_NONE == localObject)
+        if (aos.b == localObject)
         {
           eh.g(TAG, "[http_control]sendData() no network");
           return -220000;
@@ -799,10 +718,7 @@ public class ca
             }
             else
             {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("http://");
-              ((StringBuilder)localObject).append(str);
-              localObject = ((StringBuilder)localObject).toString();
+              localObject = "http://".concat(String.valueOf(str));
             }
           }
         }
@@ -812,14 +728,13 @@ public class ca
         }
         i = s((String)localObject);
         String str = TAG;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[http_control]start(), ret: ");
+        StringBuilder localStringBuilder = new StringBuilder("[http_control]start(), ret: ");
         localStringBuilder.append(i);
         localStringBuilder.append(" httpUrl: ");
         localStringBuilder.append((String)localObject);
         eh.f(str, localStringBuilder.toString());
         if (i != 0) {
-          break label550;
+          break label484;
         }
         paramf.jW = true;
         i = a(paramArrayOfByte, paramAtomicReference);
@@ -839,7 +754,7 @@ public class ca
               this.hf.m(false);
             }
             if (m >= k - 1) {
-              break label553;
+              break label487;
             }
             try
             {
@@ -848,8 +763,7 @@ public class ca
             catch (InterruptedException localInterruptedException)
             {
               str = TAG;
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[http_control]sendData() InterruptedException e: ");
+              localStringBuilder = new StringBuilder("[http_control]sendData() InterruptedException e: ");
               localStringBuilder.append(localInterruptedException.toString());
               eh.h(str, localStringBuilder.toString());
             }
@@ -858,22 +772,15 @@ public class ca
         else
         {
           paramf = TAG;
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append("[http_control]sendData() 发包成功或无网络，不重试， ret: ");
-          paramArrayOfByte.append(i);
-          paramArrayOfByte = paramArrayOfByte.toString();
+          paramArrayOfByte = "[http_control]sendData() 发包成功或无网络，不重试， ret: ".concat(String.valueOf(i));
           continue;
         }
       }
-      paramf = TAG;
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("[http_control]sendData() ret: ");
-      paramArrayOfByte.append(i);
-      eh.e(paramf, paramArrayOfByte.toString());
+      eh.e(TAG, "[http_control]sendData() ret: ".concat(String.valueOf(i)));
       return i;
       int i = -10;
       continue;
-      label527:
+      label461:
       int j = 0;
       int k = 3;
       if (j != 0) {
@@ -882,9 +789,9 @@ public class ca
       int m = 0;
       i = -1;
       continue;
-      label550:
+      label484:
       continue;
-      label553:
+      label487:
       m += 1;
     }
   }

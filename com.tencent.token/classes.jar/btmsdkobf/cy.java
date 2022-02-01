@@ -22,7 +22,7 @@ public class cy
   private final Object hT = new Object();
   private Handler jA = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       super.handleMessage(paramAnonymousMessage);
       if (paramAnonymousMessage.what != 1) {
@@ -51,12 +51,9 @@ public class cy
   private c ju;
   private df.a jv = new df.a()
   {
-    public void a(boolean paramAnonymousBoolean, int paramAnonymousInt, byte[] arg3, cy.f paramAnonymousf)
+    public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt, byte[] arg3, cy.f paramAnonymousf)
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("onFinish(), retCode: ");
-      ((StringBuilder)???).append(paramAnonymousInt);
-      eh.f("SharkNetwork", ((StringBuilder)???).toString());
+      eh.f("SharkNetwork", "onFinish(), retCode: ".concat(String.valueOf(paramAnonymousInt)));
       if (paramAnonymousInt != 0)
       {
         cy.a(cy.this, paramAnonymousBoolean, paramAnonymousInt, paramAnonymousf);
@@ -68,26 +65,25 @@ public class cy
         cy.a(cy.this, paramAnonymousBoolean, -21000005, paramAnonymousf);
         return;
       }
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("onFinish() retData.length: ");
+      ??? = new StringBuilder("onFinish() retData.length: ");
       ((StringBuilder)???).append(???.length);
       eh.e("SharkNetwork", ((StringBuilder)???).toString());
       if (cx.i(???))
       {
         byte b = ???[0];
         paramAnonymousInt = cv.by().b(b);
-        if (paramAnonymousInt < 0) {
-          break label989;
-        }
-        synchronized (cy.a(cy.this))
-        {
-          paramAnonymousf = (cy.f)cy.a(cy.this).get(Integer.valueOf(paramAnonymousInt));
-          if (paramAnonymousf != null)
+        if (paramAnonymousInt >= 0) {
+          synchronized (cy.a(cy.this))
           {
-            cy.a(cy.this, paramAnonymousBoolean, paramAnonymousf, 0, 0, null);
-            return;
+            paramAnonymousf = (cy.f)cy.a(cy.this).get(Integer.valueOf(paramAnonymousInt));
+            if (paramAnonymousf != null)
+            {
+              cy.a(cy.this, paramAnonymousBoolean, paramAnonymousf, 0, 0, null);
+              return;
+            }
           }
         }
+        return;
       }
       try
       {
@@ -122,8 +118,7 @@ public class cy
                 while (((Iterator)???).hasNext())
                 {
                   localObject2 = (ba)((Iterator)???).next();
-                  localObject3 = new StringBuilder();
-                  ((StringBuilder)localObject3).append("[");
+                  localObject3 = new StringBuilder("[");
                   ((StringBuilder)localObject3).append(i);
                   ((StringBuilder)localObject3).append("]收包：cmd id:[");
                   ((StringBuilder)localObject3).append(((ba)localObject2).bM);
@@ -147,8 +142,7 @@ public class cy
                 return;
               }
               cy.e(localArrayList);
-              ??? = new StringBuilder();
-              ((StringBuilder)???).append("onFinish() sharkSeq: ");
+              ??? = new StringBuilder("onFinish() sharkSeq: ");
               ((StringBuilder)???).append(j);
               ((StringBuilder)???).append(" ssTag: ");
               ((StringBuilder)???).append(paramAnonymousf);
@@ -156,8 +150,7 @@ public class cy
               ((StringBuilder)???).append(localArrayList.size());
               eh.e("SharkNetwork", ((StringBuilder)???).toString());
               boolean bool = cy.a(cy.this, localArrayList);
-              Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("[rsa_key]onFinish() 密钥是否过期：");
+              Object localObject2 = new StringBuilder("[rsa_key]onFinish() 密钥是否过期：");
               if (bool) {
                 ??? = "是";
               } else {
@@ -203,7 +196,6 @@ public class cy
               }
               cy.a(cy.this, paramAnonymousBoolean, paramAnonymousf, 0, localbb.dc, (ArrayList)localObject2);
               cy.g(cy.this);
-              label989:
               return;
             }
           }
@@ -212,21 +204,19 @@ public class cy
       }
       catch (Exception ???)
       {
-        ??? = new StringBuilder();
-        ((StringBuilder)???).append("onFinish() e: ");
+        ??? = new StringBuilder("onFinish() e: ");
         ((StringBuilder)???).append(???.toString());
         eh.h("SharkNetwork", ((StringBuilder)???).toString());
         cy.a(cy.this, paramAnonymousBoolean, -21000400, paramAnonymousf);
       }
     }
     
-    public void b(boolean paramAnonymousBoolean, int paramAnonymousInt, cy.f paramAnonymousf)
+    public final void b(boolean paramAnonymousBoolean, int paramAnonymousInt, cy.f paramAnonymousf)
     {
       StringBuilder localStringBuilder;
       if (paramAnonymousf != null)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onSendFailed(), isTcpChannel: ");
+        localStringBuilder = new StringBuilder("onSendFailed(), isTcpChannel: ");
         localStringBuilder.append(paramAnonymousBoolean);
         localStringBuilder.append(" retCode: ");
         localStringBuilder.append(paramAnonymousInt);
@@ -235,8 +225,7 @@ public class cy
       }
       else
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onSendFailed(), isTcpChannel: ");
+        localStringBuilder = new StringBuilder("onSendFailed(), isTcpChannel: ");
         localStringBuilder.append(paramAnonymousBoolean);
         localStringBuilder.append(" retCode: ");
         localStringBuilder.append(paramAnonymousInt);
@@ -255,7 +244,7 @@ public class cy
     {
       cy.j(cy.this).submit(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           Object localObject4;
           if (cy.i(cy.this) != null)
@@ -274,8 +263,7 @@ public class cy
             ??? = paramAnonymousf.jT;
             if ((??? != null) && (((ArrayList)???).size() > 0))
             {
-              localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append("[network_control] before control, sashimis.size(): ");
+              localObject4 = new StringBuilder("[network_control] before control, sashimis.size(): ");
               ((StringBuilder)localObject4).append(((ArrayList)???).size());
               eh.f("SharkNetwork", ((StringBuilder)localObject4).toString());
               ??? = ((ArrayList)???).iterator();
@@ -294,12 +282,10 @@ public class cy
                       else
                       {
                         ((Iterator)???).remove();
-                        ??? = new StringBuilder();
-                        ((StringBuilder)???).append("network ctrl donot connect, cmdid : ");
+                        ??? = new StringBuilder("network ctrl donot connect, cmdid : ");
                         ((StringBuilder)???).append(((as)localObject4).bM);
                         eh.f("SharkNetwork", ((StringBuilder)???).toString());
-                        ??? = new StringBuilder();
-                        ((StringBuilder)???).append("[network_control] cloud cmd: donot connect, cmdid : ");
+                        ??? = new StringBuilder("[network_control] cloud cmd: donot connect, cmdid : ");
                         ((StringBuilder)???).append(((as)localObject4).bM);
                         eh.g("SharkNetwork", ((StringBuilder)???).toString());
                         ??? = new ba();
@@ -316,8 +302,7 @@ public class cy
           ArrayList localArrayList = paramAnonymousf.jT;
           if ((localArrayList != null) && (localArrayList.size() > 0))
           {
-            localObject4 = new StringBuilder();
-            ((StringBuilder)localObject4).append("[network_control] after control, sashimis.size(): ");
+            localObject4 = new StringBuilder("[network_control] after control, sashimis.size(): ");
             ((StringBuilder)localObject4).append(localArrayList.size());
             eh.f("SharkNetwork", ((StringBuilder)localObject4).toString());
             try
@@ -336,25 +321,23 @@ public class cy
       });
     }
     
-    public void handleMessage(Message arg1)
+    public final void handleMessage(Message arg1)
     {
-      Object localObject1;
       switch (???.what)
       {
       default: 
         return;
       case 10: 
-        localObject1 = cy.j(cy.this);
-        ??? = new Runnable()
+        cy.j(cy.this).submit(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (cy.m(cy.this) != null) {
               cy.m(cy.this).a(true, "yunzhiling_realinfo");
             }
           }
-        };
-        break;
+        });
+        return;
       case 9: 
         eh.f("SharkNetwork", "[cu_vid]deal msg: MSG_UPDATE_VID_IFNEED");
         cy.r(cy.this).b(0, false);
@@ -375,10 +358,9 @@ public class cy
         cs.a(cy.e(cy.this), 0, cy.this.ai());
         return;
       case 4: 
-        localObject1 = cy.j(cy.this);
-        ??? = new Runnable()
+        cy.j(cy.this).submit(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (cy.m(cy.this) != null)
             {
@@ -386,32 +368,28 @@ public class cy
               cy.m(cy.this).a(true, null);
             }
           }
-        };
-        break;
+        });
+        return;
       case 3: 
         eh.f("SharkNetwork", "[cu_guid]MSG_SHARK_GET_GUID");
         cy.d(cy.this).removeMessages(3);
-        localObject1 = cy.j(cy.this);
-        ??? = new Runnable()
+        cy.j(cy.this).submit(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             cy.d(cy.this).removeMessages(3);
             try
             {
               cy.m(cy.this).a(new cf.a()
               {
-                public void a(int paramAnonymous3Int1, int paramAnonymous3Int2, int paramAnonymous3Int3, String paramAnonymous3String)
+                public final void a(int paramAnonymous3Int1, int paramAnonymous3Int2, int paramAnonymous3Int3, String paramAnonymous3String)
                 {
                   paramAnonymous3Int3 = bz.p(paramAnonymous3Int3);
-                  ??? = new StringBuilder();
-                  ((StringBuilder)???).append("[cu_guid]onGuidFinish(), send broadcast, ret: ");
-                  ((StringBuilder)???).append(paramAnonymous3Int3);
-                  eh.e("SharkNetwork", ((StringBuilder)???).toString());
+                  eh.e("SharkNetwork", "[cu_guid]onGuidFinish(), send broadcast, ret: ".concat(String.valueOf(paramAnonymous3Int3)));
                   synchronized (cy.q(cy.this))
                   {
                     cy.d(cy.this, false);
-                    cv.by().a("SharkNetwork", paramAnonymous3Int2, paramAnonymous3Int1, (ba)null, 30, paramAnonymous3Int3);
+                    cv.by().a("SharkNetwork", paramAnonymous3Int2, paramAnonymous3Int1, null, 30, paramAnonymous3Int3);
                     cv.by().x(paramAnonymous3Int1);
                     cf.b(cy.e(cy.this), paramAnonymous3Int3, paramAnonymous3String);
                     cy.a(cy.this, paramAnonymous3Int3);
@@ -423,8 +401,7 @@ public class cy
             }
             catch (Exception localException)
             {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[cu_guid]register guid exception: ");
+              StringBuilder localStringBuilder = new StringBuilder("[cu_guid]register guid exception: ");
               localStringBuilder.append(localException.toString());
               eh.h("SharkNetwork", localStringBuilder.toString());
               synchronized (cy.q(cy.this))
@@ -435,15 +412,14 @@ public class cy
               }
             }
           }
-        };
-        break;
+        });
+        return;
       case 2: 
         cy.d(cy.this).removeMessages(2);
         eh.f("SharkNetwork", "[rsa_key]msg: MSG_SHARK_UPDATE_RSAKEY");
-        localObject1 = cy.j(cy.this);
-        ??? = new Runnable()
+        cy.j(cy.this).submit(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             cy.d(cy.this).removeMessages(2);
             if ((cy.p(cy.this) > 0L) && (Math.abs(System.currentTimeMillis() - cy.p(cy.this)) <= 60000L))
@@ -464,23 +440,27 @@ public class cy
             {
               cy.k(cy.this).a(new cs.a()
               {
-                public void a(int paramAnonymous3Int1, int paramAnonymous3Int2, int paramAnonymous3Int3)
+                public final void a(int paramAnonymous3Int1, int paramAnonymous3Int2, int paramAnonymous3Int3)
                 {
                   paramAnonymous3Int3 = bz.p(paramAnonymous3Int3);
-                  ??? = new StringBuilder();
-                  ((StringBuilder)???).append("[rsa_key]onUpdateFinish(), ret: ");
-                  ((StringBuilder)???).append(paramAnonymous3Int3);
-                  eh.e("SharkNetwork", ((StringBuilder)???).toString());
+                  eh.e("SharkNetwork", "[rsa_key]onUpdateFinish(), ret: ".concat(String.valueOf(paramAnonymous3Int3)));
                   synchronized (cy.q(cy.this))
                   {
                     cy.c(cy.this, false);
-                    cv.by().a("SharkNetwork", paramAnonymous3Int2, paramAnonymous3Int1, (ba)null, 30, paramAnonymous3Int3);
+                    cv.by().a("SharkNetwork", paramAnonymous3Int2, paramAnonymous3Int1, null, 30, paramAnonymous3Int3);
                     cv.by().x(paramAnonymous3Int1);
-                    if (paramAnonymous3Int3 == 0) {
-                      cs.a(cy.e(cy.this), paramAnonymous3Int3, cy.this.ai());
-                    } else {
-                      cs.a(cy.e(cy.this), paramAnonymous3Int3, null);
+                    cs.b localb;
+                    if (paramAnonymous3Int3 == 0)
+                    {
+                      ??? = cy.e(cy.this);
+                      localb = cy.this.ai();
                     }
+                    else
+                    {
+                      ??? = cy.e(cy.this);
+                      localb = null;
+                    }
+                    cs.a((Context)???, paramAnonymous3Int3, localb);
                     cy.b(cy.this, paramAnonymous3Int3);
                     return;
                   }
@@ -490,8 +470,7 @@ public class cy
             }
             catch (Exception localException)
             {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[rsa_key] MSG_SHARK_UPDATE_RSAKEY e: ");
+              StringBuilder localStringBuilder = new StringBuilder("[rsa_key] MSG_SHARK_UPDATE_RSAKEY e: ");
               localStringBuilder.append(localException.toString());
               eh.h("SharkNetwork", localStringBuilder.toString());
               synchronized (cy.q(cy.this))
@@ -502,8 +481,7 @@ public class cy
               }
             }
           }
-        };
-        ((ExecutorService)localObject1).submit(???);
+        });
         return;
       case 1: 
         eh.f("SharkNetwork", "MSG_SHARK_SEND");
@@ -528,14 +506,11 @@ public class cy
             if (cy.o(cy.this).size() <= 0) {
               return;
             }
-            localObject1 = (ArrayList)cy.o(cy.this).clone();
+            Object localObject1 = (ArrayList)cy.o(cy.this).clone();
             cy.o(cy.this).clear();
             ??? = ((ArrayList)localObject1).iterator();
-            for (;;)
+            while (???.hasNext())
             {
-              if (!???.hasNext()) {
-                return;
-              }
               localObject1 = (cy.f)???.next();
               if (localObject1 != null)
               {
@@ -545,13 +520,14 @@ public class cy
                   cy.b(cy.this, true);
                   return;
                 }
-                if (!((cy.f)localObject1).jL) {
-                  break;
+                if (((cy.f)localObject1).jL) {
+                  a(false, (cy.f)localObject1);
+                } else {
+                  a(true, (cy.f)localObject1);
                 }
-                a(false, (cy.f)localObject1);
               }
             }
-            a(true, (cy.f)localObject1);
+            return;
           }
         }
         eh.g("SharkNetwork", "[rsa_key] MSG_SHARK_SEND, without rsakey, handleOnNeedRsaKey()");
@@ -579,8 +555,7 @@ public class cy
   
   public cy(Context paramContext, cl paramcl, e parame, c paramc, d paramd, boolean paramBoolean, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[shark_init]SharkNetwork() isTest: ");
+    StringBuilder localStringBuilder = new StringBuilder("[shark_init]SharkNetwork() isTest: ");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" serverAdd: ");
     localStringBuilder.append(paramString);
@@ -631,10 +606,7 @@ public class cy
   
   private f B(int paramInt)
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("removeSendingBySeqNoTag() seqNoTag: ");
-    ((StringBuilder)???).append(paramInt);
-    eh.e("SharkNetwork", ((StringBuilder)???).toString());
+    eh.e("SharkNetwork", "removeSendingBySeqNoTag() seqNoTag: ".concat(String.valueOf(paramInt)));
     synchronized (this.jm)
     {
       f localf = (f)this.jm.remove(Integer.valueOf(paramInt));
@@ -654,10 +626,7 @@ public class cy
     } else {
       paramInt = -800000000 + paramInt;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[cu_guid] onGuidRegisterResult(), guid failed, call onSharkVipError(), ");
-    localStringBuilder.append(paramInt);
-    eh.f("SharkNetwork", localStringBuilder.toString());
+    eh.f("SharkNetwork", "[cu_guid] onGuidRegisterResult(), guid failed, call onSharkVipError(), ".concat(String.valueOf(paramInt)));
     a(false, false, paramInt);
   }
   
@@ -689,20 +658,18 @@ public class cy
               }
               else
               {
-                StringBuilder localStringBuilder2 = new StringBuilder();
-                localStringBuilder2.append("[cu_guid][cu_guid] onRsaKeyUpdateResult(), rsa or guid, should not revert and resend after rsa updated, rsa?");
-                localStringBuilder2.append(localf.jJ);
-                localStringBuilder2.append(" guid?");
-                localStringBuilder2.append(localf.jK);
-                eh.f("SharkNetwork", localStringBuilder2.toString());
+                StringBuilder localStringBuilder = new StringBuilder("[cu_guid][cu_guid] onRsaKeyUpdateResult(), rsa or guid, should not revert and resend after rsa updated, rsa?");
+                localStringBuilder.append(localf.jJ);
+                localStringBuilder.append(" guid?");
+                localStringBuilder.append(localf.jK);
+                eh.f("SharkNetwork", localStringBuilder.toString());
               }
             }
             this.jm.clear();
           }
           if (((List)???).size() > 0)
           {
-            ??? = new StringBuilder();
-            ((StringBuilder)???).append("[cu_guid] onRsaKeyUpdateResult(), rsa succ, revert and resend data, size: ");
+            ??? = new StringBuilder("[cu_guid] onRsaKeyUpdateResult(), rsa succ, revert and resend data, size: ");
             ((StringBuilder)???).append(((List)???).size());
             eh.f("SharkNetwork", ((StringBuilder)???).toString());
             ??? = ((List)???).iterator();
@@ -726,10 +693,7 @@ public class cy
     } else {
       paramInt = -900000000 + paramInt;
     }
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder1.append("[cu_guid] onRsaKeyUpdateResult(), rsa failed, call onSharkVipError(), ");
-    localStringBuilder1.append(paramInt);
-    eh.f("SharkNetwork", localStringBuilder1.toString());
+    eh.f("SharkNetwork", "[cu_guid] onRsaKeyUpdateResult(), rsa failed, call onSharkVipError(), ".concat(String.valueOf(paramInt)));
     a(false, true, paramInt);
   }
   
@@ -740,8 +704,7 @@ public class cy
       eh.g("SharkNetwork", "[cu_guid_p]handlePushRefreshGuid(), scPushRefreshGuid == null");
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[cu_guid_p]handlePushRefreshGuid(), |pushId=");
+    StringBuilder localStringBuilder = new StringBuilder("[cu_guid_p]handlePushRefreshGuid(), |pushId=");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("|serverShasimiSeqNo=");
     localStringBuilder.append(paramInt);
@@ -761,10 +724,7 @@ public class cy
     if (localObject != null) {
       ((dp)localObject).a(paramLong, paramInt, paramu);
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[ip_list]report push status, |pushId=");
-    ((StringBuilder)localObject).append(paramLong);
-    eh.e("SharkNetwork", ((StringBuilder)localObject).toString());
+    eh.e("SharkNetwork", "[ip_list]report push status, |pushId=".concat(String.valueOf(paramLong)));
     localObject = new q();
     ((q)localObject).ay = paramu.ay;
     return new dj(Long.valueOf(paramLong), Integer.valueOf(156), localObject);
@@ -783,8 +743,7 @@ public class cy
       ba localba = (ba)paramArrayList.get(i);
       if (localba != null)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("checkFilterList(), rs.refSeqNo: ");
+        StringBuilder localStringBuilder = new StringBuilder("checkFilterList(), rs.refSeqNo: ");
         localStringBuilder.append(localba.dd);
         localStringBuilder.append(" rs.cmd: ");
         localStringBuilder.append(localba.bM);
@@ -814,7 +773,7 @@ public class cy
   {
     cm local6 = new cm()
     {
-      public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
       {
         if (paramAnonymousJceStruct == null)
         {
@@ -838,8 +797,7 @@ public class cy
   
   private void a(boolean paramBoolean, int paramInt, f arg3)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("runError(), ret = ");
+    Object localObject1 = new StringBuilder("runError(), ret = ");
     ((StringBuilder)localObject1).append(paramInt);
     ((StringBuilder)localObject1).append(" isTcpChannel: ");
     ((StringBuilder)localObject1).append(paramBoolean);
@@ -859,7 +817,7 @@ public class cy
     for (??? = this.jj;; ??? = this.jk)
     {
       B(???.jQ);
-      break label301;
+      break label283;
       localObject3 = this.jk;
       if ((localObject3 == null) || (((f)localObject3).jQ != ???.jQ)) {
         break;
@@ -867,23 +825,20 @@ public class cy
       eh.f("SharkNetwork", "runError(), updating guid, only callback guid");
       ((ArrayList)localObject1).add(this.jk);
     }
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("runError(), call back failed for this seqNo: ");
+    localObject3 = new StringBuilder("runError(), call back failed for this seqNo: ");
     ((StringBuilder)localObject3).append(???.jQ);
     eh.f("SharkNetwork", ((StringBuilder)localObject3).toString());
     ((ArrayList)localObject1).add(???);
     B(???.jQ);
     synchronized (this.jl)
     {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("runError(), callback failed for mSharkQueueWaiting, size(): ");
+      localObject3 = new StringBuilder("runError(), callback failed for mSharkQueueWaiting, size(): ");
       ((StringBuilder)localObject3).append(this.jl.size());
       eh.e("SharkNetwork", ((StringBuilder)localObject3).toString());
       ((ArrayList)localObject1).addAll(this.jl);
       this.jl.clear();
-      label301:
-      ??? = new StringBuilder();
-      ???.append("runError(), callback error, ret: ");
+      label283:
+      ??? = new StringBuilder("runError(), callback error, ret: ");
       ???.append(paramInt);
       ???.append(" values.size(): ");
       ???.append(((ArrayList)localObject1).size());
@@ -903,8 +858,7 @@ public class cy
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("onSharkVipError(), retCode = ");
+    ??? = new StringBuilder("onSharkVipError(), retCode = ");
     ((StringBuilder)???).append(paramInt);
     ((StringBuilder)???).append(" 事件： ");
     if (paramBoolean2) {
@@ -917,16 +871,14 @@ public class cy
     Object localObject1 = new ArrayList();
     synchronized (this.jm)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onSharkVipError(), callback failed for all sending: ");
+      StringBuilder localStringBuilder = new StringBuilder("onSharkVipError(), callback failed for all sending: ");
       localStringBuilder.append(this.jm.keySet());
       eh.e("SharkNetwork", localStringBuilder.toString());
       ((ArrayList)localObject1).addAll(this.jm.values());
       this.jm.clear();
       synchronized (this.jl)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onSharkVipError(), callback failed for mSharkQueueWaiting, size(): ");
+        localStringBuilder = new StringBuilder("onSharkVipError(), callback failed for mSharkQueueWaiting, size(): ");
         localStringBuilder.append(this.jl.size());
         eh.e("SharkNetwork", localStringBuilder.toString());
         ((ArrayList)localObject1).addAll(this.jl);
@@ -977,11 +929,9 @@ public class cy
     if (db.b(paramba))
     {
       this.ju.a(paramBoolean, parambb.dc, paramba);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[ocean]guid|");
+      localStringBuilder = new StringBuilder("[ocean]guid|");
       localStringBuilder.append(this.jf.getGuid());
-      localStringBuilder.append("|push|");
-      localStringBuilder.append("通道|");
+      localStringBuilder.append("|push|通道|");
       if (paramBoolean) {
         localObject = "tcp|";
       } else {
@@ -996,16 +946,14 @@ public class cy
       localStringBuilder.append(paramba.dc);
       localStringBuilder.append("|refSeqNo|");
       localStringBuilder.append(paramba.dd);
-      localStringBuilder.append("|ret|");
-      localStringBuilder.append(0);
+      localStringBuilder.append("|ret|0");
       parambb = localStringBuilder;
       if (paramba.ds != null) {
-        localObject = new StringBuilder();
+        localObject = new StringBuilder("|pushId|");
       }
     }
     for (parambb = localStringBuilder;; parambb = localStringBuilder)
     {
-      ((StringBuilder)localObject).append("|pushId|");
       ((StringBuilder)localObject).append(paramba.ds.db);
       paramba = ((StringBuilder)localObject).toString();
       do
@@ -1018,11 +966,9 @@ public class cy
           break;
         }
         this.ju.b(paramBoolean, parambb.dc, paramba);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ocean]guid|");
+        localStringBuilder = new StringBuilder("[ocean]guid|");
         localStringBuilder.append(this.jf.getGuid());
-        localStringBuilder.append("|gift|");
-        localStringBuilder.append("通道|");
+        localStringBuilder.append("|gift|通道|");
         if (paramBoolean) {
           localObject = "tcp|";
         } else {
@@ -1037,11 +983,10 @@ public class cy
         localStringBuilder.append(paramba.dc);
         localStringBuilder.append("|refSeqNo|");
         localStringBuilder.append(paramba.dd);
-        localStringBuilder.append("|ret|");
-        localStringBuilder.append(0);
+        localStringBuilder.append("|ret|0");
         parambb = localStringBuilder;
       } while (paramba.ds == null);
-      localObject = new StringBuilder();
+      localObject = new StringBuilder("|pushId|");
     }
     return false;
   }
@@ -1051,21 +996,19 @@ public class cy
     if (paramf == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("runTimeout(), will check timeout for sharkSend with seqNoTag: ");
+    StringBuilder localStringBuilder = new StringBuilder("runTimeout(), will check timeout for sharkSend with seqNoTag: ");
     localStringBuilder.append(paramf.jQ);
     eh.e("SharkNetwork", localStringBuilder.toString());
     this.jA.removeMessages(1, paramf);
     ee.cT().addTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         cy.f localf = cy.c(cy.this, paramf.jQ);
         if (localf == null) {
           return;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("runTimeout(), sharkSend.seqNoTag: ");
+        StringBuilder localStringBuilder = new StringBuilder("runTimeout(), sharkSend.seqNoTag: ");
         localStringBuilder.append(paramf.jQ);
         localStringBuilder.append(" isSent: ");
         localStringBuilder.append(paramf.jW);
@@ -1089,7 +1032,7 @@ public class cy
       eh.f("SharkNetwork", "[cu_guid] handleOnNeedGuid(), isSemiSendProcess, no guid, regGuidListener() & requestSendProcessRegisterGuid()");
       ch local2 = new ch()
       {
-        public void e(int paramAnonymousInt, String paramAnonymousString)
+        public final void e(int paramAnonymousInt, String paramAnonymousString)
         {
           eh.f("SharkNetwork", "[cu_guid] IGuidCallback.onCallback(), unregGuidListener(this) and call onGuidRegisterResult(errCode)");
           if (cy.h(cy.this) != null) {
@@ -1156,8 +1099,7 @@ public class cy
           StringBuilder localStringBuilder;
           if (localas.data != null)
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[rsa_key]revertClientSashimiData(), revert succ, cmd: ");
+            localStringBuilder = new StringBuilder("[rsa_key]revertClientSashimiData(), revert succ, cmd: ");
             localStringBuilder.append(localas.bM);
             localStringBuilder.append(" len: ");
             localStringBuilder.append(localas.data.length);
@@ -1165,8 +1107,7 @@ public class cy
           }
           else
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[rsa_key]revertClientSashimiData(), revert failed, cmd: ");
+            localStringBuilder = new StringBuilder("[rsa_key]revertClientSashimiData(), revert failed, cmd: ");
             localStringBuilder.append(localas.bM);
             eh.h("SharkNetwork", localStringBuilder.toString());
           }
@@ -1191,8 +1132,7 @@ public class cy
         paramArrayList = (ba)((Iterator)localObject).next();
         if ((paramArrayList != null) && (paramArrayList.df == 3))
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[shark_v4][shark_fin]mazu said need sharkfin, cmdId: ");
+          localObject = new StringBuilder("[shark_v4][shark_fin]mazu said need sharkfin, cmdId: ");
           ((StringBuilder)localObject).append(paramArrayList.bM);
           ((StringBuilder)localObject).append(" ClientSashimi.seqNo: ");
           ((StringBuilder)localObject).append(paramArrayList.dd);
@@ -1243,7 +1183,7 @@ public class cy
       eh.i("SharkNetwork", "[rsa_key] handleOnNeedRsaKey(), isSemiSendProcess, regRsaKeyListener() & requestSendProcessUpdateRsaKey()");
       localObject = new a()
       {
-        public void a(int paramAnonymousInt, cs.b paramAnonymousb)
+        public final void a(int paramAnonymousInt)
         {
           eh.f("SharkNetwork", "[rsa_key] IRsaKeyListener.onCallback(), isSemiSendProcess, unregRsaKeyListener(this) and call onRsaKeyUpdated(errCode)");
           if (cy.h(cy.this) != null) {
@@ -1265,8 +1205,7 @@ public class cy
       this.jy.sendEmptyMessageDelayed(7, l);
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[rsa_key] handleOnNeedRsaKey(), isSendProcess, triggerUpdateRsaKey() in(ms) ");
+    Object localObject = new StringBuilder("[rsa_key] handleOnNeedRsaKey(), isSendProcess, triggerUpdateRsaKey() in(ms) ");
     if (paramBoolean) {
       i = 2000;
     }
@@ -1302,8 +1241,7 @@ public class cy
           ((as)localObject1).data = cd.encrypt(((as)localObject1).data, ((cs.b)???).is.getBytes());
           if (((as)localObject1).data == null)
           {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[ocean][rsa_key]encrypt failed, cmdId: ");
+            StringBuilder localStringBuilder = new StringBuilder("[ocean][rsa_key]encrypt failed, cmdId: ");
             localStringBuilder.append(((as)localObject1).bM);
             eh.h("SharkNetwork", localStringBuilder.toString());
           }
@@ -1327,8 +1265,7 @@ public class cy
     }
     synchronized (this.jm)
     {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("spSend() sharkSend.seqNoTag: ");
+      localObject3 = new StringBuilder("spSend() sharkSend.seqNoTag: ");
       ((StringBuilder)localObject3).append(paramf.jQ);
       eh.e("SharkNetwork", ((StringBuilder)localObject3).toString());
       this.jm.put(Integer.valueOf(paramf.jQ), paramf);
@@ -1363,8 +1300,7 @@ public class cy
       synchronized (this.jl)
       {
         this.jl.add(paramf);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("asyncSendShark() mSharkQueueWaiting.size(): ");
+        StringBuilder localStringBuilder = new StringBuilder("asyncSendShark() mSharkQueueWaiting.size(): ");
         localStringBuilder.append(this.jl.size());
         eh.f("SharkNetwork", localStringBuilder.toString());
         paramf = paramf.jT.iterator();
@@ -1373,10 +1309,7 @@ public class cy
           ??? = (as)paramf.next();
           if (??? != null)
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[");
-            localStringBuilder.append(0);
-            localStringBuilder.append("]发包请求：cmd id:[");
+            localStringBuilder = new StringBuilder("[0]发包请求：cmd id:[");
             localStringBuilder.append(((as)???).bM);
             localStringBuilder.append("]seqNo:[");
             localStringBuilder.append(((as)???).dc);
@@ -1404,8 +1337,7 @@ public class cy
     while (localIterator.hasNext())
     {
       as localas = (as)localIterator.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[");
+      StringBuilder localStringBuilder = new StringBuilder("[");
       localStringBuilder.append(i);
       localStringBuilder.append("]Rsa发包请求：cmd id:[");
       localStringBuilder.append(localas.bM);
@@ -1445,23 +1377,19 @@ public class cy
       }
       finally {}
     }
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("network_control_");
-    ((StringBuilder)???).append(paramInt1);
-    Object localObject3 = new ce(((StringBuilder)???).toString(), paramInt2 * 1000, paramInt3);
+    Object localObject2 = new ce("network_control_".concat(String.valueOf(paramInt1)), paramInt2 * 1000, paramInt3);
     synchronized (this.ji)
     {
-      this.ji.append(paramInt1, localObject3);
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("[network_control]handleNetworkControl : cmdid|");
-      ((StringBuilder)localObject3).append(paramInt1);
-      ((StringBuilder)localObject3).append("|timeSpan|");
-      ((StringBuilder)localObject3).append(paramInt2);
-      ((StringBuilder)localObject3).append("|maxTimes|");
-      ((StringBuilder)localObject3).append(paramInt3);
-      ((StringBuilder)localObject3).append(" size: ");
-      ((StringBuilder)localObject3).append(this.ji.size());
-      eh.e("SharkNetwork", ((StringBuilder)localObject3).toString());
+      this.ji.append(paramInt1, localObject2);
+      localObject2 = new StringBuilder("[network_control]handleNetworkControl : cmdid|");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("|timeSpan|");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append("|maxTimes|");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append(" size: ");
+      ((StringBuilder)localObject2).append(this.ji.size());
+      eh.e("SharkNetwork", ((StringBuilder)localObject2).toString());
       return;
     }
   }
@@ -1473,8 +1401,7 @@ public class cy
     while (localIterator.hasNext())
     {
       as localas = (as)localIterator.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[");
+      StringBuilder localStringBuilder = new StringBuilder("[");
       localStringBuilder.append(i);
       localStringBuilder.append("]Guid发包请求：cmd id:[");
       localStringBuilder.append(localas.bM);
@@ -1587,7 +1514,7 @@ public class cy
   
   static abstract interface a
   {
-    public abstract void a(int paramInt, cs.b paramb);
+    public abstract void a(int paramInt);
   }
   
   public static abstract interface b
@@ -1664,8 +1591,7 @@ public class cy
       }
       if (bool)
       {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[ocean][time_out]SharkNetwork.SharkSend.isTimeOut(), SharkSend.seqNoTag: ");
+        Object localObject = new StringBuilder("[ocean][time_out]SharkNetwork.SharkSend.isTimeOut(), SharkSend.seqNoTag: ");
         ((StringBuilder)localObject).append(this.jQ);
         ((StringBuilder)localObject).append(" time(s): ");
         ((StringBuilder)localObject).append(l / 1000L);
@@ -1679,8 +1605,7 @@ public class cy
             localObject = (as)this.jT.get(i);
             if (localObject != null)
             {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[ocean][time_out]SharkNetwork.SharkSend.isTimeOut(), cmdId|");
+              StringBuilder localStringBuilder = new StringBuilder("[ocean][time_out]SharkNetwork.SharkSend.isTimeOut(), cmdId|");
               localStringBuilder.append(((as)localObject).bM);
               localStringBuilder.append("|seqNo|");
               localStringBuilder.append(((as)localObject).dc);

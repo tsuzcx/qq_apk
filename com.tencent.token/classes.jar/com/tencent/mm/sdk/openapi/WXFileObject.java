@@ -1,11 +1,11 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.pq;
 import java.io.File;
 
 public class WXFileObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public byte[] fileData;
   public String filePath;
@@ -43,7 +43,7 @@ public class WXFileObject
     }
     for (;;)
     {
-      Log.e("MicroMsg.SDK.WXFileObject", (String)localObject);
+      pq.a("MicroMsg.SDK.WXFileObject", (String)localObject);
       return false;
       localObject = this.filePath;
       if (localObject != null)

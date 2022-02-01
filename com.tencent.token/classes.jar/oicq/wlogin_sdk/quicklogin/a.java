@@ -10,7 +10,7 @@ final class a
 {
   a(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public final void onClick(View paramView)
   {
     util.LOGI("close button clicked", "");
     this.a.finish();

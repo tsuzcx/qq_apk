@@ -61,21 +61,19 @@ public class c
   public void onEvent(int paramInt, String paramString)
   {
     e.c("received event %d %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    Object localObject = new StringBuilder("/data/anr/");
-    ((StringBuilder)localObject).append(paramString);
-    paramString = ((StringBuilder)localObject).toString();
+    paramString = "/data/anr/".concat(String.valueOf(paramString));
     if (!paramString.contains("trace"))
     {
       e.c("not anr file %s", new Object[] { paramString });
       return;
     }
-    localObject = CrashReport.getCrashRuntimeStrategy();
-    if (localObject == null)
+    CrashStrategyBean localCrashStrategyBean = CrashReport.getCrashRuntimeStrategy();
+    if (localCrashStrategyBean == null)
     {
       e.d("magic! no crash stategy,no anr return ?", new Object[0]);
       return;
     }
-    if (!((CrashStrategyBean)localObject).isOpenANR())
+    if (!localCrashStrategyBean.isOpenANR())
     {
       e.a("close anr!", new Object[0]);
       return;

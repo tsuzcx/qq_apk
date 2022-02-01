@@ -10,10 +10,10 @@ public class LookNetworkActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296371);
-    ((TextView)findViewById(2131166108)).getPaint().setFakeBoldText(true);
-    ((TextView)findViewById(2131166109)).getPaint().setFakeBoldText(true);
-    ((TextView)findViewById(2131166110)).getPaint().setFakeBoldText(true);
+    setContentView(2131296372);
+    ((TextView)findViewById(2131166114)).getPaint().setFakeBoldText(true);
+    ((TextView)findViewById(2131166115)).getPaint().setFakeBoldText(true);
+    ((TextView)findViewById(2131166116)).getPaint().setFakeBoldText(true);
   }
 }
 

@@ -1,8 +1,8 @@
 package gameloginsdk;
 
-import b.a.e;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.eg;
+import com.tencent.token.agw;
+import com.tencent.token.js;
 
 class g
   extends p
@@ -28,26 +28,18 @@ class g
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = eg.a;
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("resp == null  gameConfirmCallback   retCode : ");
-      paramJceStruct.append(paramInt3);
-      paramJceStruct.toString();
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = eg.a;
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("回包超时  gameConfirmCallback   retCode : ");
-      paramJceStruct.append(paramInt3);
-      paramJceStruct.toString();
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
-    paramJceStruct = (e)paramJceStruct;
-    paramInt1 = eg.a;
+    paramJceStruct = (js)paramJceStruct;
+    paramInt1 = agw.a;
     long l = paramJceStruct.a;
     l = paramJceStruct.b;
     paramInt1 = paramJceStruct.d;
@@ -55,35 +47,16 @@ class g
     Object localObject = paramJceStruct.c;
     if (paramInt3 == 0)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCConfirm appid : ");
-      ((StringBuilder)localObject).append(paramJceStruct.b);
-      ((StringBuilder)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCConfirm qq : ");
-      ((StringBuilder)localObject).append(paramJceStruct.c);
-      ((StringBuilder)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCConfirm code : ");
-      ((StringBuilder)localObject).append(paramJceStruct.d);
-      ((StringBuilder)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCConfirm playerstatus : ");
-      ((StringBuilder)localObject).append(paramJceStruct.e);
-      ((StringBuilder)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCConfirm wording : ");
-      ((StringBuilder)localObject).append(paramJceStruct.f);
-      ((StringBuilder)localObject).toString();
+      new StringBuilder("SCConfirm appid : ").append(paramJceStruct.b);
+      new StringBuilder("SCConfirm qq : ").append(paramJceStruct.c);
+      new StringBuilder("SCConfirm code : ").append(paramJceStruct.d);
+      new StringBuilder("SCConfirm playerstatus : ").append(paramJceStruct.e);
+      new StringBuilder("SCConfirm wording : ").append(paramJceStruct.f);
       if (!this.a.g.a(paramJceStruct.a))
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
-        ((StringBuilder)localObject).append(paramJceStruct.a);
-        ((StringBuilder)localObject).toString();
-        paramInt1 = eg.a;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
+        new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ").append(paramJceStruct.a);
+        paramInt1 = agw.a;
+        localObject = new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);
         ((StringBuilder)localObject).toString();
         return;
@@ -106,21 +79,12 @@ class g
     this.b = paramInt1;
     if (paramInt1 < 3)
     {
-      if (this.c != null)
-      {
-        paramJceStruct = new StringBuilder();
-        paramJceStruct.append("resendGameConfirm retCode : ");
-        paramJceStruct.append(paramInt3);
-        paramJceStruct.toString();
+      if (this.c != null) {
         this.a.b(this);
       }
     }
     else
     {
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("sendGameConfirm --- retCode = ");
-      paramJceStruct.append(paramInt3);
-      paramJceStruct.toString();
       a(paramInt3, (int)this.d);
       this.b = 0;
     }

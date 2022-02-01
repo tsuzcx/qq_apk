@@ -13,10 +13,8 @@ public class k
   
   public String a(int paramInt)
   {
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "log.wtlogin.qq.com";
-    arrayOfString[1] = "log1.wtlogin.qq.com";
-    return arrayOfString[java.lang.Math.abs(paramInt % arrayOfString.length)];
+    paramInt = Math.abs(paramInt % 2);
+    return new String[] { "log.wtlogin.qq.com", "log1.wtlogin.qq.com" }[paramInt];
   }
   
   protected byte[] a(byte[] paramArrayOfByte)
@@ -42,36 +40,28 @@ public class k
       ((StringBuilder)localObject1).append(":snd_rcv_req_error ...");
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(this.a.f);
       util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
       int j = new Random().nextInt();
       int i = 0;
       while (i < 2)
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("try http connect ");
+        localObject1 = new StringBuilder("try http connect ");
         ((StringBuilder)localObject1).append(i);
         ((StringBuilder)localObject1).append(" ...");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(this.a.f);
         util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
         localObject1 = a(j);
         try
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("http://");
+          localObject2 = new StringBuilder("http://");
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("/cgi-bin/wlogin_proxy_log");
           localObject1 = new URL(((StringBuilder)localObject2).toString());
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("url=");
-          ((StringBuilder)localObject2).append(localObject1);
-          localObject2 = ((StringBuilder)localObject2).toString();
+          localObject2 = "url=".concat(String.valueOf(localObject1));
           StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("");
           localStringBuilder2.append(this.a.f);
           util.LOGI((String)localObject2, localStringBuilder2.toString());
           localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
@@ -83,13 +73,11 @@ public class k
           ((HttpURLConnection)localObject1).setReadTimeout(this.a.l);
           ((HttpURLConnection)localObject1).setDoOutput(true);
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("");
           ((StringBuilder)localObject2).append(this.a.f);
           util.LOGI("http request connect ...", ((StringBuilder)localObject2).toString());
           if (!j.a((HttpURLConnection)localObject1, this.a.l))
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("");
             ((StringBuilder)localObject1).append(this.a.f);
             util.LOGI("http request connect failed", ((StringBuilder)localObject1).toString());
             i += 1;
@@ -98,19 +86,14 @@ public class k
           else
           {
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("");
             ((StringBuilder)localObject2).append(this.a.f);
             util.LOGI("http request write ...", ((StringBuilder)localObject2).toString());
             localObject2 = ((HttpURLConnection)localObject1).getOutputStream();
             ((OutputStream)localObject2).write(paramArrayOfByte, 0, paramArrayOfByte.length);
             ((OutputStream)localObject2).flush();
             int m = ((HttpURLConnection)localObject1).getResponseCode();
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("http request response code=");
-            ((StringBuilder)localObject1).append(m);
-            localObject1 = ((StringBuilder)localObject1).toString();
+            localObject1 = "http request response code=".concat(String.valueOf(m));
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("");
             ((StringBuilder)localObject2).append(this.a.f);
             util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
             if (200 == m) {
@@ -123,7 +106,6 @@ public class k
         catch (Exception localException)
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("");
           ((StringBuilder)localObject2).append(this.a.f);
           util.printException(localException, ((StringBuilder)localObject2).toString());
           i += 1;
@@ -131,7 +113,7 @@ public class k
         }
       }
       j = k;
-      if (i >= 1) {
+      if (i > 0) {
         j = -1000;
       }
       paramArrayOfByte = new StringBuilder();
@@ -140,7 +122,6 @@ public class k
       paramArrayOfByte.append(j);
       paramArrayOfByte = paramArrayOfByte.toString();
       StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("");
       localStringBuilder1.append(this.a.f);
       util.LOGI(paramArrayOfByte, localStringBuilder1.toString());
       return j;

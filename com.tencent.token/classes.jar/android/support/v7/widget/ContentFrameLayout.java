@@ -3,26 +3,24 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
+import com.tencent.token.ex;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public class ContentFrameLayout
   extends FrameLayout
 {
-  private OnAttachListener mAttachListener;
-  private final Rect mDecorPadding = new Rect();
-  private TypedValue mFixedHeightMajor;
-  private TypedValue mFixedHeightMinor;
-  private TypedValue mFixedWidthMajor;
-  private TypedValue mFixedWidthMinor;
-  private TypedValue mMinWidthMajor;
-  private TypedValue mMinWidthMinor;
+  private TypedValue a;
+  private TypedValue b;
+  private TypedValue c;
+  private TypedValue d;
+  private TypedValue e;
+  private TypedValue f;
+  private final Rect g = new Rect();
+  private a h;
   
   public ContentFrameLayout(Context paramContext)
   {
@@ -39,75 +37,78 @@ public class ContentFrameLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void dispatchFitSystemWindows(Rect paramRect)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.g.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (ex.q(this)) {
+      requestLayout();
+    }
+  }
+  
+  public final void a(Rect paramRect)
   {
     fitSystemWindows(paramRect);
   }
   
   public TypedValue getFixedHeightMajor()
   {
-    if (this.mFixedHeightMajor == null) {
-      this.mFixedHeightMajor = new TypedValue();
+    if (this.e == null) {
+      this.e = new TypedValue();
     }
-    return this.mFixedHeightMajor;
+    return this.e;
   }
   
   public TypedValue getFixedHeightMinor()
   {
-    if (this.mFixedHeightMinor == null) {
-      this.mFixedHeightMinor = new TypedValue();
+    if (this.f == null) {
+      this.f = new TypedValue();
     }
-    return this.mFixedHeightMinor;
+    return this.f;
   }
   
   public TypedValue getFixedWidthMajor()
   {
-    if (this.mFixedWidthMajor == null) {
-      this.mFixedWidthMajor = new TypedValue();
+    if (this.c == null) {
+      this.c = new TypedValue();
     }
-    return this.mFixedWidthMajor;
+    return this.c;
   }
   
   public TypedValue getFixedWidthMinor()
   {
-    if (this.mFixedWidthMinor == null) {
-      this.mFixedWidthMinor = new TypedValue();
+    if (this.d == null) {
+      this.d = new TypedValue();
     }
-    return this.mFixedWidthMinor;
+    return this.d;
   }
   
   public TypedValue getMinWidthMajor()
   {
-    if (this.mMinWidthMajor == null) {
-      this.mMinWidthMajor = new TypedValue();
+    if (this.a == null) {
+      this.a = new TypedValue();
     }
-    return this.mMinWidthMajor;
+    return this.a;
   }
   
   public TypedValue getMinWidthMinor()
   {
-    if (this.mMinWidthMinor == null) {
-      this.mMinWidthMinor = new TypedValue();
+    if (this.b == null) {
+      this.b = new TypedValue();
     }
-    return this.mMinWidthMinor;
+    return this.b;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    OnAttachListener localOnAttachListener = this.mAttachListener;
-    if (localOnAttachListener != null) {
-      localOnAttachListener.onAttachedFromWindow();
-    }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    OnAttachListener localOnAttachListener = this.mAttachListener;
-    if (localOnAttachListener != null) {
-      localOnAttachListener.onDetachedFromWindow();
+    a locala = this.h;
+    if (locala != null) {
+      locala.a();
     }
   }
   
@@ -128,9 +129,9 @@ public class ContentFrameLayout
     if (i1 == -2147483648)
     {
       if (j != 0) {
-        localTypedValue = this.mFixedWidthMinor;
+        localTypedValue = this.d;
       } else {
-        localTypedValue = this.mFixedWidthMajor;
+        localTypedValue = this.c;
       }
       if ((localTypedValue != null) && (localTypedValue.type != 0))
       {
@@ -143,7 +144,7 @@ public class ContentFrameLayout
         }
         if (i > 0)
         {
-          m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.mDecorPadding.left + this.mDecorPadding.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
+          m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.g.left + this.g.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
           k = 1;
           break label197;
         }
@@ -156,9 +157,9 @@ public class ContentFrameLayout
     if (i2 == -2147483648)
     {
       if (j != 0) {
-        localTypedValue = this.mFixedHeightMajor;
+        localTypedValue = this.e;
       } else {
-        localTypedValue = this.mFixedHeightMinor;
+        localTypedValue = this.f;
       }
       i = paramInt2;
       if (localTypedValue != null)
@@ -175,7 +176,7 @@ public class ContentFrameLayout
           }
           i = paramInt2;
           if (paramInt1 > 0) {
-            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.mDecorPadding.top + this.mDecorPadding.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
+            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.g.top + this.g.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
           }
         }
       }
@@ -186,9 +187,9 @@ public class ContentFrameLayout
     if ((k == 0) && (i1 == -2147483648))
     {
       if (j != 0) {
-        localTypedValue = this.mMinWidthMinor;
+        localTypedValue = this.b;
       } else {
-        localTypedValue = this.mMinWidthMajor;
+        localTypedValue = this.a;
       }
       if ((localTypedValue != null) && (localTypedValue.type != 0))
       {
@@ -201,7 +202,7 @@ public class ContentFrameLayout
         }
         paramInt2 = paramInt1;
         if (paramInt1 > 0) {
-          paramInt2 = paramInt1 - (this.mDecorPadding.left + this.mDecorPadding.right);
+          paramInt2 = paramInt1 - (this.g.left + this.g.right);
         }
         if (i2 < paramInt2)
         {
@@ -219,25 +220,14 @@ public class ContentFrameLayout
     }
   }
   
-  public void setAttachListener(OnAttachListener paramOnAttachListener)
+  public void setAttachListener(a parama)
   {
-    this.mAttachListener = paramOnAttachListener;
+    this.h = parama;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setDecorPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static abstract interface a
   {
-    this.mDecorPadding.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (ViewCompat.isLaidOut(this)) {
-      requestLayout();
-    }
-  }
-  
-  public static abstract interface OnAttachListener
-  {
-    public abstract void onAttachedFromWindow();
-    
-    public abstract void onDetachedFromWindow();
+    public abstract void a();
   }
 }
 

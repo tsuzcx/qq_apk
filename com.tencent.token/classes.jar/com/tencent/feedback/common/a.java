@@ -8,7 +8,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Process;
-import android.util.Log;
 import java.util.Iterator;
 import java.util.List;
 
@@ -64,121 +63,119 @@ public final class a
     //   63: pop
     //   64: iconst_0
     //   65: istore_1
-    //   66: iload_1
-    //   67: aload_2
-    //   68: arraylength
-    //   69: if_icmpge +16 -> 85
-    //   72: aload_2
-    //   73: iload_1
-    //   74: caload
-    //   75: ifeq +10 -> 85
+    //   66: goto +106 -> 172
+    //   69: new 50	java/lang/String
+    //   72: dup
+    //   73: aload_2
+    //   74: invokespecial 53	java/lang/String:<init>	([C)V
+    //   77: iconst_0
     //   78: iload_1
-    //   79: iconst_1
-    //   80: iadd
-    //   81: istore_1
-    //   82: goto -16 -> 66
-    //   85: new 50	java/lang/String
-    //   88: dup
-    //   89: aload_2
-    //   90: invokespecial 53	java/lang/String:<init>	([C)V
-    //   93: iconst_0
-    //   94: iload_1
-    //   95: invokevirtual 57	java/lang/String:substring	(II)Ljava/lang/String;
-    //   98: astore_2
-    //   99: aload_3
-    //   100: invokevirtual 60	java/io/FileReader:close	()V
-    //   103: aload_2
-    //   104: areturn
-    //   105: astore 4
-    //   107: aload_3
-    //   108: astore_2
-    //   109: aload 4
-    //   111: astore_3
-    //   112: goto +55 -> 167
-    //   115: astore_2
-    //   116: aload_2
-    //   117: astore 4
-    //   119: goto +12 -> 131
-    //   122: astore_3
-    //   123: goto +44 -> 167
-    //   126: astore 4
-    //   128: aload 5
-    //   130: astore_3
-    //   131: aload_3
-    //   132: astore_2
-    //   133: aload 4
-    //   135: invokestatic 65	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   138: ifne +10 -> 148
-    //   141: aload_3
-    //   142: astore_2
-    //   143: aload 4
-    //   145: invokevirtual 68	java/lang/Throwable:printStackTrace	()V
-    //   148: aload_3
-    //   149: astore_2
-    //   150: iload_0
-    //   151: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   154: astore 4
-    //   156: aload_3
-    //   157: ifnull +7 -> 164
-    //   160: aload_3
-    //   161: invokevirtual 60	java/io/FileReader:close	()V
-    //   164: aload 4
-    //   166: areturn
-    //   167: aload_2
-    //   168: ifnull +7 -> 175
-    //   171: aload_2
-    //   172: invokevirtual 60	java/io/FileReader:close	()V
-    //   175: aload_3
-    //   176: athrow
-    //   177: astore_3
-    //   178: aload_2
-    //   179: areturn
-    //   180: astore_2
-    //   181: aload 4
-    //   183: areturn
-    //   184: astore_2
-    //   185: goto -10 -> 175
+    //   79: invokevirtual 57	java/lang/String:substring	(II)Ljava/lang/String;
+    //   82: astore_2
+    //   83: aload_3
+    //   84: invokevirtual 60	java/io/FileReader:close	()V
+    //   87: aload_2
+    //   88: areturn
+    //   89: astore 4
+    //   91: aload_3
+    //   92: astore_2
+    //   93: aload 4
+    //   95: astore_3
+    //   96: goto +55 -> 151
+    //   99: astore_2
+    //   100: aload_2
+    //   101: astore 4
+    //   103: goto +12 -> 115
+    //   106: astore_3
+    //   107: goto +44 -> 151
+    //   110: astore 4
+    //   112: aload 5
+    //   114: astore_3
+    //   115: aload_3
+    //   116: astore_2
+    //   117: aload 4
+    //   119: invokestatic 65	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   122: ifne +10 -> 132
+    //   125: aload_3
+    //   126: astore_2
+    //   127: aload 4
+    //   129: invokevirtual 68	java/lang/Throwable:printStackTrace	()V
+    //   132: aload_3
+    //   133: astore_2
+    //   134: iload_0
+    //   135: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   138: astore 4
+    //   140: aload_3
+    //   141: ifnull +7 -> 148
+    //   144: aload_3
+    //   145: invokevirtual 60	java/io/FileReader:close	()V
+    //   148: aload 4
+    //   150: areturn
+    //   151: aload_2
+    //   152: ifnull +7 -> 159
+    //   155: aload_2
+    //   156: invokevirtual 60	java/io/FileReader:close	()V
+    //   159: aload_3
+    //   160: athrow
+    //   161: astore_3
+    //   162: aload_2
+    //   163: areturn
+    //   164: astore_2
+    //   165: aload 4
+    //   167: areturn
+    //   168: astore_2
+    //   169: goto -10 -> 159
+    //   172: iload_1
+    //   173: sipush 128
+    //   176: if_icmpge -107 -> 69
+    //   179: aload_2
+    //   180: iload_1
+    //   181: caload
+    //   182: ifeq -113 -> 69
+    //   185: iload_1
+    //   186: iconst_1
+    //   187: iadd
+    //   188: istore_1
+    //   189: goto -17 -> 172
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	188	0	paramInt	int
-    //   65	30	1	i	int
-    //   6	103	2	localObject1	Object
-    //   115	2	2	localThrowable1	Throwable
-    //   132	47	2	localObject2	Object
-    //   180	1	2	localThrowable2	Throwable
-    //   184	1	2	localThrowable3	Throwable
-    //   4	108	3	localObject3	Object
-    //   122	1	3	localObject4	Object
-    //   130	46	3	localObject5	Object
-    //   177	1	3	localThrowable4	Throwable
+    //   0	192	0	paramInt	int
+    //   65	124	1	i	int
+    //   6	87	2	localObject1	Object
+    //   99	2	2	localThrowable1	Throwable
+    //   116	47	2	localObject2	Object
+    //   164	1	2	localThrowable2	Throwable
+    //   168	12	2	localThrowable3	Throwable
+    //   4	92	3	localObject3	Object
+    //   106	1	3	localObject4	Object
+    //   114	46	3	localObject5	Object
+    //   161	1	3	localThrowable4	Throwable
     //   16	28	4	localStringBuilder	StringBuilder
-    //   105	5	4	localObject6	Object
-    //   117	1	4	localThrowable5	Throwable
-    //   126	18	4	localThrowable6	Throwable
-    //   154	28	4	str	String
-    //   1	128	5	localObject7	Object
+    //   89	5	4	localObject6	Object
+    //   101	1	4	localThrowable5	Throwable
+    //   110	18	4	localThrowable6	Throwable
+    //   138	28	4	str	String
+    //   1	112	5	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   52	64	105	finally
-    //   66	72	105	finally
-    //   85	99	105	finally
-    //   52	64	115	java/lang/Throwable
-    //   66	72	115	java/lang/Throwable
-    //   85	99	115	java/lang/Throwable
-    //   7	18	122	finally
-    //   20	27	122	finally
-    //   29	37	122	finally
-    //   39	52	122	finally
-    //   133	141	122	finally
-    //   143	148	122	finally
-    //   150	156	122	finally
-    //   7	18	126	java/lang/Throwable
-    //   20	27	126	java/lang/Throwable
-    //   29	37	126	java/lang/Throwable
-    //   39	52	126	java/lang/Throwable
-    //   99	103	177	java/lang/Throwable
-    //   160	164	180	java/lang/Throwable
-    //   171	175	184	java/lang/Throwable
+    //   52	64	89	finally
+    //   69	83	89	finally
+    //   52	64	99	java/lang/Throwable
+    //   69	83	99	java/lang/Throwable
+    //   7	18	106	finally
+    //   20	27	106	finally
+    //   29	37	106	finally
+    //   39	52	106	finally
+    //   117	125	106	finally
+    //   127	132	106	finally
+    //   134	140	106	finally
+    //   7	18	110	java/lang/Throwable
+    //   20	27	110	java/lang/Throwable
+    //   29	37	110	java/lang/Throwable
+    //   39	52	110	java/lang/Throwable
+    //   83	87	161	java/lang/Throwable
+    //   144	148	164	java/lang/Throwable
+    //   155	159	168	java/lang/Throwable
   }
   
   public static String a(Context paramContext)
@@ -549,39 +546,33 @@ public final class a
       e.d("context == null", new Object[0]);
       return "";
     }
-    for (;;)
+    try
     {
-      try
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
+      if ((paramContext != null) && (paramContext.metaData != null))
       {
-        paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-        if ((paramContext != null) && (paramContext.metaData != null))
-        {
-          paramContext = paramContext.metaData.get("com.tencent.rdm.uuid");
-          if (paramContext != null)
-          {
-            paramContext = paramContext.toString();
-            Log.d("rqdp{ RDMUUID }:%s", paramContext);
-            return paramContext;
-          }
-        }
-        else
-        {
-          e.d("appInfo == null || appInfo.metaData == null", new Object[0]);
-          return "";
+        paramContext = paramContext.metaData.get("com.tencent.rdm.uuid");
+        if (paramContext != null) {
+          return paramContext.toString();
         }
       }
-      catch (Throwable paramContext)
+      else
       {
-        if (!e.a(paramContext)) {
-          paramContext.printStackTrace();
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramContext.toString());
-        e.d(localStringBuilder.toString(), new Object[0]);
+        e.d("appInfo == null || appInfo.metaData == null", new Object[0]);
         return "";
       }
-      paramContext = "";
     }
+    catch (Throwable paramContext)
+    {
+      if (!e.a(paramContext)) {
+        paramContext.printStackTrace();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.toString());
+      e.d(localStringBuilder.toString(), new Object[0]);
+      return "";
+    }
+    return "";
   }
   
   public static boolean e(Context paramContext)

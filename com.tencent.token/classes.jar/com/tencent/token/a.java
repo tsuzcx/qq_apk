@@ -1,25 +1,42 @@
 package com.tencent.token;
 
-public class a
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class a
+  extends JceStruct
 {
-  private static Object a = new Object();
-  private static e b;
+  public String a = "";
+  public String b = "";
+  public int c = 0;
   
-  public Object a(int paramInt)
+  public final JceStruct newInit()
   {
-    if (5 == paramInt)
-    {
-      if (b == null) {
-        synchronized (a)
-        {
-          if (b == null) {
-            b = new e(0L);
-          }
-        }
-      }
-      return b;
+    return new a();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.readString(1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    return null;
+    str = this.b;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
+    }
+    int i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
+    }
   }
 }
 

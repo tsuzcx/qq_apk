@@ -1,72 +1,24 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import com.tencent.halley.common.h;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class af
+  extends JceStruct
 {
-  private List a = new ArrayList();
+  public String a = "";
   
-  public final String a()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    synchronized (this.a)
-    {
-      if (this.a.size() == 0) {
-        return "";
-      }
-      Object localObject1 = new StringBuilder();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        ((StringBuilder)localObject1).append(((a)localIterator.next()).a());
-        ((StringBuilder)localObject1).append(";");
-      }
-      localObject1 = ((StringBuilder)localObject1).toString();
-      return localObject1;
-    }
+    this.a = paramJceInputStream.readString(0, false);
   }
   
-  public final void a(a parama)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    synchronized (this.a)
-    {
-      if (this.a.size() < 20) {
-        this.a.add(parama);
-      }
-      return;
-    }
-  }
-  
-  public static final class a
-  {
-    private long a;
-    private int b;
-    private String c;
-    
-    public a(long paramLong, int paramInt, String paramString)
-    {
-      this.a = paramLong;
-      this.b = paramInt;
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "";; paramString = h.b(paramString))
-      {
-        this.c = paramString;
-        return;
-      }
-    }
-    
-    public final String a()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a);
-      localStringBuilder.append(",");
-      localStringBuilder.append(this.b);
-      localStringBuilder.append(",");
-      localStringBuilder.append(this.c);
-      return localStringBuilder.toString();
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }

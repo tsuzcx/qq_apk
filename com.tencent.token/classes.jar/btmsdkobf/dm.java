@@ -9,8 +9,7 @@ public class dm
 {
   public static PendingIntent a(Context paramContext, String paramString, long paramLong)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("添加闹钟 : ");
+    Object localObject1 = new StringBuilder("添加闹钟 : ");
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append(" ");
     ((StringBuilder)localObject1).append(paramLong / 1000L);
@@ -31,10 +30,7 @@ public class dm
     }
     catch (Throwable paramContext)
     {
-      paramString = new StringBuilder();
-      paramString.append("addAlarm: ");
-      paramString.append(paramContext);
-      eh.h("AlarmerUtil", paramString.toString());
+      eh.h("AlarmerUtil", "addAlarm: ".concat(String.valueOf(paramContext)));
     }
     return localObject1;
   }
@@ -51,10 +47,7 @@ public class dm
     }
     catch (Throwable paramContext)
     {
-      paramString = new StringBuilder();
-      paramString.append("delAlarm exception: ");
-      paramString.append(paramContext);
-      eh.h("AlarmerUtil", paramString.toString());
+      eh.h("AlarmerUtil", "delAlarm exception: ".concat(String.valueOf(paramContext)));
     }
   }
 }

@@ -7,29 +7,31 @@ import com.qq.taf.jce.JceStruct;
 public final class ak
   extends JceStruct
 {
-  static byte[] bO = (byte[])new byte[1];
+  static byte[] bO;
   public int bM = 0;
   public byte[] bN = null;
   public int status = 0;
   
   static
   {
-    ((byte[])bO)[0] = 0;
+    byte[] arrayOfByte = (byte[])new byte[1];
+    bO = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ak();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bM = paramJceInputStream.read(this.bM, 0, true);
     this.bN = ((byte[])paramJceInputStream.read(bO, 1, false));
     this.status = paramJceInputStream.read(this.status, 2, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bM, 0);
     byte[] arrayOfByte = this.bN;

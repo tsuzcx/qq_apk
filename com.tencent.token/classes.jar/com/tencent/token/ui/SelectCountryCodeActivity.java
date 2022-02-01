@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-import com.tencent.token.global.b;
-import com.tencent.token.global.d;
-import com.tencent.token.global.f;
-import com.tencent.token.global.i;
-import com.tencent.token.global.j;
 import com.tencent.token.ui.base.RightLetterView;
 import com.tencent.token.ui.base.RightLetterView.a;
+import com.tencent.token.ww;
+import com.tencent.token.wy;
+import com.tencent.token.xa;
+import com.tencent.token.xd;
+import com.tencent.token.xe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,29 +19,29 @@ import java.util.List;
 public class SelectCountryCodeActivity
   extends BaseActivity
 {
-  private i adapter;
-  private b characterParser;
-  private f pinyinComparator;
+  private xd adapter;
+  private ww characterParser;
+  private xa pinyinComparator;
   RightLetterView sideBar;
   private ListView sortListView;
-  private List<j> sourceDateList;
+  private List<xe> sourceDateList;
   
-  private List<j> filledData(String[][] paramArrayOfString)
+  private List<xe> filledData(String[][] paramArrayOfString)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayOfString.length)
     {
-      j localj = new j();
-      localj.b(paramArrayOfString[i][1]);
-      localj.a(paramArrayOfString[i][0]);
-      String str = this.characterParser.b(paramArrayOfString[i][1]).substring(0, 1).toUpperCase();
+      xe localxe = new xe();
+      localxe.a = paramArrayOfString[i][1];
+      localxe.c = paramArrayOfString[i][0];
+      String str = this.characterParser.a(paramArrayOfString[i][1]).substring(0, 1).toUpperCase();
       if (str.matches("[A-Z]")) {
-        localj.c(str.toUpperCase());
+        localxe.b = str.toUpperCase();
       } else {
-        localj.c("#");
+        localxe.b = "#";
       }
-      localArrayList.add(localj);
+      localArrayList.add(localxe);
       i += 1;
     }
     return localArrayList;
@@ -49,24 +49,24 @@ public class SelectCountryCodeActivity
   
   private void init()
   {
-    this.characterParser = b.a();
-    this.pinyinComparator = new f();
-    this.sortListView = ((ListView)findViewById(2131165654));
-    this.sideBar = ((RightLetterView)findViewById(2131165914));
-    this.sideBar.setOnTouchingLetterChangedListener(new a(null));
-    this.sourceDateList = filledData(d.b);
-    List localList = filledData(d.c);
+    this.characterParser = ww.a();
+    this.pinyinComparator = new xa();
+    this.sortListView = ((ListView)findViewById(2131165658));
+    this.sideBar = ((RightLetterView)findViewById(2131165918));
+    this.sideBar.setOnTouchingLetterChangedListener(new a((byte)0));
+    this.sourceDateList = filledData(wy.b);
+    List localList = filledData(wy.c);
     Collections.sort(localList, this.pinyinComparator);
     this.sourceDateList.addAll(localList);
-    this.adapter = new i(this, this.sourceDateList, new View.OnClickListener()
+    this.adapter = new xd(this, this.sourceDateList, new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("name", ((j)SelectCountryCodeActivity.this.sourceDateList.get(i)).b());
+        paramAnonymousView.putExtra("name", ((xe)SelectCountryCodeActivity.this.sourceDateList.get(i)).a);
         SelectCountryCodeActivity localSelectCountryCodeActivity = SelectCountryCodeActivity.this;
-        localSelectCountryCodeActivity.setResult(Integer.parseInt(((j)localSelectCountryCodeActivity.sourceDateList.get(i)).a()), paramAnonymousView);
+        localSelectCountryCodeActivity.setResult(Integer.parseInt(((xe)localSelectCountryCodeActivity.sourceDateList.get(i)).c), paramAnonymousView);
         SelectCountryCodeActivity.this.finish();
       }
     });
@@ -76,18 +76,29 @@ public class SelectCountryCodeActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296419);
+    setContentView(2131296420);
     init();
   }
   
-  private class a
+  final class a
     implements RightLetterView.a
   {
     private a() {}
     
-    public void a(int paramInt)
+    public final void a(int paramInt)
     {
-      paramInt = SelectCountryCodeActivity.this.adapter.a(d.a[paramInt]);
+      xd localxd = SelectCountryCodeActivity.this.adapter;
+      String str = wy.a[paramInt];
+      paramInt = 10;
+      while (paramInt < localxd.getCount())
+      {
+        if (str.equals(((xe)localxd.a.get(paramInt)).b)) {
+          break label60;
+        }
+        paramInt += 1;
+      }
+      paramInt = -1;
+      label60:
       if (paramInt != -1) {
         SelectCountryCodeActivity.this.sortListView.setSelection(paramInt);
       }

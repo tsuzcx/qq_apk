@@ -1,407 +1,822 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
-import java.util.concurrent.atomic.AtomicInteger;
-import okhttp3.aa;
-import okhttp3.e;
-import okhttp3.f;
-import okhttp3.z;
+import android.graphics.Path;
+import java.util.ArrayList;
 
-public class da
-  extends Handler
+public final class da
 {
-  private final int a = 4;
-  private db b;
-  private long c;
-  private volatile boolean d = false;
-  private AtomicInteger e = new AtomicInteger(0);
-  private AtomicInteger f = new AtomicInteger(0);
-  private AtomicInteger g = new AtomicInteger(0);
-  private dc h;
-  private long[] i;
-  private File[] j;
-  private File k;
-  private volatile boolean l;
-  private volatile boolean m;
-  private cy n;
-  
-  public da(db paramdb, cy paramcy)
+  private static int a(String paramString, int paramInt)
   {
-    this.b = paramdb;
-    this.n = paramcy;
-    this.i = new long[4];
-    this.j = new File[4];
-    this.h = dc.a();
+    while (paramInt < paramString.length())
+    {
+      int i = paramString.charAt(paramInt);
+      if ((((i - 65) * (i - 90) <= 0) || ((i - 97) * (i - 122) <= 0)) && (i != 101) && (i != 69)) {
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    return paramInt;
   }
   
-  private void a(final long paramLong1, long paramLong2, final int paramInt)
+  public static Path a(String paramString)
   {
-    Object localObject1 = this.b.c();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("thread");
-    ((StringBuilder)localObject2).append(paramInt);
-    ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(this.b.a());
-    ((StringBuilder)localObject2).append(".cache");
-    localObject1 = new File((String)localObject1, ((StringBuilder)localObject2).toString());
-    this.j[paramInt] = localObject1;
-    localObject2 = new RandomAccessFile((File)localObject1, "rwd");
-    final long l1;
-    if (((File)localObject1).exists())
-    {
-      String str = ((RandomAccessFile)localObject2).readLine();
-      if (str != null) {}
+    Path localPath = new Path();
+    b[] arrayOfb = b(paramString);
+    if (arrayOfb != null) {
       try
       {
-        if (!TextUtils.isEmpty(str))
+        b.a(arrayOfb, localPath);
+        return localPath;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        throw new RuntimeException("Error in parsing ".concat(String.valueOf(paramString)), localRuntimeException);
+      }
+    }
+    return null;
+  }
+  
+  private static void a(ArrayList<b> paramArrayList, char paramChar, float[] paramArrayOfFloat)
+  {
+    paramArrayList.add(new b(paramChar, paramArrayOfFloat));
+  }
+  
+  public static boolean a(b[] paramArrayOfb1, b[] paramArrayOfb2)
+  {
+    if (paramArrayOfb1 != null)
+    {
+      if (paramArrayOfb2 == null) {
+        return false;
+      }
+      if (paramArrayOfb1.length != paramArrayOfb2.length) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramArrayOfb1.length) {
+        if (paramArrayOfb1[i].a == paramArrayOfb2[i].a)
         {
-          l1 = Integer.parseInt(str);
+          if (paramArrayOfb1[i].b.length != paramArrayOfb2[i].b.length) {
+            return false;
+          }
+          i += 1;
         }
         else
         {
-          if (this.n != null) {
-            this.n.b();
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  static float[] a(float[] paramArrayOfFloat, int paramInt)
+  {
+    if (paramInt >= 0)
+    {
+      int i = paramArrayOfFloat.length;
+      if (i >= 0)
+      {
+        paramInt -= 0;
+        i = Math.min(paramInt, i - 0);
+        float[] arrayOfFloat = new float[paramInt];
+        System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, i);
+        return arrayOfFloat;
+      }
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    throw new IllegalArgumentException();
+  }
+  
+  public static b[] a(b[] paramArrayOfb)
+  {
+    if (paramArrayOfb == null) {
+      return null;
+    }
+    b[] arrayOfb = new b[paramArrayOfb.length];
+    int i = 0;
+    while (i < paramArrayOfb.length)
+    {
+      arrayOfb[i] = new b(paramArrayOfb[i]);
+      i += 1;
+    }
+    return arrayOfb;
+  }
+  
+  public static b[] b(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int j = 1;
+    int i = 0;
+    while (j < paramString.length())
+    {
+      j = a(paramString, j);
+      String str = paramString.substring(i, j).trim();
+      if (str.length() > 0)
+      {
+        float[] arrayOfFloat = c(str);
+        a(localArrayList, str.charAt(0), arrayOfFloat);
+      }
+      i = j;
+      j += 1;
+    }
+    if ((j - i == 1) && (i < paramString.length())) {
+      a(localArrayList, paramString.charAt(i), new float[0]);
+    }
+    return (b[])localArrayList.toArray(new b[localArrayList.size()]);
+  }
+  
+  private static float[] c(String paramString)
+  {
+    if ((paramString.charAt(0) != 'z') && (paramString.charAt(0) != 'Z')) {}
+    for (;;)
+    {
+      int j;
+      int m;
+      int n;
+      int i;
+      int i1;
+      int k;
+      try
+      {
+        float[] arrayOfFloat = new float[paramString.length()];
+        localObject = new a();
+        int i2 = paramString.length();
+        j = 1;
+        m = 0;
+        int i3;
+        if (j < i2)
+        {
+          ((a)localObject).b = false;
+          n = j;
+          i = 0;
+          i1 = 0;
+          k = 0;
+          if (n < paramString.length())
+          {
+            i3 = paramString.charAt(n);
+            if (i3 == 32) {
+              break label317;
+            }
+            if ((i3 == 69) || (i3 == 101)) {
+              break label312;
+            }
           }
-          l1 = paramLong1;
+        }
+        switch (i3)
+        {
+        case 45: 
+          ((a)localObject).b = true;
+          i = 0;
+          k = 1;
+          break label321;
+          if ((n == j) || (i != 0)) {
+            break label307;
+          }
+          ((a)localObject).b = true;
+          i = 0;
+          k = 1;
+          break label321;
+          ((a)localObject).a = n;
+          k = ((a)localObject).a;
+          i = m;
+          if (j < k)
+          {
+            arrayOfFloat[m] = Float.parseFloat(paramString.substring(j, k));
+            i = m + 1;
+          }
+          if (!((a)localObject).b) {
+            break label334;
+          }
+          j = k;
+          m = i;
+          continue;
+          arrayOfFloat = a(arrayOfFloat, m);
+          return arrayOfFloat;
         }
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        localNumberFormatException.printStackTrace();
+        Object localObject = new StringBuilder("error in parsing \"");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("\"");
+        throw new RuntimeException(((StringBuilder)localObject).toString(), localNumberFormatException);
       }
-    }
-    else
-    {
-      l1 = paramLong1;
-    }
-    this.h.a(this.b.b(), l1, paramLong2, new f()
-    {
-      public void a(e paramAnonymouse, IOException paramAnonymousIOException)
+      return new float[0];
+      if (i1 == 0)
       {
-        da.a(da.this, false);
-      }
-      
-      public void a(e paramAnonymouse, z paramAnonymousz)
-      {
-        if (paramAnonymousz.b() != 206)
+        i = 0;
+        i1 = 1;
+        break label321;
+        label307:
+        i = 0;
+        break label321;
+        label312:
+        i = 1;
+        break label321;
+        label317:
+        i = 0;
+        k = 1;
+        label321:
+        if (k == 0)
         {
-          da.a(da.this);
+          n += 1;
+          continue;
+          label334:
+          j = k + 1;
+          m = i;
+        }
+      }
+    }
+  }
+  
+  static final class a
+  {
+    int a;
+    boolean b;
+  }
+  
+  public static final class b
+  {
+    public char a;
+    public float[] b;
+    
+    b(char paramChar, float[] paramArrayOfFloat)
+    {
+      this.a = paramChar;
+      this.b = paramArrayOfFloat;
+    }
+    
+    b(b paramb)
+    {
+      this.a = paramb.a;
+      paramb = paramb.b;
+      this.b = da.a(paramb, paramb.length);
+    }
+    
+    private static void a(Path paramPath, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8, double paramDouble9)
+    {
+      int i = (int)Math.ceil(Math.abs(paramDouble9 * 4.0D / 3.141592653589793D));
+      double d4 = Math.cos(paramDouble7);
+      double d5 = Math.sin(paramDouble7);
+      double d1 = Math.cos(paramDouble8);
+      double d3 = Math.sin(paramDouble8);
+      paramDouble7 = -paramDouble3;
+      double d9 = paramDouble7 * d4;
+      double d10 = paramDouble4 * d5;
+      paramDouble7 *= d5;
+      double d11 = paramDouble4 * d4;
+      paramDouble4 = i;
+      Double.isNaN(paramDouble4);
+      double d6 = paramDouble9 / paramDouble4;
+      double d2 = d3 * paramDouble7 + d1 * d11;
+      paramDouble9 = d9 * d3 - d10 * d1;
+      int j = 0;
+      d3 = paramDouble8;
+      d1 = paramDouble6;
+      paramDouble8 = paramDouble5;
+      paramDouble4 = paramDouble7;
+      paramDouble7 = d6;
+      paramDouble6 = d5;
+      paramDouble5 = d4;
+      for (;;)
+      {
+        d5 = paramDouble3;
+        if (j >= i) {
+          break;
+        }
+        d6 = d3 + paramDouble7;
+        double d7 = Math.sin(d6);
+        double d12 = Math.cos(d6);
+        d4 = paramDouble1 + d5 * paramDouble5 * d12 - d10 * d7;
+        double d8 = paramDouble2 + d5 * paramDouble6 * d12 + d11 * d7;
+        d5 = d9 * d7 - d10 * d12;
+        d7 = d7 * paramDouble4 + d12 * d11;
+        d3 = d6 - d3;
+        d12 = Math.tan(d3 / 2.0D);
+        d3 = Math.sin(d3) * (Math.sqrt(d12 * 3.0D * d12 + 4.0D) - 1.0D) / 3.0D;
+        paramPath.rLineTo(0.0F, 0.0F);
+        paramPath.cubicTo((float)(paramDouble8 + paramDouble9 * d3), (float)(d1 + d2 * d3), (float)(d4 - d3 * d5), (float)(d8 - d3 * d7), (float)d4, (float)d8);
+        j += 1;
+        d1 = d8;
+        d3 = d6;
+        d2 = d7;
+        paramDouble9 = d5;
+        paramDouble8 = d4;
+      }
+    }
+    
+    private static void a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      float f1 = paramFloat5;
+      paramFloat5 = paramFloat6;
+      paramFloat6 = f1;
+      double d5;
+      double d6;
+      double d7;
+      double d8;
+      double d9;
+      double d10;
+      double d2;
+      double d11;
+      double d3;
+      double d12;
+      double d13;
+      double d15;
+      double d17;
+      for (;;)
+      {
+        float f2 = paramFloat3;
+        f1 = paramFloat1;
+        d5 = Math.toRadians(paramFloat7);
+        d6 = Math.cos(d5);
+        d7 = Math.sin(d5);
+        d8 = f1;
+        Double.isNaN(d8);
+        d9 = paramFloat2;
+        Double.isNaN(d9);
+        d10 = paramFloat6;
+        Double.isNaN(d10);
+        d1 = (d8 * d6 + d9 * d7) / d10;
+        d2 = -f1;
+        Double.isNaN(d2);
+        Double.isNaN(d9);
+        d11 = paramFloat5;
+        Double.isNaN(d11);
+        d4 = (d2 * d7 + d9 * d6) / d11;
+        d3 = f2;
+        Double.isNaN(d3);
+        d2 = paramFloat4;
+        Double.isNaN(d2);
+        Double.isNaN(d10);
+        d12 = (d3 * d6 + d2 * d7) / d10;
+        d3 = -f2;
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        Double.isNaN(d11);
+        d13 = (d3 * d7 + d2 * d6) / d11;
+        d15 = d1 - d12;
+        d14 = d4 - d13;
+        d3 = (d1 + d12) / 2.0D;
+        d2 = (d4 + d13) / 2.0D;
+        d16 = d15 * d15 + d14 * d14;
+        if (d16 == 0.0D) {
           return;
         }
-        paramAnonymouse = paramAnonymousz.e().b();
-        RandomAccessFile localRandomAccessFile1 = new RandomAccessFile(da.c(da.this), "rw");
-        localRandomAccessFile1.seek(l1);
-        byte[] arrayOfByte = new byte[4096];
-        int i = 0;
-        for (;;)
-        {
-          int j = paramAnonymouse.read(arrayOfByte);
-          if (j <= 0) {
-            break;
-          }
-          if (da.e(da.this))
-          {
-            da.a(da.this, new Closeable[] { this.b, paramAnonymouse, paramAnonymousz.e() });
-            da.a(da.this, new File[] { paramInt });
-            da.this.sendEmptyMessage(4);
-            return;
-          }
-          if (da.f(da.this))
-          {
-            da.a(da.this, new Closeable[] { this.b, paramAnonymouse, paramAnonymousz.e() });
-            da.this.sendEmptyMessage(3);
-            return;
-          }
-          localRandomAccessFile1.write(arrayOfByte, 0, j);
-          i += j;
-          long l = l1 + i;
-          this.b.seek(0L);
-          RandomAccessFile localRandomAccessFile2 = this.b;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(l);
-          localStringBuilder.append("");
-          localRandomAccessFile2.write(localStringBuilder.toString().getBytes("UTF-8"));
-          da.g(da.this)[paramLong1] = (l - this.e);
-          da.this.sendEmptyMessage(1);
+        d17 = 1.0D / d16 - 0.25D;
+        if (d17 >= 0.0D) {
+          break;
         }
-        da.a(da.this, new Closeable[] { this.b, paramAnonymouse, paramAnonymousz.e() });
-        da.a(da.this, new File[] { paramInt });
-        da.this.sendEmptyMessage(2);
+        f1 = (float)(Math.sqrt(d16) / 1.99999D);
+        paramFloat6 *= f1;
+        paramFloat5 *= f1;
       }
-    });
-  }
-  
-  /* Error */
-  private void a(Closeable... paramVarArgs)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: arraylength
-    //   2: istore 7
-    //   4: iconst_0
-    //   5: istore 5
-    //   7: iconst_0
-    //   8: istore 6
-    //   10: iconst_0
-    //   11: istore 4
-    //   13: iconst_0
-    //   14: istore_2
-    //   15: iload 6
-    //   17: istore_3
-    //   18: iload_2
-    //   19: iload 7
-    //   21: if_icmpge +79 -> 100
-    //   24: aload_1
-    //   25: iload_2
-    //   26: aaload
-    //   27: ifnull +11 -> 38
-    //   30: aload_1
-    //   31: iload_2
-    //   32: aaload
-    //   33: invokeinterface 170 1 0
-    //   38: iload_2
-    //   39: iconst_1
-    //   40: iadd
-    //   41: istore_2
-    //   42: goto -27 -> 15
-    //   45: astore 8
-    //   47: iload 5
-    //   49: istore_2
-    //   50: goto +30 -> 80
-    //   53: astore 8
-    //   55: aload 8
-    //   57: invokevirtual 171	java/io/IOException:printStackTrace	()V
-    //   60: iload 4
-    //   62: istore_2
-    //   63: iload_2
-    //   64: iload 7
-    //   66: if_icmpge +51 -> 117
-    //   69: aload_1
-    //   70: iload_2
-    //   71: aconst_null
-    //   72: aastore
-    //   73: iload_2
-    //   74: iconst_1
-    //   75: iadd
-    //   76: istore_2
-    //   77: goto -14 -> 63
-    //   80: iload_2
-    //   81: iload 7
-    //   83: if_icmpge +14 -> 97
-    //   86: aload_1
-    //   87: iload_2
-    //   88: aconst_null
-    //   89: aastore
-    //   90: iload_2
-    //   91: iconst_1
-    //   92: iadd
-    //   93: istore_2
-    //   94: goto -14 -> 80
-    //   97: aload 8
-    //   99: athrow
-    //   100: iload_3
-    //   101: iload 7
-    //   103: if_icmpge +14 -> 117
-    //   106: aload_1
-    //   107: iload_3
-    //   108: aconst_null
-    //   109: aastore
-    //   110: iload_3
-    //   111: iconst_1
-    //   112: iadd
-    //   113: istore_3
-    //   114: goto -14 -> 100
-    //   117: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	this	da
-    //   0	118	1	paramVarArgs	Closeable[]
-    //   14	80	2	i1	int
-    //   17	97	3	i2	int
-    //   11	50	4	i3	int
-    //   5	43	5	i4	int
-    //   8	8	6	i5	int
-    //   2	102	7	i6	int
-    //   45	1	8	localObject	Object
-    //   53	45	8	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   30	38	45	finally
-    //   55	60	45	finally
-    //   30	38	53	java/io/IOException
-  }
-  
-  private void a(File... paramVarArgs)
-  {
-    int i2 = paramVarArgs.length;
-    int i1 = 0;
-    while (i1 < i2)
+      double d16 = Math.sqrt(d17);
+      d15 *= d16;
+      double d14 = d16 * d14;
+      if (paramBoolean1 == paramBoolean2)
+      {
+        d3 -= d14;
+        d2 += d15;
+      }
+      else
+      {
+        d3 += d14;
+        d2 -= d15;
+      }
+      d14 = Math.atan2(d4 - d2, d1 - d3);
+      double d4 = Math.atan2(d13 - d2, d12 - d3) - d14;
+      if (d4 >= 0.0D) {
+        paramBoolean1 = true;
+      } else {
+        paramBoolean1 = false;
+      }
+      double d1 = d4;
+      if (paramBoolean2 != paramBoolean1) {
+        if (d4 > 0.0D) {
+          d1 = d4 - 6.283185307179586D;
+        } else {
+          d1 = d4 + 6.283185307179586D;
+        }
+      }
+      Double.isNaN(d10);
+      d3 *= d10;
+      Double.isNaN(d11);
+      d2 *= d11;
+      a(paramPath, d3 * d6 - d2 * d7, d3 * d7 + d2 * d6, d10, d11, d8, d9, d5, d14, d1);
+    }
+    
+    private static void a(Path paramPath, float[] paramArrayOfFloat1, char paramChar1, char paramChar2, float[] paramArrayOfFloat2)
     {
-      if (paramVarArgs[i1] != null) {
-        paramVarArgs[i1].delete();
+      Path localPath = paramPath;
+      float f1 = paramArrayOfFloat1[0];
+      float f2 = paramArrayOfFloat1[1];
+      float f3 = paramArrayOfFloat1[2];
+      float f4 = paramArrayOfFloat1[3];
+      float f6 = paramArrayOfFloat1[4];
+      float f5 = paramArrayOfFloat1[5];
+      char c1;
+      switch (paramChar2)
+      {
+      default: 
+        c1 = '\002';
+        break;
+      case 'Z': 
+      case 'z': 
+        paramPath.close();
+        localPath.moveTo(f6, f5);
+        f1 = f6;
+        f3 = f1;
+        f2 = f5;
+        f4 = f2;
+        c1 = '\002';
+        break;
+      case 'Q': 
+      case 'S': 
+      case 'q': 
+      case 's': 
+        c1 = '\004';
+        break;
+      case 'L': 
+      case 'M': 
+      case 'T': 
+      case 'l': 
+      case 'm': 
+      case 't': 
+        c1 = '\002';
+        break;
+      case 'H': 
+      case 'V': 
+      case 'h': 
+      case 'v': 
+        c1 = '\001';
+        break;
+      case 'C': 
+      case 'c': 
+        c1 = '\006';
+        break;
+      case 'A': 
+      case 'a': 
+        c1 = '\007';
       }
-      i1 += 1;
+      float f7 = f2;
+      f2 = f6;
+      char c2 = '\000';
+      int i = paramChar1;
+      f6 = f5;
+      f5 = f2;
+      paramChar1 = c2;
+      f2 = f1;
+      f1 = f7;
+      while (paramChar1 < paramArrayOfFloat2.length)
+      {
+        f7 = 0.0F;
+        float f8;
+        int j;
+        float f9;
+        int k;
+        boolean bool1;
+        boolean bool2;
+        switch (paramChar2)
+        {
+        default: 
+          break;
+        case 'v': 
+          i = paramChar1 + '\000';
+          localPath.rLineTo(0.0F, paramArrayOfFloat2[i]);
+          f1 += paramArrayOfFloat2[i];
+          break;
+        case 't': 
+          if ((i != 113) && (i != 116) && (i != 81) && (i != 84))
+          {
+            f4 = 0.0F;
+            f3 = f7;
+          }
+          else
+          {
+            f3 = f2 - f3;
+            f4 = f1 - f4;
+          }
+          i = paramChar1 + '\000';
+          f7 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\001';
+          localPath.rQuadTo(f3, f4, f7, paramArrayOfFloat2[c2]);
+          f7 = f2 + paramArrayOfFloat2[i];
+          f8 = f1 + paramArrayOfFloat2[c2];
+          f4 += f1;
+          f3 += f2;
+          f1 = f8;
+          f2 = f7;
+          break;
+        case 's': 
+          if ((i != 99) && (i != 115) && (i != 67) && (i != 83))
+          {
+            f3 = 0.0F;
+            f4 = 0.0F;
+          }
+          else
+          {
+            f4 = f1 - f4;
+            f3 = f2 - f3;
+          }
+          i = paramChar1 + '\000';
+          f7 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\001';
+          f8 = paramArrayOfFloat2[c2];
+          j = paramChar1 + '\002';
+          f9 = paramArrayOfFloat2[j];
+          k = paramChar1 + '\003';
+          paramPath.rCubicTo(f3, f4, f7, f8, f9, paramArrayOfFloat2[k]);
+          f3 = paramArrayOfFloat2[i];
+          f4 = paramArrayOfFloat2[c2];
+          f7 = f2 + paramArrayOfFloat2[j];
+          f8 = f1 + paramArrayOfFloat2[k];
+          f3 += f2;
+          f4 += f1;
+          f1 = f8;
+          f2 = f7;
+          break;
+        case 'q': 
+          i = paramChar1 + '\000';
+          f3 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\001';
+          f4 = paramArrayOfFloat2[c2];
+          j = paramChar1 + '\002';
+          f7 = paramArrayOfFloat2[j];
+          k = paramChar1 + '\003';
+          localPath.rQuadTo(f3, f4, f7, paramArrayOfFloat2[k]);
+          f3 = paramArrayOfFloat2[i];
+          f4 = paramArrayOfFloat2[c2];
+          f7 = f2 + paramArrayOfFloat2[j];
+          f8 = f1 + paramArrayOfFloat2[k];
+          f3 += f2;
+          f4 += f1;
+          f1 = f8;
+          f2 = f7;
+          break;
+        case 'm': 
+          i = paramChar1 + '\000';
+          f2 += paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\001';
+          f1 += paramArrayOfFloat2[c2];
+          if (paramChar1 > 0)
+          {
+            localPath.rLineTo(paramArrayOfFloat2[i], paramArrayOfFloat2[c2]);
+          }
+          else
+          {
+            localPath.rMoveTo(paramArrayOfFloat2[i], paramArrayOfFloat2[c2]);
+            f6 = f1;
+            f5 = f2;
+          }
+          break;
+        case 'l': 
+          i = paramChar1 + '\000';
+          f7 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\001';
+          localPath.rLineTo(f7, paramArrayOfFloat2[c2]);
+          f2 += paramArrayOfFloat2[i];
+          f1 += paramArrayOfFloat2[c2];
+          break;
+        case 'h': 
+          i = paramChar1 + '\000';
+          localPath.rLineTo(paramArrayOfFloat2[i], 0.0F);
+          f2 += paramArrayOfFloat2[i];
+          break;
+        case 'c': 
+          f3 = paramArrayOfFloat2[(paramChar1 + '\000')];
+          f4 = paramArrayOfFloat2[(paramChar1 + '\001')];
+          i = paramChar1 + '\002';
+          f7 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\003';
+          f8 = paramArrayOfFloat2[c2];
+          j = paramChar1 + '\004';
+          f9 = paramArrayOfFloat2[j];
+          k = paramChar1 + '\005';
+          paramPath.rCubicTo(f3, f4, f7, f8, f9, paramArrayOfFloat2[k]);
+          f3 = paramArrayOfFloat2[i];
+          f4 = paramArrayOfFloat2[c2];
+          f7 = f2 + paramArrayOfFloat2[j];
+          f8 = f1 + paramArrayOfFloat2[k];
+          f3 += f2;
+          f4 += f1;
+          f1 = f8;
+          f2 = f7;
+          break;
+        case 'a': 
+          i = paramChar1 + '\005';
+          f3 = paramArrayOfFloat2[i];
+          c2 = paramChar1 + '\006';
+          f4 = paramArrayOfFloat2[c2];
+          f7 = paramArrayOfFloat2[(paramChar1 + '\000')];
+          f8 = paramArrayOfFloat2[(paramChar1 + '\001')];
+          f9 = paramArrayOfFloat2[(paramChar1 + '\002')];
+          if (paramArrayOfFloat2[(paramChar1 + '\003')] != 0.0F) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          if (paramArrayOfFloat2[(paramChar1 + '\004')] != 0.0F) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          a(paramPath, f2, f1, f3 + f2, f4 + f1, f7, f8, f9, bool1, bool2);
+          f2 += paramArrayOfFloat2[i];
+          f1 += paramArrayOfFloat2[c2];
+          f4 = f1;
+          f3 = f2;
+          localPath = paramPath;
+          break;
+        case 'V': 
+          i = paramChar1 + '\000';
+          f1 = paramArrayOfFloat2[i];
+          localPath = paramPath;
+          localPath.lineTo(f2, f1);
+          f1 = paramArrayOfFloat2[i];
+          break;
+        case 'T': 
+          f7 = f1;
+          f8 = f2;
+          c2 = paramChar1;
+          if ((i != 113) && (i != 116) && (i != 81))
+          {
+            f2 = f8;
+            f1 = f7;
+            if (i != 84) {}
+          }
+          else
+          {
+            f1 = f7 * 2.0F - f4;
+            f2 = f8 * 2.0F - f3;
+          }
+          i = c2 + '\000';
+          f3 = paramArrayOfFloat2[i];
+          c2 += '\001';
+          localPath.quadTo(f2, f1, f3, paramArrayOfFloat2[c2]);
+          f8 = paramArrayOfFloat2[i];
+          f7 = paramArrayOfFloat2[c2];
+          f3 = f2;
+          f4 = f1;
+          f1 = f7;
+          f2 = f8;
+          break;
+        case 'S': 
+          c2 = paramChar1;
+          if ((i != 99) && (i != 115) && (i != 67) && (i != 83))
+          {
+            f3 = f1;
+            f1 = f2;
+            f2 = f3;
+          }
+          else
+          {
+            f1 = f1 * 2.0F - f4;
+            f3 = f2 * 2.0F - f3;
+            f2 = f1;
+            f1 = f3;
+          }
+          i = c2 + '\000';
+          f3 = paramArrayOfFloat2[i];
+          j = c2 + '\001';
+          f4 = paramArrayOfFloat2[j];
+          k = c2 + '\002';
+          f7 = paramArrayOfFloat2[k];
+          c2 += '\003';
+          paramPath.cubicTo(f1, f2, f3, f4, f7, paramArrayOfFloat2[c2]);
+          f3 = paramArrayOfFloat2[i];
+          f4 = paramArrayOfFloat2[j];
+          f2 = paramArrayOfFloat2[k];
+          f1 = paramArrayOfFloat2[c2];
+          break;
+        case 'Q': 
+          i = paramChar1;
+          c2 = i + 0;
+          f1 = paramArrayOfFloat2[c2];
+          j = i + 1;
+          f2 = paramArrayOfFloat2[j];
+          k = i + 2;
+          f3 = paramArrayOfFloat2[k];
+          i += 3;
+          localPath.quadTo(f1, f2, f3, paramArrayOfFloat2[i]);
+          f3 = paramArrayOfFloat2[c2];
+          f4 = paramArrayOfFloat2[j];
+          f2 = paramArrayOfFloat2[k];
+          f1 = paramArrayOfFloat2[i];
+          break;
+        case 'M': 
+          i = paramChar1;
+          c2 = i + 0;
+          f2 = paramArrayOfFloat2[c2];
+          j = i + 1;
+          f1 = paramArrayOfFloat2[j];
+          if (i > 0)
+          {
+            localPath.lineTo(paramArrayOfFloat2[c2], paramArrayOfFloat2[j]);
+          }
+          else
+          {
+            localPath.moveTo(paramArrayOfFloat2[c2], paramArrayOfFloat2[j]);
+            f6 = f1;
+            f5 = f2;
+          }
+          break;
+        case 'L': 
+          i = paramChar1;
+          c2 = i + 0;
+          f1 = paramArrayOfFloat2[c2];
+          i += 1;
+          localPath.lineTo(f1, paramArrayOfFloat2[i]);
+          f2 = paramArrayOfFloat2[c2];
+          f1 = paramArrayOfFloat2[i];
+          break;
+        case 'H': 
+          i = paramChar1 + '\000';
+          localPath.lineTo(paramArrayOfFloat2[i], f1);
+          f2 = paramArrayOfFloat2[i];
+          break;
+        case 'C': 
+          i = paramChar1;
+          f1 = paramArrayOfFloat2[(i + 0)];
+          f2 = paramArrayOfFloat2[(i + 1)];
+          c2 = i + 2;
+          f3 = paramArrayOfFloat2[c2];
+          j = i + 3;
+          f4 = paramArrayOfFloat2[j];
+          k = i + 4;
+          f7 = paramArrayOfFloat2[k];
+          i += 5;
+          paramPath.cubicTo(f1, f2, f3, f4, f7, paramArrayOfFloat2[i]);
+          f2 = paramArrayOfFloat2[k];
+          f1 = paramArrayOfFloat2[i];
+          f3 = paramArrayOfFloat2[c2];
+          f4 = paramArrayOfFloat2[j];
+          break;
+        case 'A': 
+          i = paramChar1;
+          c2 = i + 5;
+          f3 = paramArrayOfFloat2[c2];
+          j = i + 6;
+          f4 = paramArrayOfFloat2[j];
+          f7 = paramArrayOfFloat2[(i + 0)];
+          f8 = paramArrayOfFloat2[(i + 1)];
+          f9 = paramArrayOfFloat2[(i + 2)];
+          if (paramArrayOfFloat2[(i + 3)] != 0.0F) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          if (paramArrayOfFloat2[(i + 4)] != 0.0F) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          a(paramPath, f2, f1, f3, f4, f7, f8, f9, bool1, bool2);
+          f2 = paramArrayOfFloat2[c2];
+          f1 = paramArrayOfFloat2[j];
+          f4 = f1;
+          f3 = f2;
+        }
+        paramChar1 += c1;
+        i = paramChar2;
+      }
+      paramArrayOfFloat1[0] = f2;
+      paramArrayOfFloat1[1] = f1;
+      paramArrayOfFloat1[2] = f3;
+      paramArrayOfFloat1[3] = f4;
+      paramArrayOfFloat1[4] = f5;
+      paramArrayOfFloat1[5] = f6;
     }
-  }
-  
-  private boolean a(AtomicInteger paramAtomicInteger)
-  {
-    return paramAtomicInteger.incrementAndGet() % 4 != 0;
-  }
-  
-  private void d()
-  {
-    this.l = false;
-    this.m = false;
-    this.d = false;
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 86	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   9: astore_2
-    //   10: aload_2
-    //   11: ldc 191
-    //   13: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: pop
-    //   17: aload_2
-    //   18: aload_0
-    //   19: getfield 41	com/tencent/token/da:d	Z
-    //   22: invokevirtual 194	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   25: pop
-    //   26: aload_2
-    //   27: ldc 196
-    //   29: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: pop
-    //   33: aload_2
-    //   34: aload_0
-    //   35: getfield 54	com/tencent/token/da:b	Lcom/tencent/token/db;
-    //   38: invokevirtual 143	com/tencent/token/db:b	()Ljava/lang/String;
-    //   41: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: pop
-    //   45: ldc 198
-    //   47: aload_2
-    //   48: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 203	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   54: pop
-    //   55: aload_0
-    //   56: getfield 41	com/tencent/token/da:d	Z
-    //   59: istore_1
-    //   60: iload_1
-    //   61: ifeq +6 -> 67
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: return
-    //   67: aload_0
-    //   68: iconst_1
-    //   69: putfield 41	com/tencent/token/da:d	Z
-    //   72: aload_0
-    //   73: getfield 69	com/tencent/token/da:h	Lcom/tencent/token/dc;
-    //   76: aload_0
-    //   77: getfield 54	com/tencent/token/da:b	Lcom/tencent/token/db;
-    //   80: invokevirtual 143	com/tencent/token/db:b	()Ljava/lang/String;
-    //   83: new 6	com/tencent/token/da$1
-    //   86: dup
-    //   87: aload_0
-    //   88: invokespecial 205	com/tencent/token/da$1:<init>	(Lcom/tencent/token/da;)V
-    //   91: invokevirtual 208	com/tencent/token/dc:a	(Ljava/lang/String;Lokhttp3/f;)V
-    //   94: goto +16 -> 110
-    //   97: astore_2
-    //   98: goto +15 -> 113
-    //   101: astore_2
-    //   102: aload_2
-    //   103: invokevirtual 171	java/io/IOException:printStackTrace	()V
-    //   106: aload_0
-    //   107: invokespecial 152	com/tencent/token/da:d	()V
-    //   110: aload_0
-    //   111: monitorexit
-    //   112: return
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_2
-    //   116: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	this	da
-    //   59	2	1	bool	boolean
-    //   9	39	2	localStringBuilder	StringBuilder
-    //   97	1	2	localObject	Object
-    //   101	15	2	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   2	60	97	finally
-    //   67	94	97	finally
-    //   102	110	97	finally
-    //   2	60	101	java/io/IOException
-    //   67	94	101	java/io/IOException
-  }
-  
-  public void b()
-  {
-    this.l = true;
-    this.d = false;
-  }
-  
-  public boolean c()
-  {
-    return this.d;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.n == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    
+    public static void a(b[] paramArrayOfb, Path paramPath)
     {
-    default: 
-      return;
-    case 4: 
-      if (a(this.e)) {
-        return;
+      float[] arrayOfFloat = new float[6];
+      char c = 'm';
+      int i = 0;
+      while (i < paramArrayOfb.length)
+      {
+        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].a, paramArrayOfb[i].b);
+        c = paramArrayOfb[i].a;
+        i += 1;
       }
-      d();
-      this.i = new long[4];
-      this.n.c();
-      return;
-    case 3: 
-      this.n.b();
-      if (a(this.f)) {
-        return;
-      }
-      d();
-      return;
-    case 2: 
-      if (a(this.g)) {
-        return;
-      }
-      this.k.renameTo(new File(this.b.c(), this.b.a()));
-      d();
-      this.n.a();
-      return;
     }
-    long l1 = 0L;
-    int i1 = 0;
-    int i2 = this.i.length;
-    while (i1 < i2)
+    
+    public final void a(b paramb1, b paramb2, float paramFloat)
     {
-      l1 += this.i[i1];
-      i1 += 1;
+      int i = 0;
+      for (;;)
+      {
+        float[] arrayOfFloat = paramb1.b;
+        if (i >= arrayOfFloat.length) {
+          break;
+        }
+        this.b[i] = (arrayOfFloat[i] * (1.0F - paramFloat) + paramb2.b[i] * paramFloat);
+        i += 1;
+      }
     }
-    this.n.a((float)l1 * 1.0F / (float)this.c);
   }
 }
 

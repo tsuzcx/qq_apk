@@ -27,7 +27,7 @@ public class TitleOptionMenu
   private a f;
   private View.OnClickListener g = new View.OnClickListener()
   {
-    public void onClick(View paramAnonymousView)
+    public final void onClick(View paramAnonymousView)
     {
       if (TitleOptionMenu.a(TitleOptionMenu.this) != null) {
         TitleOptionMenu.a(TitleOptionMenu.this).a(((Integer)paramAnonymousView.getTag()).intValue());
@@ -37,7 +37,7 @@ public class TitleOptionMenu
   };
   private View.OnTouchListener h = new View.OnTouchListener()
   {
-    public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+    public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
     {
       if ((paramAnonymousMotionEvent.getAction() == 0) && (TitleOptionMenu.b(TitleOptionMenu.this).findFocus() == null))
       {
@@ -60,64 +60,7 @@ public class TitleOptionMenu
     this.b = paramContext;
   }
   
-  private void c()
-  {
-    this.a = true;
-    Object localObject = (LayoutInflater)this.b.getSystemService("layout_inflater");
-    int i = this.e;
-    if (i == 2)
-    {
-      this.c = ((LayoutInflater)localObject).inflate(2131296460, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166115);
-      localObject = findViewById(2131165731);
-      ((View)localObject).setTag(Integer.valueOf(0));
-      ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165732);
-      ((View)localObject).setTag(Integer.valueOf(1));
-      ((View)localObject).setOnClickListener(this.g);
-    }
-    else if (i == 3)
-    {
-      this.c = ((LayoutInflater)localObject).inflate(2131296459, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166115);
-      localObject = findViewById(2131165730);
-      ((View)localObject).setTag(Integer.valueOf(0));
-      ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165732);
-      ((View)localObject).setTag(Integer.valueOf(1));
-      ((View)localObject).setOnClickListener(this.g);
-    }
-    else if (i == 4)
-    {
-      this.c = ((LayoutInflater)localObject).inflate(2131296458, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166115);
-      localObject = findViewById(2131165730);
-      ((View)localObject).setTag(Integer.valueOf(0));
-      ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165732);
-      ((View)localObject).setTag(Integer.valueOf(1));
-      ((View)localObject).setOnClickListener(this.g);
-    }
-    else if (i == 5)
-    {
-      this.c = ((LayoutInflater)localObject).inflate(2131296457, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = findViewById(2131166115);
-      localObject = findViewById(2131165730);
-      ((View)localObject).setTag(Integer.valueOf(0));
-      ((View)localObject).setOnClickListener(this.g);
-      localObject = findViewById(2131165732);
-      ((View)localObject).setTag(Integer.valueOf(1));
-      ((View)localObject).setOnClickListener(this.g);
-    }
-    this.c.setOnTouchListener(this.h);
-    ((ViewGroup)((Activity)this.b).getWindow().getDecorView()).setOnTouchListener(this.h);
-  }
-  
-  public void a()
+  public final void a()
   {
     Object localObject = getTag();
     if (localObject != null) {
@@ -126,7 +69,7 @@ public class TitleOptionMenu
     setVisibility(0);
   }
   
-  public void b()
+  public final void b()
   {
     Object localObject = getTag();
     if (localObject != null) {
@@ -135,21 +78,73 @@ public class TitleOptionMenu
     setVisibility(8);
     AnimationUtils.loadAnimation(this.b, 2130771983).setAnimationListener(new Animation.AnimationListener()
     {
-      public void onAnimationEnd(Animation paramAnonymousAnimation)
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         TitleOptionMenu.this.setVisibility(4);
       }
       
-      public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
       
-      public void onAnimationStart(Animation paramAnonymousAnimation) {}
+      public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
   }
   
   public void setDisplayMode(int paramInt)
   {
     this.e = paramInt;
-    c();
+    this.a = true;
+    Object localObject = (LayoutInflater)this.b.getSystemService("layout_inflater");
+    paramInt = this.e;
+    if (paramInt == 2)
+    {
+      this.c = ((LayoutInflater)localObject).inflate(2131296461, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+      this.d = findViewById(2131166121);
+      localObject = findViewById(2131165735);
+      ((View)localObject).setTag(Integer.valueOf(0));
+      ((View)localObject).setOnClickListener(this.g);
+      localObject = findViewById(2131165736);
+      ((View)localObject).setTag(Integer.valueOf(1));
+      ((View)localObject).setOnClickListener(this.g);
+    }
+    else if (paramInt == 3)
+    {
+      this.c = ((LayoutInflater)localObject).inflate(2131296460, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+      this.d = findViewById(2131166121);
+      localObject = findViewById(2131165734);
+      ((View)localObject).setTag(Integer.valueOf(0));
+      ((View)localObject).setOnClickListener(this.g);
+      localObject = findViewById(2131165736);
+      ((View)localObject).setTag(Integer.valueOf(1));
+      ((View)localObject).setOnClickListener(this.g);
+    }
+    else if (paramInt == 4)
+    {
+      this.c = ((LayoutInflater)localObject).inflate(2131296459, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+      this.d = findViewById(2131166121);
+      localObject = findViewById(2131165734);
+      ((View)localObject).setTag(Integer.valueOf(0));
+      ((View)localObject).setOnClickListener(this.g);
+      localObject = findViewById(2131165736);
+      ((View)localObject).setTag(Integer.valueOf(1));
+      ((View)localObject).setOnClickListener(this.g);
+    }
+    else if (paramInt == 5)
+    {
+      this.c = ((LayoutInflater)localObject).inflate(2131296458, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+      this.d = findViewById(2131166121);
+      localObject = findViewById(2131165734);
+      ((View)localObject).setTag(Integer.valueOf(0));
+      ((View)localObject).setOnClickListener(this.g);
+      localObject = findViewById(2131165736);
+      ((View)localObject).setTag(Integer.valueOf(1));
+      ((View)localObject).setOnClickListener(this.g);
+    }
+    this.c.setOnTouchListener(this.h);
+    ((ViewGroup)((Activity)this.b).getWindow().getDecorView()).setOnTouchListener(this.h);
   }
   
   public void setOnItemClickedListener(a parama)

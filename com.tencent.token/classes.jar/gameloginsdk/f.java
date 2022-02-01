@@ -1,8 +1,8 @@
 package gameloginsdk;
 
-import b.a.h;
-import com.tencent.token.ei;
-import tmsdk.common.c.a.d;
+import com.tencent.token.agy;
+import com.tencent.token.apb;
+import com.tencent.token.jv;
 
 class f
   implements Runnable
@@ -11,19 +11,19 @@ class f
   
   public void run()
   {
-    h localh = new h();
-    localh.b = 18L;
-    localh.a = GameLogin.j(this.i);
-    localh.g = this.a;
-    localh.f = this.b;
-    localh.j = this.c;
-    localh.i = this.d;
-    localh.c = this.e;
-    localh.d = this.f;
-    localh.k = GameLogin.k(this.i);
-    localh.h = this.g;
-    localh.o = d.a(GameLogin.a(this.i, this.h));
-    this.i.j.a(1, 10051, localh);
+    jv localjv = new jv();
+    localjv.b = 18L;
+    localjv.a = GameLogin.j(this.i);
+    localjv.g = this.a;
+    localjv.f = this.b;
+    localjv.j = this.c;
+    localjv.i = this.d;
+    localjv.c = this.e;
+    localjv.d = this.f;
+    localjv.k = GameLogin.k(this.i);
+    localjv.h = this.g;
+    localjv.o = apb.a(GameLogin.a(this.i, this.h));
+    this.i.j.a(1, 10051, localjv);
   }
 }
 

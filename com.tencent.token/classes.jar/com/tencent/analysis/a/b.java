@@ -69,11 +69,8 @@ public enum b
   
   public static final void a(ByteBuffer paramByteBuffer, Map paramMap)
   {
-    int i1 = paramByteBuffer.getShort();
-    Object localObject = new StringBuilder("_");
-    ((StringBuilder)localObject).append(i1 & 0xFFFF);
-    localObject = valueOf(((StringBuilder)localObject).toString());
-    paramMap.put(localObject, ((b)localObject).a(paramByteBuffer));
+    b localb = valueOf("_".concat(String.valueOf(paramByteBuffer.getShort() & 0xFFFF)));
+    paramMap.put(localb, localb.a(paramByteBuffer));
   }
   
   protected String a(ByteBuffer paramByteBuffer)

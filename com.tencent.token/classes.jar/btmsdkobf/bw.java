@@ -25,7 +25,7 @@ public class bw
     try
     {
       if (!bc.p()) {
-        break label78;
+        break label71;
       }
       str1 = "_test";
     }
@@ -36,14 +36,13 @@ public class bw
         String str1;
         StringBuilder localStringBuilder;
         continue;
-        label78:
+        label71:
         String str2 = "";
       }
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
-    localStringBuilder.append("/DCIM/.tmfs/");
-    localStringBuilder.append("sk_v");
+    localStringBuilder.append("/DCIM/.tmfs/sk_v");
     localStringBuilder.append(str1);
     localStringBuilder.append(".dat");
     gP = localStringBuilder.toString();
@@ -71,49 +70,45 @@ public class bw
   private LinkedHashMap<String, cg.a> ap()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Object localObject1 = dx.F(this.O.getString("key_hips", ""));
-    if (TextUtils.isEmpty((CharSequence)localObject1))
+    Object localObject = dx.F(this.O.getString("key_hips", ""));
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
       eh.f("SharkDao", "[ip_list]getAllHIPListInfos(), none is saved");
       return localLinkedHashMap;
     }
-    localObject1 = ((String)localObject1).split("\\|");
-    if ((localObject1 != null) && (localObject1.length != 0))
+    localObject = ((String)localObject).split("\\|");
+    if ((localObject != null) && (localObject.length != 0))
     {
-      int j = localObject1.length;
+      int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        CharSequence localCharSequence = localObject1[i];
+        CharSequence localCharSequence = localObject[i];
         if (!TextUtils.isEmpty(localCharSequence))
         {
-          Object localObject2 = localCharSequence.split(",");
-          if ((localObject2 != null) && (localObject2.length > 0))
+          String[] arrayOfString = localCharSequence.split(",");
+          if ((arrayOfString != null) && (arrayOfString.length > 0))
           {
-            localCharSequence = localObject2[0];
+            localCharSequence = arrayOfString[0];
             try
             {
-              long l = Long.parseLong(localObject2[1]);
-              localObject2 = localObject2[2].split("#");
-              if (localObject2 != null) {
-                localLinkedHashMap.put(localCharSequence, new cg.a(l, cg.a(Arrays.asList((Object[])localObject2), false), false));
+              long l = Long.parseLong(arrayOfString[1]);
+              arrayOfString = arrayOfString[2].split("#");
+              if (arrayOfString != null) {
+                localLinkedHashMap.put(localCharSequence, new cg.a(l, cg.a(Arrays.asList(arrayOfString), false), false));
               }
             }
             catch (Exception localException)
             {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("[ip_list]getAllHIPListInfos() exception: ");
-              ((StringBuilder)localObject2).append(localException);
-              eh.h("SharkDao", ((StringBuilder)localObject2).toString());
+              eh.h("SharkDao", "[ip_list]getAllHIPListInfos() exception: ".concat(String.valueOf(localException)));
             }
           }
         }
         i += 1;
       }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[ip_list]getAllHIPListInfos(), size: ");
-      ((StringBuilder)localObject1).append(localLinkedHashMap.size());
-      eh.f("SharkDao", ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder("[ip_list]getAllHIPListInfos(), size: ");
+      ((StringBuilder)localObject).append(localLinkedHashMap.size());
+      eh.f("SharkDao", ((StringBuilder)localObject).toString());
       return localLinkedHashMap;
     }
     eh.g("SharkDao", "[ip_list]getAllHIPListInfos(), item number is 0!");
@@ -137,7 +132,6 @@ public class bw
   public void a(cs.b paramb)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
     localStringBuilder.append(paramb.is);
     localStringBuilder.append("|");
     localStringBuilder.append(paramb.ir);
@@ -181,8 +175,7 @@ public class bw
     } else {
       i = 1;
     }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("[ip_list]setHIPListInfo(), op=");
+    Object localObject2 = new StringBuilder("[ip_list]setHIPListInfo(), op=");
     if (i != 0) {
       localObject1 = "[delete] ";
     } else {
@@ -203,15 +196,9 @@ public class bw
       localObject3 = (String)((Map.Entry)localObject4).getKey();
       localObject4 = (cg.a)((Map.Entry)localObject4).getValue();
       if ((localObject3 != null) && (localObject4 != null)) {
-        if (!((cg.a)localObject4).isValid())
-        {
-          localObject4 = new StringBuilder();
-          ((StringBuilder)localObject4).append("[ip_list]setHIPListInfo(), remove expired:　");
-          ((StringBuilder)localObject4).append((String)localObject3);
-          eh.h("SharkDao", ((StringBuilder)localObject4).toString());
-        }
-        else
-        {
+        if (!((cg.a)localObject4).isValid()) {
+          eh.h("SharkDao", "[ip_list]setHIPListInfo(), remove expired:　".concat(String.valueOf(localObject3)));
+        } else {
           ((LinkedHashMap)localObject1).put(localObject3, localObject4);
         }
       }
@@ -230,16 +217,10 @@ public class bw
     if (((LinkedHashMap)localObject1).size() > 10)
     {
       paramString = new ArrayList(((LinkedHashMap)localObject1).keySet());
-      paramList = new StringBuilder();
-      paramList.append("[ip_list]setHIPListInfo(), too manay, keyList: ");
-      paramList.append(paramString);
-      eh.f("SharkDao", paramList.toString());
+      eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, keyList: ".concat(String.valueOf(paramString)));
       paramString = (String)paramString.get(0);
       ((LinkedHashMap)localObject1).remove(paramString);
-      paramList = new StringBuilder();
-      paramList.append("[ip_list]setHIPListInfo(), too manay, remove firstKey: ");
-      paramList.append(paramString);
-      eh.f("SharkDao", paramList.toString());
+      eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, remove firstKey: ".concat(String.valueOf(paramString)));
     }
     paramString = new StringBuilder();
     paramList = ((LinkedHashMap)localObject1).entrySet().iterator();
@@ -280,8 +261,7 @@ public class bw
         }
       }
     }
-    paramList = new StringBuilder();
-    paramList.append("[ip_list]setHIPListInfo(), new size: ");
+    paramList = new StringBuilder("[ip_list]setHIPListInfo(), new size: ");
     paramList.append(i);
     paramList.append(", before encode: ");
     paramList.append(paramString.toString());

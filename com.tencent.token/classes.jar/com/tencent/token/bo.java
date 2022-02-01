@@ -1,904 +1,390 @@
 package com.tencent.token;
 
-import com.tencent.halley.common.b;
-import com.tencent.halley.common.b.d;
-import com.tencent.halley.common.h;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-
 public final class bo
 {
-  private static bo a = new bo();
-  private int b = 20000;
-  private Socket c;
-  private int d = -1;
-  private bp e;
-  private az f;
-  private OutputStream g;
-  private InputStream h;
-  private int i = -1;
-  private int j = -1;
-  private long k = -1L;
-  private int l = -1;
-  private int m = -1;
-  
-  public static bo a()
-  {
-    try
-    {
-      bo localbo = a;
-      return localbo;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    try
-    {
-      a(paramInt, null);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void a(int paramInt, String paramString)
-  {
-    try
-    {
-      if ((paramInt != this.d) && (this.e != null))
-      {
-        this.e.b = paramInt;
-        if (paramString != null) {
-          this.e.c = paramString;
-        }
-      }
-      return;
-    }
-    finally {}
-  }
-  
   /* Error */
-  private boolean a(bp parambp)
+  public static android.view.animation.Interpolator a(android.content.Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_0
-    //   3: istore 4
-    //   5: iconst_0
-    //   6: istore_2
-    //   7: iload 4
-    //   9: ifne +307 -> 316
-    //   12: aload_1
-    //   13: ifnull +312 -> 325
-    //   16: invokestatic 72	java/lang/System:currentTimeMillis	()J
-    //   19: aload_1
-    //   20: getfield 74	com/tencent/token/bp:i	J
-    //   23: lsub
-    //   24: aload_1
-    //   25: getfield 75	com/tencent/token/bp:j	I
-    //   28: i2l
-    //   29: lcmp
-    //   30: ifge +295 -> 325
-    //   33: iconst_0
-    //   34: istore_3
-    //   35: goto +3 -> 38
-    //   38: iload_3
-    //   39: ifne +277 -> 316
-    //   42: iload_2
-    //   43: iconst_5
-    //   44: if_icmpge +272 -> 316
-    //   47: iload_2
-    //   48: iconst_1
-    //   49: iadd
-    //   50: istore_3
-    //   51: aload_0
-    //   52: invokespecial 78	com/tencent/token/bo:c	()Z
-    //   55: istore 5
-    //   57: iload 5
-    //   59: ifeq +244 -> 303
-    //   62: new 80	java/lang/StringBuilder
-    //   65: dup
-    //   66: ldc 82
-    //   68: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   71: astore 6
-    //   73: aload 6
-    //   75: aload_1
-    //   76: invokevirtual 88	com/tencent/token/bp:j	()I
-    //   79: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   0: getstatic 16	android/os/Build$VERSION:SDK_INT	I
+    //   3: bipush 21
+    //   5: if_icmplt +9 -> 14
+    //   8: aload_0
+    //   9: iload_1
+    //   10: invokestatic 21	android/view/animation/AnimationUtils:loadInterpolator	(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
+    //   13: areturn
+    //   14: aconst_null
+    //   15: astore 6
+    //   17: aconst_null
+    //   18: astore 7
+    //   20: aconst_null
+    //   21: astore 4
+    //   23: aconst_null
+    //   24: astore 8
+    //   26: iload_1
+    //   27: ldc 22
+    //   29: if_icmpne +11 -> 40
+    //   32: new 24	com/tencent/token/fh
+    //   35: dup
+    //   36: invokespecial 28	com/tencent/token/fh:<init>	()V
+    //   39: areturn
+    //   40: iload_1
+    //   41: ldc 29
+    //   43: if_icmpne +11 -> 54
+    //   46: new 31	com/tencent/token/fi
+    //   49: dup
+    //   50: invokespecial 32	com/tencent/token/fi:<init>	()V
+    //   53: areturn
+    //   54: iload_1
+    //   55: ldc 33
+    //   57: if_icmpne +11 -> 68
+    //   60: new 35	com/tencent/token/fj
+    //   63: dup
+    //   64: invokespecial 36	com/tencent/token/fj:<init>	()V
+    //   67: areturn
+    //   68: aload_0
+    //   69: invokevirtual 42	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   72: iload_1
+    //   73: invokevirtual 48	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
+    //   76: astore 5
+    //   78: aload_0
+    //   79: invokevirtual 42	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   82: pop
-    //   83: aload 6
-    //   85: ldc 94
-    //   87: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: pop
-    //   91: aload 6
-    //   93: aload_0
-    //   94: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   97: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   100: pop
-    //   101: ldc 104
-    //   103: aload 6
-    //   105: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 113	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   111: aload_1
-    //   112: invokevirtual 116	com/tencent/token/bp:k	()[B
-    //   115: astore 6
-    //   117: aload_0
-    //   118: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   121: aload 6
-    //   123: iconst_0
-    //   124: aload 6
-    //   126: arraylength
-    //   127: invokevirtual 124	java/io/OutputStream:write	([BII)V
-    //   130: aload_0
-    //   131: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   134: invokevirtual 127	java/io/OutputStream:flush	()V
-    //   137: aload_0
-    //   138: invokestatic 72	java/lang/System:currentTimeMillis	()J
-    //   141: putfield 46	com/tencent/token/bo:k	J
-    //   144: new 80	java/lang/StringBuilder
-    //   147: dup
-    //   148: ldc 129
-    //   150: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   153: astore 7
-    //   155: aload 7
-    //   157: aload 6
-    //   159: arraylength
-    //   160: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   163: pop
-    //   164: ldc 104
-    //   166: aload 7
-    //   168: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokestatic 131	com/tencent/halley/common/b:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   174: iconst_1
-    //   175: istore 4
-    //   177: iload_3
-    //   178: istore_2
-    //   179: goto -172 -> 7
-    //   182: astore 6
-    //   184: goto +77 -> 261
-    //   187: astore 6
-    //   189: ldc 104
-    //   191: aload 6
-    //   193: invokestatic 134	com/tencent/halley/common/b:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   196: aload_1
-    //   197: bipush 251
-    //   199: putfield 60	com/tencent/token/bp:b	I
-    //   202: aload_1
-    //   203: aload 6
-    //   205: invokestatic 139	com/tencent/token/br:a	(Ljava/lang/Exception;)Ljava/lang/String;
-    //   208: putfield 63	com/tencent/token/bp:c	Ljava/lang/String;
-    //   211: iload_3
-    //   212: istore_2
-    //   213: iload 4
-    //   215: ifne -208 -> 7
-    //   218: aload_0
-    //   219: aload_1
-    //   220: getfield 60	com/tencent/token/bp:b	I
-    //   223: invokespecial 141	com/tencent/token/bo:a	(I)V
-    //   226: aload_0
-    //   227: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   230: invokevirtual 144	java/io/OutputStream:close	()V
-    //   233: aload_0
-    //   234: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   237: invokevirtual 147	java/net/Socket:close	()V
-    //   240: aload_0
-    //   241: invokespecial 149	com/tencent/token/bo:e	()V
-    //   244: iload_3
-    //   245: istore_2
-    //   246: goto -239 -> 7
-    //   249: astore 6
-    //   251: aload 6
-    //   253: invokevirtual 152	java/lang/Exception:printStackTrace	()V
-    //   256: iload_3
-    //   257: istore_2
-    //   258: goto -251 -> 7
-    //   261: iload 4
-    //   263: ifne +37 -> 300
-    //   266: aload_0
-    //   267: aload_1
-    //   268: getfield 60	com/tencent/token/bp:b	I
-    //   271: invokespecial 141	com/tencent/token/bo:a	(I)V
-    //   274: aload_0
-    //   275: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   278: invokevirtual 144	java/io/OutputStream:close	()V
-    //   281: aload_0
-    //   282: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   285: invokevirtual 147	java/net/Socket:close	()V
-    //   288: aload_0
-    //   289: invokespecial 149	com/tencent/token/bo:e	()V
-    //   292: goto +8 -> 300
-    //   295: astore_1
-    //   296: aload_1
-    //   297: invokevirtual 152	java/lang/Exception:printStackTrace	()V
-    //   300: aload 6
-    //   302: athrow
-    //   303: aload_0
-    //   304: invokespecial 149	com/tencent/token/bo:e	()V
-    //   307: iload_3
-    //   308: istore_2
-    //   309: goto -302 -> 7
-    //   312: aload_0
-    //   313: monitorexit
-    //   314: aload_1
-    //   315: athrow
-    //   316: aload_0
-    //   317: monitorexit
-    //   318: iload 4
-    //   320: ireturn
-    //   321: astore_1
-    //   322: goto -10 -> 312
-    //   325: iconst_1
-    //   326: istore_3
-    //   327: goto -289 -> 38
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	330	0	this	bo
-    //   0	330	1	parambp	bp
-    //   6	303	2	n	int
-    //   34	293	3	i1	int
-    //   3	316	4	bool1	boolean
-    //   55	3	5	bool2	boolean
-    //   71	87	6	localObject1	Object
-    //   182	1	6	localObject2	Object
-    //   187	17	6	localException1	Exception
-    //   249	52	6	localException2	Exception
-    //   153	14	7	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   62	174	182	finally
-    //   189	211	182	finally
-    //   62	174	187	java/lang/Exception
-    //   218	244	249	java/lang/Exception
-    //   266	292	295	java/lang/Exception
-    //   16	33	321	finally
-    //   51	57	321	finally
-    //   218	244	321	finally
-    //   251	256	321	finally
-    //   266	292	321	finally
-    //   296	300	321	finally
-    //   300	303	321	finally
-    //   303	307	321	finally
-  }
-  
-  private void b()
-  {
-    for (;;)
-    {
-      int i2;
-      try
-      {
-        long l1 = System.currentTimeMillis();
-        int n;
-        try
-        {
-          Object localObject1 = new StringBuilder("doReadData: try read data...sk:");
-          ((StringBuilder)localObject1).append(this.c);
-          b.b("WupTaskController", ((StringBuilder)localObject1).toString());
-          Object localObject3 = new byte[4];
-          n = 0;
-          i1 = n;
-          if (n < 4)
-          {
-            b.a("WupTaskController", "try read packet size: 4 bytes");
-            i2 = this.h.read((byte[])localObject3, n, 4 - n);
-            if (i2 <= 0) {
-              break label563;
-            }
-            this.l = ((int)(System.currentTimeMillis() - this.k));
-            i1 = n + i2;
-            n = i1;
-            if (i1 != 4) {
-              continue;
-            }
-          }
-          if (i1 == 4)
-          {
-            n = h.a((byte[])localObject3, 0);
-            if ((n > 4) && (n <= 524288))
-            {
-              localObject1 = new byte[n];
-              System.arraycopy(localObject3, 0, localObject1, 0, 4);
-              long l2 = System.currentTimeMillis();
-              if (i1 < n)
-              {
-                i2 = n - i1;
-                localObject3 = new StringBuilder("try read:");
-                ((StringBuilder)localObject3).append(i2);
-                b.a("WupTaskController", ((StringBuilder)localObject3).toString());
-                i2 = this.h.read((byte[])localObject1, i1, i2);
-                localObject3 = new StringBuilder("read ret:");
-                ((StringBuilder)localObject3).append(i2);
-                b.a("WupTaskController", ((StringBuilder)localObject3).toString());
-                if (i2 <= 0) {
-                  break label573;
-                }
-                i1 += i2;
-                continue;
-              }
-              if (i1 != n)
-              {
-                localObject3 = new StringBuilder("read fail. readLen:");
-                ((StringBuilder)localObject3).append(i1);
-                ((StringBuilder)localObject3).append(",packSize:");
-                ((StringBuilder)localObject3).append(n);
-                b.c("WupTaskController", ((StringBuilder)localObject3).toString());
-                localObject3 = new StringBuilder("readLen != packSize,rspBuff:");
-                ((StringBuilder)localObject3).append(h.a((byte[])localObject1));
-                a(-6, ((StringBuilder)localObject3).toString());
-                return;
-              }
-              this.m = ((int)(System.currentTimeMillis() - l2));
-              localObject3 = new StringBuilder("doSendReceive: read finish,readLen=");
-              ((StringBuilder)localObject3).append(i1);
-              b.b("WupTaskController", ((StringBuilder)localObject3).toString());
-              localObject3 = new d();
-              try
-              {
-                ((d)localObject3).a((byte[])localObject1);
-                if (this.e != null)
-                {
-                  this.e.a = ((d)localObject3);
-                  this.e.b = 0;
-                  this.m = ((int)(System.currentTimeMillis() - l1));
-                  this.e.f = this.l;
-                  this.e.d = this.j;
-                  this.e.g = this.m;
-                }
-                return;
-              }
-              catch (Exception localException1)
-              {
-                a(-8, br.a(localException1));
-                return;
-              }
-            }
-            localStringBuilder = new StringBuilder("packSizeFail:");
-            localStringBuilder.append(n);
-            a(-6, localStringBuilder.toString());
-            return;
-          }
-          StringBuilder localStringBuilder = new StringBuilder("readLen fail:");
-          localStringBuilder.append(i1);
-          a(-6, localStringBuilder.toString());
-          return;
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          b.a("WupTaskController", localException2);
-          a(-7, br.a(localException2));
-          return;
-        }
-        int i1 = n;
-      }
-      finally {}
-      label563:
-      if (i2 != -1)
-      {
-        continue;
-        label573:
-        if (i2 == -1) {}
-      }
-    }
-  }
-  
-  private boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.c != null)
-      {
-        bool1 = bool2;
-        if (this.c.isConnected())
-        {
-          bool1 = bool2;
-          if (!this.c.isClosed())
-          {
-            OutputStream localOutputStream = this.g;
-            bool1 = bool2;
-            if (localOutputStream != null) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-      return bool1;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  private void d()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 158	com/tencent/token/bo:h	Ljava/io/InputStream;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +26 -> 34
-    //   11: aload_0
-    //   12: getfield 158	com/tencent/token/bo:h	Ljava/io/InputStream;
-    //   15: invokevirtual 216	java/io/InputStream:close	()V
-    //   18: aload_0
-    //   19: aconst_null
-    //   20: putfield 158	com/tencent/token/bo:h	Ljava/io/InputStream;
-    //   23: goto +11 -> 34
-    //   26: astore_1
-    //   27: aload_0
-    //   28: aconst_null
-    //   29: putfield 158	com/tencent/token/bo:h	Ljava/io/InputStream;
-    //   32: aload_1
-    //   33: athrow
-    //   34: aload_0
-    //   35: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ifnull +26 -> 66
-    //   43: aload_0
-    //   44: getfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   47: invokevirtual 144	java/io/OutputStream:close	()V
-    //   50: aload_0
-    //   51: aconst_null
-    //   52: putfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   55: goto +11 -> 66
-    //   58: astore_1
-    //   59: aload_0
-    //   60: aconst_null
-    //   61: putfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   64: aload_1
-    //   65: athrow
-    //   66: aload_0
-    //   67: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   70: astore_1
-    //   71: aload_1
-    //   72: ifnull +26 -> 98
-    //   75: aload_0
-    //   76: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   79: invokevirtual 147	java/net/Socket:close	()V
-    //   82: aload_0
-    //   83: aconst_null
-    //   84: putfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   87: goto +11 -> 98
-    //   90: astore_1
-    //   91: aload_0
-    //   92: aconst_null
-    //   93: putfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   96: aload_1
-    //   97: athrow
-    //   98: invokestatic 220	com/tencent/token/bl:a	()V
-    //   101: aload_0
-    //   102: monitorexit
-    //   103: return
-    //   104: astore_1
-    //   105: aload_0
-    //   106: monitorexit
-    //   107: aload_1
-    //   108: athrow
-    //   109: astore_1
-    //   110: goto -92 -> 18
-    //   113: astore_1
-    //   114: goto -64 -> 50
-    //   117: astore_1
-    //   118: goto -36 -> 82
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	121	0	this	bo
-    //   6	2	1	localInputStream	InputStream
-    //   26	7	1	localObject1	Object
-    //   38	2	1	localOutputStream	OutputStream
-    //   58	7	1	localObject2	Object
-    //   70	2	1	localSocket	Socket
-    //   90	7	1	localObject3	Object
-    //   104	4	1	localObject4	Object
-    //   109	1	1	localException1	Exception
-    //   113	1	1	localException2	Exception
-    //   117	1	1	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   11	18	26	finally
-    //   43	50	58	finally
-    //   75	82	90	finally
-    //   2	7	104	finally
-    //   18	23	104	finally
-    //   27	34	104	finally
-    //   34	39	104	finally
-    //   50	55	104	finally
-    //   59	66	104	finally
-    //   66	71	104	finally
-    //   82	87	104	finally
-    //   91	98	104	finally
-    //   98	101	104	finally
-    //   11	18	109	java/lang/Exception
-    //   43	50	113	java/lang/Exception
-    //   75	82	117	java/lang/Exception
-  }
-  
-  /* Error */
-  private void e()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 104
-    //   4: ldc 222
-    //   6: invokestatic 184	com/tencent/halley/common/b:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: new 224	com/tencent/token/bn
-    //   12: dup
-    //   13: invokespecial 225	com/tencent/token/bn:<init>	()V
-    //   16: astore 7
-    //   18: aload_0
-    //   19: getfield 57	com/tencent/token/bo:e	Lcom/tencent/token/bp;
-    //   22: getfield 75	com/tencent/token/bp:j	I
-    //   25: ifle +22 -> 47
-    //   28: aload_0
-    //   29: getfield 57	com/tencent/token/bo:e	Lcom/tencent/token/bp;
-    //   32: getfield 75	com/tencent/token/bp:j	I
-    //   35: istore_1
-    //   36: aload 7
-    //   38: iload_1
-    //   39: invokeinterface 228 2 0
-    //   44: goto +16 -> 60
-    //   47: invokestatic 233	com/tencent/token/be:a	()Lcom/tencent/token/be;
-    //   50: getfield 236	com/tencent/token/be:b	Lcom/tencent/token/bh;
-    //   53: getfield 240	com/tencent/token/bh:a	I
-    //   56: istore_1
-    //   57: goto -21 -> 36
-    //   60: aload 7
-    //   62: invokestatic 233	com/tencent/token/be:a	()Lcom/tencent/token/be;
-    //   65: getfield 236	com/tencent/token/be:b	Lcom/tencent/token/bh;
-    //   68: getfield 241	com/tencent/token/bh:d	I
-    //   71: invokeinterface 243 2 0
-    //   76: getstatic 248	com/tencent/token/bg:a	[I
-    //   79: astore 8
-    //   81: aload 7
-    //   83: ldc 250
-    //   85: invokeinterface 252 2 0
-    //   90: aload 7
-    //   92: aload 8
-    //   94: invokeinterface 255 2 0
-    //   99: invokestatic 260	com/tencent/token/bb:a	()Lcom/tencent/token/bb;
-    //   102: ldc 250
-    //   104: invokevirtual 263	com/tencent/token/bb:a	(Ljava/lang/String;)Lcom/tencent/token/ba$a;
-    //   107: astore 8
-    //   109: aload 8
-    //   111: ifnull +32 -> 143
-    //   114: new 265	java/util/ArrayList
-    //   117: dup
-    //   118: invokespecial 266	java/util/ArrayList:<init>	()V
-    //   121: astore 9
-    //   123: aload 9
-    //   125: aload 8
-    //   127: invokevirtual 271	com/tencent/token/ba$a:c	()Ljava/util/List;
-    //   130: invokevirtual 275	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
-    //   133: pop
-    //   134: aload 7
-    //   136: aload 9
-    //   138: invokeinterface 278 2 0
-    //   143: invokestatic 233	com/tencent/token/be:a	()Lcom/tencent/token/be;
-    //   146: getfield 281	com/tencent/token/be:a	Lcom/tencent/token/bg;
-    //   149: getfield 283	com/tencent/token/bg:b	J
-    //   152: lstore_2
-    //   153: iconst_1
-    //   154: istore 6
-    //   156: lload_2
-    //   157: lconst_0
-    //   158: lcmp
-    //   159: ifgt +6 -> 165
-    //   162: goto +36 -> 198
-    //   165: invokestatic 72	java/lang/System:currentTimeMillis	()J
-    //   168: lstore 4
-    //   170: lload_2
-    //   171: invokestatic 233	com/tencent/token/be:a	()Lcom/tencent/token/be;
-    //   174: getfield 236	com/tencent/token/be:b	Lcom/tencent/token/bh;
-    //   177: getfield 285	com/tencent/token/bh:e	I
-    //   180: bipush 60
-    //   182: imul
-    //   183: sipush 1000
-    //   186: imul
-    //   187: i2l
-    //   188: ladd
-    //   189: lload 4
-    //   191: lcmp
-    //   192: ifge +505 -> 697
-    //   195: goto +3 -> 198
-    //   198: aload 7
-    //   200: invokestatic 233	com/tencent/token/be:a	()Lcom/tencent/token/be;
-    //   203: getfield 281	com/tencent/token/be:a	Lcom/tencent/token/bg;
-    //   206: invokevirtual 288	com/tencent/token/bg:c	()Ljava/util/ArrayList;
-    //   209: iload 6
-    //   211: invokeinterface 291 3 0
-    //   216: aload_0
-    //   217: iconst_0
-    //   218: putfield 42	com/tencent/token/bo:j	I
-    //   221: aload 7
-    //   223: invokeinterface 292 1 0
-    //   228: aload_0
-    //   229: aload 7
-    //   231: invokeinterface 294 1 0
-    //   236: putfield 40	com/tencent/token/bo:i	I
-    //   239: aload_0
-    //   240: aload 7
-    //   242: invokeinterface 296 1 0
-    //   247: putfield 42	com/tencent/token/bo:j	I
-    //   250: aload_0
-    //   251: getfield 57	com/tencent/token/bo:e	Lcom/tencent/token/bp;
-    //   254: aload_0
-    //   255: getfield 40	com/tencent/token/bo:i	I
-    //   258: putfield 297	com/tencent/token/bp:e	I
-    //   261: aload_0
-    //   262: getfield 57	com/tencent/token/bo:e	Lcom/tencent/token/bp;
-    //   265: aload_0
-    //   266: getfield 42	com/tencent/token/bo:j	I
-    //   269: putfield 203	com/tencent/token/bp:d	I
-    //   272: aload 7
-    //   274: invokeinterface 299 1 0
-    //   279: ifne +342 -> 621
-    //   282: aload_0
-    //   283: aload 7
-    //   285: invokeinterface 302 1 0
-    //   290: putfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   293: aload_0
-    //   294: aload 7
-    //   296: invokeinterface 305 1 0
-    //   301: putfield 307	com/tencent/token/bo:f	Lcom/tencent/token/az;
-    //   304: aload_0
-    //   305: getfield 57	com/tencent/token/bo:e	Lcom/tencent/token/bp;
+    //   83: aload_0
+    //   84: invokevirtual 52	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
+    //   87: pop
+    //   88: aload 5
+    //   90: invokeinterface 58 1 0
+    //   95: istore_2
+    //   96: aload 8
+    //   98: astore 4
+    //   100: aload 5
+    //   102: invokeinterface 61 1 0
+    //   107: istore_3
+    //   108: iload_3
+    //   109: iconst_3
+    //   110: if_icmpne +14 -> 124
+    //   113: aload 5
+    //   115: invokeinterface 58 1 0
+    //   120: iload_2
+    //   121: if_icmple +306 -> 427
+    //   124: iload_3
+    //   125: iconst_1
+    //   126: if_icmpeq +301 -> 427
+    //   129: iload_3
+    //   130: iconst_2
+    //   131: if_icmpne -31 -> 100
+    //   134: aload 5
+    //   136: invokestatic 67	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+    //   139: astore 4
+    //   141: aload 5
+    //   143: invokeinterface 71 1 0
+    //   148: astore 6
+    //   150: aload 6
+    //   152: ldc 73
+    //   154: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   157: ifeq +15 -> 172
+    //   160: new 81	android/view/animation/LinearInterpolator
+    //   163: dup
+    //   164: invokespecial 82	android/view/animation/LinearInterpolator:<init>	()V
+    //   167: astore 4
+    //   169: goto -69 -> 100
+    //   172: aload 6
+    //   174: ldc 84
+    //   176: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   179: ifeq +18 -> 197
+    //   182: new 86	android/view/animation/AccelerateInterpolator
+    //   185: dup
+    //   186: aload_0
+    //   187: aload 4
+    //   189: invokespecial 89	android/view/animation/AccelerateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   192: astore 4
+    //   194: goto -94 -> 100
+    //   197: aload 6
+    //   199: ldc 91
+    //   201: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   204: ifeq +18 -> 222
+    //   207: new 93	android/view/animation/DecelerateInterpolator
+    //   210: dup
+    //   211: aload_0
+    //   212: aload 4
+    //   214: invokespecial 94	android/view/animation/DecelerateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   217: astore 4
+    //   219: goto -119 -> 100
+    //   222: aload 6
+    //   224: ldc 96
+    //   226: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   229: ifeq +15 -> 244
+    //   232: new 98	android/view/animation/AccelerateDecelerateInterpolator
+    //   235: dup
+    //   236: invokespecial 99	android/view/animation/AccelerateDecelerateInterpolator:<init>	()V
+    //   239: astore 4
+    //   241: goto -141 -> 100
+    //   244: aload 6
+    //   246: ldc 101
+    //   248: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   251: ifeq +18 -> 269
+    //   254: new 103	android/view/animation/CycleInterpolator
+    //   257: dup
+    //   258: aload_0
+    //   259: aload 4
+    //   261: invokespecial 104	android/view/animation/CycleInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   264: astore 4
+    //   266: goto -166 -> 100
+    //   269: aload 6
+    //   271: ldc 106
+    //   273: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   276: ifeq +18 -> 294
+    //   279: new 108	android/view/animation/AnticipateInterpolator
+    //   282: dup
+    //   283: aload_0
+    //   284: aload 4
+    //   286: invokespecial 109	android/view/animation/AnticipateInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   289: astore 4
+    //   291: goto -191 -> 100
+    //   294: aload 6
+    //   296: ldc 111
+    //   298: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   301: ifeq +18 -> 319
+    //   304: new 113	android/view/animation/OvershootInterpolator
+    //   307: dup
     //   308: aload_0
-    //   309: getfield 307	com/tencent/token/bo:f	Lcom/tencent/token/az;
-    //   312: putfield 309	com/tencent/token/bp:h	Lcom/tencent/token/az;
-    //   315: new 80	java/lang/StringBuilder
-    //   318: dup
-    //   319: ldc_w 311
-    //   322: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   325: astore 7
-    //   327: aload 7
-    //   329: aload_0
-    //   330: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   333: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   336: pop
-    //   337: aload 7
-    //   339: ldc_w 313
-    //   342: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   345: pop
-    //   346: aload 7
-    //   348: aload_0
-    //   349: getfield 307	com/tencent/token/bo:f	Lcom/tencent/token/az;
-    //   352: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   355: pop
-    //   356: ldc 104
-    //   358: aload 7
-    //   360: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   363: invokestatic 184	com/tencent/halley/common/b:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   366: aload_0
-    //   367: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   370: ifnull +171 -> 541
-    //   373: aload_0
-    //   374: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   377: invokevirtual 212	java/net/Socket:isConnected	()Z
-    //   380: ifeq +161 -> 541
-    //   383: aload_0
-    //   384: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   387: invokevirtual 215	java/net/Socket:isClosed	()Z
-    //   390: istore 6
-    //   392: iload 6
-    //   394: ifne +147 -> 541
-    //   397: aload_0
-    //   398: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   401: aload_0
-    //   402: getfield 36	com/tencent/token/bo:b	I
-    //   405: invokevirtual 316	java/net/Socket:setSoTimeout	(I)V
-    //   408: aload_0
-    //   409: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   412: ldc 170
-    //   414: invokevirtual 319	java/net/Socket:setReceiveBufferSize	(I)V
-    //   417: aload_0
-    //   418: aload_0
-    //   419: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   422: invokevirtual 323	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
-    //   425: putfield 118	com/tencent/token/bo:g	Ljava/io/OutputStream;
-    //   428: aload_0
-    //   429: aload_0
-    //   430: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   433: invokevirtual 327	java/net/Socket:getInputStream	()Ljava/io/InputStream;
-    //   436: putfield 158	com/tencent/token/bo:h	Ljava/io/InputStream;
-    //   439: new 80	java/lang/StringBuilder
-    //   442: dup
-    //   443: ldc_w 329
-    //   446: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   449: astore 7
-    //   451: aload 7
-    //   453: aload_0
-    //   454: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   457: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   460: pop
-    //   461: ldc 104
-    //   463: aload 7
-    //   465: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   468: invokestatic 113	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   471: goto +216 -> 687
-    //   474: astore 7
-    //   476: goto +62 -> 538
-    //   479: astore 7
-    //   481: aload 7
-    //   483: invokevirtual 152	java/lang/Exception:printStackTrace	()V
-    //   486: new 80	java/lang/StringBuilder
-    //   489: dup
-    //   490: ldc_w 331
-    //   493: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   496: astore 8
-    //   498: aload 8
-    //   500: aload_0
-    //   501: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   504: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   507: pop
-    //   508: ldc 104
-    //   510: aload 8
-    //   512: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   515: aload 7
-    //   517: invokestatic 334	com/tencent/halley/common/b:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   520: aload_0
-    //   521: bipush 253
-    //   523: aload 7
-    //   525: invokestatic 139	com/tencent/token/br:a	(Ljava/lang/Exception;)Ljava/lang/String;
-    //   528: invokespecial 55	com/tencent/token/bo:a	(ILjava/lang/String;)V
+    //   309: aload 4
+    //   311: invokespecial 114	android/view/animation/OvershootInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   314: astore 4
+    //   316: goto -216 -> 100
+    //   319: aload 6
+    //   321: ldc 116
+    //   323: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   326: ifeq +18 -> 344
+    //   329: new 118	android/view/animation/AnticipateOvershootInterpolator
+    //   332: dup
+    //   333: aload_0
+    //   334: aload 4
+    //   336: invokespecial 119	android/view/animation/AnticipateOvershootInterpolator:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    //   339: astore 4
+    //   341: goto -241 -> 100
+    //   344: aload 6
+    //   346: ldc 121
+    //   348: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   351: ifeq +15 -> 366
+    //   354: new 123	android/view/animation/BounceInterpolator
+    //   357: dup
+    //   358: invokespecial 124	android/view/animation/BounceInterpolator:<init>	()V
+    //   361: astore 4
+    //   363: goto -263 -> 100
+    //   366: aload 6
+    //   368: ldc 126
+    //   370: invokevirtual 79	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   373: ifeq +20 -> 393
+    //   376: new 128	com/tencent/token/br
+    //   379: dup
+    //   380: aload_0
+    //   381: aload 4
+    //   383: aload 5
+    //   385: invokespecial 131	com/tencent/token/br:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;Lorg/xmlpull/v1/XmlPullParser;)V
+    //   388: astore 4
+    //   390: goto -290 -> 100
+    //   393: new 133	java/lang/StringBuilder
+    //   396: dup
+    //   397: ldc 135
+    //   399: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   402: astore_0
+    //   403: aload_0
+    //   404: aload 5
+    //   406: invokeinterface 71 1 0
+    //   411: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: pop
+    //   415: new 144	java/lang/RuntimeException
+    //   418: dup
+    //   419: aload_0
+    //   420: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   423: invokespecial 148	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   426: athrow
+    //   427: aload 5
+    //   429: ifnull +10 -> 439
+    //   432: aload 5
+    //   434: invokeinterface 153 1 0
+    //   439: aload 4
+    //   441: areturn
+    //   442: astore_0
+    //   443: goto +149 -> 592
+    //   446: astore 4
+    //   448: aload 5
+    //   450: astore_0
+    //   451: aload 4
+    //   453: astore 5
+    //   455: goto +15 -> 470
+    //   458: astore 4
+    //   460: aload 5
+    //   462: astore_0
+    //   463: aload 4
+    //   465: astore 5
+    //   467: goto +64 -> 531
+    //   470: aload_0
+    //   471: astore 4
+    //   473: new 133	java/lang/StringBuilder
+    //   476: dup
+    //   477: ldc 155
+    //   479: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   482: astore 6
+    //   484: aload_0
+    //   485: astore 4
+    //   487: aload 6
+    //   489: iload_1
+    //   490: invokestatic 161	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   493: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   496: pop
+    //   497: aload_0
+    //   498: astore 4
+    //   500: new 163	android/content/res/Resources$NotFoundException
+    //   503: dup
+    //   504: aload 6
+    //   506: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   509: invokespecial 164	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   512: astore 6
+    //   514: aload_0
+    //   515: astore 4
+    //   517: aload 6
+    //   519: aload 5
+    //   521: invokevirtual 168	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   524: pop
+    //   525: aload_0
+    //   526: astore 4
+    //   528: aload 6
+    //   530: athrow
     //   531: aload_0
-    //   532: invokespecial 336	com/tencent/token/bo:d	()V
-    //   535: aload_0
-    //   536: monitorexit
-    //   537: return
-    //   538: aload 7
-    //   540: athrow
-    //   541: aload_0
-    //   542: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   545: ifnonnull +15 -> 560
-    //   548: aload_0
-    //   549: bipush 253
-    //   551: ldc_w 338
-    //   554: invokespecial 55	com/tencent/token/bo:a	(ILjava/lang/String;)V
-    //   557: aload_0
-    //   558: monitorexit
-    //   559: return
-    //   560: new 80	java/lang/StringBuilder
-    //   563: dup
-    //   564: ldc_w 340
-    //   567: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   570: astore 7
-    //   572: aload 7
-    //   574: aload_0
-    //   575: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   578: invokevirtual 212	java/net/Socket:isConnected	()Z
-    //   581: invokevirtual 343	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   584: pop
-    //   585: aload 7
-    //   587: ldc_w 345
-    //   590: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   593: pop
-    //   594: aload 7
-    //   596: aload_0
-    //   597: getfield 99	com/tencent/token/bo:c	Ljava/net/Socket;
-    //   600: invokevirtual 215	java/net/Socket:isClosed	()Z
-    //   603: invokevirtual 343	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   606: pop
-    //   607: aload_0
-    //   608: bipush 253
-    //   610: aload 7
-    //   612: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   615: invokespecial 55	com/tencent/token/bo:a	(ILjava/lang/String;)V
-    //   618: aload_0
-    //   619: monitorexit
-    //   620: return
-    //   621: invokestatic 349	com/tencent/token/bq:f	()Z
-    //   624: ifeq +57 -> 681
-    //   627: invokestatic 353	com/tencent/halley/common/d:a	()Z
-    //   630: ifeq +42 -> 672
-    //   633: new 80	java/lang/StringBuilder
-    //   636: dup
-    //   637: ldc_w 355
-    //   640: invokespecial 85	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   643: astore 8
-    //   645: aload 8
-    //   647: aload 7
-    //   649: invokeinterface 299 1 0
-    //   654: invokevirtual 92	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   657: pop
-    //   658: aload_0
-    //   659: bipush 253
-    //   661: aload 8
-    //   663: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   666: invokespecial 55	com/tencent/token/bo:a	(ILjava/lang/String;)V
-    //   669: aload_0
-    //   670: monitorexit
-    //   671: return
-    //   672: aload_0
-    //   673: bipush 240
-    //   675: invokespecial 141	com/tencent/token/bo:a	(I)V
-    //   678: aload_0
-    //   679: monitorexit
-    //   680: return
-    //   681: aload_0
-    //   682: bipush 252
-    //   684: invokespecial 141	com/tencent/token/bo:a	(I)V
-    //   687: aload_0
-    //   688: monitorexit
-    //   689: return
-    //   690: astore 7
-    //   692: aload_0
-    //   693: monitorexit
-    //   694: aload 7
-    //   696: athrow
-    //   697: iconst_0
-    //   698: istore 6
-    //   700: goto -502 -> 198
+    //   532: astore 4
+    //   534: new 133	java/lang/StringBuilder
+    //   537: dup
+    //   538: ldc 155
+    //   540: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   543: astore 6
+    //   545: aload_0
+    //   546: astore 4
+    //   548: aload 6
+    //   550: iload_1
+    //   551: invokestatic 161	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   554: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   557: pop
+    //   558: aload_0
+    //   559: astore 4
+    //   561: new 163	android/content/res/Resources$NotFoundException
+    //   564: dup
+    //   565: aload 6
+    //   567: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   570: invokespecial 164	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   573: astore 6
+    //   575: aload_0
+    //   576: astore 4
+    //   578: aload 6
+    //   580: aload 5
+    //   582: invokevirtual 168	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   585: pop
+    //   586: aload_0
+    //   587: astore 4
+    //   589: aload 6
+    //   591: athrow
+    //   592: aload 5
+    //   594: ifnull +10 -> 604
+    //   597: aload 5
+    //   599: invokeinterface 153 1 0
+    //   604: aload_0
+    //   605: athrow
+    //   606: astore_0
+    //   607: aload 4
+    //   609: astore 5
+    //   611: goto -19 -> 592
+    //   614: astore 5
+    //   616: aload 6
+    //   618: astore_0
+    //   619: goto -149 -> 470
+    //   622: astore 5
+    //   624: aload 7
+    //   626: astore_0
+    //   627: goto -96 -> 531
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	703	0	this	bo
-    //   35	22	1	n	int
-    //   152	19	2	l1	long
-    //   168	22	4	l2	long
-    //   154	545	6	bool	boolean
-    //   16	448	7	localObject1	Object
-    //   474	1	7	localObject2	Object
-    //   479	60	7	localException	Exception
-    //   570	78	7	localStringBuilder	StringBuilder
-    //   690	5	7	localObject3	Object
-    //   79	583	8	localObject4	Object
-    //   121	16	9	localArrayList	java.util.ArrayList
+    //   0	630	0	paramContext	android.content.Context
+    //   0	630	1	paramInt	int
+    //   95	27	2	i	int
+    //   107	25	3	j	int
+    //   21	419	4	localObject1	Object
+    //   446	6	4	localIOException1	java.io.IOException
+    //   458	6	4	localXmlPullParserException1	org.xmlpull.v1.XmlPullParserException
+    //   471	137	4	localContext	android.content.Context
+    //   76	534	5	localObject2	Object
+    //   614	1	5	localIOException2	java.io.IOException
+    //   622	1	5	localXmlPullParserException2	org.xmlpull.v1.XmlPullParserException
+    //   15	602	6	localObject3	Object
+    //   18	607	7	localObject4	Object
+    //   24	73	8	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   397	471	474	finally
-    //   481	535	474	finally
-    //   397	471	479	java/lang/Exception
-    //   2	36	690	finally
-    //   36	44	690	finally
-    //   47	57	690	finally
-    //   60	109	690	finally
-    //   114	143	690	finally
-    //   143	153	690	finally
-    //   165	195	690	finally
-    //   198	392	690	finally
-    //   538	541	690	finally
-    //   541	557	690	finally
-    //   560	618	690	finally
-    //   621	669	690	finally
-    //   672	678	690	finally
-    //   681	687	690	finally
-  }
-  
-  public final void a(bp parambp, int paramInt)
-  {
-    if (parambp == null) {
-      return;
-    }
-    try
-    {
-      this.e = parambp;
-      this.e.i = System.currentTimeMillis();
-      this.e.j = (paramInt * 1000);
-      e();
-      if (c())
-      {
-        a(parambp);
-        b();
-        d();
-      }
-      return;
-    }
-    catch (Exception parambp) {}
+    //   78	96	442	finally
+    //   100	108	442	finally
+    //   113	124	442	finally
+    //   134	169	442	finally
+    //   172	194	442	finally
+    //   197	219	442	finally
+    //   222	241	442	finally
+    //   244	266	442	finally
+    //   269	291	442	finally
+    //   294	316	442	finally
+    //   319	341	442	finally
+    //   344	363	442	finally
+    //   366	390	442	finally
+    //   393	427	442	finally
+    //   78	96	446	java/io/IOException
+    //   100	108	446	java/io/IOException
+    //   113	124	446	java/io/IOException
+    //   134	169	446	java/io/IOException
+    //   172	194	446	java/io/IOException
+    //   197	219	446	java/io/IOException
+    //   222	241	446	java/io/IOException
+    //   244	266	446	java/io/IOException
+    //   269	291	446	java/io/IOException
+    //   294	316	446	java/io/IOException
+    //   319	341	446	java/io/IOException
+    //   344	363	446	java/io/IOException
+    //   366	390	446	java/io/IOException
+    //   393	427	446	java/io/IOException
+    //   78	96	458	org/xmlpull/v1/XmlPullParserException
+    //   100	108	458	org/xmlpull/v1/XmlPullParserException
+    //   113	124	458	org/xmlpull/v1/XmlPullParserException
+    //   134	169	458	org/xmlpull/v1/XmlPullParserException
+    //   172	194	458	org/xmlpull/v1/XmlPullParserException
+    //   197	219	458	org/xmlpull/v1/XmlPullParserException
+    //   222	241	458	org/xmlpull/v1/XmlPullParserException
+    //   244	266	458	org/xmlpull/v1/XmlPullParserException
+    //   269	291	458	org/xmlpull/v1/XmlPullParserException
+    //   294	316	458	org/xmlpull/v1/XmlPullParserException
+    //   319	341	458	org/xmlpull/v1/XmlPullParserException
+    //   344	363	458	org/xmlpull/v1/XmlPullParserException
+    //   366	390	458	org/xmlpull/v1/XmlPullParserException
+    //   393	427	458	org/xmlpull/v1/XmlPullParserException
+    //   32	40	606	finally
+    //   46	54	606	finally
+    //   60	68	606	finally
+    //   68	78	606	finally
+    //   473	484	606	finally
+    //   487	497	606	finally
+    //   500	514	606	finally
+    //   517	525	606	finally
+    //   528	531	606	finally
+    //   534	545	606	finally
+    //   548	558	606	finally
+    //   561	575	606	finally
+    //   578	586	606	finally
+    //   589	592	606	finally
+    //   32	40	614	java/io/IOException
+    //   46	54	614	java/io/IOException
+    //   60	68	614	java/io/IOException
+    //   68	78	614	java/io/IOException
+    //   32	40	622	org/xmlpull/v1/XmlPullParserException
+    //   46	54	622	org/xmlpull/v1/XmlPullParserException
+    //   60	68	622	org/xmlpull/v1/XmlPullParserException
+    //   68	78	622	org/xmlpull/v1/XmlPullParserException
   }
 }
 

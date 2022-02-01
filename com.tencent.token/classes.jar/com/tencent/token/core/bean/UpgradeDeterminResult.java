@@ -16,7 +16,7 @@ public class UpgradeDeterminResult
   public static final int BINDTYPE_REALNAME = 8;
   public static final int BINDTYPE_REALNAME_H5 = 9;
   private static final long serialVersionUID = 1229246620832794524L;
-  private int bindType = 0;
+  public int bindType = 0;
   public int mHaveMobile = 0;
   public int mMobileAppear = 0;
   public String mMobileMask = "";
@@ -27,36 +27,6 @@ public class UpgradeDeterminResult
   public String mSmsPort;
   public String mSmsPrefix = "";
   public String mUin = "";
-  
-  public boolean a()
-  {
-    return this.mHaveMobile == 1;
-  }
-  
-  public String b()
-  {
-    return this.mMobileMask;
-  }
-  
-  public boolean c()
-  {
-    return this.mMobileAppear == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.mQqtokenAppear == 1;
-  }
-  
-  public boolean e()
-  {
-    return this.mQuesAppear == 1;
-  }
-  
-  public int f()
-  {
-    return this.bindType;
-  }
   
   public class QuesInfoItem
     implements Serializable

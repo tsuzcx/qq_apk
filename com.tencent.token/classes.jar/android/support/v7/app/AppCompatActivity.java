@@ -1,25 +1,15 @@
 package android.support.v7.app;
 
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.app.TaskStackBuilder.SupportParentable;
-import android.support.v7.view.ActionMode;
-import android.support.v7.view.ActionMode.Callback;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.VectorEnabledTintResources;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -28,12 +18,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import com.tencent.token.bu;
+import com.tencent.token.cj;
+import com.tencent.token.cr;
+import com.tencent.token.cr.a;
+import com.tencent.token.cs;
+import com.tencent.token.gd.a;
+import com.tencent.token.ge;
+import com.tencent.token.gf;
+import com.tencent.token.gx;
+import com.tencent.token.gx.a;
+import com.tencent.token.jk;
+import java.util.ArrayList;
 
 public class AppCompatActivity
   extends FragmentActivity
-  implements TaskStackBuilder.SupportParentable, ActionBarDrawerToggle.DelegateProvider, AppCompatCallback
+  implements cr.a, ge
 {
-  private AppCompatDelegate mDelegate;
+  private gf mDelegate;
   private Resources mResources;
   private int mThemeId = 0;
   
@@ -51,13 +53,13 @@ public class AppCompatActivity
   
   public void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    getDelegate().addContentView(paramView, paramLayoutParams);
+    getDelegate().b(paramView, paramLayoutParams);
   }
   
   public void closeOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.closeOptionsMenu()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.e()))) {
       super.closeOptionsMenu();
     }
   }
@@ -66,41 +68,39 @@ public class AppCompatActivity
   {
     int i = paramKeyEvent.getKeyCode();
     ActionBar localActionBar = getSupportActionBar();
-    if ((i == 82) && (localActionBar != null) && (localActionBar.onMenuKeyEvent(paramKeyEvent))) {
+    if ((i == 82) && (localActionBar != null) && (localActionBar.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public <T extends View> T findViewById(@IdRes int paramInt)
+  public <T extends View> T findViewById(int paramInt)
   {
-    return getDelegate().findViewById(paramInt);
+    return getDelegate().a(paramInt);
   }
   
-  @NonNull
-  public AppCompatDelegate getDelegate()
+  public gf getDelegate()
   {
     if (this.mDelegate == null) {
-      this.mDelegate = AppCompatDelegate.create(this, this);
+      this.mDelegate = gf.a(this, this);
     }
     return this.mDelegate;
   }
   
-  @Nullable
-  public ActionBarDrawerToggle.Delegate getDrawerToggleDelegate()
+  public gd.a getDrawerToggleDelegate()
   {
-    return getDelegate().getDrawerToggleDelegate();
+    return getDelegate().i();
   }
   
   public MenuInflater getMenuInflater()
   {
-    return getDelegate().getMenuInflater();
+    return getDelegate().b();
   }
   
   public Resources getResources()
   {
-    if ((this.mResources == null) && (VectorEnabledTintResources.shouldBeUsed())) {
-      this.mResources = new VectorEnabledTintResources(this, super.getResources());
+    if ((this.mResources == null) && (jk.a())) {
+      this.mResources = new jk(this, super.getResources());
     }
     Resources localResources2 = this.mResources;
     Resources localResources1 = localResources2;
@@ -110,27 +110,25 @@ public class AppCompatActivity
     return localResources1;
   }
   
-  @Nullable
   public ActionBar getSupportActionBar()
   {
-    return getDelegate().getSupportActionBar();
+    return getDelegate().a();
   }
   
-  @Nullable
   public Intent getSupportParentActivityIntent()
   {
-    return NavUtils.getParentActivityIntent(this);
+    return cj.a(this);
   }
   
   public void invalidateOptionsMenu()
   {
-    getDelegate().invalidateOptionsMenu();
+    getDelegate().g();
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    getDelegate().onConfigurationChanged(paramConfiguration);
+    getDelegate().a(paramConfiguration);
     if (this.mResources != null)
     {
       DisplayMetrics localDisplayMetrics = super.getResources().getDisplayMetrics();
@@ -143,12 +141,12 @@ public class AppCompatActivity
     onSupportContentChanged();
   }
   
-  protected void onCreate(@Nullable Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppCompatDelegate localAppCompatDelegate = getDelegate();
-    localAppCompatDelegate.installViewFactory();
-    localAppCompatDelegate.onCreate(paramBundle);
-    if ((localAppCompatDelegate.applyDayNight()) && (this.mThemeId != 0)) {
+    gf localgf = getDelegate();
+    localgf.j();
+    localgf.a(paramBundle);
+    if ((localgf.k()) && (this.mThemeId != 0)) {
       if (Build.VERSION.SDK_INT >= 23) {
         onApplyThemeResource(getTheme(), this.mThemeId, false);
       } else {
@@ -158,15 +156,29 @@ public class AppCompatActivity
     super.onCreate(paramBundle);
   }
   
-  public void onCreateSupportNavigateUpTaskStack(@NonNull TaskStackBuilder paramTaskStackBuilder)
+  public void onCreateSupportNavigateUpTaskStack(cr paramcr)
   {
-    paramTaskStackBuilder.addParentStack(this);
+    Object localObject2 = ((cr.a)this).getSupportParentActivityIntent();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = cj.a(this);
+    }
+    if (localObject1 != null)
+    {
+      ComponentName localComponentName = ((Intent)localObject1).getComponent();
+      localObject2 = localComponentName;
+      if (localComponentName == null) {
+        localObject2 = ((Intent)localObject1).resolveActivity(paramcr.b.getPackageManager());
+      }
+      paramcr.a((ComponentName)localObject2);
+      paramcr.a.add(localObject1);
+    }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    getDelegate().onDestroy();
+    getDelegate().h();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -183,7 +195,7 @@ public class AppCompatActivity
       return true;
     }
     ActionBar localActionBar = getSupportActionBar();
-    if ((paramMenuItem.getItemId() == 16908332) && (localActionBar != null) && ((localActionBar.getDisplayOptions() & 0x4) != 0)) {
+    if ((paramMenuItem.getItemId() == 16908332) && (localActionBar != null) && ((localActionBar.a() & 0x4) != 0)) {
       return onSupportNavigateUp();
     }
     return false;
@@ -199,43 +211,41 @@ public class AppCompatActivity
     super.onPanelClosed(paramInt, paramMenu);
   }
   
-  protected void onPostCreate(@Nullable Bundle paramBundle)
+  protected void onPostCreate(Bundle paramBundle)
   {
     super.onPostCreate(paramBundle);
-    getDelegate().onPostCreate(paramBundle);
+    getDelegate().c();
   }
   
-  protected void onPostResume()
+  public void onPostResume()
   {
     super.onPostResume();
-    getDelegate().onPostResume();
+    getDelegate().f();
   }
   
-  public void onPrepareSupportNavigateUpTaskStack(@NonNull TaskStackBuilder paramTaskStackBuilder) {}
+  public void onPrepareSupportNavigateUpTaskStack(cr paramcr) {}
   
-  protected void onSaveInstanceState(Bundle paramBundle)
+  public void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    getDelegate().onSaveInstanceState(paramBundle);
+    getDelegate().b(paramBundle);
   }
   
-  protected void onStart()
+  public void onStart()
   {
     super.onStart();
-    getDelegate().onStart();
+    getDelegate().d();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
-    getDelegate().onStop();
+    getDelegate().e();
   }
   
-  @CallSuper
-  public void onSupportActionModeFinished(@NonNull ActionMode paramActionMode) {}
+  public void onSupportActionModeFinished(gx paramgx) {}
   
-  @CallSuper
-  public void onSupportActionModeStarted(@NonNull ActionMode paramActionMode) {}
+  public void onSupportActionModeStarted(gx paramgx) {}
   
   @Deprecated
   public void onSupportContentChanged() {}
@@ -246,25 +256,31 @@ public class AppCompatActivity
     if (localObject != null) {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
-        localObject = TaskStackBuilder.create(this);
-        onCreateSupportNavigateUpTaskStack((TaskStackBuilder)localObject);
-        onPrepareSupportNavigateUpTaskStack((TaskStackBuilder)localObject);
-        ((TaskStackBuilder)localObject).startActivities();
+        localObject = cr.a(this);
+        onCreateSupportNavigateUpTaskStack((cr)localObject);
+        onPrepareSupportNavigateUpTaskStack((cr)localObject);
+        if (!((cr)localObject).a.isEmpty())
+        {
+          Intent[] arrayOfIntent = (Intent[])((cr)localObject).a.toArray(new Intent[((cr)localObject).a.size()]);
+          arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
+          cs.a(((cr)localObject).b, arrayOfIntent);
+        }
       }
     }
     try
     {
-      ActivityCompat.finishAffinity(this);
+      bu.a(this);
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      label43:
-      break label43;
+      label98:
+      break label98;
     }
     finish();
-    break label55;
+    break label121;
+    throw new IllegalStateException("No intents added to TaskStackBuilder; cannot startActivities");
     supportNavigateUpTo((Intent)localObject);
-    label55:
+    label121:
     return true;
     return false;
   }
@@ -272,11 +288,10 @@ public class AppCompatActivity
   protected void onTitleChanged(CharSequence paramCharSequence, int paramInt)
   {
     super.onTitleChanged(paramCharSequence, paramInt);
-    getDelegate().setTitle(paramCharSequence);
+    getDelegate().a(paramCharSequence);
   }
   
-  @Nullable
-  public ActionMode onWindowStartingSupportActionMode(@NonNull ActionMode.Callback paramCallback)
+  public gx onWindowStartingSupportActionMode(gx.a parama)
   {
     return null;
   }
@@ -284,29 +299,29 @@ public class AppCompatActivity
   public void openOptionsMenu()
   {
     ActionBar localActionBar = getSupportActionBar();
-    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.openOptionsMenu()))) {
+    if ((getWindow().hasFeature(0)) && ((localActionBar == null) || (!localActionBar.d()))) {
       super.openOptionsMenu();
     }
   }
   
-  public void setContentView(@LayoutRes int paramInt)
+  public void setContentView(int paramInt)
   {
-    getDelegate().setContentView(paramInt);
+    getDelegate().b(paramInt);
   }
   
   public void setContentView(View paramView)
   {
-    getDelegate().setContentView(paramView);
+    getDelegate().a(paramView);
   }
   
   public void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    getDelegate().setContentView(paramView, paramLayoutParams);
+    getDelegate().a(paramView, paramLayoutParams);
   }
   
-  public void setSupportActionBar(@Nullable Toolbar paramToolbar)
+  public void setSupportActionBar(Toolbar paramToolbar)
   {
-    getDelegate().setSupportActionBar(paramToolbar);
+    getDelegate().a(paramToolbar);
   }
   
   @Deprecated
@@ -321,36 +336,46 @@ public class AppCompatActivity
   @Deprecated
   public void setSupportProgressBarVisibility(boolean paramBoolean) {}
   
-  public void setTheme(@StyleRes int paramInt)
+  public void setTheme(int paramInt)
   {
     super.setTheme(paramInt);
     this.mThemeId = paramInt;
   }
   
-  @Nullable
-  public ActionMode startSupportActionMode(@NonNull ActionMode.Callback paramCallback)
+  public gx startSupportActionMode(gx.a parama)
   {
-    return getDelegate().startSupportActionMode(paramCallback);
+    return getDelegate().a(parama);
   }
   
   public void supportInvalidateOptionsMenu()
   {
-    getDelegate().invalidateOptionsMenu();
+    getDelegate().g();
   }
   
-  public void supportNavigateUpTo(@NonNull Intent paramIntent)
+  public void supportNavigateUpTo(Intent paramIntent)
   {
-    NavUtils.navigateUpTo(this, paramIntent);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      navigateUpTo(paramIntent);
+      return;
+    }
+    paramIntent.addFlags(67108864);
+    startActivity(paramIntent);
+    finish();
   }
   
   public boolean supportRequestWindowFeature(int paramInt)
   {
-    return getDelegate().requestWindowFeature(paramInt);
+    return getDelegate().c(paramInt);
   }
   
-  public boolean supportShouldUpRecreateTask(@NonNull Intent paramIntent)
+  public boolean supportShouldUpRecreateTask(Intent paramIntent)
   {
-    return NavUtils.shouldUpRecreateTask(this, paramIntent);
+    if (Build.VERSION.SDK_INT >= 16) {
+      return shouldUpRecreateTask(paramIntent);
+    }
+    paramIntent = getIntent().getAction();
+    return (paramIntent != null) && (!paramIntent.equals("android.intent.action.MAIN"));
   }
 }
 

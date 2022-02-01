@@ -24,11 +24,10 @@ public final class K
     this.b = paramh.b(1, true);
     if (d == null)
     {
-      arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = (byte[])new byte[1];
       d = arrayOfByte;
       ((byte[])arrayOfByte)[0] = 0;
     }
-    byte[] arrayOfByte = d;
     this.c = ((byte[])paramh.c(2, false));
   }
   

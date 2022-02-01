@@ -10,7 +10,7 @@ public class tlv_t119
   
   public Boolean verify()
   {
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

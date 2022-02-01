@@ -24,55 +24,65 @@ class OldUniAttribute
   
   private void checkObjectType(ArrayList<String> paramArrayList, Object paramObject)
   {
-    if (paramObject.getClass().isArray())
+    for (;;)
     {
-      if (paramObject.getClass().getComponentType().toString().equals("byte"))
+      if (paramObject.getClass().isArray())
       {
-        if (Array.getLength(paramObject) > 0)
+        if (paramObject.getClass().getComponentType().toString().equals("byte"))
+        {
+          if (Array.getLength(paramObject) > 0)
+          {
+            paramArrayList.add("java.util.List");
+            paramObject = Array.get(paramObject, 0);
+          }
+          else
+          {
+            paramArrayList.add("Array");
+            paramArrayList.add("?");
+          }
+        }
+        else {
+          throw new IllegalArgumentException("only byte[] is supported");
+        }
+      }
+      else
+      {
+        if ((paramObject instanceof Array)) {
+          break label226;
+        }
+        if ((paramObject instanceof List))
         {
           paramArrayList.add("java.util.List");
-          checkObjectType(paramArrayList, Array.get(paramObject, 0));
-          return;
+          paramObject = (List)paramObject;
+          if (paramObject.size() > 0) {
+            paramObject = paramObject.get(0);
+          } else {
+            paramArrayList.add("?");
+          }
         }
-        paramArrayList.add("Array");
-        paramArrayList.add("?");
-        return;
-      }
-      throw new IllegalArgumentException("only byte[] is supported");
-    }
-    if (!(paramObject instanceof Array))
-    {
-      if ((paramObject instanceof List))
-      {
-        paramArrayList.add("java.util.List");
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        else
         {
-          checkObjectType(paramArrayList, paramObject.get(0));
-          return;
+          if (!(paramObject instanceof Map)) {
+            break label213;
+          }
+          paramArrayList.add("java.util.Map");
+          paramObject = (Map)paramObject;
+          if (paramObject.size() <= 0) {
+            break;
+          }
+          Object localObject = paramObject.keySet().iterator().next();
+          paramObject = paramObject.get(localObject);
+          paramArrayList.add(localObject.getClass().getName());
         }
-        paramArrayList.add("?");
-        return;
       }
-      if ((paramObject instanceof Map))
-      {
-        paramArrayList.add("java.util.Map");
-        Object localObject = (Map)paramObject;
-        if (((Map)localObject).size() > 0)
-        {
-          paramObject = ((Map)localObject).keySet().iterator().next();
-          localObject = ((Map)localObject).get(paramObject);
-          paramArrayList.add(paramObject.getClass().getName());
-          checkObjectType(paramArrayList, localObject);
-          return;
-        }
-        paramArrayList.add("?");
-        paramArrayList.add("?");
-        return;
-      }
-      paramArrayList.add(paramObject.getClass().getName());
-      return;
     }
+    paramArrayList.add("?");
+    paramArrayList.add("?");
+    return;
+    label213:
+    paramArrayList.add(paramObject.getClass().getName());
+    return;
+    label226:
     throw new IllegalArgumentException("can not support Array, please use List");
   }
   

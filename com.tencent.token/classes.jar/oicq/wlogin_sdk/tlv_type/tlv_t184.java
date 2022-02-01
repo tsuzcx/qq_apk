@@ -35,11 +35,11 @@ public class tlv_t184
   public Boolean verify()
   {
     if (this._body_len < 16) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._mS2 = new byte[16];
     System.arraycopy(this._buf, this._head_len, this._mS2, 0, 16);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

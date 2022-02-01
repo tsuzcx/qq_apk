@@ -21,9 +21,7 @@ public final class PRNGFixes
 {
   private static final byte[] a = ;
   
-  public static void a() {}
-  
-  private static void c()
+  public static void a()
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
@@ -32,15 +30,12 @@ public final class PRNGFixes
       }
       try
       {
-        Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_seed", new Class[] { [B.class }).invoke(null, new Object[] { d() });
+        Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_seed", new Class[] { [B.class }).invoke(null, new Object[] { c() });
         int i = ((Integer)Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_load_file", new Class[] { String.class, Long.TYPE }).invoke(null, new Object[] { "/dev/urandom", Integer.valueOf(1024) })).intValue();
         if (i == 1024) {
           return;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Unexpected number of bytes read from Linux PRNG: ");
-        localStringBuilder.append(i);
-        throw new IOException(localStringBuilder.toString());
+        throw new IOException("Unexpected number of bytes read from Linux PRNG: ".concat(String.valueOf(i)));
       }
       catch (Exception localException)
       {
@@ -49,7 +44,7 @@ public final class PRNGFixes
     }
   }
   
-  private static byte[] d()
+  private static byte[] c()
   {
     try
     {
@@ -70,7 +65,7 @@ public final class PRNGFixes
     }
   }
   
-  private static String e()
+  private static String d()
   {
     try
     {
@@ -81,14 +76,14 @@ public final class PRNGFixes
     return null;
   }
   
-  private static byte[] f()
+  private static byte[] e()
   {
     Object localObject = new StringBuilder();
     String str = Build.FINGERPRINT;
     if (str != null) {
       ((StringBuilder)localObject).append(str);
     }
-    str = e();
+    str = d();
     if (str != null) {
       ((StringBuilder)localObject).append(str);
     }
@@ -114,7 +109,7 @@ public final class PRNGFixes
     private static OutputStream sUrandomOut;
     private boolean mSeeded;
     
-    private DataInputStream a()
+    private static DataInputStream a()
     {
       synchronized (sLock)
       {
@@ -126,8 +121,7 @@ public final class PRNGFixes
           }
           catch (IOException localIOException)
           {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("Failed to open ");
+            StringBuilder localStringBuilder = new StringBuilder("Failed to open ");
             localStringBuilder.append(URANDOM_FILE);
             localStringBuilder.append(" for reading");
             throw new SecurityException(localStringBuilder.toString(), localIOException);
@@ -138,7 +132,7 @@ public final class PRNGFixes
       }
     }
     
-    private OutputStream b()
+    private static OutputStream b()
     {
       synchronized (sLock)
       {
@@ -150,8 +144,7 @@ public final class PRNGFixes
           }
           catch (IOException localIOException)
           {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("Failed to open ");
+            StringBuilder localStringBuilder = new StringBuilder("Failed to open ");
             localStringBuilder.append(URANDOM_FILE);
             localStringBuilder.append(" for writing");
             throw new SecurityException(localStringBuilder.toString(), localIOException);
@@ -183,64 +176,60 @@ public final class PRNGFixes
       //   17: astore_2
       //   18: aload_2
       //   19: monitorenter
-      //   20: aload_0
-      //   21: invokespecial 101	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:a	()Ljava/io/DataInputStream;
-      //   24: astore_3
-      //   25: aload_2
-      //   26: monitorexit
-      //   27: aload_3
-      //   28: monitorenter
-      //   29: aload_3
-      //   30: aload_1
-      //   31: invokevirtual 104	java/io/DataInputStream:readFully	([B)V
-      //   34: aload_3
-      //   35: monitorexit
-      //   36: return
-      //   37: astore_1
-      //   38: aload_3
-      //   39: monitorexit
-      //   40: aload_1
-      //   41: athrow
-      //   42: astore_1
-      //   43: aload_2
-      //   44: monitorexit
-      //   45: aload_1
-      //   46: athrow
-      //   47: astore_1
-      //   48: new 55	java/lang/StringBuilder
-      //   51: dup
-      //   52: invokespecial 56	java/lang/StringBuilder:<init>	()V
-      //   55: astore_2
-      //   56: aload_2
-      //   57: ldc 106
-      //   59: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   62: pop
-      //   63: aload_2
-      //   64: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
-      //   67: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      //   70: pop
-      //   71: new 69	java/lang/SecurityException
-      //   74: dup
-      //   75: aload_2
-      //   76: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   79: aload_1
-      //   80: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   83: athrow
+      //   20: invokestatic 101	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:a	()Ljava/io/DataInputStream;
+      //   23: astore_3
+      //   24: aload_2
+      //   25: monitorexit
+      //   26: aload_3
+      //   27: monitorenter
+      //   28: aload_3
+      //   29: aload_1
+      //   30: invokevirtual 104	java/io/DataInputStream:readFully	([B)V
+      //   33: aload_3
+      //   34: monitorexit
+      //   35: return
+      //   36: astore_1
+      //   37: aload_3
+      //   38: monitorexit
+      //   39: aload_1
+      //   40: athrow
+      //   41: astore_1
+      //   42: aload_2
+      //   43: monitorexit
+      //   44: aload_1
+      //   45: athrow
+      //   46: astore_1
+      //   47: new 55	java/lang/StringBuilder
+      //   50: dup
+      //   51: ldc 106
+      //   53: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   56: astore_2
+      //   57: aload_2
+      //   58: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
+      //   61: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   64: pop
+      //   65: new 69	java/lang/SecurityException
+      //   68: dup
+      //   69: aload_2
+      //   70: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   73: aload_1
+      //   74: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   77: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	84	0	this	LinuxPRNGSecureRandom
-      //   0	84	1	paramArrayOfByte	byte[]
-      //   24	15	3	localDataInputStream	DataInputStream
+      //   0	78	0	this	LinuxPRNGSecureRandom
+      //   0	78	1	paramArrayOfByte	byte[]
+      //   23	15	3	localDataInputStream	DataInputStream
       // Exception table:
       //   from	to	target	type
-      //   29	36	37	finally
-      //   38	40	37	finally
-      //   20	27	42	finally
-      //   43	45	42	finally
-      //   14	20	47	java/io/IOException
-      //   27	29	47	java/io/IOException
-      //   40	42	47	java/io/IOException
-      //   45	47	47	java/io/IOException
+      //   28	35	36	finally
+      //   37	39	36	finally
+      //   20	26	41	finally
+      //   42	44	41	finally
+      //   14	20	46	java/io/IOException
+      //   26	28	46	java/io/IOException
+      //   39	41	46	java/io/IOException
+      //   44	46	46	java/io/IOException
     }
     
     /* Error */
@@ -251,61 +240,57 @@ public final class PRNGFixes
       //   3: astore_2
       //   4: aload_2
       //   5: monitorenter
-      //   6: aload_0
-      //   7: invokespecial 108	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:b	()Ljava/io/OutputStream;
-      //   10: astore_3
-      //   11: aload_2
-      //   12: monitorexit
-      //   13: aload_3
-      //   14: aload_1
-      //   15: invokevirtual 113	java/io/OutputStream:write	([B)V
-      //   18: aload_3
-      //   19: invokevirtual 116	java/io/OutputStream:flush	()V
-      //   22: aload_0
-      //   23: iconst_1
-      //   24: putfield 93	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:mSeeded	Z
-      //   27: return
-      //   28: astore_1
-      //   29: aload_2
-      //   30: monitorexit
-      //   31: aload_1
-      //   32: athrow
-      //   33: astore_1
-      //   34: new 55	java/lang/StringBuilder
-      //   37: dup
-      //   38: invokespecial 56	java/lang/StringBuilder:<init>	()V
-      //   41: astore_2
-      //   42: aload_2
-      //   43: ldc 118
-      //   45: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   48: pop
-      //   49: aload_2
-      //   50: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
-      //   53: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      //   56: pop
-      //   57: new 69	java/lang/SecurityException
-      //   60: dup
-      //   61: aload_2
-      //   62: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   65: aload_1
-      //   66: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   69: athrow
+      //   6: invokestatic 108	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:b	()Ljava/io/OutputStream;
+      //   9: astore_3
+      //   10: aload_2
+      //   11: monitorexit
+      //   12: aload_3
+      //   13: aload_1
+      //   14: invokevirtual 113	java/io/OutputStream:write	([B)V
+      //   17: aload_3
+      //   18: invokevirtual 116	java/io/OutputStream:flush	()V
+      //   21: aload_0
+      //   22: iconst_1
+      //   23: putfield 93	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:mSeeded	Z
+      //   26: return
+      //   27: astore_1
+      //   28: aload_2
+      //   29: monitorexit
+      //   30: aload_1
+      //   31: athrow
+      //   32: astore_1
+      //   33: new 55	java/lang/StringBuilder
+      //   36: dup
+      //   37: ldc 118
+      //   39: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   42: astore_2
+      //   43: aload_2
+      //   44: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
+      //   47: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   50: pop
+      //   51: new 69	java/lang/SecurityException
+      //   54: dup
+      //   55: aload_2
+      //   56: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   59: aload_1
+      //   60: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   63: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	70	0	this	LinuxPRNGSecureRandom
-      //   0	70	1	paramArrayOfByte	byte[]
-      //   10	9	3	localOutputStream	OutputStream
+      //   0	64	0	this	LinuxPRNGSecureRandom
+      //   0	64	1	paramArrayOfByte	byte[]
+      //   9	9	3	localOutputStream	OutputStream
       // Exception table:
       //   from	to	target	type
-      //   6	13	28	finally
-      //   29	31	28	finally
-      //   0	6	33	java/io/IOException
-      //   13	27	33	java/io/IOException
-      //   31	33	33	java/io/IOException
+      //   6	12	27	finally
+      //   28	30	27	finally
+      //   0	6	32	java/io/IOException
+      //   12	26	32	java/io/IOException
+      //   30	32	32	java/io/IOException
     }
   }
   
-  private static class LinuxPRNGSecureRandomProvider
+  static class LinuxPRNGSecureRandomProvider
     extends Provider
   {
     public LinuxPRNGSecureRandomProvider()

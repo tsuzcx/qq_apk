@@ -51,8 +51,7 @@ public class report_t
     {
       break label63;
     }
-    paramContext = new StringBuilder();
-    paramContext.append("read ");
+    paramContext = new StringBuilder("read ");
     paramContext.append(FILE_NAME);
     paramContext.append("failed");
     util.LOGI(paramContext.toString());

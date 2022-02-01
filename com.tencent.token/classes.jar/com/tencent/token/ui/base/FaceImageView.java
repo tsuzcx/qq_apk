@@ -15,7 +15,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 
 public class FaceImageView
   extends View
@@ -55,31 +55,29 @@ public class FaceImageView
     this.v = paramContext;
     paramAttributeSet = new BitmapFactory.Options();
     paramAttributeSet.inSampleSize = 2;
-    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2131099837, paramAttributeSet);
-    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131099843);
+    this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2131099838, paramAttributeSet);
+    this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131099844);
     this.i = paramContext.getResources().getDisplayMetrics().density;
     paramAttributeSet = paramContext.getResources().getDisplayMetrics();
     this.j = paramAttributeSet.heightPixels;
     this.k = paramAttributeSet.widthPixels;
-    paramAttributeSet = new StringBuilder();
-    paramAttributeSet.append("msg.arg1 screenWidth=");
+    paramAttributeSet = new StringBuilder("msg.arg1 screenWidth=");
     paramAttributeSet.append(this.j);
     paramAttributeSet.append(",screenHeight=");
     paramAttributeSet.append(this.k);
-    g.c(paramAttributeSet.toString());
+    xb.c(paramAttributeSet.toString());
     float f1 = this.i;
     this.q = (140.0F * f1);
     this.r = (f1 * 320.0F);
-    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131099849);
-    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099863);
-    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2131099865);
-    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2131099864);
-    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2131099866);
+    this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131099850);
+    this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099864);
+    this.g = BitmapFactory.decodeResource(paramContext.getResources(), 2131099866);
+    this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2131099865);
+    this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2131099867);
     this.t = new RectF();
-    paramContext = new StringBuilder();
-    paramContext.append("FaceImageView scale=");
+    paramContext = new StringBuilder("FaceImageView scale=");
     paramContext.append(this.i);
-    g.c(paramContext.toString());
+    xb.c(paramContext.toString());
     this.p = (this.r / n);
   }
   

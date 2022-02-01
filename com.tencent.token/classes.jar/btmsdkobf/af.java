@@ -9,17 +9,17 @@ public final class af
 {
   public int bi = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new af();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bi = paramJceInputStream.read(this.bi, 0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     int i = this.bi;
     if (i != 0) {

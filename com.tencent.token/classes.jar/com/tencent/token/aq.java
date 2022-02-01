@@ -1,63 +1,37 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.util.HashMap;
 
-public class aq
+public final class aq<K, V>
+  extends ar<K, V>
 {
-  private ba a;
-  private bh b;
-  private bg c;
-  private List d;
+  public HashMap<K, ar.c<K, V>> a = new HashMap();
   
-  public ba a()
+  protected final ar.c<K, V> a(K paramK)
   {
-    return this.a;
+    return (ar.c)this.a.get(paramK);
   }
   
-  public void a(ba paramba)
+  public final V a(K paramK, V paramV)
   {
-    this.a = paramba;
+    ar.c localc = a(paramK);
+    if (localc != null) {
+      return localc.b;
+    }
+    this.a.put(paramK, b(paramK, paramV));
+    return null;
   }
   
-  public void a(bg parambg)
+  public final V b(K paramK)
   {
-    this.c = parambg;
+    Object localObject = super.b(paramK);
+    this.a.remove(paramK);
+    return localObject;
   }
   
-  public void a(bh parambh)
+  public final boolean c(K paramK)
   {
-    this.b = parambh;
-  }
-  
-  public void a(List paramList)
-  {
-    this.d = paramList;
-  }
-  
-  public bh b()
-  {
-    return this.b;
-  }
-  
-  public bg c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("accessInfo:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(", sdkCfgInfo:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", sdkAccessInfo:");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
-  }
-  
-  public List e()
-  {
-    return this.d;
+    return this.a.containsKey(paramK);
   }
 }
 

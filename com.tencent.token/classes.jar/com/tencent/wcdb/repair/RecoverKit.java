@@ -1,33 +1,11 @@
 package com.tencent.wcdb.repair;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteException;
-import com.tencent.wcdb.support.CancellationSignal;
-import com.tencent.wcdb.support.CancellationSignal.OnCancelListener;
+import com.tencent.token.agt.a;
 
 public class RecoverKit
-  implements CancellationSignal.OnCancelListener
+  implements agt.a
 {
-  public static final int RESULT_CANCELED = 1;
-  public static final int RESULT_FAILED = -1;
-  public static final int RESULT_OK = 0;
-  static final String TAG = "WCDB.DBBackup";
-  private SQLiteDatabase mDB;
-  private int mFailedCount;
-  private String mLastError;
-  private long mNativePtr;
-  private int mSuccessCount;
-  
-  public RecoverKit(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte)
-  {
-    this.mDB = paramSQLiteDatabase;
-    this.mLastError = null;
-    this.mNativePtr = nativeInit(paramString, paramArrayOfByte);
-    if (this.mNativePtr != 0L) {
-      return;
-    }
-    throw new SQLiteException("Failed initialize recover context.");
-  }
+  private long a;
   
   private static native void nativeCancel(long paramLong);
   
@@ -43,71 +21,23 @@ public class RecoverKit
   
   private static native int nativeSuccessCount(long paramLong);
   
-  public int failureCount()
+  public final void c()
   {
-    return this.mFailedCount;
-  }
-  
-  protected void finalize()
-  {
-    release();
-    super.finalize();
-  }
-  
-  public String lastError()
-  {
-    return this.mLastError;
-  }
-  
-  public void onCancel()
-  {
-    long l = this.mNativePtr;
+    long l = this.a;
     if (l != 0L) {
       nativeCancel(l);
     }
   }
   
-  public void release()
+  protected void finalize()
   {
-    long l = this.mNativePtr;
+    long l = this.a;
     if (l != 0L)
     {
       nativeFinish(l);
-      this.mNativePtr = 0L;
+      this.a = 0L;
     }
-  }
-  
-  public int run(boolean paramBoolean)
-  {
-    if (this.mNativePtr != 0L)
-    {
-      long l = this.mDB.acquireNativeConnectionHandle("recover", false, false);
-      int i = nativeRun(this.mNativePtr, l, paramBoolean);
-      this.mDB.releaseNativeConnection(l, null);
-      this.mSuccessCount = nativeSuccessCount(this.mNativePtr);
-      this.mFailedCount = nativeFailureCount(this.mNativePtr);
-      this.mLastError = nativeLastError(this.mNativePtr);
-      nativeFinish(this.mNativePtr);
-      this.mNativePtr = 0L;
-      return i;
-    }
-    throw new IllegalStateException("RecoverKit not initialized.");
-  }
-  
-  public int run(boolean paramBoolean, CancellationSignal paramCancellationSignal)
-  {
-    if (paramCancellationSignal.isCanceled()) {
-      return 1;
-    }
-    paramCancellationSignal.setOnCancelListener(this);
-    int i = run(paramBoolean);
-    paramCancellationSignal.setOnCancelListener(null);
-    return i;
-  }
-  
-  public int successCount()
-  {
-    return this.mSuccessCount;
+    super.finalize();
   }
 }
 

@@ -16,25 +16,20 @@ public class LoginMsgMenuDialog
   private View.OnClickListener d;
   private View.OnClickListener e;
   
-  private void a()
-  {
-    this.b = ((Button)findViewById(2131165729));
-    this.c = ((Button)findViewById(2131165728));
-    this.b.setOnClickListener(this.e);
-    this.c.setOnClickListener(this.d);
-  }
-  
   protected void onCreate(Bundle paramBundle)
   {
     Activity localActivity = this.a;
     if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296363);
-      a();
+      setContentView(2131296364);
+      this.b = ((Button)findViewById(2131165733));
+      this.c = ((Button)findViewById(2131165732));
+      this.b.setOnClickListener(this.e);
+      this.c.setOnClickListener(this.d);
       setCanceledOnTouchOutside(true);
       paramBundle = getWindow();
-      paramBundle.setBackgroundDrawableResource(2131099876);
+      paramBundle.setBackgroundDrawableResource(2131099877);
       paramBundle.getAttributes().width = -1;
       paramBundle.setGravity(80);
       return;

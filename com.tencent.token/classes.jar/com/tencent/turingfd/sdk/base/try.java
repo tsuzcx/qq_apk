@@ -1,23 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class try
   extends break
 {
   public String u = "";
   
-  public break a()
+  public final void a(afl paramafl)
   {
-    return new try();
+    this.u = paramafl.a(0, true);
   }
   
-  public void a(cy paramcy)
+  public final void a(afo paramafo)
   {
-    this.u = paramcy.a(0, true);
-  }
-  
-  public void a(db paramdb)
-  {
-    paramdb.a(this.u, 0);
+    paramafo.a(this.u, 0);
   }
 }
 

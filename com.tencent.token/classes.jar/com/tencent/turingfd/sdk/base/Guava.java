@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 
 public final class Guava
@@ -15,9 +17,9 @@ public final class Guava
   public int action = 0;
   public int oc = 0;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.Mc = paramcy.a(this.Mc, 0, true);
+    this.Mc = paramafl.a(this.Mc, 0, true);
     Object localObject;
     if (Kc == null)
     {
@@ -25,43 +27,43 @@ public final class Guava
       localObject = new Herbaceous();
       Kc.add(localObject);
     }
-    this.Nc = ((ArrayList)paramcy.a(Kc, 1, true));
-    this.oc = paramcy.a(this.oc, 2, false);
-    this.action = paramcy.a(this.action, 3, false);
-    this.Oc = paramcy.a(this.Oc, 4, false);
-    this.Pc = paramcy.a(this.Pc, 5, false);
+    this.Nc = ((ArrayList)paramafl.a(Kc, 1, true));
+    this.oc = paramafl.a(this.oc, 2, false);
+    this.action = paramafl.a(this.action, 3, false);
+    this.Oc = paramafl.a(this.Oc, 4, false);
+    this.Pc = paramafl.a(this.Pc, 5, false);
     if (Lc == null)
     {
       Lc = new ArrayList();
       localObject = new Lemon();
       Lc.add(localObject);
     }
-    this.Qc = ((ArrayList)paramcy.a(Lc, 6, false));
+    this.Qc = ((ArrayList)paramafl.a(Lc, 6, false));
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.Mc, 0);
-    paramdb.a(this.Nc, 1);
+    paramafo.a(this.Mc, 0);
+    paramafo.a(this.Nc, 1);
     int i = this.oc;
     if (i != 0) {
-      paramdb.a(i, 2);
+      paramafo.a(i, 2);
     }
     i = this.action;
     if (i != 0) {
-      paramdb.a(i, 3);
+      paramafo.a(i, 3);
     }
     double d = this.Oc;
     if (d != 0.0D) {
-      paramdb.a(d, 4);
+      paramafo.a(d, 4);
     }
     d = this.Pc;
     if (d != 0.0D) {
-      paramdb.a(d, 5);
+      paramafo.a(d, 5);
     }
     ArrayList localArrayList = this.Qc;
     if (localArrayList != null) {
-      paramdb.a(localArrayList, 6);
+      paramafo.a(localArrayList, 6);
     }
   }
 }

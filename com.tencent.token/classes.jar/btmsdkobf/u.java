@@ -26,12 +26,12 @@ public final class u
     aL.put("", "");
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new u();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ay = paramJceInputStream.read(this.ay, 0, true);
     this.aG = ((ArrayList)paramJceInputStream.read(aK, 1, true));
@@ -41,7 +41,7 @@ public final class u
     this.aJ = ((Map)paramJceInputStream.read(aL, 5, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
     paramJceOutputStream.write(this.aG, 1);

@@ -19,9 +19,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.annotation.Keep;
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
-import android.util.Log;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -103,8 +100,7 @@ public class CondomProcess
         }
         else
         {
-          paramApplication = new StringBuilder();
-          paramApplication.append("Process name \"");
+          paramApplication = new StringBuilder("Process name \"");
           paramApplication.append((String)localObject1);
           paramApplication.append("\" is not used by any component in AndroidManifest.xml");
           throw new IllegalArgumentException(paramApplication.toString());
@@ -117,22 +113,16 @@ public class CondomProcess
   
   private static String getFullProcessName(Context paramContext, String paramString)
   {
-    Object localObject = paramString;
-    if (paramString.length() > 0)
+    if ((paramString.length() > 0) && (paramString.charAt(0) == ':'))
     {
-      localObject = paramString;
-      if (paramString.charAt(0) == ':')
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramContext.getPackageName());
-        ((StringBuilder)localObject).append(paramString);
-        localObject = ((StringBuilder)localObject).toString();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
     }
-    return localObject;
+    return paramString;
   }
   
-  @Nullable
   private static String getProcessName(Context paramContext)
   {
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -154,7 +144,6 @@ public class CondomProcess
           }
         }
       }
-      Log.e(TAG, "Error querying the name of current process.");
       return null;
     }
     catch (SecurityException paramContext) {}
@@ -168,23 +157,19 @@ public class CondomProcess
     if (i > 0) {
       str = paramString.substring(i + 1);
     }
-    paramString = new StringBuilder();
-    paramString.append("Condom:");
-    paramString.append(str);
-    FULL_TAG = paramString.toString();
-    TAG = CondomCore.asLogTag(FULL_TAG);
+    paramString = "Condom:".concat(String.valueOf(str));
+    FULL_TAG = paramString;
+    TAG = CondomCore.asLogTag(paramString);
     paramApplication = new CondomCore(paramApplication, paramCondomOptions, TAG);
     try
     {
       installCondomProcessActivityManager(paramApplication);
       installCondomProcessPackageManager(paramApplication);
-      Log.d(TAG, "Global condom is installed in current process");
       return;
     }
     catch (Exception paramString)
     {
       paramApplication.logConcern("Incompatibility", paramString.getMessage());
-      Log.e(TAG, "Error installing global condom in current process", paramString);
     }
   }
   
@@ -199,12 +184,12 @@ public class CondomProcess
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      label25:
+      label24:
       Object localObject2;
       Object localObject3;
       Class localClass;
       Object localObject4;
-      break label25;
+      break label24;
     }
     localObject1 = null;
     localObject2 = localObject1;
@@ -229,7 +214,6 @@ public class CondomProcess
           localObject4 = Proxy.getInvocationHandler(localObject3);
           if ((localObject4 instanceof a))
           {
-            Log.w(TAG, "CondomActivityManager was already installed in this process.");
             a.a((a)localObject4, paramCondomCore);
             return;
           }
@@ -256,7 +240,6 @@ public class CondomProcess
       localObject2 = Proxy.getInvocationHandler(localObject1);
       if ((localObject2 instanceof b))
       {
-        Log.w(TAG, "CondomPackageManager was already installed in this process.");
         ((b)localObject2).b = paramCondomCore;
         return;
       }
@@ -331,7 +314,7 @@ public class CondomProcess
   {
     paramApplication = new Thread(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         CondomProcess.doValidateProcessNames(this.a, paramArrayOfString);
       }
@@ -340,8 +323,7 @@ public class CondomProcess
     paramApplication.start();
   }
   
-  @VisibleForTesting
-  static class a
+  static final class a
     extends CondomProcess.c
   {
     private CondomCore a;
@@ -352,171 +334,140 @@ public class CondomProcess
       this.a = paramCondomCore;
     }
     
-    private Object a(final Object paramObject, final Method paramMethod, final Object[] paramArrayOfObject)
+    public final Object invoke(final Object paramObject, final Method paramMethod, final Object[] paramArrayOfObject)
     {
-      Object localObject = paramMethod.getName();
-      int i = ((String)localObject).hashCode();
-      if (i != 972810068)
-      {
-        if (i != 1155315389)
-        {
-          if (i != 1418030008)
-          {
-            if ((i == 1849706483) && (((String)localObject).equals("startService")))
-            {
-              i = 2;
-              break label111;
-            }
-          }
-          else if (((String)localObject).equals("bindService"))
-          {
-            i = 1;
-            break label111;
-          }
-        }
-        else if (((String)localObject).equals("broadcastIntent"))
-        {
-          i = 0;
-          break label111;
-        }
-      }
-      else if (((String)localObject).equals("getContentProvider"))
-      {
-        i = 3;
-        break label111;
-      }
-      i = -1;
-      switch (i)
-      {
-      default: 
-        break;
-      case 3: 
-        localObject = (String)paramArrayOfObject[1];
-        CondomCore localCondomCore = this.a;
-        if (!localCondomCore.shouldAllowProvider(localCondomCore.mBase, (String)localObject, 131072)) {
-          return null;
-        }
-        break;
-      case 2: 
-        localObject = (Intent)paramArrayOfObject[1];
-        paramObject = (ComponentName)this.a.proceed(OutboundType.START_SERVICE, (Intent)localObject, null, new CondomCore.g()
-        {
-          public ComponentName a()
-          {
-            return (ComponentName)CondomProcess.a.c(CondomProcess.a.this, paramObject, paramMethod, paramArrayOfObject);
-          }
-        });
-        if (paramObject != null) {
-          this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject, paramObject.getPackageName(), CondomCore.CondomEvent.START_PASS);
-        }
-        return paramObject;
-      case 1: 
-        localObject = (Intent)paramArrayOfObject[2];
-        i = ((Integer)this.a.proceed(OutboundType.BIND_SERVICE, (Intent)localObject, Integer.valueOf(0), new CondomCore.g()
-        {
-          public Integer a()
-          {
-            return (Integer)CondomProcess.a.b(CondomProcess.a.this, paramObject, paramMethod, paramArrayOfObject);
-          }
-        })).intValue();
-        if (i > 0) {
-          this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject, CondomCore.getTargetPackage((Intent)localObject), CondomCore.CondomEvent.BIND_PASS);
-        }
-        return Integer.valueOf(i);
-      case 0: 
-        label111:
-        i = ((Integer)this.a.proceed(OutboundType.BROADCAST, (Intent)paramArrayOfObject[1], Integer.valueOf(-2147483648), new CondomCore.g()
-        {
-          public Integer a()
-          {
-            return (Integer)CondomProcess.a.a(CondomProcess.a.this, paramObject, paramMethod, paramArrayOfObject);
-          }
-        })).intValue();
-        paramMethod = paramArrayOfObject[3];
-        if (i != -2147483648) {
-          return Integer.valueOf(i);
-        }
-        if (paramMethod == null) {
-          return Integer.valueOf(0);
-        }
-        localObject = paramMethod.getClass();
-        if (Build.VERSION.SDK_INT >= 17)
-        {
-          paramObject = new Class[7];
-          paramObject[0] = Intent.class;
-          paramObject[1] = Integer.TYPE;
-          paramObject[2] = String.class;
-          paramObject[3] = Bundle.class;
-          paramObject[4] = Boolean.TYPE;
-          paramObject[5] = Boolean.TYPE;
-          paramObject[6] = Integer.TYPE;
-        }
-        else
-        {
-          paramObject = new Class[6];
-          paramObject[0] = Intent.class;
-          paramObject[1] = Integer.TYPE;
-          paramObject[2] = String.class;
-          paramObject[3] = Bundle.class;
-          paramObject[4] = Boolean.TYPE;
-          paramObject[5] = Boolean.TYPE;
-        }
-        localObject = ((Class)localObject).getMethod("performReceive", paramObject);
-        if (Build.VERSION.SDK_INT >= 17)
-        {
-          paramObject = new Object[7];
-          paramObject[0] = paramArrayOfObject[1];
-          paramObject[1] = paramArrayOfObject[4];
-          paramObject[2] = paramArrayOfObject[5];
-          paramObject[3] = paramArrayOfObject[6];
-          paramObject[4] = paramArrayOfObject[(paramArrayOfObject.length - 3)];
-          paramObject[5] = paramArrayOfObject[(paramArrayOfObject.length - 2)];
-          paramObject[6] = paramArrayOfObject[(paramArrayOfObject.length - 1)];
-        }
-        else
-        {
-          paramObject = new Object[6];
-          paramObject[0] = paramArrayOfObject[1];
-          paramObject[1] = paramArrayOfObject[4];
-          paramObject[2] = paramArrayOfObject[5];
-          paramObject[3] = paramArrayOfObject[6];
-          paramObject[4] = paramArrayOfObject[8];
-          paramObject[5] = paramArrayOfObject[9];
-        }
-        ((Method)localObject).invoke(paramMethod, paramObject);
-        return Integer.valueOf(0);
-      }
-      return super.invoke(paramObject, paramMethod, paramArrayOfObject);
-    }
-    
-    public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-    {
+      Object localObject2;
       try
       {
-        Object localObject = a(paramObject, paramMethod, paramArrayOfObject);
-        return localObject;
+        localObject1 = paramMethod.getName();
+        i = -1;
+        int j = ((String)localObject1).hashCode();
+        if (j != 972810068)
+        {
+          if (j != 1155315389)
+          {
+            if (j != 1418030008)
+            {
+              if ((j == 1849706483) && (((String)localObject1).equals("startService"))) {
+                i = 2;
+              }
+            }
+            else if (((String)localObject1).equals("bindService")) {
+              i = 1;
+            }
+          }
+          else if (((String)localObject1).equals("broadcastIntent")) {
+            i = 0;
+          }
+        }
+        else if (((String)localObject1).equals("getContentProvider")) {
+          i = 3;
+        }
       }
       catch (Exception localException)
       {
-        if (this.c)
+        for (;;)
         {
-          String str = CondomProcess.TAG;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("Error proceeding ");
-          localStringBuilder.append(paramMethod);
-          Log.e(str, localStringBuilder.toString(), localException);
+          Object localObject1;
+          int i;
+          Object localObject3;
+          continue;
+          switch (i)
+          {
+          }
         }
       }
-      return super.invoke(paramObject, paramMethod, paramArrayOfObject);
+      localObject1 = (String)paramArrayOfObject[1];
+      if (!this.a.shouldAllowProvider(this.a.mBase, (String)localObject1, 131072))
+      {
+        return null;
+        localObject1 = (Intent)paramArrayOfObject[1];
+        localObject2 = (ComponentName)this.a.proceed(OutboundType.START_SERVICE, (Intent)localObject1, null, new CondomCore.g() {});
+        if (localObject2 != null)
+        {
+          this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, ((ComponentName)localObject2).getPackageName(), CondomCore.CondomEvent.START_PASS);
+          return localObject2;
+          localObject1 = (Intent)paramArrayOfObject[2];
+          i = ((Integer)this.a.proceed(OutboundType.BIND_SERVICE, (Intent)localObject1, Integer.valueOf(0), new CondomCore.g() {})).intValue();
+          if (i > 0) {
+            this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, CondomCore.getTargetPackage((Intent)localObject1), CondomCore.CondomEvent.BIND_PASS);
+          }
+          return Integer.valueOf(i);
+          i = ((Integer)this.a.proceed(OutboundType.BROADCAST, (Intent)paramArrayOfObject[1], Integer.valueOf(-2147483648), new CondomCore.g() {})).intValue();
+          localObject2 = paramArrayOfObject[3];
+          if (i != -2147483648) {
+            return Integer.valueOf(i);
+          }
+          if (localObject2 == null) {
+            return Integer.valueOf(0);
+          }
+          localObject3 = localObject2.getClass();
+          if (Build.VERSION.SDK_INT >= 17)
+          {
+            localObject1 = new Class[7];
+            localObject1[0] = Intent.class;
+            localObject1[1] = Integer.TYPE;
+            localObject1[2] = String.class;
+            localObject1[3] = Bundle.class;
+            localObject1[4] = Boolean.TYPE;
+            localObject1[5] = Boolean.TYPE;
+            localObject1[6] = Integer.TYPE;
+          }
+          else
+          {
+            localObject1 = new Class[6];
+            localObject1[0] = Intent.class;
+            localObject1[1] = Integer.TYPE;
+            localObject1[2] = String.class;
+            localObject1[3] = Bundle.class;
+            localObject1[4] = Boolean.TYPE;
+            localObject1[5] = Boolean.TYPE;
+          }
+          localObject3 = ((Class)localObject3).getMethod("performReceive", (Class[])localObject1);
+          if (Build.VERSION.SDK_INT >= 17)
+          {
+            localObject1 = new Object[7];
+            localObject1[0] = paramArrayOfObject[1];
+            localObject1[1] = paramArrayOfObject[4];
+            localObject1[2] = paramArrayOfObject[5];
+            localObject1[3] = paramArrayOfObject[6];
+            localObject1[4] = paramArrayOfObject[(paramArrayOfObject.length - 3)];
+            localObject1[5] = paramArrayOfObject[(paramArrayOfObject.length - 2)];
+            localObject1[6] = paramArrayOfObject[(paramArrayOfObject.length - 1)];
+          }
+          else
+          {
+            localObject1 = new Object[6];
+            localObject1[0] = paramArrayOfObject[1];
+            localObject1[1] = paramArrayOfObject[4];
+            localObject1[2] = paramArrayOfObject[5];
+            localObject1[3] = paramArrayOfObject[6];
+            localObject1[4] = paramArrayOfObject[8];
+            localObject1[5] = paramArrayOfObject[9];
+          }
+          ((Method)localObject3).invoke(localObject2, (Object[])localObject1);
+          return Integer.valueOf(0);
+        }
+      }
+      else
+      {
+        localObject1 = super.invoke(paramObject, paramMethod, paramArrayOfObject);
+        return localObject1;
+        if (this.c)
+        {
+          localObject1 = CondomProcess.TAG;
+          new StringBuilder("Error proceeding ").append(paramMethod);
+        }
+        return super.invoke(paramObject, paramMethod, paramArrayOfObject);
+      }
+      return localObject2;
     }
   }
   
-  @VisibleForTesting
-  static class b
+  static final class b
     extends CondomProcess.c
   {
     final Intent a = new Intent();
-    @VisibleForTesting
     CondomCore b;
     private Method d;
     private Method e;
@@ -525,128 +476,6 @@ public class CondomProcess
     {
       super("IPackageManager.", paramCondomCore.DEBUG);
       this.b = paramCondomCore;
-    }
-    
-    private Object a(final Object paramObject, final Method paramMethod, final Object[] paramArrayOfObject)
-    {
-      Object localObject1 = paramMethod.getName();
-      switch (((String)localObject1).hashCode())
-      {
-      default: 
-        break;
-      case 1786110784: 
-        if (((String)localObject1).equals("queryIntentReceivers")) {
-          i = 1;
-        }
-        break;
-      case 1600494599: 
-        if (((String)localObject1).equals("getInstalledApplications")) {
-          i = 4;
-        }
-        break;
-      case 1326102014: 
-        if (((String)localObject1).equals("resolveContentProvider")) {
-          i = 3;
-        }
-        break;
-      case -109758974: 
-        if (((String)localObject1).equals("queryIntentServices")) {
-          i = 0;
-        }
-        break;
-      case -150905391: 
-        if (((String)localObject1).equals("getInstalledPackages")) {
-          i = 5;
-        }
-        break;
-      case -297395415: 
-        if (((String)localObject1).equals("resolveService")) {
-          i = 2;
-        }
-        break;
-      }
-      final int i = -1;
-      switch (i)
-      {
-      default: 
-        break;
-      case 4: 
-      case 5: 
-        localObject2 = this.b;
-        localObject3 = CondomProcess.FULL_TAG;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("IPackageManager.");
-        localStringBuilder.append((String)localObject1);
-        ((CondomCore)localObject2).logConcern((String)localObject3, localStringBuilder.toString());
-        break;
-      case 3: 
-        paramObject = (ProviderInfo)super.invoke(paramObject, paramMethod, paramArrayOfObject);
-        if ((((Integer)paramArrayOfObject[1]).intValue() & 0x20000) != 0) {
-          return paramObject;
-        }
-        if (this.b.shouldAllowProvider(paramObject)) {
-          return paramObject;
-        }
-        return null;
-      case 2: 
-        localObject1 = (Intent)paramArrayOfObject[0];
-        i = ((Intent)localObject1).getFlags();
-        this.b.proceed(OutboundType.QUERY_SERVICES, (Intent)localObject1, null, new CondomCore.g()
-        {
-          public ResolveInfo a()
-          {
-            if ((!CondomProcess.b.this.b.mExcludeBackgroundServices) && (CondomProcess.b.this.b.mOutboundJudge == null)) {
-              return (ResolveInfo)CondomProcess.b.a(CondomProcess.b.this, paramObject, paramMethod, paramArrayOfObject);
-            }
-            if (CondomProcess.b.a(CondomProcess.b.this) == null)
-            {
-              CondomProcess.b.this.b.mBase.getPackageManager().queryIntentServices(CondomProcess.b.this.a, 0);
-              if (CondomProcess.b.a(CondomProcess.b.this) == null) {
-                throw new IllegalStateException("Failed to capture IPackageManager.queryIntentServices()");
-              }
-            }
-            Object localObject = CondomProcess.b.this;
-            localObject = CondomProcess.b.a((CondomProcess.b)localObject, CondomProcess.b.b((CondomProcess.b)localObject, paramObject, CondomProcess.b.a((CondomProcess.b)localObject), paramArrayOfObject));
-            return CondomProcess.b.this.b.filterCandidates(OutboundType.QUERY_SERVICES, this.d.setFlags(i), (List)localObject, CondomProcess.FULL_TAG, false);
-          }
-        });
-      case 1: 
-        localObject1 = null;
-        break;
-      case 0: 
-        localObject1 = OutboundType.QUERY_SERVICES;
-        if (this.d == null) {
-          this.d = paramMethod;
-        }
-        if (paramArrayOfObject[0] == this.a) {
-          return null;
-        }
-        break;
-      }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = OutboundType.QUERY_RECEIVERS;
-      }
-      paramMethod = super.invoke(paramObject, paramMethod, paramArrayOfObject);
-      localObject1 = this.b;
-      paramArrayOfObject = (Intent)paramArrayOfObject[0];
-      Object localObject3 = new CondomCore.g()
-      {
-        public List<ResolveInfo> a()
-        {
-          return CondomProcess.b.a(CondomProcess.b.this, paramMethod);
-        }
-      };
-      if (localObject2 == OutboundType.QUERY_SERVICES) {
-        paramObject = CondomCore.SERVICE_PACKAGE_GETTER;
-      } else {
-        paramObject = CondomCore.RECEIVER_PACKAGE_GETTER;
-      }
-      if (((CondomCore)localObject1).proceedQuery((OutboundType)localObject2, paramArrayOfObject, (CondomCore.g)localObject3, paramObject).isEmpty()) {
-        a(paramMethod).clear();
-      }
-      return paramMethod;
-      return super.invoke(paramObject, paramMethod, paramArrayOfObject);
     }
     
     private <T> List<T> a(Object paramObject)
@@ -662,35 +491,121 @@ public class CondomProcess
         }
         return (List)this.e.invoke(paramObject, new Object[0]);
       }
-      paramObject = new StringBuilder();
-      paramObject.append("Neither List nor ParceledListSlice: ");
-      paramObject.append(localClass);
-      throw new IllegalArgumentException(paramObject.toString());
+      throw new IllegalArgumentException("Neither List nor ParceledListSlice: ".concat(String.valueOf(localClass)));
     }
     
-    public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+    public final Object invoke(final Object paramObject, final Method paramMethod, final Object[] paramArrayOfObject)
     {
+      final Object localObject4;
       try
       {
-        Object localObject = a(paramObject, paramMethod, paramArrayOfObject);
-        return localObject;
+        localObject1 = paramMethod.getName();
+        i = -1;
+        switch (((String)localObject1).hashCode())
+        {
+        case 1786110784: 
+          if (!((String)localObject1).equals("queryIntentReceivers")) {
+            break label465;
+          }
+          i = 1;
+        }
       }
       catch (Exception localException)
       {
-        if (this.c)
+        for (;;)
         {
-          String str = CondomProcess.TAG;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("Error proceeding ");
-          localStringBuilder.append(paramMethod);
-          Log.e(str, localStringBuilder.toString(), localException);
+          Object localObject1;
+          final int i;
+          continue;
+          switch (i)
+          {
+          }
         }
       }
-      return super.invoke(paramObject, paramMethod, paramArrayOfObject);
+      if (((String)localObject1).equals("getInstalledApplications"))
+      {
+        i = 4;
+        break label465;
+        if (((String)localObject1).equals("resolveContentProvider"))
+        {
+          i = 3;
+          break label465;
+          if (((String)localObject1).equals("queryIntentServices"))
+          {
+            i = 0;
+            break label465;
+            if (((String)localObject1).equals("getInstalledPackages"))
+            {
+              i = 5;
+              break label465;
+              if (((String)localObject1).equals("resolveService"))
+              {
+                i = 2;
+                break label465;
+                this.b.logConcern(CondomProcess.FULL_TAG, "IPackageManager.".concat(String.valueOf(localObject1)));
+                break label414;
+                localObject1 = (ProviderInfo)super.invoke(paramObject, paramMethod, paramArrayOfObject);
+                if ((((Integer)paramArrayOfObject[1]).intValue() & 0x20000) != 0) {
+                  return localObject1;
+                }
+                if (!this.b.shouldAllowProvider((ProviderInfo)localObject1)) {
+                  break label507;
+                }
+                return localObject1;
+                localObject1 = (Intent)paramArrayOfObject[0];
+                i = ((Intent)localObject1).getFlags();
+                this.b.proceed(OutboundType.QUERY_SERVICES, (Intent)localObject1, null, new CondomCore.g() {});
+                localObject1 = OutboundType.QUERY_SERVICES;
+                if (this.d == null) {
+                  this.d = paramMethod;
+                }
+                if (paramArrayOfObject[0] == this.a) {
+                  return null;
+                }
+              }
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        Object localObject3 = localObject1;
+        if (localObject1 == null) {
+          localObject3 = OutboundType.QUERY_RECEIVERS;
+        }
+        localObject4 = super.invoke(paramObject, paramMethod, paramArrayOfObject);
+        CondomCore localCondomCore = this.b;
+        Intent localIntent = (Intent)paramArrayOfObject[0];
+        CondomCore.g local1 = new CondomCore.g() {};
+        if (localObject3 == OutboundType.QUERY_SERVICES) {
+          localObject1 = CondomCore.SERVICE_PACKAGE_GETTER;
+        } else {
+          localObject1 = CondomCore.RECEIVER_PACKAGE_GETTER;
+        }
+        if (!localCondomCore.proceedQuery((OutboundType)localObject3, localIntent, local1, (CondomCore.c)localObject1).isEmpty()) {
+          break;
+        }
+        a(localObject4).clear();
+        return localObject4;
+        label414:
+        localObject1 = super.invoke(paramObject, paramMethod, paramArrayOfObject);
+        return localObject1;
+        if (this.c)
+        {
+          localObject1 = CondomProcess.TAG;
+          new StringBuilder("Error proceeding ").append(paramMethod);
+        }
+        return super.invoke(paramObject, paramMethod, paramArrayOfObject);
+        label465:
+        label507:
+        return null;
+        Object localObject2 = null;
+      }
+      return localObject4;
     }
   }
   
-  private static class c
+  static class c
     implements InvocationHandler
   {
     private final Object a;
@@ -708,7 +623,7 @@ public class CondomProcess
     {
       if (this.c)
       {
-        String str = CondomProcess.TAG;
+        paramObject = CondomProcess.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(this.b);
         localStringBuilder.append(paramMethod.getName());
@@ -718,7 +633,6 @@ public class CondomProcess
           paramObject = Arrays.deepToString(paramArrayOfObject);
         }
         localStringBuilder.append(paramObject);
-        Log.d(str, localStringBuilder.toString());
       }
       try
       {

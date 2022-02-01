@@ -17,11 +17,10 @@ public final class O
     this.b = paramh.a(this.b, 1, true);
     if (f == null)
     {
-      arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = (byte[])new byte[1];
       f = arrayOfByte;
       ((byte[])arrayOfByte)[0] = 0;
     }
-    byte[] arrayOfByte = f;
     this.c = ((byte[])paramh.c(2, false));
     this.d = paramh.b(3, false);
     this.e = paramh.a(this.e, 4, false);

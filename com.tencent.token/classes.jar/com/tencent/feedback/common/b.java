@@ -19,9 +19,7 @@ public abstract class b
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder("rqdp{  AsyncTaskHandlerAbs setInstance} ");
-      localStringBuilder.append(paramb);
-      e.a(localStringBuilder.toString(), new Object[0]);
+      e.a("rqdp{  AsyncTaskHandlerAbs setInstance} ".concat(String.valueOf(paramb)), new Object[0]);
       if ((a != null) && (a != paramb)) {
         a.a();
       }

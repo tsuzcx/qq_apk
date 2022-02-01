@@ -2,21 +2,16 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.annotation.RestrictTo;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import com.tencent.token.it;
+import com.tencent.token.it.a;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class FitWindowsLinearLayout
   extends LinearLayout
-  implements FitWindowsViewGroup
+  implements it
 {
-  private FitWindowsViewGroup.OnFitSystemWindowsListener mListener;
-  
-  public FitWindowsLinearLayout(Context paramContext)
-  {
-    super(paramContext);
-  }
+  private it.a a;
   
   public FitWindowsLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,16 +20,16 @@ public class FitWindowsLinearLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    FitWindowsViewGroup.OnFitSystemWindowsListener localOnFitSystemWindowsListener = this.mListener;
-    if (localOnFitSystemWindowsListener != null) {
-      localOnFitSystemWindowsListener.onFitSystemWindows(paramRect);
+    it.a locala = this.a;
+    if (locala != null) {
+      locala.a(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }
   
-  public void setOnFitSystemWindowsListener(FitWindowsViewGroup.OnFitSystemWindowsListener paramOnFitSystemWindowsListener)
+  public void setOnFitSystemWindowsListener(it.a parama)
   {
-    this.mListener = paramOnFitSystemWindowsListener;
+    this.a = parama;
   }
 }
 

@@ -17,10 +17,9 @@ public class g
     byte[] arrayOfByte = new byte[this.d];
     util.int8_to_buf(arrayOfByte, 0, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 1, paramArrayOfByte1.length);
-    int i = 1 + paramArrayOfByte1.length;
+    int i = paramArrayOfByte1.length + 1;
     util.int16_to_buf(arrayOfByte, i, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i + 2, paramArrayOfByte2.length);
-    i = paramArrayOfByte2.length;
     return a(arrayOfByte);
   }
 }

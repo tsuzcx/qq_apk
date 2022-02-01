@@ -31,10 +31,7 @@ public class cg
   
   public cg(Context paramContext, boolean paramBoolean, cl paramcl, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ip_list]HIPList() isTest: ");
-    localStringBuilder.append(paramBoolean);
-    eh.e("HIPList", localStringBuilder.toString());
+    eh.e("HIPList", "[ip_list]HIPList() isTest: ".concat(String.valueOf(paramBoolean)));
     this.mContext = paramContext;
     this.hi = paramBoolean;
     this.hS = paramcl;
@@ -87,16 +84,10 @@ public class cg
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        if (f(str, paramBoolean))
-        {
+        if (f(str, paramBoolean)) {
           localArrayList.add(str);
-        }
-        else
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[ip_list]drop invalid ipport: ");
-          localStringBuilder.append(str);
-          eh.h("HIPList", localStringBuilder.toString());
+        } else {
+          eh.h("HIPList", "[ip_list]drop invalid ipport: ".concat(String.valueOf(str)));
         }
       }
     }
@@ -116,8 +107,7 @@ public class cg
       if (paramBoolean)
       {
         a.a((a)localObject, i(true));
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ip_list]setWorkingHIPList for ");
+        StringBuilder localStringBuilder = new StringBuilder("[ip_list]setWorkingHIPList for ");
         if (this.hi) {
           ??? = " [test server]";
         } else {
@@ -132,8 +122,7 @@ public class cg
       {
         this.hV = ((a)localObject);
         this.hW = a.a(this.hV);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[ip_list]setWorkingHIPList(), key changed: ");
+        localObject = new StringBuilder("[ip_list]setWorkingHIPList(), key changed: ");
         ((StringBuilder)localObject).append(this.hU);
         ((StringBuilder)localObject).append(" -> ");
         ((StringBuilder)localObject).append(paramString);
@@ -157,10 +146,7 @@ public class cg
     {
       if ((this.hU != null) && (this.hU.equals(str)) && (this.hV != null) && (this.hV.isValid()))
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ip_list]refreshWorkingIPList(), not necessary, key unchanged: ");
-        localStringBuilder.append(str);
-        eh.f("HIPList", localStringBuilder.toString());
+        eh.f("HIPList", "[ip_list]refreshWorkingIPList(), not necessary, key unchanged: ".concat(String.valueOf(str)));
         return;
       }
       ??? = e(str, true);
@@ -191,34 +177,32 @@ public class cg
   
   private String bf()
   {
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
     if (this.hi) {
-      localObject1 = "t_";
+      str1 = "t_";
     } else {
-      localObject1 = "r_";
+      str1 = "r_";
     }
-    ((StringBuilder)localObject2).append((String)localObject1);
-    localObject2 = ((StringBuilder)localObject2).toString();
+    ((StringBuilder)localObject).append(str1);
+    String str2 = ((StringBuilder)localObject).toString();
     int i = cd.e(this.mContext);
     if (i == 1)
     {
-      localObject3 = NetworkUtil.getSSID();
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("wifi_");
-      ((StringBuilder)localObject1).append((String)localObject3);
+      str1 = NetworkUtil.getSSID();
+      localObject = "wifi_";
+      str1 = String.valueOf(str1);
     }
     else
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("apn_");
-      ((StringBuilder)localObject1).append(i);
+      localObject = "apn_";
+      str1 = String.valueOf(i);
     }
-    Object localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append((String)localObject2);
-    ((StringBuilder)localObject3).append((String)localObject1);
-    return ((StringBuilder)localObject3).toString();
+    String str1 = ((String)localObject).concat(str1);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(str1);
+    return ((StringBuilder)localObject).toString();
   }
   
   private int bh()
@@ -226,63 +210,50 @@ public class cg
     int j = ei.og;
     int i = 2;
     if (4 == j) {}
-    for (Object localObject = "[ip_list]getOperator(), wifi as china telecom";; localObject = "[ip_list]getOperator(), unknow as china telecom")
+    for (String str = "[ip_list]getOperator(), wifi as china telecom";; str = "[ip_list]getOperator(), unknow as china telecom")
     {
-      eh.e("HIPList", (String)localObject);
-      break label67;
-      localObject = "";
+      eh.e("HIPList", str);
+      break label68;
+      str = "";
       if (bc.o().isAllowImsi()) {
-        localObject = PhoneInfoFetcher.getIMSI(this.mContext);
+        str = PhoneInfoFetcher.getIMSI(this.mContext);
       }
-      j = ed.b(this.mContext, (String)localObject);
+      j = ed.b(this.mContext, str);
       if (-1 != j) {
         break;
       }
     }
     i = j;
-    label67:
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[ip_list]getOperator(), 0-mobile, 1-unicom, 2-telecom: ");
-    ((StringBuilder)localObject).append(i);
-    eh.e("HIPList", ((StringBuilder)localObject).toString());
+    label68:
+    eh.e("HIPList", "[ip_list]getOperator(), 0-mobile, 1-unicom, 2-telecom: ".concat(String.valueOf(i)));
     return i;
   }
   
   private a e(String paramString, boolean paramBoolean)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[ip_list]loadSavedIPPortListInfo(), key: ");
-    ((StringBuilder)localObject).append(paramString);
-    eh.f("HIPList", ((StringBuilder)localObject).toString());
-    localObject = this.hS.r(paramString);
-    if (localObject != null)
+    eh.f("HIPList", "[ip_list]loadSavedIPPortListInfo(), key: ".concat(String.valueOf(paramString)));
+    a locala = this.hS.r(paramString);
+    if (locala != null)
     {
-      if (((a)localObject).isValid())
+      if (locala.isValid())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ip_list]loadSavedIPPortListInfo(), saved info for: ");
+        StringBuilder localStringBuilder = new StringBuilder("[ip_list]loadSavedIPPortListInfo(), saved info for: ");
         localStringBuilder.append(paramString);
         localStringBuilder.append(": ");
-        localStringBuilder.append(((a)localObject).toString());
+        localStringBuilder.append(locala.toString());
         eh.f("HIPList", localStringBuilder.toString());
-        return localObject;
+        return locala;
       }
       eh.g("HIPList", "[ip_list]loadSavedIPPortListInfo(), not valid");
       if (paramBoolean)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[ip_list]loadSavedIPPortListInfo(), delete not valid info: ");
-        ((StringBuilder)localObject).append(paramString);
-        eh.g("HIPList", ((StringBuilder)localObject).toString());
+        eh.g("HIPList", "[ip_list]loadSavedIPPortListInfo(), delete not valid info: ".concat(String.valueOf(paramString)));
         this.hS.b(paramString, 0L, null);
       }
     }
     else
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[ip_list]loadSavedIPPortListInfo(), no saved info for: ");
-      ((StringBuilder)localObject).append(paramString);
-      eh.g("HIPList", ((StringBuilder)localObject).toString());
+      eh.g("HIPList", "[ip_list]loadSavedIPPortListInfo(), no saved info for: ".concat(String.valueOf(paramString)));
     }
     return null;
   }
@@ -330,8 +301,7 @@ public class cg
     if (hP) {
       localArrayList.addAll((Collection)localObject2);
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("[ip_list]getDefaultHIPListInfo for ");
+    localObject2 = new StringBuilder("[ip_list]getDefaultHIPListInfo for ");
     if (paramBoolean) {
       localObject1 = "tcp";
     } else {
@@ -454,64 +424,58 @@ public class cg
       if (i == paramString.length() - 1) {
         return null;
       }
-      Object localObject = paramString.substring(0, i);
-      String str = paramString.substring(i + 1);
-      if (TextUtils.isDigitsOnly(str))
+      String str1 = paramString.substring(0, i);
+      String str2 = paramString.substring(i + 1);
+      if (TextUtils.isDigitsOnly(str2))
       {
-        paramString = new StringBuilder();
-        paramString.append("[ip_list]getIPEndPointByStr(), ip: ");
-        paramString.append((String)localObject);
+        paramString = new StringBuilder("[ip_list]getIPEndPointByStr(), ip: ");
+        paramString.append(str1);
         paramString.append(" port: ");
-        paramString.append(Integer.parseInt(str));
+        paramString.append(Integer.parseInt(str2));
         eh.f("HIPList", paramString.toString());
-        return new dq.b((String)localObject, Integer.parseInt(str));
+        return new dq.b(str1, Integer.parseInt(str2));
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[ip_list]getIPEndPointByStr(), invalid: ");
-      ((StringBuilder)localObject).append(paramString);
-      eh.f("HIPList", ((StringBuilder)localObject).toString());
+      eh.f("HIPList", "[ip_list]getIPEndPointByStr(), invalid: ".concat(String.valueOf(paramString)));
     }
     return null;
   }
   
   private String t(int paramInt)
   {
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
     if (this.hi) {
-      localObject1 = "t_";
+      str1 = "t_";
     } else {
-      localObject1 = "r_";
+      str1 = "r_";
     }
-    ((StringBuilder)localObject2).append((String)localObject1);
-    localObject2 = ((StringBuilder)localObject2).toString();
+    ((StringBuilder)localObject).append(str1);
+    String str2 = ((StringBuilder)localObject).toString();
     if (paramInt == 1)
     {
       if (NetworkUtil.isWifiConnected())
       {
-        localObject3 = NetworkUtil.getSSID();
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("wifi_");
-        ((StringBuilder)localObject1).append((String)localObject3);
+        localObject = NetworkUtil.getSSID();
+        str1 = "wifi_";
+        localObject = String.valueOf(localObject);
       }
       else
       {
-        localObject1 = "wifi_nonessid";
-        break label118;
+        str1 = "wifi_nonessid";
+        break label95;
       }
     }
     else
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("apn_");
-      ((StringBuilder)localObject1).append(paramInt);
+      str1 = "apn_";
+      localObject = String.valueOf(paramInt);
     }
-    Object localObject1 = ((StringBuilder)localObject1).toString();
-    label118:
-    Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append((String)localObject2);
-    ((StringBuilder)localObject3).append((String)localObject1);
-    return ((StringBuilder)localObject3).toString();
+    String str1 = str1.concat((String)localObject);
+    label95:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(str1);
+    return ((StringBuilder)localObject).toString();
   }
   
   private static boolean u(String paramString)
@@ -543,8 +507,7 @@ public class cg
   
   public void a(long paramLong, int paramInt, JceStruct paramJceStruct)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[ip_list]onIPListPush(), |pushId=");
+    Object localObject = new StringBuilder("[ip_list]onIPListPush(), |pushId=");
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append("|seqNo=");
     ((StringBuilder)localObject).append(paramInt);
@@ -561,16 +524,14 @@ public class cg
     }
     if (!(paramJceStruct instanceof u))
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[ip_list]onIPListPush(), bad type, should be SCHIPList: ");
+      localObject = new StringBuilder("[ip_list]onIPListPush(), bad type, should be SCHIPList: ");
       ((StringBuilder)localObject).append(paramJceStruct.getClass());
       eh.h("HIPList", ((StringBuilder)localObject).toString());
       return;
     }
     localObject = (u)paramJceStruct;
     paramJceStruct = new StringBuilder();
-    paramJceStruct.append("SCHIPList: ");
-    paramJceStruct.append("|hash=");
+    paramJceStruct.append("SCHIPList: |hash=");
     paramJceStruct.append(((u)localObject).ay);
     paramJceStruct.append("|ipports=");
     paramJceStruct.append(((u)localObject).aG);
@@ -582,8 +543,7 @@ public class cg
     paramJceStruct.append(((u)localObject).apn);
     paramJceStruct.append("|extra=");
     paramJceStruct.append(((u)localObject).aJ);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ip_list]onIPListPush(), ");
+    StringBuilder localStringBuilder = new StringBuilder("[ip_list]onIPListPush(), ");
     localStringBuilder.append(paramJceStruct.toString());
     eh.i("HIPList", localStringBuilder.toString());
     paramJceStruct = new a(System.currentTimeMillis() + ((u)localObject).aH * 1000L, a(((u)localObject).aG, false), false);
@@ -599,14 +559,10 @@ public class cg
       localObject = bf();
       this.hS.b((String)localObject, paramJceStruct.hZ, paramJceStruct.ia);
       a((String)localObject, paramJceStruct, true);
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("[ip_list]onIPListPush(), saved, key: ");
-      paramJceStruct.append((String)localObject);
-      eh.f("HIPList", paramJceStruct.toString());
+      eh.f("HIPList", "[ip_list]onIPListPush(), saved, key: ".concat(String.valueOf(localObject)));
       return;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[ip_list]onIPListPush(), apn not match， just save, curApn: ");
+    localObject = new StringBuilder("[ip_list]onIPListPush(), apn not match， just save, curApn: ");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(" pushedApn: ");
     ((StringBuilder)localObject).append(i);
@@ -625,8 +581,7 @@ public class cg
     if (!hP) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ip_list]handleNetworkChange(), refreshWorkingHIPList, isTest: ");
+    StringBuilder localStringBuilder = new StringBuilder("[ip_list]handleNetworkChange(), refreshWorkingHIPList, isTest: ");
     localStringBuilder.append(this.hi);
     eh.e("HIPList", localStringBuilder.toString());
     bd();
@@ -647,16 +602,10 @@ public class cg
         }
         else
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("http://");
-          ((StringBuilder)localObject1).append((String)localObject2);
-          localObject1 = ((StringBuilder)localObject1).toString();
+          localObject1 = "http://".concat(String.valueOf(localObject2));
         }
       }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[ip_list]getHttpIp(), httpIp: ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      eh.f("HIPList", ((StringBuilder)localObject2).toString());
+      eh.f("HIPList", "[ip_list]getHttpIp(), httpIp: ".concat(String.valueOf(localObject1)));
     }
     else
     {
@@ -665,15 +614,8 @@ public class cg
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject1 = hQ;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("http://");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      localObject2 = ((StringBuilder)localObject2).toString();
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[ip_list]getHttpIp(), use default: ");
-      ((StringBuilder)localObject1).append((String)localObject2);
-      eh.g("HIPList", ((StringBuilder)localObject1).toString());
+      localObject2 = "http://".concat(String.valueOf(hQ));
+      eh.g("HIPList", "[ip_list]getHttpIp(), use default: ".concat(String.valueOf(localObject2)));
     }
     return localObject2;
   }
@@ -851,10 +793,7 @@ public class cg
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append(":80");
         localObject = ((StringBuilder)localObject).toString();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("conv2HttpIPPort(): invalid ipPort(missing port): ");
-        localStringBuilder.append(paramString);
-        eh.h("HIPList", localStringBuilder.toString());
+        eh.h("HIPList", "conv2HttpIPPort(): invalid ipPort(missing port): ".concat(String.valueOf(paramString)));
         paramString = (String)localObject;
       }
       if (paramString.length() >= 7)
@@ -864,10 +803,7 @@ public class cg
       }
       else
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("http://");
-        ((StringBuilder)localObject).append(paramString);
-        localObject = ((StringBuilder)localObject).toString();
+        localObject = "http://".concat(String.valueOf(paramString));
       }
       return localObject;
     }

@@ -123,6 +123,7 @@
     <item type="id" name="bordoer_verify" />
     <item type="id" name="bordoer_zzb" />
     <item type="id" name="bottom_divider2" />
+    <item type="id" name="bottom_layout" />
     <item type="id" name="bottom_margin_view" />
     <item type="id" name="bottomiv" />
     <item type="id" name="bright_layout" />
@@ -140,6 +141,7 @@
     <item type="id" name="btn_ok" />
     <item type="id" name="btn_password" />
     <item type="id" name="btn_plus" />
+    <item type="id" name="btn_real_img_bg" />
     <item type="id" name="btn_set_token_pwd" />
     <item type="id" name="btn_sure" />
     <item type="id" name="btn_text" />
@@ -434,6 +436,8 @@
     <item type="id" name="iv_qqpim_file" />
     <item type="id" name="iv_qqpim_protect" />
     <item type="id" name="iv_qqpim_show_protect" />
+    <item type="id" name="iv_riskquery" />
+    <item type="id" name="iv_riskquery_array" />
     <item type="id" name="iv_scan" />
     <item type="id" name="iv_tip_text" />
     <item type="id" name="iv_top_bg" />
@@ -708,6 +712,7 @@
     <item type="id" name="rl_my_qqpim_protect" />
     <item type="id" name="rl_permission_guide" />
     <item type="id" name="rl_realname_face_preview_action" />
+    <item type="id" name="rl_risk_query" />
     <item type="id" name="rl_root" />
     <item type="id" name="rl_tip_timezone" />
     <item type="id" name="root" />
@@ -778,6 +783,7 @@
     <item type="id" name="sms_content" />
     <item type="id" name="sms_content_layout" />
     <item type="id" name="sms_frame" />
+    <item type="id" name="soft_detail_layout" />
     <item type="id" name="spacer" />
     <item type="id" name="split_action_bar" />
     <item type="id" name="sr_iv_logincity" />
@@ -925,6 +931,8 @@
     <item type="id" name="tv_cancle" />
     <item type="id" name="tv_country_name" />
     <item type="id" name="tv_country_number" />
+    <item type="id" name="tv_developer" />
+    <item type="id" name="tv_divider" />
     <item type="id" name="tv_gallery_protect_des" />
     <item type="id" name="tv_gallery_protect_now" />
     <item type="id" name="tv_gallery_protect_subdes" />
@@ -940,14 +948,19 @@
     <item type="id" name="tv_next" />
     <item type="id" name="tv_permission" />
     <item type="id" name="tv_permission_desc" />
+    <item type="id" name="tv_permissions" />
+    <item type="id" name="tv_privacy" />
     <item type="id" name="tv_qqpim_cancel" />
     <item type="id" name="tv_qqpim_confirm" />
     <item type="id" name="tv_qqpim_protect_des" />
     <item type="id" name="tv_qqpim_protect_now" />
     <item type="id" name="tv_qqpim_protect_now_new" />
     <item type="id" name="tv_qqpim_protect_subdes" />
+    <item type="id" name="tv_riskquery" />
+    <item type="id" name="tv_riskquery_desc" />
     <item type="id" name="tv_top_maintitle" />
     <item type="id" name="tv_top_subtitle" />
+    <item type="id" name="tv_version_and_name" />
     <item type="id" name="twolayout" />
     <item type="id" name="txt_account" />
     <item type="id" name="txt_password" />

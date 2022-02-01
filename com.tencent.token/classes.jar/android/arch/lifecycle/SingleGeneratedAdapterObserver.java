@@ -1,23 +1,20 @@
 package android.arch.lifecycle;
 
-import android.support.annotation.RestrictTo;
+import com.tencent.token.at;
+import com.tencent.token.au.a;
+import com.tencent.token.aw;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class SingleGeneratedAdapterObserver
   implements GenericLifecycleObserver
 {
-  private final GeneratedAdapter mGeneratedAdapter;
+  private final at a;
   
-  SingleGeneratedAdapterObserver(GeneratedAdapter paramGeneratedAdapter)
+  public SingleGeneratedAdapterObserver(at paramat)
   {
-    this.mGeneratedAdapter = paramGeneratedAdapter;
+    this.a = paramat;
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
-  {
-    this.mGeneratedAdapter.callMethods(paramLifecycleOwner, paramEvent, false, null);
-    this.mGeneratedAdapter.callMethods(paramLifecycleOwner, paramEvent, true, null);
-  }
+  public final void a(aw paramaw, au.a parama) {}
 }
 
 

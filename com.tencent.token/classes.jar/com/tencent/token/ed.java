@@ -1,44 +1,49 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-
-public class ed
+public final class ed<F, S>
 {
-  public static byte[] a(int paramInt)
+  public final F a;
+  public final S b;
+  
+  private static boolean a(Object paramObject1, Object paramObject2)
   {
-    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
-  public static byte[] a(ArrayList<byte[]> paramArrayList)
+  public final boolean equals(Object paramObject)
   {
-    int m = paramArrayList.size();
-    int i = m * 4 + 4;
-    int k = i;
+    if (!(paramObject instanceof ed)) {
+      return false;
+    }
+    paramObject = (ed)paramObject;
+    return (a(paramObject.a, this.a)) && (a(paramObject.b, this.b));
+  }
+  
+  public final int hashCode()
+  {
+    Object localObject = this.a;
     int j = 0;
-    while (j < m)
-    {
-      k += ((byte[])paramArrayList.get(j)).length;
-      j += 1;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = localObject.hashCode();
     }
-    byte[] arrayOfByte = new byte[k];
-    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
-    j = 0;
-    while (j < m)
-    {
-      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
-      j += 1;
+    localObject = this.b;
+    if (localObject != null) {
+      j = localObject.hashCode();
     }
-    k = 0;
-    j = i;
-    i = k;
-    while (i < m)
-    {
-      k = ((byte[])paramArrayList.get(i)).length;
-      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
-      j += k;
-      i += 1;
-    }
-    return arrayOfByte;
+    return i ^ j;
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Pair{");
+    localStringBuilder.append(String.valueOf(this.a));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(String.valueOf(this.b));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

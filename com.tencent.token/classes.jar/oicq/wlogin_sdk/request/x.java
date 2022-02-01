@@ -23,61 +23,50 @@ public class x
   
   public int a(String paramString, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int m = t.w;
     int i = 0;
+    int j;
     for (;;)
     {
       Object localObject = a(paramString.getBytes(), paramInt1, paramInt2, paramArrayOfLong);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject);
       int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      j = k;
       if (k != 0) {
-        return k;
+        break;
       }
       k = b();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("retry num:");
+      localObject = new StringBuilder("retry num:");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" ret:");
       ((StringBuilder)localObject).append(k);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
       localStringBuilder.append(this.x.f);
       util.LOGI((String)localObject, localStringBuilder.toString());
+      j = k;
       if (k != 180) {
-        return k;
+        break;
       }
-      if (i >= 1) {
+      if (i > 0) {
         return k;
       }
       i += 1;
     }
+    return j;
   }
   
   public byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong)
   {
-    int[] arrayOfInt = new int[5];
-    int[] tmp7_5 = arrayOfInt;
-    tmp7_5[0] = 260;
-    int[] tmp13_7 = tmp7_5;
-    tmp13_7[1] = 8;
-    int[] tmp18_13 = tmp13_7;
-    tmp18_13[2] = 295;
-    int[] tmp24_18 = tmp18_13;
-    tmp24_18[3] = 388;
-    int[] tmp30_24 = tmp24_18;
-    tmp30_24[4] = 278;
-    tmp30_24;
     ArrayList localArrayList = new ArrayList();
-    int i1 = arrayOfInt.length;
     async_context localasync_context = t.b(this.x.h);
     int j = 0;
     int k = 0;
     int m;
-    for (int i = 0; j < i1; i = m)
+    for (int i = 0; j < 5; i = m)
     {
       byte[] arrayOfByte = new byte[0];
-      m = arrayOfInt[j];
+      m = new int[] { 260, 8, 295, 388, 278 }[j];
       if (m != 8)
       {
         if (m != 260)

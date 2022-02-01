@@ -1,0 +1,14 @@
+package com.tencent.token;
+
+public abstract interface nm
+{
+  public abstract nk a(String paramString);
+  
+  public abstract void a(nk paramnk);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar
+ * Qualified Name:     com.tencent.token.nm
+ * JD-Core Version:    0.7.0.1
+ */

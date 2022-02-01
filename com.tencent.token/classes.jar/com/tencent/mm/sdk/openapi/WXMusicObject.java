@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.pq;
 
 public class WXMusicObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public String musicDataUrl;
   public String musicLowBandDataUrl;
@@ -28,7 +28,7 @@ public class WXMusicObject
     }
     for (;;)
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", str);
+      pq.a("MicroMsg.SDK.WXMusicObject", str);
       return false;
       str = this.musicLowBandUrl;
       if ((str != null) && (str.length() > 10240))

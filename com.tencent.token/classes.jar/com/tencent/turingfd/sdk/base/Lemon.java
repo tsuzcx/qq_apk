@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 
 public final class Lemon
@@ -10,24 +12,24 @@ public final class Lemon
   public long od = 0L;
   public ArrayList<Lichee> pd = null;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.od = paramcy.a(this.od, 0, true);
-    this.duration = paramcy.a(this.duration, 1, true);
+    this.od = paramafl.a(this.od, 0, true);
+    this.duration = paramafl.a(this.duration, 1, true);
     if (nd == null)
     {
       nd = new ArrayList();
       Lichee localLichee = new Lichee();
       nd.add(localLichee);
     }
-    this.pd = ((ArrayList)paramcy.a(nd, 2, true));
+    this.pd = ((ArrayList)paramafl.a(nd, 2, true));
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.od, 0);
-    paramdb.a(this.duration, 1);
-    paramdb.a(this.pd, 2);
+    paramafo.a(this.od, 0);
+    paramafo.a(this.duration, 1);
+    paramafo.a(this.pd, 2);
   }
 }
 

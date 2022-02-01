@@ -15,9 +15,12 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.service.a;
-import com.tencent.service.a.a;
-import com.tencent.service.a.c;
+import com.tencent.token.rc;
+import com.tencent.token.rc.a;
+import com.tencent.token.rc.b;
+import com.tencent.token.rc.c;
+import com.tencent.token.rn;
+import com.tencent.token.rp;
 import com.tencent.token.ui.IndexActivity;
 import com.tmsdk.TMSDKContext;
 import com.tmsdk.Unit;
@@ -26,128 +29,87 @@ import java.io.File;
 public class UpdateDownloadDialog
   extends Dialog
 {
-  a.a a;
-  Button b;
-  TextView c;
+  Context a;
+  rc.a b;
+  Button c;
   TextView d;
-  Handler e = new Handler()
+  TextView e;
+  Handler f = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (paramAnonymousMessage.what == 99) {
-        UpdateDownloadDialog.this.b();
+        UpdateDownloadDialog.this.a();
       }
     }
   };
-  a.c f = new a.c()
+  rc.c g = new rc.c()
   {
-    public void a(a.a paramAnonymousa)
+    public final void a(rc.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public void b(a.a paramAnonymousa)
+    public final void b(rc.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public void c(a.a paramAnonymousa)
+    public final void c(rc.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public void d(a.a paramAnonymousa)
+    public final void d(rc.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
   };
-  private Context g;
   
-  public UpdateDownloadDialog(Context paramContext, int paramInt, a.a parama)
+  public UpdateDownloadDialog(Context paramContext, rc.a parama)
   {
-    super(paramContext, paramInt);
-    this.g = paramContext;
-    this.a = parama;
+    super(paramContext, 2131558791);
+    this.a = paramContext;
+    this.b = parama;
   }
   
-  void a()
+  final void a()
   {
-    if (this.a == null) {
+    if (this.b == null) {
       return;
     }
-    switch (5.a[this.a.f.ordinal()])
-    {
-    default: 
-      return;
-    case 7: 
-      a.a().d(this.a);
-      return;
-    case 6: 
-      a.a(this.g, new File(a.b(), this.a.d));
-      return;
-    case 4: 
-    case 5: 
-      a.a().b(this.a);
-      return;
-    }
-    e locale = e.a();
-    locale.k(2);
-    locale.f(true);
-    a.a().c(this.a);
-    TMSDKContext.saveActionData(1150107);
-  }
-  
-  void a(a.a parama)
-  {
-    if (parama == this.a)
-    {
-      this.e.removeMessages(99);
-      this.e.sendEmptyMessage(99);
-    }
-  }
-  
-  void b()
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (5.a[this.a.f.ordinal()])
+    switch (5.a[this.b.f.ordinal()])
     {
     case 3: 
     default: 
       return;
     case 7: 
-      this.b.setText("继续");
+      this.c.setText("继续");
       return;
     case 6: 
-      this.b.setText("安装");
+      this.c.setText("安装");
       return;
     case 4: 
     case 5: 
-      Button localButton = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("下载中...(");
-      localStringBuilder.append(this.a.e);
+      Button localButton = this.c;
+      StringBuilder localStringBuilder = new StringBuilder("下载中...(");
+      localStringBuilder.append(this.b.e);
       localStringBuilder.append("%)");
       localButton.setText(localStringBuilder.toString());
       return;
     case 2: 
-      this.b.setText("立即体验");
+      this.c.setText("立即体验");
       return;
     }
-    this.b.setText("重试");
+    this.c.setText("重试");
   }
   
-  void c()
+  final void a(rc.a parama)
   {
-    try
+    if (parama == this.b)
     {
-      dismiss();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      this.f.removeMessages(99);
+      this.f.sendEmptyMessage(99);
     }
   }
   
@@ -159,56 +121,89 @@ public class UpdateDownloadDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296467);
+    setContentView(2131296468);
     paramBundle = getWindow();
     Object localObject = paramBundle.getAttributes();
-    ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.g).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
+    ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
-    this.b = ((Button)findViewById(2131165822));
-    this.c = ((TextView)findViewById(2131166106));
-    this.d = ((TextView)findViewById(2131165742));
-    findViewById(2131165380).setOnClickListener(new View.OnClickListener()
+    this.c = ((Button)findViewById(2131165826));
+    this.d = ((TextView)findViewById(2131166112));
+    this.e = ((TextView)findViewById(2131165746));
+    findViewById(2131165382).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
-        UpdateDownloadDialog.this.c();
+        paramAnonymousView = UpdateDownloadDialog.this;
+        try
+        {
+          paramAnonymousView.dismiss();
+          return;
+        }
+        catch (Exception paramAnonymousView)
+        {
+          paramAnonymousView.printStackTrace();
+        }
       }
     });
-    this.b.setOnClickListener(new View.OnClickListener()
+    this.c.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
-        UpdateDownloadDialog.this.a();
+        paramAnonymousView = UpdateDownloadDialog.this;
+        if (paramAnonymousView.b != null)
+        {
+          switch (UpdateDownloadDialog.5.a[paramAnonymousView.b.f.ordinal()])
+          {
+          default: 
+            return;
+          case 7: 
+            rc.b.a().d(paramAnonymousView.b);
+            return;
+          case 6: 
+            rc.a(paramAnonymousView.a, new File(rc.a(), paramAnonymousView.b.d));
+            return;
+          case 4: 
+          case 5: 
+            rc.b.a().b(paramAnonymousView.b);
+            return;
+          }
+          rp localrp = rp.a();
+          localrp.k(2);
+          localrp.c(true);
+          rc.b.a().c(paramAnonymousView.b);
+          TMSDKContext.saveActionData(1150107);
+          return;
+        }
       }
     });
-    b();
-    localObject = e.a();
-    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((e)localObject).f()), Integer.valueOf(((e)localObject).g()), Integer.valueOf(((e)localObject).h()) });
-    if (!TextUtils.isEmpty(((e)localObject).r())) {
-      paramBundle = ((e)localObject).r();
+    a();
+    localObject = rp.a();
+    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((rp)localObject).d()), Integer.valueOf(((rp)localObject).e()), Integer.valueOf(((rp)localObject).f()) });
+    if (!TextUtils.isEmpty(((rp)localObject).j())) {
+      paramBundle = ((rp)localObject).j();
     }
-    this.c.setText(paramBundle);
+    this.d.setText(paramBundle);
     paramBundle = new StringBuffer();
-    paramBundle.append(((e)localObject).j());
-    if (((e)localObject).k() > 0)
+    paramBundle.append(((rp)localObject).a.a("meri_lastest_featrue", ""));
+    if (((rp)localObject).h() > 0)
     {
       paramBundle.append('\n');
       paramBundle.append("更新包：");
-      paramBundle.append(Unit.transformShortType(((e)localObject).k(), true));
+      paramBundle.append(Unit.transformShortType(((rp)localObject).h(), true));
     }
-    this.d.setText(paramBundle.toString());
+    this.e.setText(paramBundle.toString());
   }
   
   protected void onStart()
   {
-    a.a().a(this.f);
+    rc.b.a().a(this.g);
     super.onStart();
   }
   
   protected void onStop()
   {
     super.onStop();
-    a.a().b(this.f);
+    rc.b.a().b(this.g);
   }
 }
 

@@ -1,69 +1,81 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.halley.common.b;
-import com.tencent.halley.common.f;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 
 public final class be
+  extends Fragment
 {
-  private static be d;
-  public bg a;
-  public bh b = new bh();
-  public bf c;
+  private a a;
   
-  private be()
+  public static void a(Activity paramActivity)
   {
-    this.b.a();
-    this.a = new bg();
-    this.a.a();
-    this.c = new bf();
-    bf localbf = this.c;
-    SharedPreferences localSharedPreferences = f.a().getSharedPreferences("Access_Preferences", 0);
-    localbf.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
-    localbf.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
-  }
-  
-  public static be a()
-  {
-    try
+    paramActivity = paramActivity.getFragmentManager();
+    if (paramActivity.findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
     {
-      if (d == null) {
-        d = new be();
-      }
-      be localbe = d;
-      return localbe;
+      paramActivity.beginTransaction().add(new be(), "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag").commit();
+      paramActivity.executePendingTransactions();
     }
-    finally {}
   }
   
-  public final void a(bh parambh)
+  private void a(au.a parama)
   {
-    if (parambh == null) {
+    Object localObject = getActivity();
+    if ((localObject instanceof ay))
+    {
+      ((ay)localObject).a().a(parama);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder("updateSdkCfInfo...SdkCfgInfo:");
-    localStringBuilder.append(parambh);
-    b.b("AccessSchedulerConfiguration", localStringBuilder.toString());
-    if ((parambh.a < 2000) || (parambh.a > 60000))
+    if ((localObject instanceof aw))
     {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
-      localStringBuilder.append(parambh.a);
-      localStringBuilder.append(" is checked to 20s");
-      b.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      parambh.a = 20000;
+      localObject = ((aw)localObject).getLifecycle();
+      if ((localObject instanceof ax)) {
+        ((ax)localObject).a(parama);
+      }
     }
-    if ((parambh.b < 2000) || (parambh.b > 60000))
-    {
-      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
-      localStringBuilder.append(parambh.b);
-      localStringBuilder.append(" is checked to 20s");
-      b.c("AccessSchedulerConfiguration", localStringBuilder.toString());
-      parambh.b = 20000;
-    }
-    this.b = parambh;
-    this.b.b();
   }
+  
+  public final void onActivityCreated(Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+    a(au.a.ON_CREATE);
+  }
+  
+  public final void onDestroy()
+  {
+    super.onDestroy();
+    a(au.a.ON_DESTROY);
+    this.a = null;
+  }
+  
+  public final void onPause()
+  {
+    super.onPause();
+    a(au.a.ON_PAUSE);
+  }
+  
+  public final void onResume()
+  {
+    super.onResume();
+    a(au.a.ON_RESUME);
+  }
+  
+  public final void onStart()
+  {
+    super.onStart();
+    a(au.a.ON_START);
+  }
+  
+  public final void onStop()
+  {
+    super.onStop();
+    a(au.a.ON_STOP);
+  }
+  
+  static abstract interface a {}
 }
 
 

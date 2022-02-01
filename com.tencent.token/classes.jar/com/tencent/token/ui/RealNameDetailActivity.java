@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.token.aae;
 import com.tencent.token.core.bean.ZzbIntroItem;
 import com.tencent.token.ui.base.ScrollLayout;
 import com.tencent.token.ui.base.ScrollLayout.a;
-import com.tencent.token.utils.m;
 import java.util.ArrayList;
 
 public class RealNameDetailActivity
@@ -34,31 +34,31 @@ public class RealNameDetailActivity
   
   private String formatText(String paramString)
   {
-    return m.a(paramString, getResources().getDimension(2131034251), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
+    return aae.a(paramString, getResources().getDimension(2131034251), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
   }
   
   private void initTextInfo()
   {
-    this.title1 = ((TextView)findViewById(2131165499).findViewById(2131166106));
-    this.title2 = ((TextView)findViewById(2131166178).findViewById(2131166106));
-    this.title3 = ((TextView)findViewById(2131166077).findViewById(2131166106));
-    this.title4 = ((TextView)findViewById(2131165504).findViewById(2131166106));
-    this.desc1 = ((TextView)findViewById(2131165499).findViewById(2131166056));
-    this.desc2 = ((TextView)findViewById(2131166178).findViewById(2131166056));
-    this.desc3 = ((TextView)findViewById(2131166077).findViewById(2131166056));
-    this.desc4 = ((TextView)findViewById(2131165504).findViewById(2131166056));
-    ArrayList localArrayList = m.l();
+    this.title1 = ((TextView)findViewById(2131165501).findViewById(2131166112));
+    this.title2 = ((TextView)findViewById(2131166191).findViewById(2131166112));
+    this.title3 = ((TextView)findViewById(2131166083).findViewById(2131166112));
+    this.title4 = ((TextView)findViewById(2131165506).findViewById(2131166112));
+    this.desc1 = ((TextView)findViewById(2131165501).findViewById(2131166062));
+    this.desc2 = ((TextView)findViewById(2131166191).findViewById(2131166062));
+    this.desc3 = ((TextView)findViewById(2131166083).findViewById(2131166062));
+    this.desc4 = ((TextView)findViewById(2131165506).findViewById(2131166062));
+    ArrayList localArrayList = aae.l();
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       try
       {
-        this.title1.setText(((ZzbIntroItem)localArrayList.get(0)).a().toString());
-        this.desc1.setText(formatText(((ZzbIntroItem)localArrayList.get(0)).b().toString()));
-        this.title2.setText(((ZzbIntroItem)localArrayList.get(1)).a().toString());
-        this.desc2.setText(formatText(((ZzbIntroItem)localArrayList.get(1)).b().toString()));
-        this.title3.setText(((ZzbIntroItem)localArrayList.get(2)).a().toString());
-        this.desc3.setText(formatText(((ZzbIntroItem)localArrayList.get(2)).b().toString()));
-        this.title4.setText(((ZzbIntroItem)localArrayList.get(3)).a().toString());
-        this.desc4.setText(formatText(((ZzbIntroItem)localArrayList.get(3)).b().toString()));
+        this.title1.setText(((ZzbIntroItem)localArrayList.get(0)).title.toString());
+        this.desc1.setText(formatText(((ZzbIntroItem)localArrayList.get(0)).desc.toString()));
+        this.title2.setText(((ZzbIntroItem)localArrayList.get(1)).title.toString());
+        this.desc2.setText(formatText(((ZzbIntroItem)localArrayList.get(1)).desc.toString()));
+        this.title3.setText(((ZzbIntroItem)localArrayList.get(2)).title.toString());
+        this.desc3.setText(formatText(((ZzbIntroItem)localArrayList.get(2)).desc.toString()));
+        this.title4.setText(((ZzbIntroItem)localArrayList.get(3)).title.toString());
+        this.desc4.setText(formatText(((ZzbIntroItem)localArrayList.get(3)).desc.toString()));
         return;
       }
       catch (Exception localException)
@@ -70,59 +70,59 @@ public class RealNameDetailActivity
   
   private void initview()
   {
-    setContentView(2131296412);
+    setContentView(2131296413);
     initTextInfo();
     Object localObject = (ScrollLayout)findViewById(2131165190);
     ((ScrollLayout)localObject).setToScreen(this.tab);
     ((ScrollLayout)localObject).setOnScrollListner(new ScrollLayout.a()
     {
-      public void a(int paramAnonymousInt)
+      public final void a(int paramAnonymousInt)
       {
-        RealNameDetailActivity.this.iv1.setImageResource(2131100009);
-        RealNameDetailActivity.this.iv2.setImageResource(2131100009);
-        RealNameDetailActivity.this.iv3.setImageResource(2131100009);
-        RealNameDetailActivity.this.iv4.setImageResource(2131100009);
+        RealNameDetailActivity.this.iv1.setImageResource(2131100010);
+        RealNameDetailActivity.this.iv2.setImageResource(2131100010);
+        RealNameDetailActivity.this.iv3.setImageResource(2131100010);
+        RealNameDetailActivity.this.iv4.setImageResource(2131100010);
         switch (paramAnonymousInt)
         {
         default: 
           return;
         case 3: 
-          RealNameDetailActivity.this.iv4.setImageResource(2131100010);
+          RealNameDetailActivity.this.iv4.setImageResource(2131100011);
           return;
         case 2: 
-          RealNameDetailActivity.this.iv3.setImageResource(2131100010);
+          RealNameDetailActivity.this.iv3.setImageResource(2131100011);
           return;
         case 1: 
-          RealNameDetailActivity.this.iv2.setImageResource(2131100010);
+          RealNameDetailActivity.this.iv2.setImageResource(2131100011);
           return;
         }
-        RealNameDetailActivity.this.iv1.setImageResource(2131100010);
+        RealNameDetailActivity.this.iv1.setImageResource(2131100011);
       }
     });
-    localObject = (Button)findViewById(2131165434);
-    this.iv1 = ((ImageView)findViewById(2131165616));
-    this.iv2 = ((ImageView)findViewById(2131165617));
-    this.iv3 = ((ImageView)findViewById(2131165618));
-    this.iv4 = ((ImageView)findViewById(2131165619));
+    localObject = (Button)findViewById(2131165436);
+    this.iv1 = ((ImageView)findViewById(2131165618));
+    this.iv2 = ((ImageView)findViewById(2131165619));
+    this.iv3 = ((ImageView)findViewById(2131165620));
+    this.iv4 = ((ImageView)findViewById(2131165621));
     switch (this.tab)
     {
     default: 
       break;
     case 3: 
-      this.iv4.setImageResource(2131100010);
+      this.iv4.setImageResource(2131100011);
       break;
     case 2: 
-      this.iv3.setImageResource(2131100010);
+      this.iv3.setImageResource(2131100011);
       break;
     case 1: 
-      this.iv2.setImageResource(2131100010);
+      this.iv2.setImageResource(2131100011);
       break;
     case 0: 
-      this.iv1.setImageResource(2131100010);
+      this.iv1.setImageResource(2131100011);
     }
     ((Button)localObject).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         RealNameDetailActivity.this.finish();
       }

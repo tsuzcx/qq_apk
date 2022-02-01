@@ -1,182 +1,92 @@
 package com.tencent.token;
 
 import android.content.Context;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
-import com.tencent.token.utils.l;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
-public class cp
+public abstract class cp
 {
-  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
-  protected List<a> b = new ArrayList();
-  protected long c;
-  int d;
-  private int e;
+  static int b = 1048576;
+  Matrix a;
   
-  protected cp(int paramInt)
+  static Bitmap a(Drawable paramDrawable)
   {
-    this.e = paramInt;
-  }
-  
-  private String b(a parama, int paramInt)
-  {
-    try
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if ((i > 0) && (j > 0))
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("app_id", parama.b());
-      ((JSONObject)localObject).put("msg_type", parama.d());
-      ((JSONObject)localObject).put("msg_id", parama.a());
-      ((JSONObject)localObject).put("msg_status", paramInt);
-      ((JSONObject)localObject).put("uin", parama.c());
-      ((JSONObject)localObject).put("msg_uin", parama.c());
-      ((JSONObject)localObject).put("type", this.e);
-      paramInt = cc.a + 1;
-      cc.a = paramInt;
-      this.d = paramInt;
-      ((JSONObject)localObject).put("seq_id", this.d);
-      ((JSONObject)localObject).put("op_time", (int)(cd.c().s() / 1000L));
-      parama = ((JSONObject)localObject).toString();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("palin: ");
-      ((StringBuilder)localObject).append(parama);
-      g.a(((StringBuilder)localObject).toString());
-      parama = l.b(parama.getBytes());
-      return parama;
-    }
-    catch (JSONException parama)
-    {
-      parama.printStackTrace();
+      float f = Math.min(1.0F, b / (i * j));
+      if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+      i = (int)(i * f);
+      j = (int)(j * f);
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Rect localRect = paramDrawable.getBounds();
+      int k = localRect.left;
+      int m = localRect.top;
+      int n = localRect.right;
+      int i1 = localRect.bottom;
+      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.draw(localCanvas);
+      paramDrawable.setBounds(k, m, n, i1);
+      return localBitmap;
     }
     return null;
   }
   
-  public a a(int paramInt)
+  public static View a(Context paramContext, Parcelable paramParcelable)
   {
-    if (this.b == null) {
-      return null;
-    }
-    int i = b();
-    if (paramInt >= 0)
+    boolean bool = paramParcelable instanceof Bundle;
+    Object localObject = null;
+    if (bool)
     {
-      if (paramInt >= i) {
+      paramParcelable = (Bundle)paramParcelable;
+      localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
+      if (localObject == null) {
         return null;
       }
-      return (a)this.b.get(paramInt);
+      paramContext = new ImageView(paramContext);
+      paramContext.setImageBitmap((Bitmap)localObject);
+      paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
+      localObject = paramContext;
+      if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
+      {
+        paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
+        localObject = new Matrix();
+        ((Matrix)localObject).setValues(paramParcelable);
+        paramContext.setImageMatrix((Matrix)localObject);
+        return paramContext;
+      }
     }
-    return null;
+    else if ((paramParcelable instanceof Bitmap))
+    {
+      paramParcelable = (Bitmap)paramParcelable;
+      localObject = new ImageView(paramContext);
+      ((ImageView)localObject).setImageBitmap(paramParcelable);
+    }
+    return localObject;
   }
   
-  public e a(a parama, int paramInt)
+  public static void a(a parama)
   {
-    e locale = new e();
-    Object localObject1 = new fc();
-    Object localObject2 = cs.a();
-    if (parama == null)
-    {
-      locale.b(10023);
-      return locale;
-    }
-    parama = b(parama, paramInt);
-    if (parama == null)
-    {
-      locale.a(10000, "encrypt msg status failed");
-      return locale;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("?aq_base_sid=");
-    localStringBuilder.append(((cs)localObject2).g());
-    localStringBuilder.append("&data=");
-    localStringBuilder.append(parama);
-    parama = localStringBuilder.toString();
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(c.e());
-    ((StringBuilder)localObject2).append("/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt");
-    ((StringBuilder)localObject2).append(parama);
-    parama = ((StringBuilder)localObject2).toString();
-    localObject2 = ((fc)localObject1).a(parama);
-    if (localObject2 == null)
-    {
-      locale.a(((fc)localObject1).a());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("client request url: ");
-      ((StringBuilder)localObject1).append(parama);
-      ((StringBuilder)localObject1).append(" failed, reason: ");
-      ((StringBuilder)localObject1).append(locale.a);
-      ((StringBuilder)localObject1).append(":");
-      ((StringBuilder)localObject1).append(locale.b);
-      g.c(((StringBuilder)localObject1).toString());
-      return locale;
-    }
-    try
-    {
-      parama = new JSONObject(new String((byte[])localObject2));
-      paramInt = parama.getInt("err");
-      if (paramInt != 0)
-      {
-        parama = parama.getString("info");
-        locale.a(paramInt, parama, parama);
-        return locale;
-      }
-      parama = l.c(parama.getString("data"));
-      if (parama != null)
-      {
-        paramInt = new JSONObject(new String(parama)).getInt("seq_id");
-        if (this.d != paramInt)
-        {
-          locale.b(10030);
-          return locale;
-        }
-        cs.a().m();
-        locale.c();
-        return locale;
-      }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("parseJSON error decodeData=");
-      ((StringBuilder)localObject1).append(parama);
-      g.c(((StringBuilder)localObject1).toString());
-      locale.a(10022, RqdApplication.n().getString(2131493068));
-      return locale;
-    }
-    catch (Exception parama)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("unknown err: ");
-      ((StringBuilder)localObject1).append(parama.toString());
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("JSONException:");
-      ((StringBuilder)localObject1).append(parama.toString());
-      locale.a(10021, ((StringBuilder)localObject1).toString());
-      return locale;
-    }
-    catch (JSONException parama)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("parse json failed: ");
-      ((StringBuilder)localObject1).append(parama.toString());
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("JSONException:");
-      ((StringBuilder)localObject1).append(parama.toString());
-      locale.a(10020, ((StringBuilder)localObject1).toString());
-    }
-    return locale;
+    parama.a();
   }
   
-  public int b()
+  public static abstract interface a
   {
-    List localList = this.b;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
+    public abstract void a();
   }
 }
 

@@ -2,14 +2,15 @@ package com.tencent.halley.downloader;
 
 import com.tencent.halley.DownloaderConfig;
 import com.tencent.halley.common.HalleyInitException;
-import com.tencent.token.ah;
-import com.tencent.token.ak;
-import com.tencent.token.v;
-import com.tencent.token.w;
+import com.tencent.token.ls;
+import com.tencent.token.lv;
+import com.tencent.token.lw;
+import com.tencent.token.mm;
+import com.tencent.token.mu;
 
 public class DownloaderFactory
 {
-  private static a a;
+  private static ls a;
   
   public static void a(DownloaderConfig paramDownloaderConfig)
   {
@@ -17,18 +18,18 @@ public class DownloaderFactory
     if (paramDownloaderConfig == null) {
       localDownloaderConfig = DownloaderConfig.DEFAULT_DOWNLOADERCONFIG;
     }
-    w.a(localDownloaderConfig);
+    lw.a(localDownloaderConfig);
     if (a == null) {
-      a = new v();
+      a = new lv();
     }
-    ak.a(ah.a());
+    mu.a(mm.a());
   }
   
-  public static a getDownloader()
+  public static ls getDownloader()
   {
-    a locala = a;
-    if (locala != null) {
-      return locala;
+    ls localls = a;
+    if (localls != null) {
+      return localls;
     }
     throw new HalleyInitException("Downloader is not inited, call HalleyAgent#init and make sure Class DownloaderFactory was not obfused.");
   }

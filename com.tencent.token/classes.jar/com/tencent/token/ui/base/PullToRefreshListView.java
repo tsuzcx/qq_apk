@@ -19,8 +19,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.global.g;
-import com.tencent.token.utils.l;
+import com.tencent.token.aad;
+import com.tencent.token.xb;
 
 public class PullToRefreshListView
   extends ListView
@@ -48,7 +48,7 @@ public class PullToRefreshListView
     this.j = paramContext;
   }
   
-  private void a(View paramView)
+  private static void a(View paramView)
   {
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
@@ -65,15 +65,10 @@ public class PullToRefreshListView
     paramView.measure(i2, i1);
   }
   
-  public void a()
-  {
-    b(3);
-  }
-  
-  public void a(int paramInt)
+  public final void a(int paramInt)
   {
     this.l = paramInt;
-    this.b = LayoutInflater.from(this.j).inflate(2131296377, this, false);
+    this.b = LayoutInflater.from(this.j).inflate(2131296378, this, false);
     a(this.b);
     this.a = this.b.getMeasuredHeight();
     if (this.a < 10) {
@@ -81,11 +76,11 @@ public class PullToRefreshListView
     }
     this.b.setPadding(0, -this.a, 0, 0);
     addHeaderView(this.b, null, false);
-    this.c = ((ImageView)this.b.findViewById(2131165570));
-    this.d = ((ProgressBar)this.b.findViewById(2131165573));
-    this.e = ((TextView)this.b.findViewById(2131165575));
-    this.f = ((TextView)this.b.findViewById(2131165574));
-    this.c.setImageResource(2131100026);
+    this.c = ((ImageView)this.b.findViewById(2131165572));
+    this.d = ((ProgressBar)this.b.findViewById(2131165575));
+    this.e = ((TextView)this.b.findViewById(2131165577));
+    this.f = ((TextView)this.b.findViewById(2131165576));
+    this.c.setImageResource(2131100027);
     this.g = new RotateAnimation(0.0F, -180.0F, 1, 0.5F, 1, 0.5F);
     this.g.setInterpolator(new LinearInterpolator());
     this.g.setDuration(250L);
@@ -94,10 +89,10 @@ public class PullToRefreshListView
     this.h.setInterpolator(new LinearInterpolator());
     this.h.setDuration(250L);
     this.h.setFillAfter(true);
-    setOnScrollListener(new b(null));
+    setOnScrollListener(new b((byte)0));
   }
   
-  public void a(String paramString)
+  public final void a(String paramString)
   {
     try
     {
@@ -108,14 +103,13 @@ public class PullToRefreshListView
     }
     catch (Exception paramString)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SharedPreferences msg ");
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(paramString.getMessage());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
   }
   
-  public long b(String paramString)
+  public final long b(String paramString)
   {
     try
     {
@@ -124,20 +118,14 @@ public class PullToRefreshListView
     }
     catch (Exception paramString)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SharedPreferences msg ");
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(paramString.getMessage());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
     return 0L;
   }
   
-  public void b()
-  {
-    b(0);
-  }
-  
-  public void b(int paramInt)
+  public final void b(int paramInt)
   {
     if (paramInt != this.m)
     {
@@ -201,10 +189,9 @@ public class PullToRefreshListView
     }
     catch (IndexOutOfBoundsException paramCanvas)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PullToRefreshListView dispatchDraw");
+      StringBuilder localStringBuilder = new StringBuilder("PullToRefreshListView dispatchDraw");
       localStringBuilder.append(paramCanvas.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
   }
   
@@ -219,19 +206,17 @@ public class PullToRefreshListView
         case 2: 
           if ((!this.o) && (this.i == 0) && (this.m != 3))
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("DOWN2 ");
+            localStringBuilder = new StringBuilder("DOWN2 ");
             localStringBuilder.append(paramMotionEvent.getY());
-            g.b(localStringBuilder.toString());
+            xb.b(localStringBuilder.toString());
             this.o = true;
             this.n = paramMotionEvent.getY();
           }
           if ((this.o) && (this.m != 3))
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("MOVE ");
+            localStringBuilder = new StringBuilder("MOVE ");
             localStringBuilder.append(paramMotionEvent.getY());
-            g.b(localStringBuilder.toString());
+            xb.b(localStringBuilder.toString());
             float f1 = paramMotionEvent.getY() - this.n;
             if (f1 > 0.0F)
             {
@@ -247,10 +232,9 @@ public class PullToRefreshListView
         case 1: 
           if ((this.o) && (this.m != 3))
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("UP ");
+            localStringBuilder = new StringBuilder("UP ");
             localStringBuilder.append(paramMotionEvent.getY());
-            g.b(localStringBuilder.toString());
+            xb.b(localStringBuilder.toString());
             this.o = false;
             if (this.m == 1) {
               b(3);
@@ -262,10 +246,9 @@ public class PullToRefreshListView
         case 0: 
           if ((!this.o) && (this.i == 0) && (this.m != 3))
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("DOWN ");
+            localStringBuilder = new StringBuilder("DOWN ");
             localStringBuilder.append(paramMotionEvent.getY());
-            g.b(localStringBuilder.toString());
+            xb.b(localStringBuilder.toString());
             this.o = true;
             this.n = paramMotionEvent.getY();
           }
@@ -275,18 +258,16 @@ public class PullToRefreshListView
       }
       catch (Exception paramMotionEvent)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("PullToRefreshListView dispatchTouchEvent");
+        localStringBuilder = new StringBuilder("PullToRefreshListView dispatchTouchEvent");
         localStringBuilder.append(paramMotionEvent.toString());
-        g.c(localStringBuilder.toString());
+        xb.c(localStringBuilder.toString());
         return false;
       }
       catch (IndexOutOfBoundsException paramMotionEvent)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("PullToRefreshListView dispatchTouchEvent");
+        StringBuilder localStringBuilder = new StringBuilder("PullToRefreshListView dispatchTouchEvent");
         localStringBuilder.append(paramMotionEvent.toString());
-        g.c(localStringBuilder.toString());
+        xb.c(localStringBuilder.toString());
         return false;
       }
     }
@@ -301,19 +282,17 @@ public class PullToRefreshListView
     }
     catch (Exception localException)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PullToRefreshListView onLayout");
+      localStringBuilder = new StringBuilder("PullToRefreshListView onLayout");
       localStringBuilder.append(localException.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       localException.printStackTrace();
       return;
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PullToRefreshListView onLayout");
+      StringBuilder localStringBuilder = new StringBuilder("PullToRefreshListView onLayout");
       localStringBuilder.append(localIndexOutOfBoundsException.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       localIndexOutOfBoundsException.printStackTrace();
     }
   }
@@ -326,7 +305,7 @@ public class PullToRefreshListView
   public void setRefreshTime(long paramLong)
   {
     this.p = paramLong;
-    String str = l.a(paramLong, '-');
+    String str = aad.a(paramLong, '-');
     this.f.setText(str);
   }
   
@@ -335,17 +314,17 @@ public class PullToRefreshListView
     public abstract void onRefresh();
   }
   
-  private class b
+  final class b
     implements AbsListView.OnScrollListener
   {
     private b() {}
     
-    public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+    public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
     {
       PullToRefreshListView.a(PullToRefreshListView.this, paramInt1);
     }
     
-    public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+    public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
   }
 }
 

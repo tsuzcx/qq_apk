@@ -1,63 +1,25 @@
 package com.tencent.token;
 
-import com.tencent.token.global.c;
+import android.support.v4.app.Fragment;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
-public class cb
+public abstract class cb
 {
-  private static cb a;
+  public abstract Fragment a(String paramString);
   
-  public static cb a()
-  {
-    if (a == null) {
-      a = new cb();
-    }
-    return a;
-  }
+  public abstract ce a();
   
-  public void a(String paramString)
-  {
-    switch ()
-    {
-    default: 
-      cs.e = paramString;
-      break;
-    case 3: 
-      cs.g = paramString;
-      break;
-    case 2: 
-      cs.f = paramString;
-      break;
-    case 1: 
-      cs.e = paramString;
-      break;
-    case 0: 
-      cs.d = paramString;
-    }
-    cs.c = paramString;
-  }
+  public abstract void a(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public void a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    a(paramString);
-    cs.a().i = paramLong1;
-    cs.a().h = paramLong2;
-    cs.a().a = paramArrayOfByte;
-  }
+  public abstract boolean b();
   
-  public String b()
-  {
-    if (cs.a().p())
-    {
-      cs.a();
-      return cs.c;
-    }
-    return null;
-  }
+  public abstract boolean c();
   
-  public void c()
-  {
-    cs.a().m();
-  }
+  public abstract List<Fragment> d();
+  
+  public abstract boolean e();
 }
 
 

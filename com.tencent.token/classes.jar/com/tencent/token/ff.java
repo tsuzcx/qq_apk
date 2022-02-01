@@ -1,872 +1,411 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.IDN;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
-import java.security.GeneralSecurityException;
-import java.security.KeyStore;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
-import okhttp3.aa;
-import okhttp3.s;
-import okhttp3.y;
-import okio.ByteString;
-import okio.c;
-import okio.q;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
 
 public final class ff
 {
-  public static final byte[] a = new byte[0];
-  public static final String[] b = new String[0];
-  public static final aa c;
-  public static final y d;
-  public static final Charset e;
-  public static final Charset f;
-  public static final TimeZone g;
-  public static final Comparator<String> h;
-  private static final ByteString i;
-  private static final ByteString j;
-  private static final ByteString k;
-  private static final ByteString l;
-  private static final ByteString m;
-  private static final Charset n;
-  private static final Charset o;
-  private static final Charset p;
-  private static final Charset q;
-  private static final Method r;
-  private static final Pattern s = Pattern.compile("([0-9a-fA-F]*:[0-9a-fA-F:.]*)|([\\d.]+)");
+  public final AccessibilityNodeInfo a;
+  public int b = -1;
   
-  static
+  private ff(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    Object localObject2 = a;
-    Object localObject1 = null;
-    c = aa.a(null, (byte[])localObject2);
-    d = y.a(null, a);
-    i = ByteString.b("efbbbf");
-    j = ByteString.b("feff");
-    k = ByteString.b("fffe");
-    l = ByteString.b("0000ffff");
-    m = ByteString.b("ffff0000");
-    e = Charset.forName("UTF-8");
-    f = Charset.forName("ISO-8859-1");
-    n = Charset.forName("UTF-16BE");
-    o = Charset.forName("UTF-16LE");
-    p = Charset.forName("UTF-32BE");
-    q = Charset.forName("UTF-32LE");
-    g = TimeZone.getTimeZone("GMT");
-    h = new Comparator()
-    {
-      public int a(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        return paramAnonymousString1.compareTo(paramAnonymousString2);
-      }
-    };
-    try
-    {
-      localObject2 = Throwable.class.getDeclaredMethod("addSuppressed", new Class[] { Throwable.class });
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      label162:
-      break label162;
-    }
-    r = localObject1;
+    this.a = paramAccessibilityNodeInfo;
   }
   
-  public static int a(char paramChar)
+  public static ff a(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return paramChar - '0';
-    }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return paramChar - 'a' + 10;
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return paramChar - 'A' + 10;
-    }
-    return -1;
+    return new ff(paramAccessibilityNodeInfo);
   }
   
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  public static ff a(ff paramff)
   {
-    while (paramInt1 < paramInt2)
-    {
-      switch (paramString.charAt(paramInt1))
-      {
-      default: 
-        return paramInt1;
-      }
-      paramInt1 += 1;
-    }
-    return paramInt2;
+    return a(AccessibilityNodeInfo.obtain(paramff.a));
   }
   
-  public static int a(String paramString, int paramInt1, int paramInt2, char paramChar)
+  public final void a(int paramInt)
   {
-    while (paramInt1 < paramInt2)
-    {
-      if (paramString.charAt(paramInt1) == paramChar) {
-        return paramInt1;
-      }
-      paramInt1 += 1;
-    }
-    return paramInt2;
+    this.a.addAction(paramInt);
   }
   
-  public static int a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public final void a(Rect paramRect)
   {
-    while (paramInt1 < paramInt2)
-    {
-      if (paramString2.indexOf(paramString1.charAt(paramInt1)) != -1) {
-        return paramInt1;
-      }
-      paramInt1 += 1;
-    }
-    return paramInt2;
+    this.a.getBoundsInParent(paramRect);
   }
   
-  public static int a(String paramString, long paramLong, TimeUnit paramTimeUnit)
+  public final void a(View paramView)
   {
-    if (paramLong >= 0L)
-    {
-      if (paramTimeUnit != null)
-      {
-        long l1 = paramTimeUnit.toMillis(paramLong);
-        if (l1 <= 2147483647L)
-        {
-          if ((l1 == 0L) && (paramLong > 0L))
-          {
-            paramTimeUnit = new StringBuilder();
-            paramTimeUnit.append(paramString);
-            paramTimeUnit.append(" too small.");
-            throw new IllegalArgumentException(paramTimeUnit.toString());
-          }
-          return (int)l1;
-        }
-        paramTimeUnit = new StringBuilder();
-        paramTimeUnit.append(paramString);
-        paramTimeUnit.append(" too large.");
-        throw new IllegalArgumentException(paramTimeUnit.toString());
-      }
-      throw new NullPointerException("unit == null");
-    }
-    paramTimeUnit = new StringBuilder();
-    paramTimeUnit.append(paramString);
-    paramTimeUnit.append(" < 0");
-    throw new IllegalArgumentException(paramTimeUnit.toString());
+    this.a.setSource(paramView);
   }
   
-  public static int a(Comparator<String> paramComparator, String[] paramArrayOfString, String paramString)
+  public final void a(CharSequence paramCharSequence)
   {
-    int i2 = paramArrayOfString.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (paramComparator.compare(paramArrayOfString[i1], paramString) == 0) {
-        return i1;
-      }
-      i1 += 1;
-    }
-    return -1;
+    this.a.setPackageName(paramCharSequence);
   }
   
-  public static AssertionError a(String paramString, Exception paramException)
+  public final void a(boolean paramBoolean)
   {
-    paramString = new AssertionError(paramString);
-    try
-    {
-      paramString.initCause(paramException);
-      return paramString;
-    }
-    catch (IllegalStateException paramException) {}
-    return paramString;
+    this.a.setFocusable(paramBoolean);
   }
   
-  public static String a(String paramString)
+  public final boolean a()
   {
-    if (paramString.contains(":"))
-    {
-      if ((paramString.startsWith("[")) && (paramString.endsWith("]"))) {
-        localObject = d(paramString, 1, paramString.length() - 1);
-      } else {
-        localObject = d(paramString, 0, paramString.length());
-      }
-      if (localObject == null) {
-        return null;
-      }
-      Object localObject = ((InetAddress)localObject).getAddress();
-      if (localObject.length == 16) {
-        return a((byte[])localObject);
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("Invalid IPv6 address: '");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("'");
-      throw new AssertionError(((StringBuilder)localObject).toString());
-    }
-    try
-    {
-      paramString = IDN.toASCII(paramString).toLowerCase(Locale.US);
-      if (paramString.isEmpty()) {
-        return null;
-      }
-      boolean bool = d(paramString);
-      if (bool) {
-        return null;
-      }
-      return paramString;
-    }
-    catch (IllegalArgumentException paramString) {}
-    return null;
-  }
-  
-  public static String a(String paramString, Object... paramVarArgs)
-  {
-    return String.format(Locale.US, paramString, paramVarArgs);
-  }
-  
-  public static String a(s params, boolean paramBoolean)
-  {
-    Object localObject1;
-    if (params.f().contains(":"))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[");
-      ((StringBuilder)localObject1).append(params.f());
-      ((StringBuilder)localObject1).append("]");
-      localObject1 = ((StringBuilder)localObject1).toString();
-    }
-    else
-    {
-      localObject1 = params.f();
-    }
-    Object localObject2;
-    if (!paramBoolean)
-    {
-      localObject2 = localObject1;
-      if (params.g() == s.a(params.b())) {}
-    }
-    else
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(":");
-      ((StringBuilder)localObject2).append(params.g());
-      localObject2 = ((StringBuilder)localObject2).toString();
-    }
-    return localObject2;
-  }
-  
-  private static String a(byte[] paramArrayOfByte)
-  {
-    int i7 = 0;
-    int i1 = 0;
-    int i3 = -1;
-    int i4;
-    int i5;
-    for (int i2 = 0; i1 < paramArrayOfByte.length; i2 = i5)
-    {
-      i4 = i1;
-      while ((i4 < 16) && (paramArrayOfByte[i4] == 0) && (paramArrayOfByte[(i4 + 1)] == 0)) {
-        i4 += 2;
-      }
-      int i8 = i4 - i1;
-      int i6 = i3;
-      i5 = i2;
-      if (i8 > i2)
-      {
-        i6 = i3;
-        i5 = i2;
-        if (i8 >= 4)
-        {
-          i5 = i8;
-          i6 = i1;
-        }
-      }
-      i1 = i4 + 2;
-      i3 = i6;
-    }
-    c localc = new c();
-    i1 = i7;
-    while (i1 < paramArrayOfByte.length) {
-      if (i1 == i3)
-      {
-        localc.b(58);
-        i4 = i1 + i2;
-        i1 = i4;
-        if (i4 == 16)
-        {
-          localc.b(58);
-          i1 = i4;
-        }
-      }
-      else
-      {
-        if (i1 > 0) {
-          localc.b(58);
-        }
-        localc.j((paramArrayOfByte[i1] & 0xFF) << 8 | paramArrayOfByte[(i1 + 1)] & 0xFF);
-        i1 += 2;
-      }
-    }
-    return localc.o();
-  }
-  
-  public static <T> List<T> a(List<T> paramList)
-  {
-    return Collections.unmodifiableList(new ArrayList(paramList));
-  }
-  
-  public static <T> List<T> a(T... paramVarArgs)
-  {
-    return Collections.unmodifiableList(Arrays.asList((Object[])paramVarArgs.clone()));
-  }
-  
-  public static <K, V> Map<K, V> a(Map<K, V> paramMap)
-  {
-    if (paramMap.isEmpty()) {
-      return Collections.emptyMap();
-    }
-    return Collections.unmodifiableMap(new LinkedHashMap(paramMap));
-  }
-  
-  public static ThreadFactory a(String paramString, final boolean paramBoolean)
-  {
-    new ThreadFactory()
-    {
-      public Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, ff.this);
-        paramAnonymousRunnable.setDaemon(paramBoolean);
-        return paramAnonymousRunnable;
-      }
-    };
-  }
-  
-  public static X509TrustManager a()
-  {
-    try
-    {
-      Object localObject = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      ((TrustManagerFactory)localObject).init((KeyStore)null);
-      localObject = ((TrustManagerFactory)localObject).getTrustManagers();
-      if ((localObject.length == 1) && ((localObject[0] instanceof X509TrustManager))) {
-        return (X509TrustManager)localObject[0];
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Unexpected default trust managers:");
-      localStringBuilder.append(Arrays.toString((Object[])localObject));
-      throw new IllegalStateException(localStringBuilder.toString());
-    }
-    catch (GeneralSecurityException localGeneralSecurityException)
-    {
-      throw a("No System TLS", localGeneralSecurityException);
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (((paramLong2 | paramLong3) >= 0L) && (paramLong2 <= paramLong1) && (paramLong1 - paramLong2 >= paramLong3)) {
-      return;
-    }
-    throw new ArrayIndexOutOfBoundsException();
-  }
-  
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (RuntimeException paramCloseable)
-    {
-      throw paramCloseable;
-      return;
-    }
-    catch (Exception paramCloseable) {}
-  }
-  
-  public static void a(Throwable paramThrowable1, Throwable paramThrowable2)
-  {
-    Method localMethod = r;
-    if (localMethod != null) {}
-    try
-    {
-      localMethod.invoke(paramThrowable1, new Object[] { paramThrowable2 });
-      return;
-    }
-    catch (InvocationTargetException|IllegalAccessException paramThrowable1) {}
-  }
-  
-  public static void a(Socket paramSocket)
-  {
-    if (paramSocket != null) {}
-    try
-    {
-      paramSocket.close();
-      return;
-    }
-    catch (RuntimeException paramSocket)
-    {
-      throw paramSocket;
-    }
-    catch (AssertionError paramSocket)
-    {
-      if (a(paramSocket)) {
-        return;
-      }
-      throw paramSocket;
-      return;
-    }
-    catch (Exception paramSocket) {}
-  }
-  
-  public static boolean a(AssertionError paramAssertionError)
-  {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
-  }
-  
-  private static boolean a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3)
-  {
-    int i2 = paramInt3;
-    int i1 = paramInt1;
-    while (i1 < paramInt2)
-    {
-      if (i2 == paramArrayOfByte.length) {
-        return false;
-      }
-      paramInt1 = i1;
-      if (i2 != paramInt3)
-      {
-        if (paramString.charAt(i1) != '.') {
-          return false;
-        }
-        paramInt1 = i1 + 1;
-      }
-      i1 = paramInt1;
-      int i3 = 0;
-      while (i1 < paramInt2)
-      {
-        int i4 = paramString.charAt(i1);
-        if ((i4 < 48) || (i4 > 57)) {
-          break;
-        }
-        if ((i3 == 0) && (paramInt1 != i1)) {
-          return false;
-        }
-        i3 = i3 * 10 + i4 - 48;
-        if (i3 > 255) {
-          return false;
-        }
-        i1 += 1;
-      }
-      if (i1 - paramInt1 == 0) {
-        return false;
-      }
-      paramArrayOfByte[i2] = ((byte)i3);
-      i2 += 1;
-    }
-    return i2 == paramInt3 + 4;
-  }
-  
-  public static boolean a(q paramq, int paramInt, TimeUnit paramTimeUnit)
-  {
-    try
-    {
-      boolean bool = b(paramq, paramInt, paramTimeUnit);
-      return bool;
-    }
-    catch (IOException paramq)
-    {
-      label9:
-      break label9;
+    if (Build.VERSION.SDK_INT >= 16) {
+      return this.a.isVisibleToUser();
     }
     return false;
   }
   
-  public static String[] a(Comparator<? super String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public final boolean a(a parama)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i3 = paramArrayOfString1.length;
-    int i1 = 0;
-    while (i1 < i3)
-    {
-      String str = paramArrayOfString1[i1];
-      int i4 = paramArrayOfString2.length;
-      int i2 = 0;
-      while (i2 < i4)
-      {
-        if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0)
-        {
-          localArrayList.add(str);
-          break;
-        }
-        i2 += 1;
-      }
-      i1 += 1;
+    if (Build.VERSION.SDK_INT >= 21) {
+      return this.a.removeAction((AccessibilityNodeInfo.AccessibilityAction)parama.E);
     }
-    return (String[])localArrayList.toArray(new String[localArrayList.size()]);
+    return false;
   }
   
-  public static String[] a(String[] paramArrayOfString, String paramString)
+  public final void b(Rect paramRect)
   {
-    String[] arrayOfString = new String[paramArrayOfString.length + 1];
-    System.arraycopy(paramArrayOfString, 0, arrayOfString, 0, paramArrayOfString.length);
-    arrayOfString[(arrayOfString.length - 1)] = paramString;
-    return arrayOfString;
+    this.a.setBoundsInParent(paramRect);
   }
   
-  public static int b(String paramString)
+  public final void b(View paramView)
   {
-    int i2 = paramString.length();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      int i3 = paramString.charAt(i1);
-      if (i3 > 31)
-      {
-        if (i3 >= 127) {
-          return i1;
-        }
-        i1 += 1;
-      }
-      else
-      {
-        return i1;
-      }
+    this.a.addChild(paramView);
+  }
+  
+  public final void b(CharSequence paramCharSequence)
+  {
+    this.a.setClassName(paramCharSequence);
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.a.setFocused(paramBoolean);
+  }
+  
+  public final boolean b()
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      return this.a.isAccessibilityFocused();
     }
-    return -1;
+    return false;
   }
   
-  public static int b(String paramString, int paramInt1, int paramInt2)
+  public final void c(Rect paramRect)
   {
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      switch (paramString.charAt(paramInt2))
-      {
-      default: 
-        return paramInt2 + 1;
-      }
-      paramInt2 -= 1;
+    this.a.getBoundsInScreen(paramRect);
+  }
+  
+  public final void c(View paramView)
+  {
+    this.a.setParent(paramView);
+  }
+  
+  public final void c(CharSequence paramCharSequence)
+  {
+    this.a.setContentDescription(paramCharSequence);
+  }
+  
+  public final void c(boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.setVisibleToUser(paramBoolean);
     }
-    return paramInt1;
   }
   
-  public static boolean b(Comparator<String> paramComparator, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public final void d(Rect paramRect)
   {
-    if ((paramArrayOfString1 != null) && (paramArrayOfString2 != null) && (paramArrayOfString1.length != 0))
-    {
-      if (paramArrayOfString2.length == 0) {
-        return false;
-      }
-      int i3 = paramArrayOfString1.length;
-      int i1 = 0;
-      while (i1 < i3)
-      {
-        String str = paramArrayOfString1[i1];
-        int i4 = paramArrayOfString2.length;
-        int i2 = 0;
-        while (i2 < i4)
-        {
-          if (paramComparator.compare(str, paramArrayOfString2[i2]) == 0) {
-            return true;
-          }
-          i2 += 1;
-        }
-        i1 += 1;
-      }
+    this.a.setBoundsInScreen(paramRect);
+  }
+  
+  public final void d(boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.setAccessibilityFocused(paramBoolean);
+    }
+  }
+  
+  public final void e(boolean paramBoolean)
+  {
+    this.a.setSelected(paramBoolean);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
     }
-    return false;
-  }
-  
-  /* Error */
-  public static boolean b(q paramq, int paramInt, TimeUnit paramTimeUnit)
-  {
-    // Byte code:
-    //   0: invokestatic 475	java/lang/System:nanoTime	()J
-    //   3: lstore 5
-    //   5: aload_0
-    //   6: invokeinterface 480 1 0
-    //   11: invokevirtual 485	okio/r:d_	()Z
-    //   14: ifeq +19 -> 33
-    //   17: aload_0
-    //   18: invokeinterface 480 1 0
-    //   23: invokevirtual 487	okio/r:d	()J
-    //   26: lload 5
-    //   28: lsub
-    //   29: lstore_3
-    //   30: goto +7 -> 37
-    //   33: ldc2_w 488
-    //   36: lstore_3
-    //   37: aload_0
-    //   38: invokeinterface 480 1 0
-    //   43: lload_3
-    //   44: aload_2
-    //   45: iload_1
-    //   46: i2l
-    //   47: invokevirtual 492	java/util/concurrent/TimeUnit:toNanos	(J)J
-    //   50: invokestatic 498	java/lang/Math:min	(JJ)J
-    //   53: lload 5
-    //   55: ladd
-    //   56: invokevirtual 501	okio/r:a	(J)Lokio/r;
-    //   59: pop
-    //   60: new 305	okio/c
-    //   63: dup
-    //   64: invokespecial 306	okio/c:<init>	()V
-    //   67: astore_2
-    //   68: aload_0
-    //   69: aload_2
-    //   70: ldc2_w 502
-    //   73: invokeinterface 506 4 0
-    //   78: ldc2_w 507
-    //   81: lcmp
-    //   82: ifeq +10 -> 92
-    //   85: aload_2
-    //   86: invokevirtual 510	okio/c:r	()V
-    //   89: goto -21 -> 68
-    //   92: lload_3
-    //   93: ldc2_w 488
-    //   96: lcmp
-    //   97: ifne +15 -> 112
-    //   100: aload_0
-    //   101: invokeinterface 480 1 0
-    //   106: invokevirtual 512	okio/r:f	()Lokio/r;
-    //   109: pop
-    //   110: iconst_1
-    //   111: ireturn
-    //   112: aload_0
-    //   113: invokeinterface 480 1 0
-    //   118: lload 5
-    //   120: lload_3
-    //   121: ladd
-    //   122: invokevirtual 501	okio/r:a	(J)Lokio/r;
-    //   125: pop
-    //   126: iconst_1
-    //   127: ireturn
-    //   128: astore_2
-    //   129: lload_3
-    //   130: ldc2_w 488
-    //   133: lcmp
-    //   134: ifne +16 -> 150
-    //   137: aload_0
-    //   138: invokeinterface 480 1 0
-    //   143: invokevirtual 512	okio/r:f	()Lokio/r;
-    //   146: pop
-    //   147: goto +17 -> 164
-    //   150: aload_0
-    //   151: invokeinterface 480 1 0
-    //   156: lload 5
-    //   158: lload_3
-    //   159: ladd
-    //   160: invokevirtual 501	okio/r:a	(J)Lokio/r;
-    //   163: pop
-    //   164: aload_2
-    //   165: athrow
-    //   166: lload_3
-    //   167: ldc2_w 488
-    //   170: lcmp
-    //   171: ifne +15 -> 186
-    //   174: aload_0
-    //   175: invokeinterface 480 1 0
-    //   180: invokevirtual 512	okio/r:f	()Lokio/r;
-    //   183: pop
-    //   184: iconst_0
-    //   185: ireturn
-    //   186: aload_0
-    //   187: invokeinterface 480 1 0
-    //   192: lload 5
-    //   194: lload_3
-    //   195: ladd
-    //   196: invokevirtual 501	okio/r:a	(J)Lokio/r;
-    //   199: pop
-    //   200: iconst_0
-    //   201: ireturn
-    //   202: astore_2
-    //   203: goto -37 -> 166
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	206	0	paramq	q
-    //   0	206	1	paramInt	int
-    //   0	206	2	paramTimeUnit	TimeUnit
-    //   29	166	3	l1	long
-    //   3	190	5	l2	long
-    // Exception table:
-    //   from	to	target	type
-    //   60	68	128	finally
-    //   68	89	128	finally
-    //   60	68	202	java/io/InterruptedIOException
-    //   68	89	202	java/io/InterruptedIOException
-  }
-  
-  public static String c(String paramString, int paramInt1, int paramInt2)
-  {
-    paramInt1 = a(paramString, paramInt1, paramInt2);
-    return paramString.substring(paramInt1, b(paramString, paramInt1, paramInt2));
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return s.matcher(paramString).matches();
-  }
-  
-  @Nullable
-  private static InetAddress d(String paramString, int paramInt1, int paramInt2)
-  {
-    byte[] arrayOfByte = new byte[16];
-    int i1 = 0;
-    int i2 = -1;
-    int i4 = -1;
-    int i3;
-    int i5;
-    for (;;)
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (ff)paramObject;
+    AccessibilityNodeInfo localAccessibilityNodeInfo = this.a;
+    if (localAccessibilityNodeInfo == null)
     {
-      i3 = i1;
-      i5 = i2;
-      if (paramInt1 >= paramInt2) {
-        break label280;
+      if (paramObject.a != null) {
+        return false;
       }
-      if (i1 == arrayOfByte.length) {
-        return null;
-      }
-      i3 = paramInt1 + 2;
-      if ((i3 <= paramInt2) && (paramString.regionMatches(paramInt1, "::", 0, 2)))
+    }
+    else if (!localAccessibilityNodeInfo.equals(paramObject.a)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public final void f(boolean paramBoolean)
+  {
+    this.a.setClickable(paramBoolean);
+  }
+  
+  public final void g(boolean paramBoolean)
+  {
+    this.a.setLongClickable(paramBoolean);
+  }
+  
+  public final void h(boolean paramBoolean)
+  {
+    this.a.setEnabled(paramBoolean);
+  }
+  
+  public final int hashCode()
+  {
+    AccessibilityNodeInfo localAccessibilityNodeInfo = this.a;
+    if (localAccessibilityNodeInfo == null) {
+      return 0;
+    }
+    return localAccessibilityNodeInfo.hashCode();
+  }
+  
+  public final void i(boolean paramBoolean)
+  {
+    this.a.setScrollable(paramBoolean);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    Object localObject = new Rect();
+    a((Rect)localObject);
+    localStringBuilder.append("; boundsInParent: ".concat(String.valueOf(localObject)));
+    c((Rect)localObject);
+    localStringBuilder.append("; boundsInScreen: ".concat(String.valueOf(localObject)));
+    localStringBuilder.append("; packageName: ");
+    localStringBuilder.append(this.a.getPackageName());
+    localStringBuilder.append("; className: ");
+    localStringBuilder.append(this.a.getClassName());
+    localStringBuilder.append("; text: ");
+    localStringBuilder.append(this.a.getText());
+    localStringBuilder.append("; contentDescription: ");
+    localStringBuilder.append(this.a.getContentDescription());
+    localStringBuilder.append("; viewId: ");
+    if (Build.VERSION.SDK_INT >= 18) {
+      localObject = this.a.getViewIdResourceName();
+    } else {
+      localObject = null;
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("; checkable: ");
+    localStringBuilder.append(this.a.isCheckable());
+    localStringBuilder.append("; checked: ");
+    localStringBuilder.append(this.a.isChecked());
+    localStringBuilder.append("; focusable: ");
+    localStringBuilder.append(this.a.isFocusable());
+    localStringBuilder.append("; focused: ");
+    localStringBuilder.append(this.a.isFocused());
+    localStringBuilder.append("; selected: ");
+    localStringBuilder.append(this.a.isSelected());
+    localStringBuilder.append("; clickable: ");
+    localStringBuilder.append(this.a.isClickable());
+    localStringBuilder.append("; longClickable: ");
+    localStringBuilder.append(this.a.isLongClickable());
+    localStringBuilder.append("; enabled: ");
+    localStringBuilder.append(this.a.isEnabled());
+    localStringBuilder.append("; password: ");
+    localStringBuilder.append(this.a.isPassword());
+    localObject = new StringBuilder("; scrollable: ");
+    ((StringBuilder)localObject).append(this.a.isScrollable());
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    localStringBuilder.append("; [");
+    int i = this.a.getActions();
+    while (i != 0)
+    {
+      int k = 1 << Integer.numberOfTrailingZeros(i);
+      int j = i & (k ^ 0xFFFFFFFF);
+      switch (k)
       {
-        if (i2 != -1) {
-          return null;
-        }
-        paramInt1 = i1 + 2;
-        if (i3 == paramInt2)
-        {
-          i5 = paramInt1;
-          i3 = paramInt1;
-          break label280;
-        }
-        i2 = paramInt1;
-        i1 = paramInt1;
-        paramInt1 = i3;
-      }
-      else if (i1 != 0)
-      {
-        if (paramString.regionMatches(paramInt1, ":", 0, 1))
-        {
-          paramInt1 += 1;
-        }
-        else
-        {
-          if (paramString.regionMatches(paramInt1, ".", 0, 1))
-          {
-            if (!a(paramString, i4, paramInt2, arrayOfByte, i1 - 2)) {
-              return null;
-            }
-            i3 = i1 + 2;
-            i5 = i2;
-            break label280;
-          }
-          return null;
-        }
-      }
-      i3 = paramInt1;
-      i4 = 0;
-      while (i3 < paramInt2)
-      {
-        i5 = a(paramString.charAt(i3));
-        if (i5 == -1) {
-          break;
-        }
-        i4 = (i4 << 4) + i5;
-        i3 += 1;
-      }
-      i5 = i3 - paramInt1;
-      if (i5 == 0) {
+      default: 
+        localObject = "ACTION_UNKNOWN";
         break;
+      case 131072: 
+        localObject = "ACTION_SET_SELECTION";
+        break;
+      case 65536: 
+        localObject = "ACTION_CUT";
+        break;
+      case 32768: 
+        localObject = "ACTION_PASTE";
+        break;
+      case 16384: 
+        localObject = "ACTION_COPY";
+        break;
+      case 8192: 
+        localObject = "ACTION_SCROLL_BACKWARD";
+        break;
+      case 4096: 
+        localObject = "ACTION_SCROLL_FORWARD";
+        break;
+      case 2048: 
+        localObject = "ACTION_PREVIOUS_HTML_ELEMENT";
+        break;
+      case 1024: 
+        localObject = "ACTION_NEXT_HTML_ELEMENT";
+        break;
+      case 512: 
+        localObject = "ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY";
+        break;
+      case 256: 
+        localObject = "ACTION_NEXT_AT_MOVEMENT_GRANULARITY";
+        break;
+      case 128: 
+        localObject = "ACTION_CLEAR_ACCESSIBILITY_FOCUS";
+        break;
+      case 64: 
+        localObject = "ACTION_ACCESSIBILITY_FOCUS";
+        break;
+      case 32: 
+        localObject = "ACTION_LONG_CLICK";
+        break;
+      case 16: 
+        localObject = "ACTION_CLICK";
+        break;
+      case 8: 
+        localObject = "ACTION_CLEAR_SELECTION";
+        break;
+      case 4: 
+        localObject = "ACTION_SELECT";
+        break;
+      case 2: 
+        localObject = "ACTION_CLEAR_FOCUS";
+        break;
+      case 1: 
+        localObject = "ACTION_FOCUS";
       }
-      if (i5 > 4) {
-        return null;
+      localStringBuilder.append((String)localObject);
+      i = j;
+      if (j != 0)
+      {
+        localStringBuilder.append(", ");
+        i = j;
       }
-      i5 = i1 + 1;
-      arrayOfByte[i1] = ((byte)(i4 >>> 8 & 0xFF));
-      i1 = i5 + 1;
-      arrayOfByte[i5] = ((byte)(i4 & 0xFF));
-      i4 = paramInt1;
-      paramInt1 = i3;
     }
-    return null;
-    label280:
-    if (i3 != arrayOfByte.length)
-    {
-      if (i5 == -1) {
-        return null;
-      }
-      paramInt1 = arrayOfByte.length;
-      paramInt2 = i3 - i5;
-      System.arraycopy(arrayOfByte, i5, arrayOfByte, paramInt1 - paramInt2, paramInt2);
-      Arrays.fill(arrayOfByte, i5, arrayOfByte.length - i3 + i5, (byte)0);
-    }
-    try
-    {
-      paramString = InetAddress.getByAddress(arrayOfByte);
-      return paramString;
-    }
-    catch (UnknownHostException paramString)
-    {
-      label344:
-      break label344;
-    }
-    throw new AssertionError();
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
-  private static boolean d(String paramString)
+  public static final class a
   {
-    int i1 = 0;
-    while (i1 < paramString.length())
+    public static final a A;
+    public static final a B;
+    public static final a C;
+    public static final a D;
+    public static final a a = new a(1);
+    public static final a b = new a(2);
+    public static final a c = new a(4);
+    public static final a d = new a(8);
+    public static final a e = new a(16);
+    public static final a f = new a(32);
+    public static final a g = new a(64);
+    public static final a h = new a(128);
+    public static final a i = new a(256);
+    public static final a j = new a(512);
+    public static final a k = new a(1024);
+    public static final a l = new a(2048);
+    public static final a m = new a(4096);
+    public static final a n = new a(8192);
+    public static final a o = new a(16384);
+    public static final a p = new a(32768);
+    public static final a q = new a(65536);
+    public static final a r = new a(131072);
+    public static final a s = new a(262144);
+    public static final a t = new a(524288);
+    public static final a u = new a(1048576);
+    public static final a v = new a(2097152);
+    public static final a w;
+    public static final a x;
+    public static final a y;
+    public static final a z;
+    final Object E;
+    
+    static
     {
-      int i2 = paramString.charAt(i1);
-      if (i2 > 31)
-      {
-        if (i2 >= 127) {
-          return true;
-        }
-        if (" #%/:?@[\\]".indexOf(i2) != -1) {
-          return true;
-        }
-        i1 += 1;
+      int i1 = Build.VERSION.SDK_INT;
+      Object localObject2 = null;
+      if (i1 >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN;
+      } else {
+        localObject1 = null;
       }
-      else
-      {
-        return true;
+      w = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_TO_POSITION;
+      } else {
+        localObject1 = null;
       }
+      x = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP;
+      } else {
+        localObject1 = null;
+      }
+      y = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_LEFT;
+      } else {
+        localObject1 = null;
+      }
+      z = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN;
+      } else {
+        localObject1 = null;
+      }
+      A = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_RIGHT;
+      } else {
+        localObject1 = null;
+      }
+      B = new a(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_CONTEXT_CLICK;
+      } else {
+        localObject1 = null;
+      }
+      C = new a(localObject1);
+      Object localObject1 = localObject2;
+      if (Build.VERSION.SDK_INT >= 24) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS;
+      }
+      D = new a(localObject1);
     }
-    return false;
+    
+    private a(int paramInt)
+    {
+      this(localAccessibilityAction);
+    }
+    
+    private a(Object paramObject)
+    {
+      this.E = paramObject;
+    }
   }
 }
 

@@ -171,13 +171,13 @@ public class RSACrypt
     //   13: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
     //   16: astore 6
     //   18: iconst_0
-    //   19: istore_3
-    //   20: iconst_0
-    //   21: istore_2
-    //   22: iconst_0
-    //   23: istore 4
+    //   19: istore 4
+    //   21: iconst_0
+    //   22: istore_3
+    //   23: iconst_0
+    //   24: istore_1
     //   25: iconst_0
-    //   26: istore_1
+    //   26: istore_2
     //   27: aload 5
     //   29: ifnull +46 -> 75
     //   32: aload 5
@@ -211,15 +211,15 @@ public class RSACrypt
     //   91: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
     //   94: astore 6
     //   96: aload 5
-    //   98: ifnull +58 -> 156
+    //   98: ifnull +56 -> 154
     //   101: aload 5
     //   103: arraylength
-    //   104: ifle +52 -> 156
+    //   104: ifle +50 -> 154
     //   107: aload 6
-    //   109: ifnull +47 -> 156
+    //   109: ifnull +45 -> 154
     //   112: aload 6
     //   114: arraylength
-    //   115: ifle +41 -> 156
+    //   115: ifle +39 -> 154
     //   118: aload_0
     //   119: aload 5
     //   121: invokevirtual 82	[B:clone	()Ljava/lang/Object;
@@ -233,342 +233,338 @@ public class RSACrypt
     //   142: ldc 84
     //   144: ldc 86
     //   146: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   149: iconst_0
-    //   150: istore_2
-    //   151: iconst_1
-    //   152: istore_1
-    //   153: goto +49 -> 202
-    //   156: ldc 92
-    //   158: ldc 86
-    //   160: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   163: aload_0
-    //   164: invokespecial 94	oicq/wlogin_sdk/tools/RSACrypt:genrsakey	()I
-    //   167: istore_2
-    //   168: new 96	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   175: astore 5
-    //   177: aload 5
-    //   179: ldc 99
-    //   181: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: pop
-    //   185: aload 5
-    //   187: iload_2
-    //   188: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: pop
-    //   192: aload 5
-    //   194: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: ldc 86
-    //   199: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   202: ldc 2
-    //   204: monitorexit
-    //   205: iload_1
-    //   206: ifeq +5 -> 211
-    //   209: iload_2
-    //   210: ireturn
-    //   211: ldc 2
-    //   213: monitorenter
-    //   214: aload_0
-    //   215: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   218: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
-    //   221: astore 5
-    //   223: aload_0
-    //   224: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   227: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
-    //   230: astore 6
-    //   232: aload 5
-    //   234: ifnull +54 -> 288
-    //   237: aload 5
-    //   239: arraylength
-    //   240: ifle +48 -> 288
-    //   243: aload 6
-    //   245: ifnull +43 -> 288
-    //   248: aload 6
-    //   250: arraylength
-    //   251: ifle +37 -> 288
-    //   254: aload_0
-    //   255: aload 5
-    //   257: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   260: checkcast 78	[B
-    //   263: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   266: aload_0
-    //   267: aload 6
-    //   269: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   272: checkcast 78	[B
-    //   275: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   278: ldc 112
-    //   280: ldc 86
-    //   282: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   285: goto +39 -> 324
-    //   288: ldc 114
-    //   290: ldc 86
-    //   292: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   295: aload_0
-    //   296: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   299: aload_0
-    //   300: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   303: invokestatic 118	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
-    //   306: aload_0
-    //   307: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   310: aload_0
-    //   311: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   314: invokestatic 121	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
-    //   317: ldc 123
-    //   319: ldc 86
-    //   321: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   324: ldc 2
-    //   326: monitorexit
-    //   327: iload_2
-    //   328: ireturn
-    //   329: astore 5
-    //   331: ldc 2
-    //   333: monitorexit
-    //   334: aload 5
-    //   336: athrow
-    //   337: astore 5
-    //   339: goto +14 -> 353
-    //   342: astore 5
-    //   344: goto +7 -> 351
-    //   347: astore 5
-    //   349: iload_3
-    //   350: istore_2
-    //   351: iconst_0
-    //   352: istore_1
-    //   353: ldc 2
-    //   355: monitorexit
-    //   356: iload_2
-    //   357: istore_3
-    //   358: iload_1
+    //   149: iconst_1
+    //   150: istore_1
+    //   151: goto +35 -> 186
+    //   154: ldc 92
+    //   156: ldc 86
+    //   158: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: aload_0
+    //   162: invokespecial 94	oicq/wlogin_sdk/tools/RSACrypt:genrsakey	()I
+    //   165: istore_1
+    //   166: ldc 96
+    //   168: iload_1
+    //   169: invokestatic 102	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   172: invokevirtual 106	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   175: ldc 86
+    //   177: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   180: iconst_0
+    //   181: istore_3
+    //   182: iload_1
+    //   183: istore_2
+    //   184: iload_3
+    //   185: istore_1
+    //   186: ldc 2
+    //   188: monitorexit
+    //   189: iload_1
+    //   190: ifeq +5 -> 195
+    //   193: iload_2
+    //   194: ireturn
+    //   195: ldc 2
+    //   197: monitorenter
+    //   198: aload_0
+    //   199: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   202: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
+    //   205: astore 5
+    //   207: aload_0
+    //   208: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   211: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
+    //   214: astore 6
+    //   216: aload 5
+    //   218: ifnull +54 -> 272
+    //   221: aload 5
+    //   223: arraylength
+    //   224: ifle +48 -> 272
+    //   227: aload 6
+    //   229: ifnull +43 -> 272
+    //   232: aload 6
+    //   234: arraylength
+    //   235: ifle +37 -> 272
+    //   238: aload_0
+    //   239: aload 5
+    //   241: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   244: checkcast 78	[B
+    //   247: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   250: aload_0
+    //   251: aload 6
+    //   253: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   256: checkcast 78	[B
+    //   259: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   262: ldc 108
+    //   264: ldc 86
+    //   266: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   269: goto +39 -> 308
+    //   272: ldc 110
+    //   274: ldc 86
+    //   276: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   279: aload_0
+    //   280: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   283: aload_0
+    //   284: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   287: invokestatic 114	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
+    //   290: aload_0
+    //   291: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   294: aload_0
+    //   295: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   298: invokestatic 117	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
+    //   301: ldc 119
+    //   303: ldc 86
+    //   305: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: ldc 2
+    //   310: monitorexit
+    //   311: iload_2
+    //   312: ireturn
+    //   313: astore 5
+    //   315: ldc 2
+    //   317: monitorexit
+    //   318: aload 5
+    //   320: athrow
+    //   321: astore 5
+    //   323: goto +17 -> 340
+    //   326: astore 5
+    //   328: iload_1
+    //   329: istore_2
+    //   330: goto +8 -> 338
+    //   333: astore 5
+    //   335: iload 4
+    //   337: istore_2
+    //   338: iconst_0
+    //   339: istore_1
+    //   340: ldc 2
+    //   342: monitorexit
+    //   343: iload_2
+    //   344: istore_3
+    //   345: iload_1
+    //   346: istore 4
+    //   348: aload 5
+    //   350: athrow
+    //   351: astore 5
+    //   353: goto -13 -> 340
+    //   356: astore 5
+    //   358: iconst_0
     //   359: istore 4
-    //   361: aload 5
-    //   363: athrow
-    //   364: astore 5
-    //   366: goto -13 -> 353
-    //   369: astore 5
-    //   371: iconst_0
-    //   372: istore_1
-    //   373: iload 4
-    //   375: istore_3
-    //   376: iload_1
-    //   377: istore 4
-    //   379: goto +198 -> 577
-    //   382: iconst_0
-    //   383: istore_1
-    //   384: iload_2
-    //   385: istore_3
-    //   386: iload_1
-    //   387: istore 4
-    //   389: invokestatic 127	oicq/wlogin_sdk/tools/util:generateRSAKeyPair	()Ljava/security/KeyPair;
-    //   392: astore 5
-    //   394: aload 5
-    //   396: ifnull +47 -> 443
-    //   399: iload_2
-    //   400: istore_3
-    //   401: iload_1
-    //   402: istore 4
-    //   404: aload_0
-    //   405: aload 5
-    //   407: invokevirtual 133	java/security/KeyPair:getPublic	()Ljava/security/PublicKey;
-    //   410: invokeinterface 139 1 0
-    //   415: invokestatic 143	oicq/wlogin_sdk/tools/util:RSAPubKeyFromJava	([B)[B
-    //   418: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   421: iload_2
-    //   422: istore_3
-    //   423: iload_1
-    //   424: istore 4
-    //   426: aload_0
-    //   427: aload 5
-    //   429: invokevirtual 147	java/security/KeyPair:getPrivate	()Ljava/security/PrivateKey;
-    //   432: invokeinterface 150 1 0
-    //   437: invokestatic 153	oicq/wlogin_sdk/tools/util:RSAPrivKeyFromJava	([B)[B
-    //   440: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   443: iload_1
-    //   444: ifeq +5 -> 449
-    //   447: iload_2
-    //   448: ireturn
-    //   449: ldc 2
-    //   451: monitorenter
-    //   452: aload_0
-    //   453: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   456: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
-    //   459: astore 5
-    //   461: aload_0
-    //   462: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   465: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
-    //   468: astore 6
-    //   470: aload 5
-    //   472: ifnull +54 -> 526
-    //   475: aload 5
-    //   477: arraylength
-    //   478: ifle +48 -> 526
-    //   481: aload 6
-    //   483: ifnull +43 -> 526
-    //   486: aload 6
-    //   488: arraylength
-    //   489: ifle +37 -> 526
-    //   492: aload_0
-    //   493: aload 5
-    //   495: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   498: checkcast 78	[B
-    //   501: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   504: aload_0
-    //   505: aload 6
-    //   507: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   510: checkcast 78	[B
-    //   513: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   516: ldc 112
-    //   518: ldc 86
-    //   520: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   523: goto +39 -> 562
-    //   526: ldc 114
-    //   528: ldc 86
-    //   530: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   533: aload_0
-    //   534: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   537: aload_0
-    //   538: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   541: invokestatic 118	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
-    //   544: aload_0
-    //   545: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   548: aload_0
-    //   549: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   552: invokestatic 121	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
-    //   555: ldc 123
-    //   557: ldc 86
-    //   559: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   562: ldc 2
-    //   564: monitorexit
-    //   565: iload_2
-    //   566: ireturn
-    //   567: astore 5
-    //   569: ldc 2
-    //   571: monitorexit
-    //   572: aload 5
-    //   574: athrow
-    //   575: astore 5
-    //   577: iload 4
-    //   579: ifeq +5 -> 584
-    //   582: iload_3
-    //   583: ireturn
-    //   584: ldc 2
-    //   586: monitorenter
-    //   587: aload_0
-    //   588: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   591: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
-    //   594: astore 6
-    //   596: aload_0
-    //   597: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   600: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
-    //   603: astore 7
-    //   605: aload 6
-    //   607: ifnull +54 -> 661
-    //   610: aload 6
-    //   612: arraylength
-    //   613: ifle +48 -> 661
-    //   616: aload 7
-    //   618: ifnull +43 -> 661
-    //   621: aload 7
-    //   623: arraylength
-    //   624: ifle +37 -> 661
-    //   627: aload_0
-    //   628: aload 6
-    //   630: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   633: checkcast 78	[B
-    //   636: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   639: aload_0
-    //   640: aload 7
-    //   642: invokevirtual 82	[B:clone	()Ljava/lang/Object;
-    //   645: checkcast 78	[B
-    //   648: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   651: ldc 112
-    //   653: ldc 86
-    //   655: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   658: goto +39 -> 697
-    //   661: ldc 114
-    //   663: ldc 86
-    //   665: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   668: aload_0
-    //   669: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   672: aload_0
-    //   673: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
-    //   676: invokestatic 118	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
-    //   679: aload_0
-    //   680: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
-    //   683: aload_0
-    //   684: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
-    //   687: invokestatic 121	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
-    //   690: ldc 123
-    //   692: ldc 86
-    //   694: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   697: ldc 2
-    //   699: monitorexit
-    //   700: aload 5
-    //   702: athrow
-    //   703: astore 5
-    //   705: ldc 2
-    //   707: monitorexit
-    //   708: aload 5
-    //   710: athrow
-    //   711: astore 5
-    //   713: goto -331 -> 382
-    //   716: astore 5
-    //   718: goto -334 -> 384
+    //   361: iload_1
+    //   362: istore_3
+    //   363: goto +200 -> 563
+    //   366: iconst_0
+    //   367: istore_1
+    //   368: iload_3
+    //   369: istore_2
+    //   370: iload_2
+    //   371: istore_3
+    //   372: iload_1
+    //   373: istore 4
+    //   375: invokestatic 123	oicq/wlogin_sdk/tools/util:generateRSAKeyPair	()Ljava/security/KeyPair;
+    //   378: astore 5
+    //   380: aload 5
+    //   382: ifnull +47 -> 429
+    //   385: iload_2
+    //   386: istore_3
+    //   387: iload_1
+    //   388: istore 4
+    //   390: aload_0
+    //   391: aload 5
+    //   393: invokevirtual 129	java/security/KeyPair:getPublic	()Ljava/security/PublicKey;
+    //   396: invokeinterface 135 1 0
+    //   401: invokestatic 139	oicq/wlogin_sdk/tools/util:RSAPubKeyFromJava	([B)[B
+    //   404: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   407: iload_2
+    //   408: istore_3
+    //   409: iload_1
+    //   410: istore 4
+    //   412: aload_0
+    //   413: aload 5
+    //   415: invokevirtual 143	java/security/KeyPair:getPrivate	()Ljava/security/PrivateKey;
+    //   418: invokeinterface 146 1 0
+    //   423: invokestatic 149	oicq/wlogin_sdk/tools/util:RSAPrivKeyFromJava	([B)[B
+    //   426: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   429: iload_1
+    //   430: ifeq +5 -> 435
+    //   433: iload_2
+    //   434: ireturn
+    //   435: ldc 2
+    //   437: monitorenter
+    //   438: aload_0
+    //   439: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   442: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
+    //   445: astore 5
+    //   447: aload_0
+    //   448: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   451: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
+    //   454: astore 6
+    //   456: aload 5
+    //   458: ifnull +54 -> 512
+    //   461: aload 5
+    //   463: arraylength
+    //   464: ifle +48 -> 512
+    //   467: aload 6
+    //   469: ifnull +43 -> 512
+    //   472: aload 6
+    //   474: arraylength
+    //   475: ifle +37 -> 512
+    //   478: aload_0
+    //   479: aload 5
+    //   481: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   484: checkcast 78	[B
+    //   487: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   490: aload_0
+    //   491: aload 6
+    //   493: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   496: checkcast 78	[B
+    //   499: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   502: ldc 108
+    //   504: ldc 86
+    //   506: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   509: goto +39 -> 548
+    //   512: ldc 110
+    //   514: ldc 86
+    //   516: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   519: aload_0
+    //   520: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   523: aload_0
+    //   524: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   527: invokestatic 114	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
+    //   530: aload_0
+    //   531: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   534: aload_0
+    //   535: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   538: invokestatic 117	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
+    //   541: ldc 119
+    //   543: ldc 86
+    //   545: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   548: ldc 2
+    //   550: monitorexit
+    //   551: iload_2
+    //   552: ireturn
+    //   553: astore 5
+    //   555: ldc 2
+    //   557: monitorexit
+    //   558: aload 5
+    //   560: athrow
+    //   561: astore 5
+    //   563: iload 4
+    //   565: ifeq +5 -> 570
+    //   568: iload_3
+    //   569: ireturn
+    //   570: ldc 2
+    //   572: monitorenter
+    //   573: aload_0
+    //   574: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   577: invokestatic 77	oicq/wlogin_sdk/tools/util:get_rsa_pubkey	(Landroid/content/Context;)[B
+    //   580: astore 6
+    //   582: aload_0
+    //   583: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   586: invokestatic 50	oicq/wlogin_sdk/tools/util:get_rsa_privkey	(Landroid/content/Context;)[B
+    //   589: astore 7
+    //   591: aload 6
+    //   593: ifnull +54 -> 647
+    //   596: aload 6
+    //   598: arraylength
+    //   599: ifle +48 -> 647
+    //   602: aload 7
+    //   604: ifnull +43 -> 647
+    //   607: aload 7
+    //   609: arraylength
+    //   610: ifle +37 -> 647
+    //   613: aload_0
+    //   614: aload 6
+    //   616: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   619: checkcast 78	[B
+    //   622: putfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   625: aload_0
+    //   626: aload 7
+    //   628: invokevirtual 82	[B:clone	()Ljava/lang/Object;
+    //   631: checkcast 78	[B
+    //   634: putfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   637: ldc 108
+    //   639: ldc 86
+    //   641: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   644: goto +39 -> 683
+    //   647: ldc 110
+    //   649: ldc 86
+    //   651: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   654: aload_0
+    //   655: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   658: aload_0
+    //   659: getfield 25	oicq/wlogin_sdk/tools/RSACrypt:_pub_key	[B
+    //   662: invokestatic 114	oicq/wlogin_sdk/tools/util:save_rsa_pubkey	(Landroid/content/Context;[B)V
+    //   665: aload_0
+    //   666: getfield 29	oicq/wlogin_sdk/tools/RSACrypt:_context	Landroid/content/Context;
+    //   669: aload_0
+    //   670: getfield 27	oicq/wlogin_sdk/tools/RSACrypt:_priv_key	[B
+    //   673: invokestatic 117	oicq/wlogin_sdk/tools/util:save_rsa_privkey	(Landroid/content/Context;[B)V
+    //   676: ldc 119
+    //   678: ldc 86
+    //   680: invokestatic 90	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   683: ldc 2
+    //   685: monitorexit
+    //   686: aload 5
+    //   688: athrow
+    //   689: astore 5
+    //   691: ldc 2
+    //   693: monitorexit
+    //   694: aload 5
+    //   696: athrow
+    //   697: astore 5
+    //   699: goto -333 -> 366
+    //   702: astore 5
+    //   704: goto -334 -> 370
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	721	0	this	RSACrypt
-    //   26	418	1	i	int
-    //   21	545	2	j	int
-    //   19	564	3	k	int
-    //   23	555	4	m	int
-    //   7	249	5	localObject1	Object
-    //   329	6	5	localObject2	Object
-    //   337	1	5	localObject3	Object
-    //   342	1	5	localObject4	Object
-    //   347	15	5	localObject5	Object
-    //   364	1	5	localObject6	Object
-    //   369	1	5	localObject7	Object
-    //   392	102	5	localObject8	Object
-    //   567	6	5	localObject9	Object
-    //   575	126	5	localObject10	Object
-    //   703	6	5	localObject11	Object
-    //   711	1	5	localUnsatisfiedLinkError1	UnsatisfiedLinkError
-    //   716	1	5	localUnsatisfiedLinkError2	UnsatisfiedLinkError
-    //   16	613	6	arrayOfByte1	byte[]
-    //   603	38	7	arrayOfByte2	byte[]
+    //   0	707	0	this	RSACrypt
+    //   24	406	1	i	int
+    //   26	526	2	j	int
+    //   22	547	3	k	int
+    //   19	545	4	m	int
+    //   7	233	5	arrayOfByte1	byte[]
+    //   313	6	5	localObject1	Object
+    //   321	1	5	localObject2	Object
+    //   326	1	5	localObject3	Object
+    //   333	16	5	localObject4	Object
+    //   351	1	5	localObject5	Object
+    //   356	1	5	localObject6	Object
+    //   378	102	5	localObject7	Object
+    //   553	6	5	localObject8	Object
+    //   561	126	5	localObject9	Object
+    //   689	6	5	localObject10	Object
+    //   697	1	5	localUnsatisfiedLinkError1	UnsatisfiedLinkError
+    //   702	1	5	localUnsatisfiedLinkError2	UnsatisfiedLinkError
+    //   16	599	6	arrayOfByte2	byte[]
+    //   589	38	7	arrayOfByte3	byte[]
     // Exception table:
     //   from	to	target	type
-    //   214	232	329	finally
-    //   237	243	329	finally
-    //   248	285	329	finally
-    //   288	324	329	finally
-    //   324	327	329	finally
-    //   331	334	329	finally
-    //   202	205	337	finally
-    //   168	202	342	finally
-    //   78	96	347	finally
-    //   101	107	347	finally
-    //   112	149	347	finally
-    //   156	168	347	finally
-    //   353	356	364	finally
-    //   75	78	369	finally
-    //   452	470	567	finally
-    //   475	481	567	finally
-    //   486	523	567	finally
-    //   526	562	567	finally
-    //   562	565	567	finally
-    //   569	572	567	finally
-    //   361	364	575	finally
-    //   389	394	575	finally
-    //   404	421	575	finally
-    //   426	443	575	finally
-    //   587	605	703	finally
-    //   610	616	703	finally
-    //   621	658	703	finally
-    //   661	697	703	finally
-    //   697	700	703	finally
-    //   705	708	703	finally
-    //   75	78	711	java/lang/UnsatisfiedLinkError
-    //   361	364	716	java/lang/UnsatisfiedLinkError
+    //   198	216	313	finally
+    //   221	227	313	finally
+    //   232	269	313	finally
+    //   272	308	313	finally
+    //   308	311	313	finally
+    //   315	318	313	finally
+    //   186	189	321	finally
+    //   166	180	326	finally
+    //   78	96	333	finally
+    //   101	107	333	finally
+    //   112	149	333	finally
+    //   154	166	333	finally
+    //   340	343	351	finally
+    //   75	78	356	finally
+    //   438	456	553	finally
+    //   461	467	553	finally
+    //   472	509	553	finally
+    //   512	548	553	finally
+    //   548	551	553	finally
+    //   555	558	553	finally
+    //   348	351	561	finally
+    //   375	380	561	finally
+    //   390	407	561	finally
+    //   412	429	561	finally
+    //   573	591	689	finally
+    //   596	602	689	finally
+    //   607	644	689	finally
+    //   647	683	689	finally
+    //   683	686	689	finally
+    //   691	694	689	finally
+    //   75	78	697	java/lang/UnsatisfiedLinkError
+    //   348	351	702	java/lang/UnsatisfiedLinkError
   }
   
   public byte[] get_priv_key()

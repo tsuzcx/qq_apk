@@ -19,11 +19,8 @@ public final class Q
   
   public final void a(h paramh)
   {
-    boolean bool = this.c;
     this.c = paramh.a(0, true);
-    bool = this.d;
     this.d = paramh.a(1, true);
-    bool = this.e;
     this.e = paramh.a(2, true);
     this.a = paramh.b(3, false);
     this.f = paramh.b(4, false);

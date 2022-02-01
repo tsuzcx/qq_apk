@@ -1,159 +1,156 @@
 package com.tencent.token;
 
-abstract class du
-  extends dv
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
+public final class du
 {
-  static final byte[] c = new byte[''];
-  final byte[] a;
-  long b;
-  private final String d;
-  private final int e;
-  private final int f;
-  private int g;
-  
-  static
+  final Object a = new Object();
+  HandlerThread b;
+  Handler c;
+  final int d;
+  private int e;
+  private Handler.Callback f = new Handler.Callback()
   {
-    c[0] = -128;
-  }
-  
-  du(du paramdu)
-  {
-    this.d = paramdu.d;
-    this.e = paramdu.e;
-    this.f = paramdu.f;
-    byte[] arrayOfByte1 = paramdu.a;
-    if (arrayOfByte1 == null)
+    public final boolean handleMessage(Message arg1)
     {
-      this.a = null;
-    }
-    else
-    {
-      this.a = new byte[arrayOfByte1.length];
-      arrayOfByte1 = paramdu.a;
-      byte[] arrayOfByte2 = this.a;
-      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
-    }
-    this.g = paramdu.g;
-    this.b = paramdu.b;
-  }
-  
-  du(String paramString, int paramInt1, int paramInt2)
-  {
-    this.d = paramString;
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.a = new byte[paramInt2];
-  }
-  
-  protected final void a()
-  {
-    if (this.b == 0L) {
-      return;
-    }
-    c();
-    this.g = 0;
-    this.b = 0L;
-  }
-  
-  abstract void a(byte[] paramArrayOfByte, int paramInt);
-  
-  protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return;
-    }
-    if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
-    {
-      if (this.b < 0L) {
-        a();
-      }
-      this.b += paramInt2;
-      int k = this.g;
-      int i = paramInt1;
-      int j = paramInt2;
-      if (k != 0)
+      switch (???.what)
       {
-        i = Math.min(paramInt2, this.f - k);
-        System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
-        this.g += i;
-        paramInt1 += i;
-        paramInt2 -= i;
-        i = paramInt1;
-        j = paramInt2;
-        if (this.g >= this.f)
+      default: 
+        return true;
+      case 1: 
+        du localdu1 = du.this;
+        ((Runnable)???.obj).run();
+        synchronized (localdu1.a)
         {
-          a(this.a, 0);
-          this.g = 0;
-          j = paramInt2;
-          i = paramInt1;
+          localdu1.c.removeMessages(0);
+          localdu1.c.sendMessageDelayed(localdu1.c.obtainMessage(0), localdu1.d);
+          return true;
         }
       }
-      while (j >= this.f)
+      du localdu2 = du.this;
+      synchronized (localdu2.a)
       {
-        a(paramArrayOfByte, i);
-        paramInt1 = this.f;
-        j -= paramInt1;
-        i += paramInt1;
+        if (localdu2.c.hasMessages(1)) {
+          return true;
+        }
+        localdu2.b.quit();
+        localdu2.b = null;
+        localdu2.c = null;
+        return true;
       }
-      if (j > 0)
+    }
+  };
+  private final int g;
+  private final String h;
+  
+  public du(String paramString)
+  {
+    this.h = paramString;
+    this.g = 10;
+    this.d = 10000;
+    this.e = 0;
+  }
+  
+  public final <T> T a(final Callable<T> paramCallable, int paramInt)
+  {
+    localReentrantLock = new ReentrantLock();
+    final Condition localCondition = localReentrantLock.newCondition();
+    final AtomicReference localAtomicReference = new AtomicReference();
+    final AtomicBoolean localAtomicBoolean = new AtomicBoolean(true);
+    a(new Runnable()
+    {
+      public final void run()
       {
-        System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
-        this.g = j;
+        try
+        {
+          localAtomicReference.set(paramCallable.call());
+          label16:
+          localReentrantLock.lock();
+          try
+          {
+            localAtomicBoolean.set(false);
+            localCondition.signal();
+            return;
+          }
+          finally
+          {
+            localReentrantLock.unlock();
+          }
+        }
+        catch (Exception localException)
+        {
+          break label16;
+        }
       }
+    });
+    localReentrantLock.lock();
+    label104:
+    do
+    {
+      try
+      {
+        if (!localAtomicBoolean.get())
+        {
+          paramCallable = localAtomicReference.get();
+          return paramCallable;
+        }
+        l1 = TimeUnit.MILLISECONDS.toNanos(paramInt);
+      }
+      finally
+      {
+        long l1;
+        long l2;
+        localReentrantLock.unlock();
+      }
+      try
+      {
+        l2 = localCondition.awaitNanos(l1);
+        l1 = l2;
+      }
+      catch (InterruptedException paramCallable)
+      {
+        break label104;
+      }
+      if (!localAtomicBoolean.get())
+      {
+        paramCallable = localAtomicReference.get();
+        localReentrantLock.unlock();
+        return paramCallable;
+      }
+    } while (l1 > 0L);
+    throw new InterruptedException("timeout");
+  }
+  
+  final void a(Runnable paramRunnable)
+  {
+    synchronized (this.a)
+    {
+      if (this.b == null)
+      {
+        this.b = new HandlerThread(this.h, this.g);
+        this.b.start();
+        this.c = new Handler(this.b.getLooper(), this.f);
+        this.e += 1;
+      }
+      this.c.removeMessages(0);
+      this.c.sendMessage(this.c.obtainMessage(1, paramRunnable));
       return;
     }
-    throw new ArrayIndexOutOfBoundsException();
   }
   
-  public byte[] a(byte[] paramArrayOfByte)
+  public static abstract interface a<T>
   {
-    a(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return b();
+    public abstract void a(T paramT);
   }
-  
-  protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= this.e)
-    {
-      if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
-      {
-        if (this.b < 0L) {
-          a();
-        }
-        b(paramArrayOfByte, paramInt1);
-        this.b = -1L;
-        return this.e;
-      }
-      throw new Exception("Buffer too short to store digest");
-    }
-    paramArrayOfByte = new StringBuffer();
-    paramArrayOfByte.append("Length must be at least ");
-    paramArrayOfByte.append(this.e);
-    paramArrayOfByte.append(" for ");
-    paramArrayOfByte.append(this.d);
-    paramArrayOfByte.append("digests");
-    throw new Exception(paramArrayOfByte.toString());
-  }
-  
-  abstract void b(byte[] paramArrayOfByte, int paramInt);
-  
-  protected final byte[] b()
-  {
-    byte[] arrayOfByte = new byte[this.e];
-    try
-    {
-      b(arrayOfByte, 0, arrayOfByte.length);
-      return arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      label18:
-      break label18;
-    }
-    return null;
-  }
-  
-  abstract void c();
 }
 
 

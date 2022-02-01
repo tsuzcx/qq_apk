@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.pq;
 
 public class WXWebpageObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public String webpageUrl;
   
@@ -21,7 +21,7 @@ public class WXWebpageObject
     if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240)) {
       return true;
     }
-    Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
+    pq.a("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
     return false;
   }
   

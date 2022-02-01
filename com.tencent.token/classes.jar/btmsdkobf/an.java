@@ -75,12 +75,12 @@ public final class an
   public String ua = "";
   public String version = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new an();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.imei = paramJceInputStream.readString(0, true);
     this.imsi = paramJceInputStream.readString(1, false);
@@ -151,7 +151,7 @@ public final class an
     this.cR = paramJceInputStream.readString(66, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.imei, 0);
     String str = this.imsi;

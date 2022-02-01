@@ -9,10 +9,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.cd;
+import com.tencent.token.qz;
+import com.tencent.token.sc;
 import com.tencent.token.ui.IndexActivity;
 
 public class CodeCircleView
@@ -81,27 +81,25 @@ public class CodeCircleView
     return i2;
   }
   
-  public int a(String paramString, Paint paramPaint)
-  {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    return localRect.height();
-  }
-  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.p, 270.0F, 360.0F, false, this.a);
-    this.s = (System.currentTimeMillis() + cd.c().q());
+    this.s = (System.currentTimeMillis() + qz.a().g());
     long l1 = this.s;
     this.t = ((int)(l1 / 1000L) % 30);
     this.u = ((int)(l1 % 1000L));
     this.c.setColor(this.m);
     this.v = ((this.t * 1000 + this.u) * 360 / 30000);
     paramCanvas.drawArc(this.p, 270.0F, this.v, false, this.c);
-    this.y = cd.c().p();
+    this.y = sc.g();
     this.w = ((int)(this.d / 2.0F - this.b.measureText(this.y) / 2.0F));
-    this.x = ((int)(this.e / 2.0F + a(this.y, this.b) / 2.0F));
+    float f1 = this.e / 2.0F;
+    String str = this.y;
+    Paint localPaint = this.b;
+    Rect localRect = new Rect();
+    localPaint.getTextBounds(str, 0, str.length(), localRect);
+    this.x = ((int)(f1 + localRect.height() / 2.0F));
     paramCanvas.drawText(this.y, this.w, this.x, this.b);
     postInvalidate();
   }
@@ -116,12 +114,10 @@ public class CodeCircleView
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.d = getMeasuredHeight();
     this.e = getMeasuredHeight();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CodeCircleView--mWidth:");
+    StringBuilder localStringBuilder = new StringBuilder("CodeCircleView--mWidth:");
     localStringBuilder.append(this.d);
     localStringBuilder.append("--mHeight:");
     localStringBuilder.append(this.e);
-    Log.d("CodeCircleView", localStringBuilder.toString());
     paramInt1 = this.d;
     float f1 = paramInt1 / 2;
     float f2 = this.f;

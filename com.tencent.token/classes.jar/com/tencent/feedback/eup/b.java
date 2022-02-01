@@ -86,7 +86,7 @@ public class b
       try
       {
         paramString9 = new byte[10000];
-        int j = paramString9.length - 1;
+        int j = 9999;
         i = paramArrayOfByte.length - 1;
         for (;;)
         {
@@ -128,10 +128,10 @@ public class b
     locale.b(paramString3);
     locale.a(paramString6);
     if ((paramString8 != null) && (paramString8.trim().length() != 0)) {
-      break label321;
+      break label319;
     }
     paramString8 = "empty stack";
-    label321:
+    label319:
     locale.d(paramString8);
     locale.a(-1.0F);
     paramString3 = d.a(paramContext);
@@ -162,13 +162,12 @@ public class b
       i = 1;
     }
     if ((i == 0) && (!paramString1.equals("fail"))) {
-      paramContext = new StringBuilder("XiaoMi/MIUI/");
+      paramContext = "XiaoMi/MIUI/";
     }
     for (;;)
     {
-      paramContext.append(paramString1);
-      paramContext = paramContext.toString();
-      break label1049;
+      paramContext = paramContext.concat(String.valueOf(paramString1));
+      break label1020;
       paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.version.emui");
       if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
         i = 0;
@@ -177,7 +176,7 @@ public class b
       }
       if ((i == 0) && (!paramString1.equals("fail")))
       {
-        paramContext = new StringBuilder("HuaWei/EMUI/");
+        paramContext = "HuaWei/EMUI/";
       }
       else
       {
@@ -189,40 +188,36 @@ public class b
         }
         if ((i == 0) && (!paramString1.equals("fail")))
         {
-          paramContext = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.version.incremental");
-          paramString1 = new StringBuilder("Lenovo/VIBE/");
+          paramContext = "Lenovo/VIBE/".concat(String.valueOf(com.tencent.feedback.proguard.a.a(paramContext, "ro.build.version.incremental")));
+          break label1020;
         }
-        for (;;)
+        paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.nubia.rom.name");
+        if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        if ((i == 0) && (!paramString1.equals("fail")))
         {
-          paramString1.append(paramContext);
-          paramContext = paramString1.toString();
-          break label1049;
-          paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.nubia.rom.name");
-          if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
-            i = 0;
-          } else {
-            i = 1;
-          }
-          if ((i == 0) && (!paramString1.equals("fail")))
-          {
-            paramMap = new StringBuilder("Zte/NUBIA/");
-            paramMap.append(paramString1);
-            paramMap.append("_");
-            paramMap.append(com.tencent.feedback.proguard.a.a(paramContext, "ro.build.nubia.rom.code"));
-            paramContext = paramMap.toString();
-            break label1049;
-          }
-          paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.meizu.product.model");
-          if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
-            i = 0;
-          } else {
-            i = 1;
-          }
-          if ((i != 0) || (paramString1.equals("fail"))) {
-            break;
-          }
+          paramMap = new StringBuilder("Zte/NUBIA/");
+          paramMap.append(paramString1);
+          paramMap.append("_");
+          paramMap.append(com.tencent.feedback.proguard.a.a(paramContext, "ro.build.nubia.rom.code"));
+          paramContext = paramMap.toString();
+          break label1020;
+        }
+        paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.meizu.product.model");
+        if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        if ((i == 0) && (!paramString1.equals("fail")))
+        {
           paramString1 = new StringBuilder("Meizu/FLYME/");
-          paramContext = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.display.id");
+          paramString1.append(com.tencent.feedback.proguard.a.a(paramContext, "ro.build.display.id"));
+          paramContext = paramString1.toString();
+          break label1020;
         }
         paramString1 = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.version.opporom");
         if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
@@ -233,11 +228,11 @@ public class b
         if ((i != 0) || (paramString1.equals("fail"))) {
           break;
         }
-        paramContext = new StringBuilder("Oppo/COLOROS/");
+        paramContext = "Oppo/COLOROS/";
       }
     }
     paramContext = com.tencent.feedback.proguard.a.a(paramContext, "ro.build.fingerprint");
-    label1049:
+    label1020:
     paramString2.append(paramContext);
     locale.m(paramString2.toString());
     locale.k(locale.i() - paramString3.D());
@@ -471,7 +466,7 @@ public class b
   public static boolean a(Context paramContext, e parame)
   {
     // Byte code:
-    //   0: ldc_w 517
+    //   0: ldc_w 524
     //   3: iconst_0
     //   4: anewarray 4	java/lang/Object
     //   7: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -482,30 +477,30 @@ public class b
     //   16: ifnonnull +6 -> 22
     //   19: goto +149 -> 168
     //   22: aload_1
-    //   23: invokestatic 519	com/tencent/feedback/eup/b:a	(Lcom/tencent/feedback/eup/e;)Lcom/tencent/feedback/proguard/l;
+    //   23: invokestatic 526	com/tencent/feedback/eup/b:a	(Lcom/tencent/feedback/eup/e;)Lcom/tencent/feedback/proguard/l;
     //   26: astore_3
     //   27: aload_0
     //   28: ifnull +36 -> 64
     //   31: aload_3
     //   32: ifnonnull +6 -> 38
     //   35: goto +29 -> 64
-    //   38: new 386	java/util/ArrayList
+    //   38: new 393	java/util/ArrayList
     //   41: dup
-    //   42: invokespecial 387	java/util/ArrayList:<init>	()V
+    //   42: invokespecial 394	java/util/ArrayList:<init>	()V
     //   45: astore 4
     //   47: aload 4
     //   49: aload_3
-    //   50: invokevirtual 449	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   50: invokevirtual 456	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   53: pop
     //   54: aload_0
     //   55: aload 4
-    //   57: invokestatic 522	com/tencent/feedback/proguard/l:a	(Landroid/content/Context;Ljava/util/List;)Z
+    //   57: invokestatic 529	com/tencent/feedback/proguard/l:a	(Landroid/content/Context;Ljava/util/List;)Z
     //   60: istore_2
     //   61: goto +16 -> 77
-    //   64: ldc_w 524
+    //   64: ldc_w 531
     //   67: iconst_0
     //   68: anewarray 4	java/lang/Object
-    //   71: invokestatic 526	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   71: invokestatic 533	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   74: pop
     //   75: iconst_0
     //   76: istore_2
@@ -513,16 +508,16 @@ public class b
     //   78: ifeq +24 -> 102
     //   81: aload_1
     //   82: aload_3
-    //   83: invokevirtual 444	com/tencent/feedback/proguard/l:a	()J
-    //   86: invokevirtual 446	com/tencent/feedback/eup/e:a	(J)V
-    //   89: ldc_w 528
+    //   83: invokevirtual 451	com/tencent/feedback/proguard/l:a	()J
+    //   86: invokevirtual 453	com/tencent/feedback/eup/e:a	(J)V
+    //   89: ldc_w 535
     //   92: iconst_0
     //   93: anewarray 4	java/lang/Object
     //   96: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   99: pop
     //   100: iconst_1
     //   101: ireturn
-    //   102: ldc_w 528
+    //   102: ldc_w 535
     //   105: iconst_0
     //   106: anewarray 4	java/lang/Object
     //   109: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -537,26 +532,26 @@ public class b
     //   124: ifne +7 -> 131
     //   127: aload_0
     //   128: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
-    //   131: ldc_w 530
+    //   131: ldc_w 537
     //   134: iconst_0
     //   135: anewarray 4	java/lang/Object
-    //   138: invokestatic 456	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   138: invokestatic 463	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   141: pop
-    //   142: ldc_w 528
+    //   142: ldc_w 535
     //   145: iconst_0
     //   146: anewarray 4	java/lang/Object
     //   149: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   152: pop
     //   153: iconst_0
     //   154: ireturn
-    //   155: ldc_w 528
+    //   155: ldc_w 535
     //   158: iconst_0
     //   159: anewarray 4	java/lang/Object
     //   162: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   165: pop
     //   166: aload_0
     //   167: athrow
-    //   168: ldc_w 532
+    //   168: ldc_w 539
     //   171: iconst_0
     //   172: anewarray 4	java/lang/Object
     //   175: invokestatic 35	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -659,7 +654,7 @@ public class b
   public static boolean b(Context paramContext, List<e> paramList)
   {
     // Byte code:
-    //   0: ldc_w 641
+    //   0: ldc_w 648
     //   3: iconst_0
     //   4: anewarray 4	java/lang/Object
     //   7: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -672,33 +667,33 @@ public class b
     //   20: invokeinterface 41 1 0
     //   25: ifgt +6 -> 31
     //   28: goto +128 -> 156
-    //   31: new 386	java/util/ArrayList
+    //   31: new 393	java/util/ArrayList
     //   34: dup
-    //   35: invokespecial 387	java/util/ArrayList:<init>	()V
+    //   35: invokespecial 394	java/util/ArrayList:<init>	()V
     //   38: astore_3
     //   39: aload_1
-    //   40: invokeinterface 428 1 0
+    //   40: invokeinterface 435 1 0
     //   45: astore_1
     //   46: aload_1
-    //   47: invokeinterface 402 1 0
+    //   47: invokeinterface 409 1 0
     //   52: ifeq +32 -> 84
     //   55: aload_1
-    //   56: invokeinterface 406 1 0
+    //   56: invokeinterface 413 1 0
     //   61: checkcast 49	com/tencent/feedback/eup/e
-    //   64: invokestatic 519	com/tencent/feedback/eup/b:a	(Lcom/tencent/feedback/eup/e;)Lcom/tencent/feedback/proguard/l;
+    //   64: invokestatic 526	com/tencent/feedback/eup/b:a	(Lcom/tencent/feedback/eup/e;)Lcom/tencent/feedback/proguard/l;
     //   67: astore 4
     //   69: aload 4
     //   71: ifnull -25 -> 46
     //   74: aload_3
     //   75: aload 4
-    //   77: invokevirtual 449	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   77: invokevirtual 456	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   80: pop
     //   81: goto -35 -> 46
     //   84: aload_0
     //   85: aload_3
-    //   86: invokestatic 643	com/tencent/feedback/proguard/l:b	(Landroid/content/Context;Ljava/util/List;)Z
+    //   86: invokestatic 650	com/tencent/feedback/proguard/l:b	(Landroid/content/Context;Ljava/util/List;)Z
     //   89: istore_2
-    //   90: ldc_w 645
+    //   90: ldc_w 652
     //   93: iconst_0
     //   94: anewarray 4	java/lang/Object
     //   97: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -713,26 +708,26 @@ public class b
     //   112: ifne +7 -> 119
     //   115: aload_0
     //   116: invokevirtual 92	java/lang/Throwable:printStackTrace	()V
-    //   119: ldc_w 530
+    //   119: ldc_w 537
     //   122: iconst_0
     //   123: anewarray 4	java/lang/Object
-    //   126: invokestatic 456	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   126: invokestatic 463	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   129: pop
-    //   130: ldc_w 645
+    //   130: ldc_w 652
     //   133: iconst_0
     //   134: anewarray 4	java/lang/Object
     //   137: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   140: pop
     //   141: iconst_0
     //   142: ireturn
-    //   143: ldc_w 645
+    //   143: ldc_w 652
     //   146: iconst_0
     //   147: anewarray 4	java/lang/Object
     //   150: invokestatic 30	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   153: pop
     //   154: aload_0
     //   155: athrow
-    //   156: ldc_w 647
+    //   156: ldc_w 654
     //   159: iconst_0
     //   160: anewarray 4	java/lang/Object
     //   163: invokestatic 35	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z

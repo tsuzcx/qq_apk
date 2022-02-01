@@ -7,20 +7,30 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cy;
+import com.tencent.token.aae;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.r;
+import com.tencent.token.t;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
-import com.tencent.token.upload.i;
-import com.tencent.token.utils.m;
+import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
+import com.tencent.token.yy;
+import com.tencent.token.yz;
+import com.tencent.token.za;
+import com.tencent.token.zc;
+import com.tencent.token.zd;
+import com.tencent.token.zf;
+import com.tencent.token.zf.a;
+import com.tencent.token.zo;
 import com.tmsdk.TMSDKContext;
 import java.io.File;
 
@@ -34,27 +44,29 @@ public class GalleryActivity
   private boolean isApkDownload;
   private boolean isInstall;
   private boolean isNeedLaunch = false;
-  private ImageView ivBack;
+  private FrameLayout ivBack;
   private float lastProgress = 0.0F;
+  private LayoutAppKeyInfo mAppLayout;
+  private Handler mHandler = new Handler(Looper.myLooper());
   private BroadcastReceiver mNetworkMsgReceiver = new BroadcastReceiver()
   {
-    public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+    public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
       paramAnonymousContext = paramAnonymousIntent.getAction();
       if (paramAnonymousContext != null) {
         if (paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
         {
-          if (i.a())
+          if (zo.a())
           {
-            if (!a.f().g()) {
-              a.f().a();
+            if (!yy.g().h()) {
+              yy.g().a();
             }
           }
-          else if (a.f().g())
+          else if (yy.g().h())
           {
-            a.f().c();
+            yy.g().c();
             GalleryActivity.this.tvDownload.setVisibility(0);
-            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.flProgress.setVisibility(8);
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
           }
         }
@@ -73,111 +85,117 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    a.f().a(new cy()
+    yy localyy = yy.g();
+    za local4 = new za()
     {
-      public void a()
+      public final void a()
       {
-        GalleryActivity.access$202(GalleryActivity.this, true);
+        GalleryActivity.access$402(GalleryActivity.this, true);
         GalleryActivity.this.runOnUiThread(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493203));
             Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131493211), 0).show();
-            com.tencent.token.ui.qqpim.a.a(GalleryActivity.this, GalleryActivity.this.filePath);
-            GalleryActivity.access$402(GalleryActivity.this, true);
+            yz.a(GalleryActivity.this, GalleryActivity.this.filePath);
+            GalleryActivity.access$602(GalleryActivity.this, true);
             GalleryActivity.this.tvDownload.setVisibility(0);
-            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.flProgress.setVisibility(8);
           }
         });
-        GalleryActivity.access$502(GalleryActivity.this, 0.0F);
+        GalleryActivity.access$702(GalleryActivity.this, 0.0F);
         TMSDKContext.saveActionData(170017);
-        Log.i("GalleryActivity", "onFinished: ");
       }
       
-      public void a(final float paramAnonymousFloat)
+      public final void a(final float paramAnonymousFloat)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onProgress: ");
-        localStringBuilder.append(paramAnonymousFloat);
-        Log.i("GalleryActivity", localStringBuilder.toString());
         if ((paramAnonymousFloat > 0.01D) && (paramAnonymousFloat <= 1.0F) && (paramAnonymousFloat > GalleryActivity.this.lastProgress))
         {
           GalleryActivity.this.runOnUiThread(new Runnable()
           {
-            public void run()
+            public final void run()
             {
-              GalleryActivity.this.tvDownload.setVisibility(4);
+              GalleryActivity.this.tvDownload.setVisibility(8);
               GalleryActivity.this.flProgress.setVisibility(0);
               GalleryActivity.this.tvProgress.setTextWhiteLength(paramAnonymousFloat);
               GalleryActivity.this.pbProgress.setProgress((int)(paramAnonymousFloat * 100.0F));
               ProgressTextView localProgressTextView = GalleryActivity.this.tvProgress;
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("下载中...");
+              StringBuilder localStringBuilder = new StringBuilder("下载中...");
               localStringBuilder.append((int)(paramAnonymousFloat * 100.0F));
               localStringBuilder.append("%");
               localProgressTextView.setText(localStringBuilder.toString());
             }
           });
-          GalleryActivity.access$502(GalleryActivity.this, paramAnonymousFloat);
+          GalleryActivity.access$702(GalleryActivity.this, paramAnonymousFloat);
         }
       }
       
-      public void b()
+      public final void b()
       {
-        Log.i("GalleryActivity", "onPause: ");
         GalleryActivity.this.runOnUiThread(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             GalleryActivity.this.tvDownload.setVisibility(0);
-            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.flProgress.setVisibility(8);
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493210));
           }
         });
       }
       
-      public void c()
+      public final void c()
       {
         GalleryActivity.this.runOnUiThread(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             GalleryActivity.this.tvDownload.setVisibility(0);
-            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.flProgress.setVisibility(8);
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
           }
         });
-        Log.i("GalleryActivity", "onCancel: ");
-        GalleryActivity.access$502(GalleryActivity.this, 0.0F);
+        GalleryActivity.access$702(GalleryActivity.this, 0.0F);
       }
-    });
-    a.f().a();
+    };
+    String str2 = null;
+    String str1;
+    if (TextUtils.isEmpty(null)) {
+      str1 = localyy.f();
+    } else {
+      str1 = null;
+    }
+    if (TextUtils.isEmpty(null)) {
+      str2 = yy.b();
+    }
+    localyy.a = new zc(new zd("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", str1, str2), local4);
+    yy.g().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = a.f().d();
-    this.isInstall = com.tencent.token.ui.qqpim.a.b(this, "com.tencent.gallerymanager");
-    this.filePath = a.f().e();
+    this.isApkDownload = yy.g().d();
+    this.isInstall = yz.b(this, "com.tencent.gallerymanager");
+    this.filePath = yy.g().e();
   }
   
   private void initView()
   {
-    this.pbProgress = ((ProgressBar)findViewById(2131165547));
-    this.flProgress = ((FrameLayout)findViewById(2131165546));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165548));
-    this.ivBack = ((ImageView)findViewById(2131165545));
-    this.tvDownload = ((TextView)findViewById(2131166156));
+    this.pbProgress = ((ProgressBar)findViewById(2131165549));
+    this.flProgress = ((FrameLayout)findViewById(2131165548));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165550));
+    this.ivBack = ((FrameLayout)findViewById(2131165547));
+    this.tvDownload = ((TextView)findViewById(2131166164));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
     this.ivBack.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         GalleryActivity.this.finish();
       }
     });
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "4.2.6", "腾讯相册管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.gallerymanager", "https://cftweb.3g.qq.com/privacy/privacyPolicy?content_id=95fb3a1fc2e0d6bda65de66c15606b2b1617954054", this);
   }
   
   private void launchGalleryApp(Context paramContext)
@@ -224,6 +242,18 @@ public class GalleryActivity
     }
   }
   
+  private void setSoftDetail(r paramr)
+  {
+    if (paramr != null)
+    {
+      if (TextUtils.isEmpty(paramr.i)) {
+        return;
+      }
+      this.mAppLayout.a(paramr.i, paramr.a.b, paramr.a.d, paramr.k, paramr.r, this);
+      return;
+    }
+  }
+  
   private void startDownload()
   {
     this.tvDownload.setText(getResources().getText(2131493215).toString());
@@ -234,11 +264,10 @@ public class GalleryActivity
   {
     try
     {
-      if (this.mReceiver != null)
-      {
+      if (this.mReceiver != null) {
         unregisterReceiver(this.mReceiver);
-        return;
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
@@ -259,7 +288,7 @@ public class GalleryActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131166156) || (i == 2131165546))
+    if ((i == 2131166164) || (i == 2131165548))
     {
       if (this.isInstall)
       {
@@ -268,14 +297,14 @@ public class GalleryActivity
       }
       if (this.isApkDownload)
       {
-        com.tencent.token.ui.qqpim.a.a(this, this.filePath);
+        yz.a(this, this.filePath);
         return;
       }
-      if (i.a())
+      if (zo.a())
       {
-        if (a.f().g())
+        if (yy.g().h())
         {
-          a.f().c();
+          yy.g().c();
           return;
         }
         startDownload();
@@ -285,25 +314,38 @@ public class GalleryActivity
     }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setContentView(2131296296);
-    m.a(this, this.mTitleBar, 2130968771);
+    aae.a(this, this.mTitleBar, 2130968771);
     initView();
     registReceiver();
     registerInstallReceiver();
     TMSDKContext.saveActionData(170015);
+    zf.a("com.tencent.gallerymanager", new zf.a()
+    {
+      public final void a(final r paramAnonymousr)
+      {
+        GalleryActivity.this.mHandler.post(new Runnable()
+        {
+          public final void run()
+          {
+            GalleryActivity.this.setSoftDetail(paramAnonymousr);
+          }
+        });
+      }
+    });
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     unregistReceiver();
     unInstallRegisterReceiver();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     initStatus();
@@ -330,12 +372,12 @@ public class GalleryActivity
         if (!"com.tencent.gallerymanager".equals(paramContext)) {
           return;
         }
-        GalleryActivity.access$802(GalleryActivity.this, true);
+        GalleryActivity.access$1002(GalleryActivity.this, true);
         new File(GalleryActivity.this.filePath).delete();
         if (GalleryActivity.this.needReportInstall)
         {
           TMSDKContext.saveActionData(170018);
-          GalleryActivity.access$202(GalleryActivity.this, false);
+          GalleryActivity.access$402(GalleryActivity.this, false);
         }
       }
     }

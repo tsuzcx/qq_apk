@@ -11,19 +11,19 @@ public final class t
   public int aE = 0;
   public int aF = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new t();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aD = paramJceInputStream.read(this.aD, 0, false);
     this.aE = paramJceInputStream.read(this.aE, 1, false);
     this.aF = paramJceInputStream.read(this.aF, 2, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     int i = this.aD;
     if (i != 0) {

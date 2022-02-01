@@ -10,18 +10,18 @@ public final class SCReportProfile
   public String msg = "";
   public int retCode = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new SCReportProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.msg = paramJceInputStream.readString(0, false);
     this.retCode = paramJceInputStream.read(this.retCode, 1, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     String str = this.msg;
     if (str != null) {

@@ -17,17 +17,17 @@ public final class x
     aX.add(localab);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new x();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aW = ((ArrayList)paramJceInputStream.read(aX, 0, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     ArrayList localArrayList = this.aW;
     if (localArrayList != null) {

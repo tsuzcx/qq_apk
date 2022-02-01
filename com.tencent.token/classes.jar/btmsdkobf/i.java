@@ -9,7 +9,6 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import android.util.Log;
 import java.lang.reflect.Method;
 
 public class i
@@ -33,40 +32,28 @@ public class i
   
   private static void a(Context paramContext, int paramInt, String paramString)
   {
-    Object localObject;
     switch (paramInt)
     {
     default: 
     case 2: 
       T = new j(ad, 2, paramString);
-      localObject = paramContext.getContentResolver();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("content://com.vivo.vms.IdProvider/IdentifierId/AAID_");
-      localStringBuilder.append(paramString);
-      ((ContentResolver)localObject).registerContentObserver(Uri.parse(localStringBuilder.toString()), false, T);
-      localObject = paramContext.getPackageName();
-      if (!((String)localObject).equals(paramString))
+      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(paramString))), false, T);
+      String str = paramContext.getPackageName();
+      if (!str.equals(paramString))
       {
-        U = new j(ad, 2, (String)localObject);
-        paramContext = paramContext.getContentResolver();
-        paramString = new StringBuilder();
-        paramString.append("content://com.vivo.vms.IdProvider/IdentifierId/AAID_");
-        paramString.append((String)localObject);
-        paramContext.registerContentObserver(Uri.parse(paramString.toString()), false, U);
+        U = new j(ad, 2, str);
+        paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(str))), false, U);
         return;
       }
       break;
     case 1: 
       S = new j(ad, 1, paramString);
-      paramContext = paramContext.getContentResolver();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("content://com.vivo.vms.IdProvider/IdentifierId/VAID_");
-      ((StringBuilder)localObject).append(paramString);
-      paramContext.registerContentObserver(Uri.parse(((StringBuilder)localObject).toString()), false, S);
+      paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_".concat(String.valueOf(paramString))), false, S);
       return;
     case 0: 
       R = new j(ad, 0, null);
       paramContext.getContentResolver().registerContentObserver(Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAID"), true, R);
+      return;
     }
   }
   
@@ -114,11 +101,12 @@ public class i
   
   private static void e()
   {
-    W = new HandlerThread("SqlWorkThread");
-    W.start();
+    HandlerThread localHandlerThread = new HandlerThread("SqlWorkThread");
+    W = localHandlerThread;
+    localHandlerThread.start();
     X = new Handler(W.getLooper())
     {
-      public void handleMessage(Message arg1)
+      public final void handleMessage(Message arg1)
       {
         if (???.what == 11)
         {
@@ -130,10 +118,7 @@ public class i
           }
           catch (Exception ???)
           {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("readException:");
-            localStringBuilder.append(???.toString());
-            Log.e("VMS_IDLG_SDK_Client", localStringBuilder.toString());
+            new StringBuilder("readException:").append(???.toString());
             ???.printStackTrace();
           }
           synchronized (i.j())
@@ -142,7 +127,6 @@ public class i
             return;
           }
         }
-        Log.e("VMS_IDLG_SDK_Client", "message type valid");
       }
     };
   }
@@ -151,7 +135,7 @@ public class i
   {
     try
     {
-      Class localClass = Class.forName("android.os.SystemProperties");
+      Class localClass = Class.forName("com.tencent.token.bi");
       paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, "unknown" });
       return paramString1;
     }
@@ -197,20 +181,12 @@ public class i
             ab = Y;
             Y = null;
           }
-          else
-          {
-            Log.e("VMS_IDLG_SDK_Client", "get aaid failed");
-          }
           break;
         case 1: 
           if (Y != null)
           {
             aa = Y;
             Y = null;
-          }
-          else
-          {
-            Log.e("VMS_IDLG_SDK_Client", "get vaid failed");
           }
           break;
         case 0: 
@@ -219,8 +195,6 @@ public class i
           continue;
           ac = Y;
           Y = null;
-          continue;
-          Log.d("VMS_IDLG_SDK_Client", "query timeout");
           return;
         }
       }

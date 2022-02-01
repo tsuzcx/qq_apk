@@ -17,9 +17,9 @@ public class RealNameFirstJoinActivity
   
   private void initView()
   {
-    setContentView(2131296343);
-    Button localButton = (Button)findViewById(2131165502);
-    TextView localTextView1 = (TextView)findViewById(2131165500);
+    setContentView(2131296344);
+    Button localButton = (Button)findViewById(2131165504);
+    TextView localTextView1 = (TextView)findViewById(2131165502);
     Object localObject = this.mResult;
     if (localObject != null)
     {
@@ -27,23 +27,23 @@ public class RealNameFirstJoinActivity
     }
     else
     {
-      localObject = (TextView)findViewById(2131166072);
-      TextView localTextView2 = (TextView)findViewById(2131166073);
+      localObject = (TextView)findViewById(2131166078);
+      TextView localTextView2 = (TextView)findViewById(2131166079);
       ((TextView)localObject).setText(2131492927);
       localTextView2.setVisibility(8);
       localTextView1.setVisibility(8);
     }
     localButton.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         RealNameFirstJoinActivity.this.setResult(1);
         RealNameFirstJoinActivity.this.finish();
       }
     });
-    ((ImageView)findViewById(2131165382)).setOnClickListener(new View.OnClickListener()
+    ((ImageView)findViewById(2131165384)).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         RealNameFirstJoinActivity.this.finish();
       }

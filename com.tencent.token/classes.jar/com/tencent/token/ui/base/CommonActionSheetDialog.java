@@ -19,52 +19,60 @@ public class CommonActionSheetDialog
   private LinearLayout c;
   private String[] d;
   
-  public CommonActionSheetDialog(Activity paramActivity, int paramInt, a parama, String[] paramArrayOfString)
+  public CommonActionSheetDialog(Activity paramActivity, a parama, String[] paramArrayOfString)
   {
-    super(paramActivity, paramInt);
+    super(paramActivity, 2131558791);
     this.a = paramActivity;
     this.d = paramArrayOfString;
     this.b = parama;
   }
   
-  private void a()
+  protected void onCreate(Bundle paramBundle)
   {
-    Object localObject = this.d;
-    if (localObject != null)
+    super.onCreate(paramBundle);
+    setContentView(2131296316);
+    this.c = ((LinearLayout)findViewById(2131165255));
+    setCanceledOnTouchOutside(true);
+    paramBundle = getWindow();
+    paramBundle.setBackgroundDrawableResource(2131099877);
+    paramBundle.getAttributes().width = -1;
+    paramBundle.setGravity(80);
+    paramBundle = this.d;
+    if (paramBundle != null)
     {
-      int j = localObject.length;
+      int j = paramBundle.length;
       final int i = 2;
       if (j < 2) {
         return;
       }
-      localObject = (Button)findViewById(2131165253);
-      ((Button)localObject).setText(this.d[0]);
-      ((Button)localObject).setOnClickListener(new View.OnClickListener()
+      paramBundle = (Button)findViewById(2131165253);
+      paramBundle.setText(this.d[0]);
+      paramBundle.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(0);
         }
       });
-      localObject = (Button)findViewById(2131165254);
-      ((Button)localObject).setText(this.d[1]);
-      ((Button)localObject).setOnClickListener(new View.OnClickListener()
+      paramBundle = (Button)findViewById(2131165254);
+      paramBundle.setText(this.d[1]);
+      paramBundle.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(1);
         }
       });
       while (i < this.d.length)
       {
-        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((Button)localObject).getLayoutParams();
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
         Button localButton = new Button(this.a);
         localButton.setLayoutParams(localLayoutParams);
         localButton.setTextAppearance(this.a, 2131558795);
         localButton.setText(this.d[i]);
         localButton.setOnClickListener(new View.OnClickListener()
         {
-          public void onClick(View paramAnonymousView)
+          public final void onClick(View paramAnonymousView)
           {
             CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(i);
           }
@@ -75,19 +83,6 @@ public class CommonActionSheetDialog
       this.c.invalidate();
       return;
     }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131296315);
-    this.c = ((LinearLayout)findViewById(2131165255));
-    setCanceledOnTouchOutside(true);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2131099876);
-    paramBundle.getAttributes().width = -1;
-    paramBundle.setGravity(80);
-    a();
   }
   
   public void show()

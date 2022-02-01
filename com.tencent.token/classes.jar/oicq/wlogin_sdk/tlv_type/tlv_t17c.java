@@ -22,7 +22,6 @@ public class tlv_t17c
     paramArrayOfByte = new byte[this._t17c_body_len];
     util.int16_to_buf(paramArrayOfByte, 0, arrayOfByte.length);
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 2, arrayOfByte.length);
-    int i = arrayOfByte.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte, this._t17c_body_len);
     set_length();

@@ -24,7 +24,7 @@ public class ev
     localIntent.setAction("action.com.heytap.openid.OPEN_ID_SERVICE");
     if (!paramContext.bindService(localIntent, new ServiceConnection()
     {
-      public void onServiceConnected(ComponentName arg1, IBinder paramAnonymousIBinder)
+      public final void onServiceConnected(ComponentName arg1, IBinder paramAnonymousIBinder)
       {
         ev.i(System.currentTimeMillis() - this.a);
         paramAtomicReference1.set(paramAnonymousIBinder);
@@ -45,7 +45,7 @@ public class ev
         throw paramAnonymousIBinder;
       }
       
-      public void onServiceDisconnected(ComponentName paramAnonymousComponentName) {}
+      public final void onServiceDisconnected(ComponentName paramAnonymousComponentName) {}
     }, 1)) {
       return -400;
     }
@@ -96,7 +96,7 @@ public class ev
     long l = System.currentTimeMillis();
     new Thread()
     {
-      public void run()
+      public final void run()
       {
         label137:
         try
@@ -181,8 +181,9 @@ public class ev
       pd = 0;
       AtomicReference localAtomicReference1 = new AtomicReference();
       AtomicReference localAtomicReference2 = new AtomicReference();
-      pd = a(paramContext, localAtomicReference1, localAtomicReference2);
-      if (pd == 0) {
+      int i = a(paramContext, localAtomicReference1, localAtomicReference2);
+      pd = i;
+      if (i == 0) {
         pd = b(paramContext, localAtomicReference1, localAtomicReference2);
       }
       paramContext = pa;

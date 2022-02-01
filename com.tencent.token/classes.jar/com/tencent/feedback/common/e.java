@@ -1,6 +1,5 @@
 package com.tencent.feedback.common;
 
-import android.util.Log;
 import com.tencent.feedback.proguard.a;
 import java.util.Locale;
 
@@ -133,25 +132,13 @@ public final class e
   
   public static class a
   {
-    public void a(String paramString)
-    {
-      Log.i("eup", paramString);
-    }
+    public void a(String paramString) {}
     
-    public void b(String paramString)
-    {
-      Log.d("eup", paramString);
-    }
+    public void b(String paramString) {}
     
-    public void c(String paramString)
-    {
-      Log.w("eup", paramString);
-    }
+    public void c(String paramString) {}
     
-    public void d(String paramString)
-    {
-      Log.e("eup", paramString);
-    }
+    public void d(String paramString) {}
   }
 }
 

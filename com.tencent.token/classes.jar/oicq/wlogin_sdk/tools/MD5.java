@@ -114,11 +114,10 @@ public class MD5
   
   public static long b2iu(byte paramByte)
   {
-    int i = paramByte;
     if (paramByte < 0) {
-      i = paramByte & 0xFF;
+      return paramByte & 0xFF;
     }
-    return i;
+    return paramByte;
   }
   
   public static String byteHEX(byte paramByte)
@@ -169,8 +168,8 @@ public class MD5
     {
       Object localObject1;
       Object localObject2;
-      int i;
       int j;
+      int i;
       try
       {
         localObject1 = new FileInputStream(paramFile);
@@ -196,9 +195,8 @@ public class MD5
         try
         {
           MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-          i = localObject2.length;
           j = 0;
-          i = ((FileInputStream)localObject1).read((byte[])localObject2, 0, i);
+          i = ((FileInputStream)localObject1).read((byte[])localObject2, 0, 8192);
           if (i != -1)
           {
             localMessageDigest.update((byte[])localObject2, 0, i);

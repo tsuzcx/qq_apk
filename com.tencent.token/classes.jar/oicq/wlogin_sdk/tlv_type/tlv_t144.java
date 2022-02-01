@@ -94,10 +94,8 @@ public class tlv_t144
         i = j + paramArrayOfByte3.length;
       }
     }
-    if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
-    {
+    if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
       System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, i, paramArrayOfByte4.length);
-      i = paramArrayOfByte4.length;
     }
     paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte5);
     this._t144_body_len = paramArrayOfByte1.length;
@@ -254,10 +252,8 @@ public class tlv_t144
         j = i + paramArrayOfByte6.length;
       }
     }
-    if ((paramArrayOfByte7 != null) && (paramArrayOfByte7.length > 0))
-    {
+    if ((paramArrayOfByte7 != null) && (paramArrayOfByte7.length > 0)) {
       System.arraycopy(paramArrayOfByte7, 0, arrayOfByte, j, paramArrayOfByte7.length);
-      i = paramArrayOfByte7.length;
     }
     paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte8);
     this._t144_body_len = paramArrayOfByte1.length;

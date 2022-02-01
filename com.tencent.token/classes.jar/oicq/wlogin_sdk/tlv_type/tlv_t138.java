@@ -143,13 +143,13 @@ public class tlv_t138
   public Boolean verify()
   {
     if (this._body_len < 4) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._count = util.buf_to_int32(this._buf, this._head_len);
     if (this._body_len < this._count * 10 + 4) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

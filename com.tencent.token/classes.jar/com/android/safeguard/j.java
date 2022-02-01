@@ -75,7 +75,7 @@ public class j
     }
     d = (String)localObject;
     b = paramContext;
-    a = b.getSharedPreferences(d, 0);
+    a = paramContext.getSharedPreferences(d, 0);
     if (!a())
     {
       c[0] = a.getInt(e[0], 0);
@@ -120,8 +120,9 @@ public class j
     c[0] = ((Calendar)localObject).get(1);
     c[1] = (((Calendar)localObject).get(2) + 1);
     c[2] = ((Calendar)localObject).get(5);
-    a = b.getSharedPreferences(d, 0);
-    localObject = a.edit();
+    localObject = b.getSharedPreferences(d, 0);
+    a = (SharedPreferences)localObject;
+    localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putInt(e[0], c[0]);
     ((SharedPreferences.Editor)localObject).putInt(e[1], c[1]);
     ((SharedPreferences.Editor)localObject).putInt(e[2], c[2]);

@@ -93,14 +93,12 @@ public class bg
     this.fL = ((String)localObject).equals(str);
     if (!this.fL)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("your    signature is ");
+      StringBuilder localStringBuilder = new StringBuilder("your    signature is ");
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(" len:");
       localStringBuilder.append(((String)localObject).length());
       eg.f("DEBUG", localStringBuilder.toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("licence signature is ");
+      localObject = new StringBuilder("licence signature is ");
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append(" len:");
       ((StringBuilder)localObject).append(str.length());

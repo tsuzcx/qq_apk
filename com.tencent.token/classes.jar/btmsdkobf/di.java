@@ -32,13 +32,7 @@ public class di
   private HandlerThread mK = null;
   private Handler mL = null;
   private boolean mM = false;
-  private dr<f> mN = new dr(new Comparator()
-  {
-    public int a(di.f paramAnonymousf1, di.f paramAnonymousf2)
-    {
-      return bv.l(paramAnonymousf2.a) - bv.l(paramAnonymousf1.a);
-    }
-  });
+  private dr<f> mN = new dr(new Comparator() {});
   private dt mx = null;
   private co my;
   private cm mz;
@@ -63,15 +57,9 @@ public class di
   
   private int C(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]reconnect(), reason: ");
-    localStringBuilder.append(paramString);
-    eh.f("TmsTcpManager", localStringBuilder.toString());
+    eh.f("TmsTcpManager", "[tcp_control]reconnect(), reason: ".concat(String.valueOf(paramString)));
     int i = this.mx.cN();
-    paramString = new StringBuilder();
-    paramString.append("[tcp_control]reconnect(), ret: ");
-    paramString.append(i);
-    eh.f("TmsTcpManager", paramString.toString());
+    eh.f("TmsTcpManager", "[tcp_control]reconnect(), ret: ".concat(String.valueOf(i)));
     return i;
   }
   
@@ -92,39 +80,33 @@ public class di
       return null;
     }
     eh.e("TmsTcpManager", "[shark_push][shark_conf]------------- handleSharkConfPush() ---------------------");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] hash : ");
+    Object localObject = new StringBuilder("[shark_push][shark_conf] hash : ");
     ((StringBuilder)localObject).append(paramv.ay);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
     if (paramv.az != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[shark_push][shark_conf] info.taskNo: ");
+      localObject = new StringBuilder("[shark_push][shark_conf] info.taskNo: ");
       ((StringBuilder)localObject).append(paramv.az.aB);
       ((StringBuilder)localObject).append(" info.seqNo: ");
       ((StringBuilder)localObject).append(paramv.az.aC);
       eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] hb interval: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] hb interval: ");
     ((StringBuilder)localObject).append(paramv.aM);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] KeepAliveAfterSendInSeconds: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] KeepAliveAfterSendInSeconds: ");
     ((StringBuilder)localObject).append(paramv.aP);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
     if (paramv.aO != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[shark_push][shark_conf]scSharkConf.policy.size(): ");
+      localObject = new StringBuilder("[shark_push][shark_conf]scSharkConf.policy.size(): ");
       ((StringBuilder)localObject).append(paramv.aO.size());
       eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
       localObject = paramv.aO.iterator();
       while (((Iterator)localObject).hasNext())
       {
         t localt = (t)((Iterator)localObject).next();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[shark_push][shark_conf]start: ");
+        StringBuilder localStringBuilder = new StringBuilder("[shark_push][shark_conf]start: ");
         localStringBuilder.append(localt.aD);
         localStringBuilder.append(" keepAlive: ");
         localStringBuilder.append(localt.aE);
@@ -133,20 +115,16 @@ public class di
         eh.f("TmsTcpManager", localStringBuilder.toString());
       }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfNotWifi: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.connIfNotWifi: ");
     ((StringBuilder)localObject).append(paramv.aQ);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfScreenOff: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.connIfScreenOff: ");
     ((StringBuilder)localObject).append(paramv.aR);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.reconnectInterval: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.reconnectInterval: ");
     ((StringBuilder)localObject).append(paramv.aS);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: ");
     ((StringBuilder)localObject).append(paramv.aT);
     eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
     eh.e("TmsTcpManager", "[shark_push][shark_conf]-----------------------------------------------------------");
@@ -175,21 +153,17 @@ public class di
     if (paramf == null) {
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[send_control] tcp fail, notify up level: ");
-    ((StringBuilder)localObject).append(paramInt);
-    eh.f("TmsTcpManager", ((StringBuilder)localObject).toString());
-    localObject = this.my;
-    if (localObject != null) {
-      ((co)localObject).a(paramf.c, paramInt);
+    eh.f("TmsTcpManager", "[send_control] tcp fail, notify up level: ".concat(String.valueOf(paramInt)));
+    co localco = this.my;
+    if (localco != null) {
+      localco.a(paramf.c, paramInt);
     }
   }
   
   private void a(String paramString, bb parambb)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("ServerShark seqNo|");
+    Object localObject = new StringBuilder("ServerShark seqNo|");
     ((StringBuilder)localObject).append(parambb.dc);
     ((StringBuilder)localObject).append("|refSeqNo|");
     ((StringBuilder)localObject).append(parambb.dd);
@@ -202,8 +176,7 @@ public class di
         ba localba = (ba)((Iterator)localObject).next();
         if (localba.dd != 0)
         {
-          parambb = new StringBuilder();
-          parambb.append(" || sashimi cmd|");
+          parambb = new StringBuilder(" || sashimi cmd|");
           parambb.append(localba.bM);
           parambb.append("|seqNo|");
           parambb.append(localba.dc);
@@ -216,8 +189,7 @@ public class di
         }
         else
         {
-          parambb = new StringBuilder();
-          parambb.append(" || push cmd|");
+          parambb = new StringBuilder(" || push cmd|");
           parambb.append(localba.bM);
           parambb.append("|seqNo|");
           parambb.append(localba.dc);
@@ -240,7 +212,7 @@ public class di
   {
     this.mz = new cm()
     {
-      public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
       {
         if (paramAnonymousJceStruct == null)
         {
@@ -277,10 +249,7 @@ public class di
       eh.f("TmsTcpManager", "[tcp_control]connectIfNeed(), already connected");
       i = 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]connectIfNeed(), ret: ");
-    localStringBuilder.append(i);
-    eh.f("TmsTcpManager", localStringBuilder.toString());
+    eh.f("TmsTcpManager", "[tcp_control]connectIfNeed(), ret: ".concat(String.valueOf(i)));
     return i;
   }
   
@@ -289,8 +258,7 @@ public class di
     eh.f("TmsTcpManager", "[tcp_control]tryCloseConnectionSync()");
     if (this.mB.cg() > 0)
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("[tcp_control]tryCloseConnectionSync(), not allow, ref connt: ");
+      ??? = new StringBuilder("[tcp_control]tryCloseConnectionSync(), not allow, ref connt: ");
       ((StringBuilder)???).append(this.mB.cg());
       eg.e("TmsTcpManager", ((StringBuilder)???).toString());
       return;
@@ -391,8 +359,7 @@ public class di
   
   private void g(int paramInt, String paramString)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[tcp_control][h_b][shark_conf]sendHeartBeat(), retryTimes: ");
+    Object localObject1 = new StringBuilder("[tcp_control][h_b][shark_conf]sendHeartBeat(), retryTimes: ");
     ((StringBuilder)localObject1).append(paramInt);
     ((StringBuilder)localObject1).append(" reason: ");
     ((StringBuilder)localObject1).append(paramString);
@@ -403,7 +370,7 @@ public class di
     ((as)localObject1).dc = cu.bu().bm();
     ((ArrayList)localObject2).add(localObject1);
     byte b = cu.bw().bx();
-    if (paramInt < 1) {
+    if (paramInt <= 0) {
       l = 30L;
     } else {
       l = 60L;
@@ -471,10 +438,7 @@ public class di
       {
         eh.g("TmsTcpManager", "[tcp_control][f_p]first pkg too frequency, send delay");
         a(12, null, 0, 0L, true);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("delay_too_freq:");
-        ((StringBuilder)localObject).append(paramString);
-        a(11, ((StringBuilder)localObject).toString(), paramInt, this.mE, true);
+        a(11, "delay_too_freq:".concat(String.valueOf(paramString)), paramInt, this.mE, true);
         return;
       }
       i = this.mB.aq().aT;
@@ -482,21 +446,14 @@ public class di
       long l2 = 1000L * i;
       if (((cr)localObject).e(l2))
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control][f_p]net state changing, send fp delay(s): ");
-        ((StringBuilder)localObject).append(i);
-        eh.g("TmsTcpManager", ((StringBuilder)localObject).toString());
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("delay_waitfor_stable:");
-        ((StringBuilder)localObject).append(paramString);
-        a(11, ((StringBuilder)localObject).toString(), paramInt, l2, true);
+        eh.g("TmsTcpManager", "[tcp_control][f_p]net state changing, send fp delay(s): ".concat(String.valueOf(i)));
+        a(11, "delay_waitfor_stable:".concat(String.valueOf(paramString)), paramInt, l2, true);
         return;
       }
       this.mF = l1;
       this.mJ = 2;
       K(11);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[tcp_control][f_p]send first pkg, reason: ");
+      localObject = new StringBuilder("[tcp_control][f_p]send first pkg, reason: ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" retryTimes: ");
       ((StringBuilder)localObject).append(paramInt);
@@ -512,8 +469,7 @@ public class di
       this.mA.a(paramString);
       return;
     }
-    paramString = new StringBuilder();
-    paramString.append("[tcp_control][f_p]sending or received fp, no more send, is received ? ");
+    paramString = new StringBuilder("[tcp_control][f_p]sending or received fp, no more send, is received ? ");
     if (this.mJ != 1) {
       bool = false;
     }
@@ -549,16 +505,12 @@ public class di
   
   public void L(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]onTcpEvent(), eventCode: ");
-    localStringBuilder.append(paramInt);
-    eh.e("TmsTcpManager", localStringBuilder.toString());
+    eh.e("TmsTcpManager", "[tcp_control]onTcpEvent(), eventCode: ".concat(String.valueOf(paramInt)));
   }
   
   public void a(int paramInt, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]onTcpError(), errCode: ");
+    StringBuilder localStringBuilder = new StringBuilder("[tcp_control]onTcpError(), errCode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" msg: ");
     localStringBuilder.append(paramObject);
@@ -574,22 +526,17 @@ public class di
     {
       if (this.mD < 3)
       {
-        paramObject = new StringBuilder();
-        paramObject.append("[tcp_control][f_p]tcp_connect_broken, ref count: ");
+        paramObject = new StringBuilder("[tcp_control][f_p]tcp_connect_broken, ref count: ");
         paramObject.append(this.mB.cg());
         paramObject.append(", delay send fp in ");
         paramObject.append(this.mB.aq().aS);
         paramObject.append("s");
         eh.g("TmsTcpManager", paramObject.toString());
         this.mD += 1;
-        paramObject = new StringBuilder();
-        paramObject.append("delay_fp_for_connect_broken");
-        paramObject.append(paramInt);
-        a(11, paramObject.toString(), 0, this.mB.aq().aS * 1000L, true);
+        a(11, "delay_fp_for_connect_broken".concat(String.valueOf(paramInt)), 0, this.mB.aq().aS * 1000L, true);
         return;
       }
-      paramObject = new StringBuilder();
-      paramObject.append("[tcp_control][f_p]tcp_connect_broken, ref count: ");
+      paramObject = new StringBuilder("[tcp_control][f_p]tcp_connect_broken, ref count: ");
       paramObject.append(this.mB.cg());
       paramObject.append(", mReconnectTimes over limit: ");
       paramObject.append(this.mD);
@@ -652,31 +599,29 @@ public class di
   boolean cu()
   {
     int i = this.mJ;
-    Object localObject;
     if (i == 1) {
-      localObject = "[tcp_control]guessTcpWillSucc(), fp succ, prefer tcp";
+      str1 = "[tcp_control]guessTcpWillSucc(), fp succ, prefer tcp";
     }
+    String str2;
     for (;;)
     {
-      eh.f("TmsTcpManager", (String)localObject);
+      eh.f("TmsTcpManager", str1);
       return true;
       if (i == 2)
       {
         l = Math.abs(System.currentTimeMillis() - this.mF);
         if ((this.mF > 0L) && (l < 10000L))
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[tcp_control]guessTcpWillSucc(), fp sending within 10s, prefer tcp: ");
-          ((StringBuilder)localObject).append(l);
-          localObject = ((StringBuilder)localObject).toString();
+          str1 = "[tcp_control]guessTcpWillSucc(), fp sending within 10s, prefer tcp: ";
+          str2 = String.valueOf(l);
+          str1 = str1.concat(str2);
         }
         else
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[tcp_control]guessTcpWillSucc(), fp sending over 10s, prefer http: ");
-          ((StringBuilder)localObject).append(l);
-          label118:
-          eh.g("TmsTcpManager", ((StringBuilder)localObject).toString());
+          str1 = "[tcp_control]guessTcpWillSucc(), fp sending over 10s, prefer http: ";
+          str2 = String.valueOf(l);
+          label92:
+          eh.g("TmsTcpManager", str1.concat(str2));
           return false;
         }
       }
@@ -685,26 +630,21 @@ public class di
         if (this.mF > 0L) {
           break;
         }
-        localObject = "[tcp_control]guessTcpWillSucc(), fp first time, prefer tcp";
+        str1 = "[tcp_control]guessTcpWillSucc(), fp first time, prefer tcp";
       }
     }
     long l = Math.abs(System.currentTimeMillis() - this.mF);
-    if (l > 1800000L) {
-      localObject = new StringBuilder();
-    }
-    for (String str = "[tcp_control]guessTcpWillSucc(), over 30 mins since last fp, try again, prefer tcp: ";; str = "[tcp_control]guessTcpWillSucc(), no fp fail record or network reconnected within 30 mins, prefer tcp: ")
+    if (l > 1800000L) {}
+    for (String str1 = "[tcp_control]guessTcpWillSucc(), over 30 mins since last fp, try again, prefer tcp: ";; str1 = "[tcp_control]guessTcpWillSucc(), no fp fail record or network reconnected within 30 mins, prefer tcp: ")
     {
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append(l);
+      str2 = String.valueOf(l);
       break;
       if (this.mG)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control]guessTcpWillSucc(), fp failed within 30 mins, network not reconnected, prefer http: ");
-        ((StringBuilder)localObject).append(l);
-        break label118;
+        str1 = "[tcp_control]guessTcpWillSucc(), fp failed within 30 mins, network not reconnected, prefer http: ";
+        str2 = String.valueOf(l);
+        break label92;
       }
-      localObject = new StringBuilder();
     }
   }
   
@@ -717,7 +657,7 @@ public class di
       this.jv.b(true, -40220000, ???);
       return;
     }
-    f localf = new f(32, null, ???);
+    f localf = new f(???);
     int i = this.mJ;
     if (i == 1)
     {
@@ -759,8 +699,7 @@ public class di
   
   void f(cy.f arg1)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[tcp_control] send(), isFP: ");
+    Object localObject1 = new StringBuilder("[tcp_control] send(), isFP: ");
     ((StringBuilder)localObject1).append(???.jM);
     ((StringBuilder)localObject1).append(", isHB: ");
     ((StringBuilder)localObject1).append(???.jL);
@@ -776,7 +715,7 @@ public class di
     if (!???.jL) {
       h(???.jS);
     }
-    localObject1 = new f(32, null, ???);
+    localObject1 = new f(???);
     synchronized (this.mI)
     {
       this.mN.add(localObject1);
@@ -787,10 +726,7 @@ public class di
   
   void h(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramString);
-    a(11, localStringBuilder.toString(), paramInt, 0L, true);
+    a(11, String.valueOf(paramString), paramInt, 0L, true);
   }
   
   public void onClose()
@@ -804,32 +740,22 @@ public class di
     int i = this.mB.cg();
     if (i <= 0)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control]onConnected(), no tcp ref, ignore, refCount: ");
-      localStringBuilder.append(i);
-      eh.f("TmsTcpManager", localStringBuilder.toString());
+      eh.f("TmsTcpManager", "[tcp_control]onConnected(), no tcp ref, ignore, refCount: ".concat(String.valueOf(i)));
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]onConnected(), with tcp ref, send MSG_ON_CHANGE_TO_CONNECTED, refCount: ");
-    localStringBuilder.append(i);
-    eh.f("TmsTcpManager", localStringBuilder.toString());
+    eh.f("TmsTcpManager", "[tcp_control]onConnected(), with tcp ref, send MSG_ON_CHANGE_TO_CONNECTED, refCount: ".concat(String.valueOf(i)));
     a(9, null, 0, 0L, true);
   }
   
   public void onDisconnected()
   {
-    int i = this.mB.cg();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control]onDisconnected(), update: disconnected & fp not send, refCount: ");
-    localStringBuilder.append(i);
-    eh.f("TmsTcpManager", localStringBuilder.toString());
+    eh.f("TmsTcpManager", "[tcp_control]onDisconnected(), update: disconnected & fp not send, refCount: ".concat(String.valueOf(this.mB.cg())));
     this.mM = true;
     this.mJ = 0;
     K(9);
   }
   
-  private class a
+  final class a
     extends di.c
   {
     private int e = 0;
@@ -842,17 +768,16 @@ public class di
       this.f = paramString;
     }
     
-    protected void a(int paramInt1, int paramInt2)
+    protected final void a(int paramInt1, int paramInt2)
     {
       paramInt1 = bz.p(paramInt1);
       boolean bool;
-      if ((this.e < 1) && (bz.q(paramInt1)) && (di.a(di.this) < 3) && (di.b(di.this).cg() > 0)) {
+      if ((this.e <= 0) && (bz.q(paramInt1)) && (di.a(di.this) < 3) && (di.b(di.this).cg() > 0)) {
         bool = true;
       } else {
         bool = false;
       }
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[tcp_control][f_p]fp fail, retCode: ");
+      Object localObject1 = new StringBuilder("[tcp_control][f_p]fp fail, retCode: ");
       ((StringBuilder)localObject1).append(paramInt1);
       ((StringBuilder)localObject1).append(" dataRetCode: ");
       ((StringBuilder)localObject1).append(paramInt2);
@@ -864,13 +789,12 @@ public class di
       di.a(di.this, true);
       di.a(di.this, (byte)0);
       di.b(di.this, true);
-      cv.by().a("TmsTcpManager", 997, this.c, (ba)null, 30, paramInt1);
+      cv.by().a("TmsTcpManager", 997, this.c, null, 30, paramInt1);
       cv.by().a(this.c, bool ^ true);
       di.a(di.this, 3, null, paramInt1, 0L, true);
       if (bool)
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[tcp_control][f_p]fp fail, ref count: ");
+        localObject1 = new StringBuilder("[tcp_control][f_p]fp fail, ref count: ");
         ((StringBuilder)localObject1).append(di.b(di.this).cg());
         ((StringBuilder)localObject1).append(", retry send fp in ");
         ((StringBuilder)localObject1).append(di.b(di.this).aq().aS);
@@ -878,8 +802,7 @@ public class di
         eh.f("TmsTcpManager", ((StringBuilder)localObject1).toString());
         di.c(di.this);
         localObject1 = di.this;
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("delay_fp_retry:");
+        Object localObject2 = new StringBuilder("delay_fp_retry:");
         ((StringBuilder)localObject2).append(this.f);
         ((StringBuilder)localObject2).append(":");
         ((StringBuilder)localObject2).append(paramInt1);
@@ -889,16 +812,12 @@ public class di
         di.a((di)localObject1, 11, localObject2, paramInt1, di.b(di.this).aq().aS * 1000L, true);
         return;
       }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[tcp_control][f_p]fp fail, should not retry, retCode: ");
-      ((StringBuilder)localObject1).append(paramInt1);
-      eh.f("TmsTcpManager", ((StringBuilder)localObject1).toString());
+      eh.f("TmsTcpManager", "[tcp_control][f_p]fp fail, should not retry, retCode: ".concat(String.valueOf(paramInt1)));
     }
     
-    protected void a(ba paramba)
+    protected final void a(ba paramba)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control][f_p]fp success, mRetryTimes: ");
+      StringBuilder localStringBuilder = new StringBuilder("[tcp_control][f_p]fp success, mRetryTimes: ");
       localStringBuilder.append(this.e);
       eh.f("TmsTcpManager", localStringBuilder.toString());
       di.a(di.this, false);
@@ -910,7 +829,7 @@ public class di
     }
   }
   
-  private class b
+  final class b
     extends di.c
   {
     private int e = 0;
@@ -925,10 +844,9 @@ public class di
       this.g = paramByte;
     }
     
-    protected void a(int paramInt1, int paramInt2)
+    protected final void a(int paramInt1, int paramInt2)
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[tcp_control][h_b]hb fail, retCode: ");
+      Object localObject1 = new StringBuilder("[tcp_control][h_b]hb fail, retCode: ");
       ((StringBuilder)localObject1).append(paramInt1);
       ((StringBuilder)localObject1).append(" dataRetCode: ");
       ((StringBuilder)localObject1).append(paramInt2);
@@ -941,14 +859,14 @@ public class di
       eh.f("TmsTcpManager", ((StringBuilder)localObject1).toString());
       paramInt2 = this.e;
       int i = 0;
-      if (paramInt2 >= 1)
+      if (paramInt2 > 0)
       {
         eh.i("TmsTcpManager", "[tcp_control][h_b]hb fail again, mark disconnect not handled for reconnect");
         di.a(di.this, true);
         di.a(di.this, (byte)0);
       }
       paramInt2 = i;
-      if (this.e < 1)
+      if (this.e <= 0)
       {
         paramInt2 = i;
         if (bz.q(paramInt1))
@@ -963,15 +881,14 @@ public class di
           }
         }
       }
-      cv.by().a("TmsTcpManager", 999, this.c, (ba)null, 30, paramInt1);
+      cv.by().a("TmsTcpManager", 999, this.c, null, 30, paramInt1);
       cv.by().a(this.c, paramInt2 ^ 0x1);
       cv.by().a(this.g);
       if (paramInt2 != 0)
       {
         eh.f("TmsTcpManager", "[tcp_control][h_b]hb fail, retry");
         localObject1 = di.this;
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("hb_retry:");
+        Object localObject2 = new StringBuilder("hb_retry:");
         ((StringBuilder)localObject2).append(this.f);
         ((StringBuilder)localObject2).append(":");
         ((StringBuilder)localObject2).append(paramInt1);
@@ -982,10 +899,9 @@ public class di
       }
     }
     
-    protected void a(ba paramba)
+    protected final void a(ba paramba)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control][h_b]hb success, helloSeq: ");
+      StringBuilder localStringBuilder = new StringBuilder("[tcp_control][h_b]hb success, helloSeq: ");
       localStringBuilder.append(this.g);
       localStringBuilder.append(" mRetryTimes: ");
       localStringBuilder.append(this.e);
@@ -998,7 +914,7 @@ public class di
     }
   }
   
-  private abstract class c
+  abstract class c
     implements cy.b
   {
     int b = 0;
@@ -1055,7 +971,7 @@ public class di
     public abstract void a(cy.f paramf);
   }
   
-  private class e
+  final class e
     extends Handler
   {
     public e(Looper paramLooper)
@@ -1063,7 +979,7 @@ public class di
       super();
     }
     
-    public void handleMessage(Message arg1)
+    public final void handleMessage(Message arg1)
     {
       int i = ???.what;
       Object localObject10 = null;
@@ -1071,7 +987,8 @@ public class di
       Object localObject11;
       if (i != 0)
       {
-        if (i != 9) {
+        if (i != 9)
+        {
           switch (i)
           {
           default: 
@@ -1084,11 +1001,9 @@ public class di
               {
                 i = ???.arg1;
                 localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append("");
                 ((StringBuilder)localObject1).append(???.obj);
                 ??? = ((StringBuilder)localObject1).toString();
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append("[tcp_control] handle msg: MSG_SEND_HB, retryTimes: ");
+                localObject1 = new StringBuilder("[tcp_control] handle msg: MSG_SEND_HB, retryTimes: ");
                 ((StringBuilder)localObject1).append(i);
                 ((StringBuilder)localObject1).append(" reason: ");
                 ((StringBuilder)localObject1).append(???);
@@ -1096,91 +1011,87 @@ public class di
                 di.b(di.this, i, ???);
                 return;
               }
-              break;
-            }
-            break;
-          }
-        }
-        for (??? = "[tcp_control][f_p][h_b]handle msg: MSG_SEND_HB, fp not sent, donnot send hb!";; ??? = ???.toString())
-        {
-          eh.g("TmsTcpManager", ???);
-          return;
-          synchronized (di.d(di.this))
-          {
-            if ((di.h(di.this) != null) && (di.h(di.this).size() > 0))
-            {
-              localObject1 = (LinkedList)di.h(di.this).clone();
-              di.h(di.this).clear();
-              ??? = new StringBuilder();
-              ???.append("[tcp_control][f_p]fp too frequency, waiting tasks count: ");
-              ???.append(((LinkedList)localObject1).size());
-              eh.g("TmsTcpManager", ???.toString());
-              ??? = ((LinkedList)localObject1).iterator();
-              while (???.hasNext())
+              eh.g("TmsTcpManager", "[tcp_control][f_p][h_b]handle msg: MSG_SEND_HB, fp not sent, donnot send hb!");
+              return;
+            case 12: 
+              synchronized (di.d(di.this))
               {
-                localObject1 = (di.f)???.next();
-                if ((localObject1 != null) && (((di.f)localObject1).c != null) && (((di.f)localObject1).c.jT != null) && (((di.f)localObject1).c.jT.size() > 0))
+                if ((di.h(di.this) != null) && (di.h(di.this).size() > 0))
                 {
-                  localObject10 = ((di.f)localObject1).c.jT.iterator();
-                  while (((Iterator)localObject10).hasNext())
+                  localObject1 = (LinkedList)di.h(di.this).clone();
+                  di.h(di.this).clear();
+                  ??? = new StringBuilder("[tcp_control][f_p]fp too frequency, waiting tasks count: ");
+                  ???.append(((LinkedList)localObject1).size());
+                  eh.g("TmsTcpManager", ???.toString());
+                  ??? = ((LinkedList)localObject1).iterator();
+                  while (???.hasNext())
                   {
-                    localObject11 = (as)((Iterator)localObject10).next();
-                    if (localObject11 != null) {
-                      cv.by().a("TmsTcpManager", ((as)localObject11).bM, ((as)localObject11).dc, (as)localObject11, 10, -40001300, null);
+                    localObject1 = (di.f)???.next();
+                    if ((localObject1 != null) && (((di.f)localObject1).c != null) && (((di.f)localObject1).c.jT != null) && (((di.f)localObject1).c.jT.size() > 0))
+                    {
+                      localObject10 = ((di.f)localObject1).c.jT.iterator();
+                      while (((Iterator)localObject10).hasNext())
+                      {
+                        localObject11 = (as)((Iterator)localObject10).next();
+                        if (localObject11 != null) {
+                          cv.by().a("TmsTcpManager", ((as)localObject11).bM, ((as)localObject11).dc, (as)localObject11, 10, -40001300, null);
+                        }
+                      }
+                      di.a(di.this, (di.f)localObject1, -40001300);
                     }
                   }
-                  di.a(di.this, (di.f)localObject1, -40001300);
+                  return;
                 }
+                return;
               }
             }
+            i = ???.arg1;
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append(???.obj);
+            ??? = ((StringBuilder)???).toString();
+            ??? = new StringBuilder("[tcp_control] handle msg: MSG_DELAY_SEND_FIRST_PKG, retryTimes: ");
+            ((StringBuilder)???).append(i);
+            ((StringBuilder)???).append(" reason: ");
+            ((StringBuilder)???).append(???);
+            eh.f("TmsTcpManager", ((StringBuilder)???).toString());
+            di.a(di.this, i, ???);
             return;
-          }
-          i = ???.arg1;
-          ??? = new StringBuilder();
-          ((StringBuilder)???).append("");
-          ((StringBuilder)???).append(???.obj);
-          ??? = ((StringBuilder)???).toString();
-          ??? = new StringBuilder();
-          ((StringBuilder)???).append("[tcp_control] handle msg: MSG_DELAY_SEND_FIRST_PKG, retryTimes: ");
-          ((StringBuilder)???).append(i);
-          ((StringBuilder)???).append(" reason: ");
-          ((StringBuilder)???).append(???);
-          eh.f("TmsTcpManager", ((StringBuilder)???).toString());
-          di.a(di.this, i, ???);
-          return;
-          di.o(di.this);
-          return;
-          di.a(di.this, 3);
-          synchronized (di.d(di.this))
-          {
-            if ((di.h(di.this) != null) && (di.h(di.this).size() > 0))
+          case 4: 
+            di.o(di.this);
+            return;
+          case 3: 
+            di.a(di.this, 3);
+            synchronized (di.d(di.this))
             {
-              localObject10 = (LinkedList)di.h(di.this).clone();
-              di.h(di.this).clear();
-              ??? = new StringBuilder();
-              ((StringBuilder)???).append("fp failed, waiting tasks count: ");
-              ((StringBuilder)???).append(((LinkedList)localObject10).size());
-              eh.f("TmsTcpManager", ((StringBuilder)???).toString());
-              i = ???.arg1;
-              ??? = ((LinkedList)localObject10).iterator();
-              while (???.hasNext())
+              if ((di.h(di.this) != null) && (di.h(di.this).size() > 0))
               {
-                ??? = (di.f)???.next();
-                if ((??? != null) && (((di.f)???).c != null) && (((di.f)???).c.jT != null) && (((di.f)???).c.jT.size() > 0))
+                localObject10 = (LinkedList)di.h(di.this).clone();
+                di.h(di.this).clear();
+                ??? = new StringBuilder("fp failed, waiting tasks count: ");
+                ((StringBuilder)???).append(((LinkedList)localObject10).size());
+                eh.f("TmsTcpManager", ((StringBuilder)???).toString());
+                i = ???.arg1;
+                ??? = ((LinkedList)localObject10).iterator();
+                while (???.hasNext())
                 {
-                  localObject10 = ((di.f)???).c.jT.iterator();
-                  while (((Iterator)localObject10).hasNext())
+                  ??? = (di.f)???.next();
+                  if ((??? != null) && (((di.f)???).c != null) && (((di.f)???).c.jT != null) && (((di.f)???).c.jT.size() > 0))
                   {
-                    localObject11 = (as)((Iterator)localObject10).next();
-                    if (localObject11 != null) {
-                      cv.by().a("TmsTcpManager", ((as)localObject11).bM, ((as)localObject11).dc, (as)localObject11, 9, i - 700000000, null);
+                    localObject10 = ((di.f)???).c.jT.iterator();
+                    while (((Iterator)localObject10).hasNext())
+                    {
+                      localObject11 = (as)((Iterator)localObject10).next();
+                      if (localObject11 != null) {
+                        cv.by().a("TmsTcpManager", ((as)localObject11).bM, ((as)localObject11).dc, (as)localObject11, 9, i - 700000000, null);
+                      }
                     }
+                    di.a(di.this, (di.f)???, -700000000 + i);
                   }
-                  di.a(di.this, (di.f)???, -700000000 + i);
                 }
+                return;
               }
+              return;
             }
-            return;
           }
           localObject10 = di.d(di.this);
           ??? = (Message)???;
@@ -1197,8 +1108,7 @@ public class di
             }
             if ((??? != null) && (???.size() > 0))
             {
-              ??? = new StringBuilder();
-              ((StringBuilder)???).append("[tcp_control]fp success. send waiting for fp tasks: ");
+              ??? = new StringBuilder("[tcp_control]fp success. send waiting for fp tasks: ");
               ((StringBuilder)???).append(???.size());
               eh.f("TmsTcpManager", ((StringBuilder)???).toString());
               synchronized (di.d(di.this))
@@ -1220,32 +1130,32 @@ public class di
             return;
           }
           finally {}
-          eh.e("TmsTcpManager", "[tcp_control][f_p] handle: MSG_ON_CHANGE_TO_CONNECTED");
-          if (di.b(di.this).cg() <= 0)
-          {
-            eh.e("TmsTcpManager", "[tcp_control][f_p] handle connected msg: ref connt <= 0, no need to reconnect");
-            return;
-          }
-          if (di.a(di.this) < 3)
-          {
-            ??? = new StringBuilder();
-            ???.append("[tcp_control][f_p] handle connected msg, ref count: ");
-            ???.append(di.b(di.this).cg());
-            ???.append(", wait for network become stable and send fp in: ");
-            ???.append(di.b(di.this).aq().aT);
-            ???.append("s");
-            eh.e("TmsTcpManager", ???.toString());
-            di.c(di.this);
-            ??? = di.this;
-            di.a(???, 11, "delay_fp_network_connected", 0, 1000L * di.b(???).aq().aT, true);
-            return;
-          }
-          ??? = new StringBuilder();
-          ???.append("[tcp_control][f_p] handle connected msg, ref count: ");
-          ???.append(di.b(di.this).cg());
-          ???.append(", mReconnectTimes over limit: ");
-          ???.append(di.a(di.this));
         }
+        eh.e("TmsTcpManager", "[tcp_control][f_p] handle: MSG_ON_CHANGE_TO_CONNECTED");
+        if (di.b(di.this).cg() <= 0)
+        {
+          eh.e("TmsTcpManager", "[tcp_control][f_p] handle connected msg: ref connt <= 0, no need to reconnect");
+          return;
+        }
+        if (di.a(di.this) < 3)
+        {
+          ??? = new StringBuilder("[tcp_control][f_p] handle connected msg, ref count: ");
+          ???.append(di.b(di.this).cg());
+          ???.append(", wait for network become stable and send fp in: ");
+          ???.append(di.b(di.this).aq().aT);
+          ???.append("s");
+          eh.e("TmsTcpManager", ???.toString());
+          di.c(di.this);
+          ??? = di.this;
+          di.a(???, 11, "delay_fp_network_connected", 0, 1000L * di.b(???).aq().aT, true);
+          return;
+        }
+        ??? = new StringBuilder("[tcp_control][f_p] handle connected msg, ref count: ");
+        ???.append(di.b(di.this).cg());
+        ???.append(", mReconnectTimes over limit: ");
+        ???.append(di.a(di.this));
+        eh.g("TmsTcpManager", ???.toString());
+        return;
       }
       eh.f("TmsTcpManager", "[tcp_control]handle MSG_SEND_TASK");
       synchronized (di.d(di.this))
@@ -1258,7 +1168,7 @@ public class di
           {
             eh.g("TmsTcpManager", "[tcp_control][time_out]MSG_SEND_TASK, send time out");
             i = -17;
-            ??? = (Message)localObject10;
+            ??? = localObject10;
           }
           else
           {
@@ -1307,7 +1217,7 @@ public class di
                   }
                 }
                 if (di.f(di.this) != 0) {
-                  break label1832;
+                  break label1768;
                 }
                 if (((di.f)localObject11).c.jL)
                 {
@@ -1333,7 +1243,7 @@ public class di
                 j = di.a(di.this, "disconnected_before_send");
                 i = j;
                 if (((di.f)localObject11).c.jM) {
-                  break label1834;
+                  break label1770;
                 }
                 di.a(di.this, (byte)0);
                 ??? = "[tcp_control][f_p]handleMessage(), [vip] last disconnect not handled, 2: not fp, mark fp_not_send";
@@ -1341,7 +1251,7 @@ public class di
               for (i = j;; i = j)
               {
                 eh.g("TmsTcpManager", ???);
-                break label1834;
+                break label1770;
                 if (di.g(di.this).cH()) {
                   break;
                 }
@@ -1349,7 +1259,7 @@ public class di
                 j = di.j(di.this);
                 i = j;
                 if (((di.f)localObject11).c.jM) {
-                  break label1834;
+                  break label1770;
                 }
                 di.a(di.this, (byte)0);
                 ??? = "[tcp_control][f_p]handleMessage(), [vip] not connected, 2: not fp, mark fp_not_send";
@@ -1357,16 +1267,13 @@ public class di
               ??? = "[tcp_control][f_p]handleMessage(), [vip] connection is ok";
             }
             eh.f("TmsTcpManager", ???);
-            label1832:
+            label1768:
             i = 0;
-            label1834:
+            label1770:
             if (i != 0)
             {
-              ??? = new StringBuilder();
-              ???.append("[tcp_control][f_p]handleMessage(), connect failed: ");
-              ???.append(i);
-              eh.g("TmsTcpManager", ???.toString());
-              ??? = (Message)localObject10;
+              eh.g("TmsTcpManager", "[tcp_control][f_p]handleMessage(), connect failed: ".concat(String.valueOf(i)));
+              ??? = localObject10;
             }
             else
             {
@@ -1406,7 +1313,6 @@ public class di
               }
               for (;;)
               {
-                ??? = (Message)???;
                 break;
                 long l2 = System.currentTimeMillis();
                 localObject12 = ((di.f)localObject11).b;
@@ -1420,7 +1326,7 @@ public class di
                   if (((cw)localObject12).bA())
                   {
                     i = -11;
-                    ??? = (Message)localObject10;
+                    ??? = localObject10;
                     break;
                   }
                   j = di.g(di.this).a(((di.f)localObject11).c, ???);
@@ -1450,19 +1356,16 @@ public class di
             if (i != -11)
             {
               j = i - 40000000;
-              ??? = new StringBuilder();
-              ((StringBuilder)???).append("[tcp_control]handleMessage(), tcp send failed: ");
-              ((StringBuilder)???).append(j);
-              eh.g("TmsTcpManager", ((StringBuilder)???).toString());
+              eh.g("TmsTcpManager", "[tcp_control]handleMessage(), tcp send failed: ".concat(String.valueOf(j)));
             }
           }
           if (??? != null)
           {
-            ???.ml = String.valueOf(cd.e(di.m(di.this)));
-            ???.mn = l1;
-            ???.mo = di.g(di.this).cB();
-            ???.errorCode = j;
-            ???.g(di.l(di.this));
+            ((dg)???).ml = String.valueOf(cd.e(di.m(di.this)));
+            ((dg)???).mn = l1;
+            ((dg)???).mo = di.g(di.this).cB();
+            ((dg)???).errorCode = j;
+            ((dg)???).g(di.l(di.this));
           }
           if ((j != 0) && (j != -11))
           {
@@ -1479,25 +1382,25 @@ public class di
                 }
                 ???.add(localObject10);
               }
-              if (???.size() <= 0) {
-                return;
+              if (???.size() > 0)
+              {
+                ??? = new StringBuilder("[tcp_control]handleMessage(), tcp send fail: ");
+                ((StringBuilder)???).append(j);
+                ((StringBuilder)???).append(", notify tcp failed for other tasks: ");
+                ((StringBuilder)???).append(???.size());
+                eh.g("TmsTcpManager", ((StringBuilder)???).toString());
+                ??? = ???.iterator();
+                while (???.hasNext())
+                {
+                  ??? = (di.f)???.next();
+                  localObject10 = ((di.f)???).b;
+                  if (localObject10 != null) {
+                    ((cw)localObject10).setState(2);
+                  }
+                  di.a(di.this, (di.f)???, j);
+                }
               }
-              ??? = new StringBuilder();
-              ((StringBuilder)???).append("[tcp_control]handleMessage(), tcp send fail: ");
-              ((StringBuilder)???).append(j);
-              ((StringBuilder)???).append(", notify tcp failed for other tasks: ");
-              ((StringBuilder)???).append(???.size());
-              eh.g("TmsTcpManager", ((StringBuilder)???).toString());
-              ??? = ???.iterator();
-              if (!???.hasNext()) {
-                return;
-              }
-              ??? = (di.f)???.next();
-              localObject10 = ((di.f)???).b;
-              if (localObject10 != null) {
-                ((cw)localObject10).setState(2);
-              }
-              di.a(di.this, (di.f)???, j);
+              return;
             }
           }
           df.a(((di.f)localObject11).c, 14, j, 0);
@@ -1515,16 +1418,14 @@ public class di
     }
   }
   
-  private class f
+  final class f
   {
     public int a = 0;
     public cw b = null;
     public cy.f c = null;
     
-    public f(int paramInt, cw paramcw, cy.f paramf)
+    public f(cy.f paramf)
     {
-      this.a = paramInt;
-      this.b = paramcw;
       this.c = paramf;
     }
   }

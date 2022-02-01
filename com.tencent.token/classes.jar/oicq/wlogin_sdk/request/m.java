@@ -41,39 +41,38 @@ public class m
   
   public int a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, long[] paramArrayOfLong, byte[] paramArrayOfByte3, long paramLong4, long paramLong5, long paramLong6, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int k = t.w;
     paramArrayOfByte1 = c(paramArrayOfByte1);
     if (paramArrayOfByte1 == null) {
       return -1014;
     }
-    int i;
-    for (paramInt1 = 0;; paramInt1 = i)
+    paramInt1 = 0;
+    for (;;)
     {
-      Object localObject = a(paramLong1, paramLong2, paramLong3, j, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramInt3, paramInt4, paramArrayOfLong, t.aa, paramArrayOfByte3, paramLong4, paramLong5, paramLong6, paramArrayOfByte4, paramArrayOfByte5);
-      a(this.i, this.t, this.j, paramLong1, this.m, this.n, j, this.p, (byte[])localObject);
-      i = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-      if (i != 0) {
-        return i;
+      int i = paramInt1;
+      Object localObject = a(paramLong1, paramLong2, paramLong3, k, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramInt3, paramInt4, paramArrayOfLong, t.aa, paramArrayOfByte3, paramLong4, paramLong5, paramLong6, paramArrayOfByte4, paramArrayOfByte5);
+      a(this.i, this.t, this.j, paramLong1, this.m, this.n, k, this.p, (byte[])localObject);
+      int j = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      paramInt1 = j;
+      if (j != 0) {
+        break;
       }
-      int k = b();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("retry num:");
-      ((StringBuilder)localObject).append(paramInt1);
+      j = b();
+      localObject = new StringBuilder("retry num:");
+      ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" ret:");
-      ((StringBuilder)localObject).append(k);
-      localObject = ((StringBuilder)localObject).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(paramLong1);
-      util.LOGI((String)localObject, localStringBuilder.toString());
-      if (k != 180) {
-        return k;
+      ((StringBuilder)localObject).append(j);
+      util.LOGI(((StringBuilder)localObject).toString(), String.valueOf(paramLong1));
+      paramInt1 = j;
+      if (j != 180) {
+        break;
       }
-      i = paramInt1 + 1;
-      if (paramInt1 >= 1) {
-        return k;
+      paramInt1 = i + 1;
+      if (i > 0) {
+        return j;
       }
     }
+    return paramInt1;
   }
   
   public byte[] a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, long[] paramArrayOfLong, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, long paramLong4, long paramLong5, long paramLong6, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
@@ -238,7 +237,6 @@ public class m
     paramInt2 += paramArrayOfLong.length;
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte5, paramInt2, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte5, paramInt2 + paramArrayOfByte1.length, paramArrayOfByte2.length);
-    paramInt2 = paramArrayOfByte2.length;
     return b(paramArrayOfByte5, this.u, paramInt1 + 1);
   }
 }

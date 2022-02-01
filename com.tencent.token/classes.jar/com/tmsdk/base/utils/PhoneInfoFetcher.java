@@ -13,9 +13,8 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import btmsdkobf.dz;
-import com.tencent.service.update.e;
+import com.tencent.token.rp;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
@@ -38,7 +37,7 @@ public class PhoneInfoFetcher
   
   public static String getAndoidId(Context paramContext)
   {
-    if (!e.a().b()) {
+    if (!rp.a().b()) {
       return "";
     }
     try
@@ -56,7 +55,7 @@ public class PhoneInfoFetcher
   
   public static int getCellId()
   {
-    boolean bool = e.a().b();
+    boolean bool = rp.a().b();
     int j = -1;
     if (!bool) {
       return -1;
@@ -102,7 +101,7 @@ public class PhoneInfoFetcher
     {
       Object localObject = new FileFilter()
       {
-        public boolean accept(File paramAnonymousFile)
+        public final boolean accept(File paramAnonymousFile)
         {
           return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
         }
@@ -111,10 +110,7 @@ public class PhoneInfoFetcher
       if (localObject == null) {
         return 1;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("CPU Count: ");
-      localStringBuilder.append(localObject.length);
-      Log.d("PhoneInfoFetcher", localStringBuilder.toString());
+      new StringBuilder("CPU Count: ").append(localObject.length);
       cpuNum = Integer.valueOf(localObject.length);
       return cpuNum.intValue();
     }
@@ -125,7 +121,7 @@ public class PhoneInfoFetcher
   @SuppressLint({"MissingPermission"})
   public static String getIMEI(Context paramContext)
   {
-    if (!e.a().b()) {
+    if (!rp.a().b()) {
       return "00000000000000";
     }
     Object localObject = null;
@@ -135,7 +131,7 @@ public class PhoneInfoFetcher
     }
     catch (Throwable paramContext)
     {
-      Log.w("PhoneInfoFetcher", paramContext.getMessage());
+      paramContext.getMessage();
       paramContext = (Context)localObject;
     }
     localObject = paramContext;
@@ -148,7 +144,7 @@ public class PhoneInfoFetcher
   @SuppressLint({"MissingPermission"})
   public static String getIMSI(Context paramContext)
   {
-    if (!e.a().b()) {
+    if (!rp.a().b()) {
       return "00000000000000";
     }
     Object localObject = null;
@@ -172,157 +168,172 @@ public class PhoneInfoFetcher
   public static Map<String, String> getImeiAndMeid(Context paramContext)
   {
     HashMap localHashMap = new HashMap();
-    if (!e.a().b()) {
+    if (!rp.a().b()) {
       return localHashMap;
     }
-    Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject4 = null;
     try
     {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("android api: ");
-      ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
-      ((StringBuilder)localObject3).append("\n");
-      Log.i("PhoneInfoFetcher", ((StringBuilder)localObject3).toString());
-      localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-      if (Build.VERSION.SDK_INT < 21)
-      {
-        localObject2 = null;
-        paramContext = (Context)localObject2;
-      }
-      else if (Build.VERSION.SDK_INT < 26)
-      {
-        localObject3 = localTelephonyManager.getClass().getMethod("getDeviceId", new Class[] { Integer.TYPE });
-        ((Method)localObject3).setAccessible(true);
-        paramContext = (String)((Method)localObject3).invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
-        if (!TextUtils.isEmpty(paramContext))
+      localObject1 = new StringBuilder("android api: ");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append("\n");
+      localObject2 = (TelephonyManager)paramContext.getSystemService("phone");
+      if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT < 26)
         {
-          i = paramContext.length();
-          if (i == 14)
+          localObject4 = localObject2.getClass().getMethod("getDeviceId", new Class[] { Integer.TYPE });
+          ((Method)localObject4).setAccessible(true);
+          localObject1 = (String)((Method)localObject4).invoke(localObject2, new Object[] { Integer.valueOf(0) });
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject1 = paramContext;
-            paramContext = null;
+            i = ((String)localObject1).length();
+            if (i == 14)
+            {
+              localObject3 = null;
+            }
+            else
+            {
+              paramContext = null;
+              localObject3 = localObject1;
+              localObject1 = paramContext;
+            }
           }
           else
           {
-            localObject1 = null;
+            localObject3 = null;
+            localObject1 = localObject3;
           }
-        }
-        else
-        {
-          paramContext = null;
-          localObject1 = paramContext;
         }
       }
     }
     catch (Throwable paramContext)
     {
-      Object localObject3;
-      TelephonyManager localTelephonyManager;
+      Object localObject1;
+      Object localObject2;
+      Object localObject4;
       int i;
+      Object localObject3;
       boolean bool;
-      label284:
-      break label452;
+      label256:
+      break label466;
     }
     try
     {
-      localObject3 = (String)((Method)localObject3).invoke(localTelephonyManager, new Object[] { Integer.valueOf(1) });
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      localObject2 = (String)((Method)localObject4).invoke(localObject2, new Object[] { Integer.valueOf(1) });
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        i = ((String)localObject3).length();
-        localObject2 = localObject3;
+        i = ((String)localObject2).length();
+        localObject4 = localObject1;
+        paramContext = (Context)localObject2;
         if (i == 14)
         {
-          localObject1 = localObject3;
-          localObject2 = null;
+          paramContext = null;
+          localObject4 = localObject2;
         }
       }
       else
       {
-        localObject2 = null;
+        paramContext = null;
+        localObject4 = localObject1;
       }
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label284;
-    }
-    try
-    {
-      bool = TextUtils.equals(paramContext, (CharSequence)localObject2);
-      if (bool) {
-        localObject2 = localObject4;
-      }
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-    }
-    catch (Throwable localThrowable3)
-    {
-      break label284;
-    }
-    localObject3 = localObject1;
-    localObject1 = localObject2;
-    localObject2 = localObject3;
-    break label458;
-    paramContext = localTelephonyManager.getClass().getMethod("getMeid", new Class[] { Integer.TYPE });
-    paramContext.setAccessible(true);
-    localObject2 = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
-    try
-    {
-      paramContext = localTelephonyManager.getClass().getMethod("getImei", new Class[] { Integer.TYPE });
-      paramContext.setAccessible(true);
-      localObject3 = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(0) });
     }
     catch (Throwable paramContext)
     {
-      label439:
-      break label447;
-    }
-    try
-    {
-      paramContext = (String)paramContext.invoke(localTelephonyManager, new Object[] { Integer.valueOf(1) });
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext = localThrowable3;
-      break label458;
+      break label266;
     }
     try
     {
       bool = TextUtils.equals((CharSequence)localObject3, paramContext);
+      localObject2 = localObject3;
+      localObject1 = localObject4;
+      if (!bool) {
+        break label474;
+      }
+      paramContext = null;
+      localObject2 = localObject3;
+      localObject1 = localObject4;
+    }
+    catch (Throwable localThrowable1)
+    {
+      break label256;
+    }
+    localObject2 = localObject3;
+    localObject1 = localObject4;
+    break label474;
+    label266:
+    paramContext = null;
+    localObject2 = localObject3;
+    break label474;
+    paramContext = localObject2.getClass().getMethod("getMeid", new Class[] { Integer.TYPE });
+    paramContext.setAccessible(true);
+    paramContext = (String)paramContext.invoke(localObject2, new Object[] { Integer.valueOf(0) });
+    try
+    {
+      localObject3 = localObject2.getClass().getMethod("getImei", new Class[] { Integer.TYPE });
+      ((Method)localObject3).setAccessible(true);
+      localObject1 = (String)((Method)localObject3).invoke(localObject2, new Object[] { Integer.valueOf(0) });
+    }
+    catch (Throwable localThrowable2)
+    {
+      label431:
+      break label440;
+    }
+    try
+    {
+      localObject3 = (String)((Method)localObject3).invoke(localObject2, new Object[] { Integer.valueOf(1) });
+    }
+    catch (Throwable localThrowable3)
+    {
+      break label431;
+    }
+    try
+    {
+      bool = TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject3);
       if (bool)
       {
+        localObject3 = null;
+        localObject2 = localObject1;
+        localObject1 = paramContext;
         paramContext = (Context)localObject3;
       }
       else
       {
+        localObject2 = localObject1;
         localObject1 = paramContext;
         paramContext = (Context)localObject3;
       }
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable4)
     {
-      break label439;
+      break label434;
     }
+    localObject3 = null;
+    label434:
+    localObject2 = localObject1;
+    break label447;
+    label440:
+    localObject3 = null;
+    localObject2 = localObject3;
+    label447:
     localObject1 = paramContext;
     paramContext = (Context)localObject3;
-    break label458;
-    label447:
+    break label474;
     paramContext = null;
-    break label458;
-    label452:
-    localObject2 = null;
-    paramContext = (Context)localObject2;
-    label458:
+    localObject2 = paramContext;
+    localObject1 = localObject2;
+    break label474;
+    label466:
+    paramContext = null;
+    localObject2 = paramContext;
+    localObject1 = localObject2;
+    label474:
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      localHashMap.put("meid", localObject1);
+    }
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      localHashMap.put("meid", localObject2);
+      localHashMap.put("imei1", localObject2);
     }
     if (!TextUtils.isEmpty(paramContext)) {
-      localHashMap.put("imei1", paramContext);
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      localHashMap.put("imei2", localObject1);
+      localHashMap.put("imei2", paramContext);
     }
     return localHashMap;
   }
@@ -338,136 +349,134 @@ public class PhoneInfoFetcher
     // Byte code:
     //   0: ldc 50
     //   2: astore_2
-    //   3: new 238	java/io/FileInputStream
+    //   3: new 223	java/io/FileInputStream
     //   6: dup
-    //   7: ldc 240
-    //   9: invokespecial 241	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   12: astore_3
-    //   13: new 243	java/io/BufferedReader
+    //   7: ldc 225
+    //   9: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   12: astore_1
+    //   13: new 228	java/io/BufferedReader
     //   16: dup
-    //   17: new 245	java/io/InputStreamReader
+    //   17: new 230	java/io/InputStreamReader
     //   20: dup
-    //   21: aload_3
-    //   22: invokespecial 248	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   21: aload_1
+    //   22: invokespecial 233	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   25: sipush 8192
-    //   28: invokespecial 251	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   28: invokespecial 236	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   31: astore 4
     //   33: new 111	java/lang/StringBuilder
     //   36: dup
     //   37: ldc 50
-    //   39: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   42: astore_1
+    //   39: invokespecial 114	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   42: astore_3
     //   43: aload 4
-    //   45: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 239	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore 5
     //   50: aload 5
     //   52: ifnull +13 -> 65
-    //   55: aload_1
+    //   55: aload_3
     //   56: aload 5
-    //   58: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: goto -19 -> 43
     //   65: aload 4
-    //   67: invokevirtual 258	java/io/BufferedReader:close	()V
-    //   70: goto +25 -> 95
-    //   73: astore_2
-    //   74: aload 4
-    //   76: invokevirtual 258	java/io/BufferedReader:close	()V
-    //   79: aload_3
-    //   80: invokevirtual 261	java/io/InputStream:close	()V
-    //   83: aload_1
-    //   84: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: pop
-    //   88: aload_2
-    //   89: athrow
-    //   90: aload 4
-    //   92: invokevirtual 258	java/io/BufferedReader:close	()V
-    //   95: aload_3
-    //   96: invokevirtual 261	java/io/InputStream:close	()V
-    //   99: aload_1
-    //   100: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: astore_3
-    //   104: iload_0
-    //   105: ifne +5 -> 110
-    //   108: aload_3
-    //   109: areturn
-    //   110: aload_2
-    //   111: astore_1
-    //   112: aload_3
-    //   113: ifnull +42 -> 155
-    //   116: aload_2
-    //   117: astore_1
-    //   118: aload_3
-    //   119: ldc 50
-    //   121: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   124: ifne +31 -> 155
-    //   127: aload_3
-    //   128: aload_3
-    //   129: ldc_w 266
-    //   132: invokevirtual 270	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   135: bipush 8
-    //   137: iadd
-    //   138: invokevirtual 274	java/lang/String:substring	(I)Ljava/lang/String;
-    //   141: astore_1
-    //   142: aload_1
-    //   143: iconst_0
-    //   144: aload_1
-    //   145: ldc_w 276
-    //   148: invokevirtual 270	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   151: invokevirtual 279	java/lang/String:substring	(II)Ljava/lang/String;
+    //   67: invokevirtual 242	java/io/BufferedReader:close	()V
+    //   70: aload_1
+    //   71: invokevirtual 245	java/io/InputStream:close	()V
+    //   74: aload_3
+    //   75: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore_3
+    //   79: goto +23 -> 102
+    //   82: astore_2
+    //   83: aload 4
+    //   85: invokevirtual 242	java/io/BufferedReader:close	()V
+    //   88: aload_1
+    //   89: invokevirtual 245	java/io/InputStream:close	()V
+    //   92: aload_2
+    //   93: athrow
+    //   94: aload 4
+    //   96: invokevirtual 242	java/io/BufferedReader:close	()V
+    //   99: goto -29 -> 70
+    //   102: iload_0
+    //   103: ifne +5 -> 108
+    //   106: aload_3
+    //   107: areturn
+    //   108: aload_2
+    //   109: astore_1
+    //   110: aload_3
+    //   111: ifnull +41 -> 152
+    //   114: aload_2
+    //   115: astore_1
+    //   116: aload_3
+    //   117: ldc 50
+    //   119: invokevirtual 251	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   122: ifne +30 -> 152
+    //   125: aload_3
+    //   126: aload_3
+    //   127: ldc 253
+    //   129: invokevirtual 257	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   132: bipush 8
+    //   134: iadd
+    //   135: invokevirtual 261	java/lang/String:substring	(I)Ljava/lang/String;
+    //   138: astore_1
+    //   139: aload_1
+    //   140: iconst_0
+    //   141: aload_1
+    //   142: ldc_w 263
+    //   145: invokevirtual 257	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   148: invokevirtual 266	java/lang/String:substring	(II)Ljava/lang/String;
+    //   151: astore_1
+    //   152: aload_1
+    //   153: areturn
     //   154: astore_1
-    //   155: aload_1
-    //   156: areturn
-    //   157: astore_1
-    //   158: ldc 50
-    //   160: areturn
-    //   161: astore 5
-    //   163: goto -73 -> 90
-    //   166: astore 4
-    //   168: goto -73 -> 95
-    //   171: astore 4
-    //   173: goto -94 -> 79
-    //   176: astore_3
-    //   177: goto -94 -> 83
-    //   180: astore_3
-    //   181: goto -82 -> 99
-    //   184: astore_1
-    //   185: ldc 50
-    //   187: areturn
+    //   155: ldc 50
+    //   157: areturn
+    //   158: astore 5
+    //   160: goto -66 -> 94
+    //   163: astore 4
+    //   165: goto -95 -> 70
+    //   168: astore_1
+    //   169: goto -95 -> 74
+    //   172: astore_3
+    //   173: goto -85 -> 88
+    //   176: astore_1
+    //   177: goto -85 -> 92
+    //   180: astore_1
+    //   181: ldc 50
+    //   183: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	188	0	paramBoolean	boolean
-    //   42	114	1	localObject1	Object
-    //   157	1	1	localThrowable1	Throwable
-    //   184	1	1	localThrowable2	Throwable
+    //   0	184	0	paramBoolean	boolean
+    //   12	141	1	localObject1	Object
+    //   154	1	1	localThrowable1	Throwable
+    //   168	1	1	localThrowable2	Throwable
+    //   176	1	1	localThrowable3	Throwable
+    //   180	1	1	localThrowable4	Throwable
     //   2	1	2	str1	String
-    //   73	44	2	localObject2	Object
-    //   12	117	3	localObject3	Object
-    //   176	1	3	localThrowable3	Throwable
-    //   180	1	3	localThrowable4	Throwable
-    //   31	60	4	localBufferedReader	java.io.BufferedReader
-    //   166	1	4	localThrowable5	Throwable
-    //   171	1	4	localThrowable6	Throwable
+    //   82	33	2	localObject2	Object
+    //   42	85	3	localObject3	Object
+    //   172	1	3	localThrowable5	Throwable
+    //   31	64	4	localBufferedReader	java.io.BufferedReader
+    //   163	1	4	localThrowable6	Throwable
     //   48	9	5	str2	String
-    //   161	1	5	localThrowable7	Throwable
+    //   158	1	5	localThrowable7	Throwable
     // Exception table:
     //   from	to	target	type
-    //   43	50	73	finally
-    //   55	62	73	finally
-    //   3	13	157	java/lang/Throwable
-    //   43	50	161	java/lang/Throwable
-    //   55	62	161	java/lang/Throwable
-    //   65	70	166	java/lang/Throwable
-    //   90	95	166	java/lang/Throwable
-    //   74	79	171	java/lang/Throwable
-    //   79	83	176	java/lang/Throwable
-    //   95	99	180	java/lang/Throwable
-    //   127	155	184	java/lang/Throwable
+    //   43	50	82	finally
+    //   55	62	82	finally
+    //   3	13	154	java/lang/Throwable
+    //   43	50	158	java/lang/Throwable
+    //   55	62	158	java/lang/Throwable
+    //   65	70	163	java/lang/Throwable
+    //   94	99	163	java/lang/Throwable
+    //   70	74	168	java/lang/Throwable
+    //   83	88	172	java/lang/Throwable
+    //   88	92	176	java/lang/Throwable
+    //   125	152	180	java/lang/Throwable
   }
   
   public static int getLac()
   {
-    boolean bool = e.a().b();
+    boolean bool = rp.a().b();
     int j = -1;
     if (!bool) {
       return -1;
@@ -608,7 +617,7 @@ public class PhoneInfoFetcher
   
   public static int getMcc()
   {
-    boolean bool = e.a().b();
+    boolean bool = rp.a().b();
     int i = -1;
     if (!bool) {
       return -1;
@@ -627,7 +636,7 @@ public class PhoneInfoFetcher
   
   public static int getMnc()
   {
-    boolean bool = e.a().b();
+    boolean bool = rp.a().b();
     int i = -1;
     if (!bool) {
       return -1;
@@ -676,83 +685,83 @@ public class PhoneInfoFetcher
     // Byte code:
     //   0: iload_0
     //   1: ifeq +14 -> 15
-    //   4: ldc_w 424
+    //   4: ldc_w 412
     //   7: astore_1
-    //   8: ldc_w 426
+    //   8: ldc_w 414
     //   11: astore_2
     //   12: goto +11 -> 23
-    //   15: ldc_w 428
+    //   15: ldc_w 416
     //   18: astore_1
-    //   19: ldc_w 430
+    //   19: ldc_w 418
     //   22: astore_2
     //   23: aconst_null
     //   24: astore 4
     //   26: new 111	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 318	java/lang/StringBuilder:<init>	()V
     //   33: astore_3
     //   34: aload_3
     //   35: aload_1
-    //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload_3
-    //   41: ldc_w 432
-    //   44: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: ldc_w 420
+    //   44: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: pop
-    //   48: new 243	java/io/BufferedReader
+    //   48: new 228	java/io/BufferedReader
     //   51: dup
-    //   52: new 434	java/io/FileReader
+    //   52: new 422	java/io/FileReader
     //   55: dup
     //   56: aload_3
-    //   57: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokespecial 435	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   63: invokespecial 438	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   57: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokespecial 423	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   63: invokespecial 426	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   66: astore_3
     //   67: aload_3
-    //   68: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   68: invokevirtual 239	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   71: astore 5
     //   73: aload 5
     //   75: ifnull +98 -> 173
     //   78: aload 5
-    //   80: invokevirtual 441	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   80: invokevirtual 429	java/lang/String:toUpperCase	()Ljava/lang/String;
     //   83: aload_2
-    //   84: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   84: invokevirtual 251	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   87: ifeq +86 -> 173
     //   90: new 111	java/lang/StringBuilder
     //   93: dup
-    //   94: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   94: invokespecial 318	java/lang/StringBuilder:<init>	()V
     //   97: astore_2
     //   98: aload_2
     //   99: aload_1
-    //   100: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload_2
-    //   105: ldc_w 443
-    //   108: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: ldc_w 431
+    //   108: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: pop
-    //   112: new 243	java/io/BufferedReader
+    //   112: new 228	java/io/BufferedReader
     //   115: dup
-    //   116: new 434	java/io/FileReader
+    //   116: new 422	java/io/FileReader
     //   119: dup
     //   120: aload_2
-    //   121: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: invokespecial 435	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   127: invokespecial 438	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   121: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokespecial 423	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   127: invokespecial 426	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   130: astore_1
     //   131: aload_1
-    //   132: invokevirtual 255	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   132: invokevirtual 239	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   135: astore 4
     //   137: aload_1
     //   138: astore_2
     //   139: aload 4
     //   141: ifnull +34 -> 175
     //   144: aload 4
-    //   146: invokevirtual 384	java/lang/String:trim	()Ljava/lang/String;
+    //   146: invokevirtual 372	java/lang/String:trim	()Ljava/lang/String;
     //   149: astore_2
     //   150: aload_3
-    //   151: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   151: invokevirtual 242	java/io/BufferedReader:close	()V
     //   154: aload_1
-    //   155: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   155: invokevirtual 242	java/io/BufferedReader:close	()V
     //   158: aload_2
     //   159: areturn
     //   160: astore 4
@@ -765,13 +774,13 @@ public class PhoneInfoFetcher
     //   173: aconst_null
     //   174: astore_2
     //   175: aload_3
-    //   176: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   176: invokevirtual 242	java/io/BufferedReader:close	()V
     //   179: aload_2
     //   180: ifnull +72 -> 252
     //   183: aload_2
     //   184: astore_1
     //   185: aload_1
-    //   186: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   186: invokevirtual 242	java/io/BufferedReader:close	()V
     //   189: aconst_null
     //   190: areturn
     //   191: astore_1
@@ -789,12 +798,12 @@ public class PhoneInfoFetcher
     //   209: aload_3
     //   210: ifnull +10 -> 220
     //   213: aload_3
-    //   214: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   214: invokevirtual 242	java/io/BufferedReader:close	()V
     //   217: goto +3 -> 220
     //   220: aload_2
     //   221: ifnull +7 -> 228
     //   224: aload_2
-    //   225: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   225: invokevirtual 242	java/io/BufferedReader:close	()V
     //   228: aload_1
     //   229: athrow
     //   230: aconst_null
@@ -804,7 +813,7 @@ public class PhoneInfoFetcher
     //   234: aload_3
     //   235: ifnull +10 -> 245
     //   238: aload_3
-    //   239: invokevirtual 258	java/io/BufferedReader:close	()V
+    //   239: invokevirtual 242	java/io/BufferedReader:close	()V
     //   242: goto +3 -> 245
     //   245: aload_1
     //   246: ifnull +6 -> 252
@@ -921,7 +930,7 @@ public class PhoneInfoFetcher
   {
     try
     {
-      paramString = (String)Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class }).invoke(null, new Object[] { paramString });
+      paramString = (String)Class.forName("com.tencent.token.bi").getMethod("get", new Class[] { String.class }).invoke(null, new Object[] { paramString });
     }
     catch (Throwable paramString)
     {
@@ -941,106 +950,111 @@ public class PhoneInfoFetcher
   public static long getTotalMemery()
   {
     // Byte code:
-    //   0: getstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
+    //   0: getstatic 487	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
     //   3: ldc2_w 27
     //   6: lcmp
-    //   7: ifne +114 -> 121
+    //   7: ifne +115 -> 122
     //   10: new 100	java/io/File
     //   13: dup
-    //   14: ldc_w 501
+    //   14: ldc_w 489
     //   17: invokespecial 105	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore_2
-    //   21: aload_2
-    //   22: invokevirtual 504	java/io/File:exists	()Z
-    //   25: ifeq +96 -> 121
-    //   28: new 506	java/io/DataInputStream
-    //   31: dup
-    //   32: new 238	java/io/FileInputStream
-    //   35: dup
-    //   36: aload_2
-    //   37: invokespecial 509	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   40: invokespecial 510	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   43: astore_2
-    //   44: aload_2
-    //   45: invokevirtual 511	java/io/DataInputStream:readLine	()Ljava/lang/String;
-    //   48: astore_3
-    //   49: aload_3
-    //   50: ifnull +31 -> 81
-    //   53: aload_3
-    //   54: invokevirtual 384	java/lang/String:trim	()Ljava/lang/String;
-    //   57: ldc_w 513
-    //   60: invokevirtual 344	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   63: iconst_1
-    //   64: aaload
-    //   65: invokestatic 519	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   68: putstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
-    //   71: aload_2
-    //   72: invokevirtual 520	java/io/DataInputStream:close	()V
-    //   75: goto +46 -> 121
-    //   78: goto +43 -> 121
-    //   81: new 353	java/io/IOException
-    //   84: dup
-    //   85: ldc_w 522
-    //   88: invokespecial 523	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   91: athrow
-    //   92: astore_3
-    //   93: goto +9 -> 102
-    //   96: goto +18 -> 114
-    //   99: astore_3
-    //   100: aconst_null
-    //   101: astore_2
-    //   102: aload_2
-    //   103: ifnull +7 -> 110
-    //   106: aload_2
-    //   107: invokevirtual 520	java/io/DataInputStream:close	()V
-    //   110: aload_3
-    //   111: athrow
-    //   112: aconst_null
-    //   113: astore_2
+    //   21: aconst_null
+    //   22: astore_3
+    //   23: aload_2
+    //   24: invokevirtual 492	java/io/File:exists	()Z
+    //   27: ifeq +95 -> 122
+    //   30: new 494	java/io/DataInputStream
+    //   33: dup
+    //   34: new 223	java/io/FileInputStream
+    //   37: dup
+    //   38: aload_2
+    //   39: invokespecial 497	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   42: invokespecial 498	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   45: astore_2
+    //   46: aload_2
+    //   47: invokevirtual 499	java/io/DataInputStream:readLine	()Ljava/lang/String;
+    //   50: astore_3
+    //   51: aload_3
+    //   52: ifnull +31 -> 83
+    //   55: aload_3
+    //   56: invokevirtual 372	java/lang/String:trim	()Ljava/lang/String;
+    //   59: ldc_w 501
+    //   62: invokevirtual 332	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   65: iconst_1
+    //   66: aaload
+    //   67: invokestatic 507	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   70: putstatic 487	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
+    //   73: aload_2
+    //   74: invokevirtual 508	java/io/DataInputStream:close	()V
+    //   77: goto +45 -> 122
+    //   80: goto +42 -> 122
+    //   83: new 341	java/io/IOException
+    //   86: dup
+    //   87: ldc_w 510
+    //   90: invokespecial 511	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   93: athrow
+    //   94: astore_3
+    //   95: goto +9 -> 104
+    //   98: goto +16 -> 114
+    //   101: astore_3
+    //   102: aconst_null
+    //   103: astore_2
+    //   104: aload_2
+    //   105: ifnull +7 -> 112
+    //   108: aload_2
+    //   109: invokevirtual 508	java/io/DataInputStream:close	()V
+    //   112: aload_3
+    //   113: athrow
     //   114: aload_2
-    //   115: ifnull +6 -> 121
-    //   118: goto -47 -> 71
-    //   121: getstatic 499	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
-    //   124: lstore_0
-    //   125: lload_0
-    //   126: lconst_0
-    //   127: lcmp
-    //   128: ifle +5 -> 133
-    //   131: lload_0
-    //   132: lreturn
-    //   133: lconst_1
-    //   134: lreturn
-    //   135: astore_2
-    //   136: goto -24 -> 112
-    //   139: astore_3
-    //   140: goto -44 -> 96
-    //   143: astore_2
-    //   144: goto -66 -> 78
-    //   147: astore_2
-    //   148: goto -38 -> 110
+    //   115: ifnull +7 -> 122
+    //   118: aload_2
+    //   119: invokevirtual 508	java/io/DataInputStream:close	()V
+    //   122: getstatic 487	com/tmsdk/base/utils/PhoneInfoFetcher:sTotalMemorySize	J
+    //   125: lstore_0
+    //   126: lload_0
+    //   127: lconst_0
+    //   128: lcmp
+    //   129: ifle +5 -> 134
+    //   132: lload_0
+    //   133: lreturn
+    //   134: lconst_1
+    //   135: lreturn
+    //   136: astore_2
+    //   137: aload_3
+    //   138: astore_2
+    //   139: goto -25 -> 114
+    //   142: astore_3
+    //   143: goto -45 -> 98
+    //   146: astore_2
+    //   147: goto -67 -> 80
+    //   150: astore_2
+    //   151: goto -39 -> 112
     // Local variable table:
     //   start	length	slot	name	signature
-    //   124	8	0	l	long
-    //   20	95	2	localObject1	Object
-    //   135	1	2	localThrowable1	Throwable
-    //   143	1	2	localIOException1	IOException
-    //   147	1	2	localIOException2	IOException
-    //   48	6	3	str	String
-    //   92	1	3	localObject2	Object
-    //   99	12	3	localObject3	Object
-    //   139	1	3	localThrowable2	Throwable
+    //   125	8	0	l	long
+    //   20	99	2	localObject1	Object
+    //   136	1	2	localThrowable1	Throwable
+    //   138	1	2	localObject2	Object
+    //   146	1	2	localIOException1	IOException
+    //   150	1	2	localIOException2	IOException
+    //   22	34	3	str	String
+    //   94	1	3	localObject3	Object
+    //   101	37	3	localObject4	Object
+    //   142	1	3	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   44	49	92	finally
-    //   53	71	92	finally
-    //   81	92	92	finally
-    //   28	44	99	finally
-    //   28	44	135	java/lang/Throwable
-    //   44	49	139	java/lang/Throwable
-    //   53	71	139	java/lang/Throwable
-    //   81	92	139	java/lang/Throwable
-    //   71	75	143	java/io/IOException
-    //   106	110	147	java/io/IOException
+    //   46	51	94	finally
+    //   55	73	94	finally
+    //   83	94	94	finally
+    //   30	46	101	finally
+    //   30	46	136	java/lang/Throwable
+    //   46	51	142	java/lang/Throwable
+    //   55	73	142	java/lang/Throwable
+    //   83	94	142	java/lang/Throwable
+    //   73	77	146	java/io/IOException
+    //   118	122	146	java/io/IOException
+    //   108	112	150	java/io/IOException
   }
   
   public static class SizeInfo

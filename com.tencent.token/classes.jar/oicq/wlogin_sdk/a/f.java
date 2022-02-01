@@ -22,7 +22,7 @@ public class f
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong3, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, Map<Integer, RegTLV> paramMap)
   {
     String str = Build.VERSION.RELEASE;
-    int k = 0;
+    int j = 0;
     byte[] arrayOfByte1;
     if (paramArrayOfByte7 == null) {
       arrayOfByte1 = new byte[0];
@@ -51,44 +51,41 @@ public class f
     tmp78_72[7] = 37;
     tmp78_72;
     ArrayList localArrayList = new ArrayList();
-    int j = arrayOfInt.length;
-    int m;
-    for (int i = 0; k < j; i = m)
+    for (int i = 0; j < 8; i = k)
     {
-      m = arrayOfInt[k];
-      if (m != 13)
+      k = arrayOfInt[j];
+      if (k != 13)
       {
-        if (m != 37)
+        if (k != 37)
         {
-          switch (m)
+          switch (k)
           {
           default: 
-            switch (m)
+            switch (k)
             {
             default: 
               paramArrayOfByte7 = new byte[0];
               break;
             case 7: 
               paramArrayOfByte7 = new RegTLV(7);
-              m = t.ah | 0x0;
+              k = t.ah | 0x0;
               if (true == t.ag) {
-                m |= 0x2;
+                k |= 0x2;
               }
-              paramArrayOfByte7.setInt(m | 0x8);
+              paramArrayOfByte7.setInt(k | 0x8);
               paramArrayOfByte7 = paramArrayOfByte7.getBuf();
               break;
             case 6: 
               paramArrayOfByte7 = new RegTLV(6);
               byte[] arrayOfByte2 = new byte[paramArrayOfByte10.length + 3];
               if (paramArrayOfByte10.length == 0) {
-                m = 1;
+                k = 1;
               } else {
-                m = 2;
+                k = 2;
               }
-              util.int8_to_buf(arrayOfByte2, 0, m);
+              util.int8_to_buf(arrayOfByte2, 0, k);
               util.int16_to_buf(arrayOfByte2, 1, paramArrayOfByte10.length);
               System.arraycopy(paramArrayOfByte10, 0, arrayOfByte2, 3, paramArrayOfByte10.length);
-              m = paramArrayOfByte10.length;
               paramArrayOfByte7.setData(arrayOfByte2, arrayOfByte2.length);
               paramArrayOfByte7 = paramArrayOfByte7.getBuf();
             }
@@ -128,13 +125,13 @@ public class f
         paramArrayOfByte7.setInt((int)paramLong2);
         paramArrayOfByte7 = paramArrayOfByte7.getBuf();
       }
-      m = i;
+      k = i;
       if (paramArrayOfByte7.length > 4)
       {
-        m = i + paramArrayOfByte7.length;
+        k = i + paramArrayOfByte7.length;
         localArrayList.add(paramArrayOfByte7);
       }
-      k += 1;
+      j += 1;
     }
     paramArrayOfByte7 = paramMap.keySet().iterator();
     while (paramArrayOfByte7.hasNext())
@@ -143,7 +140,7 @@ public class f
       localArrayList.add(paramArrayOfByte8);
       i += paramArrayOfByte8.length;
     }
-    k = localArrayList.size();
+    int k = localArrayList.size();
     paramArrayOfByte7 = new byte[i + 2];
     util.int16_to_buf(paramArrayOfByte7, 0, (byte)k);
     i = 0;
@@ -187,8 +184,7 @@ public class f
     }
     catch (Exception paramArrayOfByte1)
     {
-      paramArrayOfByte2 = new StringBuilder();
-      paramArrayOfByte2.append("get account failed ");
+      paramArrayOfByte2 = new StringBuilder("get account failed ");
       paramArrayOfByte2.append(paramArrayOfByte1.getMessage());
       util.LOGI(paramArrayOfByte2.toString(), "");
     }

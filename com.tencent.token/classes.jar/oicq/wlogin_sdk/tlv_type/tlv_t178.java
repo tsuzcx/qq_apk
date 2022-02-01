@@ -45,19 +45,19 @@ public class tlv_t178
   public Boolean verify()
   {
     if (this._body_len < 12) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < i + 12) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._country_code_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 2 + this._country_code_len);
     if (this._body_len < this._country_code_len + 12 + i) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._mobile_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

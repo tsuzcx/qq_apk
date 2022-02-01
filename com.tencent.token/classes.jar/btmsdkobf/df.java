@@ -69,8 +69,7 @@ public class df
     boolean bool = true;
     if (paramf == null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("onSendTcpFailed() sharkSend is null? ");
+      localObject = new StringBuilder("onSendTcpFailed() sharkSend is null? ");
       if (paramf != null) {
         bool = false;
       }
@@ -101,16 +100,13 @@ public class df
     a(paramf, 15, 0, localObject.length);
     this.me.a(paramf, (byte[])localObject, new ca.a()
     {
-      public void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
+      public final void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
       {
         int i = paramAnonymousInt;
         if (paramAnonymousInt != 0) {
           i = paramAnonymousInt - 42000000;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onSendTcpFailed(), retry with http, http errCode: ");
-        localStringBuilder.append(i);
-        eh.e("SharkWharf", localStringBuilder.toString());
+        eh.e("SharkWharf", "onSendTcpFailed(), retry with http, http errCode: ".concat(String.valueOf(i)));
         df.a(paramf, 16, i, 0);
         df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
       }
@@ -152,8 +148,7 @@ public class df
           if (((Iterator)localObject).hasNext())
           {
             as localas = (as)((Iterator)localObject).next();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[");
+            StringBuilder localStringBuilder = new StringBuilder("[");
             localStringBuilder.append(i);
             localStringBuilder.append("]发包：cmd id:[");
             localStringBuilder.append(localas.bM);
@@ -185,35 +180,34 @@ public class df
         else
         {
           if ((this.mf == null) || (this.mf.cu())) {
-            break label658;
+            break label646;
           }
           i = 1;
           if ((i == 0) || (paramf.jH == 1024)) {
-            break label663;
+            break label651;
           }
           bool1 = true;
           if ((cx.ay()) || (paramf.jH == 2048) || (paramf.jH == 512) || (paramf.jO)) {
-            break label674;
+            break label662;
           }
           if (!bool1) {
-            break label669;
+            break label657;
           }
-          break label674;
+          break label662;
           j = i;
           if (i != 0)
           {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("[tcp_control][http_control]sendData(), use http channel, for:  only http enable? false isSemiSendProcess? ");
+            localObject = new StringBuilder("[tcp_control][http_control]sendData(), use http channel, for:  only http enable? false isSemiSendProcess? ");
             ((StringBuilder)localObject).append(cx.ay());
             ((StringBuilder)localObject).append(" user select CHANNEL_LARGE_DATA ? ");
             if (paramf.jH != 2048) {
-              break label679;
+              break label667;
             }
             bool2 = true;
             ((StringBuilder)localObject).append(bool2);
             ((StringBuilder)localObject).append(" user select ONLY_HTTP ? ");
             if (paramf.jH != 512) {
-              break label685;
+              break label673;
             }
             bool2 = true;
             ((StringBuilder)localObject).append(bool2);
@@ -238,56 +232,51 @@ public class df
           a(paramf, 15, 0, localObject.length);
           this.me.a(paramf, (byte[])localObject, new ca.a()
           {
-            public void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
+            public final void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
             {
               int i = paramAnonymousInt;
               if (paramAnonymousInt != 0) {
                 i = paramAnonymousInt - 42000000;
               }
               df.a(paramf, 16, i, 0);
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[tcp_control][http_control]sendData(), http callback, errCode: ");
-              localStringBuilder.append(i);
-              eh.e("SharkWharf", localStringBuilder.toString());
+              eh.e("SharkWharf", "[tcp_control][http_control]sendData(), http callback, errCode: ".concat(String.valueOf(i)));
               df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
             }
           });
+          return;
         }
-        else
+        eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use tcp channel");
+        paramf.jN = true;
+        if (paramf.jM)
         {
-          eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use tcp channel");
-          paramf.jN = true;
-          if (paramf.jM)
-          {
-            this.mf.f(paramf);
-            return;
-          }
-          if (paramf.bR())
-          {
-            this.mf.f(paramf);
-            return;
-          }
-          this.mf.e(paramf);
+          this.mf.f(paramf);
+          return;
         }
+        if (paramf.bR())
+        {
+          this.mf.f(paramf);
+          return;
+        }
+        this.mf.e(paramf);
         return;
       }
       finally {}
-      label658:
+      label646:
       int i = 0;
       continue;
-      label663:
+      label651:
       boolean bool1 = false;
       continue;
-      label669:
+      label657:
       i = 0;
       continue;
-      label674:
+      label662:
       i = 1;
       continue;
-      label679:
+      label667:
       boolean bool2 = false;
       continue;
-      label685:
+      label673:
       bool2 = false;
     }
   }

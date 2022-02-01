@@ -1,88 +1,62 @@
 package com.tencent.token;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-
-@TargetApi(11)
-public class gm
-  extends ValueAnimator
+final class gm
 {
-  private boolean a = false;
-  private float b = 0.0F;
-  private float c = 1.0F;
-  private long d;
+  private static gm d;
+  public long a;
+  public long b;
+  public int c;
   
-  public gm()
+  static gm a()
   {
-    setFloatValues(new float[] { 0.0F, 1.0F });
-    addListener(new AnimatorListenerAdapter()
+    if (d == null) {
+      d = new gm();
+    }
+    return d;
+  }
+  
+  public final void a(long paramLong, double paramDouble1, double paramDouble2)
+  {
+    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
+    float f2 = 0.01720197F * f1 + 6.24006F;
+    double d1 = f2;
+    double d2 = Math.sin(d1);
+    Double.isNaN(d1);
+    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
+    paramDouble2 = -paramDouble2 / 360.0D;
+    double d3 = f1 - 0.0009F;
+    Double.isNaN(d3);
+    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
+    Double.isNaN(d3);
+    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
+    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
+    paramDouble1 = 0.0174532923847437D * paramDouble1;
+    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
+    if (paramDouble1 >= 1.0D)
     {
-      public void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        gm.a(gm.this);
-      }
-      
-      public void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        gm.a(gm.this);
-      }
-    });
-  }
-  
-  private void a()
-  {
-    a(this.b, this.c);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = paramFloat;
-    a();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    float f1 = Math.min(paramFloat1, paramFloat2);
-    paramFloat1 = Math.max(paramFloat1, paramFloat2);
-    if (this.a) {
-      paramFloat2 = paramFloat1;
-    } else {
-      paramFloat2 = f1;
+      this.c = 1;
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
-    float f2;
-    if (this.a) {
-      f2 = f1;
-    } else {
-      f2 = paramFloat1;
+    if (paramDouble1 <= -1.0D)
+    {
+      this.c = 0;
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
-    setFloatValues(new float[] { paramFloat2, f2 });
-    super.setDuration(((float)this.d * (paramFloat1 - f1)));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    a();
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.c = paramFloat;
-    a();
-  }
-  
-  public long getDuration()
-  {
-    return this.d;
-  }
-  
-  public ValueAnimator setDuration(long paramLong)
-  {
-    this.d = paramLong;
-    a();
-    return this;
+    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
+    Double.isNaN(paramDouble1);
+    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
+    Double.isNaN(paramDouble1);
+    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
+    if ((this.b < paramLong) && (this.a > paramLong))
+    {
+      this.c = 0;
+      return;
+    }
+    this.c = 1;
   }
 }
 

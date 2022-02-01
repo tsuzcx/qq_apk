@@ -203,7 +203,7 @@ public class OaidProxy
     AtomicReference localAtomicReference = new AtomicReference("");
     new Thread()
     {
-      public void run()
+      public final void run()
       {
         this.v.set(OaidProxy.doGetOaid(paramContext));
         try
@@ -243,13 +243,13 @@ public class OaidProxy
     throw paramContext;
   }
   
-  private static final class a
+  static final class a
     implements ServiceConnection
   {
     boolean A = false;
     private final LinkedBlockingQueue<IBinder> B = new LinkedBlockingQueue(1);
     
-    public IBinder getBinder()
+    public final IBinder getBinder()
     {
       if (this.A) {
         return null;
@@ -264,7 +264,7 @@ public class OaidProxy
       return null;
     }
     
-    public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+    public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
       try
       {
@@ -274,7 +274,7 @@ public class OaidProxy
       catch (Throwable paramComponentName) {}
     }
     
-    public void onServiceDisconnected(ComponentName paramComponentName) {}
+    public final void onServiceDisconnected(ComponentName paramComponentName) {}
   }
 }
 

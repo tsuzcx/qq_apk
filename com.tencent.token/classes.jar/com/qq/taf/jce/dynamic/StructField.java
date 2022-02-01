@@ -8,7 +8,7 @@ public class StructField
 {
   private static final Comparator<JceField> tagComp = new Comparator()
   {
-    public int compare(JceField paramAnonymousJceField1, JceField paramAnonymousJceField2)
+    public final int compare(JceField paramAnonymousJceField1, JceField paramAnonymousJceField2)
     {
       return paramAnonymousJceField1.getTag() - paramAnonymousJceField2.getTag();
     }

@@ -1,18 +1,35 @@
 package com.tencent.token;
 
-import java.util.Map;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class p
-  extends m
+  extends JceStruct
 {
-  public p(String paramString, Map paramMap, m.a parama, boolean paramBoolean, u paramu)
+  public String a = "";
+  public String b = "";
+  
+  public final JceStruct newInit()
   {
-    this.d = paramu;
-    this.a = paramString;
-    this.b = paramMap;
-    this.c = paramBoolean;
-    if (parama != null) {
-      a(parama);
+    return new p();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.readString(1, false);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
+    }
+    str = this.b;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

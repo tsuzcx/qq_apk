@@ -19,7 +19,7 @@ public final class DynamicOutputStream
     super(paramByteBuffer);
   }
   
-  public void write(JceField paramJceField)
+  public final void write(JceField paramJceField)
   {
     int k = paramJceField.getTag();
     boolean bool = paramJceField instanceof ZeroField;
@@ -68,6 +68,7 @@ public final class DynamicOutputStream
         write(paramJceField[i]);
         i += 1;
       }
+      return;
     }
     if ((paramJceField instanceof MapField))
     {
@@ -83,6 +84,7 @@ public final class DynamicOutputStream
         write(paramJceField.getValue(i));
         i += 1;
       }
+      return;
     }
     if ((paramJceField instanceof StructField))
     {
@@ -116,8 +118,7 @@ public final class DynamicOutputStream
       write(((DoubleField)paramJceField).get(), k);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("unknow JceField type: ");
+    StringBuilder localStringBuilder = new StringBuilder("unknow JceField type: ");
     localStringBuilder.append(paramJceField.getClass().getName());
     throw new JceDecodeException(localStringBuilder.toString());
   }

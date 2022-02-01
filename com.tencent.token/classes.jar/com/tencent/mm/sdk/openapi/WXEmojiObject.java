@@ -1,11 +1,11 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.pq;
 import java.io.File;
 
 public class WXEmojiObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public byte[] emojiData;
   public String emojiPath;
@@ -43,7 +43,7 @@ public class WXEmojiObject
     }
     for (;;)
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", (String)localObject);
+      pq.a("MicroMsg.SDK.WXEmojiObject", (String)localObject);
       return false;
       localObject = this.emojiPath;
       if (localObject != null)

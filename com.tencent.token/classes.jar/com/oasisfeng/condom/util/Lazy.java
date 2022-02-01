@@ -1,10 +1,8 @@
 package com.oasisfeng.condom.util;
 
 import android.support.annotation.Keep;
-import android.support.annotation.RestrictTo;
 
 @Keep
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public abstract class Lazy<T>
 {
   private T mInstance;

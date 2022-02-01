@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
-import com.tencent.halley.common.b.a;
-import com.tencent.halley.common.b.b;
 import com.tencent.halley.common.b.c;
+import com.tencent.token.lj;
+import com.tencent.token.lk;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,21 +13,21 @@ public final class i
   public Map a = null;
   public int b = 0;
   
-  public final void a(a parama)
+  public final void a(lj paramlj)
   {
     if (c == null)
     {
       c = new HashMap();
       c.put(Integer.valueOf(0), Byte.valueOf((byte)0));
     }
-    this.a = ((Map)parama.a(c, 0, true));
-    this.b = parama.a(this.b, 1, true);
+    this.a = ((Map)paramlj.a(c, 0, true));
+    this.b = paramlj.a(this.b, 1, true);
   }
   
-  public final void a(b paramb)
+  public final void a(lk paramlk)
   {
-    paramb.a(this.a, 0);
-    paramb.a(this.b, 1);
+    paramlk.a(this.a, 0);
+    paramlk.a(this.b, 1);
   }
 }
 

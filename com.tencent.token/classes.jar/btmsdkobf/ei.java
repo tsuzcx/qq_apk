@@ -64,19 +64,19 @@ public class ei
         on = "ctwap";
         b = 6;
       }
-      else if (paramString.contains("ctnet"))
+      else
       {
+        if (!paramString.contains("ctnet")) {
+          break;
+        }
         on = "ctnet";
         b = 7;
       }
-      else
-      {
-        if (!paramString.contains("#777")) {
-          break;
-        }
-        on = "#777";
-        b = 8;
-      }
+    }
+    if (paramString.contains("#777"))
+    {
+      on = "#777";
+      oo = 8;
     }
   }
   
@@ -177,33 +177,36 @@ public class ei
       else
       {
         M(str);
-        if (str == null) {}
-        for (;;)
-        {
-          og = 0;
-          break label256;
-          if ((str.contains("cmwap")) || (str.contains("uniwap")) || (str.contains("3gwap")) || (str.contains("ctwap"))) {
-            break label235;
+        if (str != null) {
+          if ((!str.contains("cmwap")) && (!str.contains("uniwap")) && (!str.contains("3gwap")) && (!str.contains("ctwap")))
+          {
+            if ((!str.contains("cmnet")) && (!str.contains("uninet")) && (!str.contains("3gnet")) && (!str.contains("ctnet")))
+            {
+              if (str.contains("#777")) {
+                om = 2;
+              }
+            }
+            else
+            {
+              om = 1;
+              if ((str.contains("3gnet")) || (str.contains("ctnet"))) {
+                om = 2;
+              }
+              og = 1;
+              break label256;
+            }
           }
-          if ((str.contains("cmnet")) || (str.contains("uninet")) || (str.contains("3gnet")) || (str.contains("ctnet"))) {
-            break;
-          }
-          if (str.contains("#777")) {
-            om = 2;
+          else
+          {
+            om = 1;
+            if (str.contains("3gwap")) {
+              om = 2;
+            }
+            og = 2;
+            break label256;
           }
         }
-        om = 1;
-        if ((str.contains("3gnet")) || (str.contains("ctnet"))) {
-          om = 2;
-        }
-        og = 1;
-        break label256;
-        label235:
-        om = 1;
-        if (str.contains("3gwap")) {
-          om = 2;
-        }
-        og = 2;
+        og = 0;
         label256:
         ok = false;
         if (M(og))

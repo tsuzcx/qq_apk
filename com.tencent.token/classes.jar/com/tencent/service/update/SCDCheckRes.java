@@ -11,19 +11,19 @@ public final class SCDCheckRes
   public int retCode = 0;
   public long taskNo = 0L;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new SCDCheckRes();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.retCode = paramJceInputStream.read(this.retCode, 0, true);
     this.taskNo = paramJceInputStream.read(this.taskNo, 1, true);
     this.res = paramJceInputStream.read(this.res, 2, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retCode, 0);
     paramJceOutputStream.write(this.taskNo, 1);

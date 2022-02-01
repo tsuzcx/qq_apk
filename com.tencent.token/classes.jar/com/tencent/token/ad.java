@@ -1,21 +1,33 @@
 package com.tencent.token;
 
-import com.tencent.halley.common.e;
-import com.tencent.halley.downloader.c.d.a;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-public abstract interface ad
+public final class ad
+  extends JceStruct
 {
-  public abstract e a(ae paramae, a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5);
+  static byte[] c;
+  public int a = 0;
+  public byte[] b = null;
   
-  public abstract ac a(ae paramae);
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    if (c == null)
+    {
+      byte[] arrayOfByte = (byte[])new byte[1];
+      c = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.b = ((byte[])paramJceInputStream.read(c, 1, true));
+  }
   
-  public abstract boolean a();
-  
-  public abstract boolean a(ae paramae, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
-  
-  public abstract void b(ae paramae);
-  
-  public abstract void c(ae paramae);
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+  }
 }
 
 

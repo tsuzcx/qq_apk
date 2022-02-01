@@ -1,10 +1,8 @@
 package com.tencent.token;
 
-public abstract interface bc
+public abstract interface bc<T>
 {
-  public abstract ba a(String paramString);
-  
-  public abstract void a(ba paramba);
+  public abstract void a(T paramT);
 }
 
 

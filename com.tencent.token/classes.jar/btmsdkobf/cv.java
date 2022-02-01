@@ -134,12 +134,8 @@ public class cv
       if (paramas == null) {
         return;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(paramString1);
-      paramString1 = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[ocean][shark_funnel]|seqNo|seq_");
+      paramString1 = String.valueOf(paramString1);
+      StringBuilder localStringBuilder = new StringBuilder("[ocean][shark_funnel]|seqNo|seq_");
       localStringBuilder.append(paramInt2);
       localStringBuilder.append("|step|");
       localStringBuilder.append(paramInt3);
@@ -154,8 +150,7 @@ public class cv
       eh.i(paramString1, localStringBuilder.toString());
       if (paramInt1 == 21)
       {
-        paramString1 = new StringBuilder();
-        paramString1.append("|step|");
+        paramString1 = new StringBuilder("|step|");
         paramString1.append(paramInt3);
         paramString1.append("|cmdId|");
         paramString1.append(paramInt1);
@@ -166,7 +161,7 @@ public class cv
       paramas.bM = paramInt1;
       paramas.iE.set(paramInt3, true);
       if (paramString2 == null) {
-        break label355;
+        break label319;
       }
       paramas.iO = paramString2;
     }
@@ -190,7 +185,7 @@ public class cv
       }
       paramas.iN = System.currentTimeMillis();
       return;
-      label355:
+      label319:
       if ((paramInt3 != 14) && (paramInt3 != 9)) {
         if (paramInt3 != 10) {
           break;
@@ -221,12 +216,8 @@ public class cv
       if (paramba == null) {
         return;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(paramString1);
-      paramString1 = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[ocean][shark_funnel]|seqNo|seq_");
+      paramString1 = String.valueOf(paramString1);
+      StringBuilder localStringBuilder = new StringBuilder("[ocean][shark_funnel]|seqNo|seq_");
       localStringBuilder.append(paramInt2);
       localStringBuilder.append("|step|");
       localStringBuilder.append(paramInt3);
@@ -241,8 +232,7 @@ public class cv
       eh.i(paramString1, localStringBuilder.toString());
       if (paramInt1 == 10021)
       {
-        paramString1 = new StringBuilder();
-        paramString1.append("|step|");
+        paramString1 = new StringBuilder("|step|");
         paramString1.append(paramInt3);
         paramString1.append("|cmdId|");
         paramString1.append(paramInt1);
@@ -299,10 +289,10 @@ public class cv
             if (k == -50000)
             {
               if (!locala.iI) {
-                break label737;
+                break label720;
               }
               i = -550000;
-              break label781;
+              break label764;
             }
           }
         }
@@ -318,7 +308,7 @@ public class cv
         }
         localStringBuilder.append("|channel|");
         if (!bool) {
-          break label792;
+          break label775;
         }
         Object localObject1 = "http";
         localStringBuilder.append((String)localObject1);
@@ -355,23 +345,20 @@ public class cv
         localStringBuilder.append(locala.iP);
         if (locala.df == 0)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("[shark_funnel]");
+          localObject1 = new StringBuilder("[shark_funnel]");
           ((StringBuilder)localObject1).append(localStringBuilder.toString());
           eh.e("SharkFunnelModel", ((StringBuilder)localObject1).toString());
         }
         else if (paramBoolean)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("xxxxxxxxxxxx [shark_funnel]");
+          localObject1 = new StringBuilder("xxxxxxxxxxxx [shark_funnel]");
           ((StringBuilder)localObject1).append(localStringBuilder.toString());
           localObject1 = ((StringBuilder)localObject1).toString();
           eh.h("SharkFunnelModel", (String)localObject1);
         }
         else
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("tttt [shark_funnel]");
+          localObject1 = new StringBuilder("tttt [shark_funnel]");
           ((StringBuilder)localObject1).append(localStringBuilder.toString());
           localObject1 = ((StringBuilder)localObject1).toString();
           continue;
@@ -399,7 +386,7 @@ public class cv
         return bool;
       }
       finally {}
-      label737:
+      label720:
       if (m == -4) {
         i = -530000;
       } else if (m == -1) {
@@ -409,10 +396,10 @@ public class cv
       } else {
         i = k;
       }
-      label781:
+      label764:
       int i = j - k + i;
       continue;
-      label792:
+      label775:
       String str = "tcp";
     }
   }
@@ -441,17 +428,17 @@ public class cv
     //   3: aload_1
     //   4: putfield 36	btmsdkobf/cv:he	Lbtmsdkobf/cl;
     //   7: aload_0
-    //   8: invokestatic 304	btmsdkobf/bc:n	()Landroid/content/Context;
-    //   11: ldc_w 306
-    //   14: invokevirtual 312	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   8: invokestatic 310	btmsdkobf/bc:n	()Landroid/content/Context;
+    //   11: ldc_w 312
+    //   14: invokevirtual 318	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   17: checkcast 100	android/os/PowerManager
     //   20: putfield 38	btmsdkobf/cv:iB	Landroid/os/PowerManager;
-    //   23: invokestatic 318	btmsdkobf/cz:bS	()Lbtmsdkobf/cz;
+    //   23: invokestatic 324	btmsdkobf/cz:bS	()Lbtmsdkobf/cz;
     //   26: new 6	btmsdkobf/cv$1
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 321	btmsdkobf/cv$1:<init>	(Lbtmsdkobf/cv;)V
-    //   34: invokevirtual 324	btmsdkobf/cz:a	(Lbtmsdkobf/cz$b;)V
+    //   31: invokespecial 327	btmsdkobf/cv$1:<init>	(Lbtmsdkobf/cv;)V
+    //   34: invokevirtual 330	btmsdkobf/cz:a	(Lbtmsdkobf/cz$b;)V
     //   37: aload_0
     //   38: monitorexit
     //   39: return

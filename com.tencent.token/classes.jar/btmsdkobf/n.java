@@ -13,7 +13,7 @@ public final class n
   public ArrayList<o> an = null;
   public p ao = null;
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     if (ap == null)
     {
@@ -28,7 +28,7 @@ public final class n
     this.ao = ((p)paramJceInputStream.read(aq, 1, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.an, 0);
     p localp = this.ao;

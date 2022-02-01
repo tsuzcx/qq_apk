@@ -33,11 +33,10 @@ public final class N
     this.g = paramh.a(this.g, 6, true);
     if (m == null)
     {
-      arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = (byte[])new byte[1];
       m = arrayOfByte;
       ((byte[])arrayOfByte)[0] = 0;
     }
-    byte[] arrayOfByte = m;
     this.h = ((byte[])paramh.c(7, true));
     this.i = paramh.b(8, false);
     this.j = paramh.b(9, false);

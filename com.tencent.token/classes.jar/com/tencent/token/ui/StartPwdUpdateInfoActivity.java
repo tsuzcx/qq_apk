@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ce;
+import com.tencent.token.sd;
 
 public class StartPwdUpdateInfoActivity
   extends BaseActivity
@@ -24,7 +24,7 @@ public class StartPwdUpdateInfoActivity
   {
     this.mButtonCreate.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(StartPwdUpdateInfoActivity.this, StartPwdGestureModifyActivity.class);
         if (StartPwdUpdateInfoActivity.this.source == StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER) {
@@ -45,9 +45,9 @@ public class StartPwdUpdateInfoActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 258) && ((paramInt2 == 259) || (ce.a().d())))
+    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sd.a().d())))
     {
-      showOrangeToast(2131493236, 2131100167);
+      showOrangeToast(2131493236, 2131100170);
       setResult(259);
       startActivity(new Intent(this, StartPwdGestureSelActivity.class));
       finish();
@@ -58,10 +58,10 @@ public class StartPwdUpdateInfoActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2131296452);
+    setContentView(2131296453);
     this.source = getIntent().getIntExtra(SOURCE_TO_START_PSW, -1);
-    this.mButtonCreate = ((Button)findViewById(2131166194));
-    this.mButtonSkip = ((Button)findViewById(2131166198));
+    this.mButtonCreate = ((Button)findViewById(2131166207));
+    this.mButtonSkip = ((Button)findViewById(2131166211));
     initUI();
   }
 }

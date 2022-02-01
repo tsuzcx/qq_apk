@@ -3,6 +3,7 @@ package com.tencent.token.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.provider.Settings.SettingNotFoundException;
@@ -17,19 +18,20 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.bv;
-import com.tencent.token.global.g;
+import com.tencent.token.aae;
+import com.tencent.token.ru;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.utils.m;
+import com.tencent.token.xb;
+import com.tencent.token.xx;
 
 public class FaceRecognitionCameraPreview
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  private SurfaceHolder a;
-  private int b = -1;
-  private Handler c;
-  private h d;
+  xx a;
+  private SurfaceHolder b;
+  private int c = -1;
+  private Handler d;
   private Context e;
   private FaceView f;
   private TextView g;
@@ -45,7 +47,7 @@ public class FaceRecognitionCameraPreview
     this.e = paramContext;
   }
   
-  public void a()
+  public final void a()
   {
     try
     {
@@ -66,31 +68,31 @@ public class FaceRecognitionCameraPreview
     }
   }
   
-  public void a(Context paramContext, int paramInt, Handler paramHandler, FaceView paramFaceView, TextView paramTextView)
+  public final void a(Context paramContext, int paramInt, Handler paramHandler, FaceView paramFaceView, TextView paramTextView)
   {
     this.e = paramContext;
-    this.c = paramHandler;
-    this.b = paramInt;
-    this.a = getHolder();
-    this.a.addCallback(this);
-    this.a.setType(3);
+    this.d = paramHandler;
+    this.c = paramInt;
+    this.b = getHolder();
+    this.b.addCallback(this);
+    this.b.setType(3);
     this.f = paramFaceView;
     this.g = paramTextView;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
     setStop(false);
-    h localh = this.d;
-    if (localh != null)
+    xx localxx = this.a;
+    if (localxx != null)
     {
-      localh.a(0L);
-      this.d.a(paramBoolean2, paramInt1, paramInt2, true);
-      this.d.b(paramBoolean1);
+      localxx.c = 0L;
+      localxx.a(paramBoolean2, paramInt1, paramInt2, true);
+      this.a.b = paramBoolean1;
     }
   }
   
-  public void b()
+  public final void b()
   {
     try
     {
@@ -117,79 +119,96 @@ public class FaceRecognitionCameraPreview
     }
   }
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
+  public final void c()
   {
-    setStop(false);
-    h localh = this.d;
-    if (localh != null)
+    xx localxx = this.a;
+    if (localxx != null)
     {
-      localh.a(0L);
-      this.d.a(paramBoolean2, paramInt1, paramInt2, false);
-      this.d.b(paramBoolean1);
-    }
-  }
-  
-  public void c()
-  {
-    h localh = this.d;
-    if (localh != null)
-    {
-      localh.d();
-      this.d = null;
+      localxx.a();
+      this.a = null;
     }
     this.e = null;
-    this.c = null;
+    this.d = null;
   }
   
   public Camera getCamera()
   {
-    h localh = this.d;
-    if (localh != null) {
-      return localh.a;
+    xx localxx = this.a;
+    if (localxx != null) {
+      return localxx.d;
     }
     return null;
   }
   
   public void setStop(boolean paramBoolean)
   {
-    h localh = this.d;
-    if (localh != null) {
-      localh.a(paramBoolean);
+    xx localxx = this.a;
+    if (localxx != null) {
+      localxx.a = paramBoolean;
     }
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.getSurface() == null) {
+    if (this.b.getSurface() == null) {
       return;
     }
-    this.f.a(paramInt2, paramInt3);
+    paramSurfaceHolder = this.f;
+    StringBuilder localStringBuilder = new StringBuilder("changescreenwidth=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", screenheight=");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", titleheight=");
+    localStringBuilder.append(IndexActivity.S_STATUS_HEIGHT);
+    xb.c(localStringBuilder.toString());
+    if (paramInt3 != paramSurfaceHolder.c)
+    {
+      paramSurfaceHolder.b = paramInt2;
+      paramSurfaceHolder.c = paramInt3;
+      paramSurfaceHolder.f = (paramSurfaceHolder.b / 2);
+      paramSurfaceHolder.g = ((int)((paramSurfaceHolder.c - paramSurfaceHolder.a * 40.0F) / 2.0F));
+      FaceView.j = (paramSurfaceHolder.f - paramSurfaceHolder.e) / paramSurfaceHolder.b;
+      FaceView.k = (paramSurfaceHolder.g - paramSurfaceHolder.e) / paramSurfaceHolder.c;
+      FaceView.l = paramSurfaceHolder.e * 2.0F / paramSurfaceHolder.b;
+      FaceView.m = paramSurfaceHolder.e * 2.0F / paramSurfaceHolder.c;
+      paramInt1 = 1;
+      paramSurfaceHolder.h = paramSurfaceHolder.f;
+      paramSurfaceHolder.i = paramSurfaceHolder.g;
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if ((paramSurfaceHolder.d == null) || (paramInt1 != 0))
+    {
+      paramSurfaceHolder.d = new Rect(0, 0, paramSurfaceHolder.b, paramSurfaceHolder.c);
+      paramSurfaceHolder.invalidate();
+    }
     this.f.invalidate();
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    g.c("surfaceCreated!");
+    xb.c("surfaceCreated!");
     try
     {
       b();
-      paramSurfaceHolder = new StringBuilder();
-      paramSurfaceHolder.append("set brightvalue=");
+      paramSurfaceHolder = new StringBuilder("set brightvalue=");
       paramSurfaceHolder.append(Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
-      g.a(paramSurfaceHolder.toString());
-      if (this.b != 5)
+      xb.a(paramSurfaceHolder.toString());
+      if (this.c != 5)
       {
         this.i = ((ImageView)((Activity)this.e).findViewById(2131165295));
         this.j = ((Activity)this.e).findViewById(2131165297);
-        this.k = ((Activity)this.e).findViewById(2131165322);
-        if (!m.v())
+        this.k = ((Activity)this.e).findViewById(2131165323);
+        if (!aae.v())
         {
           this.k.setVisibility(0);
           this.k.bringToFront();
-          m.w();
+          aae.w();
           this.k.postDelayed(new Runnable()
           {
-            public void run()
+            public final void run()
             {
               FaceRecognitionCameraPreview.a(FaceRecognitionCameraPreview.this).setVisibility(4);
             }
@@ -198,7 +217,7 @@ public class FaceRecognitionCameraPreview
         if ((this.i != null) && (this.j != null)) {
           this.j.setOnClickListener(new View.OnClickListener()
           {
-            public void onClick(View paramAnonymousView)
+            public final void onClick(View paramAnonymousView)
             {
               for (;;)
               {
@@ -207,12 +226,12 @@ public class FaceRecognitionCameraPreview
                   bool = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this).getBrightMode();
                   if (bool)
                   {
-                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099844));
+                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099845));
                   }
                   else
                   {
-                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099845));
-                    bv.a().a(System.currentTimeMillis(), 201);
+                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099846));
+                    ru.a().a(System.currentTimeMillis(), 201);
                   }
                   paramAnonymousView = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this);
                   if (!bool)
@@ -243,19 +262,39 @@ public class FaceRecognitionCameraPreview
     {
       paramSurfaceHolder.printStackTrace();
     }
-    if (this.d == null) {
-      this.d = new h(this.e, this.a, this.c, this.l, this.b, this.f, this.g, this.k);
+    if (this.a == null) {
+      this.a = new xx(this.e, this.b, this.d, this.l, this.c, this.f, this.g, this.k);
     }
-    this.d.c();
+    paramSurfaceHolder = this.a;
+    if (paramSurfaceHolder.d == null) {
+      try
+      {
+        paramSurfaceHolder.b();
+        paramSurfaceHolder.c();
+        return;
+      }
+      catch (Exception paramSurfaceHolder)
+      {
+        paramSurfaceHolder.printStackTrace();
+      }
+    }
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    g.c("surfaceDestroyed!");
+    xb.c("surfaceDestroyed!");
     try
     {
-      if (this.d != null) {
-        this.d.e();
+      if (this.a != null)
+      {
+        paramSurfaceHolder = this.a;
+        if (paramSurfaceHolder.d != null)
+        {
+          paramSurfaceHolder.d.setPreviewCallback(null);
+          paramSurfaceHolder.d.stopPreview();
+          paramSurfaceHolder.d.release();
+          paramSurfaceHolder.d = null;
+        }
       }
     }
     catch (Exception paramSurfaceHolder)

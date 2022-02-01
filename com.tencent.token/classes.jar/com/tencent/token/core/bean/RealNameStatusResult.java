@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -42,10 +42,8 @@ public class RealNameStatusResult
   public RealNameStatusResult(JSONObject paramJSONObject)
   {
     this.mRealStatus = paramJSONObject.getInt("realname_status");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("real_name_status_result: ");
-    localStringBuilder.append(paramJSONObject);
-    g.a(localStringBuilder.toString());
+    xb.a("real_name_status_result: ".concat(String.valueOf(paramJSONObject)));
+    label137:
     try
     {
       this.mToastText = paramJSONObject.getString("top_toast_text");
@@ -53,10 +51,10 @@ public class RealNameStatusResult
     }
     catch (Exception localException1)
     {
-      label65:
-      break label65;
+      label49:
+      break label49;
     }
-    g.c("json parse error: mToastText,mToastUrl");
+    xb.c("json parse error: mToastText,mToastUrl");
     switch (this.mRealStatus)
     {
     default: 
@@ -74,13 +72,12 @@ public class RealNameStatusResult
     }
     catch (Exception localException2)
     {
-      label153:
-      break label153;
+      break label137;
     }
-    g.c("json parse error: apply_refused_time");
+    xb.c("json parse error: apply_refused_time");
     this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
     this.mVerify_sms = paramJSONObject.optInt("verify_sms", 1);
-    break label388;
+    break label372;
     this.regVersion = paramJSONObject.getInt("reg_version");
     if (this.regVersion == 1)
     {
@@ -97,7 +94,7 @@ public class RealNameStatusResult
     this.mDailyZzbCnt = paramJSONObject.getInt("daily_zzb_cnt");
     this.mMaskMobile = paramJSONObject.getString("masked_mobile");
     this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
-    break label388;
+    break label372;
     this.mMaskName = paramJSONObject.getString("masked_name");
     this.mMaskId = paramJSONObject.getString("masked_id");
     this.mMaskMobile = paramJSONObject.getString("masked_mobile");
@@ -107,13 +104,12 @@ public class RealNameStatusResult
     this.shareTitle = paramJSONObject.getString("share_title");
     this.shareCircleText = paramJSONObject.getString("share_circle_text");
     this.shareFriendText = paramJSONObject.getString("share_friend_text");
-    label388:
-    paramJSONObject = new StringBuilder();
-    paramJSONObject.append("realname_status=");
+    label372:
+    paramJSONObject = new StringBuilder("realname_status=");
     paramJSONObject.append(this.mRealStatus);
     paramJSONObject.append(", mobile=");
     paramJSONObject.append(this.mMaskMobile);
-    g.b(paramJSONObject.toString());
+    xb.b(paramJSONObject.toString());
   }
 }
 

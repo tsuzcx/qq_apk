@@ -30,18 +30,16 @@ public final class g
     if (paramContext.getType() == 1) {
       return "wifi";
     }
-    Object localObject = paramContext.getExtraInfo();
-    paramContext = (Context)localObject;
-    if (localObject != null)
+    String str = paramContext.getExtraInfo();
+    paramContext = str;
+    if (str != null)
     {
-      paramContext = (Context)localObject;
-      if (((String)localObject).length() > 64) {
-        paramContext = ((String)localObject).substring(0, 64);
+      paramContext = str;
+      if (str.length() > 64) {
+        paramContext = str.substring(0, 64);
       }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramContext);
-    return ((StringBuilder)localObject).toString();
+    return String.valueOf(paramContext);
   }
   
   private static NetworkInfo d(Context paramContext)

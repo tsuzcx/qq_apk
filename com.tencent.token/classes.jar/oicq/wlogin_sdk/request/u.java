@@ -43,8 +43,7 @@ public class u
       util.int32_to_buf(paramArrayOfByte3, 4, (int)paramLong2);
       util.int16_to_buf(paramArrayOfByte3, 8, paramArrayOfByte2.length);
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, 10, paramArrayOfByte2.length);
-      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, 10 + paramArrayOfByte2.length, paramArrayOfByte1.length);
-      i = paramArrayOfByte1.length;
+      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, paramArrayOfByte2.length + 10, paramArrayOfByte1.length);
       return paramArrayOfByte3;
     }
     paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, "x'Z8mSi,V(Wu~.v:".getBytes());
@@ -53,7 +52,6 @@ public class u
     util.int32_to_buf(paramArrayOfByte2, 4, (int)paramLong2);
     util.int16_to_buf(paramArrayOfByte2, 8, 0);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 10, paramArrayOfByte1.length);
-    int i = paramArrayOfByte1.length;
     return paramArrayOfByte2;
   }
   
@@ -68,7 +66,6 @@ public class u
     util.int64_to_buf32(arrayOfByte, 20, paramLong3 / 1000L);
     util.int8_to_buf(arrayOfByte, 24, paramInt);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 33, paramArrayOfByte.length);
-    paramInt = paramArrayOfByte.length;
     return arrayOfByte;
   }
   
@@ -107,10 +104,7 @@ public class u
         paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
         report_t.delete_file(t.t);
         i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
-        paramArrayOfByte1 = new StringBuilder();
-        paramArrayOfByte1.append("request_report_error(0) rsp: ret=");
-        paramArrayOfByte1.append(i);
-        util.LOGI(paramArrayOfByte1.toString());
+        util.LOGI("request_report_error(0) rsp: ret=".concat(String.valueOf(i)));
         if (i != 0)
         {
           report_t.write_tofile(t.an, t.t);
@@ -128,29 +122,28 @@ public class u
   {
     if ((this.a.d != null) && (!t.e.booleanValue()))
     {
-      t.e = Boolean.valueOf(true);
+      t.e = Boolean.TRUE;
       long l3 = System.currentTimeMillis();
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
       Calendar localCalendar = Calendar.getInstance();
-      int i = this.a.d.get_bitmap();
-      int j = this.a.d.get_network();
-      paramArrayOfByte1 = new StringBuilder();
-      paramArrayOfByte1.append("bitmap:");
-      paramArrayOfByte1.append(i);
+      int k = this.a.d.get_bitmap();
+      int i = this.a.d.get_network();
+      paramArrayOfByte1 = new StringBuilder("bitmap:");
+      paramArrayOfByte1.append(k);
       paramArrayOfByte1.append(" network:");
-      paramArrayOfByte1.append(j);
+      paramArrayOfByte1.append(i);
       paramArrayOfByte1.append(" local network:");
       paramArrayOfByte1.append(util.get_network_type(t.t));
       util.LOGI(paramArrayOfByte1.toString());
-      int k = 0;
-      while (k < 32)
+      int j = 0;
+      while (j < 32)
       {
-        if ((1 << k & i) != 0)
+        if ((1 << j & k) != 0)
         {
-          if ((j != 0) && ((j != 1) || (util.get_network_type(t.t) != 2))) {
-            break label352;
+          if ((i != 0) && ((i != 1) || (util.get_network_type(t.t) != 2))) {
+            break label341;
           }
-          long l1 = l3 - 86400000 * k;
+          long l1 = l3 - 86400000 * j;
           localCalendar.setTimeInMillis(l1);
           String str = localSimpleDateFormat.format(localCalendar.getTime());
           long l2 = util.getLogModifyTime(t.t, str);
@@ -166,8 +159,7 @@ public class u
           if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
           {
             int m = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
-            paramArrayOfByte1 = new StringBuilder();
-            paramArrayOfByte1.append("request_report_error(1) rsp: ret=");
+            paramArrayOfByte1 = new StringBuilder("request_report_error(1) rsp: ret=");
             paramArrayOfByte1.append(m);
             paramArrayOfByte1.append("(");
             paramArrayOfByte1.append(str);
@@ -175,12 +167,12 @@ public class u
             util.LOGI(paramArrayOfByte1.toString());
           }
         }
-        label352:
-        k += 1;
+        label341:
+        j += 1;
       }
     }
     this.a.d = null;
-    t.e = Boolean.valueOf(false);
+    t.e = Boolean.FALSE;
     return 0;
   }
 }

@@ -54,30 +54,28 @@ public class cr
     {
       String str = ef.a(new ef.a()
       {
-        public void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        public final void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
-          Object localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[detect_conn]detectSync(), network error? ");
-          ((StringBuilder)localObject).append(paramAnonymousBoolean2);
-          eh.f("NetworkDetector", ((StringBuilder)localObject).toString());
+          eh.f("NetworkDetector", "[detect_conn]detectSync(), network error? ".concat(String.valueOf(paramAnonymousBoolean2)));
+          cr localcr;
           int i;
           if (paramAnonymousBoolean2)
           {
-            localObject = cr.this;
+            localcr = cr.this;
             i = -3;
           }
           for (;;)
           {
-            cr.a((cr)localObject, i);
+            cr.a(localcr, i);
             return;
             if (paramAnonymousBoolean1)
             {
-              localObject = cr.this;
+              localcr = cr.this;
               i = -2;
             }
             else
             {
-              localObject = cr.this;
+              localcr = cr.this;
               i = 0;
             }
           }
@@ -87,8 +85,7 @@ public class cr
     catch (Throwable localThrowable)
     {
       this.ig = -3;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[detect_conn]detectSync(), exception: ");
+      localStringBuilder = new StringBuilder("[detect_conn]detectSync(), exception: ");
       localStringBuilder.append(localThrowable.toString());
       eh.h("NetworkDetector", localStringBuilder.toString());
       localCharSequence = null;
@@ -96,8 +93,7 @@ public class cr
     this.ii = false;
     this.ij = System.currentTimeMillis();
     boolean bool = true ^ TextUtils.isEmpty(localCharSequence);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[detect_conn]detectSync(),  isNeed wifi approve? ");
+    StringBuilder localStringBuilder = new StringBuilder("[detect_conn]detectSync(),  isNeed wifi approve? ");
     localStringBuilder.append(bool);
     localStringBuilder.append(" url: ");
     localStringBuilder.append(localCharSequence);
@@ -155,8 +151,7 @@ public class cr
         break;
       }
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[detect_conn]getNetworkState(), mNetworkState: ");
+    StringBuilder localStringBuilder = new StringBuilder("[detect_conn]getNetworkState(), mNetworkState: ");
     localStringBuilder.append(u(this.ig));
     eh.f("NetworkDetector", localStringBuilder.toString());
     return this.ig;
@@ -203,7 +198,7 @@ public class cr
     this.ig = -1;
   }
   
-  private class a
+  final class a
     extends Handler
   {
     public a(Looper paramLooper)
@@ -211,7 +206,7 @@ public class cr
       super();
     }
     
-    public void handleMessage(Message paramMessage)
+    public final void handleMessage(Message paramMessage)
     {
       if (paramMessage.what != 1) {
         return;

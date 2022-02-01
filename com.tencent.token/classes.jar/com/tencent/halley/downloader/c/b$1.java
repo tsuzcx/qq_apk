@@ -1,6 +1,6 @@
 package com.tencent.halley.downloader.c;
 
-final class b$1 {}
+public final class b$1 {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

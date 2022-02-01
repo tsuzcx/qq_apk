@@ -1,5 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class Ginkgo
   extends break
 {
@@ -9,24 +12,24 @@ public final class Ginkgo
   public int xc = 0;
   public String yc = "";
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.Nb = paramcy.a(0, true);
-    this.xc = paramcy.a(this.xc, 1, true);
-    this.version = paramcy.a(2, true);
-    this.S = paramcy.a(3, true);
-    this.yc = paramcy.a(4, false);
+    this.Nb = paramafl.a(0, true);
+    this.xc = paramafl.a(this.xc, 1, true);
+    this.version = paramafl.a(2, true);
+    this.S = paramafl.a(3, true);
+    this.yc = paramafl.a(4, false);
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.Nb, 0);
-    paramdb.a(this.xc, 1);
-    paramdb.a(this.version, 2);
-    paramdb.a(this.S, 3);
+    paramafo.a(this.Nb, 0);
+    paramafo.a(this.xc, 1);
+    paramafo.a(this.version, 2);
+    paramafo.a(this.S, 3);
     String str = this.yc;
     if (str != null) {
-      paramdb.a(str, 4);
+      paramafo.a(str, 4);
     }
   }
 }

@@ -41,10 +41,7 @@ public class by
     if (paramString == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onSaveGuidToPhone() guid: ");
-    localStringBuilder.append(paramString);
-    eg.f("SharkOutlet", localStringBuilder.toString());
+    eg.f("SharkOutlet", "onSaveGuidToPhone() guid: ".concat(String.valueOf(paramString)));
     bw.ah().n(paramString);
   }
   
@@ -65,10 +62,7 @@ public class by
   public String aB()
   {
     String str = bw.ah().aj();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onGetGuidFromPhone() guid: ");
-    localStringBuilder.append(str);
-    eg.f("SharkOutlet", localStringBuilder.toString());
+    eg.f("SharkOutlet", "onGetGuidFromPhone() guid: ".concat(String.valueOf(str)));
     return str;
   }
   
@@ -108,10 +102,7 @@ public class by
   public long aJ()
   {
     long l = bw.ah().am();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onGetGuidUpdateCheckTimeMillis() tm: ");
-    localStringBuilder.append(l);
-    eg.f("SharkOutlet", localStringBuilder.toString());
+    eg.f("SharkOutlet", "onGetGuidUpdateCheckTimeMillis() tm: ".concat(String.valueOf(l)));
     return l;
   }
   
@@ -180,10 +171,7 @@ public class by
   
   public void c(long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onSaveGuidUpdateCheckTimeMillis() timeMillis: ");
-    localStringBuilder.append(paramLong);
-    eg.f("SharkOutlet", localStringBuilder.toString());
+    eg.f("SharkOutlet", "onSaveGuidUpdateCheckTimeMillis() timeMillis: ".concat(String.valueOf(paramLong)));
     bw.ah().b(paramLong);
   }
   

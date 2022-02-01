@@ -1,18 +1,10 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.DatabaseErrorHandler;
-import com.tencent.wcdb.DefaultDatabaseErrorHandler;
-import com.tencent.wcdb.database.SQLiteDatabase;
-
-public final class eo
-  implements DatabaseErrorHandler
+public abstract interface eo
 {
-  private DefaultDatabaseErrorHandler a = new DefaultDatabaseErrorHandler();
+  public abstract boolean isNestedScrollingEnabled();
   
-  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
-  {
-    this.a.onCorruption(paramSQLiteDatabase);
-  }
+  public abstract void stopNestedScroll();
 }
 
 

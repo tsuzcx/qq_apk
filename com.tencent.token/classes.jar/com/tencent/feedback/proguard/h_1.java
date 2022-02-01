@@ -115,9 +115,7 @@ public final class h
               paramInt += 1;
             }
           }
-          paramMap1 = new StringBuilder("size invalid: ");
-          paramMap1.append(i);
-          throw new g(paramMap1.toString());
+          throw new g("size invalid: ".concat(String.valueOf(i)));
         }
         throw new g("type mismatch.");
       }
@@ -278,9 +276,7 @@ public final class h
           }
           return localObject;
         }
-        paramT = new StringBuilder("size invalid: ");
-        paramT.append(i);
-        throw new g(paramT.toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -319,9 +315,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -357,9 +351,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -395,9 +387,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -433,9 +423,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -471,9 +459,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -509,9 +495,7 @@ public final class h
             paramInt += 1;
           }
         }
-        localObject = new StringBuilder("size invalid: ");
-        ((StringBuilder)localObject).append(i);
-        throw new g(((StringBuilder)localObject).toString());
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
       throw new g("type mismatch.");
     }
@@ -804,15 +788,13 @@ public final class h
       break label118;
     }
     return new String((byte[])localObject);
-    Object localObject = new StringBuilder("String too long: ");
-    ((StringBuilder)localObject).append(paramInt);
-    throw new g(((StringBuilder)localObject).toString());
+    throw new g("String too long: ".concat(String.valueOf(paramInt)));
     i = this.a.get();
     paramInt = i;
     if (i < 0) {
       paramInt = i + 256;
     }
-    localObject = new byte[paramInt];
+    Object localObject = new byte[paramInt];
     this.a.get((byte[])localObject);
     try
     {
@@ -821,8 +803,8 @@ public final class h
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException2)
     {
-      label213:
-      break label213;
+      label199:
+      break label199;
     }
     return new String((byte[])localObject);
     if (!paramBoolean) {
@@ -885,9 +867,7 @@ public final class h
         }
         return localObject;
       }
-      localObject = new StringBuilder("size invalid: ");
-      ((StringBuilder)localObject).append(i);
-      throw new g(((StringBuilder)localObject).toString());
+      throw new g("size invalid: ".concat(String.valueOf(i)));
     }
     if (!paramBoolean) {
       return null;

@@ -11,8 +11,6 @@ import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cc;
-import com.tencent.token.global.g;
 
 public class ProDialogWithShutDown
   extends Dialog
@@ -23,20 +21,12 @@ public class ProDialogWithShutDown
   private String d;
   private boolean e;
   
-  public ProDialogWithShutDown(Activity paramActivity, int paramInt, View.OnClickListener paramOnClickListener, String paramString)
+  public ProDialogWithShutDown(Activity paramActivity, View.OnClickListener paramOnClickListener, String paramString)
   {
-    super(paramActivity, paramInt);
+    super(paramActivity, 2131558791);
     this.a = paramActivity;
     this.c = paramOnClickListener;
     this.d = paramString;
-  }
-  
-  private void a()
-  {
-    g.c("dismiss and cancel request");
-    if (this.a != null) {
-      cc.a().a(this.a.getClass().getName());
-    }
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -45,28 +35,28 @@ public class ProDialogWithShutDown
     if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
       super.onCreate(paramBundle);
-      setContentView(2131296399);
-      getWindow().setBackgroundDrawableResource(2131099876);
+      setContentView(2131296400);
+      getWindow().setBackgroundDrawableResource(2131099877);
       if (this.e)
       {
-        paramBundle = (TextView)findViewById(2131165821);
+        paramBundle = (TextView)findViewById(2131165825);
         localObject = this.d;
         if ((localObject != null) && (((String)localObject).length() > 0)) {
           paramBundle.setText(this.d);
         }
       }
-      ((ImageView)findViewById(2131165819)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
-      this.b = ((ImageView)findViewById(2131165820));
+      ((ImageView)findViewById(2131165823)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165824));
       this.b.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           ProDialogWithShutDown.this.dismiss();
         }
       });
       setOnDismissListener(new DialogInterface.OnDismissListener()
       {
-        public void onDismiss(DialogInterface paramAnonymousDialogInterface)
+        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           ProDialogWithShutDown.a(ProDialogWithShutDown.this);
           if (ProDialogWithShutDown.b(ProDialogWithShutDown.this) != null) {

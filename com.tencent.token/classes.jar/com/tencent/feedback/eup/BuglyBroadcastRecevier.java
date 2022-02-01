@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Process;
-import android.util.Log;
 import com.tencent.feedback.common.c;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
@@ -83,9 +82,7 @@ public class BuglyBroadcastRecevier
         Intent localIntent = new Intent("com.tencent.feedback.A02");
         localIntent.putExtra("com.tencent.feedback.P12", (byte[])localObject2);
         localObject2 = new Bundle();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append((String)localObject1);
-        ((Bundle)localObject2).putString("com.tencent.feedback.P01", localStringBuilder.toString());
+        ((Bundle)localObject2).putString("com.tencent.feedback.P01", String.valueOf(localObject1));
         ((Bundle)localObject2).putString("com.tencent.feedback.P02", parame.q());
         ((Bundle)localObject2).putString("com.tencent.feedback.P04", parame.r());
         ((Bundle)localObject2).putByte("com.tencent.feedback.P05", parame.P());
@@ -107,11 +104,8 @@ public class BuglyBroadcastRecevier
       }
       catch (Throwable paramContext)
       {
-        if (!com.tencent.feedback.common.e.a(paramContext))
-        {
-          parame = new StringBuilder("something error ");
-          parame.append(paramContext.getClass().getName());
-          Log.w("eup", parame.toString());
+        if (!com.tencent.feedback.common.e.a(paramContext)) {
+          new StringBuilder("something error ").append(paramContext.getClass().getName());
         }
         return;
       }
@@ -125,7 +119,7 @@ public class BuglyBroadcastRecevier
     }
     try
     {
-      localObject1 = CrashReport.getCrashRuntimeStrategy();
+      Object localObject1 = CrashReport.getCrashRuntimeStrategy();
       if (localObject1 == null)
       {
         com.tencent.feedback.common.e.d("magic! no crash stategy,no notify return ?", new Object[0]);
@@ -142,9 +136,7 @@ public class BuglyBroadcastRecevier
       localObject1 = new Intent("com.tencent.feedback.A01");
       ((Intent)localObject1).putExtra("com.tencent.feedback.P12", (byte[])localObject3);
       localObject3 = new Bundle();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append((String)localObject2);
-      ((Bundle)localObject3).putString("com.tencent.feedback.P01", localStringBuilder.toString());
+      ((Bundle)localObject3).putString("com.tencent.feedback.P01", String.valueOf(localObject2));
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(com.tencent.feedback.common.a.a(Process.myPid()));
       ((Bundle)localObject3).putString("com.tencent.feedback.P02", ((StringBuilder)localObject2).toString());
@@ -155,12 +147,8 @@ public class BuglyBroadcastRecevier
     }
     catch (Throwable paramContext)
     {
-      Object localObject1;
-      if (!com.tencent.feedback.common.e.a(paramContext))
-      {
-        localObject1 = new StringBuilder("something error ");
-        ((StringBuilder)localObject1).append(paramContext.getClass().getName());
-        Log.w("eup", ((StringBuilder)localObject1).toString());
+      if (!com.tencent.feedback.common.e.a(paramContext)) {
+        new StringBuilder("something error ").append(paramContext.getClass().getName());
       }
     }
   }
@@ -256,44 +244,39 @@ public class BuglyBroadcastRecevier
           }
           try
           {
-            Object localObject1 = paramContext.getPackageName();
-            String str = c.a(paramContext).E();
-            Object localObject2 = paramIntent.getByteArrayExtra("com.tencent.feedback.P12");
-            paramContext = paramIntent.getBundleExtra("com.tencent.feedback.B02");
-            if ((localObject2 != null) && (paramContext != null))
+            String str = paramContext.getPackageName();
+            paramContext = c.a(paramContext).E();
+            Object localObject1 = paramIntent.getByteArrayExtra("com.tencent.feedback.P12");
+            paramIntent = paramIntent.getBundleExtra("com.tencent.feedback.B02");
+            if ((localObject1 != null) && (paramIntent != null))
             {
-              paramIntent = new String(com.tencent.feedback.proguard.a.b((byte[])localObject2, 1, "feedback"), "utf8");
-              if (!paramIntent.equals(paramContext.getString("com.tencent.feedback.P01")))
+              localObject1 = new String(com.tencent.feedback.proguard.a.b((byte[])localObject1, 1, "feedback"), "utf8");
+              if (!((String)localObject1).equals(paramIntent.getString("com.tencent.feedback.P01")))
               {
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append(paramContext.getString("com.tencent.feedback.P01"));
-                com.tencent.feedback.common.e.c("args fail other proc cra inner %s %s", new Object[] { paramIntent, ((StringBuilder)localObject1).toString() });
+                paramContext = new StringBuilder();
+                paramContext.append(paramIntent.getString("com.tencent.feedback.P01"));
+                com.tencent.feedback.common.e.c("args fail other proc cra inner %s %s", new Object[] { localObject1, paramContext.toString() });
                 return true;
               }
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(paramIntent);
-              ((StringBuilder)localObject2).append(paramContext.getString("com.tencent.feedback.P02"));
+              Object localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(paramIntent.getString("com.tencent.feedback.P02"));
               localObject2 = ((StringBuilder)localObject2).toString();
               StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append((String)localObject1);
               localStringBuilder.append(str);
+              localStringBuilder.append(paramContext);
               if (((String)localObject2).equals(localStringBuilder.toString()))
               {
                 com.tencent.feedback.common.e.a("current proc not need to notify", new Object[0]);
                 return true;
               }
-              com.tencent.feedback.common.e.a("notify other app cra %s", new Object[] { paramIntent });
-              this.monierHandler.onOtherAppProcessCrash(paramIntent, paramContext.getString("com.tencent.feedback.P02"), paramContext.getString("com.tencent.feedback.P04"), paramContext.getByte("com.tencent.feedback.P05"), paramContext.getLong("com.tencent.feedback.P13"), paramContext.getLong("com.tencent.feedback.P06"), paramContext.getLong("com.tencent.feedback.P07"), paramContext.getString("com.tencent.feedback.P08"), paramContext.getString("com.tencent.feedback.P09"), paramContext.getString("com.tencent.feedback.P010"), paramContext.getBoolean("com.tencent.feedback.P03"), paramContext.getLong("com.tencent.feedback.P011"), paramContext);
-              com.tencent.feedback.common.e.a("notify other app cra %s end", new Object[] { paramIntent });
+              com.tencent.feedback.common.e.a("notify other app cra %s", new Object[] { localObject1 });
+              this.monierHandler.onOtherAppProcessCrash((String)localObject1, paramIntent.getString("com.tencent.feedback.P02"), paramIntent.getString("com.tencent.feedback.P04"), paramIntent.getByte("com.tencent.feedback.P05"), paramIntent.getLong("com.tencent.feedback.P13"), paramIntent.getLong("com.tencent.feedback.P06"), paramIntent.getLong("com.tencent.feedback.P07"), paramIntent.getString("com.tencent.feedback.P08"), paramIntent.getString("com.tencent.feedback.P09"), paramIntent.getString("com.tencent.feedback.P010"), paramIntent.getBoolean("com.tencent.feedback.P03"), paramIntent.getLong("com.tencent.feedback.P011"), paramIntent);
+              com.tencent.feedback.common.e.a("notify other app cra %s end", new Object[] { localObject1 });
             }
             else
             {
-              paramIntent = new StringBuilder();
-              paramIntent.append(localObject2);
-              paramIntent = paramIntent.toString();
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(paramContext);
-              com.tencent.feedback.common.e.c("args fail other proc cra %s %s", new Object[] { paramIntent, ((StringBuilder)localObject1).toString() });
+              com.tencent.feedback.common.e.c("args fail other proc cra %s %s", new Object[] { String.valueOf(localObject1), String.valueOf(paramIntent) });
               return true;
             }
           }
@@ -323,44 +306,39 @@ public class BuglyBroadcastRecevier
           }
           try
           {
-            Object localObject1 = paramContext.getPackageName();
-            String str = c.a(paramContext).E();
-            Object localObject2 = paramIntent.getByteArrayExtra("com.tencent.feedback.P12");
-            paramContext = paramIntent.getBundleExtra("com.tencent.feedback.B01");
-            if ((localObject2 != null) && (paramContext != null))
+            String str = paramContext.getPackageName();
+            paramContext = c.a(paramContext).E();
+            Object localObject1 = paramIntent.getByteArrayExtra("com.tencent.feedback.P12");
+            paramIntent = paramIntent.getBundleExtra("com.tencent.feedback.B01");
+            if ((localObject1 != null) && (paramIntent != null))
             {
-              paramIntent = new String(com.tencent.feedback.proguard.a.b((byte[])localObject2, 1, "feedback"), "utf8");
-              if (!paramIntent.equals(paramContext.getString("com.tencent.feedback.P01")))
+              localObject1 = new String(com.tencent.feedback.proguard.a.b((byte[])localObject1, 1, "feedback"), "utf8");
+              if (!((String)localObject1).equals(paramIntent.getString("com.tencent.feedback.P01")))
               {
-                localObject1 = new StringBuilder();
-                ((StringBuilder)localObject1).append(paramContext.getString("com.tencent.feedback.P01"));
-                com.tencent.feedback.common.e.c("args fail other proc launch inner %s %s", new Object[] { paramIntent, ((StringBuilder)localObject1).toString() });
+                paramContext = new StringBuilder();
+                paramContext.append(paramIntent.getString("com.tencent.feedback.P01"));
+                com.tencent.feedback.common.e.c("args fail other proc launch inner %s %s", new Object[] { localObject1, paramContext.toString() });
                 return true;
               }
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(paramIntent);
-              ((StringBuilder)localObject2).append(paramContext.getString("com.tencent.feedback.P02"));
+              Object localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(paramIntent.getString("com.tencent.feedback.P02"));
               localObject2 = ((StringBuilder)localObject2).toString();
               StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append((String)localObject1);
               localStringBuilder.append(str);
+              localStringBuilder.append(paramContext);
               if (((String)localObject2).equals(localStringBuilder.toString()))
               {
                 com.tencent.feedback.common.e.a("current proc not need to notify", new Object[0]);
                 return true;
               }
-              com.tencent.feedback.common.e.a("notify other app lau %s", new Object[] { paramIntent });
-              this.monierHandler.onOtherAppProcessLaunched(paramIntent, paramContext.getString("com.tencent.feedback.P02"), paramContext.getBoolean("com.tencent.feedback.P03"), paramContext);
-              com.tencent.feedback.common.e.a("notify other app lau %s end", new Object[] { paramIntent });
+              com.tencent.feedback.common.e.a("notify other app lau %s", new Object[] { localObject1 });
+              this.monierHandler.onOtherAppProcessLaunched((String)localObject1, paramIntent.getString("com.tencent.feedback.P02"), paramIntent.getBoolean("com.tencent.feedback.P03"), paramIntent);
+              com.tencent.feedback.common.e.a("notify other app lau %s end", new Object[] { localObject1 });
             }
             else
             {
-              paramIntent = new StringBuilder();
-              paramIntent.append(localObject2);
-              paramIntent = paramIntent.toString();
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(paramContext);
-              com.tencent.feedback.common.e.c("args fail other proc launch %s %s", new Object[] { paramIntent, ((StringBuilder)localObject1).toString() });
+              com.tencent.feedback.common.e.c("args fail other proc launch %s %s", new Object[] { String.valueOf(localObject1), String.valueOf(paramIntent) });
               return true;
             }
           }

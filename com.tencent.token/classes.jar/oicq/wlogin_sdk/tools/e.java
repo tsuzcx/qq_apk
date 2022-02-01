@@ -6,7 +6,7 @@ import java.io.FilenameFilter;
 final class e
   implements FilenameFilter
 {
-  public boolean accept(File paramFile, String paramString)
+  public final boolean accept(File paramFile, String paramString)
   {
     return paramString.matches("wtlogin_[0-9]+\\.log");
   }

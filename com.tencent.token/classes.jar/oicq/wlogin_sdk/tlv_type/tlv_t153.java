@@ -15,7 +15,7 @@ public class tlv_t153
     byte[] arrayOfByte = new byte[2];
     util.int16_to_buf(arrayOfByte, 0, paramInt);
     fill_head(this._cmd);
-    fill_body(arrayOfByte, arrayOfByte.length);
+    fill_body(arrayOfByte, 2);
     set_length();
     return get_buf();
   }

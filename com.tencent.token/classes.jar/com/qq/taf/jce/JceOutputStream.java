@@ -273,8 +273,7 @@ public class JceOutputStream
       write((Collection)paramObject, paramInt);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("write object error: unsupport type. ");
+    StringBuilder localStringBuilder = new StringBuilder("write object error: unsupport type. ");
     localStringBuilder.append(paramObject.getClass());
     throw new JceEncodeException(localStringBuilder.toString());
   }
@@ -498,10 +497,7 @@ public class JceOutputStream
       this.bs.put((byte)paramInt);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("tag is too large: ");
-    localStringBuilder.append(paramInt);
-    throw new JceEncodeException(localStringBuilder.toString());
+    throw new JceEncodeException("tag is too large: ".concat(String.valueOf(paramInt)));
   }
   
   public void writeStringByte(String paramString, int paramInt)

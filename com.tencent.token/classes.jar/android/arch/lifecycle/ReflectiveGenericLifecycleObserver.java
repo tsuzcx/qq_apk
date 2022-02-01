@@ -1,20 +1,30 @@
 package android.arch.lifecycle;
 
-class ReflectiveGenericLifecycleObserver
+import com.tencent.token.as;
+import com.tencent.token.as.a;
+import com.tencent.token.au.a;
+import com.tencent.token.aw;
+import java.util.List;
+import java.util.Map;
+
+public class ReflectiveGenericLifecycleObserver
   implements GenericLifecycleObserver
 {
-  private final ClassesInfoCache.CallbackInfo mInfo;
-  private final Object mWrapped;
+  private final Object a;
+  private final as.a b;
   
-  ReflectiveGenericLifecycleObserver(Object paramObject)
+  public ReflectiveGenericLifecycleObserver(Object paramObject)
   {
-    this.mWrapped = paramObject;
-    this.mInfo = ClassesInfoCache.sInstance.getInfo(this.mWrapped.getClass());
+    this.a = paramObject;
+    this.b = as.a.b(this.a.getClass());
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+  public final void a(aw paramaw, au.a parama)
   {
-    this.mInfo.invokeCallbacks(paramLifecycleOwner, paramEvent, this.mWrapped);
+    as.a locala = this.b;
+    Object localObject = this.a;
+    as.a.a((List)locala.a.get(parama), paramaw, parama, localObject);
+    as.a.a((List)locala.a.get(au.a.ON_ANY), paramaw, parama, localObject);
   }
 }
 

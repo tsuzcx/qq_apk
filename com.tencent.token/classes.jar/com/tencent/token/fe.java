@@ -1,30 +1,108 @@
 package com.tencent.token;
 
-public abstract class fe
-  implements Runnable
+import android.os.Build.VERSION;
+import android.view.WindowInsets;
+
+public final class fe
 {
-  protected final String b;
+  private final Object a;
   
-  public fe(String paramString, Object... paramVarArgs)
+  private fe(Object paramObject)
   {
-    this.b = ff.a(paramString, paramVarArgs);
+    this.a = paramObject;
   }
   
-  protected abstract void c();
-  
-  public final void run()
+  static fe a(Object paramObject)
   {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
-    {
-      c();
-      return;
+    if (paramObject == null) {
+      return null;
     }
-    finally
-    {
-      Thread.currentThread().setName(str);
+    return new fe(paramObject);
+  }
+  
+  static Object a(fe paramfe)
+  {
+    if (paramfe == null) {
+      return null;
     }
+    return paramfe.a;
+  }
+  
+  public final int a()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetLeft();
+    }
+    return 0;
+  }
+  
+  public final fe a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return new fe(((WindowInsets)this.a).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+    }
+    return null;
+  }
+  
+  public final int b()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetTop();
+    }
+    return 0;
+  }
+  
+  public final int c()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetRight();
+    }
+    return 0;
+  }
+  
+  public final int d()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetBottom();
+    }
+    return 0;
+  }
+  
+  public final boolean e()
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return ((WindowInsets)this.a).isConsumed();
+    }
+    return false;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (fe)paramObject;
+      Object localObject = this.a;
+      if (localObject == null) {
+        return paramObject.a == null;
+      }
+      return localObject.equals(paramObject.a);
+    }
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    Object localObject = this.a;
+    if (localObject == null) {
+      return 0;
+    }
+    return localObject.hashCode();
   }
 }
 

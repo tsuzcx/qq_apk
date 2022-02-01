@@ -1,7 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.ct;
-import com.tencent.token.dm;
+import com.tencent.token.aao;
+import com.tencent.token.tb;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class NewConfigureCacheItem
     this.mConfKey = paramString;
   }
   
-  public void a()
+  public final void a()
   {
     int i = this.mClickVersion;
     int j = this.mClientVersion;
@@ -31,7 +31,7 @@ public class NewConfigureCacheItem
     if (localArrayList != null) {
       localArrayList.clear();
     }
-    ct.a().h.a();
+    tb.a().h.b();
   }
 }
 

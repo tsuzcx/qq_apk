@@ -3,13 +3,13 @@ package com.tmsdk.base.utils;
 import android.content.Context;
 import android.os.storage.StorageManager;
 import btmsdkobf.dz;
+import com.tencent.token.aor;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import tmsdk.QQPIM.CommList;
 
 public class FileOP
 {
@@ -71,7 +71,7 @@ public class FileOP
     return localArrayList;
   }
   
-  public static CommList loadWupObjectFromFile(String paramString1, String paramString2)
+  public static aor loadWupObjectFromFile(String paramString1, String paramString2)
   {
     return dz.loadWupObjectFromFile(paramString1, paramString2);
   }

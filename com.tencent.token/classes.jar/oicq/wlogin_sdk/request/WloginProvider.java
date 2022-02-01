@@ -36,10 +36,7 @@ public class WloginProvider
       this.h.getContentResolver().notifyChange(paramUri, null);
       return k;
     }
-    paramString = new StringBuilder();
-    paramString.append("Unnown URI");
-    paramString.append(paramUri);
-    throw new IllegalArgumentException(paramString.toString());
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
   }
   
   public String getType(Uri paramUri)
@@ -58,26 +55,18 @@ public class WloginProvider
         this.h.getContentResolver().notifyChange(paramUri, null);
         return paramUri;
       }
-      paramContentValues = new StringBuilder();
-      paramContentValues.append("Failed to insert row into ");
-      paramContentValues.append(paramUri);
-      throw new SQLException(paramContentValues.toString());
+      throw new SQLException("Failed to insert row into ".concat(String.valueOf(paramUri)));
     }
-    paramContentValues = new StringBuilder();
-    paramContentValues.append("Unknown URI ");
-    paramContentValues.append(paramUri);
-    throw new IllegalArgumentException(paramContentValues.toString());
+    throw new IllegalArgumentException("Unknown URI ".concat(String.valueOf(paramUri)));
   }
   
   public boolean onCreate()
   {
     this.h = getContext();
     this.f = "oicq.wlogin_sdk.WloginProvider";
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("content://");
+    StringBuilder localStringBuilder = new StringBuilder("content://");
     localStringBuilder.append(this.f);
-    localStringBuilder.append("/");
-    localStringBuilder.append("rsa_pubkey");
+    localStringBuilder.append("/rsa_pubkey");
     this.j = Uri.parse(localStringBuilder.toString());
     this.i.addURI(this.f, "rsa_pubkey", 1);
     util.LOGI("oncreated!");
@@ -94,10 +83,7 @@ public class WloginProvider
       paramArrayOfString1.setNotificationUri(this.h.getContentResolver(), paramUri);
       return paramArrayOfString1;
     }
-    paramArrayOfString1 = new StringBuilder();
-    paramArrayOfString1.append("Unnown URI");
-    paramArrayOfString1.append(paramUri);
-    throw new IllegalArgumentException(paramArrayOfString1.toString());
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
@@ -105,13 +91,10 @@ public class WloginProvider
     if (this.i.match(paramUri) == 1) {
       return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
     }
-    paramContentValues = new StringBuilder();
-    paramContentValues.append("Unnown URI");
-    paramContentValues.append(paramUri);
-    throw new IllegalArgumentException(paramContentValues.toString());
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
   }
   
-  private class a
+  class a
     extends SQLiteOpenHelper
   {
     public a(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)

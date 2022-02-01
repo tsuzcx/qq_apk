@@ -3,6 +3,8 @@ package btmsdkobf;
 import android.content.Context;
 import android.os.Process;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.token.aoj;
+import com.tencent.token.ass;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.io.ByteArrayInputStream;
@@ -11,12 +13,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import tmsdk.Protocol.MCommon.Sharkfin;
-import tmsdk.common.tcc.b;
 
 public class cd
 {
-  private static Sharkfin hw;
+  private static aoj hw;
   private static String hx;
   private static boolean hy = false;
   
@@ -28,45 +28,47 @@ public class cd
     localat.dn = paramArrayList;
     if ((paramBoolean) && (!paramf.jJ) && (!paramf.jK) && (!paramf.jM))
     {
-      if (paramf.jL) {
-        return localat;
-      }
-      paramContext = a(paramContext, false, paramb, paramString, paramcl);
-      if (!a(paramContext, hw))
+      if (!paramf.jL)
       {
-        eh.e("ConverterUtil", "[shark_v4][shark_fin] sharkfin changed, needed!");
-        a(hw, "[shark_fin][last]");
-      }
-      for (;;)
-      {
-        a(paramContext, "[shark_fin][cur]");
-        localat.dm = paramContext;
-        hw = paramContext;
-        hy = false;
-        return localat;
-        if (!hy) {
-          break;
+        paramContext = a(paramContext, false, paramb, paramString, paramcl);
+        if (!a(paramContext, hw))
+        {
+          eh.e("ConverterUtil", "[shark_v4][shark_fin] sharkfin changed, needed!");
+          a(hw, "[shark_fin][last]");
         }
-        eh.g("ConverterUtil", "[shark_v4][shark_fin] mazu said need sharkfin!");
+        for (;;)
+        {
+          a(paramContext, "[shark_fin][cur]");
+          localat.dm = paramContext;
+          hw = paramContext;
+          hy = false;
+          return localat;
+          if (!hy) {
+            break;
+          }
+          eh.g("ConverterUtil", "[shark_v4][shark_fin] mazu said need sharkfin!");
+        }
+        eh.f("ConverterUtil", "[shark_v4][shark_fin] sharkfin unchanged, no need to take sharkfin");
+        return localat;
       }
-      eh.f("ConverterUtil", "[shark_v4][shark_fin] sharkfin unchanged, no need to take sharkfin");
-      return localat;
     }
-    paramArrayList = new StringBuilder();
-    paramArrayList.append("[shark_v4][shark_fin] must take sharkfin: !isTcpChannel: ");
-    paramArrayList.append(paramBoolean ^ true);
-    paramArrayList.append(" isRsa: ");
-    paramArrayList.append(paramf.jJ);
-    paramArrayList.append(" isGuid: ");
-    paramArrayList.append(paramf.jK);
-    paramArrayList.append(" isFP: ");
-    paramArrayList.append(paramf.jM);
-    eh.e("ConverterUtil", paramArrayList.toString());
-    paramContext = a(paramContext, paramf.jJ, paramb, paramString, paramcl);
-    localat.dm = paramContext;
-    hw = paramContext;
-    hy = false;
-    a(paramContext, "[shark_fin][must take]");
+    else
+    {
+      paramArrayList = new StringBuilder("[shark_v4][shark_fin] must take sharkfin: !isTcpChannel: ");
+      paramArrayList.append(paramBoolean ^ true);
+      paramArrayList.append(" isRsa: ");
+      paramArrayList.append(paramf.jJ);
+      paramArrayList.append(" isGuid: ");
+      paramArrayList.append(paramf.jK);
+      paramArrayList.append(" isFP: ");
+      paramArrayList.append(paramf.jM);
+      eh.e("ConverterUtil", paramArrayList.toString());
+      paramContext = a(paramContext, paramf.jJ, paramb, paramString, paramcl);
+      localat.dm = paramContext;
+      hw = paramContext;
+      hy = false;
+      a(paramContext, "[shark_fin][must take]");
+    }
     return localat;
   }
   
@@ -93,8 +95,7 @@ public class cd
             localObject1 = paramContext;
             if (paramContext == null)
             {
-              paramArrayOfByte2 = new StringBuilder();
-              paramArrayOfByte2.append("[shark_v4][shark_cmd]dataForReceive2JceStruct(), getJceStruct() return null! jceData: ");
+              paramArrayOfByte2 = new StringBuilder("[shark_v4][shark_cmd]dataForReceive2JceStruct(), getJceStruct() return null! jceData: ");
               paramArrayOfByte2.append(Arrays.toString(paramArrayOfByte1));
               eh.g("ConverterUtil", paramArrayOfByte2.toString());
               localObject1 = paramContext;
@@ -111,12 +112,12 @@ public class cd
     return cp.a(paramArrayOfByte, paramJceStruct, false);
   }
   
-  private static Sharkfin a(Context paramContext, boolean paramBoolean, cs.b paramb, String paramString, cl paramcl)
+  private static aoj a(Context paramContext, boolean paramBoolean, cs.b paramb, String paramString, cl paramcl)
   {
     if (paramcl == null) {
       return null;
     }
-    Sharkfin localSharkfin = new Sharkfin();
+    aoj localaoj = new aoj();
     if (paramb != null) {
       paramb = paramb.ir;
     } else {
@@ -125,14 +126,13 @@ public class cd
     if (paramBoolean) {
       paramb = "";
     }
-    localSharkfin.sessionId = paramb;
-    localSharkfin.buildno = bc.o().getBuildNo();
-    localSharkfin.apn = e(paramContext);
-    localSharkfin.netType = NetworkUtil.getNetType();
-    localSharkfin.authType = aV();
-    paramContext = new StringBuilder();
-    paramContext.append("[ip_list][conn_monitor]checkSharkfin(), apn=");
-    paramContext.append(localSharkfin.apn);
+    localaoj.e = paramb;
+    localaoj.f = bc.o().getBuildNo();
+    localaoj.a = e(paramContext);
+    localaoj.g = NetworkUtil.getNetType();
+    localaoj.b = aV();
+    paramContext = new StringBuilder("[ip_list][conn_monitor]checkSharkfin(), apn=");
+    paramContext.append(localaoj.a);
     paramContext.append(" isWifi=");
     if (ei.om == 3) {
       paramBoolean = true;
@@ -141,12 +141,12 @@ public class cd
     }
     paramContext.append(paramBoolean);
     paramContext.append(" authType=");
-    paramContext.append(localSharkfin.authType);
+    paramContext.append(localaoj.b);
     eh.f("ConverterUtil", paramContext.toString());
-    localSharkfin.guid = paramString;
-    localSharkfin.accountId = paramcl.aI();
-    localSharkfin.bootType = paramcl.aM();
-    localSharkfin.wsGuid = paramcl.bn();
+    localaoj.c = paramString;
+    localaoj.h = paramcl.aI();
+    localaoj.i = paramcl.aM();
+    localaoj.j = paramcl.bn();
     if (hx == null)
     {
       int i = Process.myPid();
@@ -160,43 +160,58 @@ public class cd
       paramb.append(i);
       hx = paramb.toString();
     }
-    localSharkfin.ext1 = hx;
-    return localSharkfin;
+    localaoj.d = hx;
+    return localaoj;
   }
   
-  private static void a(Sharkfin paramSharkfin, String paramString)
+  private static void a(aoj paramaoj, String paramString)
   {
-    if (paramSharkfin == null)
+    if (paramaoj == null)
     {
-      paramSharkfin = new StringBuilder();
-      paramSharkfin.append("[shark_v4]");
-      paramSharkfin.append(paramString);
-      paramSharkfin.append(": null");
-      eh.f("ConverterUtil", paramSharkfin.toString());
+      paramaoj = new StringBuilder("[shark_v4]");
+      paramaoj.append(paramString);
+      paramaoj.append(": null");
+      eh.f("ConverterUtil", paramaoj.toString());
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[shark_v4]");
+    StringBuilder localStringBuilder = new StringBuilder("[shark_v4]");
     localStringBuilder.append(paramString);
     localStringBuilder.append(": sharkfin.buildno: ");
-    localStringBuilder.append(paramSharkfin.buildno);
+    localStringBuilder.append(paramaoj.f);
     localStringBuilder.append(" sharkfin.apn: ");
-    localStringBuilder.append(paramSharkfin.apn);
+    localStringBuilder.append(paramaoj.a);
     localStringBuilder.append(" sharkfin.netType: ");
-    localStringBuilder.append(paramSharkfin.netType);
+    localStringBuilder.append(paramaoj.g);
     localStringBuilder.append(" sharkfin.authType: ");
-    localStringBuilder.append(paramSharkfin.authType);
+    localStringBuilder.append(paramaoj.b);
     localStringBuilder.append(" sharkfin.guid: ");
-    localStringBuilder.append(paramSharkfin.guid);
+    localStringBuilder.append(paramaoj.c);
     localStringBuilder.append(" sharkfin.ext1: ");
-    localStringBuilder.append(paramSharkfin.ext1);
+    localStringBuilder.append(paramaoj.d);
     localStringBuilder.append(" sharkfin.accountId: ");
-    localStringBuilder.append(paramSharkfin.accountId);
+    localStringBuilder.append(paramaoj.h);
     localStringBuilder.append(" sharkfin.bootType: ");
-    localStringBuilder.append(paramSharkfin.bootType);
+    localStringBuilder.append(paramaoj.i);
     localStringBuilder.append(" sharkfin.wsGuid: ");
-    localStringBuilder.append(paramSharkfin.wsGuid);
+    localStringBuilder.append(paramaoj.j);
     eh.f("ConverterUtil", localStringBuilder.toString());
+  }
+  
+  private static boolean a(aoj paramaoj1, aoj paramaoj2)
+  {
+    if ((paramaoj1 == null) && (paramaoj2 == null)) {
+      return true;
+    }
+    if (paramaoj1 != null)
+    {
+      if (paramaoj2 == null) {
+        return false;
+      }
+      if ((paramaoj1.a == paramaoj2.a) && (paramaoj1.b == paramaoj2.b) && (a(paramaoj1.c, paramaoj2.c)) && (a(paramaoj1.d, paramaoj2.d)) && (a(paramaoj1.e, paramaoj2.e)) && (paramaoj1.f == paramaoj2.f) && (paramaoj1.g == paramaoj2.g) && (paramaoj1.h == paramaoj2.h) && (paramaoj1.i == paramaoj2.i) && (a(paramaoj1.j, paramaoj2.j))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   private static boolean a(String paramString1, String paramString2)
@@ -206,21 +221,6 @@ public class cd
     }
     if ((paramString1 != null) && (paramString2 != null)) {
       return paramString1.equals(paramString2);
-    }
-    return false;
-  }
-  
-  private static boolean a(Sharkfin paramSharkfin1, Sharkfin paramSharkfin2)
-  {
-    if ((paramSharkfin1 == null) && (paramSharkfin2 == null)) {
-      return true;
-    }
-    if (paramSharkfin1 != null)
-    {
-      if (paramSharkfin2 == null) {
-        return false;
-      }
-      return (paramSharkfin1.apn == paramSharkfin2.apn) && (paramSharkfin1.authType == paramSharkfin2.authType) && (a(paramSharkfin1.guid, paramSharkfin2.guid)) && (a(paramSharkfin1.ext1, paramSharkfin2.ext1)) && (a(paramSharkfin1.sessionId, paramSharkfin2.sessionId)) && (paramSharkfin1.buildno == paramSharkfin2.buildno) && (paramSharkfin1.netType == paramSharkfin2.netType) && (paramSharkfin1.accountId == paramSharkfin2.accountId) && (paramSharkfin1.bootType == paramSharkfin2.bootType) && (a(paramSharkfin1.wsGuid, paramSharkfin2.wsGuid));
     }
     return false;
   }
@@ -238,102 +238,89 @@ public class cd
   public static byte[] a(Context paramContext, byte[] paramArrayOfByte, int paramInt, as paramas)
   {
     if (paramArrayOfByte != null) {}
-    try
+    for (;;)
     {
-      if (paramArrayOfByte.length > 50)
+      try
       {
-        paramContext = e(paramArrayOfByte);
+        if (paramArrayOfByte.length > 50)
+        {
+          localObject = e(paramArrayOfByte);
+          paramContext = (Context)localObject;
+          if (paramas == null) {
+            continue;
+          }
+          int j = paramas.di;
+          if ((localObject == null) || (localObject.length >= paramArrayOfByte.length)) {
+            continue;
+          }
+          paramas.di &= 0xFFFFFFFE;
+          paramContext = new StringBuilder("[shark_compress]compressed, length: ");
+          paramContext.append(paramArrayOfByte.length);
+          paramContext.append(" -> ");
+          paramContext.append(localObject.length);
+          paramContext.append(" cmdId: ");
+          paramContext.append(paramInt);
+          paramContext.append(" flag: ");
+          paramContext.append(Integer.toBinaryString(j));
+          paramContext.append(" -> ");
+          paramContext.append(Integer.toBinaryString(paramas.di));
+          eh.f("ConverterUtil", paramContext.toString());
+          paramContext = (Context)localObject;
+          continue;
+          i = localObject.length;
+          paramas.di |= 0x1;
+          paramContext = new StringBuilder("[shark_compress]donnot compress, length: ");
+          paramContext.append(paramArrayOfByte.length);
+          paramContext.append(" (if compress)|-> ");
+          paramContext.append(i);
+          paramContext.append(" cmdId: ");
+          paramContext.append(paramInt);
+          paramContext.append(" flag: ");
+          paramContext.append(Integer.toBinaryString(j));
+          paramContext.append(" -> ");
+          paramContext.append(Integer.toBinaryString(paramas.di));
+          eh.f("ConverterUtil", paramContext.toString());
+          continue;
+        }
         if (paramas == null) {
-          break label482;
+          continue;
         }
-        int j = paramas.di;
-        if ((paramContext == null) || (paramContext.length >= paramArrayOfByte.length)) {
-          break label472;
-        }
-        paramas.di &= 0xFFFFFFFE;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[shark_compress]compressed, length: ");
-        localStringBuilder.append(paramArrayOfByte.length);
-        localStringBuilder.append(" -> ");
-        localStringBuilder.append(paramContext.length);
-        localStringBuilder.append(" cmdId: ");
-        localStringBuilder.append(paramInt);
-        localStringBuilder.append(" flag: ");
-        localStringBuilder.append(Integer.toBinaryString(j));
-        localStringBuilder.append(" -> ");
-        localStringBuilder.append(Integer.toBinaryString(paramas.di));
-        eh.f("ConverterUtil", localStringBuilder.toString());
-        break label482;
-        i = paramContext.length;
-        label166:
+        i = paramas.di;
         paramas.di |= 0x1;
+        localObject = new StringBuilder("[shark_compress]without compress, length: ");
+        if (paramArrayOfByte == null) {
+          continue;
+        }
         paramContext = new StringBuilder();
-        paramContext.append("[shark_compress]donnot compress, length: ");
         paramContext.append(paramArrayOfByte.length);
-        paramContext.append(" (if compress)|-> ");
-        paramContext.append(i);
-        paramContext.append(" cmdId: ");
-        paramContext.append(paramInt);
-        paramContext.append(" flag: ");
-        paramContext.append(Integer.toBinaryString(j));
-        paramContext.append(" -> ");
-        paramContext.append(Integer.toBinaryString(paramas.di));
-        eh.f("ConverterUtil", paramContext.toString());
-        paramContext = paramArrayOfByte;
-        break label431;
+        paramContext = paramContext.toString();
       }
-      paramContext = paramArrayOfByte;
-      if (paramas == null) {
-        break label431;
-      }
-      i = paramas.di;
-      paramas.di |= 0x1;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[shark_compress]without compress, length: ");
-      if (paramArrayOfByte == null) {
-        break label489;
-      }
-      paramContext = new StringBuilder();
-      paramContext.append("");
-      paramContext.append(paramArrayOfByte.length);
-      paramContext = paramContext.toString();
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
+      catch (Exception paramContext)
       {
-        StringBuilder localStringBuilder;
+        Object localObject;
         int i;
         continue;
         paramContext = "null";
+        continue;
+        paramContext = paramArrayOfByte;
+        continue;
       }
-    }
-    localStringBuilder.append(paramContext);
-    localStringBuilder.append(" cmdId: ");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(" flag: ");
-    localStringBuilder.append(Integer.toBinaryString(i));
-    localStringBuilder.append(" -> ");
-    localStringBuilder.append(Integer.toBinaryString(paramas.di));
-    eh.f("ConverterUtil", localStringBuilder.toString());
-    paramContext = paramArrayOfByte;
-    label431:
-    label472:
-    label482:
-    for (;;)
-    {
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(" cmdId: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" flag: ");
+      ((StringBuilder)localObject).append(Integer.toBinaryString(i));
+      ((StringBuilder)localObject).append(" -> ");
+      ((StringBuilder)localObject).append(Integer.toBinaryString(paramas.di));
+      eh.f("ConverterUtil", ((StringBuilder)localObject).toString());
+      continue;
       paramContext = b(paramInt, paramContext);
       return paramContext;
-      paramContext = new StringBuilder();
-      paramContext.append("jceStruct2DataForSend(), exception: ");
-      paramContext.append(paramArrayOfByte);
-      eh.h("ConverterUtil", paramContext.toString());
+      eh.h("ConverterUtil", "jceStruct2DataForSend(), exception: ".concat(String.valueOf(paramContext)));
       return null;
-      if (paramContext != null) {
-        break;
+      if (localObject == null) {
+        i = -1;
       }
-      i = -1;
-      break label166;
     }
   }
   
@@ -346,14 +333,11 @@ public class cd
       if ((paramInt & 0x2) == 0) {
         try
         {
-          paramContext = b.decrypt(paramArrayOfByte2, paramArrayOfByte1);
+          paramContext = ass.b(paramArrayOfByte2, paramArrayOfByte1);
         }
         catch (Exception paramContext)
         {
-          paramArrayOfByte1 = new StringBuilder();
-          paramArrayOfByte1.append("[shark_v4]dataForReceive2JceBytes(), decrypt exception: ");
-          paramArrayOfByte1.append(paramContext);
-          eh.g("ConverterUtil", paramArrayOfByte1.toString());
+          eh.g("ConverterUtil", "[shark_v4]dataForReceive2JceBytes(), decrypt exception: ".concat(String.valueOf(paramContext)));
           paramContext = null;
         }
       }
@@ -363,8 +347,7 @@ public class cd
         {
           paramArrayOfByte1 = d(paramContext);
           int i = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte1)).readInt();
-          paramArrayOfByte2 = new StringBuilder();
-          paramArrayOfByte2.append("[shark_cmd]dataForReceive2JceBytes(), header bytes: ");
+          paramArrayOfByte2 = new StringBuilder("[shark_cmd]dataForReceive2JceBytes(), header bytes: ");
           paramArrayOfByte2.append(Arrays.toString(paramArrayOfByte1));
           paramArrayOfByte2.append(" to int: ");
           paramArrayOfByte2.append(i);
@@ -375,10 +358,7 @@ public class cd
         catch (Exception paramArrayOfByte1)
         {
           paramArrayOfByte1.printStackTrace();
-          paramArrayOfByte2 = new StringBuilder();
-          paramArrayOfByte2.append("[shark_cmd][shark_v4]dataForReceive2JceBytes(), read header exception: ");
-          paramArrayOfByte2.append(paramArrayOfByte1);
-          eh.g("ConverterUtil", paramArrayOfByte2.toString());
+          eh.g("ConverterUtil", "[shark_cmd][shark_v4]dataForReceive2JceBytes(), read header exception: ".concat(String.valueOf(paramArrayOfByte1)));
         }
         paramArrayOfByte1 = c(paramContext);
         if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
@@ -395,8 +375,7 @@ public class cd
       }
       else
       {
-        paramArrayOfByte1 = new StringBuilder();
-        paramArrayOfByte1.append("[shark_v4]dataForReceive2JceBytes(), data should be at least 4 bytes: ");
+        paramArrayOfByte1 = new StringBuilder("[shark_v4]dataForReceive2JceBytes(), data should be at least 4 bytes: ");
         if (paramContext != null) {
           paramInt = paramContext.length;
         } else {
@@ -407,8 +386,7 @@ public class cd
       }
       return null;
     }
-    paramContext = new StringBuilder();
-    paramContext.append("[shark_v4]dataForReceive2JceBytes(), null or empty data, null? ");
+    paramContext = new StringBuilder("[shark_v4]dataForReceive2JceBytes(), null or empty data, null? ");
     if (paramArrayOfByte2 != null) {
       bool = false;
     }
@@ -431,8 +409,7 @@ public class cd
     {
       paramString = cp.b(a(bc.n(), paramBoolean, paramf, paramf.jR, paramf.jT, paramString, paramcl));
     }
-    paramcl = new StringBuilder();
-    paramcl.append("createSendBytes(), isHello? ");
+    paramcl = new StringBuilder("createSendBytes(), isHello? ");
     paramcl.append(paramf.jL);
     paramcl.append(" sendData.length: ");
     int i;
@@ -487,9 +464,7 @@ public class cd
       localObject = localStringBuilder;
       paramArrayOfByte = localByteArrayOutputStream.toByteArray();
       localObject = paramArrayOfByte;
-      localStringBuilder = new StringBuilder();
-      localObject = paramArrayOfByte;
-      localStringBuilder.append("[shark_cmd]appendIntHeader(), header bytes: ");
+      localStringBuilder = new StringBuilder("[shark_cmd]appendIntHeader(), header bytes: ");
       localObject = paramArrayOfByte;
       localStringBuilder.append(Arrays.toString(d(paramArrayOfByte)));
       localObject = paramArrayOfByte;
@@ -506,10 +481,7 @@ public class cd
     }
     catch (Exception paramArrayOfByte)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[shark_v4]appendIntHeader(), exception: ");
-      localStringBuilder.append(paramArrayOfByte);
-      eh.g("ConverterUtil", localStringBuilder.toString());
+      eh.g("ConverterUtil", "[shark_v4]appendIntHeader(), exception: ".concat(String.valueOf(paramArrayOfByte)));
     }
     return localObject;
   }
@@ -522,8 +494,7 @@ public class cd
       System.arraycopy(paramArrayOfByte, 4, localObject, 0, paramArrayOfByte.length - 4);
       return localObject;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_v4]deleteIntHeader(), mixData is not valid, len: ");
+    Object localObject = new StringBuilder("[shark_v4]deleteIntHeader(), mixData is not valid, len: ");
     int i;
     if (paramArrayOfByte != null) {
       i = paramArrayOfByte.length;
@@ -543,8 +514,7 @@ public class cd
       System.arraycopy(paramArrayOfByte, 0, localObject, 0, 4);
       return localObject;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_v4]getIntHeader(), mixData is not valid, len: ");
+    Object localObject = new StringBuilder("[shark_v4]getIntHeader(), mixData is not valid, len: ");
     int i;
     if (paramArrayOfByte != null) {
       i = paramArrayOfByte.length;
@@ -566,13 +536,12 @@ public class cd
       }
       try
       {
-        paramArrayOfByte1 = b.decrypt(paramArrayOfByte1, paramArrayOfByte2);
+        paramArrayOfByte1 = ass.b(paramArrayOfByte1, paramArrayOfByte2);
         return paramArrayOfByte1;
       }
       catch (Throwable paramArrayOfByte1)
       {
-        paramArrayOfByte2 = new StringBuilder();
-        paramArrayOfByte2.append("decrypt(), exception: ");
+        paramArrayOfByte2 = new StringBuilder("decrypt(), exception: ");
         paramArrayOfByte2.append(paramArrayOfByte1.toString());
         eh.h("ConverterUtil", paramArrayOfByte2.toString());
         arrayOfByte = null;
@@ -616,9 +585,9 @@ public class cd
   private static byte[] e(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 394	java/io/ByteArrayOutputStream
+    //   0: new 393	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 395	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 394	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore_1
     //   8: new 447	java/util/zip/DeflaterOutputStream
     //   11: dup
@@ -631,7 +600,7 @@ public class cd
     //   22: aload_2
     //   23: invokevirtual 452	java/util/zip/DeflaterOutputStream:finish	()V
     //   26: aload_1
-    //   27: invokevirtual 411	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   27: invokevirtual 410	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   30: astore_0
     //   31: aload_1
     //   32: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
@@ -645,61 +614,49 @@ public class cd
     //   46: aload_0
     //   47: areturn
     //   48: astore_0
-    //   49: goto +52 -> 101
+    //   49: goto +37 -> 86
     //   52: astore_0
-    //   53: new 94	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   60: astore_3
-    //   61: aload_3
-    //   62: ldc_w 459
-    //   65: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload_3
-    //   70: aload_0
-    //   71: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   74: pop
-    //   75: ldc 62
-    //   77: aload_3
-    //   78: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 87	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aload_1
-    //   85: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
-    //   88: aload_2
-    //   89: invokevirtual 456	java/util/zip/DeflaterOutputStream:close	()V
-    //   92: aconst_null
-    //   93: areturn
-    //   94: astore_0
-    //   95: aload_0
-    //   96: invokevirtual 457	java/io/IOException:printStackTrace	()V
-    //   99: aconst_null
-    //   100: areturn
-    //   101: aload_1
-    //   102: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
-    //   105: aload_2
-    //   106: invokevirtual 456	java/util/zip/DeflaterOutputStream:close	()V
-    //   109: goto +8 -> 117
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokevirtual 457	java/io/IOException:printStackTrace	()V
-    //   117: aload_0
-    //   118: athrow
+    //   53: ldc 62
+    //   55: ldc_w 459
+    //   58: aload_0
+    //   59: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   62: invokevirtual 322	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   65: invokestatic 87	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: aload_1
+    //   69: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
+    //   72: aload_2
+    //   73: invokevirtual 456	java/util/zip/DeflaterOutputStream:close	()V
+    //   76: goto +8 -> 84
+    //   79: astore_0
+    //   80: aload_0
+    //   81: invokevirtual 457	java/io/IOException:printStackTrace	()V
+    //   84: aconst_null
+    //   85: areturn
+    //   86: aload_1
+    //   87: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
+    //   90: aload_2
+    //   91: invokevirtual 456	java/util/zip/DeflaterOutputStream:close	()V
+    //   94: goto +8 -> 102
+    //   97: astore_1
+    //   98: aload_1
+    //   99: invokevirtual 457	java/io/IOException:printStackTrace	()V
+    //   102: aload_0
+    //   103: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	119	0	paramArrayOfByte	byte[]
+    //   0	104	0	paramArrayOfByte	byte[]
     //   7	25	1	localByteArrayOutputStream	ByteArrayOutputStream
-    //   41	61	1	localIOException1	java.io.IOException
-    //   112	2	1	localIOException2	java.io.IOException
-    //   16	90	2	localDeflaterOutputStream	java.util.zip.DeflaterOutputStream
-    //   60	18	3	localStringBuilder	StringBuilder
+    //   41	46	1	localIOException1	java.io.IOException
+    //   97	2	1	localIOException2	java.io.IOException
+    //   16	75	2	localDeflaterOutputStream	java.util.zip.DeflaterOutputStream
     // Exception table:
     //   from	to	target	type
     //   31	39	41	java/io/IOException
     //   17	31	48	finally
-    //   53	84	48	finally
+    //   53	68	48	finally
     //   17	31	52	java/lang/Throwable
-    //   84	92	94	java/io/IOException
-    //   101	109	112	java/io/IOException
+    //   68	76	79	java/io/IOException
+    //   86	94	97	java/io/IOException
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -712,13 +669,12 @@ public class cd
       }
       try
       {
-        paramArrayOfByte1 = b.encrypt(paramArrayOfByte1, paramArrayOfByte2);
+        paramArrayOfByte1 = ass.a(paramArrayOfByte1, paramArrayOfByte2);
         return paramArrayOfByte1;
       }
       catch (Throwable paramArrayOfByte1)
       {
-        paramArrayOfByte2 = new StringBuilder();
-        paramArrayOfByte2.append("encrypt(), exception: ");
+        paramArrayOfByte2 = new StringBuilder("encrypt(), exception: ");
         paramArrayOfByte2.append(paramArrayOfByte1.toString());
         eh.h("ConverterUtil", paramArrayOfByte2.toString());
         arrayOfByte = null;
@@ -741,9 +697,9 @@ public class cd
     //   13: aload_0
     //   14: invokespecial 467	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
     //   17: astore_2
-    //   18: new 394	java/io/ByteArrayOutputStream
+    //   18: new 393	java/io/ByteArrayOutputStream
     //   21: dup
-    //   22: invokespecial 395	java/io/ByteArrayOutputStream:<init>	()V
+    //   22: invokespecial 394	java/io/ByteArrayOutputStream:<init>	()V
     //   25: astore_3
     //   26: aload_2
     //   27: invokevirtual 470	java/util/zip/InflaterInputStream:read	()I
@@ -756,7 +712,7 @@ public class cd
     //   38: invokevirtual 472	java/io/ByteArrayOutputStream:write	(I)V
     //   41: goto -15 -> 26
     //   44: aload_3
-    //   45: invokevirtual 411	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   45: invokevirtual 410	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   48: astore 4
     //   50: aload_0
     //   51: invokevirtual 473	java/io/ByteArrayInputStream:close	()V
@@ -772,71 +728,59 @@ public class cd
     //   70: aload 4
     //   72: areturn
     //   73: astore 4
-    //   75: goto +62 -> 137
+    //   75: goto +43 -> 118
     //   78: astore 4
-    //   80: new 94	java/lang/StringBuilder
-    //   83: dup
-    //   84: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   87: astore 5
-    //   89: aload 5
-    //   91: ldc_w 476
-    //   94: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: pop
-    //   98: aload 5
-    //   100: aload 4
-    //   102: invokevirtual 319	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   105: pop
-    //   106: ldc 62
-    //   108: aload 5
-    //   110: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 87	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
-    //   116: aload_0
-    //   117: invokevirtual 473	java/io/ByteArrayInputStream:close	()V
-    //   120: aload_2
-    //   121: invokevirtual 474	java/util/zip/InflaterInputStream:close	()V
-    //   124: aload_3
-    //   125: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
-    //   128: aconst_null
-    //   129: areturn
-    //   130: astore_0
-    //   131: aload_0
-    //   132: invokevirtual 457	java/io/IOException:printStackTrace	()V
-    //   135: aconst_null
-    //   136: areturn
-    //   137: aload_0
-    //   138: invokevirtual 473	java/io/ByteArrayInputStream:close	()V
-    //   141: aload_2
-    //   142: invokevirtual 474	java/util/zip/InflaterInputStream:close	()V
-    //   145: aload_3
-    //   146: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
-    //   149: goto +8 -> 157
-    //   152: astore_0
-    //   153: aload_0
-    //   154: invokevirtual 457	java/io/IOException:printStackTrace	()V
-    //   157: aload 4
-    //   159: athrow
+    //   80: ldc 62
+    //   82: ldc_w 476
+    //   85: aload 4
+    //   87: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   90: invokevirtual 322	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   93: invokestatic 87	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: aload_0
+    //   97: invokevirtual 473	java/io/ByteArrayInputStream:close	()V
+    //   100: aload_2
+    //   101: invokevirtual 474	java/util/zip/InflaterInputStream:close	()V
+    //   104: aload_3
+    //   105: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
+    //   108: goto +8 -> 116
+    //   111: astore_0
+    //   112: aload_0
+    //   113: invokevirtual 457	java/io/IOException:printStackTrace	()V
+    //   116: aconst_null
+    //   117: areturn
+    //   118: aload_0
+    //   119: invokevirtual 473	java/io/ByteArrayInputStream:close	()V
+    //   122: aload_2
+    //   123: invokevirtual 474	java/util/zip/InflaterInputStream:close	()V
+    //   126: aload_3
+    //   127: invokevirtual 455	java/io/ByteArrayOutputStream:close	()V
+    //   130: goto +8 -> 138
+    //   133: astore_0
+    //   134: aload_0
+    //   135: invokevirtual 457	java/io/IOException:printStackTrace	()V
+    //   138: aload 4
+    //   140: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	160	0	paramArrayOfByte	byte[]
+    //   0	141	0	paramArrayOfByte	byte[]
     //   30	8	1	i	int
-    //   17	125	2	localInflaterInputStream	java.util.zip.InflaterInputStream
-    //   25	121	3	localByteArrayOutputStream	ByteArrayOutputStream
+    //   17	106	2	localInflaterInputStream	java.util.zip.InflaterInputStream
+    //   25	102	3	localByteArrayOutputStream	ByteArrayOutputStream
     //   48	23	4	arrayOfByte	byte[]
     //   73	1	4	localObject	Object
-    //   78	80	4	localException	Exception
-    //   87	22	5	localStringBuilder	StringBuilder
+    //   78	61	4	localException	Exception
     // Exception table:
     //   from	to	target	type
     //   50	62	65	java/io/IOException
     //   26	31	73	finally
     //   36	41	73	finally
     //   44	50	73	finally
-    //   80	116	73	finally
+    //   80	96	73	finally
     //   26	31	78	java/lang/Exception
     //   36	41	78	java/lang/Exception
     //   44	50	78	java/lang/Exception
-    //   116	128	130	java/io/IOException
-    //   137	149	152	java/io/IOException
+    //   96	108	111	java/io/IOException
+    //   118	130	133	java/io/IOException
   }
 }
 

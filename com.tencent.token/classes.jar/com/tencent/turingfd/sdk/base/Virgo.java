@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 
 public final class Virgo
@@ -14,31 +16,31 @@ public final class Virgo
   public int vb = 0;
   public ArrayList<Long> wb = null;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.qb = paramcy.a(this.qb, 0, true);
-    this.rb = paramcy.a(this.rb, 1, true);
-    this.sb = paramcy.a(this.sb, 2, true);
-    this.tb = paramcy.a(this.tb, 3, true);
-    this.ub = paramcy.a(this.ub, 4, true);
-    this.vb = paramcy.a(this.vb, 5, true);
+    this.qb = paramafl.a(this.qb, 0, true);
+    this.rb = paramafl.a(this.rb, 1, true);
+    this.sb = paramafl.a(this.sb, 2, true);
+    this.tb = paramafl.a(this.tb, 3, true);
+    this.ub = paramafl.a(this.ub, 4, true);
+    this.vb = paramafl.a(this.vb, 5, true);
     if (pb == null)
     {
       pb = new ArrayList();
       pb.add(Long.valueOf(0L));
     }
-    this.wb = ((ArrayList)paramcy.a(pb, 6, true));
+    this.wb = ((ArrayList)paramafl.a(pb, 6, true));
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.qb, 0);
-    paramdb.a(this.rb, 1);
-    paramdb.a(this.sb, 2);
-    paramdb.a(this.tb, 3);
-    paramdb.a(this.ub, 4);
-    paramdb.a(this.vb, 5);
-    paramdb.a(this.wb, 6);
+    paramafo.a(this.qb, 0);
+    paramafo.a(this.rb, 1);
+    paramafo.a(this.sb, 2);
+    paramafo.a(this.tb, 3);
+    paramafo.a(this.ub, 4);
+    paramafo.a(this.vb, 5);
+    paramafo.a(this.wb, 6);
   }
 }
 

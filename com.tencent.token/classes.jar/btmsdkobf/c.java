@@ -15,8 +15,7 @@ public class c
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ValueData{value='");
+    StringBuilder localStringBuilder = new StringBuilder("ValueData{value='");
     localStringBuilder.append(this.value);
     localStringBuilder.append('\'');
     localStringBuilder.append(", code=");

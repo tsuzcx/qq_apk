@@ -40,19 +40,19 @@ public class tlv_t105
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._enlen = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < this._enlen + 2 + 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._piclen = util.buf_to_int16(this._buf, this._head_len + 2 + this._enlen);
     if (this._body_len < this._enlen + 2 + 2 + this._piclen) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._en_pos = (this._head_len + 2);
     this._pic_pos = (this._enlen + 2 + 2 + this._head_len);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

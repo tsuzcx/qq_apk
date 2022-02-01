@@ -53,24 +53,24 @@ public class tlv_t146
   public Boolean verify()
   {
     if (this._body_len < 12) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len + 4);
     if (this._body_len < i + 12) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._title_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 6 + this._title_len);
     if (this._body_len < this._title_len + 12 + i) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._msg_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 10 + this._title_len + this._msg_len);
     if (this._body_len < this._title_len + 12 + this._msg_len + i) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._errorinfo_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

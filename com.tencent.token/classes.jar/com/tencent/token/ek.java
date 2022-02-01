@@ -1,20 +1,16 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Build.VERSION;
+import android.view.Gravity;
 
-public class ek
+public final class ek
 {
-  boolean a = false;
-  AtomicInteger b = new AtomicInteger();
-  
-  public void a(int paramInt)
+  public static int a(int paramInt1, int paramInt2)
   {
-    this.b.set(paramInt);
-  }
-  
-  public boolean a()
-  {
-    return this.a;
+    if (Build.VERSION.SDK_INT >= 17) {
+      return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
+    }
+    return paramInt1 & 0xFF7FFFFF;
   }
 }
 

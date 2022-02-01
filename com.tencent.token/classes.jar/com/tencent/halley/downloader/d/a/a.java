@@ -1,17 +1,18 @@
 package com.tencent.halley.downloader.d.a;
 
+import com.tencent.token.mn;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public final class a
   extends PriorityBlockingQueue
 {
-  private b a = null;
+  public mn a = null;
   private Integer b = null;
   
   public a() {}
   
-  public a(int paramInt)
+  public a(byte paramByte)
   {
     super(64);
   }
@@ -21,17 +22,12 @@ public final class a
     paramTimeUnit = (Runnable)super.poll(paramLong, paramTimeUnit);
     if (paramTimeUnit == null)
     {
-      b localb = this.a;
-      if (localb != null) {
-        localb.a();
+      mn localmn = this.a;
+      if (localmn != null) {
+        localmn.a();
       }
     }
     return paramTimeUnit;
-  }
-  
-  public final void a(b paramb)
-  {
-    this.a = paramb;
   }
   
   public final int remainingCapacity()

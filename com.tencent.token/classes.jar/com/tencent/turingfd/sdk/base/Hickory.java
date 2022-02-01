@@ -1,5 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.aer;
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,40 +23,42 @@ public final class Hickory
   
   static
   {
-    _c = new HashMap();
-    _c.put("", "");
+    HashMap localHashMap = new HashMap();
+    _c = localHashMap;
+    localHashMap.put("", "");
     ad = new HashMap();
     ad.put(Integer.valueOf(0), Integer.valueOf(0));
-    bd = new HashMap();
-    bd.put("", "");
+    localHashMap = new HashMap();
+    bd = localHashMap;
+    localHashMap.put("", "");
   }
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.dd = paramcy.a(this.dd, 0, true);
-    this.ed = paramcy.a(this.ed, 1, true);
-    this.version = paramcy.a(this.version, 2, true);
-    this.path = ((Map)paramcy.a(_c, 3, true));
-    this.gd = ((Map)paramcy.a(ad, 4, true));
-    this.hd = paramcy.a(this.hd, 5, true);
-    this.jd = ((Map)paramcy.a(bd, 6, false));
+    this.dd = paramafl.a(this.dd, 0, true);
+    this.ed = paramafl.a(this.ed, 1, true);
+    this.version = paramafl.a(this.version, 2, true);
+    this.path = ((Map)paramafl.a(_c, 3, true));
+    this.gd = ((Map)paramafl.a(ad, 4, true));
+    this.hd = paramafl.a(this.hd, 5, true);
+    this.jd = ((Map)paramafl.a(bd, 6, false));
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.dd, 0);
-    paramdb.a(this.ed, 1);
-    paramdb.a(this.version, 2);
-    paramdb.a(this.path, 3);
-    paramdb.a(this.gd, 4);
-    paramdb.a(this.hd, 5);
+    paramafo.a(this.dd, 0);
+    paramafo.a((byte)this.ed, 1);
+    paramafo.a(this.version, 2);
+    paramafo.a(this.path, 3);
+    paramafo.a(this.gd, 4);
+    paramafo.a(this.hd, 5);
     Map localMap = this.jd;
     if (localMap != null) {
-      paramdb.a(localMap, 6);
+      paramafo.a(localMap, 6);
     }
   }
   
-  public Object clone()
+  public final Object clone()
   {
     try
     {
@@ -71,45 +76,16 @@ public final class Hickory
     throw new AssertionError();
   }
   
-  public boolean equals(Object paramObject)
+  public final boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
     if (paramObject == null) {
       return false;
     }
     paramObject = (Hickory)paramObject;
-    boolean bool1 = bool2;
-    if (ce.a(this.dd, paramObject.dd))
-    {
-      bool1 = bool2;
-      if (ce.a(this.ed, paramObject.ed))
-      {
-        bool1 = bool2;
-        if (ce.a(this.version, paramObject.version))
-        {
-          bool1 = bool2;
-          if (ce.a(this.path, paramObject.path))
-          {
-            bool1 = bool2;
-            if (ce.a(this.gd, paramObject.gd))
-            {
-              bool1 = bool2;
-              if (ce.a(this.hd, paramObject.hd))
-              {
-                bool1 = bool2;
-                if (ce.a(this.jd, paramObject.jd)) {
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
+    return (aer.a(this.dd, paramObject.dd)) && (aer.a(this.ed, paramObject.ed)) && (aer.a(this.version, paramObject.version)) && (aer.a(this.path, paramObject.path)) && (aer.a(this.gd, paramObject.gd)) && (aer.a(this.hd, paramObject.hd)) && (aer.a(this.jd, paramObject.jd));
   }
   
-  public int hashCode()
+  public final int hashCode()
   {
     try
     {

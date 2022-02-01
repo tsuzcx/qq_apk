@@ -9,32 +9,32 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
-import com.tencent.token.global.h;
+import com.tencent.token.aad;
 import com.tencent.token.ui.base.CameraPrepareDialog;
-import com.tencent.token.ui.base.m;
-import com.tencent.token.ui.base.m.a;
-import com.tencent.token.utils.l;
-import java.util.List;
+import com.tencent.token.xc;
+import com.tencent.token.xv;
+import com.tencent.token.yx;
+import com.tencent.token.yx.a;
 
 public class VerifyStartScanActivity
   extends BaseActivity
 {
   private CameraPrepareDialog mCameraDialog;
-  private m mScanTipView;
+  private yx mScanTipView;
   private int mSource;
   
   private void gotoScan()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      f local3 = new f()
+      xv local3 = new xv()
       {
-        public void a()
+        public final void a()
         {
           VerifyStartScanActivity.this.gotonext();
         }
         
-        public void a(List<String> paramAnonymousList)
+        public final void b()
         {
           VerifyStartScanActivity.this.gotonext();
         }
@@ -47,7 +47,7 @@ public class VerifyStartScanActivity
   
   private void gotonext()
   {
-    this.mCameraDialog = new CameraPrepareDialog(this, 2131558791);
+    this.mCameraDialog = new CameraPrepareDialog(this);
     this.mCameraDialog.show();
     Intent localIntent = new Intent(this, MainActivity.class);
     localIntent.putExtra("source_from", this.mSource);
@@ -60,23 +60,23 @@ public class VerifyStartScanActivity
     View localView = new View(this);
     localView.setBackgroundColor(-16777216);
     setContentView(localView);
-    if (!h.a(this.mSource))
+    if (!xc.a(this.mSource))
     {
       gotoScan();
-      setRightTitleImage(2131100160, new View.OnClickListener()
+      setRightTitleImage(2131100163, new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           paramAnonymousView = VerifyStartScanActivity.this;
-          l.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
+          aad.b(paramAnonymousView, paramAnonymousView.getString(2131493429));
         }
       });
       return;
     }
-    this.mScanTipView = new m(this, this.mSource);
-    this.mScanTipView.setViewListener(new m.a()
+    this.mScanTipView = new yx(this, this.mSource);
+    this.mScanTipView.setViewListener(new yx.a()
     {
-      public void a()
+      public final void a()
       {
         VerifyStartScanActivity.this.gotoScan();
       }
@@ -89,7 +89,7 @@ public class VerifyStartScanActivity
     }
     else
     {
-      setTitle(getResources().getString(2131493539));
+      setTitle(getResources().getString(2131493540));
       this.mTitleBar.setBackgroundColor(getResources().getColor(2130968786));
       this.mTitleDivider.setVisibility(8);
     }

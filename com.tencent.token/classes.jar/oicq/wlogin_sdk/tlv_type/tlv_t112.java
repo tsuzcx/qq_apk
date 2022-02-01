@@ -19,7 +19,6 @@ public class tlv_t112
     this._t112_body_len = arrayOfByte.length;
     paramArrayOfByte = new byte[this._t112_body_len];
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, arrayOfByte.length);
-    int i = arrayOfByte.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte, this._t112_body_len);
     set_length();

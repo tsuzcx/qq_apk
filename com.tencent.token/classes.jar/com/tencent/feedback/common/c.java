@@ -78,7 +78,6 @@ public final class c
     paramContext.append(this.g);
     paramContext.append(";");
     paramContext.append(this.h);
-    paramContext.toString();
     this.F = new Date().getTime();
     this.i = a.i(this.a);
   }
@@ -358,25 +357,20 @@ public final class c
       try
       {
         if (paramString1.trim().length() <= 0) {
-          break label131;
+          break label95;
         }
         i1 = 0;
         if (i1 == 0)
         {
           if ((paramString2 == null) || (paramString2.trim().length() <= 0)) {
-            break label136;
+            break label100;
           }
           i1 = 0;
-          break label138;
+          break label102;
           this.I.put(paramString1, paramString2);
           return;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString1);
-        paramString1 = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString2);
-        e.c("key&value should not be empty %s %s", new Object[] { paramString1, localStringBuilder.toString() });
+        e.c("key&value should not be empty %s %s", new Object[] { String.valueOf(paramString1), String.valueOf(paramString2) });
         return;
       }
       finally
@@ -384,12 +378,12 @@ public final class c
         continue;
       }
       throw paramString1;
-      label131:
+      label95:
       int i1 = 1;
       continue;
-      label136:
+      label100:
       i1 = 1;
-      label138:
+      label102:
       if (i1 == 0) {}
     }
   }
@@ -431,15 +425,7 @@ public final class c
           this.z = new HashMap();
         }
         this.z.put(paramString1, new PlugInInfo(paramString1, paramString2, paramString3));
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString1);
-        paramString1 = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString2);
-        paramString2 = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString3);
-        e.a("add %s %s %s", new Object[] { paramString1, paramString2, localStringBuilder.toString() });
+        e.a("add %s %s %s", new Object[] { String.valueOf(paramString1), String.valueOf(paramString2), String.valueOf(paramString3) });
         return true;
       }
       finally {}
@@ -465,9 +451,7 @@ public final class c
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      this.m = localStringBuilder.toString();
+      this.m = String.valueOf(paramString);
       if (paramString != null) {
         b(false);
       }
@@ -485,9 +469,7 @@ public final class c
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      this.k = localStringBuilder.toString();
+      this.k = String.valueOf(paramString);
       return;
     }
     finally
@@ -571,9 +553,7 @@ public final class c
   
   public final void g(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    this.B = localStringBuilder.toString();
+    this.B = String.valueOf(paramString);
   }
   
   public final String h()
@@ -655,14 +635,12 @@ public final class c
       try
       {
         if (paramString.trim().length() <= 0) {
-          break label87;
+          break label73;
         }
         i1 = 0;
         if (i1 != 0)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramString);
-          e.c("key should not be empty %s", new Object[] { localStringBuilder.toString() });
+          e.c("key should not be empty %s", new Object[] { String.valueOf(paramString) });
           return null;
         }
         paramString = (String)this.I.remove(paramString);
@@ -673,7 +651,7 @@ public final class c
         continue;
       }
       throw paramString;
-      label87:
+      label73:
       int i1 = 1;
     }
   }
@@ -702,14 +680,12 @@ public final class c
       try
       {
         if (paramString.trim().length() <= 0) {
-          break label87;
+          break label73;
         }
         i1 = 0;
         if (i1 != 0)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramString);
-          e.c("key should not be empty %s", new Object[] { localStringBuilder.toString() });
+          e.c("key should not be empty %s", new Object[] { String.valueOf(paramString) });
           return null;
         }
         paramString = (String)this.I.get(paramString);
@@ -720,7 +696,7 @@ public final class c
         continue;
       }
       throw paramString;
-      label87:
+      label73:
       int i1 = 1;
     }
   }
@@ -749,14 +725,12 @@ public final class c
       try
       {
         if (paramString.trim().length() <= 0) {
-          break label87;
+          break label73;
         }
         i1 = 0;
         if (i1 != 0)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramString);
-          e.c("key should not be empty %s", new Object[] { localStringBuilder.toString() });
+          e.c("key should not be empty %s", new Object[] { String.valueOf(paramString) });
           return null;
         }
         paramString = (String)this.J.get(paramString);
@@ -767,7 +741,7 @@ public final class c
         continue;
       }
       throw paramString;
-      label87:
+      label73:
       int i1 = 1;
     }
   }

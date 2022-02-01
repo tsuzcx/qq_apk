@@ -6,204 +6,127 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.View.BaseSavedState;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabHost.TabSpec;
-import android.widget.TabWidget;
+import com.tencent.token.cb;
+import com.tencent.token.ce;
 import java.util.ArrayList;
 
 public class FragmentTabHost
   extends TabHost
   implements TabHost.OnTabChangeListener
 {
-  private boolean mAttached;
-  private int mContainerId;
-  private Context mContext;
-  private FragmentManager mFragmentManager;
-  private TabInfo mLastTab;
-  private TabHost.OnTabChangeListener mOnTabChangeListener;
-  private FrameLayout mRealTabContent;
-  private final ArrayList<TabInfo> mTabs = new ArrayList();
-  
-  public FragmentTabHost(Context paramContext)
-  {
-    super(paramContext, null);
-    initFragmentTabHost(paramContext, null);
-  }
+  private final ArrayList<a> a = new ArrayList();
+  private Context b;
+  private cb c;
+  private int d;
+  private TabHost.OnTabChangeListener e;
+  private a f;
+  private boolean g;
   
   public FragmentTabHost(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    initFragmentTabHost(paramContext, paramAttributeSet);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842995 }, 0, 0);
+    this.d = paramContext.getResourceId(0, 0);
+    paramContext.recycle();
+    super.setOnTabChangedListener(this);
   }
   
-  @Nullable
-  private FragmentTransaction doTabChanged(@Nullable String paramString, @Nullable FragmentTransaction paramFragmentTransaction)
+  private a a(String paramString)
   {
-    TabInfo localTabInfo = getTabInfoForTag(paramString);
-    paramString = paramFragmentTransaction;
-    if (this.mLastTab != localTabInfo)
-    {
-      paramString = paramFragmentTransaction;
-      if (paramFragmentTransaction == null) {
-        paramString = this.mFragmentManager.beginTransaction();
-      }
-      paramFragmentTransaction = this.mLastTab;
-      if ((paramFragmentTransaction != null) && (paramFragmentTransaction.fragment != null)) {
-        paramString.detach(this.mLastTab.fragment);
-      }
-      if (localTabInfo != null) {
-        if (localTabInfo.fragment == null)
-        {
-          localTabInfo.fragment = Fragment.instantiate(this.mContext, localTabInfo.clss.getName(), localTabInfo.args);
-          paramString.add(this.mContainerId, localTabInfo.fragment, localTabInfo.tag);
-        }
-        else
-        {
-          paramString.attach(localTabInfo.fragment);
-        }
-      }
-      this.mLastTab = localTabInfo;
-    }
-    return paramString;
-  }
-  
-  private void ensureContent()
-  {
-    if (this.mRealTabContent == null)
-    {
-      this.mRealTabContent = ((FrameLayout)findViewById(this.mContainerId));
-      if (this.mRealTabContent != null) {
-        return;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("No tab content FrameLayout found for id ");
-      localStringBuilder.append(this.mContainerId);
-      throw new IllegalStateException(localStringBuilder.toString());
-    }
-  }
-  
-  private void ensureHierarchy(Context paramContext)
-  {
-    if (findViewById(16908307) == null)
-    {
-      LinearLayout localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setOrientation(1);
-      addView(localLinearLayout, new FrameLayout.LayoutParams(-1, -1));
-      Object localObject = new TabWidget(paramContext);
-      ((TabWidget)localObject).setId(16908307);
-      ((TabWidget)localObject).setOrientation(0);
-      localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2, 0.0F));
-      localObject = new FrameLayout(paramContext);
-      ((FrameLayout)localObject).setId(16908305);
-      localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(0, 0, 0.0F));
-      paramContext = new FrameLayout(paramContext);
-      this.mRealTabContent = paramContext;
-      this.mRealTabContent.setId(this.mContainerId);
-      localLinearLayout.addView(paramContext, new LinearLayout.LayoutParams(-1, 0, 1.0F));
-    }
-  }
-  
-  @Nullable
-  private TabInfo getTabInfoForTag(String paramString)
-  {
-    int j = this.mTabs.size();
+    int j = this.a.size();
     int i = 0;
     while (i < j)
     {
-      TabInfo localTabInfo = (TabInfo)this.mTabs.get(i);
-      if (localTabInfo.tag.equals(paramString)) {
-        return localTabInfo;
+      a locala = (a)this.a.get(i);
+      if (locala.a.equals(paramString)) {
+        return locala;
       }
       i += 1;
     }
     return null;
   }
   
-  private void initFragmentTabHost(Context paramContext, AttributeSet paramAttributeSet)
+  private ce a(String paramString, ce paramce)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842995 }, 0, 0);
-    this.mContainerId = paramContext.getResourceId(0, 0);
-    paramContext.recycle();
-    super.setOnTabChangedListener(this);
-  }
-  
-  public void addTab(@NonNull TabHost.TabSpec paramTabSpec, @NonNull Class<?> paramClass, @Nullable Bundle paramBundle)
-  {
-    paramTabSpec.setContent(new DummyTabFactory(this.mContext));
-    String str = paramTabSpec.getTag();
-    paramClass = new TabInfo(str, paramClass, paramBundle);
-    if (this.mAttached)
+    a locala = a(paramString);
+    paramString = paramce;
+    if (this.f != locala)
     {
-      paramClass.fragment = this.mFragmentManager.findFragmentByTag(str);
-      if ((paramClass.fragment != null) && (!paramClass.fragment.isDetached()))
-      {
-        paramBundle = this.mFragmentManager.beginTransaction();
-        paramBundle.detach(paramClass.fragment);
-        paramBundle.commit();
+      paramString = paramce;
+      if (paramce == null) {
+        paramString = this.c.a();
       }
+      paramce = this.f;
+      if ((paramce != null) && (paramce.d != null)) {
+        paramString.a(this.f.d);
+      }
+      if (locala != null) {
+        if (locala.d == null)
+        {
+          locala.d = Fragment.a(this.b, locala.b.getName(), locala.c);
+          paramString.a(this.d, locala.d, locala.a);
+        }
+        else
+        {
+          paramString.b(locala.d);
+        }
+      }
+      this.f = locala;
     }
-    this.mTabs.add(paramClass);
-    addTab(paramTabSpec);
+    return paramString;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     String str = getCurrentTabTag();
-    int j = this.mTabs.size();
+    int j = this.a.size();
     Object localObject1 = null;
     int i = 0;
     while (i < j)
     {
-      TabInfo localTabInfo = (TabInfo)this.mTabs.get(i);
-      localTabInfo.fragment = this.mFragmentManager.findFragmentByTag(localTabInfo.tag);
+      a locala = (a)this.a.get(i);
+      locala.d = this.c.a(locala.a);
       Object localObject2 = localObject1;
-      if (localTabInfo.fragment != null)
+      if (locala.d != null)
       {
         localObject2 = localObject1;
-        if (!localTabInfo.fragment.isDetached()) {
-          if (localTabInfo.tag.equals(str))
+        if (!locala.d.C) {
+          if (locala.a.equals(str))
           {
-            this.mLastTab = localTabInfo;
+            this.f = locala;
             localObject2 = localObject1;
           }
           else
           {
             localObject2 = localObject1;
             if (localObject1 == null) {
-              localObject2 = this.mFragmentManager.beginTransaction();
+              localObject2 = this.c.a();
             }
-            ((FragmentTransaction)localObject2).detach(localTabInfo.fragment);
+            ((ce)localObject2).a(locala.d);
           }
         }
       }
       i += 1;
       localObject1 = localObject2;
     }
-    this.mAttached = true;
-    localObject1 = doTabChanged(str, (FragmentTransaction)localObject1);
+    this.g = true;
+    localObject1 = a(str, (ce)localObject1);
     if (localObject1 != null)
     {
-      ((FragmentTransaction)localObject1).commit();
-      this.mFragmentManager.executePendingTransactions();
+      ((ce)localObject1).b();
+      this.c.b();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.mAttached = false;
+    this.g = false;
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -215,26 +138,26 @@ public class FragmentTabHost
     }
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    setCurrentTabByTag(paramParcelable.curTab);
+    setCurrentTabByTag(paramParcelable.a);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.curTab = getCurrentTabTag();
+    localSavedState.a = getCurrentTabTag();
     return localSavedState;
   }
   
   public void onTabChanged(String paramString)
   {
-    if (this.mAttached)
+    if (this.g)
     {
-      localObject = doTabChanged(paramString, null);
+      localObject = a(paramString, null);
       if (localObject != null) {
-        ((FragmentTransaction)localObject).commit();
+        ((ce)localObject).b();
       }
     }
-    Object localObject = this.mOnTabChangeListener;
+    Object localObject = this.e;
     if (localObject != null) {
       ((TabHost.OnTabChangeListener)localObject).onTabChanged(paramString);
     }
@@ -242,7 +165,7 @@ public class FragmentTabHost
   
   public void setOnTabChangedListener(TabHost.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.mOnTabChangeListener = paramOnTabChangeListener;
+    this.e = paramOnTabChangeListener;
   }
   
   @Deprecated
@@ -251,69 +174,16 @@ public class FragmentTabHost
     throw new IllegalStateException("Must call setup() that takes a Context and FragmentManager");
   }
   
-  public void setup(Context paramContext, FragmentManager paramFragmentManager)
-  {
-    ensureHierarchy(paramContext);
-    super.setup();
-    this.mContext = paramContext;
-    this.mFragmentManager = paramFragmentManager;
-    ensureContent();
-  }
-  
-  public void setup(Context paramContext, FragmentManager paramFragmentManager, int paramInt)
-  {
-    ensureHierarchy(paramContext);
-    super.setup();
-    this.mContext = paramContext;
-    this.mFragmentManager = paramFragmentManager;
-    this.mContainerId = paramInt;
-    ensureContent();
-    this.mRealTabContent.setId(paramInt);
-    if (getId() == -1) {
-      setId(16908306);
-    }
-  }
-  
-  static class DummyTabFactory
-    implements TabHost.TabContentFactory
-  {
-    private final Context mContext;
-    
-    public DummyTabFactory(Context paramContext)
-    {
-      this.mContext = paramContext;
-    }
-    
-    public View createTabContent(String paramString)
-    {
-      paramString = new View(this.mContext);
-      paramString.setMinimumWidth(0);
-      paramString.setMinimumHeight(0);
-      return paramString;
-    }
-  }
-  
   static class SavedState
     extends View.BaseSavedState
   {
-    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator()
-    {
-      public FragmentTabHost.SavedState createFromParcel(Parcel paramAnonymousParcel)
-      {
-        return new FragmentTabHost.SavedState(paramAnonymousParcel);
-      }
-      
-      public FragmentTabHost.SavedState[] newArray(int paramAnonymousInt)
-      {
-        return new FragmentTabHost.SavedState[paramAnonymousInt];
-      }
-    };
-    String curTab;
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
+    String a;
     
     SavedState(Parcel paramParcel)
     {
       super();
-      this.curTab = paramParcel.readString();
+      this.a = paramParcel.readString();
     }
     
     SavedState(Parcelable paramParcelable)
@@ -323,11 +193,10 @@ public class FragmentTabHost
     
     public String toString()
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("FragmentTabHost.SavedState{");
+      StringBuilder localStringBuilder = new StringBuilder("FragmentTabHost.SavedState{");
       localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
       localStringBuilder.append(" curTab=");
-      localStringBuilder.append(this.curTab);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("}");
       return localStringBuilder.toString();
     }
@@ -335,26 +204,16 @@ public class FragmentTabHost
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.curTab);
+      paramParcel.writeString(this.a);
     }
   }
   
-  static final class TabInfo
+  static final class a
   {
-    @Nullable
-    final Bundle args;
-    @NonNull
-    final Class<?> clss;
-    Fragment fragment;
-    @NonNull
-    final String tag;
-    
-    TabInfo(@NonNull String paramString, @NonNull Class<?> paramClass, @Nullable Bundle paramBundle)
-    {
-      this.tag = paramString;
-      this.clss = paramClass;
-      this.args = paramBundle;
-    }
+    final String a;
+    final Class<?> b;
+    final Bundle c;
+    Fragment d;
   }
 }
 

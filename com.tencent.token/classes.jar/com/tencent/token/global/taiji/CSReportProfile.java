@@ -31,12 +31,12 @@ public final class CSReportProfile
     cache_param.add(arrayOfByte);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new CSReportProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.profileID = paramJceInputStream.read(this.profileID, 0, true);
     this.lastVerifyKey = paramJceInputStream.read(this.lastVerifyKey, 1, true);
@@ -54,7 +54,7 @@ public final class CSReportProfile
     this.tryCount = paramJceInputStream.read(this.tryCount, 13, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.profileID, 0);
     paramJceOutputStream.write(this.lastVerifyKey, 1);

@@ -108,8 +108,7 @@ public class WtloginHelper
       t localt = this.mG.a(paramWUserSigInfo._seqence);
       paramWUserSigInfo._seqence = localt.h;
       async_context localasync_context = t.b(paramWUserSigInfo._seqence);
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("user:");
+      Object localObject1 = new StringBuilder("user:");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" CheckPictureAndGetSt Seq:");
       ((StringBuilder)localObject1).append(localt.h);
@@ -135,10 +134,7 @@ public class WtloginHelper
       if (paramInt == 1)
       {
         localt.f = l1;
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(l1);
-        ((StringBuilder)localObject1).append("");
-        paramWUserSigInfo.uin = ((StringBuilder)localObject1).toString();
+        paramWUserSigInfo.uin = String.valueOf(l1);
       }
       localObject1 = new o(localt);
       int j = this.mMiscBitmap;
@@ -150,146 +146,138 @@ public class WtloginHelper
       if (j == 204) {
         paramInt = new q(localt).a(this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
       }
+      if ((paramInt != 0) && (paramInt != 160)) {
+        break label1152;
+      }
       long l2;
-      if ((paramInt == 0) || (paramInt == 160))
+      if (!util.check_uin_account(paramString).booleanValue())
       {
-        if (!util.check_uin_account(paramString).booleanValue())
+        l2 = localt.b(paramString);
+        l1 = l2;
+        if (l2 != 0L)
         {
-          l2 = localt.b(paramString);
-          l1 = l2;
-          if (l2 != 0L)
-          {
-            i = 1;
-            l1 = l2;
-          }
-        }
-        else
-        {
-          l1 = Long.parseLong(paramString);
           i = 1;
-        }
-        if ((localasync_context._msalt == 0L) && (i == 0))
-        {
-          paramInt = -1003;
-        }
-        else
-        {
-          localt.f = l1;
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append(l1);
-          paramArrayOfByte.append("");
-          paramWUserSigInfo.uin = paramArrayOfByte.toString();
-          if (paramInt == 160) {}
+          l1 = l2;
         }
       }
       else
       {
-        if ((paramWUserSigInfo._reserveData != null) && (paramWUserSigInfo._reserveData.length > 3))
+        l1 = Long.parseLong(paramString);
+        i = 1;
+      }
+      if ((localasync_context._msalt == 0L) && (i == 0))
+      {
+        paramInt = -1003;
+      }
+      else
+      {
+        localt.f = l1;
+        paramWUserSigInfo.uin = String.valueOf(l1);
+        if (paramInt != 160)
         {
-          localt.i = util.buf_to_int32(paramWUserSigInfo._reserveData, 0);
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append("MSF SSO SEQ:");
-          paramArrayOfByte.append(localt.i);
-          util.LOGI(paramArrayOfByte.toString(), paramString);
-        }
-        else
-        {
-          localt.i = 0;
-        }
-        paramArrayOfByte = localt.a(l1, localasync_context._appid);
-        if (paramArrayOfByte != null)
-        {
-          paramWUserSigInfo.get_clone(paramArrayOfByte);
-          if ((localasync_context._sub_appid_list != null) && (paramArrayOfByte1 != null) && (localasync_context._sub_appid_list.length * 2 == paramArrayOfByte1.length))
+          if ((paramWUserSigInfo._reserveData != null) && (paramWUserSigInfo._reserveData.length > 3))
           {
-            paramInt = 0;
-            while ((localasync_context._sub_appid_list != null) && (paramInt < localasync_context._sub_appid_list.length))
+            localt.i = util.buf_to_int32(paramWUserSigInfo._reserveData, 0);
+            paramArrayOfByte = new StringBuilder("MSF SSO SEQ:");
+            paramArrayOfByte.append(localt.i);
+            util.LOGI(paramArrayOfByte.toString(), paramString);
+          }
+          else
+          {
+            localt.i = 0;
+          }
+          paramArrayOfByte = localt.a(l1, localasync_context._appid);
+          if (paramArrayOfByte != null)
+          {
+            paramWUserSigInfo.get_clone(paramArrayOfByte);
+            if ((localasync_context._sub_appid_list != null) && (paramArrayOfByte1 != null) && (localasync_context._sub_appid_list.length * 2 == paramArrayOfByte1.length))
             {
-              paramArrayOfByte = localt.a(l1, localasync_context._sub_appid_list[paramInt]);
-              if (paramArrayOfByte != null)
+              paramInt = 0;
+              while ((localasync_context._sub_appid_list != null) && (paramInt < localasync_context._sub_appid_list.length))
               {
-                i = paramInt * 2;
-                paramArrayOfByte1[i] = ((byte[])paramArrayOfByte._userSt_Key.clone());
-                paramArrayOfByte1[(i + 1)] = ((byte[])paramArrayOfByte._userStSig.clone());
+                paramArrayOfByte = localt.a(l1, localasync_context._sub_appid_list[paramInt]);
+                if (paramArrayOfByte != null)
+                {
+                  i = paramInt * 2;
+                  paramArrayOfByte1[i] = ((byte[])paramArrayOfByte._userSt_Key.clone());
+                  paramArrayOfByte1[(i + 1)] = ((byte[])paramArrayOfByte._userStSig.clone());
+                }
+                paramInt += 1;
               }
-              paramInt += 1;
             }
-          }
-          paramInt = 0;
-        }
-        else
-        {
-          if ((paramWUserSigInfo._in_ksid != null) && (paramWUserSigInfo._in_ksid.length > 0)) {
-            paramArrayOfByte = (byte[])paramWUserSigInfo._in_ksid.clone();
-          } else {
-            paramArrayOfByte = t.aa;
-          }
-          if (localasync_context._tmp_pwd_type != 0)
-          {
-            localObject2 = new l(localt, this.mContext);
-            ((l)localObject2).g();
-            l1 = localasync_context._appid;
-            l2 = localasync_context._sub_appid;
-            localObject1 = localasync_context;
-            paramInt = ((l)localObject2).a(l1, l2, localt.f, 0, t.ad, ((async_context)localObject1)._tmp_pwd, null, this.mMiscBitmap, this.mSubSigMap, ((async_context)localObject1)._sub_appid_list, ((async_context)localObject1)._main_sigmap, ((async_context)localObject1)._sub_appid, t.y, 0, 0, 1, paramArrayOfByte, paramWUserSigInfo);
+            paramInt = 0;
           }
           else
           {
-            localObject1 = localasync_context;
-            localObject2 = new byte[4];
-            util.int64_to_buf32((byte[])localObject2, 0, System.currentTimeMillis() / 1000L + t.ac);
-            if (((async_context)localObject1)._isSmslogin) {
-              paramInt = 3;
+            if ((paramWUserSigInfo._in_ksid != null) && (paramWUserSigInfo._in_ksid.length > 0)) {
+              paramArrayOfByte = (byte[])paramWUserSigInfo._in_ksid.clone();
             } else {
-              paramInt = 1;
+              paramArrayOfByte = t.aa;
             }
-            l locall = new l(localt, this.mContext);
-            locall.g();
-            paramInt = locall.a(((async_context)localObject1)._appid, ((async_context)localObject1)._sub_appid, localt.f, 0, t.ad, (byte[])localObject2, ((async_context)localObject1)._tmp_pwd, paramInt, this.mMiscBitmap, this.mSubSigMap, ((async_context)localObject1)._sub_appid_list, ((async_context)localObject1)._main_sigmap, ((async_context)localObject1)._sub_appid, t.y, 0, 0, 1, paramArrayOfByte, paramWUserSigInfo);
-          }
-          paramArrayOfByte = localasync_context;
-          if (paramInt == 204) {
-            paramInt = new q(localt).a(this.mMiscBitmap, this.mSubSigMap, paramArrayOfByte._sub_appid_list, paramWUserSigInfo);
-          }
-          if ((paramInt == 0) || (paramInt == 160))
-          {
-            l1 = localt.b(paramString);
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(l1);
-            ((StringBuilder)localObject1).append("");
-            paramWUserSigInfo.uin = ((StringBuilder)localObject1).toString();
-            if (paramInt == 160) {}
-          }
-          else
-          {
-            localObject1 = localt.a(l1, paramArrayOfByte._appid);
-            if (localObject1 == null)
+            if (localasync_context._tmp_pwd_type != 0)
             {
-              paramInt = -1004;
+              localObject2 = new l(localt, this.mContext);
+              ((l)localObject2).g();
+              l1 = localasync_context._appid;
+              l2 = localasync_context._sub_appid;
+              localObject1 = localasync_context;
+              paramInt = ((l)localObject2).a(l1, l2, localt.f, 0, t.ad, ((async_context)localObject1)._tmp_pwd, null, this.mMiscBitmap, this.mSubSigMap, ((async_context)localObject1)._sub_appid_list, ((async_context)localObject1)._main_sigmap, ((async_context)localObject1)._sub_appid, t.y, 0, 0, 1, paramArrayOfByte, paramWUserSigInfo);
             }
             else
             {
-              paramWUserSigInfo.get_clone((WloginSigInfo)localObject1);
-              if ((paramArrayOfByte._sub_appid_list != null) && (paramArrayOfByte1 != null) && (paramArrayOfByte._sub_appid_list.length * 2 == paramArrayOfByte1.length))
+              localObject1 = localasync_context;
+              localObject2 = new byte[4];
+              util.int64_to_buf32((byte[])localObject2, 0, System.currentTimeMillis() / 1000L + t.ac);
+              if (((async_context)localObject1)._isSmslogin) {
+                paramInt = 3;
+              } else {
+                paramInt = 1;
+              }
+              l locall = new l(localt, this.mContext);
+              locall.g();
+              paramInt = locall.a(((async_context)localObject1)._appid, ((async_context)localObject1)._sub_appid, localt.f, 0, t.ad, (byte[])localObject2, ((async_context)localObject1)._tmp_pwd, paramInt, this.mMiscBitmap, this.mSubSigMap, ((async_context)localObject1)._sub_appid_list, ((async_context)localObject1)._main_sigmap, ((async_context)localObject1)._sub_appid, t.y, 0, 0, 1, paramArrayOfByte, paramWUserSigInfo);
+            }
+            paramArrayOfByte = localasync_context;
+            if (paramInt == 204) {
+              paramInt = new q(localt).a(this.mMiscBitmap, this.mSubSigMap, paramArrayOfByte._sub_appid_list, paramWUserSigInfo);
+            }
+            if ((paramInt == 0) || (paramInt == 160))
+            {
+              l1 = localt.b(paramString);
+              paramWUserSigInfo.uin = String.valueOf(l1);
+              if (paramInt != 160)
               {
-                paramInt = 0;
-                while ((paramArrayOfByte._sub_appid_list != null) && (paramInt < paramArrayOfByte._sub_appid_list.length))
+                localObject1 = localt.a(l1, paramArrayOfByte._appid);
+                if (localObject1 == null)
                 {
-                  localObject1 = localt.a(l1, paramArrayOfByte._sub_appid_list[paramInt]);
-                  if (localObject1 != null)
+                  paramInt = -1004;
+                }
+                else
+                {
+                  paramWUserSigInfo.get_clone((WloginSigInfo)localObject1);
+                  if ((paramArrayOfByte._sub_appid_list != null) && (paramArrayOfByte1 != null) && (paramArrayOfByte._sub_appid_list.length * 2 == paramArrayOfByte1.length))
                   {
-                    i = paramInt * 2;
-                    paramArrayOfByte1[i] = ((byte[])((WloginSigInfo)localObject1)._userSt_Key.clone());
-                    paramArrayOfByte1[(i + 1)] = ((byte[])((WloginSigInfo)localObject1)._userStSig.clone());
+                    paramInt = 0;
+                    while ((paramArrayOfByte._sub_appid_list != null) && (paramInt < paramArrayOfByte._sub_appid_list.length))
+                    {
+                      localObject1 = localt.a(l1, paramArrayOfByte._sub_appid_list[paramInt]);
+                      if (localObject1 != null)
+                      {
+                        i = paramInt * 2;
+                        paramArrayOfByte1[i] = ((byte[])((WloginSigInfo)localObject1)._userSt_Key.clone());
+                        paramArrayOfByte1[(i + 1)] = ((byte[])((WloginSigInfo)localObject1)._userStSig.clone());
+                      }
+                      paramInt += 1;
+                    }
                   }
-                  paramInt += 1;
+                  paramInt = 0;
                 }
               }
-              paramInt = 0;
             }
           }
         }
       }
+      label1152:
       paramArrayOfByte = GetUserSigInfoTicket(paramWUserSigInfo, 128);
       if (paramArrayOfByte == null) {
         paramArrayOfByte = new Ticket();
@@ -313,8 +301,7 @@ public class WtloginHelper
       }
       t.b();
       localt.h();
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("user:");
+      paramArrayOfByte = new StringBuilder("user:");
       paramArrayOfByte.append(paramString);
       paramArrayOfByte.append(" CheckPictureAndGetSt Seq:");
       paramArrayOfByte.append(localt.h);
@@ -322,7 +309,6 @@ public class WtloginHelper
       paramArrayOfByte.append(paramInt);
       paramString = paramArrayOfByte.toString();
       paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("");
       paramArrayOfByte.append(localt.f);
       util.LOGI(paramString, paramArrayOfByte.toString());
       return paramInt;
@@ -345,8 +331,7 @@ public class WtloginHelper
       t localt = this.mG.a(paramWUserSigInfo._seqence);
       paramWUserSigInfo._seqence = localt.h;
       async_context localasync_context = t.b(paramWUserSigInfo._seqence);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("user:");
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" CheckSMSAndGetSt Seq:");
       localStringBuilder.append(localt.h);
@@ -358,8 +343,7 @@ public class WtloginHelper
       if ((paramWUserSigInfo._reserveData != null) && (paramWUserSigInfo._reserveData.length > 3))
       {
         localt.i = util.buf_to_int32(paramWUserSigInfo._reserveData, 0);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("MSF SSO SEQ:");
+        localStringBuilder = new StringBuilder("MSF SSO SEQ:");
         localStringBuilder.append(localt.i);
         util.LOGI(localStringBuilder.toString(), paramString);
       }
@@ -373,13 +357,12 @@ public class WtloginHelper
         l = localt.b(paramString);
         if (l == 0L)
         {
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append("user:");
+          paramArrayOfByte = new StringBuilder("user:");
           paramArrayOfByte.append(paramString);
           paramArrayOfByte.append(" have not found uin record.");
           util.LOGI(paramArrayOfByte.toString(), paramString);
           paramInt = -1003;
-          break label563;
+          break label521;
         }
       }
       else
@@ -387,10 +370,7 @@ public class WtloginHelper
         l = Long.parseLong(paramString);
       }
       localt.f = l;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(l);
-      localStringBuilder.append("");
-      paramWUserSigInfo.uin = localStringBuilder.toString();
+      paramWUserSigInfo.uin = String.valueOf(l);
       paramInt = new p(localt).a(paramArrayOfByte, this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
       if (paramInt == 0)
       {
@@ -420,7 +400,7 @@ public class WtloginHelper
           paramInt = 0;
         }
       }
-      label563:
+      label521:
       paramArrayOfByte = GetUserSigInfoTicket(paramWUserSigInfo, 128);
       if (paramArrayOfByte == null) {
         paramArrayOfByte = new Ticket();
@@ -442,8 +422,7 @@ public class WtloginHelper
       }
       t.b();
       localt.h();
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("user:");
+      paramArrayOfByte = new StringBuilder("user:");
       paramArrayOfByte.append(paramString);
       paramArrayOfByte.append(" CheckSMSAndGetSt Seq:");
       paramArrayOfByte.append(localt.h);
@@ -451,7 +430,6 @@ public class WtloginHelper
       paramArrayOfByte.append(paramInt);
       paramString = paramArrayOfByte.toString();
       paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("");
       paramArrayOfByte.append(localt.f);
       util.LOGI(paramString, paramArrayOfByte.toString());
       return paramInt;
@@ -476,8 +454,7 @@ public class WtloginHelper
       this.mAysncSeq = localt.h;
       Object localObject = t.b(localt.h);
       localt.g = paramString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("user:");
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" Seq:");
       localStringBuilder.append(localt.h);
@@ -489,8 +466,7 @@ public class WtloginHelper
       if (paramInt == 208) {
         paramInt = i;
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("user:");
+      localObject = new StringBuilder("user:");
       ((StringBuilder)localObject).append(localt.g);
       ((StringBuilder)localObject).append(" Seq:");
       ((StringBuilder)localObject).append(localt.h);
@@ -536,8 +512,7 @@ public class WtloginHelper
     label61:
     if ((localObject != null) && (((WloginSigInfo)localObject)._en_A1 != null) && (((WloginSigInfo)localObject)._en_A1.length > 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("userAccount:");
+      StringBuilder localStringBuilder = new StringBuilder("userAccount:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" dwAppid:");
       localStringBuilder.append(paramLong);
@@ -545,8 +520,7 @@ public class WtloginHelper
       util.LOGI(localStringBuilder.toString(), paramString);
       return (byte[])((WloginSigInfo)localObject)._en_A1.clone();
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("userAccount:");
+    localObject = new StringBuilder("userAccount:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" dwAppid:");
     ((StringBuilder)localObject).append(paramLong);
@@ -568,8 +542,7 @@ public class WtloginHelper
       t localt = this.mG.a(0L);
       paramWUserSigInfo._seqence = localt.h;
       Object localObject1 = t.b(localt.h);
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("wtlogin login with GetA1WithA1:");
+      Object localObject2 = new StringBuilder("wtlogin login with GetA1WithA1:");
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append(" dwSrcAppid:");
       ((StringBuilder)localObject2).append(paramLong1);
@@ -610,13 +583,12 @@ public class WtloginHelper
         l1 = l2;
         if (l2 == 0L)
         {
-          paramArrayOfByte2 = new StringBuilder();
-          paramArrayOfByte2.append("user:");
+          paramArrayOfByte2 = new StringBuilder("user:");
           paramArrayOfByte2.append(paramString);
           paramArrayOfByte2.append(" have not found uin record.");
           util.LOGI(paramArrayOfByte2.toString(), paramString);
           paramInt1 = -1003;
-          break label750;
+          break label731;
         }
       }
       else
@@ -629,13 +601,13 @@ public class WtloginHelper
       localObject2 = GetNoPicSigByAccount(paramString, paramLong1);
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("user:");
+        StringBuilder localStringBuilder = new StringBuilder("user:");
         localStringBuilder.append(paramString);
         localStringBuilder.append(" login with A1 exchange A1.");
         util.LOGI(localStringBuilder.toString(), paramString);
-        paramInt1 = new m(localt).a(l1, paramLong1, paramLong2, 1, i, (byte[])localObject1, (byte[])localObject2, this.mMiscBitmap, this.mSubSigMap, null, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramArrayOfByte2, paramArrayOfByte3, paramWUserSigInfo);
-        if (paramInt1 == 0)
+        paramInt2 = new m(localt).a(l1, paramLong1, paramLong2, 1, i, (byte[])localObject1, (byte[])localObject2, this.mMiscBitmap, this.mSubSigMap, null, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramArrayOfByte2, paramArrayOfByte3, paramWUserSigInfo);
+        paramInt1 = paramInt2;
+        if (paramInt2 == 0)
         {
           paramArrayOfByte2 = localt.a(l1, paramLong1);
           if (paramArrayOfByte2 == null)
@@ -646,19 +618,19 @@ public class WtloginHelper
           {
             paramWUserSigInfo.get_clone(paramArrayOfByte2);
             paramWFastLoginInfo.get_clone(localt.j);
+            paramInt1 = paramInt2;
           }
         }
       }
       else
       {
-        paramArrayOfByte2 = new StringBuilder();
-        paramArrayOfByte2.append("user:");
+        paramArrayOfByte2 = new StringBuilder("user:");
         paramArrayOfByte2.append(paramString);
         paramArrayOfByte2.append(" have no a1 or pic_sig.");
         util.LOGI(paramArrayOfByte2.toString(), paramString);
         paramInt1 = -1016;
       }
-      label750:
+      label731:
       paramArrayOfByte2 = GetUserSigInfoTicket(paramWUserSigInfo, 128);
       if (paramArrayOfByte2 == null) {
         paramArrayOfByte2 = new Ticket();
@@ -682,8 +654,7 @@ public class WtloginHelper
       }
       t.b();
       localt.h();
-      paramArrayOfByte2 = new StringBuilder();
-      paramArrayOfByte2.append("wtlogin login with GetA1WithA1:");
+      paramArrayOfByte2 = new StringBuilder("wtlogin login with GetA1WithA1:");
       paramArrayOfByte2.append(paramString);
       paramArrayOfByte2.append(" dwSrcAppid:");
       paramArrayOfByte2.append(paramLong1);
@@ -738,8 +709,7 @@ public class WtloginHelper
       {
         paramArrayOfByte = ((tlv_t145)localObject).get_data();
         localObject = t.A;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("new guid:");
+        StringBuilder localStringBuilder = new StringBuilder("new guid:");
         localStringBuilder.append(util.buf_to_string(paramArrayOfByte));
         localStringBuilder.append(" old guid:");
         localStringBuilder.append(util.buf_to_string((byte[])localObject));
@@ -767,8 +737,7 @@ public class WtloginHelper
       if (paramString.length() == 0) {
         return null;
       }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("packageName:");
+      Object localObject = new StringBuilder("packageName:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" uin:");
       ((StringBuilder)localObject).append(paramLong);
@@ -845,8 +814,7 @@ public class WtloginHelper
     label61:
     if ((localObject != null) && (((WloginSigInfo)localObject)._noPicSig != null) && (((WloginSigInfo)localObject)._noPicSig.length > 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("userAccount:");
+      StringBuilder localStringBuilder = new StringBuilder("userAccount:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" dwAppid:");
       localStringBuilder.append(paramLong);
@@ -854,8 +822,7 @@ public class WtloginHelper
       util.LOGI(localStringBuilder.toString(), paramString);
       return (byte[])((WloginSigInfo)localObject)._noPicSig.clone();
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("userAccount:");
+    localObject = new StringBuilder("userAccount:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" dwAppid:");
     ((StringBuilder)localObject).append(paramLong);
@@ -885,8 +852,7 @@ public class WtloginHelper
       paramWtTicketPromise = this.mG.a(0L);
       paramWUserSigInfo._seqence = paramWtTicketPromise.h;
       async_context localasync_context = t.b(paramWtTicketPromise.h);
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("start GetStWithoutPasswd:user:");
+      Object localObject1 = new StringBuilder("start GetStWithoutPasswd:user:");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" dwSrcAppid:");
       ((StringBuilder)localObject1).append(paramLong1);
@@ -922,8 +888,7 @@ public class WtloginHelper
       if ((paramWUserSigInfo._reserveData != null) && (paramWUserSigInfo._reserveData.length > 3))
       {
         paramWtTicketPromise.i = util.buf_to_int32(paramWUserSigInfo._reserveData, 0);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("MSF SSO SEQ:");
+        localObject1 = new StringBuilder("MSF SSO SEQ:");
         ((StringBuilder)localObject1).append(paramWtTicketPromise.i);
         util.LOGI(((StringBuilder)localObject1).toString(), paramString);
       }
@@ -938,15 +903,14 @@ public class WtloginHelper
         l = paramWtTicketPromise.b(paramString);
         if (l == 0L)
         {
-          paramArrayOfLong = new StringBuilder();
-          paramArrayOfLong.append("user:");
+          paramArrayOfLong = new StringBuilder("user:");
           paramArrayOfLong.append(paramString);
           paramArrayOfLong.append(" have not found uin record.");
           util.LOGI(paramArrayOfLong.toString(), paramString);
           paramInt2 = paramInt1;
           paramArrayOfLong = paramWtTicketPromise;
           paramInt1 = -1003;
-          break label1866;
+          break label1753;
         }
       }
       else
@@ -954,20 +918,15 @@ public class WtloginHelper
         l = Long.parseLong(paramString);
       }
       paramWtTicketPromise.f = l;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(l);
-      paramWUserSigInfo.uin = ((StringBuilder)localObject1).toString();
+      paramWUserSigInfo.uin = String.valueOf(l);
       Object localObject2;
       if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length == 4) && (paramArrayOfByte2[0] != null) && (paramArrayOfByte2[0].length == 1) && (paramArrayOfByte2[0][0] == 1))
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("user:");
+        localObject1 = new StringBuilder("user:");
         ((StringBuilder)localObject1).append(paramString);
         ((StringBuilder)localObject1).append(" exchange A2 from A2/D2/KEY.");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(paramWtTicketPromise.f);
         util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
         if ((paramArrayOfByte2[1] != null) && (paramArrayOfByte2[1].length != 0) && (paramArrayOfByte2[2] != null) && (paramArrayOfByte2[2].length != 0) && (paramArrayOfByte2[3] != null) && (paramArrayOfByte2[3].length != 0))
@@ -980,18 +939,16 @@ public class WtloginHelper
           paramInt2 = paramInt1;
           paramArrayOfLong = paramWtTicketPromise;
           paramInt1 = -1004;
-          break label1866;
+          break label1753;
         }
       }
       else if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length == 3) && (paramArrayOfByte2[0] != null) && (paramArrayOfByte2[0].length == 1) && (paramArrayOfByte2[0][0] == 2))
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("user:");
+        localObject1 = new StringBuilder("user:");
         ((StringBuilder)localObject1).append(paramString);
         ((StringBuilder)localObject1).append(" exchange A2 from A2/A2KEY.");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(paramWtTicketPromise.f);
         util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
         if ((paramArrayOfByte2[1] != null) && (paramArrayOfByte2[1].length != 0) && (paramArrayOfByte2[2] != null) && (paramArrayOfByte2[2].length != 0))
@@ -1004,7 +961,7 @@ public class WtloginHelper
           paramInt2 = paramInt1;
           paramArrayOfLong = paramWtTicketPromise;
           paramInt1 = -1004;
-          break label1866;
+          break label1753;
         }
       }
       else
@@ -1014,13 +971,11 @@ public class WtloginHelper
         localObject2 = GetNoPicSigByAccount(String.valueOf(paramWtTicketPromise.f), paramLong1);
         if ((localObject1 != null) && (localObject1.length > 0) && (localObject2 != null) && (localObject2.length > 0))
         {
-          paramArrayOfByte2 = new StringBuilder();
-          paramArrayOfByte2.append("user:");
+          paramArrayOfByte2 = new StringBuilder("user:");
           paramArrayOfByte2.append(paramString);
           paramArrayOfByte2.append(" exchange A2 from A1.");
           paramArrayOfByte2 = paramArrayOfByte2.toString();
           Object localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("");
           ((StringBuilder)localObject3).append(paramWtTicketPromise.f);
           util.LOGI(paramArrayOfByte2, ((StringBuilder)localObject3).toString());
           paramArrayOfByte2 = localasync_context;
@@ -1044,26 +999,22 @@ public class WtloginHelper
         }
         else
         {
-          paramArrayOfByte2 = new StringBuilder();
-          paramArrayOfByte2.append("user:");
+          paramArrayOfByte2 = new StringBuilder("user:");
           paramArrayOfByte2.append(paramString);
           paramArrayOfByte2.append(" exchange A2 from A2.");
           paramArrayOfByte2 = paramArrayOfByte2.toString();
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("");
           ((StringBuilder)localObject1).append(paramWtTicketPromise.f);
           util.LOGI(paramArrayOfByte2, ((StringBuilder)localObject1).toString());
           paramArrayOfByte2 = paramWtTicketPromise.a(l, paramLong1);
           if ((paramArrayOfByte2 == null) || (paramArrayOfByte2._TGT == null) || (paramArrayOfByte2._TGT.length == 0) || (paramArrayOfByte2.iSExpireA2(t.f()))) {
-            break label1849;
+            break label1736;
           }
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("user:");
+          localObject1 = new StringBuilder("user:");
           ((StringBuilder)localObject1).append(paramString);
           ((StringBuilder)localObject1).append(" exchange A2 from A2 without Priority.");
           localObject1 = ((StringBuilder)localObject1).toString();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("");
           ((StringBuilder)localObject2).append(paramWtTicketPromise.f);
           util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
           printTicket(paramArrayOfByte2);
@@ -1080,7 +1031,7 @@ public class WtloginHelper
           paramInt2 = paramInt1;
           paramInt1 = -1004;
           paramArrayOfLong = paramArrayOfByte2;
-          break label1866;
+          break label1753;
         }
         paramWUserSigInfo.get_clone((WloginSigInfo)localObject1);
         if ((paramArrayOfLong != null) && (paramArrayOfByte1 != null) && (paramArrayOfLong.length * 2 == paramArrayOfByte1.length))
@@ -1111,13 +1062,13 @@ public class WtloginHelper
       paramArrayOfLong = paramWtTicketPromise;
       paramInt1 = paramInt2;
       paramInt2 = i;
-      break label1866;
-      label1849:
+      break label1753;
+      label1736:
       paramArrayOfLong = paramWtTicketPromise;
       int i = -1004;
       paramInt2 = paramInt1;
       paramInt1 = i;
-      label1866:
+      label1753:
       paramWUserSigInfo = GetUserSigInfoTicket(paramWUserSigInfo, 128);
       if (paramWUserSigInfo == null) {
         paramWUserSigInfo = new Ticket();
@@ -1139,8 +1090,7 @@ public class WtloginHelper
       }
       t.b();
       paramArrayOfLong.h();
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("end GetStWithoutPasswd:user:");
+      paramWUserSigInfo = new StringBuilder("end GetStWithoutPasswd:user:");
       paramWUserSigInfo.append(paramString);
       paramWUserSigInfo.append(" dwSrcAppid:");
       paramWUserSigInfo.append(paramLong1);
@@ -1158,7 +1108,6 @@ public class WtloginHelper
       paramWUserSigInfo.append(paramInt1);
       paramString = paramWUserSigInfo.toString();
       paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("");
       paramWUserSigInfo.append(paramArrayOfLong.f);
       util.LOGI(paramString, paramWUserSigInfo.toString());
       return paramInt1;
@@ -1168,8 +1117,7 @@ public class WtloginHelper
   
   private int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, WUserSigInfo paramWUserSigInfo, WtTicketPromise paramWtTicketPromise)
   {
-    byte[][] arrayOfByte = (byte[][])null;
-    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, arrayOfByte, arrayOfByte, 0, paramWtTicketPromise);
+    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, null, null, 0, paramWtTicketPromise);
   }
   
   public static byte[] GetTicketSig(WUserSigInfo paramWUserSigInfo, int paramInt)
@@ -1207,22 +1155,19 @@ public class WtloginHelper
     }
     if (paramWUserSigInfo == null)
     {
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("userInfo is null ");
+      paramWUserSigInfo = new StringBuilder("userInfo is null ");
       paramWUserSigInfo.append(Integer.toHexString(paramInt));
       util.LOGI(paramWUserSigInfo.toString(), "");
       return null;
     }
     if (paramWUserSigInfo._tickets == null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("tickets is null ");
+      localObject = new StringBuilder("tickets is null ");
       ((StringBuilder)localObject).append(Integer.toHexString(paramInt));
       util.LOGI(((StringBuilder)localObject).toString(), paramWUserSigInfo.uin);
       return null;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("GetUserSigInfoTicket ticket type:0x");
+    Object localObject = new StringBuilder("GetUserSigInfoTicket ticket type:0x");
     ((StringBuilder)localObject).append(Integer.toHexString(paramInt));
     util.LOGI(((StringBuilder)localObject).toString(), "");
     if (paramWUserSigInfo._tickets != null)
@@ -1233,8 +1178,7 @@ public class WtloginHelper
         localObject = (Ticket)paramWUserSigInfo._tickets.get(i);
         if (((Ticket)localObject)._type == paramInt)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("GetUserSigInfoTicket type:0x");
+          StringBuilder localStringBuilder = new StringBuilder("GetUserSigInfoTicket type:0x");
           localStringBuilder.append(Integer.toHexString(paramInt));
           localStringBuilder.append(" sig:");
           localStringBuilder.append(util.buf_len(((Ticket)localObject)._sig));
@@ -1263,10 +1207,7 @@ public class WtloginHelper
     ErrMsg localErrMsg = new ErrMsg(0, "", "", "");
     if (paramInt != 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OnDeviceLockRequest ret:");
-      localStringBuilder.append(paramInt);
-      util.LOGI(localStringBuilder.toString(), paramString);
+      util.LOGI("OnDeviceLockRequest ret:".concat(String.valueOf(paramInt)), paramString);
       localErrMsg.setMessage(util.get_error_msg(paramInt));
       localErrMsg.setTitle(InternationMsg.a(InternationMsg.MSG_TYPE.MSG_5));
     }
@@ -1284,10 +1225,7 @@ public class WtloginHelper
           if (paramInt == 0)
           {
             paramInt = new oicq.wlogin_sdk.devicelock.f().parse_rsp(paramTransReqContext.get_body());
-            paramTransReqContext = new StringBuilder();
-            paramTransReqContext.append("CheckDevLockSms ret:");
-            paramTransReqContext.append(paramInt);
-            util.LOGI(paramTransReqContext.toString(), paramString);
+            util.LOGI("CheckDevLockSms ret:".concat(String.valueOf(paramInt)), paramString);
             i = paramInt;
             if (paramInt != -1009)
             {
@@ -1306,10 +1244,7 @@ public class WtloginHelper
           if (paramInt == 0)
           {
             paramInt = new oicq.wlogin_sdk.devicelock.d().parse_rsp(paramTransReqContext.get_body());
-            paramTransReqContext = new StringBuilder();
-            paramTransReqContext.append("AskDevLockSms ret:");
-            paramTransReqContext.append(paramInt);
-            util.LOGI(paramTransReqContext.toString(), paramString);
+            util.LOGI("AskDevLockSms ret:".concat(String.valueOf(paramInt)), paramString);
             i = paramInt;
             if (paramInt != -1009)
             {
@@ -1337,10 +1272,7 @@ public class WtloginHelper
         if (paramInt == 0)
         {
           int k = new oicq.wlogin_sdk.devicelock.b().parse_rsp(paramTransReqContext.get_body());
-          paramTransReqContext = new StringBuilder();
-          paramTransReqContext.append("CloseDevLock ret:");
-          paramTransReqContext.append(k);
-          util.LOGI(paramTransReqContext.toString(), paramString);
+          util.LOGI("CloseDevLock ret:".concat(String.valueOf(k)), paramString);
           i = k;
           if (k != -1009)
           {
@@ -1385,10 +1317,7 @@ public class WtloginHelper
       if (paramInt == 0)
       {
         paramInt = new oicq.wlogin_sdk.devicelock.a().parse_rsp(paramTransReqContext.get_body());
-        paramTransReqContext = new StringBuilder();
-        paramTransReqContext.append("CheckDevLockStatus ret:");
-        paramTransReqContext.append(paramInt);
-        util.LOGI(paramTransReqContext.toString(), paramString);
+        util.LOGI("CheckDevLockStatus ret:".concat(String.valueOf(paramInt)), paramString);
         i = paramInt;
         if (paramInt != -1009)
         {
@@ -1435,63 +1364,57 @@ public class WtloginHelper
         }
       }
       paramString = this.mListener;
-      if (paramString != null) {
+      if (paramString != null)
+      {
         paramString.OnCheckDevLockStatus(paramWUserSigInfo, localDevlockInfo, i, localErrMsg);
+        return;
       }
     }
   }
   
   private void OnRequestCode2d(String paramString, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, WUserSigInfo paramWUserSigInfo, int paramInt)
   {
-    int i = paramInt;
     if (this.mListener == null) {
       return;
     }
     oicq.wlogin_sdk.code2d.c localc = oicq.wlogin_sdk.code2d.b._status;
-    Object localObject;
-    if (i != 0)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("OnRequestCode2d ret:");
-      ((StringBuilder)localObject).append(i);
-      util.LOGI(((StringBuilder)localObject).toString(), paramString);
+    if (paramInt != 0) {
+      util.LOGI("OnRequestCode2d ret:".concat(String.valueOf(paramInt)), paramString);
     }
-    int j = paramTransReqContext.get_subcmd();
-    if (j != 49)
+    int i = paramTransReqContext.get_subcmd();
+    if (i != 49)
     {
-      switch (j)
+      switch (i)
       {
       default: 
         util.LOGW("OnRequestName unhandle cmd", "", paramString);
         this.mListener.OnException(new ErrMsg(), 9, paramWUserSigInfo);
         return;
       case 20: 
-        if (i != 0)
+        if (paramInt != 0)
         {
           this.mListener.OnCloseCode(paramString, localc.d, localc.c, paramWUserSigInfo, localc.f, paramInt);
           return;
         }
-        localObject = new oicq.wlogin_sdk.code2d.a();
+        oicq.wlogin_sdk.code2d.a locala = new oicq.wlogin_sdk.code2d.a();
         if (paramWUserSigInfo == null) {
           paramWUserSigInfo = new WUserSigInfo();
         }
-        localc.b = ((oicq.wlogin_sdk.code2d.a)localObject).a(paramTransReqContext.get_body(), paramLong1, t.t, paramWUserSigInfo.loginTLVMap);
-        paramTransReqContext = new StringBuilder();
-        paramTransReqContext.append("CloseCode ret:");
+        localc.b = locala.a(paramTransReqContext.get_body(), paramLong1, t.t, paramWUserSigInfo.loginTLVMap);
+        paramTransReqContext = new StringBuilder("CloseCode ret:");
         paramTransReqContext.append(localc.b);
         util.LOGI(paramTransReqContext.toString(), paramString);
         oicq.wlogin_sdk.code2d.c.t = false;
         this.mListener.OnCloseCode(paramString, localc.d, localc.c, paramWUserSigInfo, localc.f, localc.b);
         return;
       case 19: 
-        if (i != 0)
+        if (paramInt != 0)
         {
           this.mListener.OnVerifyCode(paramString, localc.d, localc.c, localc.e, paramWUserSigInfo, localc.f, paramInt);
           return;
         }
         localc.b = new oicq.wlogin_sdk.code2d.e().a(paramTransReqContext.get_body());
-        paramTransReqContext = new StringBuilder();
-        paramTransReqContext.append("VerifyCode ret:");
+        paramTransReqContext = new StringBuilder("VerifyCode ret:");
         paramTransReqContext.append(localc.b);
         util.LOGI(paramTransReqContext.toString(), paramString);
         if ((localc.b == 0) && (localc.g != null) && (localc.g.length > 0)) {
@@ -1500,24 +1423,20 @@ public class WtloginHelper
         this.mListener.OnVerifyCode(paramString, localc.d, localc.c, localc.e, paramWUserSigInfo, localc.f, localc.b);
         return;
       }
-      paramInt = i;
-      if (i == 0)
+      if (paramInt == 0)
       {
         paramInt = new oicq.wlogin_sdk.code2d.d().a(paramTransReqContext.get_body());
-        paramTransReqContext = new StringBuilder();
-        paramTransReqContext.append("QueryCodeResult ret:");
+        paramTransReqContext = new StringBuilder("QueryCodeResult ret:");
         paramTransReqContext.append(localc.b);
         util.LOGI(paramTransReqContext.toString(), paramString);
       }
       this.mListener.OnQueryCodeResult(localc.a, localc.e, localc.c, paramWUserSigInfo, localc.f, paramInt);
       return;
     }
-    paramInt = i;
-    if (i == 0)
+    if (paramInt == 0)
     {
       paramInt = new fetch_code().get_response(paramTransReqContext.get_body());
-      paramTransReqContext = new StringBuilder();
-      paramTransReqContext.append("FetchCodeSig ret:");
+      paramTransReqContext = new StringBuilder("FetchCodeSig ret:");
       paramTransReqContext.append(localc.b);
       util.LOGI(paramTransReqContext.toString(), paramString);
     }
@@ -1548,8 +1467,7 @@ public class WtloginHelper
         switch (paramInt)
         {
         default: 
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("OnRequestRegister unhandle cmd:");
+          localObject1 = new StringBuilder("OnRequestRegister unhandle cmd:");
           ((StringBuilder)localObject1).append(paramTransReqContext.get_subcmd());
           util.LOGW(((StringBuilder)localObject1).toString(), "", paramString);
           paramString = this.mListener;
@@ -1567,8 +1485,7 @@ public class WtloginHelper
               paramString.OnRegError(paramWUserSigInfo, paramInt, ((String)localObject2).getBytes());
             }
           }
-          paramString = new StringBuilder();
-          paramString.append("reg cmd:");
+          paramString = new StringBuilder("reg cmd:");
           paramString.append(paramTransReqContext.get_subcmd());
           paramString.append(" ret:");
           paramString.append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1586,8 +1503,7 @@ public class WtloginHelper
               paramString.OnRegError(paramWUserSigInfo, paramInt, ((String)localObject2).getBytes());
             }
           }
-          paramString = new StringBuilder();
-          paramString.append("reg cmd:");
+          paramString = new StringBuilder("reg cmd:");
           paramString.append(paramTransReqContext.get_subcmd());
           paramString.append(" ret:");
           paramString.append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1606,8 +1522,7 @@ public class WtloginHelper
           }
           return;
         }
-        paramString = new StringBuilder();
-        paramString.append("reg cmd:");
+        paramString = new StringBuilder("reg cmd:");
         paramString.append(paramTransReqContext.get_subcmd());
         paramString.append(" ret:");
         paramString.append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1631,8 +1546,7 @@ public class WtloginHelper
         }
         paramWUserSigInfo.regTLVMap = ((oicq.wlogin_sdk.a.h)localObject1).B;
         ((oicq.wlogin_sdk.a.h)localObject1).B = new HashMap();
-        paramString = new StringBuilder();
-        paramString.append("reg cmd:");
+        paramString = new StringBuilder("reg cmd:");
         paramString.append(paramTransReqContext.get_subcmd());
         paramString.append(" ret:");
         paramString.append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1650,8 +1564,7 @@ public class WtloginHelper
           }
           else
           {
-            paramTransReqContext = new StringBuilder();
-            paramTransReqContext.append("00");
+            paramTransReqContext = new StringBuilder("00");
             paramTransReqContext.append(paramString);
             paramTransReqContext.append(((oicq.wlogin_sdk.a.h)localObject1).b.substring(paramInt + 1));
             ((oicq.wlogin_sdk.a.h)localObject1).b = paramTransReqContext.toString();
@@ -1662,13 +1575,11 @@ public class WtloginHelper
           this.mG.d(((oicq.wlogin_sdk.a.h)localObject1).b);
           this.mG.a(((oicq.wlogin_sdk.a.h)localObject1).b, Long.valueOf(((oicq.wlogin_sdk.a.h)localObject1).u));
         }
-        paramString = new StringBuilder();
-        paramString.append("reg userAccount: ");
+        paramString = new StringBuilder("reg userAccount: ");
         paramString.append(((oicq.wlogin_sdk.a.h)localObject1).b);
         paramString = paramString.toString();
         paramTransReqContext = new StringBuilder();
         paramTransReqContext.append(((oicq.wlogin_sdk.a.h)localObject1).u);
-        paramTransReqContext.append("");
         util.LOGI(paramString, paramTransReqContext.toString());
         if (oicq.wlogin_sdk.a.h.z.length() > 0)
         {
@@ -1690,8 +1601,7 @@ public class WtloginHelper
         }
         paramWUserSigInfo.regTLVMap = ((oicq.wlogin_sdk.a.h)localObject1).B;
         ((oicq.wlogin_sdk.a.h)localObject1).B = new HashMap();
-        paramString = new StringBuilder();
-        paramString.append("reg cmd:");
+        paramString = new StringBuilder("reg cmd:");
         paramString.append(paramTransReqContext.get_subcmd());
         paramString.append(" ret:");
         paramString.append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1713,8 +1623,7 @@ public class WtloginHelper
           paramString.OnRegError(paramWUserSigInfo, paramInt, ((String)localObject2).getBytes());
           return;
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("reg cmd:");
+        localObject2 = new StringBuilder("reg cmd:");
         ((StringBuilder)localObject2).append(paramTransReqContext.get_subcmd());
         ((StringBuilder)localObject2).append(" ret:");
         ((StringBuilder)localObject2).append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1764,8 +1673,7 @@ public class WtloginHelper
           paramString.OnRegError(paramWUserSigInfo, paramInt, ((String)localObject2).getBytes());
           return;
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("reg cmd:");
+        localObject2 = new StringBuilder("reg cmd:");
         ((StringBuilder)localObject2).append(paramTransReqContext.get_subcmd());
         ((StringBuilder)localObject2).append(" ret:");
         ((StringBuilder)localObject2).append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1809,8 +1717,7 @@ public class WtloginHelper
         }
         return;
       }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("reg cmd:");
+      localObject2 = new StringBuilder("reg cmd:");
       ((StringBuilder)localObject2).append(paramTransReqContext.get_subcmd());
       ((StringBuilder)localObject2).append(" ret:");
       ((StringBuilder)localObject2).append(((oicq.wlogin_sdk.a.h)localObject1).d);
@@ -1836,23 +1743,27 @@ public class WtloginHelper
           paramString.OnRegCheckValidUrl(paramWUserSigInfo, ((oicq.wlogin_sdk.a.h)localObject1).r);
         }
       }
-      else if ((((oicq.wlogin_sdk.a.h)localObject1).d != 6) && (((oicq.wlogin_sdk.a.h)localObject1).d != 44))
-      {
-        util.LOGW("OnRequestRegister 0xa return code:", String.valueOf(((oicq.wlogin_sdk.a.h)localObject1).d), paramString);
-        paramString = this.mListener;
-        if (paramString != null) {
-          paramString.OnRegError(paramWUserSigInfo, ((oicq.wlogin_sdk.a.h)localObject1).d, ((oicq.wlogin_sdk.a.h)localObject1).f);
-        }
-      }
       else
       {
-        paramString = this.mListener;
-        if (paramString != null) {
-          paramString.OnRegCheckWebSig(paramWUserSigInfo, new String(((oicq.wlogin_sdk.a.h)localObject1).r), new String(((oicq.wlogin_sdk.a.h)localObject1).f));
+        if ((((oicq.wlogin_sdk.a.h)localObject1).d == 6) || (((oicq.wlogin_sdk.a.h)localObject1).d == 44)) {
+          break label1877;
         }
-        ((oicq.wlogin_sdk.a.h)localObject1).r = new byte[0];
+        util.LOGW("OnRequestRegister 0xa return code:", String.valueOf(((oicq.wlogin_sdk.a.h)localObject1).d), paramString);
+        paramString = this.mListener;
+        if (paramString != null)
+        {
+          paramString.OnRegError(paramWUserSigInfo, ((oicq.wlogin_sdk.a.h)localObject1).d, ((oicq.wlogin_sdk.a.h)localObject1).f);
+          return;
+        }
       }
     }
+    return;
+    label1877:
+    paramString = this.mListener;
+    if (paramString != null) {
+      paramString.OnRegCheckWebSig(paramWUserSigInfo, new String(((oicq.wlogin_sdk.a.h)localObject1).r), new String(((oicq.wlogin_sdk.a.h)localObject1).f));
+    }
+    ((oicq.wlogin_sdk.a.h)localObject1).r = new byte[0];
   }
   
   private int RefreshPictureData(String paramString, WUserSigInfo paramWUserSigInfo, int paramInt)
@@ -1867,26 +1778,21 @@ public class WtloginHelper
       if (paramWUserSigInfo._seqence == 0L) {
         paramWUserSigInfo._seqence = this.mAysncSeq;
       }
-      Object localObject1 = this.mG.a(paramWUserSigInfo._seqence);
-      paramWUserSigInfo._seqence = ((t)localObject1).h;
-      async_context localasync_context = t.b(((t)localObject1).h);
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("user:");
-      ((StringBuilder)localObject2).append(paramString);
-      ((StringBuilder)localObject2).append(" Seq:");
-      ((StringBuilder)localObject2).append(((t)localObject1).h);
-      ((StringBuilder)localObject2).append(" RefreshPictureData ...");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
+      t localt = this.mG.a(paramWUserSigInfo._seqence);
+      paramWUserSigInfo._seqence = localt.h;
+      async_context localasync_context = t.b(localt.h);
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(paramString);
-      util.LOGI((String)localObject2, localStringBuilder.toString());
-      ((t)localObject1).g = paramString;
+      localStringBuilder.append(" Seq:");
+      localStringBuilder.append(localt.h);
+      localStringBuilder.append(" RefreshPictureData ...");
+      util.LOGI(localStringBuilder.toString(), String.valueOf(paramString));
+      localt.g = paramString;
       localasync_context._last_err_msg = new ErrMsg();
       long l;
       if (!util.check_uin_account(paramString).booleanValue())
       {
-        l = ((t)localObject1).b(paramString);
+        l = localt.b(paramString);
         if (l != 0L) {
           paramInt = 1;
         } else {
@@ -1899,25 +1805,20 @@ public class WtloginHelper
         paramInt = 1;
       }
       if (paramInt == 1) {
-        ((t)localObject1).f = l;
+        localt.f = l;
       }
-      int i = new r((t)localObject1).a(this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
+      int i = new r(localt).a(this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
       paramInt = i;
       if (i == 2) {
         paramInt = 0;
       }
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("user:");
+      paramWUserSigInfo = new StringBuilder("user:");
       paramWUserSigInfo.append(paramString);
       paramWUserSigInfo.append(" Seq:");
-      paramWUserSigInfo.append(((t)localObject1).h);
+      paramWUserSigInfo.append(localt.h);
       paramWUserSigInfo.append(" RefreshPictureData ret=");
       paramWUserSigInfo.append(paramInt);
-      paramWUserSigInfo = paramWUserSigInfo.toString();
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(paramString);
-      util.LOGI(paramWUserSigInfo, ((StringBuilder)localObject1).toString());
+      util.LOGI(paramWUserSigInfo.toString(), String.valueOf(paramString));
       return paramInt;
     }
     return -1017;
@@ -1935,28 +1836,23 @@ public class WtloginHelper
       if (paramWUserSigInfo._seqence == 0L) {
         paramWUserSigInfo._seqence = this.mAysncSeq;
       }
-      Object localObject1 = this.mG.a(paramWUserSigInfo._seqence);
-      paramWUserSigInfo._seqence = ((t)localObject1).h;
-      async_context localasync_context = t.b(((t)localObject1).h);
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("user:");
-      ((StringBuilder)localObject2).append(paramString);
-      ((StringBuilder)localObject2).append(" smsAppid:");
-      ((StringBuilder)localObject2).append(paramLong);
-      ((StringBuilder)localObject2).append(" Seq:");
-      ((StringBuilder)localObject2).append(((t)localObject1).h);
-      ((StringBuilder)localObject2).append(" RefreshSMSData ...");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
+      t localt = this.mG.a(paramWUserSigInfo._seqence);
+      paramWUserSigInfo._seqence = localt.h;
+      async_context localasync_context = t.b(localt.h);
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(paramString);
-      util.LOGI((String)localObject2, localStringBuilder.toString());
-      ((t)localObject1).g = paramString;
+      localStringBuilder.append(" smsAppid:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" Seq:");
+      localStringBuilder.append(localt.h);
+      localStringBuilder.append(" RefreshSMSData ...");
+      util.LOGI(localStringBuilder.toString(), String.valueOf(paramString));
+      localt.g = paramString;
       localasync_context._last_err_msg = new ErrMsg();
       long l;
       if (!util.check_uin_account(paramString).booleanValue())
       {
-        l = ((t)localObject1).b(paramString);
+        l = localt.b(paramString);
         if (l != 0L) {
           paramInt = 1;
         } else {
@@ -1969,27 +1865,22 @@ public class WtloginHelper
         paramInt = 1;
       }
       if (paramInt == 1) {
-        ((t)localObject1).f = l;
+        localt.f = l;
       }
-      int i = new s((t)localObject1).a(paramLong, this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
+      int i = new s(localt).a(paramLong, this.mMiscBitmap, this.mSubSigMap, localasync_context._sub_appid_list, paramWUserSigInfo);
       paramInt = i;
       if (i == 160) {
         paramInt = 0;
       }
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("user:");
+      paramWUserSigInfo = new StringBuilder("user:");
       paramWUserSigInfo.append(paramString);
       paramWUserSigInfo.append(" smsAppid:");
       paramWUserSigInfo.append(paramLong);
       paramWUserSigInfo.append(" Seq:");
-      paramWUserSigInfo.append(((t)localObject1).h);
+      paramWUserSigInfo.append(localt.h);
       paramWUserSigInfo.append(" RefreshSMSData ret=");
       paramWUserSigInfo.append(paramInt);
-      paramWUserSigInfo = paramWUserSigInfo.toString();
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(paramString);
-      util.LOGI(paramWUserSigInfo, ((StringBuilder)localObject1).toString());
+      util.LOGI(paramWUserSigInfo.toString(), String.valueOf(paramString));
       return paramInt;
     }
     return -1017;
@@ -2010,8 +1901,7 @@ public class WtloginHelper
       t localt = this.mG.a(paramWUserSigInfo._seqence);
       paramWUserSigInfo._seqence = localt.h;
       Object localObject = t.b(localt.h);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("user:");
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" Seq:");
       localStringBuilder.append(localt.h);
@@ -2020,8 +1910,7 @@ public class WtloginHelper
       localt.g = paramString;
       ((async_context)localObject)._last_err_msg = new ErrMsg();
       paramInt = new w(localt).a(this.mMiscBitmap, this.mSubSigMap, null, paramWUserSigInfo);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("user:");
+      localObject = new StringBuilder("user:");
       ((StringBuilder)localObject).append(localt.g);
       ((StringBuilder)localObject).append(" Seq:");
       ((StringBuilder)localObject).append(localt.h);
@@ -2063,14 +1952,12 @@ public class WtloginHelper
       {
         l = 0L;
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("has uin? ");
+      localObject = new StringBuilder("has uin? ");
       ((StringBuilder)localObject).append(l);
       ((StringBuilder)localObject).append(", a2: ");
       ((StringBuilder)localObject).append(paramArrayOfByte1.length);
       util.LOGI(((StringBuilder)localObject).toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("RegSubmitMobile mobile ...");
+      localObject = new StringBuilder("RegSubmitMobile mobile ...");
       ((StringBuilder)localObject).append(new String(paramArrayOfByte2));
       ((StringBuilder)localObject).append(" appname: ");
       ((StringBuilder)localObject).append(new String(arrayOfByte));
@@ -2100,8 +1987,7 @@ public class WtloginHelper
       t.d();
       int j = ShareKeyInit();
       AsyncGenRSAKey();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init ok ret:");
+      StringBuilder localStringBuilder = new StringBuilder("init ok ret:");
       localStringBuilder.append(j);
       localStringBuilder.append(" os ver:");
       localStringBuilder.append(new String(t.J));
@@ -2109,9 +1995,7 @@ public class WtloginHelper
       localStringBuilder.append(i);
       localStringBuilder.append(" network_type:");
       localStringBuilder.append(t.D);
-      localStringBuilder.append(" svn ");
-      localStringBuilder.append(2202L);
-      localStringBuilder.append(" at ");
+      localStringBuilder.append(" svn 2202 at ");
       localStringBuilder.append(t.l());
       util.LOGI(localStringBuilder.toString(), "");
       return j;
@@ -2128,23 +2012,17 @@ public class WtloginHelper
     }
     t localt = this.mG.a(0L);
     localt.f = paramLong1;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("user:");
-    ((StringBuilder)localObject).append(paramLong1);
-    ((StringBuilder)localObject).append(" appid:");
-    ((StringBuilder)localObject).append(paramLong2);
-    ((StringBuilder)localObject).append(" Seq:");
-    ((StringBuilder)localObject).append(localt.h);
-    ((StringBuilder)localObject).append(" RequestReport...");
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
+    StringBuilder localStringBuilder = new StringBuilder("user:");
     localStringBuilder.append(paramLong1);
-    util.LOGI((String)localObject, localStringBuilder.toString());
+    localStringBuilder.append(" appid:");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" Seq:");
+    localStringBuilder.append(localt.h);
+    localStringBuilder.append(" RequestReport...");
+    util.LOGI(localStringBuilder.toString(), String.valueOf(paramLong1));
     paramInt = new z(localt).a(paramLong1, null, paramArrayOfByte1, paramArrayOfByte2, paramLong2, new WUserSigInfo());
     localt.i();
-    paramArrayOfByte1 = new StringBuilder();
-    paramArrayOfByte1.append("user:");
+    paramArrayOfByte1 = new StringBuilder("user:");
     paramArrayOfByte1.append(paramLong1);
     paramArrayOfByte1.append(" appid:");
     paramArrayOfByte1.append(paramLong2);
@@ -2152,11 +2030,7 @@ public class WtloginHelper
     paramArrayOfByte1.append(localt.h);
     paramArrayOfByte1.append(" RequestReport ret=");
     paramArrayOfByte1.append(paramInt);
-    paramArrayOfByte1 = paramArrayOfByte1.toString();
-    paramArrayOfByte2 = new StringBuilder();
-    paramArrayOfByte2.append("");
-    paramArrayOfByte2.append(paramLong1);
-    util.LOGI(paramArrayOfByte1, paramArrayOfByte2.toString());
+    util.LOGI(paramArrayOfByte1.toString(), String.valueOf(paramLong1));
     return paramInt;
   }
   
@@ -2170,22 +2044,16 @@ public class WtloginHelper
     t localt = this.mG.a(0L);
     localt.d = this.mG.d;
     localt.f = paramLong1;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("user:");
-    ((StringBuilder)localObject).append(paramLong1);
-    ((StringBuilder)localObject).append(" appid:");
-    ((StringBuilder)localObject).append(paramLong2);
-    ((StringBuilder)localObject).append(" Seq:");
-    ((StringBuilder)localObject).append(localt.h);
-    ((StringBuilder)localObject).append(" RequestReportError...");
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
+    StringBuilder localStringBuilder = new StringBuilder("user:");
     localStringBuilder.append(paramLong1);
-    util.LOGI((String)localObject, localStringBuilder.toString());
+    localStringBuilder.append(" appid:");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" Seq:");
+    localStringBuilder.append(localt.h);
+    localStringBuilder.append(" RequestReportError...");
+    util.LOGI(localStringBuilder.toString(), String.valueOf(paramLong1));
     paramInt1 = new u(localt).a(paramLong1, null, paramArrayOfByte1, paramArrayOfByte2, paramLong2, paramInt2);
-    paramArrayOfByte1 = new StringBuilder();
-    paramArrayOfByte1.append("user:");
+    paramArrayOfByte1 = new StringBuilder("user:");
     paramArrayOfByte1.append(paramLong1);
     paramArrayOfByte1.append(" appid:");
     paramArrayOfByte1.append(paramLong2);
@@ -2193,11 +2061,7 @@ public class WtloginHelper
     paramArrayOfByte1.append(localt.h);
     paramArrayOfByte1.append(" RequestReportError ret=");
     paramArrayOfByte1.append(paramInt1);
-    paramArrayOfByte1 = paramArrayOfByte1.toString();
-    paramArrayOfByte2 = new StringBuilder();
-    paramArrayOfByte2.append("");
-    paramArrayOfByte2.append(paramLong1);
-    util.LOGI(paramArrayOfByte1, paramArrayOfByte2.toString());
+    util.LOGI(paramArrayOfByte1.toString(), String.valueOf(paramLong1));
     return paramInt1;
   }
   
@@ -2230,8 +2094,7 @@ public class WtloginHelper
       t localt = this.mG.a(paramWUserSigInfo._seqence);
       paramWUserSigInfo._seqence = localt.h;
       async_context localasync_context = t.b(localt.h);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("user:");
+      StringBuilder localStringBuilder = new StringBuilder("user:");
       localStringBuilder.append(localt.g);
       localStringBuilder.append(" code:");
       localStringBuilder.append(paramString2);
@@ -2243,8 +2106,7 @@ public class WtloginHelper
       localasync_context._last_err_msg = new ErrMsg();
       localasync_context._mpasswd = util.get_mpasswd();
       paramInt = new x(localt).a(paramString2, this.mMiscBitmap, this.mSubSigMap, null, paramWUserSigInfo);
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("user:");
+      paramWUserSigInfo = new StringBuilder("user:");
       paramWUserSigInfo.append(paramString1);
       paramWUserSigInfo.append(" code:");
       paramWUserSigInfo.append(paramString2);
@@ -2266,22 +2128,16 @@ public class WtloginHelper
   public static void customizeLogDir(String paramString)
   {
     t.at = paramString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("set log dir ");
-    localStringBuilder.append(paramString);
-    util.LOGI(localStringBuilder.toString(), "");
+    util.LOGI("set log dir ".concat(String.valueOf(paramString)), "");
   }
   
   public static String getLoginResultField(WUserSigInfo paramWUserSigInfo)
   {
-    Object localObject = (tlv_t)paramWUserSigInfo.loginResultTLVMap.get(new Integer(1320));
+    Object localObject = (tlv_t)paramWUserSigInfo.loginResultTLVMap.get(Integer.valueOf(1320));
     if (localObject != null)
     {
       localObject = new String(((tlv_t)localObject).get_data());
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getLoginResultField get str ");
-      localStringBuilder.append((String)localObject);
-      util.LOGI(localStringBuilder.toString(), paramWUserSigInfo.uin);
+      util.LOGI("getLoginResultField get str ".concat(String.valueOf(localObject)), paramWUserSigInfo.uin);
       return localObject;
     }
     util.LOGI("getLoginResultField get null", paramWUserSigInfo.uin);
@@ -2290,8 +2146,7 @@ public class WtloginHelper
   
   public static byte[] getLoginTlvValue(WUserSigInfo paramWUserSigInfo, int paramInt)
   {
-    Integer localInteger = new Integer(paramInt);
-    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.loginTLVMap.get(localInteger);
+    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.loginTLVMap.get(Integer.valueOf(paramInt));
     if (paramWUserSigInfo != null) {
       return paramWUserSigInfo.get_data();
     }
@@ -2300,8 +2155,7 @@ public class WtloginHelper
   
   public static byte[] getRegTlvValue(WUserSigInfo paramWUserSigInfo, int paramInt)
   {
-    Integer localInteger = new Integer(paramInt);
-    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.regTLVMap.get(localInteger);
+    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.regTLVMap.get(Integer.valueOf(paramInt));
     if (paramWUserSigInfo != null) {
       return paramWUserSigInfo.get_data();
     }
@@ -2328,8 +2182,7 @@ public class WtloginHelper
     localWUserSigInfo._seqence = localt.h;
     this.mAysncSeq = localt.h;
     async_context localasync_context = t.b(localt.h);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getStWithPtSig seq:");
+    Object localObject = new StringBuilder("getStWithPtSig seq:");
     ((StringBuilder)localObject).append(localt.h);
     util.LOGI(((StringBuilder)localObject).toString(), paramString1);
     localasync_context._last_err_msg = new ErrMsg();
@@ -2344,8 +2197,7 @@ public class WtloginHelper
     paramInt = new c(localt, paramString2).a(this.mMiscBitmap, this.mSubSigMap, localWUserSigInfo);
     if (paramInt != 0)
     {
-      paramString2 = new StringBuilder();
-      paramString2.append("VerifyPTSig seq ");
+      paramString2 = new StringBuilder("VerifyPTSig seq ");
       paramString2.append(localt.h);
       paramString2.append(" ret ");
       paramString2.append(paramInt);
@@ -2361,8 +2213,7 @@ public class WtloginHelper
     }
     if (paramInt != 0)
     {
-      paramString2 = new StringBuilder();
-      paramString2.append("getStWithPtSig seq:");
+      paramString2 = new StringBuilder("getStWithPtSig seq:");
       paramString2.append(localt.h);
       paramString2.append(" ret:");
       paramString2.append(paramInt);
@@ -2418,8 +2269,7 @@ public class WtloginHelper
     }
     t.b();
     localt.h();
-    paramString2 = new StringBuilder();
-    paramString2.append("getStWithPtSig seq:");
+    paramString2 = new StringBuilder("getStWithPtSig seq:");
     paramString2.append(localt.h);
     paramString2.append(" ret ");
     paramString2.append(paramInt);
@@ -2473,8 +2323,7 @@ public class WtloginHelper
     if ((((WUserSigInfo)localObject1)._reserveData != null) && (((WUserSigInfo)localObject1)._reserveData.length > 3))
     {
       localt.i = util.buf_to_int32(((WUserSigInfo)localObject1)._reserveData, 0);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("MSF SSO SEQ:");
+      localObject2 = new StringBuilder("MSF SSO SEQ:");
       ((StringBuilder)localObject2).append(localt.i);
       util.LOGI(((StringBuilder)localObject2).toString(), paramString);
     }
@@ -2486,8 +2335,7 @@ public class WtloginHelper
     {
       if (GetFastLoginInfo(((WUserSigInfo)localObject1)._fastLoginBuf, localasync_context) < 0)
       {
-        paramQuickLoginParam = new StringBuilder();
-        paramQuickLoginParam.append("GetFastLoginInfo fast login buff is failed seq:");
+        paramQuickLoginParam = new StringBuilder("GetFastLoginInfo fast login buff is failed seq:");
         paramQuickLoginParam.append(localt.i);
         util.LOGI(paramQuickLoginParam.toString(), paramString);
         return -1017;
@@ -2500,8 +2348,7 @@ public class WtloginHelper
       }
       if (paramInt != 0)
       {
-        paramQuickLoginParam = new StringBuilder();
-        paramQuickLoginParam.append("getStWithQQSig seq:");
+        paramQuickLoginParam = new StringBuilder("getStWithQQSig seq:");
         paramQuickLoginParam.append(localt.h);
         paramQuickLoginParam.append(" ret:");
         paramQuickLoginParam.append(paramInt);
@@ -2555,16 +2402,14 @@ public class WtloginHelper
       }
       t.b();
       localt.h();
-      paramQuickLoginParam = new StringBuilder();
-      paramQuickLoginParam.append("getStWithQQSig seq:");
+      paramQuickLoginParam = new StringBuilder("getStWithQQSig seq:");
       paramQuickLoginParam.append(localt.h);
       paramQuickLoginParam.append(" ret:");
       paramQuickLoginParam.append(paramInt);
       util.LOGI(paramQuickLoginParam.toString(), paramString);
       return paramInt;
     }
-    paramQuickLoginParam = new StringBuilder();
-    paramQuickLoginParam.append("fast login buff is null seq:");
+    paramQuickLoginParam = new StringBuilder("fast login buff is null seq:");
     paramQuickLoginParam.append(localt.i);
     util.LOGI(paramQuickLoginParam.toString(), paramString);
     return -1017;
@@ -2588,8 +2433,7 @@ public class WtloginHelper
       this.mAysncSeq = localt.h;
       oicq.wlogin_sdk.a.h.z = "";
       async_context localasync_context = t.b(localt.h);
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("start getStWithQrSig:user:");
+      Object localObject1 = new StringBuilder("start getStWithQrSig:user:");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(" appid:");
       ((StringBuilder)localObject1).append(paramLong1);
@@ -2610,8 +2454,7 @@ public class WtloginHelper
       t.F = util.get_apn_string(this.mContext).getBytes();
       if (!util.check_uin_account(paramString).booleanValue())
       {
-        paramWUserSigInfo = new StringBuilder();
-        paramWUserSigInfo.append("userAccount ");
+        paramWUserSigInfo = new StringBuilder("userAccount ");
         paramWUserSigInfo.append(paramString);
         paramWUserSigInfo.append(" isn't valid");
         util.LOGI(paramWUserSigInfo.toString(), "");
@@ -2631,8 +2474,7 @@ public class WtloginHelper
       if ((paramWUserSigInfo._reserveData != null) && (paramWUserSigInfo._reserveData.length > 3))
       {
         localt.i = util.buf_to_int32(paramWUserSigInfo._reserveData, 0);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("MSF SSO SEQ:");
+        localObject1 = new StringBuilder("MSF SSO SEQ:");
         ((StringBuilder)localObject1).append(localt.i);
         util.LOGI(((StringBuilder)localObject1).toString(), paramString);
       }
@@ -2647,8 +2489,7 @@ public class WtloginHelper
         localasync_context._tmp_no_pic_sig = oicq.wlogin_sdk.code2d.c.r;
         if ((localasync_context._tmp_no_pic_sig != null) && (localasync_context._tmp_no_pic_sig.length != 0))
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("no pic sig length ");
+          localObject1 = new StringBuilder("no pic sig length ");
           ((StringBuilder)localObject1).append(localasync_context._tmp_no_pic_sig.length);
           util.LOGI(((StringBuilder)localObject1).toString(), paramString);
         }
@@ -2671,8 +2512,7 @@ public class WtloginHelper
         }
         if (localasync_context._tmp_pwd_type != 0)
         {
-          Object localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("user:");
+          Object localObject2 = new StringBuilder("user:");
           ((StringBuilder)localObject2).append(paramString);
           ((StringBuilder)localObject2).append(" login with qrsig");
           util.LOGI(((StringBuilder)localObject2).toString(), paramString);
@@ -2731,8 +2571,7 @@ public class WtloginHelper
       }
       t.b();
       localt.h();
-      paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("end getStWithQrSig user:");
+      paramWUserSigInfo = new StringBuilder("end getStWithQrSig user:");
       paramWUserSigInfo.append(paramString);
       paramWUserSigInfo.append(" appid:");
       paramWUserSigInfo.append(paramLong1);
@@ -2746,7 +2585,6 @@ public class WtloginHelper
       paramWUserSigInfo.append(paramInt1);
       paramString = paramWUserSigInfo.toString();
       paramWUserSigInfo = new StringBuilder();
-      paramWUserSigInfo.append("");
       paramWUserSigInfo.append(localt.f);
       util.LOGI(paramString, paramWUserSigInfo.toString());
       return paramInt1;
@@ -2769,12 +2607,10 @@ public class WtloginHelper
         }
         Object localObject2 = paramArrayOfString[i];
         j = paramInt1;
-        if (localObject2 != null) {
-          if (((String)localObject2).length() == 0)
-          {
-            j = paramInt1;
-          }
-          else
+        if (localObject2 != null)
+        {
+          j = paramInt1;
+          if (((String)localObject2).length() != 0)
           {
             int m = ((String)localObject2).indexOf('(');
             j = ((String)localObject2).indexOf(')');
@@ -2812,23 +2648,22 @@ public class WtloginHelper
             {
               bool4 = bool5;
               if (paramTicket._pt4token_map.get(localObject1) == null) {
-                break label277;
+                break label274;
               }
               if (Ticket.isPskeyExpired(((Long)paramTicket._pt4token_expire.get(localObject1)).longValue()))
               {
                 bool4 = bool5;
-                break label277;
+                break label274;
               }
             }
             boolean bool4 = false;
-            label277:
+            label274:
             if ((!bool3) && (!bool4)) {
-              break label376;
+              break label368;
             }
             j = paramInt1 + 1;
             paramArrayOfString[paramInt1] = localObject2;
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("isPskeyExpired refresh ");
+            localObject2 = new StringBuilder("isPskeyExpired refresh ");
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append(" need refresh pskey:");
             ((StringBuilder)localObject2).append(bool3);
@@ -2836,9 +2671,8 @@ public class WtloginHelper
             ((StringBuilder)localObject2).append(bool4);
             util.LOGI(((StringBuilder)localObject2).toString(), "");
             paramInt1 = j;
-            label376:
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("isPskeyExpired domain ");
+            label368:
+            localObject2 = new StringBuilder("isPskeyExpired domain ");
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append(" get pskey:");
             ((StringBuilder)localObject2).append(bool1);
@@ -2856,8 +2690,7 @@ public class WtloginHelper
       }
       while (i < paramArrayOfString.length)
       {
-        paramTicket = new StringBuilder();
-        paramTicket.append("isPskeyExpired domain ");
+        paramTicket = new StringBuilder("isPskeyExpired domain ");
         paramTicket.append(paramArrayOfString[i]);
         paramTicket.append(" cleared");
         util.LOGI(paramTicket.toString(), "");
@@ -2905,40 +2738,32 @@ public class WtloginHelper
   
   private void printTicket(WloginSigInfo paramWloginSigInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("a1 ");
+    StringBuilder localStringBuilder = new StringBuilder("a1 ");
     localStringBuilder.append(paramWloginSigInfo._en_A1.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("a2 ");
+    localStringBuilder = new StringBuilder("a2 ");
     localStringBuilder.append(paramWloginSigInfo._TGT.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("skey ");
+    localStringBuilder = new StringBuilder("skey ");
     localStringBuilder.append(paramWloginSigInfo._sKey.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pskey ");
+    localStringBuilder = new StringBuilder("pskey ");
     localStringBuilder.append(paramWloginSigInfo._psKey.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("superkey ");
+    localStringBuilder = new StringBuilder("superkey ");
     localStringBuilder.append(paramWloginSigInfo._superKey.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("d2 ");
+    localStringBuilder = new StringBuilder("d2 ");
     localStringBuilder.append(paramWloginSigInfo._D2.length);
     util.LOGI(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("d2key ");
+    localStringBuilder = new StringBuilder("d2key ");
     localStringBuilder.append(paramWloginSigInfo._D2Key.length);
     util.LOGI(localStringBuilder.toString());
   }
   
   public static void setCustomerGuid(Context paramContext, byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("set customer guid ");
+    StringBuilder localStringBuilder = new StringBuilder("set customer guid ");
     localStringBuilder.append(util.buf_to_string(paramArrayOfByte));
     util.LOGI(localStringBuilder.toString(), "");
     t.ai = paramArrayOfByte;
@@ -2947,18 +2772,16 @@ public class WtloginHelper
   
   public static void setExtraLoginTlvValue(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte)
   {
-    Integer localInteger = new Integer(paramInt);
     tlv_t localtlv_t = new tlv_t(paramInt);
     localtlv_t.set_data(paramArrayOfByte, paramArrayOfByte.length);
-    paramWUserSigInfo.extraLoginTLVMap.put(localInteger, localtlv_t);
+    paramWUserSigInfo.extraLoginTLVMap.put(Integer.valueOf(paramInt), localtlv_t);
   }
   
   public static void setExtraRegTlvValue(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte)
   {
-    Integer localInteger = new Integer(paramInt);
     RegTLV localRegTLV = new RegTLV(paramInt);
     localRegTLV.set_data(paramArrayOfByte, paramArrayOfByte.length);
-    paramWUserSigInfo.extraRegTLVMap.put(localInteger, localRegTLV);
+    paramWUserSigInfo.extraRegTLVMap.put(Integer.valueOf(paramInt), localRegTLV);
   }
   
   public static void setExtraRegTlvValueWatchQQLicense(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte)
@@ -3119,7 +2942,7 @@ public class WtloginHelper
   public int CheckPictureAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo)
   {
     o.I = false;
-    return CheckPictureAndGetSt(paramString, paramArrayOfByte, paramWUserSigInfo, (byte[][])null, 0);
+    return CheckPictureAndGetSt(paramString, paramArrayOfByte, paramWUserSigInfo, null, 0);
   }
   
   public int CheckPictureAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1)
@@ -3130,7 +2953,7 @@ public class WtloginHelper
   
   public int CheckSMSAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo)
   {
-    return CheckSMSAndGetSt(paramString, paramArrayOfByte, paramWUserSigInfo, (byte[][])null, 0);
+    return CheckSMSAndGetSt(paramString, paramArrayOfByte, paramWUserSigInfo, null, 0);
   }
   
   public int CheckSMSAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1)
@@ -3146,7 +2969,7 @@ public class WtloginHelper
   public int CheckWebsigAndGetSt(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo)
   {
     o.I = true;
-    return CheckPictureAndGetSt(paramString1, paramString2.getBytes(), paramWUserSigInfo, (byte[][])null, 0);
+    return CheckPictureAndGetSt(paramString1, paramString2.getBytes(), paramWUserSigInfo, null, 0);
   }
   
   public int CheckWebsigAndGetSt(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte)
@@ -3157,8 +2980,7 @@ public class WtloginHelper
   
   public void ClearPSkey(String paramString, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("user:");
+    StringBuilder localStringBuilder = new StringBuilder("user:");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" appid:");
     localStringBuilder.append(paramLong);
@@ -3198,8 +3020,7 @@ public class WtloginHelper
   
   public Boolean ClearUserLoginData(String paramString, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("user:");
+    StringBuilder localStringBuilder = new StringBuilder("user:");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" appid:");
     localStringBuilder.append(paramLong);
@@ -3233,11 +3054,11 @@ public class WtloginHelper
         }
         WloginSigInfo._QRPUSHSig = new byte[0];
         WloginSigInfo._LHSig = new byte[0];
-        return Boolean.valueOf(true);
+        return Boolean.TRUE;
       }
       finally {}
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
   
   public int CloseCode(String paramString, long paramLong, byte[] paramArrayOfByte, int paramInt, List<byte[]> paramList, WUserSigInfo paramWUserSigInfo)
@@ -3252,8 +3073,7 @@ public class WtloginHelper
     if (localObject1 == null) {
       return -1004;
     }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("user:");
+    Object localObject2 = new StringBuilder("user:");
     ((StringBuilder)localObject2).append(paramString);
     ((StringBuilder)localObject2).append(" CloseCode ...");
     util.LOGI(((StringBuilder)localObject2).toString(), paramString);
@@ -3335,20 +3155,20 @@ public class WtloginHelper
         if (t.B.length <= 0) {
           return null;
         }
-        byte[] arrayOfByte = new byte[paramString.getBytes().length + 2 + 8 + 2 + localTicket._sig.length + 2 + localTicket._sig_key.length];
+        int i = paramString.getBytes().length + 2 + 8 + 2 + localTicket._sig.length + 2 + localTicket._sig_key.length;
+        byte[] arrayOfByte = new byte[i];
         util.int16_to_buf(arrayOfByte, 0, paramString.getBytes().length);
         System.arraycopy(paramString.getBytes(), 0, arrayOfByte, 2, paramString.getBytes().length);
-        int i = paramString.getBytes().length + 2;
-        util.int64_to_buf(arrayOfByte, i, paramLong);
-        i += 8;
-        util.int16_to_buf(arrayOfByte, i, localTicket._sig.length);
-        i += 2;
-        System.arraycopy(localTicket._sig, 0, arrayOfByte, i, localTicket._sig.length);
-        i += localTicket._sig.length;
-        util.int16_to_buf(arrayOfByte, i, localTicket._sig_key.length);
-        System.arraycopy(localTicket._sig_key, 0, arrayOfByte, i + 2, localTicket._sig_key.length);
-        i = localTicket._sig_key.length;
-        return cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, t.B);
+        int j = paramString.getBytes().length + 2;
+        util.int64_to_buf(arrayOfByte, j, paramLong);
+        j += 8;
+        util.int16_to_buf(arrayOfByte, j, localTicket._sig.length);
+        j += 2;
+        System.arraycopy(localTicket._sig, 0, arrayOfByte, j, localTicket._sig.length);
+        j += localTicket._sig.length;
+        util.int16_to_buf(arrayOfByte, j, localTicket._sig_key.length);
+        System.arraycopy(localTicket._sig_key, 0, arrayOfByte, j + 2, localTicket._sig_key.length);
+        return cryptor.encrypt(arrayOfByte, 0, i, t.B);
       }
       return null;
     }
@@ -3395,13 +3215,14 @@ public class WtloginHelper
   
   public Boolean GetBasicUserInfo(String paramString, WloginSimpleInfo paramWloginSimpleInfo)
   {
-    boolean bool = false;
     if (paramString == null) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
+    boolean bool2 = util.check_uin_account(paramString).booleanValue();
+    boolean bool1 = false;
     long l;
     int i;
-    if (!util.check_uin_account(paramString).booleanValue())
+    if (!bool2)
     {
       l = this.mG.b(paramString);
       if (l == 0L) {
@@ -3438,9 +3259,9 @@ public class WtloginHelper
       }
     }
     if (j == 1) {
-      bool = true;
+      bool1 = true;
     }
-    return Boolean.valueOf(bool);
+    return Boolean.valueOf(bool1);
   }
   
   public DevlockInfo GetDevLockInfo(String paramString)
@@ -3473,8 +3294,7 @@ public class WtloginHelper
         System.arraycopy(t.A, 0, localObject1, 0, t.A.length);
       }
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("get guid ");
+    localObject2 = new StringBuilder("get guid ");
     ((StringBuilder)localObject2).append(util.buf_to_string((byte[])localObject1));
     util.LOGI(((StringBuilder)localObject2).toString(), "");
     return localObject1;
@@ -3537,8 +3357,7 @@ public class WtloginHelper
         {
           localWUserSigInfo.uin = paramString;
           localWUserSigInfo.get_clone(localWloginSigInfo);
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("skey in sigInfo ");
+          StringBuilder localStringBuilder = new StringBuilder("skey in sigInfo ");
           localStringBuilder.append(util.getMaskBytes(localWloginSigInfo._sKey, 2, 2));
           util.LOGI(localStringBuilder.toString(), paramString);
           return localWUserSigInfo;
@@ -3560,8 +3379,7 @@ public class WtloginHelper
   
   public Ticket GetLocalTicket(String paramString, long paramLong, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GetLocalTicket appid ");
+    StringBuilder localStringBuilder = new StringBuilder("GetLocalTicket appid ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" type 0x");
     localStringBuilder.append(String.format("%x", new Object[] { Integer.valueOf(paramInt) }));
@@ -3576,9 +3394,7 @@ public class WtloginHelper
   
   public int GetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    long l = this.mOpenAppid;
-    byte[][] arrayOfByte = (byte[][])null;
-    return GetStWithoutPasswd(paramString, paramLong1, l, -1L, paramInt, paramLong2, null, paramWUserSigInfo, arrayOfByte, arrayOfByte, 0, null);
+    return GetStWithoutPasswd(paramString, paramLong1, this.mOpenAppid, -1L, paramInt, paramLong2, null, paramWUserSigInfo, null, null, 0, null);
   }
   
   public byte[] GetPictureData(String paramString)
@@ -3629,24 +3445,24 @@ public class WtloginHelper
         int n = paramString.length;
         int m = j + 1;
         if (n < m) {
-          return "";
+          break;
         }
         n = util.buf_to_int8(paramString, j);
         int i1 = paramString.length;
         j = m + n;
         if (i1 < j) {
-          return "";
+          break;
         }
         String str1 = new String(paramString, m, n);
         if (paramString.length < j + 2) {
-          return "";
+          break;
         }
         m = util.buf_to_int32(paramString, j);
         n = j + 4;
         i1 = paramString.length;
         j = n + m;
         if (i1 < j) {
-          return "";
+          break;
         }
         String str2 = new String(paramString, n, m);
         if (str1.equals("pic_reason")) {
@@ -3673,8 +3489,7 @@ public class WtloginHelper
       str = localStringBuilder.toString();
       i += 1;
     }
-    paramArrayOfString = new StringBuilder();
-    paramArrayOfString.append("GetPskey appid ");
+    paramArrayOfString = new StringBuilder("GetPskey appid ");
     paramArrayOfString.append(paramLong);
     paramArrayOfString.append(" domains ");
     paramArrayOfString.append(str);
@@ -3689,8 +3504,7 @@ public class WtloginHelper
   
   public int GetStViaSMSVerifyLogin(String paramString, long paramLong1, long paramLong2, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("user:");
+    Object localObject = new StringBuilder("user:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" GetStViaSMSVerifyLogin ...");
     util.LOGI(((StringBuilder)localObject).toString(), paramString);
@@ -3699,17 +3513,18 @@ public class WtloginHelper
     } else {
       localObject = "";
     }
-    return GetStWithPasswd(paramString, paramLong1, paramInt, paramLong2, null, false, (String)localObject, paramWUserSigInfo, (byte[][])null, true, 0);
+    return GetStWithPasswd(paramString, paramLong1, paramInt, paramLong2, null, false, (String)localObject, paramWUserSigInfo, null, true, 0);
   }
   
   public int GetStViaSMSVerifyLogin(String paramString, long paramLong1, long paramLong2, long[] paramArrayOfLong, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    byte[][] arrayOfByte = (byte[][])null;
+    byte[][] arrayOfByte;
     if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0)) {
       arrayOfByte = (byte[][])Array.newInstance(Byte.TYPE, new int[] { paramArrayOfLong.length, 0 });
+    } else {
+      arrayOfByte = null;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("user:");
+    Object localObject = new StringBuilder("user:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" GetStViaSMSVerifyLogin ...");
     util.LOGI(((StringBuilder)localObject).toString(), paramString);
@@ -3723,13 +3538,13 @@ public class WtloginHelper
   
   public int GetStWithPasswdMd5(String paramString1, long paramLong1, long paramLong2, int paramInt, String paramString2, WUserSigInfo paramWUserSigInfo)
   {
-    return GetStWithPasswd(paramString1, paramLong1, paramInt, paramLong2, null, true, paramString2, paramWUserSigInfo, (byte[][])null, false, 0);
+    return GetStWithPasswd(paramString1, paramLong1, paramInt, paramLong2, null, true, paramString2, paramWUserSigInfo, null, false, 0);
   }
   
   @Deprecated
   public int GetStWithPasswdMd5(String paramString1, long paramLong, String paramString2, WUserSigInfo paramWUserSigInfo)
   {
-    return GetStWithPasswd(paramString1, paramLong, this.mMainSigMap, 1L, null, true, paramString2, paramWUserSigInfo, (byte[][])null, false, 0);
+    return GetStWithPasswd(paramString1, paramLong, this.mMainSigMap, 1L, null, true, paramString2, paramWUserSigInfo, null, false, 0);
   }
   
   public int GetStWithPasswdReserved(String paramString1, long paramLong1, int paramInt, long paramLong2, long[] paramArrayOfLong, boolean paramBoolean, String paramString2, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte)
@@ -3739,13 +3554,13 @@ public class WtloginHelper
   
   public int GetStWithPasswdReserved(String paramString1, long paramLong1, long paramLong2, int paramInt, String paramString2, WUserSigInfo paramWUserSigInfo)
   {
-    return GetStWithPasswd(paramString1, paramLong1, paramInt, paramLong2, null, false, paramString2, paramWUserSigInfo, (byte[][])null, false, 0);
+    return GetStWithPasswd(paramString1, paramLong1, paramInt, paramLong2, null, false, paramString2, paramWUserSigInfo, null, false, 0);
   }
   
   @Deprecated
   public int GetStWithPasswdReserved(String paramString1, long paramLong, String paramString2, WUserSigInfo paramWUserSigInfo)
   {
-    return GetStWithPasswd(paramString1, paramLong, this.mMainSigMap, 1L, null, false, paramString2, paramWUserSigInfo, (byte[][])null, false, 0);
+    return GetStWithPasswd(paramString1, paramLong, this.mMainSigMap, 1L, null, false, paramString2, paramWUserSigInfo, null, false, 0);
   }
   
   public int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1, byte[][] paramArrayOfByte2)
@@ -3755,8 +3570,7 @@ public class WtloginHelper
   
   public int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    byte[][] arrayOfByte = (byte[][])null;
-    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, arrayOfByte, arrayOfByte, 0, null);
+    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, null, null, 0, null);
   }
   
   public int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo)
@@ -3767,15 +3581,13 @@ public class WtloginHelper
     arrayOfByte[1] = paramArrayOfByte1;
     arrayOfByte[2] = paramArrayOfByte2;
     arrayOfByte[3] = paramArrayOfByte3;
-    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, (byte[][])null, arrayOfByte, 0, null);
+    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, paramInt, paramLong3, null, paramWUserSigInfo, null, arrayOfByte, 0, null);
   }
   
   @Deprecated
   public int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, WUserSigInfo paramWUserSigInfo)
   {
-    int i = this.mMainSigMap;
-    byte[][] arrayOfByte = (byte[][])null;
-    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, i, 1L, null, paramWUserSigInfo, arrayOfByte, arrayOfByte, 0, null);
+    return GetStWithoutPasswd(paramString, paramLong1, paramLong2, -1L, this.mMainSigMap, 1L, null, paramWUserSigInfo, null, null, 0, null);
   }
   
   public int GetStWithoutPasswd(byte[] paramArrayOfByte, long paramLong, int paramInt, WUserSigInfo paramWUserSigInfo)
@@ -3797,7 +3609,7 @@ public class WtloginHelper
         int j = util.buf_to_int16((byte[])localObject, 0);
         if (j > 0)
         {
-          int i = 2 + j;
+          int i = j + 2;
           if (i > localObject.length) {
             return -1017;
           }
@@ -3819,7 +3631,7 @@ public class WtloginHelper
               return -1017;
             }
             byte[] arrayOfByte1 = new byte[k];
-            System.arraycopy(localObject, i, arrayOfByte1, 0, arrayOfByte1.length);
+            System.arraycopy(localObject, i, arrayOfByte1, 0, k);
             i = j + 2;
             if (i > localObject.length) {
               return -1017;
@@ -3831,13 +3643,13 @@ public class WtloginHelper
                 return -1017;
               }
               byte[] arrayOfByte2 = new byte[j];
-              System.arraycopy(localObject, i, arrayOfByte2, 0, arrayOfByte2.length);
+              System.arraycopy(localObject, i, arrayOfByte2, 0, j);
               localObject = new byte[3][];
               localObject[0] = new byte[1];
               localObject[0][0] = 2;
               localObject[1] = arrayOfByte1;
               localObject[2] = arrayOfByte2;
-              return GetStWithoutPasswd(paramArrayOfByte, l, paramLong, -1L, paramInt, 1L, null, paramWUserSigInfo, (byte[][])null, (byte[][])localObject, 0, null);
+              return GetStWithoutPasswd(paramArrayOfByte, l, paramLong, -1L, paramInt, 1L, null, paramWUserSigInfo, null, (byte[][])localObject, 0, null);
             }
             return -1017;
           }
@@ -3852,8 +3664,7 @@ public class WtloginHelper
   
   public Ticket GetTicket(String paramString, long paramLong, int paramInt, WtTicketPromise paramWtTicketPromise, Bundle paramBundle)
   {
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("GetTicket ");
+    Object localObject2 = new StringBuilder("GetTicket ");
     ((StringBuilder)localObject2).append(paramString);
     ((StringBuilder)localObject2).append(", ");
     ((StringBuilder)localObject2).append(paramLong);
@@ -3871,21 +3682,23 @@ public class WtloginHelper
     localObject2 = null;
     int j = 2;
     Ticket localTicket;
-    label435:
-    label465:
+    label446:
     do
     {
       localObject1 = GetLocalSig(paramString, paramLong);
       if (localObject1 == null)
       {
-        if (j == 1)
+        if (j != 1)
+        {
+          RefreshMemorySig();
+          i = j - 1;
+          localObject1 = localObject2;
+        }
+        else
         {
           localObject1 = localObject2;
           break;
         }
-        RefreshMemorySig();
-        i = j - 1;
-        localObject1 = localObject2;
       }
       else
       {
@@ -3904,13 +3717,12 @@ public class WtloginHelper
             if (i == 2)
             {
               i = j - 1;
-              break label465;
+              break label446;
             }
             if (i == 3) {
               return localTicket;
             }
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("GetTicket sigType:0x");
+            localObject2 = new StringBuilder("GetTicket sigType:0x");
             ((StringBuilder)localObject2).append(Integer.toHexString(paramInt));
             ((StringBuilder)localObject2).append(" expires in ");
             ((StringBuilder)localObject2).append((localTicket._expire_time - l) / 60L / 60L);
@@ -3924,33 +3736,32 @@ public class WtloginHelper
                 {
                   RefreshMemorySig();
                   i = j - 1;
-                  break label465;
+                  break label446;
                 }
               }
               else {
                 return localTicket;
               }
             }
-            else
+            else if (l >= localTicket._expire_time)
             {
-              if (l < localTicket._expire_time) {
-                break label435;
-              }
-              if (j == 1) {
-                break;
+              if (j != 1)
+              {
+                RefreshMemorySig();
+                i = j - 1;
+                break label446;
               }
             }
+            else {
+              return localTicket;
+            }
           }
-          RefreshMemorySig();
-          i = j - 1;
-          break label465;
-          return localTicket;
+          break;
         }
         else
         {
-          if (j == 1)
-          {
-            localObject1 = localObject2;
+          localObject1 = localObject2;
+          if (j == 1) {
             break;
           }
           RefreshMemorySig();
@@ -3991,8 +3802,7 @@ public class WtloginHelper
       }
       GetStWithoutPasswd(paramString, paramLong, paramLong, i, paramInt, (WUserSigInfo)localObject2, new WtloginHelper.1(this, paramWtTicketPromise, paramString, paramLong, paramInt, paramBundle));
     }
-    paramWtTicketPromise = new StringBuilder();
-    paramWtTicketPromise.append("get null for sigType:0x");
+    paramWtTicketPromise = new StringBuilder("get null for sigType:0x");
     paramWtTicketPromise.append(Integer.toHexString(paramInt));
     util.LOGI(paramWtTicketPromise.toString(), paramString);
     return null;
@@ -4005,16 +3815,17 @@ public class WtloginHelper
   
   public Boolean IsNeedLoginWithPasswd(String paramString, long paramLong)
   {
-    boolean bool = true;
     if (paramString == null) {
-      return Boolean.valueOf(true);
+      return Boolean.TRUE;
     }
     for (;;)
     {
       try
       {
+        boolean bool2 = util.check_uin_account(paramString).booleanValue();
+        bool1 = true;
         long l1;
-        if (!util.check_uin_account(paramString).booleanValue())
+        if (!bool2)
         {
           long l2 = this.mG.b(paramString);
           l1 = l2;
@@ -4031,37 +3842,36 @@ public class WtloginHelper
         Object localObject = this.mG.a(l1, paramLong);
         if ((localObject != null) && (((WloginSigInfo)localObject)._en_A1 != null) && (((WloginSigInfo)localObject)._en_A1.length != 0) && (((WloginSigInfo)localObject)._noPicSig != null) && (((WloginSigInfo)localObject)._noPicSig.length != 0))
         {
-          bool = false;
           i = 2;
+          bool1 = false;
         }
         else
         {
           if ((localObject == null) || (((WloginSigInfo)localObject)._TGT == null) || (((WloginSigInfo)localObject)._TGT.length == 0)) {
-            break label258;
+            break label255;
           }
           if (!((WloginSigInfo)localObject).iSExpireA2(t.f())) {
-            break label249;
+            break label246;
           }
-          break label258;
+          break label255;
         }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("user:");
+        localObject = new StringBuilder("user:");
         ((StringBuilder)localObject).append(paramString);
         ((StringBuilder)localObject).append(" appid:");
         ((StringBuilder)localObject).append(paramLong);
         ((StringBuilder)localObject).append(" need password:");
-        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(bool1);
         ((StringBuilder)localObject).append(" flag=");
         ((StringBuilder)localObject).append(i);
         util.LOGI(((StringBuilder)localObject).toString(), paramString);
-        return Boolean.valueOf(bool);
+        return Boolean.valueOf(bool1);
       }
       finally {}
-      label249:
-      bool = false;
+      label246:
       int i = 0;
+      boolean bool1 = false;
       continue;
-      label258:
+      label255:
       i = 3;
     }
   }
@@ -4069,7 +3879,7 @@ public class WtloginHelper
   public Boolean IsUserHaveA1(String paramString, long paramLong)
   {
     if (paramString == null) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     long l1;
     if (!util.check_uin_account(paramString).booleanValue())
@@ -4079,7 +3889,7 @@ public class WtloginHelper
       if (l2 == 0L)
       {
         localObject = null;
-        break label64;
+        break label63;
       }
     }
     else
@@ -4087,26 +3897,24 @@ public class WtloginHelper
       l1 = Long.parseLong(paramString);
     }
     Object localObject = this.mG.a(l1, paramLong);
-    label64:
+    label63:
     if ((localObject != null) && (((WloginSigInfo)localObject)._en_A1 != null) && (((WloginSigInfo)localObject)._en_A1.length > 0))
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("userAccount:");
+      localObject = new StringBuilder("userAccount:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" dwAppid:");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(" IsUserHaveA1 return: not null");
       util.LOGI(((StringBuilder)localObject).toString(), paramString);
-      return Boolean.valueOf(true);
+      return Boolean.TRUE;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("userAccount:");
+    localObject = new StringBuilder("userAccount:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" dwAppid:");
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append(" IsUserHaveA1 return: null");
     util.LOGI(((StringBuilder)localObject).toString(), paramString);
-    return Boolean.valueOf(false);
+    return Boolean.FALSE;
   }
   
   public boolean IsWtLoginUrl(String paramString)
@@ -4220,8 +4028,7 @@ public class WtloginHelper
     TransReqContext localTransReqContext = new TransReqContext();
     localTransReqContext.set_code2d_func_req();
     localTransReqContext.set_subcmd(locald.get_cmd());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("qrsig ");
+    StringBuilder localStringBuilder = new StringBuilder("qrsig ");
     localStringBuilder.append(util.buf_to_string(oicq.wlogin_sdk.code2d.c.i));
     util.LOGI(localStringBuilder.toString());
     localTransReqContext._body = locald.a(0L, paramLong, oicq.wlogin_sdk.code2d.c.i, new byte[0]);
@@ -4377,8 +4184,7 @@ public class WtloginHelper
       return -1001;
     }
     t localt = this.mG.a(0L);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("user:");
+    Object localObject = new StringBuilder("user:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" encrypt:");
     ((StringBuilder)localObject).append(paramInt2);
@@ -4426,8 +4232,7 @@ public class WtloginHelper
       paramInt1 = new z(localt).a(localt.f, paramTransReqContext, null, null, paramLong1, paramLong2, paramWUserSigInfo);
     }
     localt.i();
-    paramTransReqContext = new StringBuilder();
-    paramTransReqContext.append("user:");
+    paramTransReqContext = new StringBuilder("user:");
     paramTransReqContext.append(paramString);
     paramTransReqContext.append(" encrypt:");
     paramTransReqContext.append(paramInt2);
@@ -4451,8 +4256,7 @@ public class WtloginHelper
       return -1001;
     }
     t localt = this.mG.a(0L);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("user:");
+    Object localObject1 = new StringBuilder("user:");
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append(" encrypt:");
     ((StringBuilder)localObject1).append(paramInt2);
@@ -4509,8 +4313,7 @@ public class WtloginHelper
       }
     }
     localt.i();
-    paramTransReqContext = new StringBuilder();
-    paramTransReqContext.append("user:");
+    paramTransReqContext = new StringBuilder("user:");
     paramTransReqContext.append(paramString);
     paramTransReqContext.append(" encrypt:");
     paramTransReqContext.append(paramInt2);
@@ -4671,8 +4474,7 @@ public class WtloginHelper
     {
       localObject1 = new byte[0];
     }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("user:");
+    Object localObject2 = new StringBuilder("user:");
     ((StringBuilder)localObject2).append(paramString);
     ((StringBuilder)localObject2).append(" VerifyCode ...");
     util.LOGI(((StringBuilder)localObject2).toString(), paramString);
@@ -4694,14 +4496,9 @@ public class WtloginHelper
   public boolean getHasPassword(long paramLong)
   {
     String str = this.mG.e(paramLong);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getHasPasswd ...");
+    Object localObject = new StringBuilder("getHasPasswd ...");
     ((StringBuilder)localObject).append(String.valueOf(str));
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramLong);
-    util.LOGI((String)localObject, localStringBuilder.toString());
+    util.LOGI(((StringBuilder)localObject).toString(), String.valueOf(paramLong));
     if (str == null) {
       return true;
     }
@@ -4710,8 +4507,7 @@ public class WtloginHelper
       return true;
     }
     boolean bool = ((UinInfo)localObject).getHasPassword();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getHasPasswd userAccount: ");
+    localObject = new StringBuilder("getHasPasswd userAccount: ");
     ((StringBuilder)localObject).append(str);
     ((StringBuilder)localObject).append(", uin: ");
     ((StringBuilder)localObject).append(paramLong);
@@ -4729,16 +4525,13 @@ public class WtloginHelper
   public String getUserAccountFromQuickLoginResultData(Intent paramIntent)
   {
     boolean bool = paramIntent.getBooleanExtra("isRetFromWeb", false);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getUserAccountFromQuickLoginResultData isRetFromWeb ");
-    ((StringBuilder)localObject).append(bool);
-    util.LOGI(((StringBuilder)localObject).toString());
+    util.LOGI("getUserAccountFromQuickLoginResultData isRetFromWeb ".concat(String.valueOf(bool)));
     if (!bool) {
       paramIntent = paramIntent.getStringExtra("quicklogin_uin");
     } else {
       paramIntent = paramIntent.getStringExtra("uin");
     }
-    localObject = paramIntent;
+    Object localObject = paramIntent;
     if (paramIntent == null) {
       localObject = "";
     }
@@ -4748,10 +4541,7 @@ public class WtloginHelper
   public String getUserInputFromQuickLoginResultData(Intent paramIntent)
   {
     boolean bool = paramIntent.getBooleanExtra("isRetFromWeb", false);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getUserAccountFromQuickLoginResultData isRetFromWeb ");
-    localStringBuilder.append(bool);
-    util.LOGI(localStringBuilder.toString());
+    util.LOGI("getUserAccountFromQuickLoginResultData isRetFromWeb ".concat(String.valueOf(bool)));
     if (true == bool) {
       return paramIntent.getStringExtra("input");
     }
@@ -4771,10 +4561,7 @@ public class WtloginHelper
       return -1017;
     }
     boolean bool = paramIntent.getBooleanExtra("isRetFromWeb", false);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onQuickLoginActivityResultData isRetFromWeb ");
-    localStringBuilder.append(bool);
-    util.LOGI(localStringBuilder.toString());
+    util.LOGI("onQuickLoginActivityResultData isRetFromWeb ".concat(String.valueOf(bool)));
     if (!bool)
     {
       paramIntent = ResolveQloginIntentReserved(paramIntent);
@@ -4785,8 +4572,7 @@ public class WtloginHelper
       }
       paramQuickLoginParam.userSigInfo.uin = paramIntent.uin;
       paramQuickLoginParam.userSigInfo._fastLoginBuf = paramIntent._fastLoginBuf;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
+      StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramIntent.uin);
       return getStWithQQSig(localStringBuilder.toString(), paramQuickLoginParam);
     }
@@ -4804,8 +4590,8 @@ public class WtloginHelper
     {
       Method localMethod;
       int i;
-      label112:
-      break label112;
+      label111:
+      break label111;
     }
     try
     {
@@ -4846,16 +4632,14 @@ public class WtloginHelper
   public void setHasPassword(long paramLong, boolean paramBoolean)
   {
     String str = this.mG.e(paramLong);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setHasPasswd ...");
+    StringBuilder localStringBuilder = new StringBuilder("setHasPasswd ...");
     localStringBuilder.append(String.valueOf(str));
     util.LOGI(localStringBuilder.toString(), "");
     if (str == null) {
       return;
     }
     this.mG.a(str, Long.valueOf(paramLong), paramBoolean);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setHasPasswd userAccount: ");
+    localStringBuilder = new StringBuilder("setHasPasswd userAccount: ");
     localStringBuilder.append(str);
     localStringBuilder.append(", uin: ");
     localStringBuilder.append(paramLong);
@@ -4871,7 +4655,7 @@ public class WtloginHelper
     oicq.wlogin_sdk.devicelock.DevlockBase.a.c = paramInt3;
   }
   
-  private static class A1SRC
+  static class A1SRC
   {
     public static final int A1SRC_PASSWORD = 1;
     public static final int A1SRC_PTSIG = 4;
@@ -5127,8 +4911,8 @@ public class WtloginHelper
             localLooper.quit();
           }
           this.mHandler = null;
-          return;
         }
+        return;
       }
       catch (Exception localException)
       {
@@ -5151,8 +4935,7 @@ public class WtloginHelper
         paramInt = WtloginHelper.__top;
         WtloginHelper.__top = paramInt + 1;
         ((Timer)localObject2).schedule(local1, paramInt * 500);
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("push queue ");
+        localObject2 = new StringBuilder("push queue ");
         ((StringBuilder)localObject2).append(WtloginHelper.__top);
         util.LOGI(((StringBuilder)localObject2).toString(), "");
         return;
@@ -5165,7 +4948,7 @@ public class WtloginHelper
       // Byte code:
       //   0: aload_0
       //   1: getfield 78	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-      //   4: invokestatic 247	oicq/wlogin_sdk/request/WtloginHelper:access$100	(Loicq/wlogin_sdk/request/WtloginHelper;)Loicq/wlogin_sdk/request/WtloginListener;
+      //   4: invokestatic 245	oicq/wlogin_sdk/request/WtloginHelper:access$100	(Loicq/wlogin_sdk/request/WtloginHelper;)Loicq/wlogin_sdk/request/WtloginListener;
       //   7: ifnonnull +11 -> 18
       //   10: aload_0
       //   11: getfield 155	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mPromise	Loicq/wlogin_sdk/request/WtTicketPromise;
@@ -5173,8 +4956,8 @@ public class WtloginHelper
       //   17: return
       //   18: aload_0
       //   19: getfield 78	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHelper	Loicq/wlogin_sdk/request/WtloginHelper;
-      //   22: invokestatic 251	oicq/wlogin_sdk/request/WtloginHelper:access$200	(Loicq/wlogin_sdk/request/WtloginHelper;)Loicq/wlogin_sdk/request/t;
-      //   25: getfield 256	oicq/wlogin_sdk/request/t:s	I
+      //   22: invokestatic 249	oicq/wlogin_sdk/request/WtloginHelper:access$200	(Loicq/wlogin_sdk/request/WtloginHelper;)Loicq/wlogin_sdk/request/t;
+      //   25: getfield 254	oicq/wlogin_sdk/request/t:s	I
       //   28: istore_1
       //   29: aload_0
       //   30: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
@@ -5190,15 +4973,15 @@ public class WtloginHelper
       //   51: aload_0
       //   52: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
       //   55: ifeq +17 -> 72
-      //   58: invokestatic 259	android/os/Looper:prepare	()V
+      //   58: invokestatic 257	android/os/Looper:prepare	()V
       //   61: aload_0
       //   62: aload_0
       //   63: getfield 67	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:this$0	Loicq/wlogin_sdk/request/WtloginHelper;
-      //   66: invokestatic 263	oicq/wlogin_sdk/request/WtloginHelper:access$300	(Loicq/wlogin_sdk/request/WtloginHelper;)Landroid/os/Handler;
+      //   66: invokestatic 261	oicq/wlogin_sdk/request/WtloginHelper:access$300	(Loicq/wlogin_sdk/request/WtloginHelper;)Landroid/os/Handler;
       //   69: putfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
       //   72: aload_0
       //   73: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   76: ifnull +1132 -> 1208
+      //   76: ifnull +1126 -> 1202
       //   79: aload_0
       //   80: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
       //   83: ifne +73 -> 156
@@ -5225,17 +5008,17 @@ public class WtloginHelper
       //   126: aload_0
       //   127: getfield 76	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mIsSmslogin	Z
       //   130: iconst_1
-      //   131: invokestatic 267	oicq/wlogin_sdk/request/WtloginHelper:access$400	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JIJ[JZLjava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;[[BZI)I
+      //   131: invokestatic 265	oicq/wlogin_sdk/request/WtloginHelper:access$400	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JIJ[JZLjava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;[[BZI)I
       //   134: istore_2
       //   135: aload_0
       //   136: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   139: new 269	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$2
+      //   139: new 267	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$2
       //   142: dup
       //   143: aload_0
       //   144: iload_1
       //   145: iload_2
-      //   146: invokespecial 272	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$2:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   149: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   146: invokespecial 270	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$2:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   149: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   152: pop
       //   153: goto +965 -> 1118
       //   156: aload_0
@@ -5249,17 +5032,17 @@ public class WtloginHelper
       //   172: aload_0
       //   173: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   176: iconst_1
-      //   177: invokestatic 282	oicq/wlogin_sdk/request/WtloginHelper:access$600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   177: invokestatic 280	oicq/wlogin_sdk/request/WtloginHelper:access$600	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   180: istore_2
       //   181: aload_0
       //   182: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   185: new 284	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$3
+      //   185: new 282	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$3
       //   188: dup
       //   189: aload_0
       //   190: iload_1
       //   191: iload_2
-      //   192: invokespecial 285	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$3:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   195: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   192: invokespecial 283	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$3:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   195: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   198: pop
       //   199: goto +919 -> 1118
       //   202: aload_0
@@ -5277,17 +5060,17 @@ public class WtloginHelper
       //   226: aload_0
       //   227: getfield 116	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST	[[B
       //   230: iconst_1
-      //   231: invokestatic 289	oicq/wlogin_sdk/request/WtloginHelper:access$700	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;[BLoicq/wlogin_sdk/request/WUserSigInfo;[[BI)I
+      //   231: invokestatic 287	oicq/wlogin_sdk/request/WtloginHelper:access$700	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;[BLoicq/wlogin_sdk/request/WUserSigInfo;[[BI)I
       //   234: istore_2
       //   235: aload_0
       //   236: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   239: new 291	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$4
+      //   239: new 289	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$4
       //   242: dup
       //   243: aload_0
       //   244: iload_1
       //   245: iload_2
-      //   246: invokespecial 292	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$4:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   249: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   246: invokespecial 290	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$4:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   249: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   252: pop
       //   253: goto +865 -> 1118
       //   256: aload_0
@@ -5303,17 +5086,17 @@ public class WtloginHelper
       //   276: aload_0
       //   277: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   280: iconst_1
-      //   281: invokestatic 296	oicq/wlogin_sdk/request/WtloginHelper:access$800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JLoicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   281: invokestatic 294	oicq/wlogin_sdk/request/WtloginHelper:access$800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JLoicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   284: istore_2
       //   285: aload_0
       //   286: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   289: new 298	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$5
+      //   289: new 296	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$5
       //   292: dup
       //   293: aload_0
       //   294: iload_1
       //   295: iload_2
-      //   296: invokespecial 299	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$5:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   299: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   296: invokespecial 297	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$5:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   299: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   302: pop
       //   303: goto +815 -> 1118
       //   306: aload_0
@@ -5331,17 +5114,17 @@ public class WtloginHelper
       //   330: aload_0
       //   331: getfield 116	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mST	[[B
       //   334: iconst_1
-      //   335: invokestatic 302	oicq/wlogin_sdk/request/WtloginHelper:access$900	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;[BLoicq/wlogin_sdk/request/WUserSigInfo;[[BI)I
+      //   335: invokestatic 300	oicq/wlogin_sdk/request/WtloginHelper:access$900	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;[BLoicq/wlogin_sdk/request/WUserSigInfo;[[BI)I
       //   338: istore_2
       //   339: aload_0
       //   340: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   343: new 304	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$6
+      //   343: new 302	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$6
       //   346: dup
       //   347: aload_0
       //   348: iload_1
       //   349: iload_2
-      //   350: invokespecial 305	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$6:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   353: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   350: invokespecial 303	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$6:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   353: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   356: pop
       //   357: goto +761 -> 1118
       //   360: aload_0
@@ -5393,19 +5176,19 @@ public class WtloginHelper
       //   450: iconst_1
       //   451: aload_0
       //   452: getfield 155	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mPromise	Loicq/wlogin_sdk/request/WtTicketPromise;
-      //   455: invokestatic 309	oicq/wlogin_sdk/request/WtloginHelper:access$1000	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJJIJ[JLoicq/wlogin_sdk/request/WUserSigInfo;[[B[[BILoicq/wlogin_sdk/request/WtTicketPromise;)I
+      //   455: invokestatic 307	oicq/wlogin_sdk/request/WtloginHelper:access$1000	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJJIJ[JLoicq/wlogin_sdk/request/WUserSigInfo;[[B[[BILoicq/wlogin_sdk/request/WtTicketPromise;)I
       //   458: istore_2
       //   459: aload_0
       //   460: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
       //   463: astore 15
       //   465: aload 15
-      //   467: new 311	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7
+      //   467: new 309	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7
       //   470: dup
       //   471: aload_0
       //   472: iload_1
       //   473: iload_2
-      //   474: invokespecial 312	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   477: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   474: invokespecial 310	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$7:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   477: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   480: pop
       //   481: goto +637 -> 1118
       //   484: iload_1
@@ -5459,19 +5242,19 @@ public class WtloginHelper
       //   577: aload_0
       //   578: getfield 131	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mFastLoginInfo	Loicq/wlogin_sdk/request/WFastLoginInfo;
       //   581: iconst_1
-      //   582: invokestatic 316	oicq/wlogin_sdk/request/WtloginHelper:access$1200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJI[BJJJ[B[BLoicq/wlogin_sdk/request/WUserSigInfo;Loicq/wlogin_sdk/request/WFastLoginInfo;I)I
+      //   582: invokestatic 314	oicq/wlogin_sdk/request/WtloginHelper:access$1200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJI[BJJJ[B[BLoicq/wlogin_sdk/request/WUserSigInfo;Loicq/wlogin_sdk/request/WFastLoginInfo;I)I
       //   585: istore_3
       //   586: aload_0
       //   587: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
       //   590: astore 15
       //   592: aload 15
-      //   594: new 318	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8
+      //   594: new 316	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8
       //   597: dup
       //   598: aload_0
       //   599: iload_2
       //   600: iload_3
-      //   601: invokespecial 319	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   604: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   601: invokespecial 317	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$8:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   604: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   607: pop
       //   608: goto +510 -> 1118
       //   611: aload_0
@@ -5489,7 +5272,7 @@ public class WtloginHelper
       //   634: getfield 170	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUIN	J
       //   637: aload_0
       //   638: getfield 88	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
-      //   641: invokestatic 323	oicq/wlogin_sdk/request/WtloginHelper:access$1300	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJ)I
+      //   641: invokestatic 321	oicq/wlogin_sdk/request/WtloginHelper:access$1300	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJ)I
       //   644: pop
       //   645: goto +473 -> 1118
       //   648: aload_0
@@ -5511,17 +5294,17 @@ public class WtloginHelper
       //   679: getfield 92	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
       //   682: aload_0
       //   683: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
-      //   686: invokevirtual 327	oicq/wlogin_sdk/request/WtloginHelper:RequestTransport	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;Loicq/wlogin_sdk/request/WUserSigInfo;)I
+      //   686: invokevirtual 325	oicq/wlogin_sdk/request/WtloginHelper:RequestTransport	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;Loicq/wlogin_sdk/request/WUserSigInfo;)I
       //   689: istore_3
       //   690: aload_0
       //   691: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   694: new 329	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9
+      //   694: new 327	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9
       //   697: dup
       //   698: aload_0
       //   699: iload_2
       //   700: iload_3
-      //   701: invokespecial 330	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   704: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   701: invokespecial 328	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$9:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   704: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   707: pop
       //   708: goto +410 -> 1118
       //   711: aload_0
@@ -5541,17 +5324,17 @@ public class WtloginHelper
       //   738: getfield 90	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mRole	J
       //   741: aload_0
       //   742: getfield 92	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqContext	Loicq/wlogin_sdk/request/TransReqContext;
-      //   745: invokevirtual 334	oicq/wlogin_sdk/request/WtloginHelper:RequestTransportMsf	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;)I
+      //   745: invokevirtual 332	oicq/wlogin_sdk/request/WtloginHelper:RequestTransportMsf	(IILjava/lang/String;JJLoicq/wlogin_sdk/request/TransReqContext;)I
       //   748: istore_3
       //   749: aload_0
       //   750: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   753: new 336	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10
+      //   753: new 334	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10
       //   756: dup
       //   757: aload_0
       //   758: iload_2
       //   759: iload_3
-      //   760: invokespecial 337	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   763: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   760: invokespecial 335	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$10:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   763: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   766: pop
       //   767: goto +351 -> 1118
       //   770: aload_0
@@ -5569,17 +5352,17 @@ public class WtloginHelper
       //   795: aload_0
       //   796: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   799: iconst_1
-      //   800: invokestatic 341	oicq/wlogin_sdk/request/WtloginHelper:access$1700	(Loicq/wlogin_sdk/request/WtloginHelper;JJLjava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   800: invokestatic 339	oicq/wlogin_sdk/request/WtloginHelper:access$1700	(Loicq/wlogin_sdk/request/WtloginHelper;JJLjava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   803: istore_3
       //   804: aload_0
       //   805: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   808: new 343	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11
+      //   808: new 341	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11
       //   811: dup
       //   812: aload_0
       //   813: iload_2
       //   814: iload_3
-      //   815: invokespecial 344	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   818: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   815: invokespecial 342	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$11:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   818: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   821: pop
       //   822: goto +296 -> 1118
       //   825: aload_0
@@ -5595,17 +5378,17 @@ public class WtloginHelper
       //   846: aload_0
       //   847: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   850: iconst_1
-      //   851: invokestatic 348	oicq/wlogin_sdk/request/WtloginHelper:access$1800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   851: invokestatic 346	oicq/wlogin_sdk/request/WtloginHelper:access$1800	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   854: istore_3
       //   855: aload_0
       //   856: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   859: new 350	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12
+      //   859: new 348	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12
       //   862: dup
       //   863: aload_0
       //   864: iload_2
       //   865: iload_3
-      //   866: invokespecial 351	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   869: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   866: invokespecial 349	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$12:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   869: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   872: pop
       //   873: goto +245 -> 1118
       //   876: aload_0
@@ -5619,17 +5402,17 @@ public class WtloginHelper
       //   893: aload_0
       //   894: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   897: iconst_1
-      //   898: invokestatic 354	oicq/wlogin_sdk/request/WtloginHelper:access$1900	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   898: invokestatic 352	oicq/wlogin_sdk/request/WtloginHelper:access$1900	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   901: istore_3
       //   902: aload_0
       //   903: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   906: new 356	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13
+      //   906: new 354	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13
       //   909: dup
       //   910: aload_0
       //   911: iload_2
       //   912: iload_3
-      //   913: invokespecial 357	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   916: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   913: invokespecial 355	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$13:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   916: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   919: pop
       //   920: goto +198 -> 1118
       //   923: aload_0
@@ -5649,7 +5432,7 @@ public class WtloginHelper
       //   950: getfield 88	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mDwAppid	J
       //   953: aload_0
       //   954: getfield 172	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReportErrType	I
-      //   957: invokestatic 361	oicq/wlogin_sdk/request/WtloginHelper:access$2000	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJI)I
+      //   957: invokestatic 359	oicq/wlogin_sdk/request/WtloginHelper:access$2000	(Loicq/wlogin_sdk/request/WtloginHelper;I[B[BJJI)I
       //   960: pop
       //   961: goto +157 -> 1118
       //   964: aload_0
@@ -5663,17 +5446,17 @@ public class WtloginHelper
       //   981: aload_0
       //   982: getfield 142	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
       //   985: iconst_1
-      //   986: invokestatic 365	oicq/wlogin_sdk/request/WtloginHelper:access$2100	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
+      //   986: invokestatic 363	oicq/wlogin_sdk/request/WtloginHelper:access$2100	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
       //   989: istore_3
       //   990: aload_0
       //   991: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   994: new 367	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14
+      //   994: new 365	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14
       //   997: dup
       //   998: aload_0
       //   999: iload_2
       //   1000: iload_3
-      //   1001: invokespecial 368	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   1004: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   1001: invokespecial 366	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$14:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   1004: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   1007: pop
       //   1008: goto +110 -> 1118
       //   1011: aload_0
@@ -5689,17 +5472,17 @@ public class WtloginHelper
       //   1032: aload_0
       //   1033: getfield 142	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:quickLoginParam	Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;
       //   1036: iconst_1
-      //   1037: invokestatic 372	oicq/wlogin_sdk/request/WtloginHelper:access$2200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
+      //   1037: invokestatic 370	oicq/wlogin_sdk/request/WtloginHelper:access$2200	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;Ljava/lang/String;Loicq/wlogin_sdk/request/WtloginHelper$QuickLoginParam;I)I
       //   1040: istore_3
       //   1041: aload_0
       //   1042: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   1045: new 374	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15
+      //   1045: new 372	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15
       //   1048: dup
       //   1049: aload_0
       //   1050: iload_2
       //   1051: iload_3
-      //   1052: invokespecial 375	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   1055: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   1052: invokespecial 373	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$15:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   1055: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   1058: pop
       //   1059: goto +59 -> 1118
       //   1062: aload_0
@@ -5719,26 +5502,26 @@ public class WtloginHelper
       //   1091: aload_0
       //   1092: getfield 74	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mUserSigInfo	Loicq/wlogin_sdk/request/WUserSigInfo;
       //   1095: iconst_1
-      //   1096: invokestatic 379	oicq/wlogin_sdk/request/WtloginHelper:access$2300	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
+      //   1096: invokestatic 377	oicq/wlogin_sdk/request/WtloginHelper:access$2300	(Loicq/wlogin_sdk/request/WtloginHelper;Ljava/lang/String;JJILoicq/wlogin_sdk/request/WUserSigInfo;I)I
       //   1099: istore_3
       //   1100: aload_0
       //   1101: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   1104: new 381	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16
+      //   1104: new 379	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16
       //   1107: dup
       //   1108: aload_0
       //   1109: iload_2
       //   1110: iload_3
-      //   1111: invokespecial 382	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
-      //   1114: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   1111: invokespecial 380	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$16:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;II)V
+      //   1114: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
       //   1117: pop
       //   1118: aload_0
       //   1119: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
       //   1122: ifeq +6 -> 1128
-      //   1125: invokestatic 385	android/os/Looper:loop	()V
+      //   1125: invokestatic 383	android/os/Looper:loop	()V
       //   1128: aload_0
       //   1129: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
       //   1132: bipush 7
-      //   1134: if_icmpeq +211 -> 1345
+      //   1134: if_icmpeq +199 -> 1333
       //   1137: getstatic 208	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
       //   1140: astore 15
       //   1142: aload 15
@@ -5751,143 +5534,134 @@ public class WtloginHelper
       //   1156: putstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
       //   1159: new 224	java/lang/StringBuilder
       //   1162: dup
-      //   1163: invokespecial 225	java/lang/StringBuilder:<init>	()V
-      //   1166: astore 16
-      //   1168: aload 16
-      //   1170: ldc_w 387
-      //   1173: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1176: pop
-      //   1177: aload 16
-      //   1179: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1182: invokevirtual 234	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   1185: pop
-      //   1186: aload 16
-      //   1188: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1191: ldc 191
-      //   1193: invokestatic 242	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1163: ldc_w 385
+      //   1166: invokespecial 228	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1169: astore 16
+      //   1171: aload 16
+      //   1173: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1176: invokevirtual 232	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   1179: pop
+      //   1180: aload 16
+      //   1182: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1185: ldc 191
+      //   1187: invokestatic 240	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1190: aload 15
+      //   1192: monitorexit
+      //   1193: return
+      //   1194: astore 16
       //   1196: aload 15
       //   1198: monitorexit
-      //   1199: return
-      //   1200: astore 16
-      //   1202: aload 15
-      //   1204: monitorexit
-      //   1205: aload 16
-      //   1207: athrow
-      //   1208: new 180	java/lang/Exception
-      //   1211: dup
-      //   1212: ldc_w 389
-      //   1215: invokespecial 391	java/lang/Exception:<init>	(Ljava/lang/String;)V
-      //   1218: athrow
-      //   1219: astore 15
-      //   1221: goto +10 -> 1231
-      //   1224: astore 16
-      //   1226: goto +120 -> 1346
-      //   1229: astore 15
-      //   1231: aload 15
-      //   1233: ldc 191
-      //   1235: invokestatic 197	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-      //   1238: aload_0
-      //   1239: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
-      //   1242: new 393	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17
-      //   1245: dup
-      //   1246: aload_0
-      //   1247: iload_1
-      //   1248: invokespecial 396	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;I)V
-      //   1251: invokevirtual 278	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-      //   1254: pop
-      //   1255: aload_0
-      //   1256: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
-      //   1259: ifeq +6 -> 1265
-      //   1262: invokestatic 385	android/os/Looper:loop	()V
-      //   1265: aload_0
-      //   1266: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-      //   1269: bipush 7
-      //   1271: if_icmpeq +74 -> 1345
-      //   1274: getstatic 208	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
-      //   1277: astore 15
-      //   1279: aload 15
-      //   1281: monitorenter
+      //   1199: aload 16
+      //   1201: athrow
+      //   1202: new 180	java/lang/Exception
+      //   1205: dup
+      //   1206: ldc_w 387
+      //   1209: invokespecial 388	java/lang/Exception:<init>	(Ljava/lang/String;)V
+      //   1212: athrow
+      //   1213: astore 15
+      //   1215: goto +10 -> 1225
+      //   1218: astore 16
+      //   1220: goto +114 -> 1334
+      //   1223: astore 15
+      //   1225: aload 15
+      //   1227: ldc 191
+      //   1229: invokestatic 197	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+      //   1232: aload_0
+      //   1233: getfield 80	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mHandler	Landroid/os/Handler;
+      //   1236: new 390	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17
+      //   1239: dup
+      //   1240: aload_0
+      //   1241: iload_1
+      //   1242: invokespecial 393	oicq/wlogin_sdk/request/WtloginHelper$HelperThread$17:<init>	(Loicq/wlogin_sdk/request/WtloginHelper$HelperThread;I)V
+      //   1245: invokevirtual 276	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+      //   1248: pop
+      //   1249: aload_0
+      //   1250: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
+      //   1253: ifeq +6 -> 1259
+      //   1256: invokestatic 383	android/os/Looper:loop	()V
+      //   1259: aload_0
+      //   1260: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+      //   1263: bipush 7
+      //   1265: if_icmpeq +68 -> 1333
+      //   1268: getstatic 208	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
+      //   1271: astore 15
+      //   1273: aload 15
+      //   1275: monitorenter
+      //   1276: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1279: ifle +11 -> 1290
       //   1282: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1285: ifle +11 -> 1296
-      //   1288: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1291: iconst_1
-      //   1292: isub
-      //   1293: putstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1296: new 224	java/lang/StringBuilder
-      //   1299: dup
-      //   1300: invokespecial 225	java/lang/StringBuilder:<init>	()V
-      //   1303: astore 16
-      //   1305: aload 16
-      //   1307: ldc_w 387
-      //   1310: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1313: pop
-      //   1314: aload 16
-      //   1316: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1319: invokevirtual 234	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   1322: pop
-      //   1323: aload 16
-      //   1325: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1328: ldc 191
-      //   1330: invokestatic 242	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1333: aload 15
-      //   1335: monitorexit
-      //   1336: return
-      //   1337: astore 16
-      //   1339: aload 15
-      //   1341: monitorexit
-      //   1342: aload 16
-      //   1344: athrow
-      //   1345: return
-      //   1346: aload_0
-      //   1347: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
-      //   1350: ifeq +6 -> 1356
-      //   1353: invokestatic 385	android/os/Looper:loop	()V
-      //   1356: aload_0
-      //   1357: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
-      //   1360: bipush 7
-      //   1362: if_icmpeq +76 -> 1438
-      //   1365: getstatic 208	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
-      //   1368: astore 15
-      //   1370: aload 15
-      //   1372: monitorenter
-      //   1373: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1376: ifle +11 -> 1387
-      //   1379: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1382: iconst_1
-      //   1383: isub
-      //   1384: putstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1387: new 224	java/lang/StringBuilder
-      //   1390: dup
-      //   1391: invokespecial 225	java/lang/StringBuilder:<init>	()V
-      //   1394: astore 17
+      //   1285: iconst_1
+      //   1286: isub
+      //   1287: putstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1290: new 224	java/lang/StringBuilder
+      //   1293: dup
+      //   1294: ldc_w 385
+      //   1297: invokespecial 228	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1300: astore 16
+      //   1302: aload 16
+      //   1304: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1307: invokevirtual 232	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   1310: pop
+      //   1311: aload 16
+      //   1313: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1316: ldc 191
+      //   1318: invokestatic 240	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1321: aload 15
+      //   1323: monitorexit
+      //   1324: return
+      //   1325: astore 16
+      //   1327: aload 15
+      //   1329: monitorexit
+      //   1330: aload 16
+      //   1332: athrow
+      //   1333: return
+      //   1334: aload_0
+      //   1335: getfield 72	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:isSelfLooper	Z
+      //   1338: ifeq +6 -> 1344
+      //   1341: invokestatic 383	android/os/Looper:loop	()V
+      //   1344: aload_0
+      //   1345: getfield 201	oicq/wlogin_sdk/request/WtloginHelper$HelperThread:mReqType	I
+      //   1348: bipush 7
+      //   1350: if_icmpeq +70 -> 1420
+      //   1353: getstatic 208	oicq/wlogin_sdk/request/WtloginHelper:__sync_top	Ljava/lang/Object;
+      //   1356: astore 15
+      //   1358: aload 15
+      //   1360: monitorenter
+      //   1361: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1364: ifle +11 -> 1375
+      //   1367: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1370: iconst_1
+      //   1371: isub
+      //   1372: putstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1375: new 224	java/lang/StringBuilder
+      //   1378: dup
+      //   1379: ldc_w 385
+      //   1382: invokespecial 228	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1385: astore 17
+      //   1387: aload 17
+      //   1389: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
+      //   1392: invokevirtual 232	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+      //   1395: pop
       //   1396: aload 17
-      //   1398: ldc_w 387
-      //   1401: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1404: pop
-      //   1405: aload 17
-      //   1407: getstatic 218	oicq/wlogin_sdk/request/WtloginHelper:__top	I
-      //   1410: invokevirtual 234	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   1413: pop
-      //   1414: aload 17
-      //   1416: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1419: ldc 191
-      //   1421: invokestatic 242	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1424: aload 15
-      //   1426: monitorexit
-      //   1427: goto +11 -> 1438
-      //   1430: astore 16
-      //   1432: aload 15
-      //   1434: monitorexit
-      //   1435: aload 16
-      //   1437: athrow
-      //   1438: aload 16
-      //   1440: athrow
-      //   1441: astore 15
-      //   1443: goto -212 -> 1231
+      //   1398: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1401: ldc 191
+      //   1403: invokestatic 240	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1406: aload 15
+      //   1408: monitorexit
+      //   1409: goto +11 -> 1420
+      //   1412: astore 16
+      //   1414: aload 15
+      //   1416: monitorexit
+      //   1417: aload 16
+      //   1419: athrow
+      //   1420: aload 16
+      //   1422: athrow
+      //   1423: astore 15
+      //   1425: goto -200 -> 1225
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	1446	0	this	HelperThread
-      //   28	1220	1	i	int
+      //   0	1428	0	this	HelperThread
+      //   28	1214	1	i	int
       //   134	976	2	j	int
       //   523	588	3	k	int
       //   37	10	4	bool	boolean
@@ -5896,74 +5670,74 @@ public class WtloginHelper
       //   396	164	9	l3	long
       //   407	155	11	l4	long
       //   546	18	13	l5	long
-      //   1219	1	15	localException1	Exception
-      //   1229	3	15	localException2	Exception
-      //   1441	1	15	localException3	Exception
-      //   378	809	16	localObject3	Object
-      //   1200	6	16	localObject4	Object
-      //   1224	1	16	localObject5	Object
-      //   1303	21	16	localStringBuilder	StringBuilder
-      //   1337	6	16	localObject6	Object
-      //   1430	9	16	localObject7	Object
-      //   413	1002	17	localObject8	Object
+      //   1213	1	15	localException1	Exception
+      //   1223	3	15	localException2	Exception
+      //   1423	1	15	localException3	Exception
+      //   378	803	16	localObject3	Object
+      //   1194	6	16	localObject4	Object
+      //   1218	1	16	localObject5	Object
+      //   1300	12	16	localStringBuilder	StringBuilder
+      //   1325	6	16	localObject6	Object
+      //   1412	9	16	localObject7	Object
+      //   413	984	17	localObject8	Object
       //   419	24	18	localWUserSigInfo	WUserSigInfo
       //   425	20	19	arrayOfByte	byte[][]
       // Exception table:
       //   from	to	target	type
-      //   1145	1159	1200	finally
-      //   1159	1199	1200	finally
-      //   1202	1205	1200	finally
-      //   465	481	1219	java/lang/Exception
-      //   486	548	1219	java/lang/Exception
-      //   592	608	1219	java/lang/Exception
-      //   611	645	1219	java/lang/Exception
-      //   648	708	1219	java/lang/Exception
-      //   711	767	1219	java/lang/Exception
-      //   770	822	1219	java/lang/Exception
-      //   825	873	1219	java/lang/Exception
-      //   876	920	1219	java/lang/Exception
-      //   923	961	1219	java/lang/Exception
-      //   964	1008	1219	java/lang/Exception
-      //   1011	1059	1219	java/lang/Exception
-      //   1062	1118	1219	java/lang/Exception
-      //   1208	1219	1219	java/lang/Exception
-      //   72	153	1224	finally
-      //   156	199	1224	finally
-      //   202	253	1224	finally
-      //   256	303	1224	finally
-      //   306	357	1224	finally
-      //   360	427	1224	finally
-      //   427	465	1224	finally
-      //   465	481	1224	finally
-      //   486	548	1224	finally
-      //   548	592	1224	finally
-      //   592	608	1224	finally
-      //   611	645	1224	finally
-      //   648	708	1224	finally
-      //   711	767	1224	finally
-      //   770	822	1224	finally
-      //   825	873	1224	finally
-      //   876	920	1224	finally
-      //   923	961	1224	finally
-      //   964	1008	1224	finally
-      //   1011	1059	1224	finally
-      //   1062	1118	1224	finally
-      //   1208	1219	1224	finally
-      //   1231	1255	1224	finally
-      //   72	153	1229	java/lang/Exception
-      //   156	199	1229	java/lang/Exception
-      //   202	253	1229	java/lang/Exception
-      //   256	303	1229	java/lang/Exception
-      //   306	357	1229	java/lang/Exception
-      //   360	427	1229	java/lang/Exception
-      //   1282	1296	1337	finally
-      //   1296	1336	1337	finally
-      //   1339	1342	1337	finally
-      //   1373	1387	1430	finally
-      //   1387	1427	1430	finally
-      //   1432	1435	1430	finally
-      //   427	465	1441	java/lang/Exception
-      //   548	592	1441	java/lang/Exception
+      //   1145	1159	1194	finally
+      //   1159	1193	1194	finally
+      //   1196	1199	1194	finally
+      //   465	481	1213	java/lang/Exception
+      //   486	548	1213	java/lang/Exception
+      //   592	608	1213	java/lang/Exception
+      //   611	645	1213	java/lang/Exception
+      //   648	708	1213	java/lang/Exception
+      //   711	767	1213	java/lang/Exception
+      //   770	822	1213	java/lang/Exception
+      //   825	873	1213	java/lang/Exception
+      //   876	920	1213	java/lang/Exception
+      //   923	961	1213	java/lang/Exception
+      //   964	1008	1213	java/lang/Exception
+      //   1011	1059	1213	java/lang/Exception
+      //   1062	1118	1213	java/lang/Exception
+      //   1202	1213	1213	java/lang/Exception
+      //   72	153	1218	finally
+      //   156	199	1218	finally
+      //   202	253	1218	finally
+      //   256	303	1218	finally
+      //   306	357	1218	finally
+      //   360	427	1218	finally
+      //   427	465	1218	finally
+      //   465	481	1218	finally
+      //   486	548	1218	finally
+      //   548	592	1218	finally
+      //   592	608	1218	finally
+      //   611	645	1218	finally
+      //   648	708	1218	finally
+      //   711	767	1218	finally
+      //   770	822	1218	finally
+      //   825	873	1218	finally
+      //   876	920	1218	finally
+      //   923	961	1218	finally
+      //   964	1008	1218	finally
+      //   1011	1059	1218	finally
+      //   1062	1118	1218	finally
+      //   1202	1213	1218	finally
+      //   1225	1249	1218	finally
+      //   72	153	1223	java/lang/Exception
+      //   156	199	1223	java/lang/Exception
+      //   202	253	1223	java/lang/Exception
+      //   256	303	1223	java/lang/Exception
+      //   306	357	1223	java/lang/Exception
+      //   360	427	1223	java/lang/Exception
+      //   1276	1290	1325	finally
+      //   1290	1324	1325	finally
+      //   1327	1330	1325	finally
+      //   1361	1375	1412	finally
+      //   1375	1409	1412	finally
+      //   1414	1417	1412	finally
+      //   427	465	1423	java/lang/Exception
+      //   548	592	1423	java/lang/Exception
     }
   }
   

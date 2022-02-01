@@ -15,10 +15,7 @@ public class eh
     if (paramString2 == null) {
       str = "(null)";
     }
-    paramString2 = new StringBuilder();
-    paramString2.append("TMSDK_SK_");
-    paramString2.append(paramString1);
-    Log.println(paramInt, paramString2.toString(), str);
+    Log.println(paramInt, "TMSDK_SK_".concat(String.valueOf(paramString1)), str);
   }
   
   public static void a(String paramString1, String paramString2, Throwable paramThrowable)

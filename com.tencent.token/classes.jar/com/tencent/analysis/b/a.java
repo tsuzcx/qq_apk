@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
-import android.util.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,23 +36,13 @@ public class a
       paramHttpResponse = EntityUtils.toString(paramHttpResponse.getEntity(), "utf-8");
       return paramHttpResponse;
     }
-    catch (IOException paramHttpResponse)
+    catch (ParseException|IOException paramHttpResponse)
     {
-      paramHttpResponse = paramHttpResponse.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("HttpHelper", paramHttpResponse);
-      }
+      label14:
+      boolean bool;
+      break label14;
     }
-    catch (ParseException paramHttpResponse)
-    {
-      for (;;)
-      {
-        paramHttpResponse = paramHttpResponse.toString();
-        if (!com.tencent.analysis.b.c) {
-          break;
-        }
-      }
-    }
+    bool = com.tencent.analysis.b.c;
     return "";
   }
   

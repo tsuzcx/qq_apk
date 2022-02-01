@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 
 public class h
 {
@@ -17,6 +16,7 @@ public class h
   
   public String a(int paramInt, String paramString)
   {
+    Object localObject2 = null;
     Object localObject1 = null;
     if (paramInt != 4) {
       switch (paramInt)
@@ -25,16 +25,10 @@ public class h
         paramString = null;
         break;
       case 2: 
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("content://com.vivo.vms.IdProvider/IdentifierId/AAID_");
-        ((StringBuilder)localObject2).append(paramString);
-        paramString = Uri.parse(((StringBuilder)localObject2).toString());
+        paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(paramString)));
         break;
       case 1: 
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("content://com.vivo.vms.IdProvider/IdentifierId/VAID_");
-        ((StringBuilder)localObject2).append(paramString);
-        paramString = Uri.parse(((StringBuilder)localObject2).toString());
+        paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_".concat(String.valueOf(paramString)));
         break;
       case 0: 
         paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAID");
@@ -43,18 +37,17 @@ public class h
     } else {
       paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAIDSTATUS");
     }
-    Object localObject2 = this.mContext.getContentResolver().query(paramString, null, null, null, null);
-    if (localObject2 != null)
+    Cursor localCursor = this.mContext.getContentResolver().query(paramString, null, null, null, null);
+    paramString = localObject2;
+    if (localCursor != null)
     {
       paramString = localObject1;
-      if (((Cursor)localObject2).moveToNext()) {
-        paramString = ((Cursor)localObject2).getString(((Cursor)localObject2).getColumnIndex("value"));
+      if (localCursor.moveToNext()) {
+        paramString = localCursor.getString(localCursor.getColumnIndex("value"));
       }
-      ((Cursor)localObject2).close();
-      return paramString;
+      localCursor.close();
     }
-    Log.d("VMS_IDLG_SDK_DB", "return cursor is null,return");
-    return null;
+    return paramString;
   }
 }
 

@@ -50,9 +50,7 @@ public final class i
       this.a.put((byte)paramInt);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder("tag is too large: ");
-    localStringBuilder.append(paramInt);
-    throw new b(localStringBuilder.toString());
+    throw new b("tag is too large: ".concat(String.valueOf(paramInt)));
   }
   
   public final int a(String paramString)

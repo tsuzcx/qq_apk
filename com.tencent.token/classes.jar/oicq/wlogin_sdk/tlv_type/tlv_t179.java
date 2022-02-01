@@ -22,14 +22,14 @@ public class tlv_t179
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < i + 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._verify_url_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

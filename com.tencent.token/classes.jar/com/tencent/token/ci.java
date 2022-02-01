@@ -1,12 +1,12 @@
 package com.tencent.token;
 
-public class ci
-  extends cj
+import java.io.PrintWriter;
+
+public abstract class ci
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  public abstract void a(String paramString, PrintWriter paramPrintWriter);
+  
+  public static abstract interface a<D> {}
 }
 
 

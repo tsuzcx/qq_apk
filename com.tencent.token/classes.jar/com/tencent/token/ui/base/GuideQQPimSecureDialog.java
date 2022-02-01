@@ -9,8 +9,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.j;
-import com.tencent.token.utils.a;
+import com.tencent.token.kt;
+import com.tencent.token.kt.a;
+import com.tencent.token.zt;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class GuideQQPimSecureDialog
     this.b = paramArrayList2;
   }
   
-  void a()
+  final void a()
   {
     try
     {
@@ -47,23 +48,24 @@ public class GuideQQPimSecureDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296354);
-    getWindow().setBackgroundDrawableResource(2131099876);
-    paramBundle = (TextView)findViewById(2131165657);
-    TextView localTextView = (TextView)findViewById(2131165658);
-    Button localButton = (Button)findViewById(2131165566);
-    findViewById(2131165380).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296355);
+    getWindow().setBackgroundDrawableResource(2131099877);
+    paramBundle = (TextView)findViewById(2131165661);
+    TextView localTextView = (TextView)findViewById(2131165662);
+    Button localButton = (Button)findViewById(2131165568);
+    findViewById(2131165382).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         GuideQQPimSecureDialog.this.a();
       }
     });
     localButton.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
-        j.a().a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
+        paramAnonymousView = kt.a.a;
+        kt.a(GuideQQPimSecureDialog.this.getContext(), GuideQQPimSecureDialog.this.c, GuideQQPimSecureDialog.this.b);
         GuideQQPimSecureDialog.this.a();
         TMSDKContext.SaveStringData(1150162, GuideQQPimSecureDialog.this.c);
       }
@@ -71,7 +73,7 @@ public class GuideQQPimSecureDialog
     paramBundle.setText((CharSequence)this.a.get(0));
     localTextView.setText((CharSequence)this.a.get(1));
     localButton.setText((CharSequence)this.a.get(2));
-    new a((ImageView)findViewById(2131166144)).execute(new String[] { this.d });
+    new zt((ImageView)findViewById(2131166150)).execute(new String[] { this.d });
   }
 }
 

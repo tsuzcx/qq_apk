@@ -1,198 +1,87 @@
 package com.tencent.token.ui.base;
 
 import android.app.Activity;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.co;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.cp;
-import com.tencent.token.cq;
-import com.tencent.token.en;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
+import com.tencent.token.aae;
+import com.tencent.token.ahc;
+import com.tencent.token.sf;
+import com.tencent.token.sw;
+import com.tencent.token.sy;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.ModifyQQPwdActivity;
-import com.tencent.token.ui.o;
 import com.tencent.token.utils.UserTask;
+import com.tencent.token.wz;
+import com.tencent.token.xb;
+import com.tencent.token.ye;
 
 public class DualMsgShowDialog
   extends Dialog
 {
-  private Activity a;
-  private DualMsgView b;
-  private boolean c = false;
-  private int d;
-  private int e = 0;
-  private boolean f = false;
-  private a g = null;
+  public DualMsgView a;
+  public sf b = null;
+  private Activity c;
+  private boolean d = false;
+  private int e;
+  private int f = 0;
+  private boolean g = false;
   private long h;
   private int i = 0;
   private Toast j;
   private TextView k;
   
-  public DualMsgShowDialog(Activity paramActivity, int paramInt1, int paramInt2)
+  public DualMsgShowDialog(Activity paramActivity)
   {
-    super(paramActivity, paramInt1);
-    this.a = paramActivity;
-    this.d = paramInt2;
+    super(paramActivity, 2131558764);
+    this.c = paramActivity;
+    this.e = 1;
   }
   
-  public DualMsgShowDialog(Activity paramActivity, int paramInt1, int paramInt2, boolean paramBoolean, long paramLong)
+  public DualMsgShowDialog(Activity paramActivity, boolean paramBoolean, long paramLong)
   {
-    super(paramActivity, paramInt1);
-    this.a = paramActivity;
-    this.d = paramInt2;
-    this.f = paramBoolean;
+    super(paramActivity, 2131558764);
+    this.c = paramActivity;
+    this.e = 0;
+    this.g = paramBoolean;
     this.h = paramLong;
   }
   
-  private void a(final a parama, final int paramInt)
+  public final void a()
   {
-    Object localObject = this.b;
-    if ((localObject != null) && (this.j != null))
-    {
-      if (this.k == null) {
-        return;
-      }
-      if (parama == null)
-      {
-        ((DualMsgView)localObject).a(paramInt);
-        return;
-      }
-      new UserTask()
-      {
-        public e a(String... paramAnonymousVarArgs)
-        {
-          if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-            return cq.a().a(parama, paramInt);
-          }
-          return co.a().a(parama, paramInt);
-        }
-        
-        public void a(e paramAnonymouse) {}
-      }.c(new String[] { "" });
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("current item index: ");
-      ((StringBuilder)localObject).append(this.e);
-      g.a(((StringBuilder)localObject).toString());
-      if (paramInt == 2)
-      {
-        this.k.setText(2131493090);
-        this.j.show();
-        if (parama.c() == this.h) {
-          this.i = -1;
-        }
-      }
-      else
-      {
-        this.k.setText(2131493091);
-        this.j.show();
-        if (parama.c() == this.h) {
-          this.i = -2;
-        }
-      }
-      this.e += 1;
-      if (this.d == 0) {
-        parama = cq.a();
-      } else {
-        parama = co.a();
-      }
-      if (this.e == parama.b())
-      {
-        this.b.a(paramInt);
-        if ((paramInt == 3) && (this.d == 0)) {
-          new AlertDialog.Builder(this.a).setTitle(2131492986).setMessage(this.a.getString(2131493094)).setPositiveButton(2131493386, new DialogInterface.OnClickListener()
-          {
-            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              paramAnonymousDialogInterface = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), ModifyQQPwdActivity.class);
-              o.a().a(DualMsgShowDialog.b(DualMsgShowDialog.this), paramAnonymousDialogInterface, o.b);
-            }
-          }).setNegativeButton(2131493029, null).create().show();
-        }
-      }
-      else
-      {
-        c();
-        parama = this.g;
-        if (parama == null)
-        {
-          this.b.a(paramInt);
-          return;
-        }
-        this.b.b(parama);
-      }
-      return;
-    }
-  }
-  
-  private void c()
-  {
-    if (this.d == 0) {
-      this.g = cq.a().a(this.e);
+    if (this.e == 0) {
+      this.b = sy.a().a(this.f);
     } else {
-      this.g = co.a().a(this.e);
+      this.b = sw.a().a(this.f);
     }
-    a locala = this.g;
-    if ((locala == null) || (locala.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
+    sf localsf = this.b;
+    if ((localsf == null) || (localsf.f == null) || (this.b.g == null) || (this.b.h == null) || (this.b.i == null))
     {
-      g.c("item content err");
-      this.g = null;
+      xb.c("item content err");
+      this.b = null;
     }
-  }
-  
-  private void d()
-  {
-    new UserTask()
-    {
-      public e a(String... paramAnonymousVarArgs)
-      {
-        try
-        {
-          en.a("tbl_dual_msg");
-          en.a("tbl_barcode_msg");
-          label10:
-          return null;
-        }
-        catch (Exception|Error paramAnonymousVarArgs)
-        {
-          break label10;
-        }
-      }
-    }.equals("");
-  }
-  
-  public void a()
-  {
-    c();
-    a locala = this.g;
-    if (locala == null) {
-      return;
-    }
-    this.b.a(locala);
-  }
-  
-  public void b()
-  {
-    this.b.a();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.b = new DualMsgView(this.a);
-    this.b.setListener(new DualMsgView.f()
+    this.a = new DualMsgView(this.c);
+    this.a.setListener(new DualMsgView.f()
     {
-      public void a()
+      public final void a()
       {
         DualMsgShowDialog.this.dismiss();
         if (DualMsgShowDialog.a(DualMsgShowDialog.this))
@@ -203,55 +92,115 @@ public class DualMsgShowDialog
         }
       }
       
-      public void a(int paramAnonymousInt)
+      public final void a(int paramAnonymousInt)
       {
-        a locala;
+        sf localsf;
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          locala = cq.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localsf = sy.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         } else {
-          locala = co.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localsf = sw.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         }
-        DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
+        DualMsgShowDialog.a(DualMsgShowDialog.this, localsf, paramAnonymousInt);
       }
     });
-    if (!this.b.a(this.a))
+    paramBundle = this.a;
+    Activity localActivity = this.c;
+    int m;
+    if ((paramBundle.m != null) && ((paramBundle.m == null) || (!paramBundle.m.isFinishing())))
+    {
+      paramBundle.n = ((LayoutInflater)localActivity.getSystemService("layout_inflater"));
+      paramBundle.o = paramBundle.n.inflate(2131296321, null);
+      paramBundle.o.setVisibility(4);
+      paramBundle.p = paramBundle.o.findViewById(2131166273);
+      paramBundle.q = paramBundle.o.findViewById(2131166260);
+      paramBundle.r = paramBundle.o.findViewById(2131166274);
+      paramBundle.s = paramBundle.o.findViewById(2131166261);
+      paramBundle.t = aae.a(paramBundle.m.getResources(), 2131099828);
+      paramBundle.u = aae.a(paramBundle.m.getResources(), 2131099827);
+      if (paramBundle.t != null) {
+        ((LinearLayout)paramBundle.o.findViewById(2131166254)).setBackgroundDrawable(new BitmapDrawable(paramBundle.t));
+      }
+      if (paramBundle.u != null)
+      {
+        ((LinearLayout)paramBundle.o.findViewById(2131166255)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
+        ((LinearLayout)paramBundle.o.findViewById(2131166256)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
+      }
+      paramBundle.a = paramBundle.o.findViewById(2131165764);
+      paramBundle.c = ((TextView)paramBundle.o.findViewById(2131165760));
+      paramBundle.d = ((TextView)paramBundle.o.findViewById(2131165748));
+      paramBundle.b = paramBundle.o.findViewById(2131165765);
+      paramBundle.e = ((TextView)paramBundle.o.findViewById(2131165761));
+      paramBundle.f = ((TextView)paramBundle.o.findViewById(2131165749));
+      paramBundle.j = ((ImageView)paramBundle.o.findViewById(2131165751));
+      paramBundle.k = ((ImageView)paramBundle.o.findViewById(2131165753));
+      paramBundle.l = ((ImageView)paramBundle.o.findViewById(2131165752));
+      paramBundle.h = ((Button)paramBundle.o.findViewById(2131165747));
+      paramBundle.i = ((Button)paramBundle.o.findViewById(2131165757));
+      paramBundle.g = ((TextView)paramBundle.o.findViewById(2131165763));
+      paramBundle.h.setOnClickListener(new DualMsgView.1(paramBundle));
+      paramBundle.i.setOnClickListener(new DualMsgView.2(paramBundle));
+      paramBundle.addView(paramBundle.o, new RelativeLayout.LayoutParams(-1, -1));
+      m = 1;
+    }
+    else
+    {
+      m = 0;
+    }
+    if (m == 0)
     {
       dismiss();
-      g.a("Dual initView failed!");
+      xb.a("Dual initView failed!");
       return;
     }
-    c();
-    paramBundle = this.g;
+    a();
+    paramBundle = this.b;
     if (paramBundle == null)
     {
       dismiss();
       return;
     }
-    this.b.a(paramBundle);
-    setContentView(this.b);
-    d();
-    paramBundle = this.a.getLayoutInflater().inflate(2131296461, null);
-    this.j = new Toast(this.a);
+    this.a.a(paramBundle);
+    setContentView(this.a);
+    new UserTask()
+    {
+      private static wz e()
+      {
+        try
+        {
+          ahc.a("tbl_dual_msg");
+          ahc.a("tbl_barcode_msg");
+          label10:
+          return null;
+        }
+        catch (Exception|Error localException)
+        {
+          break label10;
+        }
+      }
+    }.equals("");
+    paramBundle = this.c.getLayoutInflater().inflate(2131296462, null);
+    this.j = new Toast(this.c);
     this.j.setView(paramBundle);
     this.j.setDuration(0);
     this.j.setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-    this.k = ((TextView)paramBundle.findViewById(2131166120));
-    ((ImageView)paramBundle.findViewById(2131166118)).setBackgroundResource(2131100167);
+    this.k = ((TextView)paramBundle.findViewById(2131166126));
+    ((ImageView)paramBundle.findViewById(2131166124)).setBackgroundResource(2131100170);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.g == null)
+      if (this.b == null)
       {
         dismiss();
-        this.c = true;
+        this.d = true;
       }
-      if (!this.c)
+      if (!this.d)
       {
-        this.c = true;
-        this.b.b();
+        this.d = true;
+        DualMsgView localDualMsgView = this.a;
+        localDualMsgView.v.post(new DualMsgView.b(localDualMsgView, localDualMsgView.p, localDualMsgView.q, localDualMsgView.r, localDualMsgView.s));
       }
     }
     super.onWindowFocusChanged(paramBoolean);

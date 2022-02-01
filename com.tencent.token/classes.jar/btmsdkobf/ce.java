@@ -11,10 +11,7 @@ public class ce
   
   public ce(String paramString, long paramLong, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("freq_ctrl_");
-    localStringBuilder.append(paramString);
-    this.hz = new ec(localStringBuilder.toString());
+    this.hz = new ec("freq_ctrl_".concat(String.valueOf(paramString)));
     this.hA = paramInt;
     this.hB = paramLong;
     this.hC = this.hz.getInt("times_now", this.hC);

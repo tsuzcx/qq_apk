@@ -11,14 +11,14 @@ public class tlv_t130
   public byte[] get_ipaddr()
   {
     byte[] arrayOfByte = new byte[4];
-    System.arraycopy(this._buf, this._head_len + 2 + 4, arrayOfByte, 0, arrayOfByte.length);
+    System.arraycopy(this._buf, this._head_len + 2 + 4, arrayOfByte, 0, 4);
     return arrayOfByte;
   }
   
   public byte[] get_time()
   {
     byte[] arrayOfByte = new byte[4];
-    System.arraycopy(this._buf, this._head_len + 2, arrayOfByte, 0, arrayOfByte.length);
+    System.arraycopy(this._buf, this._head_len + 2, arrayOfByte, 0, 4);
     return arrayOfByte;
   }
   
@@ -30,9 +30,9 @@ public class tlv_t130
   public Boolean verify()
   {
     if (this._body_len < 14) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

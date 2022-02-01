@@ -4,23 +4,24 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.TintableBackgroundView;
-import android.support.v4.widget.AutoSizeableTextView;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.TextView;
+import com.tencent.token.ew;
+import com.tencent.token.fm;
+import com.tencent.token.if;
+import com.tencent.token.ii;
+import com.tencent.token.im;
+import com.tencent.token.io;
+import com.tencent.token.jc;
 
 public class AppCompatTextView
   extends TextView
-  implements TintableBackgroundView, AutoSizeableTextView
+  implements ew, fm
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
-  private final AppCompatTextHelper mTextHelper;
+  private final if b = new if(this);
+  private final im c;
   
   public AppCompatTextView(Context paramContext)
   {
@@ -34,238 +35,222 @@ public class AppCompatTextView
   
   public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
-    this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper = AppCompatTextHelper.create(this);
-    this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper.applyCompoundDrawablesTints();
+    super(jc.a(paramContext), paramAttributeSet, paramInt);
+    this.b.a(paramAttributeSet, paramInt);
+    this.c = im.a(this);
+    this.c.a(paramAttributeSet, paramInt);
+    this.c.a();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Object localObject = this.mBackgroundTintHelper;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((AppCompatBackgroundHelper)localObject).applySupportBackgroundTint();
+      ((if)localObject).d();
     }
-    localObject = this.mTextHelper;
+    localObject = this.c;
     if (localObject != null) {
-      ((AppCompatTextHelper)localObject).applyCompoundDrawablesTints();
+      ((im)localObject).a();
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public int getAutoSizeMaxTextSize()
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE) {
+    if (a) {
       return super.getAutoSizeMaxTextSize();
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      return localAppCompatTextHelper.getAutoSizeMaxTextSize();
+    im localim = this.c;
+    if (localim != null) {
+      return Math.round(localim.b.d);
     }
     return -1;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public int getAutoSizeMinTextSize()
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE) {
+    if (a) {
       return super.getAutoSizeMinTextSize();
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      return localAppCompatTextHelper.getAutoSizeMinTextSize();
+    im localim = this.c;
+    if (localim != null) {
+      return Math.round(localim.b.c);
     }
     return -1;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public int getAutoSizeStepGranularity()
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE) {
+    if (a) {
       return super.getAutoSizeStepGranularity();
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      return localAppCompatTextHelper.getAutoSizeStepGranularity();
+    im localim = this.c;
+    if (localim != null) {
+      return Math.round(localim.b.b);
     }
     return -1;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public int[] getAutoSizeTextAvailableSizes()
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE) {
+    if (a) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      return localAppCompatTextHelper.getAutoSizeTextAvailableSizes();
+    im localim = this.c;
+    if (localim != null) {
+      return localim.b.e;
     }
     return new int[0];
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public int getAutoSizeTextType()
   {
-    boolean bool = PLATFORM_SUPPORTS_AUTOSIZE;
-    int i = 0;
-    if (bool)
+    if (a)
     {
       if (super.getAutoSizeTextType() == 1) {
-        i = 1;
+        return 1;
       }
-      return i;
+      return 0;
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      return localAppCompatTextHelper.getAutoSizeTextType();
+    im localim = this.c;
+    if (localim != null) {
+      return localim.b.a;
     }
     return 0;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      return localAppCompatBackgroundHelper.getSupportBackgroundTintList();
+    if localif = this.b;
+    if (localif != null) {
+      return localif.b();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      return localAppCompatBackgroundHelper.getSupportBackgroundTintMode();
+    if localif = this.b;
+    if (localif != null) {
+      return localif.c();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return AppCompatHintHelper.onCreateInputConnection(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return ii.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    im localim = this.c;
+    if (localim != null) {
+      localim.b();
     }
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if ((this.mTextHelper != null) && (!PLATFORM_SUPPORTS_AUTOSIZE) && (this.mTextHelper.isAutoSizeEnabled())) {
-      this.mTextHelper.autoSizeText();
+    if ((this.c != null) && (!a) && (this.c.b.d())) {
+      this.c.b.c();
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE)
+    if (a)
     {
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    im localim = this.c;
+    if (localim != null) {
+      localim.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setAutoSizeTextTypeUniformWithPresetSizes(@NonNull int[] paramArrayOfInt, int paramInt)
+  public void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE)
+    if (a)
     {
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
       return;
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    im localim = this.c;
+    if (localim != null) {
+      localim.a(paramArrayOfInt, paramInt);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE)
+    if (a)
     {
       super.setAutoSizeTextTypeWithDefaults(paramInt);
       return;
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.setAutoSizeTextTypeWithDefaults(paramInt);
+    im localim = this.c;
+    if (localim != null) {
+      localim.a(paramInt);
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      localAppCompatBackgroundHelper.onSetBackgroundDrawable(paramDrawable);
+    paramDrawable = this.b;
+    if (paramDrawable != null) {
+      paramDrawable.a();
     }
   }
   
-  public void setBackgroundResource(@DrawableRes int paramInt)
+  public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      localAppCompatBackgroundHelper.onSetBackgroundResource(paramInt);
+    if localif = this.b;
+    if (localif != null) {
+      localif.a(paramInt);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      localAppCompatBackgroundHelper.setSupportBackgroundTintList(paramColorStateList);
+    if localif = this.b;
+    if (localif != null) {
+      localif.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
-    if (localAppCompatBackgroundHelper != null) {
-      localAppCompatBackgroundHelper.setSupportBackgroundTintMode(paramMode);
+    if localif = this.b;
+    if (localif != null) {
+      localif.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.onSetTextAppearance(paramContext, paramInt);
+    im localim = this.c;
+    if (localim != null) {
+      localim.a(paramContext, paramInt);
     }
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    if (PLATFORM_SUPPORTS_AUTOSIZE)
+    if (a)
     {
       super.setTextSize(paramInt, paramFloat);
       return;
     }
-    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
-    if (localAppCompatTextHelper != null) {
-      localAppCompatTextHelper.setTextSize(paramInt, paramFloat);
+    im localim = this.c;
+    if (localim != null) {
+      localim.a(paramInt, paramFloat);
     }
   }
 }

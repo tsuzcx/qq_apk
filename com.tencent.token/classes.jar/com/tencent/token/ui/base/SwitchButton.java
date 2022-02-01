@@ -17,6 +17,7 @@ import android.view.ViewParent;
 import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.token.utils.ImageCache;
+import com.tencent.token.yn;
 
 public class SwitchButton
   extends CheckBox
@@ -32,7 +33,7 @@ public class SwitchButton
   private float H;
   private float I;
   private float J;
-  private Paint a;
+  private Paint a = new Paint();
   private ViewParent b;
   private Bitmap c;
   private Bitmap d;
@@ -66,34 +67,14 @@ public class SwitchButton
   public SwitchButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
-  }
-  
-  private float a(float paramFloat)
-  {
-    return paramFloat - this.r / 2.0F;
-  }
-  
-  private void a()
-  {
-    this.b = getParent();
-    ViewParent localViewParent = this.b;
-    if (localViewParent != null) {
-      localViewParent.requestDisallowInterceptTouchEvent(true);
-    }
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.a = new Paint();
     this.a.setColor(-1);
-    Resources localResources = paramContext.getResources();
+    paramAttributeSet = paramContext.getResources();
     this.t = (ViewConfiguration.getPressedStateDuration() + ViewConfiguration.getTapTimeout());
     this.u = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     paramContext = g;
     if (paramContext == null)
     {
-      g = new ImageCache("", 10, getContext());
+      g = new ImageCache(10, getContext());
     }
     else
     {
@@ -103,17 +84,17 @@ public class SwitchButton
     }
     if (this.c == null)
     {
-      this.c = BitmapFactory.decodeResource(localResources, 2131100149);
+      this.c = BitmapFactory.decodeResource(paramAttributeSet, 2131100152);
       g.b("key_switch_button_bottom", this.c);
     }
     if (this.e == null)
     {
-      this.e = BitmapFactory.decodeResource(localResources, 2131100150);
+      this.e = BitmapFactory.decodeResource(paramAttributeSet, 2131100153);
       g.b("key_switch_button_normal", this.e);
     }
     if (this.f == null)
     {
-      this.f = BitmapFactory.decodeResource(localResources, 2131100151);
+      this.f = BitmapFactory.decodeResource(paramAttributeSet, 2131100154);
       g.b("key_switch_button_mask", this.f);
     }
     paramContext = this.e;
@@ -138,6 +119,11 @@ public class SwitchButton
     this.i = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
   }
   
+  private float a(float paramFloat)
+  {
+    return paramFloat - this.r / 2.0F;
+  }
+  
   private void a(boolean paramBoolean)
   {
     this.D = true;
@@ -149,52 +135,21 @@ public class SwitchButton
     }
     this.J = f1;
     this.I = this.m;
-    new b(null).run();
-  }
-  
-  private void b()
-  {
-    this.D = false;
-  }
-  
-  private void b(float paramFloat)
-  {
-    this.m = paramFloat;
-    this.l = a(this.m);
-    invalidate();
-  }
-  
-  private void c()
-  {
-    this.I += this.J * 16.0F / 1000.0F;
-    float f1 = this.I;
-    if (f1 <= this.n)
-    {
-      b();
-      this.I = this.n;
-      setCheckedDelayed(true);
-    }
-    else if (f1 >= this.o)
-    {
-      b();
-      this.I = this.o;
-      setCheckedDelayed(false);
-    }
-    b(this.I);
+    new b((byte)0).run();
   }
   
   private void setCheckedDelayed(final boolean paramBoolean)
   {
     postDelayed(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         SwitchButton.this.a(paramBoolean, true);
       }
     }, 10L);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (this.x != paramBoolean1)
     {
@@ -261,7 +216,7 @@ public class SwitchButton
     float f4 = paramMotionEvent.getY();
     float f1 = Math.abs(f3 - this.k);
     float f2 = Math.abs(f4 - this.j);
-    boolean bool = true;
+    boolean bool = false;
     switch (i1)
     {
     default: 
@@ -281,8 +236,8 @@ public class SwitchButton
       f1 = this.m;
       f2 = this.o;
       f3 = this.n;
-      if (f1 <= (f2 - f3) / 2.0F + f3) {
-        bool = false;
+      if (f1 > (f2 - f3) / 2.0F + f3) {
+        bool = true;
       }
       this.z = bool;
       this.l = a(this.m);
@@ -294,7 +249,7 @@ public class SwitchButton
       if ((f2 < i1) && (f1 < i1) && (f3 < this.t))
       {
         if (this.A == null) {
-          this.A = new a(null);
+          this.A = new a((byte)0);
         }
         if (!post(this.A)) {
           performClick();
@@ -306,7 +261,11 @@ public class SwitchButton
       }
       break;
     case 0: 
-      a();
+      this.b = getParent();
+      paramMotionEvent = this.b;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+      }
       this.k = f3;
       this.j = f4;
       this.d = this.e;
@@ -354,29 +313,29 @@ public class SwitchButton
     setChecked(this.x ^ true);
   }
   
-  private final class a
+  final class a
     implements Runnable
   {
     private a() {}
     
-    public void run()
+    public final void run()
     {
       SwitchButton.this.performClick();
     }
   }
   
-  private final class b
+  final class b
     implements Runnable
   {
     private b() {}
     
-    public void run()
+    public final void run()
     {
       if (!SwitchButton.a(SwitchButton.this)) {
         return;
       }
       SwitchButton.b(SwitchButton.this);
-      c.a(this);
+      yn.a(this);
     }
   }
 }

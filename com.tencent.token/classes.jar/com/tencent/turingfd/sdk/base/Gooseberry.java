@@ -191,12 +191,12 @@ public enum Gooseberry
     localGooseberry = il;
   }
   
-  public Gooseberry(int paramInt)
+  private Gooseberry(int paramInt)
   {
     this.value = paramInt;
   }
   
-  public String toString()
+  public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(name());

@@ -22,7 +22,7 @@ public class q
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int m = t.w;
     async_context localasync_context = t.b(this.x.h);
     tlv_t104 localtlv_t104 = localasync_context._t104;
     if (localtlv_t104 == null) {
@@ -43,34 +43,36 @@ public class q
     if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
       localasync_context._sec_guid_flag = true;
     }
+    int i = 0;
+    int j;
     int k;
-    for (int i = 0;; i = k)
+    do
     {
+      j = i;
       localObject1 = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject1);
       k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      i = k;
       if (k != 0) {
-        return k;
+        break;
       }
-      int m = b();
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("retry num:");
-      ((StringBuilder)localObject1).append(i);
+      k = b();
+      localObject1 = new StringBuilder("retry num:");
+      ((StringBuilder)localObject1).append(j);
       ((StringBuilder)localObject1).append(" ret:");
-      ((StringBuilder)localObject1).append(m);
+      ((StringBuilder)localObject1).append(k);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(this.x.f);
       util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
-      if (m != 180) {
-        return m;
+      i = k;
+      if (k != 180) {
+        break;
       }
-      k = i + 1;
-      if (i >= 1) {
-        return m;
-      }
-    }
+      i = j + 1;
+    } while (j <= 0);
+    i = k;
+    return i;
   }
   
   public byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte2)
@@ -90,7 +92,6 @@ public class q
     paramInt1 += paramArrayOfByte1.length;
     System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1, paramArrayOfLong.length);
     System.arraycopy(paramArrayOfByte2, 0, localObject2, paramInt1 + paramArrayOfLong.length, paramArrayOfByte2.length);
-    paramInt1 = paramArrayOfByte2.length;
     return b((byte[])localObject2, this.u, 4);
   }
 }

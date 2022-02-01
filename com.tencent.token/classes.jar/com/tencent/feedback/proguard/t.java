@@ -231,7 +231,7 @@ public final class t
     try
     {
       this.c = true;
-      com.tencent.feedback.common.e.b("rqdp{  isFirst }%b", new Object[] { Boolean.valueOf(true) });
+      com.tencent.feedback.common.e.b("rqdp{  isFirst }%b", new Object[] { Boolean.TRUE });
       return;
     }
     finally

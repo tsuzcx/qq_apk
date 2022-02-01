@@ -14,9 +14,9 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.token.aae;
 import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.m;
 
 public class CopyFaceDialog
   extends Dialog
@@ -25,9 +25,9 @@ public class CopyFaceDialog
   private TextView b;
   private Context c;
   
-  public CopyFaceDialog(Context paramContext, int paramInt, String paramString)
+  public CopyFaceDialog(Context paramContext, String paramString)
   {
-    super(paramContext, paramInt);
+    super(paramContext, 2131558791);
     this.a = paramString;
     this.c = paramContext;
   }
@@ -35,20 +35,20 @@ public class CopyFaceDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296310);
+    setContentView(2131296311);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131165413));
+    this.b = ((TextView)findViewById(2131165415));
     paramBundle = new StringBuilder();
     paramBundle.append(this.a);
     paramBundle.append(this.c.getResources().getString(2131493127));
     paramBundle = paramBundle.toString();
-    this.b.setText(m.a(paramBundle, this.c.getResources().getDimension(2131034249), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
-    ((Button)findViewById(2131165347)).setOnClickListener(new View.OnClickListener()
+    this.b.setText(aae.a(paramBundle, this.c.getResources().getDimension(2131034249), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
+    ((Button)findViewById(2131165349)).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         CopyFaceDialog.this.dismiss();
         paramAnonymousView = new Intent(CopyFaceDialog.a(CopyFaceDialog.this), FaceRecognitionDefaultActivity.class);

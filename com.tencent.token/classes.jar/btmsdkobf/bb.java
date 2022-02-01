@@ -19,19 +19,19 @@ public final class bb
     dv.add(localba);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new bb();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.dc = paramJceInputStream.read(this.dc, 0, false);
     this.dd = paramJceInputStream.read(this.dd, 1, false);
     this.du = ((ArrayList)paramJceInputStream.read(dv, 2, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     int i = this.dc;
     if (i != 0) {

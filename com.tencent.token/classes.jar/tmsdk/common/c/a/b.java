@@ -4,16 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import com.tencent.token.aoz;
 
-class b
+public final class b
   extends BroadcastReceiver
 {
   public String a = null;
   public Runnable b = null;
   
-  b(a parama) {}
+  public b(aoz paramaoz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
@@ -24,7 +25,7 @@ class b
       if (this.b == null) {
         return;
       }
-      a.a(this.c).post(this.b);
+      aoz.a(this.c).post(this.b);
       this.c.a(paramContext);
       return;
     }

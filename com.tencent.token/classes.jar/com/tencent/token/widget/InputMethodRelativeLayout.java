@@ -48,14 +48,14 @@ public class InputMethodRelativeLayout
       else
       {
         if ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50)) {
-          break label113;
+          break label111;
         }
         this.f = false;
       }
-      this.a.a(this.f, paramInt4, paramInt2);
+      this.a.a(this.f, paramInt2);
       measure(this.b - paramInt1 + getWidth(), this.c - paramInt2 + getHeight());
       return;
-      label113:
+      label111:
       return;
     }
   }
@@ -67,7 +67,7 @@ public class InputMethodRelativeLayout
   
   public static abstract interface a
   {
-    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+    public abstract void a(boolean paramBoolean, int paramInt);
   }
 }
 

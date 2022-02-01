@@ -27,9 +27,7 @@ public final class d
       super.a(paramString, paramT);
       return;
     }
-    paramT = new StringBuilder("put name can not startwith . , now is ");
-    paramT.append(paramString);
-    throw new IllegalArgumentException(paramT.toString());
+    throw new IllegalArgumentException("put name can not startwith . , now is ".concat(String.valueOf(paramString)));
   }
   
   public final void a(byte[] paramArrayOfByte)

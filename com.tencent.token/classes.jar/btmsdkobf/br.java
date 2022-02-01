@@ -41,8 +41,7 @@ public class br
   
   public String toString()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("op:[");
+    Object localObject = new StringBuilder("op:[");
     ((StringBuilder)localObject).append(this.gA);
     ((StringBuilder)localObject).append("]status:[");
     ((StringBuilder)localObject).append(this.gB);

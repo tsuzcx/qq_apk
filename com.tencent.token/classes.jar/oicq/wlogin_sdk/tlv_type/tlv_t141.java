@@ -27,12 +27,11 @@ public class tlv_t141
     util.int16_to_buf(paramArrayOfByte2, 0, this._version);
     util.int16_to_buf(paramArrayOfByte2, 2, arrayOfByte.length);
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 4, arrayOfByte.length);
-    int j = 4 + arrayOfByte.length;
+    int j = arrayOfByte.length + 4;
     util.int16_to_buf(paramArrayOfByte2, j, paramInt);
     paramInt = j + 2;
     util.int16_to_buf(paramArrayOfByte2, paramInt, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt + 2, paramArrayOfByte1.length);
-    paramInt = paramArrayOfByte1.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, i);
     set_length();

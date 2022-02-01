@@ -69,13 +69,14 @@ public class bz
     if (paramInt == 0) {
       return paramInt;
     }
-    int i;
+    int j;
     if (m(paramInt) != 0)
     {
-      i = paramInt;
+      j = paramInt;
     }
     else
     {
+      int i;
       switch (o(paramInt))
       {
       default: 
@@ -142,9 +143,10 @@ public class bz
       case -170000: 
         i = paramInt - 15;
       }
+      j = i;
       if (i == paramInt)
       {
-        int j = n(paramInt);
+        j = n(paramInt);
         if (j != -1500)
         {
           if (j != -1400) {
@@ -155,49 +157,49 @@ public class bz
                 if ((j != -1100) && (j != -1000))
                 {
                   if (j == -900) {
-                    break label571;
+                    break label572;
                   }
                   if (j != -800)
                   {
                     if ((j == -400) || (j == -300)) {
-                      break label571;
+                      break label572;
                     }
-                    break label575;
+                    j = i;
+                    break label576;
                   }
                 }
                 else
                 {
-                  i = paramInt - 13;
-                  break label575;
+                  j = paramInt - 13;
+                  break label576;
                 }
               }
               else
               {
-                i = paramInt - 14;
-                break label575;
+                j = paramInt - 14;
+                break label576;
               }
             }
             else
             {
-              i = paramInt - 9;
-              break label575;
+              j = paramInt - 9;
+              break label576;
             }
           }
-          i = paramInt - 3;
-          break label575;
+          j = paramInt - 3;
+          break label576;
         }
-        label571:
-        i = paramInt - 5;
+        label572:
+        j = paramInt - 5;
       }
     }
-    label575:
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appendNormalCode: ");
+    label576:
+    StringBuilder localStringBuilder = new StringBuilder("appendNormalCode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" -> ");
-    localStringBuilder.append(i);
+    localStringBuilder.append(j);
     eh.f("ESharkCode", localStringBuilder.toString());
-    return i;
+    return j;
   }
   
   public static boolean q(int paramInt)

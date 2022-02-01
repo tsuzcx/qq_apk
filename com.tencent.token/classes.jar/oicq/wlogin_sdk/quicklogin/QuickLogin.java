@@ -106,8 +106,7 @@ public class QuickLogin
     }
     catch (Exception paramContext)
     {
-      paramString = new StringBuilder();
-      paramString.append("login through web as exception occurred ");
+      paramString = new StringBuilder("login through web as exception occurred ");
       paramString.append(paramContext.getMessage());
       util.LOGI(paramString.toString(), "");
     }

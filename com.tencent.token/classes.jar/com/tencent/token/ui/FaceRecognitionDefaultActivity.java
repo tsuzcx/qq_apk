@@ -1,5 +1,6 @@
 package com.tencent.token.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,11 +9,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.token.aad;
+import com.tencent.token.aae;
+import com.tencent.token.ahh;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cs;
-import com.tencent.token.global.g;
-import com.tencent.token.utils.l;
-import com.tencent.token.utils.m;
+import com.tencent.token.rv;
+import com.tencent.token.rv.a;
+import com.tencent.token.sb;
+import com.tencent.token.ta;
+import com.tencent.token.xb;
+import com.tencent.token.ye;
+import com.tencent.token.ye.1;
+import com.tencent.token.ye.2;
+import com.tencent.token.ye.b;
 
 public class FaceRecognitionDefaultActivity
   extends BaseActivity
@@ -43,8 +52,6 @@ public class FaceRecognitionDefaultActivity
       Intent localIntent = new Intent(this, MyMbSubPageActivity.class);
       localIntent.putExtra("fromspalsh", this.fromspalsh);
       startActivity(localIntent);
-      finish();
-      return;
     }
     finish();
   }
@@ -52,59 +59,59 @@ public class FaceRecognitionDefaultActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296339);
+    setContentView(2131296340);
     int i = getIntent().getIntExtra("toastflag", -1);
     this.fromspalsh = getIntent().getBooleanExtra("fromsplash", false);
     if (i == 1)
     {
-      showOrangeToast(2131493160, 2131100167);
+      showOrangeToast(2131493160, 2131100170);
       AccountPageActivity.mNeedRefreshEval = true;
     }
     else if (i == 2)
     {
-      showOrangeToast(2131493182, 2131100167);
+      showOrangeToast(2131493182, 2131100170);
     }
-    this.tv_status = ((TextView)findViewById(2131165517));
-    this.tv_iv_facepsw_status = ((TextView)findViewById(2131165478));
-    this.tv_iv_facemobile_status = ((TextView)findViewById(2131165474));
-    this.mFaceStartPswDivider = findViewById(2131165485);
-    this.mFaceChPswDivider = findViewById(2131165481);
-    this.mFaceChmobileDivider = findViewById(2131165480);
-    this.rl_pwd = findViewById(2131165514);
+    this.tv_status = ((TextView)findViewById(2131165519));
+    this.tv_iv_facepsw_status = ((TextView)findViewById(2131165480));
+    this.tv_iv_facemobile_status = ((TextView)findViewById(2131165476));
+    this.mFaceStartPswDivider = findViewById(2131165487);
+    this.mFaceChPswDivider = findViewById(2131165483);
+    this.mFaceChmobileDivider = findViewById(2131165482);
+    this.rl_pwd = findViewById(2131165516);
     this.rl_pwd.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FacePwdIndexActivity.class);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    this.iv_facemobileredicon = ((ImageView)findViewById(2131165475));
-    this.face_chanege_pwd = findViewById(2131165476);
-    if (m.i() == 0) {
+    this.iv_facemobileredicon = ((ImageView)findViewById(2131165477));
+    this.face_chanege_pwd = findViewById(2131165478);
+    if (aae.i() == 0) {
       this.face_chanege_pwd.setVisibility(8);
     }
     this.face_chanege_pwd.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FaceChangePwdIndexActivity.class);
         paramAnonymousView.putExtra("open_switch", FaceRecognitionDefaultActivity.this.psw_open_switch);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    paramBundle = findViewById(2131165472);
+    paramBundle = findViewById(2131165474);
     paramBundle.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FaceChangeMobileActivity.class);
         paramAnonymousView.putExtra("open_switch", FaceRecognitionDefaultActivity.this.mobile_open_switch);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
-        l.a(null, "face_changemobile_redtip", true);
+        aad.h("face_changemobile_redtip");
       }
     });
-    if (m.n())
+    if (aae.n())
     {
       this.rl_pwd.setVisibility(0);
       this.mFaceStartPswDivider.setVisibility(0);
@@ -114,7 +121,7 @@ public class FaceRecognitionDefaultActivity
       this.rl_pwd.setVisibility(8);
       this.mFaceStartPswDivider.setVisibility(8);
     }
-    if (m.o())
+    if (aae.o())
     {
       this.face_chanege_pwd.setVisibility(0);
       this.mFaceChPswDivider.setVisibility(0);
@@ -124,7 +131,7 @@ public class FaceRecognitionDefaultActivity
       this.face_chanege_pwd.setVisibility(8);
       this.mFaceChPswDivider.setVisibility(8);
     }
-    if (m.p())
+    if (aae.p())
     {
       paramBundle.setVisibility(0);
       this.mFaceChmobileDivider.setVisibility(0);
@@ -134,32 +141,32 @@ public class FaceRecognitionDefaultActivity
       paramBundle.setVisibility(8);
       this.mFaceChmobileDivider.setVisibility(8);
     }
-    this.mOrangeView = findViewById(2131166326);
-    this.mOrangeText = ((TextView)findViewById(2131166120));
-    this.mOrangeClose = ((ImageView)findViewById(2131166117));
+    this.mOrangeView = findViewById(2131166339);
+    this.mOrangeText = ((TextView)findViewById(2131166126));
+    this.mOrangeClose = ((ImageView)findViewById(2131166123));
     this.mOrangeText.setText(getResources().getString(2131493130));
     this.mOrangeClose.setImageResource(2131099764);
     this.mOrangeView.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, DownLineNoticeActivity.class);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
-        m.a("face_downline_notice_clicked", true);
+        aae.a("face_downline_notice_clicked");
         FaceRecognitionDefaultActivity.this.mOrangeView.setVisibility(8);
       }
     });
-    if ((!m.n()) && (!m.o()) && (!m.p())) {
-      if (m.b("face_downline_notice_clicked", false)) {
+    if ((!aae.n()) && (!aae.o()) && (!aae.p())) {
+      if (aae.b("face_downline_notice_clicked")) {
         this.mOrangeView.setVisibility(8);
       } else {
         this.mOrangeView.setVisibility(0);
       }
     }
-    this.rl_retry = findViewById(2131165515);
+    this.rl_retry = findViewById(2131165517);
     this.rl_retry.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FaceRecognitionCameraActivity.class);
         paramAnonymousView.putExtra("flag", 2);
@@ -168,10 +175,10 @@ public class FaceRecognitionDefaultActivity
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
       }
     });
-    this.rl_add = findViewById(2131165513);
+    this.rl_add = findViewById(2131165515);
     this.rl_add.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FaceRecognitionAddFaceActivity.class);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
@@ -182,29 +189,30 @@ public class FaceRecognitionDefaultActivity
   protected void onResume()
   {
     super.onResume();
-    if (m.e() != 0L)
+    if (aae.e() != 0L)
     {
-      this.tv_status.setText(2131493587);
+      this.tv_status.setText(2131493588);
       this.tv_status.setTextAppearance(this, 2131558805);
     }
     else
     {
-      this.tv_status.setText(2131493586);
+      this.tv_status.setText(2131493587);
       this.tv_status.setTextAppearance(this, 2131558806);
     }
-    if (cs.a().e() == null)
+    if (ta.a().k.b() == null)
     {
       showNoAccountTipDialog(this, 3, 0);
       return;
     }
-    if (!cs.a().e().mIsBinded)
+    if (!ta.a().k.b().mIsBinded)
     {
       showNoAccountTipDialog(this, 3, 1);
       return;
     }
-    o.a().a(this, new o.b()
+    ye localye = ye.a();
+    Object localObject = new ye.b()
     {
-      public void a(int paramAnonymousInt)
+      public final void a(int paramAnonymousInt)
       {
         Object localObject = FaceRecognitionDefaultActivity.this;
         boolean bool2 = false;
@@ -226,31 +234,54 @@ public class FaceRecognitionDefaultActivity
           bool1 = true;
         }
         FaceRecognitionDefaultActivity.access$102((FaceRecognitionDefaultActivity)localObject, bool1);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("psw_open_switch");
+        localObject = new StringBuilder("psw_open_switch");
         ((StringBuilder)localObject).append(FaceRecognitionDefaultActivity.this.psw_open_switch);
-        g.a(((StringBuilder)localObject).toString());
+        xb.a(((StringBuilder)localObject).toString());
         if (FaceRecognitionDefaultActivity.this.psw_open_switch)
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493587);
+          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493588);
           FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558805);
         }
         else
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493586);
+          FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493587);
           FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558806);
         }
         if (FaceRecognitionDefaultActivity.this.mobile_open_switch)
         {
-          FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493587);
+          FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493588);
           FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558805);
           return;
         }
-        FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493586);
+        FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setText(2131493587);
         FaceRecognitionDefaultActivity.this.tv_iv_facemobile_status.setTextAppearance(FaceRecognitionDefaultActivity.this, 2131558806);
       }
-    });
-    if ((!l.a(null, "face_changemobile_redtip")) && (m.e() == 0L))
+    };
+    if (!isFinishing())
+    {
+      QQUser localQQUser = ta.a().k.b();
+      if (localQQUser == null)
+      {
+        localObject = getResources().getString(2131492913);
+        ((BaseActivity)this).showUserDialog(2131492986, (String)localObject, 2131493040, new ye.1(localye, this), new ye.2(localye, this));
+      }
+      else if (ta.a().e())
+      {
+        localye.c = this;
+        localye.a = ((ye.b)localObject);
+        if (localQQUser.mRealUin == 0L)
+        {
+          rv.a.a().c(localye.f);
+        }
+        else
+        {
+          localye.d = 3;
+          sb.a().a(localQQUser.mUin, localQQUser.mRealUin, 3, localye.f);
+        }
+        ((BaseActivity)this).showProDialog(this, 2131492986, 2131493173, localye.e);
+      }
+    }
+    if ((!aad.i("face_changemobile_redtip")) && (aae.e() == 0L))
     {
       this.iv_facemobileredicon.setVisibility(0);
       return;
@@ -265,7 +296,7 @@ public class FaceRecognitionDefaultActivity
       this.mBackArrow.setVisibility(0);
       this.mBackArrow.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           FaceRecognitionDefaultActivity.this.onBackPressed();
         }

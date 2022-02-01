@@ -38,37 +38,37 @@ public class HorizontialListView
   private boolean n = false;
   private DataSetObserver o = new DataSetObserver()
   {
-    public void onChanged()
+    public final void onChanged()
     {
       synchronized (HorizontialListView.this)
       {
-        HorizontialListView.a(HorizontialListView.this, true);
+        HorizontialListView.a(HorizontialListView.this);
         HorizontialListView.this.invalidate();
         HorizontialListView.this.requestLayout();
         return;
       }
     }
     
-    public void onInvalidated()
+    public final void onInvalidated()
     {
-      HorizontialListView.a(HorizontialListView.this);
+      HorizontialListView.b(HorizontialListView.this);
       HorizontialListView.this.invalidate();
       HorizontialListView.this.requestLayout();
     }
   };
   private GestureDetector.OnGestureListener p = new GestureDetector.SimpleOnGestureListener()
   {
-    public boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
     {
-      return HorizontialListView.this.a(paramAnonymousMotionEvent);
+      return HorizontialListView.this.a();
     }
     
-    public boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      return HorizontialListView.this.a(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
+      return HorizontialListView.this.a(paramAnonymousFloat1);
     }
     
-    public boolean onScroll(MotionEvent arg1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onScroll(MotionEvent arg1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
       synchronized (HorizontialListView.this)
       {
@@ -79,7 +79,7 @@ public class HorizontialListView
       }
     }
     
-    public boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
     {
       Object localObject = new Rect();
       int i = 0;
@@ -91,18 +91,18 @@ public class HorizontialListView
         ((Rect)localObject).set(j, localView.getTop(), k, localView.getBottom());
         if (((Rect)localObject).contains((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY()))
         {
-          if (HorizontialListView.b(HorizontialListView.this) != null)
+          if (HorizontialListView.c(HorizontialListView.this) != null)
           {
-            paramAnonymousMotionEvent = HorizontialListView.b(HorizontialListView.this);
+            paramAnonymousMotionEvent = HorizontialListView.c(HorizontialListView.this);
             localObject = HorizontialListView.this;
-            paramAnonymousMotionEvent.onItemClick((AdapterView)localObject, localView, HorizontialListView.c((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+            paramAnonymousMotionEvent.onItemClick((AdapterView)localObject, localView, HorizontialListView.d((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.d(HorizontialListView.this) + 1 + i));
           }
-          if (HorizontialListView.d(HorizontialListView.this) == null) {
+          if (HorizontialListView.e(HorizontialListView.this) == null) {
             break;
           }
-          paramAnonymousMotionEvent = HorizontialListView.d(HorizontialListView.this);
+          paramAnonymousMotionEvent = HorizontialListView.e(HorizontialListView.this);
           localObject = HorizontialListView.this;
-          paramAnonymousMotionEvent.onItemSelected((AdapterView)localObject, localView, HorizontialListView.c((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+          paramAnonymousMotionEvent.onItemSelected((AdapterView)localObject, localView, HorizontialListView.d((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.d(HorizontialListView.this) + 1 + i));
           return true;
         }
         i += 1;
@@ -114,10 +114,21 @@ public class HorizontialListView
   public HorizontialListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
-  private void a()
+  private void a(View paramView, int paramInt)
+  {
+    ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null) {
+      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -1);
+    }
+    addViewInLayout(paramView, paramInt, localLayoutParams1, true);
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
+  }
+  
+  private void b()
   {
     try
     {
@@ -138,54 +149,11 @@ public class HorizontialListView
     }
   }
   
-  private void a(int paramInt)
-  {
-    View localView = getChildAt(getChildCount() - 1);
-    int i2 = 0;
-    if (localView != null) {
-      i1 = localView.getRight();
-    } else {
-      i1 = 0;
-    }
-    a(i1, paramInt);
-    localView = getChildAt(0);
-    int i1 = i2;
-    if (localView != null) {
-      i1 = localView.getLeft();
-    }
-    b(i1, paramInt);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    while ((paramInt1 + paramInt2 < getWidth()) && (this.g < this.b.getCount()))
-    {
-      View localView = this.b.getView(this.g, (View)this.k.poll(), this);
-      a(localView, -1);
-      paramInt1 += localView.getMeasuredWidth();
-      if (this.g == this.b.getCount() - 1) {
-        this.h = (this.c + paramInt1 - getWidth());
-      }
-      this.g += 1;
-    }
-  }
-  
-  private void a(View paramView, int paramInt)
-  {
-    ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
-    if (localLayoutParams2 == null) {
-      localLayoutParams1 = new ViewGroup.LayoutParams(-1, -1);
-    }
-    addViewInLayout(paramView, paramInt, localLayoutParams1, true);
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
-  }
-  
-  private void b()
+  private void c()
   {
     try
     {
-      a();
+      b();
       removeAllViewsInLayout();
       requestLayout();
       return;
@@ -197,68 +165,17 @@ public class HorizontialListView
     }
   }
   
-  private void b(int paramInt)
-  {
-    for (View localView = getChildAt(0); (localView != null) && (localView.getRight() + paramInt <= 0); localView = getChildAt(0))
-    {
-      this.i += localView.getMeasuredWidth();
-      this.k.offer(localView);
-      removeViewInLayout(localView);
-      this.f += 1;
-    }
-    for (localView = getChildAt(getChildCount() - 1); (localView != null) && (localView.getLeft() + paramInt >= getWidth()); localView = getChildAt(getChildCount() - 1))
-    {
-      this.k.offer(localView);
-      removeViewInLayout(localView);
-      this.g -= 1;
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    while (paramInt1 + paramInt2 > 0)
-    {
-      int i1 = this.f;
-      if (i1 < 0) {
-        break;
-      }
-      View localView = this.b.getView(i1, (View)this.k.poll(), this);
-      a(localView, 0);
-      paramInt1 -= localView.getMeasuredWidth();
-      this.f -= 1;
-      this.i -= localView.getMeasuredWidth();
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    if (getChildCount() > 0)
-    {
-      this.i += paramInt;
-      paramInt = this.i;
-      int i1 = 0;
-      while (i1 < getChildCount())
-      {
-        View localView = getChildAt(i1);
-        int i2 = localView.getMeasuredWidth() + paramInt;
-        localView.layout(paramInt, 0, i2, localView.getMeasuredHeight());
-        i1 += 1;
-        paramInt = i2;
-      }
-    }
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
+  protected final boolean a()
   {
     this.e.forceFinished(true);
     return true;
   }
   
-  protected boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected final boolean a(float paramFloat)
   {
     try
     {
-      this.e.fling(this.d, 0, (int)-paramFloat1, 0, 0, this.h, 0, 0);
+      this.e.fling(this.d, 0, (int)-paramFloat, 0, 0, this.h, 0, 0);
       requestLayout();
       return true;
     }
@@ -282,51 +199,118 @@ public class HorizontialListView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    try
+    for (;;)
     {
-      super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      ListAdapter localListAdapter = this.b;
-      if (localListAdapter == null) {
-        return;
-      }
-      if (this.n)
+      try
       {
-        paramInt1 = this.c;
-        a();
-        removeAllViewsInLayout();
-        this.d = paramInt1;
-        this.n = false;
-      }
-      if (this.e.computeScrollOffset()) {
-        this.d = this.e.getCurrX();
-      }
-      if (this.d < 0)
-      {
-        this.d = 0;
-        this.e.forceFinished(true);
-      }
-      if (this.d > this.h)
-      {
-        this.d = this.h;
-        this.e.forceFinished(true);
-      }
-      paramInt1 = this.c - this.d;
-      b(paramInt1);
-      a(paramInt1);
-      c(paramInt1);
-      this.c = this.d;
-      if (!this.e.isFinished()) {
-        post(new Runnable()
+        super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+        Object localObject1 = this.b;
+        if (localObject1 == null) {
+          return;
+        }
+        if (this.n)
         {
-          public void run()
+          paramInt1 = this.c;
+          b();
+          removeAllViewsInLayout();
+          this.d = paramInt1;
+          this.n = false;
+        }
+        if (this.e.computeScrollOffset()) {
+          this.d = this.e.getCurrX();
+        }
+        if (this.d < 0)
+        {
+          this.d = 0;
+          this.e.forceFinished(true);
+        }
+        if (this.d > this.h)
+        {
+          this.d = this.h;
+          this.e.forceFinished(true);
+        }
+        paramInt2 = this.c - this.d;
+        localObject1 = getChildAt(0);
+        if ((localObject1 != null) && (((View)localObject1).getRight() + paramInt2 <= 0))
+        {
+          this.i += ((View)localObject1).getMeasuredWidth();
+          this.k.offer(localObject1);
+          removeViewInLayout((View)localObject1);
+          this.f += 1;
+          localObject1 = getChildAt(0);
+          continue;
+        }
+        localObject1 = getChildAt(getChildCount() - 1);
+        if ((localObject1 != null) && (((View)localObject1).getLeft() + paramInt2 >= getWidth()))
+        {
+          this.k.offer(localObject1);
+          removeViewInLayout((View)localObject1);
+          this.g -= 1;
+          continue;
+        }
+        localObject1 = getChildAt(getChildCount() - 1);
+        if (localObject1 != null)
+        {
+          paramInt1 = ((View)localObject1).getRight();
+          if ((paramInt1 + paramInt2 < getWidth()) && (this.g < this.b.getCount()))
           {
-            HorizontialListView.this.requestLayout();
+            localObject1 = this.b.getView(this.g, (View)this.k.poll(), this);
+            a((View)localObject1, -1);
+            paramInt1 += ((View)localObject1).getMeasuredWidth();
+            if (this.g == this.b.getCount() - 1) {
+              this.h = (this.c + paramInt1 - getWidth());
+            }
+            this.g += 1;
+            continue;
           }
-        });
+          localObject1 = getChildAt(0);
+          if (localObject1 == null) {
+            break label634;
+          }
+          paramInt1 = ((View)localObject1).getLeft();
+          if ((paramInt1 + paramInt2 > 0) && (this.f >= 0))
+          {
+            localObject1 = this.b.getView(this.f, (View)this.k.poll(), this);
+            a((View)localObject1, 0);
+            paramInt1 -= ((View)localObject1).getMeasuredWidth();
+            this.f -= 1;
+            this.i -= ((View)localObject1).getMeasuredWidth();
+            continue;
+          }
+          if (getChildCount() > 0)
+          {
+            this.i += paramInt2;
+            paramInt2 = this.i;
+            paramInt1 = 0;
+            if (paramInt1 < getChildCount())
+            {
+              localObject1 = getChildAt(paramInt1);
+              paramInt3 = ((View)localObject1).getMeasuredWidth() + paramInt2;
+              ((View)localObject1).layout(paramInt2, 0, paramInt3, ((View)localObject1).getMeasuredHeight());
+              paramInt1 += 1;
+              paramInt2 = paramInt3;
+              continue;
+            }
+          }
+          this.c = this.d;
+          if (!this.e.isFinished()) {
+            post(new Runnable()
+            {
+              public final void run()
+              {
+                HorizontialListView.this.requestLayout();
+              }
+            });
+          }
+          return;
+        }
       }
-      return;
+      finally {}
+      paramInt1 = 0;
+      continue;
+      label634:
+      paramInt1 = 0;
     }
-    finally {}
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -337,7 +321,7 @@ public class HorizontialListView
     }
     this.b = paramListAdapter;
     this.b.registerDataSetObserver(this.o);
-    b();
+    c();
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)

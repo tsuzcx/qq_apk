@@ -34,7 +34,6 @@ public final class f
       if (k == null) {
         k = new byte[] { 0 };
       }
-      localObject = k;
       this.e = ((byte[])paramh.c(7, true));
       this.h = paramh.a(this.h, 8, true);
       if (l == null)

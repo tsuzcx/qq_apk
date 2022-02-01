@@ -1,5 +1,6 @@
 package com.tmsdk.base.utils;
 
+import com.tencent.token.ass;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,7 +9,6 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import tmsdk.common.tcc.b;
 
 public class MD5Util
 {
@@ -42,7 +42,7 @@ public class MD5Util
       }
       j += 1;
     }
-    return new String(b.decrypt(arrayOfByte, null), Charset.forName("UTF-8"));
+    return new String(ass.b(arrayOfByte, null), Charset.forName("UTF-8"));
   }
   
   public static byte[] encrypt(String paramString)

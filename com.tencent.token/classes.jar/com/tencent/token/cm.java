@@ -1,64 +1,128 @@
 package com.tencent.token;
 
-public class cm
+import android.app.Notification;
+import android.app.Notification.Builder;
+import android.os.Bundle;
+import android.util.SparseArray;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+final class cm
 {
-  public short a(byte[] paramArrayOfByte)
+  private static final Object a = new Object();
+  private static Field b;
+  private static boolean c;
+  private static final Object d = new Object();
+  
+  public static Bundle a(Notification.Builder paramBuilder, ck.a parama)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
-      return ck.a(paramArrayOfByte, 20);
+    paramBuilder.addAction(parama.e, parama.f, parama.g);
+    paramBuilder = new Bundle(parama.a);
+    if (parama.b != null) {
+      paramBuilder.putParcelableArray("android.support.remoteInputs", a(parama.b));
     }
-    return -1;
+    if (parama.c != null) {
+      paramBuilder.putParcelableArray("android.support.dataRemoteInputs", a(parama.c));
+    }
+    paramBuilder.putBoolean("android.support.allowGeneratedReplies", parama.d);
+    return paramBuilder;
   }
   
-  public void a(ch paramch)
+  public static Bundle a(Notification paramNotification)
   {
-    paramch.a = ck.b(paramch.f, 0, 32);
-  }
-  
-  public void a(ci paramci, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
+    synchronized (a)
     {
-      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
-        return;
+      if (c) {
+        return null;
       }
-      paramci.g = ck.b(paramArrayOfByte, 1);
-      paramci.h = ck.a(paramArrayOfByte, 5);
-      paramci.i = paramArrayOfByte[7];
-      paramci.j = ck.a(paramArrayOfByte, 8);
-      paramci.k = ck.a(paramArrayOfByte, 10);
-      paramci.l = ((int)ck.b(paramArrayOfByte, 12));
-      paramci.m = ((int)ck.b(paramArrayOfByte, 16));
-      paramci.n = ck.a(paramArrayOfByte, 20);
-      paramci.o = ck.a(paramArrayOfByte, 22);
-      paramci.p = ck.a(paramArrayOfByte, 24);
-      paramci.q = ck.a(paramArrayOfByte, 26);
-      paramci.r = ck.b(paramArrayOfByte, 28, 64);
-      paramci.b = ((int)ck.b(paramArrayOfByte, 92));
-      paramci.c = ck.b(paramArrayOfByte, 96, 256);
-      paramci.d = ((int)ck.b(paramArrayOfByte, 352));
-      paramci.e = ck.a(paramArrayOfByte, 356);
-      ck.a(paramci.t, 0, paramArrayOfByte, 358, paramci.t.length);
-      int j = 358 + paramci.t.length;
-      int k = paramArrayOfByte.length - 1 - paramci.s.length - j;
-      int i = j;
-      if (k > 0)
+      try
       {
-        paramci.f = new byte[k];
-        ck.a(paramci.f, 0, paramArrayOfByte, j, paramci.f.length);
-        i = j + paramci.f.length;
+        if (b == null)
+        {
+          localObject1 = Notification.class.getDeclaredField("extras");
+          if (!Bundle.class.isAssignableFrom(((Field)localObject1).getType()))
+          {
+            c = true;
+            return null;
+          }
+          ((Field)localObject1).setAccessible(true);
+          b = (Field)localObject1;
+        }
+        Bundle localBundle = (Bundle)b.get(paramNotification);
+        Object localObject1 = localBundle;
+        if (localBundle == null)
+        {
+          localObject1 = new Bundle();
+          b.set(paramNotification, localObject1);
+        }
+        return localObject1;
       }
-      ck.a(paramci.s, 0, paramArrayOfByte, i, paramci.s.length);
-      i = paramci.s.length;
-      return;
+      catch (IllegalAccessException|NoSuchFieldException paramNotification)
+      {
+        label96:
+        break label96;
+      }
+      c = true;
+      return null;
     }
   }
   
-  public byte[] a(long paramLong, int paramInt)
+  public static SparseArray<Bundle> a(List<Bundle> paramList)
   {
-    cj localcj = new cj();
-    localcj.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
-    return localcj.a();
+    int j = paramList.size();
+    Object localObject1 = null;
+    int i = 0;
+    while (i < j)
+    {
+      Bundle localBundle = (Bundle)paramList.get(i);
+      Object localObject2 = localObject1;
+      if (localBundle != null)
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new SparseArray();
+        }
+        ((SparseArray)localObject2).put(i, localBundle);
+      }
+      i += 1;
+      localObject1 = localObject2;
+    }
+    return localObject1;
+  }
+  
+  private static Bundle[] a(co[] paramArrayOfco)
+  {
+    if (paramArrayOfco == null) {
+      return null;
+    }
+    Bundle[] arrayOfBundle = new Bundle[paramArrayOfco.length];
+    int i = 0;
+    while (i < paramArrayOfco.length)
+    {
+      Object localObject1 = paramArrayOfco[i];
+      Bundle localBundle = new Bundle();
+      localBundle.putString("resultKey", ((co)localObject1).a);
+      localBundle.putCharSequence("label", ((co)localObject1).b);
+      localBundle.putCharSequenceArray("choices", ((co)localObject1).c);
+      localBundle.putBoolean("allowFreeFormInput", ((co)localObject1).d);
+      localBundle.putBundle("extras", ((co)localObject1).e);
+      Object localObject2 = ((co)localObject1).f;
+      if ((localObject2 != null) && (!((Set)localObject2).isEmpty()))
+      {
+        localObject1 = new ArrayList(((Set)localObject2).size());
+        localObject2 = ((Set)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((ArrayList)localObject1).add((String)((Iterator)localObject2).next());
+        }
+        localBundle.putStringArrayList("allowedDataTypes", (ArrayList)localObject1);
+      }
+      arrayOfBundle[i] = localBundle;
+      i += 1;
+    }
+    return arrayOfBundle;
   }
 }
 

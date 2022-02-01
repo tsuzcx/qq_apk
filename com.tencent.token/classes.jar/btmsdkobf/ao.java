@@ -10,18 +10,18 @@ public final class ao
   public String cS = "";
   public String cT = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ao();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.cS = paramJceInputStream.readString(0, true);
     this.cT = paramJceInputStream.readString(1, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cS, 0);
     String str = this.cT;

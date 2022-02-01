@@ -1,122 +1,68 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import com.tencent.halley.common.b;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-
-public class bk
+public final class bk
 {
-  private int a;
-  private String b = "";
-  private Socket c = null;
-  private int d = -1;
-  private int e = -1;
-  private az f;
-  
-  public void a()
+  public static final class a
   {
-    Object localObject1 = new StringBuilder("Thread:");
-    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
-    ((StringBuilder)localObject1).append(" isDaemon:");
-    ((StringBuilder)localObject1).append(Thread.currentThread().isDaemon());
-    b.c("ConnectorImpl", ((StringBuilder)localObject1).toString());
-    long l1 = System.currentTimeMillis();
-    Object localObject2;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      try
-      {
-        localObject1 = InetAddress.getByName(this.b);
-      }
-      catch (Exception localException1)
-      {
-        localException1.getClass().getSimpleName();
-        localObject2 = new StringBuilder("Dns InetAddress exception: domain");
-        ((StringBuilder)localObject2).append(this.b);
-        ((StringBuilder)localObject2).toString();
-        localObject2 = null;
-      }
-      this.d = ((int)(System.currentTimeMillis() - l1));
-      localObject2 = new InetSocketAddress(((InetAddress)localObject2).getHostAddress(), 14000);
-    }
-    else
-    {
-      localObject2 = new InetSocketAddress(this.f.a(), this.f.b());
-      this.d = 0;
-    }
-    Socket localSocket = new Socket();
-    l1 = 0L;
-    try
-    {
-      long l2 = System.currentTimeMillis();
-      l1 = l2;
-      this.a = be.a().b.a;
-      l1 = l2;
-      localSocket.connect((SocketAddress)localObject2, this.a);
-      l1 = l2;
-      if (localSocket.isConnected())
-      {
-        l1 = l2;
-        if (!localSocket.isClosed())
-        {
-          l1 = l2;
-          this.c = localSocket;
-          l1 = l2;
-          this.e = ((int)(System.currentTimeMillis() - l2));
-        }
-      }
-    }
-    catch (Exception localException2)
-    {
-      localException2.printStackTrace();
-      localException2.getClass().getSimpleName();
-      br.a(localException2);
-      this.e = ((int)(System.currentTimeMillis() - l1));
-      this.c = null;
-    }
-    System.currentTimeMillis();
+    public static final int coordinatorLayoutStyle = 2130837602;
+    public static final int font = 2130837621;
+    public static final int fontProviderAuthority = 2130837623;
+    public static final int fontProviderCerts = 2130837624;
+    public static final int fontProviderFetchStrategy = 2130837625;
+    public static final int fontProviderFetchTimeout = 2130837626;
+    public static final int fontProviderPackage = 2130837627;
+    public static final int fontProviderQuery = 2130837628;
+    public static final int fontStyle = 2130837629;
+    public static final int fontWeight = 2130837630;
+    public static final int keylines = 2130837648;
+    public static final int layout_anchor = 2130837650;
+    public static final int layout_anchorGravity = 2130837651;
+    public static final int layout_behavior = 2130837652;
+    public static final int layout_dodgeInsetEdges = 2130837653;
+    public static final int layout_insetEdge = 2130837654;
+    public static final int layout_keyline = 2130837655;
+    public static final int statusBarBackground = 2130837718;
   }
   
-  public void a(az paramaz)
+  public static final class b
   {
-    this.f = paramaz;
+    public static final int TextAppearance_Compat_Notification = 2131558634;
+    public static final int TextAppearance_Compat_Notification_Info = 2131558635;
+    public static final int TextAppearance_Compat_Notification_Line2 = 2131558636;
+    public static final int TextAppearance_Compat_Notification_Time = 2131558637;
+    public static final int TextAppearance_Compat_Notification_Title = 2131558638;
+    public static final int Widget_Compat_NotificationActionContainer = 2131558746;
+    public static final int Widget_Compat_NotificationActionText = 2131558747;
+    public static final int Widget_Support_CoordinatorLayout = 2131558748;
   }
   
-  public void a(String paramString)
+  public static final class c
   {
-    this.b = paramString;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.c.close();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-  }
-  
-  public Socket c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
-  }
-  
-  public int e()
-  {
-    return this.e;
+    public static final int[] CoordinatorLayout = { 2130837648, 2130837718 };
+    public static final int[] CoordinatorLayout_Layout = { 16842931, 2130837650, 2130837651, 2130837652, 2130837653, 2130837654, 2130837655 };
+    public static final int CoordinatorLayout_Layout_android_layout_gravity = 0;
+    public static final int CoordinatorLayout_Layout_layout_anchor = 1;
+    public static final int CoordinatorLayout_Layout_layout_anchorGravity = 2;
+    public static final int CoordinatorLayout_Layout_layout_behavior = 3;
+    public static final int CoordinatorLayout_Layout_layout_dodgeInsetEdges = 4;
+    public static final int CoordinatorLayout_Layout_layout_insetEdge = 5;
+    public static final int CoordinatorLayout_Layout_layout_keyline = 6;
+    public static final int CoordinatorLayout_keylines = 0;
+    public static final int CoordinatorLayout_statusBarBackground = 1;
+    public static final int[] FontFamily = { 2130837623, 2130837624, 2130837625, 2130837626, 2130837627, 2130837628 };
+    public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 2130837621, 2130837629, 2130837630 };
+    public static final int FontFamilyFont_android_font = 0;
+    public static final int FontFamilyFont_android_fontStyle = 2;
+    public static final int FontFamilyFont_android_fontWeight = 1;
+    public static final int FontFamilyFont_font = 3;
+    public static final int FontFamilyFont_fontStyle = 4;
+    public static final int FontFamilyFont_fontWeight = 5;
+    public static final int FontFamily_fontProviderAuthority = 0;
+    public static final int FontFamily_fontProviderCerts = 1;
+    public static final int FontFamily_fontProviderFetchStrategy = 2;
+    public static final int FontFamily_fontProviderFetchTimeout = 3;
+    public static final int FontFamily_fontProviderPackage = 4;
+    public static final int FontFamily_fontProviderQuery = 5;
   }
 }
 

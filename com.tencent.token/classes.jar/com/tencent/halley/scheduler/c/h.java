@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
-import com.tencent.halley.common.b.a;
-import com.tencent.halley.common.b.b;
 import com.tencent.halley.common.b.c;
+import com.tencent.token.lj;
+import com.tencent.token.lk;
 
 public final class h
   extends c
@@ -11,18 +11,18 @@ public final class h
   public int b = 0;
   public String c = "";
   
-  public final void a(a parama)
+  public final void a(lj paramlj)
   {
-    this.a = parama.a(this.a, 0, true);
-    this.b = parama.a(this.b, 1, true);
-    this.c = parama.a(2, true);
+    this.a = paramlj.a(this.a, 0, true);
+    this.b = paramlj.a(this.b, 1, true);
+    this.c = paramlj.a(2, true);
   }
   
-  public final void a(b paramb)
+  public final void a(lk paramlk)
   {
-    paramb.a(this.a, 0);
-    paramb.a(this.b, 1);
-    paramb.a(this.c, 2);
+    paramlk.a(this.a, 0);
+    paramlk.a(this.b, 1);
+    paramlk.a(this.c, 2);
   }
 }
 

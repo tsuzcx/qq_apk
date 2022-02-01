@@ -13,12 +13,12 @@ public final class aa
   public int bi = 0;
   public int cmdId = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new aa();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bg = paramJceInputStream.read(this.bg, 0, false);
     this.bh = paramJceInputStream.read(this.bh, 1, false);
@@ -27,7 +27,7 @@ public final class aa
     this.bi = paramJceInputStream.read(this.bi, 4, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     long l = this.bg;
     if (l != 0L) {

@@ -1,44 +1,145 @@
 package com.tencent.token;
 
-import java.net.Proxy.Type;
-import okhttp3.s;
-import okhttp3.x;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
 public final class fu
 {
-  public static String a(s params)
+  static final b a = new a();
+  
+  static
   {
-    String str1 = params.h();
-    String str2 = params.j();
-    params = str1;
-    if (str2 != null)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      params = new StringBuilder();
-      params.append(str1);
-      params.append('?');
-      params.append(str2);
-      params = params.toString();
+      a = new c();
+      return;
     }
-    return params;
   }
   
-  public static String a(x paramx, Proxy.Type paramType)
+  public static ColorStateList a(ImageView paramImageView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramx.b());
-    localStringBuilder.append(' ');
-    if (b(paramx, paramType)) {
-      localStringBuilder.append(paramx.a());
-    } else {
-      localStringBuilder.append(a(paramx.a()));
-    }
-    localStringBuilder.append(" HTTP/1.1");
-    return localStringBuilder.toString();
+    return a.a(paramImageView);
   }
   
-  private static boolean b(x paramx, Proxy.Type paramType)
+  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
   {
-    return (!paramx.g()) && (paramType == Proxy.Type.HTTP);
+    a.a(paramImageView, paramColorStateList);
+  }
+  
+  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+  {
+    a.a(paramImageView, paramMode);
+  }
+  
+  public static PorterDuff.Mode b(ImageView paramImageView)
+  {
+    return a.b(paramImageView);
+  }
+  
+  static class a
+    implements fu.b
+  {
+    public ColorStateList a(ImageView paramImageView)
+    {
+      if ((paramImageView instanceof ga)) {
+        return ((ga)paramImageView).getSupportImageTintList();
+      }
+      return null;
+    }
+    
+    public void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    {
+      if ((paramImageView instanceof ga)) {
+        ((ga)paramImageView).setSupportImageTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      if ((paramImageView instanceof ga)) {
+        ((ga)paramImageView).setSupportImageTintMode(paramMode);
+      }
+    }
+    
+    public PorterDuff.Mode b(ImageView paramImageView)
+    {
+      if ((paramImageView instanceof ga)) {
+        return ((ga)paramImageView).getSupportImageTintMode();
+      }
+      return null;
+    }
+  }
+  
+  static abstract interface b
+  {
+    public abstract ColorStateList a(ImageView paramImageView);
+    
+    public abstract void a(ImageView paramImageView, ColorStateList paramColorStateList);
+    
+    public abstract void a(ImageView paramImageView, PorterDuff.Mode paramMode);
+    
+    public abstract PorterDuff.Mode b(ImageView paramImageView);
+  }
+  
+  static final class c
+    extends fu.a
+  {
+    public final ColorStateList a(ImageView paramImageView)
+    {
+      return paramImageView.getImageTintList();
+    }
+    
+    public final void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    {
+      paramImageView.setImageTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramColorStateList = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramColorStateList != null) && (i != 0))
+        {
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramColorStateList);
+        }
+      }
+    }
+    
+    public final void a(ImageView paramImageView, PorterDuff.Mode paramMode)
+    {
+      paramImageView.setImageTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramMode = paramImageView.getDrawable();
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramImageView.getDrawableState());
+          }
+          paramImageView.setImageDrawable(paramMode);
+        }
+      }
+    }
+    
+    public final PorterDuff.Mode b(ImageView paramImageView)
+    {
+      return paramImageView.getImageTintMode();
+    }
   }
 }
 

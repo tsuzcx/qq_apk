@@ -24,7 +24,6 @@ public class tlv_t177
     util.int64_to_buf32(paramString, 1, paramLong);
     util.int16_to_buf(paramString, 5, arrayOfByte.length);
     System.arraycopy(arrayOfByte, 0, paramString, 7, arrayOfByte.length);
-    int i = arrayOfByte.length;
     fill_head(this._cmd);
     fill_body(paramString, this._t177_body_len);
     set_length();

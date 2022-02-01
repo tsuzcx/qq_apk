@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class z
   extends JceStruct
 {
-  static byte[] bd = (byte[])new byte[1];
+  static byte[] bd;
   static ai be = new ai();
   static aj bf = new aj();
   public byte[] aZ = null;
@@ -18,15 +18,17 @@ public final class z
   
   static
   {
-    ((byte[])bd)[0] = 0;
+    byte[] arrayOfByte = (byte[])new byte[1];
+    bd = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new z();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.cmdId = paramJceInputStream.read(this.cmdId, 0, false);
     this.aZ = ((byte[])paramJceInputStream.read(bd, 1, false));
@@ -35,7 +37,7 @@ public final class z
     this.bc = ((aj)paramJceInputStream.read(bf, 4, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cmdId, 0);
     Object localObject = this.aZ;

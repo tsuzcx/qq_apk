@@ -1,640 +1,518 @@
 package android.support.v7.widget;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v4.view.ActionProvider;
-import android.support.v4.view.ActionProvider.SubUiVisibilityListener;
-import android.support.v7.appcompat.R.attr;
-import android.support.v7.appcompat.R.layout;
-import android.support.v7.view.ActionBarPolicy;
 import android.support.v7.view.menu.ActionMenuItemView;
-import android.support.v7.view.menu.ActionMenuItemView.PopupCallback;
-import android.support.v7.view.menu.BaseMenuPresenter;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.view.menu.MenuItemImpl;
-import android.support.v7.view.menu.MenuPopupHelper;
-import android.support.v7.view.menu.MenuPresenter.Callback;
-import android.support.v7.view.menu.MenuView;
-import android.support.v7.view.menu.MenuView.ItemView;
-import android.support.v7.view.menu.ShowableListMenu;
-import android.support.v7.view.menu.SubMenuBuilder;
+import android.support.v7.view.menu.ActionMenuItemView.b;
 import android.util.DisplayMetrics;
 import android.util.SparseBooleanArray;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import com.tencent.token.dh;
+import com.tencent.token.ej;
+import com.tencent.token.ej.a;
+import com.tencent.token.gp.a;
+import com.tencent.token.gp.g;
+import com.tencent.token.gw;
+import com.tencent.token.hg;
+import com.tencent.token.hm;
+import com.tencent.token.hm.a;
+import com.tencent.token.ho;
+import com.tencent.token.hs;
+import com.tencent.token.ht.a;
+import com.tencent.token.hu;
+import com.tencent.token.hu.a;
+import com.tencent.token.hx;
+import com.tencent.token.hz;
+import com.tencent.token.iu;
+import com.tencent.token.jh;
 import java.util.ArrayList;
 
-class ActionMenuPresenter
-  extends BaseMenuPresenter
-  implements ActionProvider.SubUiVisibilityListener
+public final class ActionMenuPresenter
+  extends hg
+  implements ej.a
 {
-  private static final String TAG = "ActionMenuPresenter";
-  private final SparseBooleanArray mActionButtonGroups = new SparseBooleanArray();
-  ActionButtonSubmenu mActionButtonPopup;
-  private int mActionItemWidthLimit;
-  private boolean mExpandedActionViewsExclusive;
-  private int mMaxItems;
-  private boolean mMaxItemsSet;
-  private int mMinCellSize;
-  int mOpenSubMenuId;
-  OverflowMenuButton mOverflowButton;
-  OverflowPopup mOverflowPopup;
-  private Drawable mPendingOverflowIcon;
-  private boolean mPendingOverflowIconSet;
-  private ActionMenuPopupCallback mPopupCallback;
-  final PopupPresenterCallback mPopupPresenterCallback = new PopupPresenterCallback();
-  OpenOverflowRunnable mPostedOpenRunnable;
-  private boolean mReserveOverflow;
-  private boolean mReserveOverflowSet;
-  private View mScrapActionButtonView;
-  private boolean mStrictWidthLimit;
-  private int mWidthLimit;
-  private boolean mWidthLimitSet;
+  private final SparseBooleanArray A = new SparseBooleanArray();
+  private View B;
+  private b C;
+  d i;
+  Drawable j;
+  boolean k;
+  public boolean l;
+  e m;
+  a n;
+  public c o;
+  final f p = new f();
+  int q;
+  private boolean r;
+  private boolean s;
+  private int t;
+  private int u;
+  private int v;
+  private boolean w;
+  private boolean x;
+  private boolean y;
+  private int z;
   
   public ActionMenuPresenter(Context paramContext)
   {
-    super(paramContext, R.layout.abc_action_menu_layout, R.layout.abc_action_menu_item_layout);
+    super(paramContext, gp.g.abc_action_menu_layout, gp.g.abc_action_menu_item_layout);
   }
   
-  private View findViewForItem(MenuItem paramMenuItem)
+  public final View a(ho paramho, View paramView, ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.mMenuView;
-    if (localViewGroup == null) {
-      return null;
+    View localView = paramho.getActionView();
+    if ((localView == null) || (paramho.j())) {
+      localView = super.a(paramho, paramView, paramViewGroup);
     }
-    int j = localViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = localViewGroup.getChildAt(i);
-      if (((localView instanceof MenuView.ItemView)) && (((MenuView.ItemView)localView).getItemData() == paramMenuItem)) {
-        return localView;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public void bindItemView(MenuItemImpl paramMenuItemImpl, MenuView.ItemView paramItemView)
-  {
-    paramItemView.initialize(paramMenuItemImpl, 0);
-    paramMenuItemImpl = (ActionMenuView)this.mMenuView;
-    paramItemView = (ActionMenuItemView)paramItemView;
-    paramItemView.setItemInvoker(paramMenuItemImpl);
-    if (this.mPopupCallback == null) {
-      this.mPopupCallback = new ActionMenuPopupCallback();
-    }
-    paramItemView.setPopupCallback(this.mPopupCallback);
-  }
-  
-  public boolean dismissPopupMenus()
-  {
-    return hideOverflowMenu() | hideSubMenus();
-  }
-  
-  public boolean filterLeftoverView(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramViewGroup.getChildAt(paramInt) == this.mOverflowButton) {
-      return false;
-    }
-    return super.filterLeftoverView(paramViewGroup, paramInt);
-  }
-  
-  public boolean flagActionItems()
-  {
-    Object localObject1 = this;
-    ArrayList localArrayList;
-    int m;
-    if (((ActionMenuPresenter)localObject1).mMenu != null)
-    {
-      localArrayList = ((ActionMenuPresenter)localObject1).mMenu.getVisibleItems();
-      m = localArrayList.size();
-    }
-    else
-    {
-      localArrayList = null;
-      m = 0;
-    }
-    int i = ((ActionMenuPresenter)localObject1).mMaxItems;
-    int i3 = ((ActionMenuPresenter)localObject1).mActionItemWidthLimit;
-    int i5 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    ViewGroup localViewGroup = (ViewGroup)((ActionMenuPresenter)localObject1).mMenuView;
-    int n = 0;
-    int i1 = 0;
-    int j = 0;
-    int k = 0;
-    while (n < m)
-    {
-      localObject2 = (MenuItemImpl)localArrayList.get(n);
-      if (((MenuItemImpl)localObject2).requiresActionButton()) {
-        j += 1;
-      } else if (((MenuItemImpl)localObject2).requestsActionButton()) {
-        k += 1;
-      } else {
-        i1 = 1;
-      }
-      i2 = i;
-      if (((ActionMenuPresenter)localObject1).mExpandedActionViewsExclusive)
-      {
-        i2 = i;
-        if (((MenuItemImpl)localObject2).isActionViewExpanded()) {
-          i2 = 0;
-        }
-      }
-      n += 1;
-      i = i2;
-    }
-    n = i;
-    if (((ActionMenuPresenter)localObject1).mReserveOverflow) {
-      if (i1 == 0)
-      {
-        n = i;
-        if (k + j <= i) {}
-      }
-      else
-      {
-        n = i - 1;
-      }
-    }
-    k = n - j;
-    Object localObject2 = ((ActionMenuPresenter)localObject1).mActionButtonGroups;
-    ((SparseBooleanArray)localObject2).clear();
-    if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
-    {
-      i = ((ActionMenuPresenter)localObject1).mMinCellSize;
-      j = i3 / i;
-      i1 = i + i3 % i / j;
-    }
-    else
-    {
-      i1 = 0;
-      j = 0;
-    }
-    n = i3;
-    i3 = 0;
-    i = 0;
-    int i2 = m;
-    for (;;)
-    {
-      localObject1 = this;
-      if (i3 >= i2) {
-        break;
-      }
-      MenuItemImpl localMenuItemImpl = (MenuItemImpl)localArrayList.get(i3);
-      View localView;
-      if (localMenuItemImpl.requiresActionButton())
-      {
-        localView = ((ActionMenuPresenter)localObject1).getItemView(localMenuItemImpl, ((ActionMenuPresenter)localObject1).mScrapActionButtonView, localViewGroup);
-        if (((ActionMenuPresenter)localObject1).mScrapActionButtonView == null) {
-          ((ActionMenuPresenter)localObject1).mScrapActionButtonView = localView;
-        }
-        if (((ActionMenuPresenter)localObject1).mStrictWidthLimit) {
-          j -= ActionMenuView.measureChildForCells(localView, i1, j, i5, 0);
-        } else {
-          localView.measure(i5, i5);
-        }
-        m = localView.getMeasuredWidth();
-        n -= m;
-        if (i == 0) {
-          i = m;
-        }
-        m = localMenuItemImpl.getGroupId();
-        if (m != 0) {
-          ((SparseBooleanArray)localObject2).put(m, true);
-        }
-        localMenuItemImpl.setIsActionButton(true);
-      }
-      else if (localMenuItemImpl.requestsActionButton())
-      {
-        int i6 = localMenuItemImpl.getGroupId();
-        boolean bool = ((SparseBooleanArray)localObject2).get(i6);
-        int i7;
-        if (((k > 0) || (bool)) && (n > 0) && ((!((ActionMenuPresenter)localObject1).mStrictWidthLimit) || (j > 0))) {
-          i7 = 1;
-        } else {
-          i7 = 0;
-        }
-        int i4;
-        if (i7 != 0)
-        {
-          localView = ((ActionMenuPresenter)localObject1).getItemView(localMenuItemImpl, ((ActionMenuPresenter)localObject1).mScrapActionButtonView, localViewGroup);
-          if (((ActionMenuPresenter)localObject1).mScrapActionButtonView == null) {
-            ((ActionMenuPresenter)localObject1).mScrapActionButtonView = localView;
-          }
-          if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
-          {
-            i4 = ActionMenuView.measureChildForCells(localView, i1, j, i5, 0);
-            m = j - i4;
-            j = m;
-            if (i4 == 0)
-            {
-              i7 = 0;
-              j = m;
-            }
-          }
-          else
-          {
-            localView.measure(i5, i5);
-          }
-          i4 = localView.getMeasuredWidth();
-          n -= i4;
-          m = i;
-          if (i == 0) {
-            m = i4;
-          }
-          if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
-          {
-            if (n >= 0) {
-              i = 1;
-            } else {
-              i = 0;
-            }
-            i7 &= i;
-            i = m;
-          }
-          else
-          {
-            if (n + m > 0) {
-              i = 1;
-            } else {
-              i = 0;
-            }
-            i7 &= i;
-            i = m;
-          }
-        }
-        if ((i7 != 0) && (i6 != 0))
-        {
-          ((SparseBooleanArray)localObject2).put(i6, true);
-          m = k;
-        }
-        else
-        {
-          m = k;
-          if (bool)
-          {
-            ((SparseBooleanArray)localObject2).put(i6, false);
-            i4 = 0;
-            for (;;)
-            {
-              m = k;
-              if (i4 >= i3) {
-                break;
-              }
-              localObject1 = (MenuItemImpl)localArrayList.get(i4);
-              m = k;
-              if (((MenuItemImpl)localObject1).getGroupId() == i6)
-              {
-                m = k;
-                if (((MenuItemImpl)localObject1).isActionButton()) {
-                  m = k + 1;
-                }
-                ((MenuItemImpl)localObject1).setIsActionButton(false);
-              }
-              i4 += 1;
-              k = m;
-            }
-          }
-        }
-        k = m;
-        if (i7 != 0) {
-          k = m - 1;
-        }
-        localMenuItemImpl.setIsActionButton(i7);
-      }
-      else
-      {
-        localMenuItemImpl.setIsActionButton(false);
-      }
-      i3 += 1;
-    }
-    return true;
-  }
-  
-  public View getItemView(MenuItemImpl paramMenuItemImpl, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramMenuItemImpl.getActionView();
-    if ((localView == null) || (paramMenuItemImpl.hasCollapsibleActionView())) {
-      localView = super.getItemView(paramMenuItemImpl, paramView, paramViewGroup);
-    }
-    int i;
-    if (paramMenuItemImpl.isActionViewExpanded()) {
-      i = 8;
+    int i1;
+    if (paramho.isActionViewExpanded()) {
+      i1 = 8;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    localView.setVisibility(i);
-    paramMenuItemImpl = (ActionMenuView)paramViewGroup;
+    localView.setVisibility(i1);
+    paramho = (ActionMenuView)paramViewGroup;
     paramView = localView.getLayoutParams();
-    if (!paramMenuItemImpl.checkLayoutParams(paramView)) {
-      localView.setLayoutParams(paramMenuItemImpl.generateLayoutParams(paramView));
+    if (!paramho.checkLayoutParams(paramView)) {
+      localView.setLayoutParams(ActionMenuView.a(paramView));
     }
     return localView;
   }
   
-  public MenuView getMenuView(ViewGroup paramViewGroup)
+  public final hu a(ViewGroup paramViewGroup)
   {
-    MenuView localMenuView = this.mMenuView;
-    paramViewGroup = super.getMenuView(paramViewGroup);
-    if (localMenuView != paramViewGroup) {
+    hu localhu = this.g;
+    paramViewGroup = super.a(paramViewGroup);
+    if (localhu != paramViewGroup) {
       ((ActionMenuView)paramViewGroup).setPresenter(this);
     }
     return paramViewGroup;
   }
   
-  public Drawable getOverflowIcon()
+  public final void a(Context paramContext, hm paramhm)
   {
-    OverflowMenuButton localOverflowMenuButton = this.mOverflowButton;
-    if (localOverflowMenuButton != null) {
-      return localOverflowMenuButton.getDrawable();
-    }
-    if (this.mPendingOverflowIconSet) {
-      return this.mPendingOverflowIcon;
-    }
-    return null;
-  }
-  
-  public boolean hideOverflowMenu()
-  {
-    if ((this.mPostedOpenRunnable != null) && (this.mMenuView != null))
+    super.a(paramContext, paramhm);
+    paramhm = paramContext.getResources();
+    paramContext = gw.a(paramContext);
+    if (!this.s)
     {
-      ((View)this.mMenuView).removeCallbacks(this.mPostedOpenRunnable);
-      this.mPostedOpenRunnable = null;
-      return true;
-    }
-    OverflowPopup localOverflowPopup = this.mOverflowPopup;
-    if (localOverflowPopup != null)
-    {
-      localOverflowPopup.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean hideSubMenus()
-  {
-    ActionButtonSubmenu localActionButtonSubmenu = this.mActionButtonPopup;
-    if (localActionButtonSubmenu != null)
-    {
-      localActionButtonSubmenu.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public void initForMenu(@NonNull Context paramContext, @Nullable MenuBuilder paramMenuBuilder)
-  {
-    super.initForMenu(paramContext, paramMenuBuilder);
-    paramMenuBuilder = paramContext.getResources();
-    paramContext = ActionBarPolicy.get(paramContext);
-    if (!this.mReserveOverflowSet) {
-      this.mReserveOverflow = paramContext.showsOverflowMenuButton();
-    }
-    if (!this.mWidthLimitSet) {
-      this.mWidthLimit = paramContext.getEmbeddedMenuWidthLimit();
-    }
-    if (!this.mMaxItemsSet) {
-      this.mMaxItems = paramContext.getMaxActionButtons();
-    }
-    int i = this.mWidthLimit;
-    if (this.mReserveOverflow)
-    {
-      if (this.mOverflowButton == null)
-      {
-        this.mOverflowButton = new OverflowMenuButton(this.mSystemContext);
-        if (this.mPendingOverflowIconSet)
-        {
-          this.mOverflowButton.setImageDrawable(this.mPendingOverflowIcon);
-          this.mPendingOverflowIcon = null;
-          this.mPendingOverflowIconSet = false;
-        }
-        int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-        this.mOverflowButton.measure(j, j);
+      i1 = Build.VERSION.SDK_INT;
+      boolean bool = true;
+      if ((i1 < 19) && (ViewConfiguration.get(paramContext.a).hasPermanentMenuKey())) {
+        bool = false;
       }
-      i -= this.mOverflowButton.getMeasuredWidth();
+      this.r = bool;
+    }
+    if (!this.y) {
+      this.t = (paramContext.a.getResources().getDisplayMetrics().widthPixels / 2);
+    }
+    if (!this.w) {
+      this.v = paramContext.a();
+    }
+    int i1 = this.t;
+    if (this.r)
+    {
+      if (this.i == null)
+      {
+        this.i = new d(this.a);
+        if (this.k)
+        {
+          this.i.setImageDrawable(this.j);
+          this.j = null;
+          this.k = false;
+        }
+        int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
+        this.i.measure(i2, i2);
+      }
+      i1 -= this.i.getMeasuredWidth();
     }
     else
     {
-      this.mOverflowButton = null;
+      this.i = null;
     }
-    this.mActionItemWidthLimit = i;
-    this.mMinCellSize = ((int)(paramMenuBuilder.getDisplayMetrics().density * 56.0F));
-    this.mScrapActionButtonView = null;
+    this.u = i1;
+    this.z = ((int)(paramhm.getDisplayMetrics().density * 56.0F));
+    this.B = null;
   }
   
-  public boolean isOverflowMenuShowPending()
+  public final void a(ActionMenuView paramActionMenuView)
   {
-    return (this.mPostedOpenRunnable != null) || (isOverflowMenuShowing());
+    this.g = paramActionMenuView;
+    paramActionMenuView.a = this.c;
   }
   
-  public boolean isOverflowMenuShowing()
+  public final void a(hm paramhm, boolean paramBoolean)
   {
-    OverflowPopup localOverflowPopup = this.mOverflowPopup;
-    return (localOverflowPopup != null) && (localOverflowPopup.isShowing());
+    f();
+    super.a(paramhm, paramBoolean);
   }
   
-  public boolean isOverflowReserved()
+  public final void a(ho paramho, hu.a parama)
   {
-    return this.mReserveOverflow;
-  }
-  
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
-  {
-    dismissPopupMenus();
-    super.onCloseMenu(paramMenuBuilder, paramBoolean);
-  }
-  
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    if (!this.mMaxItemsSet) {
-      this.mMaxItems = ActionBarPolicy.get(this.mContext).getMaxActionButtons();
+    parama.a(paramho);
+    paramho = (ActionMenuView)this.g;
+    parama = (ActionMenuItemView)parama;
+    parama.setItemInvoker(paramho);
+    if (this.C == null) {
+      this.C = new b();
     }
-    if (this.mMenu != null) {
-      this.mMenu.onItemsChanged(true);
-    }
+    parama.setPopupCallback(this.C);
   }
   
-  public void onRestoreInstanceState(Parcelable paramParcelable)
+  public final void a(boolean paramBoolean)
   {
-    if (!(paramParcelable instanceof SavedState)) {
+    if (paramBoolean)
+    {
+      super.a(null);
       return;
     }
-    paramParcelable = (SavedState)paramParcelable;
-    if (paramParcelable.openSubMenuId > 0)
-    {
-      paramParcelable = this.mMenu.findItem(paramParcelable.openSubMenuId);
-      if (paramParcelable != null) {
-        onSubMenuSelected((SubMenuBuilder)paramParcelable.getSubMenu());
-      }
+    if (this.c != null) {
+      this.c.a(false);
     }
   }
   
-  public Parcelable onSaveInstanceState()
+  public final boolean a()
   {
-    SavedState localSavedState = new SavedState();
-    localSavedState.openSubMenuId = this.mOpenSubMenuId;
-    return localSavedState;
+    Object localObject1 = this;
+    ArrayList localArrayList;
+    int i4;
+    if (((ActionMenuPresenter)localObject1).c != null)
+    {
+      localArrayList = ((ActionMenuPresenter)localObject1).c.h();
+      i4 = localArrayList.size();
+    }
+    else
+    {
+      localArrayList = null;
+      i4 = 0;
+    }
+    int i1 = ((ActionMenuPresenter)localObject1).v;
+    int i8 = ((ActionMenuPresenter)localObject1).u;
+    int i10 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    ViewGroup localViewGroup = (ViewGroup)((ActionMenuPresenter)localObject1).g;
+    int i5 = 0;
+    int i6 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    while (i5 < i4)
+    {
+      localObject2 = (ho)localArrayList.get(i5);
+      if (((ho)localObject2).h()) {
+        i2 += 1;
+      } else if (((ho)localObject2).g()) {
+        i3 += 1;
+      } else {
+        i6 = 1;
+      }
+      i7 = i1;
+      if (((ActionMenuPresenter)localObject1).l)
+      {
+        i7 = i1;
+        if (((ho)localObject2).isActionViewExpanded()) {
+          i7 = 0;
+        }
+      }
+      i5 += 1;
+      i1 = i7;
+    }
+    i5 = i1;
+    if (((ActionMenuPresenter)localObject1).r) {
+      if (i6 == 0)
+      {
+        i5 = i1;
+        if (i3 + i2 <= i1) {}
+      }
+      else
+      {
+        i5 = i1 - 1;
+      }
+    }
+    i3 = i5 - i2;
+    Object localObject2 = ((ActionMenuPresenter)localObject1).A;
+    ((SparseBooleanArray)localObject2).clear();
+    if (((ActionMenuPresenter)localObject1).x)
+    {
+      i1 = ((ActionMenuPresenter)localObject1).z;
+      i2 = i8 / i1;
+      i6 = i1 + i8 % i1 / i2;
+    }
+    else
+    {
+      i6 = 0;
+      i2 = 0;
+    }
+    i5 = i8;
+    i8 = 0;
+    i1 = 0;
+    int i7 = i4;
+    for (;;)
+    {
+      localObject1 = this;
+      if (i8 >= i7) {
+        break;
+      }
+      ho localho = (ho)localArrayList.get(i8);
+      View localView;
+      if (localho.h())
+      {
+        localView = ((ActionMenuPresenter)localObject1).a(localho, ((ActionMenuPresenter)localObject1).B, localViewGroup);
+        if (((ActionMenuPresenter)localObject1).B == null) {
+          ((ActionMenuPresenter)localObject1).B = localView;
+        }
+        if (((ActionMenuPresenter)localObject1).x) {
+          i2 -= ActionMenuView.a(localView, i6, i2, i10, 0);
+        } else {
+          localView.measure(i10, i10);
+        }
+        i4 = localView.getMeasuredWidth();
+        i5 -= i4;
+        if (i1 == 0) {
+          i1 = i4;
+        }
+        i4 = localho.getGroupId();
+        if (i4 != 0) {
+          ((SparseBooleanArray)localObject2).put(i4, true);
+        }
+        localho.c(true);
+      }
+      else if (localho.g())
+      {
+        int i11 = localho.getGroupId();
+        boolean bool = ((SparseBooleanArray)localObject2).get(i11);
+        int i12;
+        if (((i3 > 0) || (bool)) && (i5 > 0) && ((!((ActionMenuPresenter)localObject1).x) || (i2 > 0))) {
+          i12 = 1;
+        } else {
+          i12 = 0;
+        }
+        int i9;
+        if (i12 != 0)
+        {
+          localView = ((ActionMenuPresenter)localObject1).a(localho, ((ActionMenuPresenter)localObject1).B, localViewGroup);
+          if (((ActionMenuPresenter)localObject1).B == null) {
+            ((ActionMenuPresenter)localObject1).B = localView;
+          }
+          if (((ActionMenuPresenter)localObject1).x)
+          {
+            i9 = ActionMenuView.a(localView, i6, i2, i10, 0);
+            i4 = i2 - i9;
+            i2 = i4;
+            if (i9 == 0)
+            {
+              i12 = 0;
+              i2 = i4;
+            }
+          }
+          else
+          {
+            localView.measure(i10, i10);
+          }
+          i9 = localView.getMeasuredWidth();
+          i5 -= i9;
+          i4 = i1;
+          if (i1 == 0) {
+            i4 = i9;
+          }
+          if (((ActionMenuPresenter)localObject1).x)
+          {
+            if (i5 >= 0) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            i12 &= i1;
+            i1 = i4;
+          }
+          else
+          {
+            if (i5 + i4 > 0) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            i12 &= i1;
+            i1 = i4;
+          }
+        }
+        if ((i12 != 0) && (i11 != 0))
+        {
+          ((SparseBooleanArray)localObject2).put(i11, true);
+          i4 = i3;
+        }
+        else
+        {
+          i4 = i3;
+          if (bool)
+          {
+            ((SparseBooleanArray)localObject2).put(i11, false);
+            i9 = 0;
+            for (;;)
+            {
+              i4 = i3;
+              if (i9 >= i8) {
+                break;
+              }
+              localObject1 = (ho)localArrayList.get(i9);
+              i4 = i3;
+              if (((ho)localObject1).getGroupId() == i11)
+              {
+                i4 = i3;
+                if (((ho)localObject1).f()) {
+                  i4 = i3 + 1;
+                }
+                ((ho)localObject1).c(false);
+              }
+              i9 += 1;
+              i3 = i4;
+            }
+          }
+        }
+        i3 = i4;
+        if (i12 != 0) {
+          i3 = i4 - 1;
+        }
+        localho.c(i12);
+      }
+      else
+      {
+        localho.c(false);
+      }
+      i8 += 1;
+    }
+    return true;
   }
   
-  public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
+  public final boolean a(ViewGroup paramViewGroup, int paramInt)
   {
-    boolean bool1 = paramSubMenuBuilder.hasVisibleItems();
+    if (paramViewGroup.getChildAt(paramInt) == this.i) {
+      return false;
+    }
+    return super.a(paramViewGroup, paramInt);
+  }
+  
+  public final boolean a(ho paramho)
+  {
+    return paramho.f();
+  }
+  
+  public final boolean a(hz paramhz)
+  {
+    boolean bool1 = paramhz.hasVisibleItems();
     boolean bool2 = false;
     if (!bool1) {
       return false;
     }
-    for (Object localObject = paramSubMenuBuilder; ((SubMenuBuilder)localObject).getParentMenu() != this.mMenu; localObject = (SubMenuBuilder)((SubMenuBuilder)localObject).getParentMenu()) {}
-    localObject = findViewForItem(((SubMenuBuilder)localObject).getItem());
+    for (Object localObject = paramhz; ((hz)localObject).l != this.c; localObject = (hz)((hz)localObject).l) {}
+    MenuItem localMenuItem = ((hz)localObject).getItem();
+    ViewGroup localViewGroup = (ViewGroup)this.g;
+    if (localViewGroup != null)
+    {
+      i2 = localViewGroup.getChildCount();
+      i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = localViewGroup.getChildAt(i1);
+        if (((localObject instanceof hu.a)) && (((hu.a)localObject).getItemData() == localMenuItem)) {
+          break label122;
+        }
+        i1 += 1;
+      }
+    }
+    localObject = null;
+    label122:
     if (localObject == null) {
       return false;
     }
-    this.mOpenSubMenuId = paramSubMenuBuilder.getItem().getItemId();
-    int j = paramSubMenuBuilder.size();
-    int i = 0;
+    this.q = paramhz.getItem().getItemId();
+    int i2 = paramhz.size();
+    int i1 = 0;
     for (;;)
     {
       bool1 = bool2;
-      if (i >= j) {
+      if (i1 >= i2) {
         break;
       }
-      MenuItem localMenuItem = paramSubMenuBuilder.getItem(i);
+      localMenuItem = paramhz.getItem(i1);
       if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null))
       {
         bool1 = true;
         break;
       }
-      i += 1;
+      i1 += 1;
     }
-    this.mActionButtonPopup = new ActionButtonSubmenu(this.mContext, paramSubMenuBuilder, (View)localObject);
-    this.mActionButtonPopup.setForceShowIcon(bool1);
-    this.mActionButtonPopup.show();
-    super.onSubMenuSelected(paramSubMenuBuilder);
-    return true;
-  }
-  
-  public void onSubUiVisibilityChanged(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    this.n = new a(this.b, paramhz, (View)localObject);
+    this.n.a(bool1);
+    if (this.n.b())
     {
-      super.onSubMenuSelected(null);
-      return;
-    }
-    if (this.mMenu != null) {
-      this.mMenu.close(false);
-    }
-  }
-  
-  public void setExpandedActionViewsExclusive(boolean paramBoolean)
-  {
-    this.mExpandedActionViewsExclusive = paramBoolean;
-  }
-  
-  public void setItemLimit(int paramInt)
-  {
-    this.mMaxItems = paramInt;
-    this.mMaxItemsSet = true;
-  }
-  
-  public void setMenuView(ActionMenuView paramActionMenuView)
-  {
-    this.mMenuView = paramActionMenuView;
-    paramActionMenuView.initialize(this.mMenu);
-  }
-  
-  public void setOverflowIcon(Drawable paramDrawable)
-  {
-    OverflowMenuButton localOverflowMenuButton = this.mOverflowButton;
-    if (localOverflowMenuButton != null)
-    {
-      localOverflowMenuButton.setImageDrawable(paramDrawable);
-      return;
-    }
-    this.mPendingOverflowIconSet = true;
-    this.mPendingOverflowIcon = paramDrawable;
-  }
-  
-  public void setReserveOverflow(boolean paramBoolean)
-  {
-    this.mReserveOverflow = paramBoolean;
-    this.mReserveOverflowSet = true;
-  }
-  
-  public void setWidthLimit(int paramInt, boolean paramBoolean)
-  {
-    this.mWidthLimit = paramInt;
-    this.mStrictWidthLimit = paramBoolean;
-    this.mWidthLimitSet = true;
-  }
-  
-  public boolean shouldIncludeItem(int paramInt, MenuItemImpl paramMenuItemImpl)
-  {
-    return paramMenuItemImpl.isActionButton();
-  }
-  
-  public boolean showOverflowMenu()
-  {
-    if ((this.mReserveOverflow) && (!isOverflowMenuShowing()) && (this.mMenu != null) && (this.mMenuView != null) && (this.mPostedOpenRunnable == null) && (!this.mMenu.getNonActionItems().isEmpty()))
-    {
-      this.mPostedOpenRunnable = new OpenOverflowRunnable(new OverflowPopup(this.mContext, this.mMenu, this.mOverflowButton, true));
-      ((View)this.mMenuView).post(this.mPostedOpenRunnable);
-      super.onSubMenuSelected(null);
+      super.a(paramhz);
       return true;
     }
-    return false;
+    throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
   }
   
-  public void updateMenuView(boolean paramBoolean)
+  public final void b()
   {
-    super.updateMenuView(paramBoolean);
-    ((View)this.mMenuView).requestLayout();
-    Object localObject = this.mMenu;
-    int j = 0;
-    int k;
+    if (!this.w) {
+      this.v = gw.a(this.b).a();
+    }
+    if (this.c != null) {
+      this.c.b(true);
+    }
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    super.b(paramBoolean);
+    ((View)this.g).requestLayout();
+    Object localObject = this.c;
+    int i2 = 0;
+    int i3;
     if (localObject != null)
     {
-      localObject = this.mMenu.getActionItems();
-      k = ((ArrayList)localObject).size();
-      i = 0;
-      while (i < k)
+      localObject = this.c;
+      ((hm)localObject).i();
+      localObject = ((hm)localObject).d;
+      i3 = ((ArrayList)localObject).size();
+      i1 = 0;
+      while (i1 < i3)
       {
-        ActionProvider localActionProvider = ((MenuItemImpl)((ArrayList)localObject).get(i)).getSupportActionProvider();
-        if (localActionProvider != null) {
-          localActionProvider.setSubUiVisibilityListener(this);
+        ej localej = ((ho)((ArrayList)localObject).get(i1)).c;
+        if (localej != null) {
+          localej.a = this;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    if (this.mMenu != null) {
-      localObject = this.mMenu.getNonActionItems();
+    if (this.c != null) {
+      localObject = this.c.j();
     } else {
       localObject = null;
     }
-    int i = j;
+    int i1 = i2;
     boolean bool;
-    if (this.mReserveOverflow)
+    if (this.r)
     {
-      i = j;
+      i1 = i2;
       if (localObject != null)
       {
-        k = ((ArrayList)localObject).size();
-        if (k == 1)
+        i3 = ((ArrayList)localObject).size();
+        if (i3 == 1)
         {
-          bool = ((MenuItemImpl)((ArrayList)localObject).get(0)).isActionViewExpanded() ^ true;
+          bool = ((ho)((ArrayList)localObject).get(0)).isActionViewExpanded() ^ true;
         }
         else
         {
-          bool = j;
-          if (k > 0) {
+          bool = i2;
+          if (i3 > 0) {
             bool = true;
           }
         }
@@ -642,155 +520,239 @@ class ActionMenuPresenter
     }
     if (bool)
     {
-      if (this.mOverflowButton == null) {
-        this.mOverflowButton = new OverflowMenuButton(this.mSystemContext);
+      if (this.i == null) {
+        this.i = new d(this.a);
       }
-      localObject = (ViewGroup)this.mOverflowButton.getParent();
-      if (localObject != this.mMenuView)
+      localObject = (ViewGroup)this.i.getParent();
+      if (localObject != this.g)
       {
         if (localObject != null) {
-          ((ViewGroup)localObject).removeView(this.mOverflowButton);
+          ((ViewGroup)localObject).removeView(this.i);
         }
-        localObject = (ActionMenuView)this.mMenuView;
-        ((ActionMenuView)localObject).addView(this.mOverflowButton, ((ActionMenuView)localObject).generateOverflowButtonLayoutParams());
+        ((ActionMenuView)this.g).addView(this.i, ActionMenuView.a());
       }
     }
     else
     {
-      localObject = this.mOverflowButton;
-      if ((localObject != null) && (((OverflowMenuButton)localObject).getParent() == this.mMenuView)) {
-        ((ViewGroup)this.mMenuView).removeView(this.mOverflowButton);
+      localObject = this.i;
+      if ((localObject != null) && (((d)localObject).getParent() == this.g)) {
+        ((ViewGroup)this.g).removeView(this.i);
       }
     }
-    ((ActionMenuView)this.mMenuView).setOverflowReserved(this.mReserveOverflow);
+    ((ActionMenuView)this.g).setOverflowReserved(this.r);
   }
   
-  private class ActionButtonSubmenu
-    extends MenuPopupHelper
+  public final void c()
   {
-    public ActionButtonSubmenu(Context paramContext, SubMenuBuilder paramSubMenuBuilder, View paramView)
+    this.r = true;
+    this.s = true;
+  }
+  
+  public final boolean d()
+  {
+    if ((this.r) && (!h()) && (this.c != null) && (this.g != null) && (this.o == null) && (!this.c.j().isEmpty()))
     {
-      super(paramSubMenuBuilder, paramView, false, R.attr.actionOverflowMenuStyle);
-      if (!((MenuItemImpl)paramSubMenuBuilder.getItem()).isActionButton())
-      {
-        if (ActionMenuPresenter.this.mOverflowButton == null) {
-          paramContext = (View)ActionMenuPresenter.this.mMenuView;
-        } else {
-          paramContext = ActionMenuPresenter.this.mOverflowButton;
-        }
-        setAnchorView(paramContext);
-      }
-      setPresenterCallback(ActionMenuPresenter.this.mPopupPresenterCallback);
+      this.o = new c(new e(this.b, this.c, this.i));
+      ((View)this.g).post(this.o);
+      super.a(null);
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean e()
+  {
+    if ((this.o != null) && (this.g != null))
+    {
+      ((View)this.g).removeCallbacks(this.o);
+      this.o = null;
+      return true;
+    }
+    e locale = this.m;
+    if (locale != null)
+    {
+      locale.c();
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean f()
+  {
+    return e() | g();
+  }
+  
+  public final boolean g()
+  {
+    a locala = this.n;
+    if (locala != null)
+    {
+      locala.c();
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean h()
+  {
+    e locale = this.m;
+    return (locale != null) && (locale.e());
+  }
+  
+  static class SavedState
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
+    public int a;
+    
+    SavedState() {}
+    
+    SavedState(Parcel paramParcel)
+    {
+      this.a = paramParcel.readInt();
     }
     
-    protected void onDismiss()
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      paramParcel.writeInt(this.a);
+    }
+  }
+  
+  final class a
+    extends hs
+  {
+    public a(Context paramContext, hz paramhz, View paramView)
+    {
+      super(paramhz, paramView, false, gp.a.actionOverflowMenuStyle);
+      if (!((ho)paramhz.getItem()).f())
+      {
+        if (ActionMenuPresenter.this.i == null) {
+          paramContext = (View)ActionMenuPresenter.this.g;
+        } else {
+          paramContext = ActionMenuPresenter.this.i;
+        }
+        this.a = paramContext;
+      }
+      a(ActionMenuPresenter.this.p);
+    }
+    
+    public final void d()
     {
       ActionMenuPresenter localActionMenuPresenter = ActionMenuPresenter.this;
-      localActionMenuPresenter.mActionButtonPopup = null;
-      localActionMenuPresenter.mOpenSubMenuId = 0;
-      super.onDismiss();
+      localActionMenuPresenter.n = null;
+      localActionMenuPresenter.q = 0;
+      super.d();
     }
   }
   
-  private class ActionMenuPopupCallback
-    extends ActionMenuItemView.PopupCallback
+  final class b
+    extends ActionMenuItemView.b
   {
-    ActionMenuPopupCallback() {}
+    b() {}
     
-    public ShowableListMenu getPopup()
+    public final hx a()
     {
-      if (ActionMenuPresenter.this.mActionButtonPopup != null) {
-        return ActionMenuPresenter.this.mActionButtonPopup.getPopup();
+      if (ActionMenuPresenter.this.n != null) {
+        return ActionMenuPresenter.this.n.a();
       }
       return null;
     }
   }
   
-  private class OpenOverflowRunnable
+  final class c
     implements Runnable
   {
-    private ActionMenuPresenter.OverflowPopup mPopup;
+    private ActionMenuPresenter.e b;
     
-    public OpenOverflowRunnable(ActionMenuPresenter.OverflowPopup paramOverflowPopup)
+    public c(ActionMenuPresenter.e parame)
     {
-      this.mPopup = paramOverflowPopup;
+      this.b = parame;
     }
     
-    public void run()
+    public final void run()
     {
-      if (ActionMenuPresenter.this.mMenu != null) {
-        ActionMenuPresenter.this.mMenu.changeMenuMode();
+      if (ActionMenuPresenter.this.c != null)
+      {
+        localObject = ActionMenuPresenter.this.c;
+        if (((hm)localObject).b != null) {
+          ((hm)localObject).b.a((hm)localObject);
+        }
       }
-      View localView = (View)ActionMenuPresenter.this.mMenuView;
-      if ((localView != null) && (localView.getWindowToken() != null) && (this.mPopup.tryShow())) {
-        ActionMenuPresenter.this.mOverflowPopup = this.mPopup;
+      Object localObject = (View)ActionMenuPresenter.this.g;
+      if ((localObject != null) && (((View)localObject).getWindowToken() != null) && (this.b.b())) {
+        ActionMenuPresenter.this.m = this.b;
       }
-      ActionMenuPresenter.this.mPostedOpenRunnable = null;
+      ActionMenuPresenter.this.o = null;
     }
   }
   
-  private class OverflowMenuButton
+  final class d
     extends AppCompatImageView
-    implements ActionMenuView.ActionMenuChildView
+    implements ActionMenuView.a
   {
-    private final float[] mTempPts = new float[2];
+    private final float[] b = new float[2];
     
-    public OverflowMenuButton(Context paramContext)
+    public d(Context paramContext)
     {
-      super(null, R.attr.actionOverflowButtonStyle);
+      super(null, gp.a.actionOverflowButtonStyle);
       setClickable(true);
       setFocusable(true);
       setVisibility(0);
       setEnabled(true);
-      TooltipCompat.setTooltipText(this, getContentDescription());
-      setOnTouchListener(new ForwardingListener(this)
+      jh.a(this, getContentDescription());
+      setOnTouchListener(new iu(this)
       {
-        public ShowableListMenu getPopup()
+        public final hx a()
         {
-          if (ActionMenuPresenter.this.mOverflowPopup == null) {
+          if (ActionMenuPresenter.this.m == null) {
             return null;
           }
-          return ActionMenuPresenter.this.mOverflowPopup.getPopup();
+          return ActionMenuPresenter.this.m.a();
         }
         
-        public boolean onForwardingStarted()
+        public final boolean b()
         {
-          ActionMenuPresenter.this.showOverflowMenu();
+          ActionMenuPresenter.this.d();
           return true;
         }
         
-        public boolean onForwardingStopped()
+        public final boolean c()
         {
-          if (ActionMenuPresenter.this.mPostedOpenRunnable != null) {
+          if (ActionMenuPresenter.this.o != null) {
             return false;
           }
-          ActionMenuPresenter.this.hideOverflowMenu();
+          ActionMenuPresenter.this.e();
           return true;
         }
       });
     }
     
-    public boolean needsDividerAfter()
+    public final boolean c()
     {
       return false;
     }
     
-    public boolean needsDividerBefore()
+    public final boolean d()
     {
       return false;
     }
     
-    public boolean performClick()
+    public final boolean performClick()
     {
       if (super.performClick()) {
         return true;
       }
       playSoundEffect(0);
-      ActionMenuPresenter.this.showOverflowMenu();
+      ActionMenuPresenter.this.d();
       return true;
     }
     
-    protected boolean setFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    protected final boolean setFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       boolean bool = super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
       Drawable localDrawable1 = getDrawable();
@@ -806,95 +768,59 @@ class ActionMenuPresenter
         paramInt4 = getPaddingBottom();
         i = (i + (j - k)) / 2;
         paramInt2 = (paramInt2 + (paramInt3 - paramInt4)) / 2;
-        DrawableCompat.setHotspotBounds(localDrawable2, i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt2 + paramInt1);
+        dh.a(localDrawable2, i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt2 + paramInt1);
       }
       return bool;
     }
   }
   
-  private class OverflowPopup
-    extends MenuPopupHelper
+  final class e
+    extends hs
   {
-    public OverflowPopup(Context paramContext, MenuBuilder paramMenuBuilder, View paramView, boolean paramBoolean)
+    public e(Context paramContext, hm paramhm, View paramView)
     {
-      super(paramMenuBuilder, paramView, paramBoolean, R.attr.actionOverflowMenuStyle);
-      setGravity(8388613);
-      setPresenterCallback(ActionMenuPresenter.this.mPopupPresenterCallback);
+      super(paramhm, paramView, true, gp.a.actionOverflowMenuStyle);
+      this.b = 8388613;
+      a(ActionMenuPresenter.this.p);
     }
     
-    protected void onDismiss()
+    public final void d()
     {
-      if (ActionMenuPresenter.this.mMenu != null) {
-        ActionMenuPresenter.this.mMenu.close();
+      if (ActionMenuPresenter.this.c != null) {
+        ActionMenuPresenter.this.c.close();
       }
-      ActionMenuPresenter.this.mOverflowPopup = null;
-      super.onDismiss();
+      ActionMenuPresenter.this.m = null;
+      super.d();
     }
   }
   
-  private class PopupPresenterCallback
-    implements MenuPresenter.Callback
+  final class f
+    implements ht.a
   {
-    PopupPresenterCallback() {}
+    f() {}
     
-    public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+    public final void a(hm paramhm, boolean paramBoolean)
     {
-      if ((paramMenuBuilder instanceof SubMenuBuilder)) {
-        paramMenuBuilder.getRootMenu().close(false);
+      if ((paramhm instanceof hz)) {
+        paramhm.k().a(false);
       }
-      MenuPresenter.Callback localCallback = ActionMenuPresenter.this.getCallback();
-      if (localCallback != null) {
-        localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+      ht.a locala = ActionMenuPresenter.this.f;
+      if (locala != null) {
+        locala.a(paramhm, paramBoolean);
       }
     }
     
-    public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+    public final boolean a(hm paramhm)
     {
-      boolean bool = false;
-      if (paramMenuBuilder == null) {
+      if (paramhm == null) {
         return false;
       }
-      ActionMenuPresenter.this.mOpenSubMenuId = ((SubMenuBuilder)paramMenuBuilder).getItem().getItemId();
-      MenuPresenter.Callback localCallback = ActionMenuPresenter.this.getCallback();
-      if (localCallback != null) {
-        bool = localCallback.onOpenSubMenu(paramMenuBuilder);
+      ActionMenuPresenter.this.q = ((hz)paramhm).getItem().getItemId();
+      ht.a locala = ActionMenuPresenter.this.f;
+      if (locala != null) {
+        return locala.a(paramhm);
       }
-      return bool;
-    }
-  }
-  
-  private static class SavedState
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator()
-    {
-      public ActionMenuPresenter.SavedState createFromParcel(Parcel paramAnonymousParcel)
-      {
-        return new ActionMenuPresenter.SavedState(paramAnonymousParcel);
-      }
-      
-      public ActionMenuPresenter.SavedState[] newArray(int paramAnonymousInt)
-      {
-        return new ActionMenuPresenter.SavedState[paramAnonymousInt];
-      }
-    };
-    public int openSubMenuId;
-    
-    SavedState() {}
-    
-    SavedState(Parcel paramParcel)
-    {
-      this.openSubMenuId = paramParcel.readInt();
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      paramParcel.writeInt(this.openSubMenuId);
+      return false;
     }
   }
 }

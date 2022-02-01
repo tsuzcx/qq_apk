@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.bs.a;
+import com.tencent.token.rr.a;
 
 public class ScrollLayout
   extends ViewGroup
@@ -38,18 +38,12 @@ public class ScrollLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.a = new Scroller(paramContext);
-    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, bs.a.scrolllayout).getBoolean(0, false);
+    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, rr.a.scrolllayout).getBoolean(0, false);
     this.c = this.d;
     this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
-  public void a()
-  {
-    int m = getWidth();
-    a((getScrollX() + m / 2) / m);
-  }
-  
-  public void a(int paramInt)
+  private void a(int paramInt)
   {
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     if (getScrollX() != getWidth() * paramInt)
@@ -203,15 +197,19 @@ public class ScrollLayout
           if (n > 0)
           {
             a(n - 1);
-            break label292;
+            break label310;
           }
         }
-        if ((m < -600) && (this.c < getChildCount() - 1)) {
+        if ((m < -600) && (this.c < getChildCount() - 1))
+        {
           a(this.c + 1);
-        } else {
-          a();
         }
-        label292:
+        else
+        {
+          m = getWidth();
+          a((getScrollX() + m / 2) / m);
+        }
+        label310:
         paramMotionEvent = this.b;
         if (paramMotionEvent != null)
         {

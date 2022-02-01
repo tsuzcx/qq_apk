@@ -9,17 +9,17 @@ public final class CSDCheckData
 {
   public long taskNo = 0L;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new CSDCheckData();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.taskNo = paramJceInputStream.read(this.taskNo, 0, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.taskNo, 0);
   }

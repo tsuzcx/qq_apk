@@ -18,30 +18,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.token.ui.base.g;
-import com.tencent.token.ui.base.g.a;
-import com.tencent.token.utils.m;
+import android.widget.Scroller;
+import com.tencent.token.aae;
+import com.tencent.token.yr;
+import com.tencent.token.yr.a;
 
 public class KnowTokenActivity
   extends BaseActivity
-  implements g.a
+  implements yr.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
-  private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
+  private static final int IMAGE_LEVEL_COUNT = 0;
   private static final int[] mBitmapIds = new int[0];
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
   private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
   {
-    public boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
     {
       return false;
     }
     
-    public boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
       try
       {
@@ -49,7 +50,7 @@ public class KnowTokenActivity
         {
           if (KnowTokenActivity.this.mLevel < KnowTokenActivity.IMAGE_LEVEL_COUNT - 1)
           {
-            paramAnonymousMotionEvent1 = m.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$004(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
+            paramAnonymousMotionEvent1 = aae.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$004(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
             if (paramAnonymousMotionEvent1 == null)
             {
               KnowTokenActivity.this.doOutOfMemory();
@@ -70,7 +71,7 @@ public class KnowTokenActivity
         }
         else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (KnowTokenActivity.this.mLevel > 0))
         {
-          paramAnonymousMotionEvent1 = m.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
+          paramAnonymousMotionEvent1 = aae.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             KnowTokenActivity.this.doOutOfMemory();
@@ -98,16 +99,16 @@ public class KnowTokenActivity
       return true;
     }
     
-    public void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+    public final void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
     
-    public boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
       return false;
     }
     
-    public void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
+    public final void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
     
-    public boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
     {
       return false;
     }
@@ -118,7 +119,7 @@ public class KnowTokenActivity
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private g mPageCurlView;
+  private yr mPageCurlView;
   private int mWidth;
   
   private void doOutOfMemory()
@@ -135,7 +136,7 @@ public class KnowTokenActivity
     this.mDotFull = null;
     localObject = this.mPageCurlView;
     if (localObject != null) {
-      ((g)localObject).c();
+      ((yr)localObject).b();
     }
     this.mPageCurlView = null;
     finish();
@@ -163,48 +164,64 @@ public class KnowTokenActivity
     requestWindowFeature(1);
     try
     {
-      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2131099822);
-      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2131099823);
+      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2131099823);
+      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2131099824);
       paramBundle = getWindowManager().getDefaultDisplay();
       this.mWidth = paramBundle.getWidth();
       this.mHeight = paramBundle.getHeight();
       this.DOT_SIZE = this.mDotEmpty.getWidth();
       this.DOT_OFFSET_X = ((this.mWidth - IMAGE_LEVEL_COUNT * 2 * this.DOT_SIZE + this.DOT_SIZE) / 2);
       this.DOT_OFFSET_Y = (this.mHeight * 9 / 10);
-      this.mLowQuality = m.a(this.mWidth, this.mHeight, 1);
-      this.mPageCurlView = new g(this, this, this.mWidth, this.mHeight);
+      this.mLowQuality = aae.a(this.mWidth, this.mHeight);
+      this.mPageCurlView = new yr(this, this, this.mWidth, this.mHeight);
       this.mPageCurlView.setBackgroundColor(getResources().getColor(2130968713));
       paramBundle = new RelativeLayout(this);
       paramBundle.addView(this.mPageCurlView, new ViewGroup.LayoutParams(-1, -1));
-      Object localObject = new DisplayMetrics();
-      getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+      Object localObject1 = new DisplayMetrics();
+      getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       this.mEndBtn = new Button(this);
-      this.mEndBtn.setBackgroundResource(2131099854);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(((DisplayMetrics)localObject).density * 200.0F), (int)(((DisplayMetrics)localObject).density * 45.0F));
-      localLayoutParams.addRule(12, -1);
-      localLayoutParams.addRule(14, -1);
-      localLayoutParams.bottomMargin = ((int)(((DisplayMetrics)localObject).density * 110.0F));
+      this.mEndBtn.setBackgroundResource(2131099855);
+      Object localObject2 = new RelativeLayout.LayoutParams((int)(((DisplayMetrics)localObject1).density * 200.0F), (int)(((DisplayMetrics)localObject1).density * 45.0F));
+      ((RelativeLayout.LayoutParams)localObject2).addRule(12, -1);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
+      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ((int)(((DisplayMetrics)localObject1).density * 110.0F));
       this.mEndBtn.setVisibility(8);
       this.mEndBtn.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           KnowTokenActivity.this.mEndBtn.setEnabled(false);
           KnowTokenActivity.this.finish();
         }
       });
       this.mEndBtn.setGravity(17);
-      paramBundle.addView(this.mEndBtn, localLayoutParams);
-      localObject = m.a(this, mBitmapIds[0], this.mLowQuality);
-      if ((localObject != null) && (this.mDotEmpty != null) && (this.mDotFull != null))
+      paramBundle.addView(this.mEndBtn, (ViewGroup.LayoutParams)localObject2);
+      localObject1 = aae.a(this, mBitmapIds[0], this.mLowQuality);
+      if ((localObject1 != null) && (this.mDotEmpty != null) && (this.mDotFull != null))
       {
-        this.mPageCurlView.a((Bitmap)localObject, null);
+        localObject2 = this.mPageCurlView;
+        ((yr)localObject2).a = ((Bitmap)localObject1);
+        ((yr)localObject2).b = null;
         this.mPageCurlView.setOnTouchListener(new View.OnTouchListener()
         {
-          public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+          public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            if ((paramAnonymousView == KnowTokenActivity.this.mPageCurlView) && (paramAnonymousMotionEvent.getAction() == 0)) {
-              KnowTokenActivity.this.mPageCurlView.b();
+            if ((paramAnonymousView == KnowTokenActivity.this.mPageCurlView) && (paramAnonymousMotionEvent.getAction() == 0))
+            {
+              paramAnonymousView = KnowTokenActivity.this.mPageCurlView;
+              if (!paramAnonymousView.i.isFinished())
+              {
+                paramAnonymousView.i.abortAnimation();
+                if (paramAnonymousView.k != null) {
+                  paramAnonymousView.k.onNextPage(paramAnonymousView.j);
+                }
+                if (paramAnonymousView.a != null) {
+                  paramAnonymousView.a.recycle();
+                }
+                paramAnonymousView.a = paramAnonymousView.b;
+                paramAnonymousView.b = null;
+                paramAnonymousView.a();
+              }
             }
             return false;
           }

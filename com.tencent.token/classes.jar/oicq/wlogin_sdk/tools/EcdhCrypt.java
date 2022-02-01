@@ -46,12 +46,10 @@ public class EcdhCrypt
       localStringBuilder2.append((String)localObject1);
       localStringBuilder2.append((String)localObject2);
       localObject1 = constructX509PublicKey(localStringBuilder2.toString());
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("raw public key ");
+      localObject2 = new StringBuilder("raw public key ");
       ((StringBuilder)localObject2).append(util.buf_to_string(_c_pub_key));
       util.LOGI(((StringBuilder)localObject2).toString(), "");
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("pkcs8PrivateKey ");
+      localObject2 = new StringBuilder("pkcs8PrivateKey ");
       ((StringBuilder)localObject2).append(pkcs8PrivateKey.toString());
       util.LOGI(((StringBuilder)localObject2).toString(), "");
       localObject2 = KeyAgreement.getInstance("ECDH", "BC");
@@ -59,20 +57,17 @@ public class EcdhCrypt
       ((KeyAgreement)localObject2).doPhase((Key)localObject1, true);
       localObject2 = ((KeyAgreement)localObject2).generateSecret();
       localObject1 = MD5.toMD5Byte((byte[])localObject2);
-      localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("share key ");
+      localStringBuilder2 = new StringBuilder("share key ");
       localStringBuilder2.append(util.buf_to_string((byte[])localObject2));
       util.LOGI(localStringBuilder2.toString(), "");
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("share key md5 ");
+      localObject2 = new StringBuilder("share key md5 ");
       ((StringBuilder)localObject2).append(util.buf_to_string((byte[])localObject1));
       util.LOGI(((StringBuilder)localObject2).toString(), "");
       return localObject1;
     }
     catch (Exception localException)
     {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("calShareKeyByBouncycastle failed ");
+      Object localObject2 = new StringBuilder("calShareKeyByBouncycastle failed ");
       ((StringBuilder)localObject2).append(pkcs8PrivateKey.toString());
       ((StringBuilder)localObject2).append(" peer public key ");
       ((StringBuilder)localObject2).append(util.buf_to_string(paramArrayOfByte));
@@ -83,8 +78,7 @@ public class EcdhCrypt
     }
     catch (ExceptionInInitializerError paramArrayOfByte)
     {
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("create key failed ExceptionInInitializerError, ");
+      StringBuilder localStringBuilder1 = new StringBuilder("create key failed ExceptionInInitializerError, ");
       localStringBuilder1.append(paramArrayOfByte.getMessage());
       util.LOGW(localStringBuilder1.toString(), "");
       t.an.attr_api(2459818);
@@ -94,10 +88,7 @@ public class EcdhCrypt
   
   private byte[] calShareKeyByOpenSSL(String paramString1, String paramString2, String paramString3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("calShareKeyByOpenSSL publickey ");
-    localStringBuilder.append(paramString2);
-    util.LOGI(localStringBuilder.toString(), "");
+    util.LOGI("calShareKeyByOpenSSL publickey ".concat(String.valueOf(paramString2)), "");
     if (GenECDHKeyEx(paramString3, paramString2, paramString1) == 0) {
       return _g_share_key;
     }
@@ -107,8 +98,7 @@ public class EcdhCrypt
   
   private PublicKey constructX509PublicKey(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("constructX509PublicKey publickey ");
+    StringBuilder localStringBuilder = new StringBuilder("constructX509PublicKey publickey ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" at ");
     localStringBuilder.append(t.l());
@@ -148,8 +138,7 @@ public class EcdhCrypt
     }
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("create key pair and shared key failed ExceptionInInitializerError, ");
+      Object localObject2 = new StringBuilder("create key pair and shared key failed ExceptionInInitializerError, ");
       ((StringBuilder)localObject2).append(localExceptionInInitializerError.getMessage());
       util.LOGW(((StringBuilder)localObject2).toString(), "");
       t.an.attr_api(2368735);
@@ -179,16 +168,13 @@ public class EcdhCrypt
         }
       }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("_c_pub_key ");
+    localObject = new StringBuilder("_c_pub_key ");
     ((StringBuilder)localObject).append(util.buf_to_string(_c_pub_key));
     util.LOGI(((StringBuilder)localObject).toString(), "");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("_c_pri_key ");
+    localObject = new StringBuilder("_c_pri_key ");
     ((StringBuilder)localObject).append(util.buf_to_string(_c_pri_key));
     util.LOGI(((StringBuilder)localObject).toString(), "");
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("_g_share_key ");
+    localObject = new StringBuilder("_g_share_key ");
     ((StringBuilder)localObject).append(util.buf_to_string(_g_share_key));
     util.LOGI(((StringBuilder)localObject).toString(), "");
     util.LOGI("initShareKeyByOpenSSL generate null key", "");
@@ -212,32 +198,28 @@ public class EcdhCrypt
     }
     catch (Error localError)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("GenereateKey failed ");
+      localStringBuilder = new StringBuilder("GenereateKey failed ");
       localStringBuilder.append(localError.getMessage());
       util.LOGI(localStringBuilder.toString(), "");
       return -4;
     }
     catch (Exception localException)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("GenereateKey failed ");
+      localStringBuilder = new StringBuilder("GenereateKey failed ");
       localStringBuilder.append(localException.getMessage());
       util.LOGI(localStringBuilder.toString(), "");
       return -3;
     }
     catch (RuntimeException localRuntimeException)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OpenSSL generate key failed, turn another method ");
+      localStringBuilder = new StringBuilder("OpenSSL generate key failed, turn another method ");
       localStringBuilder.append(localRuntimeException.getMessage());
       util.LOGW(localStringBuilder.toString(), "");
       return -2;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("GenereateKey failed ");
+      localStringBuilder = new StringBuilder("GenereateKey failed ");
       localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
       util.LOGI(localStringBuilder.toString(), "");
     }
@@ -245,8 +227,7 @@ public class EcdhCrypt
   
   public byte[] calShareKeyMd5ByPeerPublicKey(byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userOpenSSLLib ");
+    StringBuilder localStringBuilder = new StringBuilder("userOpenSSLLib ");
     localStringBuilder.append(userOpenSSLLib);
     localStringBuilder.append(" peerRawPublicKey ");
     localStringBuilder.append(util.buf_to_string(paramArrayOfByte));

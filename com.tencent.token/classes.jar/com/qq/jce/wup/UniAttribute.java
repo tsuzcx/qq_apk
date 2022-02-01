@@ -132,7 +132,7 @@ public class UniAttribute
     if (((Iterator)localObject2).hasNext())
     {
       localObject1 = (Map.Entry)((Iterator)localObject2).next();
-      localObject2 = (String)((Map.Entry)localObject1).getKey();
+      ((Map.Entry)localObject1).getKey();
       localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
     try
@@ -186,7 +186,7 @@ public class UniAttribute
     if (((Iterator)localObject).hasNext())
     {
       paramT2 = (Map.Entry)((Iterator)localObject).next();
-      localObject = (String)paramT2.getKey();
+      paramT2.getKey();
       paramT2 = (byte[])paramT2.getValue();
     }
     try

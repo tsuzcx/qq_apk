@@ -29,7 +29,7 @@ public class cz
   private Object kh = new Object();
   private Handler mHandler = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (paramAnonymousMessage.what != 1) {
         return;
@@ -44,8 +44,7 @@ public class cz
     {
       if ((this.jZ > 0L) && (System.currentTimeMillis() - this.jZ <= 2000L))
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[conn_monitor]doOnRecv(), ignore for just register: ");
+        localObject2 = new StringBuilder("[conn_monitor]doOnRecv(), ignore for just register: ");
         ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.jZ);
         eh.e("SharkNetworkReceiver", ((StringBuilder)localObject2).toString());
       }
@@ -66,20 +65,17 @@ public class cz
       paramIntent = ((NetworkInfo)localObject3).getState();
       Object localObject2 = ((NetworkInfo)localObject3).getTypeName();
       localObject3 = ((NetworkInfo)localObject3).getSubtypeName();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[conn_monitor]doOnRecv(), Sate: ");
+      StringBuilder localStringBuilder = new StringBuilder("[conn_monitor]doOnRecv(), Sate: ");
       localStringBuilder.append(this.kb);
       localStringBuilder.append(" -> ");
       localStringBuilder.append(paramIntent);
       eh.f("SharkNetworkReceiver", localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[conn_monitor]doOnRecv(), type: ");
+      localStringBuilder = new StringBuilder("[conn_monitor]doOnRecv(), type: ");
       localStringBuilder.append(this.kc);
       localStringBuilder.append(" -> ");
       localStringBuilder.append((String)localObject2);
       eh.f("SharkNetworkReceiver", localStringBuilder.toString());
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[conn_monitor]doOnRecv(), subType: ");
+      localStringBuilder = new StringBuilder("[conn_monitor]doOnRecv(), subType: ");
       localStringBuilder.append(this.kd);
       localStringBuilder.append(" -> ");
       localStringBuilder.append((String)localObject3);
@@ -118,7 +114,7 @@ public class cz
   {
     ee.cT().addUrgentTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         eh.e("SharkNetworkReceiver", "[conn_monitor]handleChange2DisConnected(), 有网络 -> 无网络");
         synchronized (cz.c(cz.this))
@@ -142,12 +138,11 @@ public class cz
   {
     ee.cT().addUrgentTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         eh.e("SharkNetworkReceiver", "[conn_monitor]handleChange2Connected(), 无网络 -> 有网络");
         ??? = cg.bb();
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[conn_monitor][ip_list]handleChange2Connected(), notify hiplist first: ");
+        Object localObject2 = new StringBuilder("[conn_monitor][ip_list]handleChange2Connected(), notify hiplist first: ");
         boolean bool;
         if (??? != null) {
           bool = true;
@@ -181,18 +176,14 @@ public class cz
     try
     {
       Context localContext = bc.n();
-      if (localContext != null)
-      {
+      if (localContext != null) {
         h(localContext);
-        return;
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[conn_monitor]checkInit(), registerConnectivityIfNeed() failed: ");
-      localStringBuilder.append(localThrowable);
-      eh.h("SharkNetworkReceiver", localStringBuilder.toString());
+      eh.h("SharkNetworkReceiver", "[conn_monitor]checkInit(), registerConnectivityIfNeed() failed: ".concat(String.valueOf(localThrowable)));
     }
   }
   
@@ -200,7 +191,7 @@ public class cz
   {
     ee.cT().addUrgentTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         eh.e("SharkNetworkReceiver", "[conn_monitor]handleNetworkChange()");
         synchronized (cz.b(cz.this))
@@ -228,48 +219,41 @@ public class cz
       if (!bool) {
         try
         {
-          Object localObject1 = NetworkUtil.getActiveNetworkInfo();
-          if (localObject1 != null)
+          Object localObject = NetworkUtil.getActiveNetworkInfo();
+          if (localObject != null)
           {
-            this.kb = ((NetworkInfo)localObject1).getState();
-            this.kc = ((NetworkInfo)localObject1).getTypeName();
-            this.kd = ((NetworkInfo)localObject1).getSubtypeName();
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("[conn_monitor]registerConnectivRityIfNeed(), got mLastState: ");
-            ((StringBuilder)localObject1).append(this.kb);
+            this.kb = ((NetworkInfo)localObject).getState();
+            this.kc = ((NetworkInfo)localObject).getTypeName();
+            this.kd = ((NetworkInfo)localObject).getSubtypeName();
+            localObject = new StringBuilder("[conn_monitor]registerConnectivRityIfNeed(), got mLastState: ");
+            ((StringBuilder)localObject).append(this.kb);
           }
-          for (localObject1 = ((StringBuilder)localObject1).toString();; localObject1 = ((StringBuilder)localObject1).toString())
+          for (localObject = ((StringBuilder)localObject).toString();; localObject = ((StringBuilder)localObject).toString())
           {
-            eh.e("SharkNetworkReceiver", (String)localObject1);
+            eh.e("SharkNetworkReceiver", (String)localObject);
             break;
             this.kb = NetworkInfo.State.DISCONNECTED;
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("[conn_monitor]registerConnectivRityIfNeed(), not got, set mLastState: ");
-            ((StringBuilder)localObject1).append(this.kb);
+            localObject = new StringBuilder("[conn_monitor]registerConnectivRityIfNeed(), not got, set mLastState: ");
+            ((StringBuilder)localObject).append(this.kb);
           }
         }
         catch (Exception localException)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[conn_monitor]getActiveNetworkInfo() failed: ");
-          localStringBuilder.append(localException);
-          eh.h("SharkNetworkReceiver", localStringBuilder.toString());
+          eh.h("SharkNetworkReceiver", "[conn_monitor]getActiveNetworkInfo() failed: ".concat(String.valueOf(localException)));
           try
           {
-            localObject2 = new IntentFilter();
-            ((IntentFilter)localObject2).addAction("android.net.conn.CONNECTIVITY_CHANGE");
-            ((IntentFilter)localObject2).setPriority(2147483647);
-            paramContext.registerReceiver(this, (IntentFilter)localObject2);
+            IntentFilter localIntentFilter = new IntentFilter();
+            localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+            localIntentFilter.setPriority(2147483647);
+            paramContext.registerReceiver(this, localIntentFilter);
             this.jZ = System.currentTimeMillis();
             this.ka = true;
             eh.f("SharkNetworkReceiver", "[conn_monitor]registerConnectivityIfNeed() succ");
+            return;
           }
           catch (Throwable paramContext)
           {
-            Object localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("[conn_monitor]registerConnectivityIfNeed() failed: ");
-            ((StringBuilder)localObject2).append(paramContext);
-            eh.h("SharkNetworkReceiver", ((StringBuilder)localObject2).toString());
+            eh.h("SharkNetworkReceiver", "[conn_monitor]registerConnectivityIfNeed() failed: ".concat(String.valueOf(paramContext)));
           }
         }
       }
@@ -314,14 +298,11 @@ public class cz
         return;
       }
       paramContext = paramIntent.getAction();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[conn_monitor]doOnRecv(), action: ");
-      localStringBuilder.append(paramContext);
-      eh.e("SharkNetworkReceiver", localStringBuilder.toString());
+      eh.e("SharkNetworkReceiver", "[conn_monitor]doOnRecv(), action: ".concat(String.valueOf(paramContext)));
       if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext)) {
         this.mHandler.post(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (bc.m()) {
               cz.a(cz.this, paramIntent);

@@ -53,10 +53,7 @@ public class be
   
   static String d(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
+    return String.valueOf(paramInt);
   }
   
   public static void e(int paramInt)
@@ -134,8 +131,7 @@ public class be
         j += i;
         if (j < 1024000)
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("ActionData:[");
+          localStringBuilder = new StringBuilder("ActionData:[");
           localStringBuilder.append(localo.ar);
           localStringBuilder.append("]");
           eg.f("ActionStats", localStringBuilder.toString());
@@ -162,8 +158,7 @@ public class be
         i += j;
         if (i < 1024000)
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("StringData:[");
+          localStringBuilder = new StringBuilder("StringData:[");
           localStringBuilder.append(localo.ar);
           localStringBuilder.append("][");
           localStringBuilder.append(localo.at);
@@ -184,10 +179,9 @@ public class be
       eg.e("ActionStats", "sendShark, ECmd.Cmd_CSFeature");
       ((bx)localObject).a(3651, localn, null, 2, new cj()
       {
-        public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+        public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
         {
-          paramAnonymousJceStruct = new StringBuilder();
-          paramAnonymousJceStruct.append("sendShark, ECmd.Cmd_CSFeature, retCode:[");
+          paramAnonymousJceStruct = new StringBuilder("sendShark, ECmd.Cmd_CSFeature, retCode:[");
           paramAnonymousJceStruct.append(paramAnonymousInt3);
           paramAnonymousJceStruct.append("]dataRetCode:[");
           paramAnonymousJceStruct.append(paramAnonymousInt4);
@@ -260,8 +254,8 @@ public class be
       }
       catch (Exception localException)
       {
-        label261:
-        break label261;
+        label258:
+        break label258;
       }
     }
     return localArrayList;
@@ -277,24 +271,26 @@ public class be
     try
     {
       paramec = paramec.getAll();
-      if (paramec != null) {
-        paramec = paramec.entrySet().iterator();
-      }
-      for (;;)
+      if (paramec != null)
       {
-        Object localObject;
-        if (paramec.hasNext()) {
-          localObject = (Map.Entry)paramec.next();
-        }
-        try
+        paramec = paramec.entrySet().iterator();
+        while (paramec.hasNext())
         {
-          paramString = (String)((Map.Entry)localObject).getKey();
-          localObject = ((Map.Entry)localObject).getValue();
-          if ((localObject instanceof String)) {
-            localArrayList.addAll(d(Integer.valueOf(paramString).intValue(), (String)localObject));
+          Object localObject = (Map.Entry)paramec.next();
+          try
+          {
+            paramString = (String)((Map.Entry)localObject).getKey();
+            localObject = ((Map.Entry)localObject).getValue();
+            if ((localObject instanceof String)) {
+              localArrayList.addAll(d(Integer.valueOf(paramString).intValue(), (String)localObject));
+            }
+          }
+          catch (Exception paramString)
+          {
+            label109:
+            break label109;
           }
         }
-        catch (Exception paramString) {}
       }
       return b(localArrayList);
     }
@@ -311,7 +307,7 @@ public class be
   {
     ee.cT().addTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         String str1 = be.d(paramInt1);
         long l = System.currentTimeMillis();
@@ -344,7 +340,7 @@ public class be
   {
     ee.cT().addTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         String str1 = paramString;
         if (str1 != null)
@@ -403,7 +399,7 @@ public class be
   {
     ee.cT().addTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         String str = be.d(paramInt1);
         long l = System.currentTimeMillis();
@@ -462,7 +458,7 @@ public class be
           localArrayList.add(paramString);
         }
         if (i == str1.length()) {
-          return localArrayList;
+          break;
         }
         str1 = str1.substring(i + 1);
       }

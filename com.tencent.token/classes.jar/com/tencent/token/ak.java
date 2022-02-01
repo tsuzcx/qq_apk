@@ -1,17 +1,22 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
 public final class ak
+  extends JceStruct
 {
-  private static aj a;
+  public String a = "";
   
-  public static aj a()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    return a;
+    this.a = paramJceInputStream.readString(0, true);
   }
   
-  public static void a(aj paramaj)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    a = paramaj;
+    paramJceOutputStream.write(this.a, 0);
   }
 }
 

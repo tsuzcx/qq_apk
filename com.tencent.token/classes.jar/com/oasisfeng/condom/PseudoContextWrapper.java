@@ -27,8 +27,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.support.annotation.Keep;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.RestrictTo;
 import android.view.Display;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +34,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 @Keep
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 class PseudoContextWrapper
   extends Context
 {
@@ -77,7 +74,6 @@ class PseudoContextWrapper
     return this.mBase.checkPermission(paramString, paramInt1, paramInt2);
   }
   
-  @RequiresApi(23)
   public int checkSelfPermission(String paramString)
   {
     return this.mBase.checkSelfPermission(paramString);
@@ -99,25 +95,21 @@ class PseudoContextWrapper
     this.mBase.clearWallpaper();
   }
   
-  @RequiresApi(17)
   public Context createConfigurationContext(Configuration paramConfiguration)
   {
     return this.mBase.createConfigurationContext(paramConfiguration);
   }
   
-  @RequiresApi(26)
   public Context createContextForSplit(String paramString)
   {
     return this.mBase.createContextForSplit(paramString);
   }
   
-  @RequiresApi(24)
   public Context createDeviceProtectedStorageContext()
   {
     return this.mBase.createDeviceProtectedStorageContext();
   }
   
-  @RequiresApi(17)
   public Context createDisplayContext(Display paramDisplay)
   {
     return this.mBase.createDisplayContext(paramDisplay);
@@ -143,7 +135,6 @@ class PseudoContextWrapper
     return this.mBase.deleteFile(paramString);
   }
   
-  @RequiresApi(24)
   public boolean deleteSharedPreferences(String paramString)
   {
     return this.mBase.deleteSharedPreferences(paramString);
@@ -214,7 +205,6 @@ class PseudoContextWrapper
     return this.mBase.getClassLoader();
   }
   
-  @RequiresApi(21)
   public File getCodeCacheDir()
   {
     return this.mBase.getCodeCacheDir();
@@ -225,7 +215,6 @@ class PseudoContextWrapper
     return this.mBase.getContentResolver();
   }
   
-  @RequiresApi(24)
   public File getDataDir()
   {
     return this.mBase.getDataDir();
@@ -246,7 +235,6 @@ class PseudoContextWrapper
     return this.mBase.getExternalCacheDir();
   }
   
-  @RequiresApi(19)
   public File[] getExternalCacheDirs()
   {
     return this.mBase.getExternalCacheDirs();
@@ -257,13 +245,11 @@ class PseudoContextWrapper
     return this.mBase.getExternalFilesDir(paramString);
   }
   
-  @RequiresApi(19)
   public File[] getExternalFilesDirs(String paramString)
   {
     return this.mBase.getExternalFilesDirs(paramString);
   }
   
-  @RequiresApi(21)
   public File[] getExternalMediaDirs()
   {
     return this.mBase.getExternalMediaDirs();
@@ -284,19 +270,16 @@ class PseudoContextWrapper
     return this.mBase.getMainLooper();
   }
   
-  @RequiresApi(21)
   public File getNoBackupFilesDir()
   {
     return this.mBase.getNoBackupFilesDir();
   }
   
-  @RequiresApi(11)
   public File getObbDir()
   {
     return this.mBase.getObbDir();
   }
   
-  @RequiresApi(19)
   public File[] getObbDirs()
   {
     return this.mBase.getObbDirs();
@@ -337,7 +320,6 @@ class PseudoContextWrapper
     return this.mBase.getSystemService(paramString);
   }
   
-  @RequiresApi(23)
   public String getSystemServiceName(Class<?> paramClass)
   {
     return this.mBase.getSystemServiceName(paramClass);
@@ -371,7 +353,6 @@ class PseudoContextWrapper
     this.mBase.grantUriPermission(paramString, paramUri, paramInt);
   }
   
-  @RequiresApi(24)
   public boolean isDeviceProtectedStorage()
   {
     return this.mBase.isDeviceProtectedStorage();
@@ -382,13 +363,11 @@ class PseudoContextWrapper
     return this.mBase.isRestricted();
   }
   
-  @RequiresApi(24)
   public boolean moveDatabaseFrom(Context paramContext, String paramString)
   {
     return this.mBase.moveDatabaseFrom(paramContext, paramString);
   }
   
-  @RequiresApi(24)
   public boolean moveSharedPreferencesFrom(Context paramContext, String paramString)
   {
     return this.mBase.moveSharedPreferencesFrom(paramContext, paramString);
@@ -409,7 +388,6 @@ class PseudoContextWrapper
     return this.mBase.openOrCreateDatabase(paramString, paramInt, paramCursorFactory);
   }
   
-  @RequiresApi(11)
   public SQLiteDatabase openOrCreateDatabase(String paramString, int paramInt, SQLiteDatabase.CursorFactory paramCursorFactory, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     return this.mBase.openOrCreateDatabase(paramString, paramInt, paramCursorFactory, paramDatabaseErrorHandler);
@@ -426,7 +404,6 @@ class PseudoContextWrapper
     return this.mBase.registerReceiver(paramBroadcastReceiver, paramIntentFilter);
   }
   
-  @RequiresApi(26)
   public Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter, int paramInt)
   {
     return this.mBase.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramInt);
@@ -437,7 +414,6 @@ class PseudoContextWrapper
     return this.mBase.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramString, paramHandler);
   }
   
-  @RequiresApi(26)
   public Intent registerReceiver(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter, String paramString, Handler paramHandler, int paramInt)
   {
     return this.mBase.registerReceiver(paramBroadcastReceiver, paramIntentFilter, paramString, paramHandler, paramInt);
@@ -451,7 +427,6 @@ class PseudoContextWrapper
   
   @Deprecated
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void removeStickyBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle)
   {
     this.mBase.removeStickyBroadcastAsUser(paramIntent, paramUserHandle);
@@ -462,7 +437,6 @@ class PseudoContextWrapper
     this.mBase.revokeUriPermission(paramUri, paramInt);
   }
   
-  @RequiresApi(26)
   public void revokeUriPermission(String paramString, Uri paramUri, int paramInt)
   {
     this.mBase.revokeUriPermission(paramString, paramUri, paramInt);
@@ -479,14 +453,12 @@ class PseudoContextWrapper
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle)
   {
     this.mBase.sendBroadcastAsUser(paramIntent, paramUserHandle);
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle, String paramString)
   {
     this.mBase.sendBroadcastAsUser(paramIntent, paramUserHandle, paramString);
@@ -503,7 +475,6 @@ class PseudoContextWrapper
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendOrderedBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle, String paramString1, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString2, Bundle paramBundle)
   {
     this.mBase.sendOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
@@ -516,7 +487,6 @@ class PseudoContextWrapper
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendStickyBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle)
   {
     this.mBase.sendStickyBroadcastAsUser(paramIntent, paramUserHandle);
@@ -529,7 +499,6 @@ class PseudoContextWrapper
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendStickyOrderedBroadcastAsUser(Intent paramIntent, UserHandle paramUserHandle, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString, Bundle paramBundle)
   {
     this.mBase.sendStickyOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
@@ -552,13 +521,11 @@ class PseudoContextWrapper
     this.mBase.setWallpaper(paramInputStream);
   }
   
-  @RequiresApi(11)
   public void startActivities(Intent[] paramArrayOfIntent)
   {
     this.mBase.startActivities(paramArrayOfIntent);
   }
   
-  @RequiresApi(16)
   public void startActivities(Intent[] paramArrayOfIntent, Bundle paramBundle)
   {
     this.mBase.startActivities(paramArrayOfIntent, paramBundle);
@@ -569,13 +536,11 @@ class PseudoContextWrapper
     this.mBase.startActivity(paramIntent);
   }
   
-  @RequiresApi(16)
   public void startActivity(Intent paramIntent, Bundle paramBundle)
   {
     this.mBase.startActivity(paramIntent, paramBundle);
   }
   
-  @RequiresApi(26)
   public ComponentName startForegroundService(Intent paramIntent)
   {
     return this.mBase.startForegroundService(paramIntent);
@@ -591,7 +556,6 @@ class PseudoContextWrapper
     this.mBase.startIntentSender(paramIntentSender, paramIntent, paramInt1, paramInt2, paramInt3);
   }
   
-  @RequiresApi(16)
   public void startIntentSender(IntentSender paramIntentSender, Intent paramIntent, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
     this.mBase.startIntentSender(paramIntentSender, paramIntent, paramInt1, paramInt2, paramInt3, paramBundle);

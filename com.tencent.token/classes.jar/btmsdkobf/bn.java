@@ -75,7 +75,7 @@ public class bn
       {
         ee.cT().addTask(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (System.currentTimeMillis() - bn.gi < 600000L) {
               return;
@@ -98,8 +98,9 @@ public class bn
   {
     if (gk == null)
     {
-      gk = new a();
-      gk.a(bc.n());
+      a locala = new a();
+      gk = locala;
+      locala.a(bc.n());
     }
   }
   
@@ -120,13 +121,13 @@ public class bn
     //   19: aload_0
     //   20: monitorexit
     //   21: aload_1
-    //   22: ifnull +51 -> 73
+    //   22: ifnull +40 -> 62
     //   25: aload_1
     //   26: invokevirtual 160	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   29: astore_0
     //   30: aload_0
     //   31: invokeinterface 165 1 0
-    //   36: ifeq +37 -> 73
+    //   36: ifeq +26 -> 62
     //   39: aload_0
     //   40: invokeinterface 168 1 0
     //   45: checkcast 170	com/tmsdk/base/TMSDKBaseContext$IReportListener
@@ -136,41 +137,44 @@ public class bn
     //   53: aload_1
     //   54: invokeinterface 173 1 0
     //   59: goto -29 -> 30
-    //   62: astore_1
-    //   63: aload_0
+    //   62: ldc 2
     //   64: monitorexit
-    //   65: aload_1
-    //   66: athrow
-    //   67: astore_0
-    //   68: ldc 2
-    //   70: monitorexit
-    //   71: aload_0
-    //   72: athrow
-    //   73: ldc 2
-    //   75: monitorexit
-    //   76: return
-    //   77: astore_0
-    //   78: goto -5 -> 73
+    //   65: return
+    //   66: astore_1
+    //   67: aload_0
+    //   68: monitorexit
+    //   69: aload_1
+    //   70: athrow
+    //   71: astore_0
+    //   72: ldc 2
+    //   74: monitorexit
+    //   75: aload_0
+    //   76: athrow
+    //   77: ldc 2
+    //   79: monitorexit
+    //   80: return
+    //   81: astore_0
+    //   82: goto -5 -> 77
     // Local variable table:
     //   start	length	slot	name	signature
-    //   67	5	0	localObject2	Object
-    //   77	1	0	localThrowable	java.lang.Throwable
+    //   71	5	0	localObject2	Object
+    //   81	1	0	localThrowable	java.lang.Throwable
     //   18	36	1	localObject3	Object
-    //   62	4	1	localObject4	Object
+    //   66	4	1	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   9	21	62	finally
-    //   63	65	62	finally
-    //   3	9	67	finally
-    //   25	30	67	finally
-    //   30	49	67	finally
-    //   53	59	67	finally
-    //   65	67	67	finally
-    //   3	9	77	java/lang/Throwable
-    //   25	30	77	java/lang/Throwable
-    //   30	49	77	java/lang/Throwable
-    //   53	59	77	java/lang/Throwable
-    //   65	67	77	java/lang/Throwable
+    //   9	21	66	finally
+    //   67	69	66	finally
+    //   3	9	71	finally
+    //   25	30	71	finally
+    //   30	49	71	finally
+    //   53	59	71	finally
+    //   69	71	71	finally
+    //   3	9	81	java/lang/Throwable
+    //   25	30	81	java/lang/Throwable
+    //   30	49	81	java/lang/Throwable
+    //   53	59	81	java/lang/Throwable
+    //   69	71	81	java/lang/Throwable
   }
   
   public static void addReportListener(TMSDKBaseContext.IReportListener paramIReportListener)
@@ -205,13 +209,13 @@ public class bn
     }
   }
   
-  static class a
+  static final class a
     extends BroadcastReceiver
     implements eb.a
   {
     public static boolean a = false;
     
-    public void O()
+    public final void O()
     {
       if (bc.m())
       {
@@ -224,9 +228,9 @@ public class bn
       }
     }
     
-    public void P() {}
+    public final void P() {}
     
-    public void a(Context paramContext)
+    public final void a(Context paramContext)
     {
       try
       {
@@ -247,7 +251,7 @@ public class bn
       finally {}
     }
     
-    public void onReceive(Context paramContext, Intent paramIntent)
+    public final void onReceive(Context paramContext, Intent paramIntent)
     {
       if (paramIntent == null) {
         return;

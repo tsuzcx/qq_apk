@@ -19,7 +19,7 @@ public class cb
   private Context mContext;
   private Handler mHandler = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message arg1)
+    public final void handleMessage(Message arg1)
     {
       if (???.what != 1) {
         return;
@@ -34,8 +34,7 @@ public class cb
           if (localObject1 != null)
           {
             localObject3 = cb.aS();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[http_control]handleMessage(), allow start, running tasks: ");
+            StringBuilder localStringBuilder = new StringBuilder("[http_control]handleMessage(), allow start, running tasks: ");
             localStringBuilder.append(cb.b(cb.this));
             eh.f((String)localObject3, localStringBuilder.toString());
             cb.d(cb.this);
@@ -44,8 +43,7 @@ public class cb
           else
           {
             localObject1 = cb.aS();
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("[http_control]handleMessage(), allow start but no data to send, running tasks: ");
+            localObject3 = new StringBuilder("[http_control]handleMessage(), allow start but no data to send, running tasks: ");
             ((StringBuilder)localObject3).append(cb.b(cb.this));
             eh.e((String)localObject1, ((StringBuilder)localObject3).toString());
           }
@@ -53,8 +51,7 @@ public class cb
         else
         {
           localObject1 = cb.aS();
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("[http_control]handleMessage(), not allow start, running tasks(>=4): ");
+          localObject3 = new StringBuilder("[http_control]handleMessage(), not allow start, running tasks(>=4): ");
           ((StringBuilder)localObject3).append(cb.b(cb.this));
           eh.g((String)localObject1, ((StringBuilder)localObject3).toString());
         }
@@ -75,7 +72,7 @@ public class cb
   {
     paramf = new Runnable()
     {
-      public void run()
+      public final void run()
       {
         ??? = new AtomicReference();
         final int i;
@@ -90,7 +87,7 @@ public class cb
         }
         ??? = new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (cb.2.this.c != null) {
               cb.2.this.c.a(i, this.b);
@@ -110,8 +107,7 @@ public class cb
             cb.j(cb.this).sendEmptyMessage(1);
           }
           localObject2 = cb.aS();
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[http_control]-------- send finish, running tasks: ");
+          StringBuilder localStringBuilder = new StringBuilder("[http_control]-------- send finish, running tasks: ");
           localStringBuilder.append(cb.b(cb.this));
           localStringBuilder.append(", waiting tasks: ");
           localStringBuilder.append(cb.c(cb.this).size());
@@ -135,8 +131,7 @@ public class cb
     {
       this.hk.add(new a(paramArrayOfByte, paramf, parama));
       paramf = TAG;
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("[http_control]sendDataAsyn(), waiting tasks: ");
+      paramArrayOfByte = new StringBuilder("[http_control]sendDataAsyn(), waiting tasks: ");
       paramArrayOfByte.append(this.hk.size());
       eh.i(paramf, paramArrayOfByte.toString());
       this.mHandler.sendEmptyMessage(1);
@@ -144,7 +139,7 @@ public class cb
     }
   }
   
-  private class a
+  final class a
   {
     public byte[] a = null;
     public cy.f b = null;

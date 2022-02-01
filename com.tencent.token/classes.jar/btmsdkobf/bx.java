@@ -77,7 +77,7 @@ public class bx
         this.gU = true;
         ee.cT().addUrgentTask(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             db.bZ().at();
           }

@@ -1,20 +1,41 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
 
-public abstract interface ev
+public abstract class ev
 {
-  public abstract ev a(Cursor paramCursor);
+  private final DataSetObservable a = new DataSetObservable();
+  private DataSetObserver b;
   
-  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
+  public static void b()
+  {
+    throw new UnsupportedOperationException("Required method destroyItem was not overridden");
+  }
   
-  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
+  public abstract int a();
   
-  public abstract String b();
+  public final void a(DataSetObserver paramDataSetObserver)
+  {
+    this.a.registerObserver(paramDataSetObserver);
+  }
   
-  public abstract ContentValues c();
+  public final void b(DataSetObserver paramDataSetObserver)
+  {
+    this.a.unregisterObserver(paramDataSetObserver);
+  }
+  
+  public final void c(DataSetObserver paramDataSetObserver)
+  {
+    try
+    {
+      this.b = paramDataSetObserver;
+      return;
+    }
+    finally {}
+  }
+  
+  public abstract boolean c();
 }
 
 

@@ -5,27 +5,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
+import com.tencent.token.xq;
+import com.tencent.token.ye;
 
 public class AbnormalLoginActivity
   extends BaseActivity
 {
-  private a mAdapter;
+  private xq mAdapter;
   private ListView mListView;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setContentView(2131296283);
-    this.mListView = ((ListView)findViewById(2131165752));
-    this.mAdapter = new a(this);
+    this.mListView = ((ListView)findViewById(2131165756));
+    this.mAdapter = new xq(this);
     this.mListView.setScrollingCacheEnabled(true);
     this.mListView.setAdapter(this.mAdapter);
     findViewById(2131165191).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = new Intent(AbnormalLoginActivity.this, ModifyQQPwdActivity.class);
-        o.a().a(AbnormalLoginActivity.this, paramAnonymousView, o.b);
+        ye.a().a(AbnormalLoginActivity.this, paramAnonymousView, ye.b);
       }
     });
   }

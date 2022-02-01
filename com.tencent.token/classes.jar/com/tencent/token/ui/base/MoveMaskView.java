@@ -7,13 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.bs.a;
+import com.tencent.token.rr.a;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +57,7 @@ public class MoveMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.b = paramContext;
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, bs.a.moveMaskView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, rr.a.moveMaskView, 0, 0);
     try
     {
       this.s = paramContext.getColor(3, 10526880);
@@ -85,33 +83,7 @@ public class MoveMaskView
     }
   }
   
-  private int a(int paramInt)
-  {
-    int i1 = View.MeasureSpec.getMode(paramInt);
-    paramInt = View.MeasureSpec.getSize(paramInt);
-    float f1;
-    if (i1 == 1073741824)
-    {
-      f1 = paramInt;
-    }
-    else
-    {
-      char[] arrayOfChar = this.l;
-      int i2 = arrayOfChar.length;
-      int i3 = this.p;
-      if (i2 < i3) {
-        f1 = this.g * arrayOfChar.length + this.k * 2.0F;
-      } else {
-        f1 = this.g * i3 + this.k * 2.0F;
-      }
-      if (i1 == -2147483648) {
-        f1 = Math.min(f1, paramInt);
-      }
-    }
-    return (int)f1;
-  }
-  
-  private int a(int paramInt, List<Integer> paramList)
+  private static int a(int paramInt, List<Integer> paramList)
   {
     if (paramList != null)
     {
@@ -137,7 +109,14 @@ public class MoveMaskView
     return (int)(paramMotionEvent.getY() / (this.h + this.i)) * this.p + i1;
   }
   
-  private String a(int paramInt1, String paramString, int paramInt2)
+  private static int a(String paramString, Paint paramPaint)
+  {
+    Rect localRect = new Rect();
+    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
+    return localRect.height();
+  }
+  
+  private static String a(int paramInt1, String paramString, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i1 = 0;
@@ -153,87 +132,6 @@ public class MoveMaskView
     return localStringBuilder.toString();
   }
   
-  private List<Integer> a(int paramInt1, char[] paramArrayOfChar, int paramInt2)
-  {
-    if (paramArrayOfChar != null)
-    {
-      if (paramArrayOfChar.length == 0) {
-        return null;
-      }
-      if (paramInt1 >= 0)
-      {
-        if (paramInt1 >= paramArrayOfChar.length) {
-          return null;
-        }
-        ArrayList localArrayList = new ArrayList();
-        Log.e("MoveMaskView", "--------------------------:");
-        int i1 = 0;
-        while (i1 < localArrayList.size())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("maskIndexs:");
-          localStringBuilder.append(i1);
-          localStringBuilder.append("--");
-          localStringBuilder.append(localArrayList.get(i1));
-          Log.e("MoveMaskView", localStringBuilder.toString());
-          i1 += 1;
-        }
-        Log.e("MoveMaskView", "--------------------------:");
-        if ((paramInt1 >= 0) && (paramInt1 < paramArrayOfChar.length - (paramInt2 - 1))) {
-          i1 = 0;
-        }
-        while (i1 < paramInt2)
-        {
-          localArrayList.add(i1, Integer.valueOf(paramInt1));
-          i1 += 1;
-          paramInt1 += 1;
-          continue;
-          if ((paramInt1 >= paramArrayOfChar.length - (paramInt2 - 1)) && (paramInt1 < paramArrayOfChar.length))
-          {
-            paramInt1 = paramArrayOfChar.length - paramInt2;
-            i1 = paramArrayOfChar.length - 1;
-            while (i1 >= paramArrayOfChar.length - paramInt2)
-            {
-              localArrayList.add(paramArrayOfChar.length - 1 - i1, Integer.valueOf(paramInt1));
-              i1 -= 1;
-              paramInt1 += 1;
-            }
-          }
-        }
-        this.q = ((Integer)localArrayList.get(0)).intValue();
-        return localArrayList;
-      }
-      return null;
-    }
-    return null;
-  }
-  
-  private int b(int paramInt)
-  {
-    int i1 = View.MeasureSpec.getMode(paramInt);
-    paramInt = View.MeasureSpec.getSize(paramInt);
-    float f1;
-    if (i1 == 1073741824)
-    {
-      f1 = paramInt;
-    }
-    else
-    {
-      f1 = this.g * 1.5F * this.f;
-      if (i1 == -2147483648) {
-        f1 = Math.min(f1, paramInt);
-      }
-    }
-    return (int)f1;
-  }
-  
-  public int a(String paramString, Paint paramPaint)
-  {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    return localRect.height();
-  }
-  
   public a getListener()
   {
     return this.C;
@@ -241,26 +139,78 @@ public class MoveMaskView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    this.m = a(this.n, this.l, this.o);
-    Object localObject;
-    if (this.B)
-    {
-      localObject = this.C;
-      if (localObject != null)
+    int i2 = this.n;
+    char[] arrayOfChar = this.l;
+    int i3 = this.o;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (arrayOfChar != null) {
+      if (arrayOfChar.length == 0)
       {
-        ((a)localObject).a(this.m, a(this.n, String.valueOf(this.l), this.o));
-        this.B = false;
+        localObject = localStringBuilder;
       }
+      else
+      {
+        localObject = localStringBuilder;
+        if (i2 >= 0) {
+          if (i2 >= arrayOfChar.length)
+          {
+            localObject = localStringBuilder;
+          }
+          else
+          {
+            localObject = new ArrayList();
+            i1 = 0;
+            while (i1 < ((List)localObject).size())
+            {
+              localStringBuilder = new StringBuilder("maskIndexs:");
+              localStringBuilder.append(i1);
+              localStringBuilder.append("--");
+              localStringBuilder.append(((List)localObject).get(i1));
+              i1 += 1;
+            }
+            if ((i2 >= 0) && (i2 < arrayOfChar.length - (i3 - 1)))
+            {
+              i1 = i2;
+              i2 = 0;
+            }
+            while (i2 < i3)
+            {
+              ((List)localObject).add(i2, Integer.valueOf(i1));
+              i2 += 1;
+              i1 += 1;
+              continue;
+              if ((i2 >= arrayOfChar.length - (i3 - 1)) && (i2 < arrayOfChar.length))
+              {
+                i1 = arrayOfChar.length - i3;
+                i2 = arrayOfChar.length - 1;
+                while (i2 >= arrayOfChar.length - i3)
+                {
+                  ((List)localObject).add(arrayOfChar.length - 1 - i2, Integer.valueOf(i1));
+                  i2 -= 1;
+                  i1 += 1;
+                }
+              }
+            }
+            this.q = ((Integer)((List)localObject).get(0)).intValue();
+          }
+        }
+      }
+    }
+    this.m = ((List)localObject);
+    if ((this.B) && (this.C != null))
+    {
+      a(this.n, String.valueOf(this.l), this.o);
+      this.B = false;
     }
     int i1 = 0;
     while (i1 < this.l.length)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.l[i1]);
-      ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       float f2 = this.e / 2.0F - this.c.measureText((String)localObject) / 2.0F + i1 % this.p * this.e;
-      int i2 = a((String)localObject, this.c);
+      i2 = a((String)localObject, this.c);
       float f1 = this.h;
       float f3 = f1 / 2.0F;
       float f4 = i2 / 2.0F;
@@ -318,11 +268,7 @@ public class MoveMaskView
         paramCanvas.drawLine(f1, f6, f7, f6, this.d);
         paramCanvas.drawLine(f1, f4, f7, f4, this.d);
         i2 = this.p;
-        if (i1 % i2 == 0)
-        {
-          paramCanvas.drawLine(f1, f6, f1, f4, this.d);
-        }
-        else if ((this.q + this.o == i1) && (i1 % i2 != 0))
+        if ((i1 % i2 != 0) && (this.q + this.o == i1) && (i1 % i2 != 0))
         {
           this.d.setColor(this.v);
           this.d.setStrokeWidth(this.k);
@@ -348,7 +294,42 @@ public class MoveMaskView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(a(paramInt1), b(paramInt2));
+    int i1 = View.MeasureSpec.getMode(paramInt1);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
+    float f1;
+    if (i1 == 1073741824)
+    {
+      f1 = paramInt1;
+    }
+    else
+    {
+      arrayOfChar = this.l;
+      int i2 = arrayOfChar.length;
+      int i3 = this.p;
+      if (i2 < i3) {
+        f1 = this.g * arrayOfChar.length + this.k * 2.0F;
+      } else {
+        f1 = this.g * i3 + this.k * 2.0F;
+      }
+      if (i1 == -2147483648) {
+        f1 = Math.min(f1, paramInt1);
+      }
+    }
+    paramInt1 = (int)f1;
+    i1 = View.MeasureSpec.getMode(paramInt2);
+    paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    if (i1 == 1073741824)
+    {
+      f1 = paramInt2;
+    }
+    else
+    {
+      f1 = this.g * 1.5F * this.f;
+      if (i1 == -2147483648) {
+        f1 = Math.min(f1, paramInt2);
+      }
+    }
+    setMeasuredDimension(paramInt1, (int)f1);
     char[] arrayOfChar = this.l;
     paramInt1 = arrayOfChar.length;
     paramInt2 = this.p;
@@ -371,7 +352,7 @@ public class MoveMaskView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i1;
-    switch (MotionEventCompat.getActionMasked(paramMotionEvent))
+    switch (paramMotionEvent.getActionMasked())
     {
     default: 
       break;
@@ -432,17 +413,12 @@ public class MoveMaskView
           if ((i1 != this.a) && (a(i1, this.m) == -1)) {
             this.n = i1;
           }
-          this.a = i1;
         }
-        else
-        {
+        else {
           this.n = i1;
-          this.a = i1;
         }
-        paramMotionEvent = new StringBuilder();
-        paramMotionEvent.append("onTouchEvent: ");
-        paramMotionEvent.append(this.l[i1]);
-        Log.d("MoveMaskView", paramMotionEvent.toString());
+        this.a = i1;
+        new StringBuilder("onTouchEvent: ").append(this.l[i1]);
       }
       break;
     }
@@ -469,10 +445,7 @@ public class MoveMaskView
     requestLayout();
   }
   
-  public static abstract interface a
-  {
-    public abstract void a(List<Integer> paramList, String paramString);
-  }
+  public static abstract interface a {}
 }
 
 

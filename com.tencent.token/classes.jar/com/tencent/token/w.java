@@ -1,39 +1,22 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.halley.DownloaderConfig;
-import com.tencent.halley.common.b;
-import com.tencent.halley.common.f;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class w
+  extends JceStruct
 {
-  private static boolean a = false;
+  public int a = 0;
   
-  public static void a(DownloaderConfig paramDownloaderConfig)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    try
-    {
-      boolean bool = a;
-      if (bool) {
-        return;
-      }
-      Object localObject = f.a();
-      if (localObject == null) {
-        return;
-      }
-      localObject = new StringBuilder("downloader init. config:");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getMassTaskNum());
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getEaseTaskNum());
-      b.b("DownloaderBaseInfo", ((StringBuilder)localObject).toString());
-      l.a(paramDownloaderConfig.getMassTaskNum());
-      l.b(paramDownloaderConfig.getEaseTaskNum());
-      y.a();
-      f.h().post(new x());
-      a = true;
-      return;
-    }
-    finally {}
+    this.a = paramJceInputStream.read(this.a, 0, true);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
   }
 }
 

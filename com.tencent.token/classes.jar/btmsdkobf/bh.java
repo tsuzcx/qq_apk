@@ -58,8 +58,7 @@ public class bh
     //   28: iconst_0
     //   29: aload 6
     //   31: iconst_0
-    //   32: aload 6
-    //   34: arraylength
+    //   32: sipush 128
     //   35: invokestatic 66	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   38: aconst_null
     //   39: astore_3
@@ -208,8 +207,7 @@ public class bh
     }
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(1000L * l);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("expirySeconds=");
+    StringBuilder localStringBuilder = new StringBuilder("expirySeconds=");
     localStringBuilder.append(l);
     localStringBuilder.append("(");
     localStringBuilder.append(localCalendar.get(1));
@@ -276,134 +274,125 @@ public class bh
     //   21: ifne +10 -> 31
     //   24: ldc 239
     //   26: astore 4
-    //   28: goto +72 -> 100
+    //   28: goto +60 -> 88
     //   31: aload 5
     //   33: astore_2
     //   34: aload 6
     //   36: astore_3
     //   37: new 141	java/lang/StringBuilder
     //   40: dup
-    //   41: invokespecial 142	java/lang/StringBuilder:<init>	()V
-    //   44: astore 4
-    //   46: aload 5
-    //   48: astore_2
-    //   49: aload 6
-    //   51: astore_3
-    //   52: aload 4
-    //   54: ldc 241
-    //   56: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: pop
-    //   60: aload 5
-    //   62: astore_2
-    //   63: aload 6
-    //   65: astore_3
-    //   66: aload 4
-    //   68: iload_1
-    //   69: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: pop
-    //   73: aload 5
-    //   75: astore_2
-    //   76: aload 6
-    //   78: astore_3
-    //   79: aload 4
-    //   81: ldc 243
-    //   83: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: pop
-    //   87: aload 5
-    //   89: astore_2
-    //   90: aload 6
-    //   92: astore_3
-    //   93: aload 4
-    //   95: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: astore 4
-    //   100: aload 5
-    //   102: astore_2
-    //   103: aload 6
-    //   105: astore_3
-    //   106: aload 7
-    //   108: aload 4
-    //   110: invokevirtual 249	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   113: astore 4
-    //   115: aload 4
-    //   117: astore_2
+    //   41: ldc 241
+    //   43: invokespecial 144	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   46: astore 4
+    //   48: aload 5
+    //   50: astore_2
+    //   51: aload 6
+    //   53: astore_3
+    //   54: aload 4
+    //   56: iload_1
+    //   57: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 5
+    //   63: astore_2
+    //   64: aload 6
+    //   66: astore_3
+    //   67: aload 4
+    //   69: ldc 243
+    //   71: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload 5
+    //   77: astore_2
+    //   78: aload 6
+    //   80: astore_3
+    //   81: aload 4
+    //   83: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: astore 4
+    //   88: aload 5
+    //   90: astore_2
+    //   91: aload 6
+    //   93: astore_3
+    //   94: aload 7
+    //   96: aload 4
+    //   98: invokevirtual 249	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   101: astore 4
+    //   103: aload 4
+    //   105: astore_2
+    //   106: aload 4
+    //   108: astore_3
+    //   109: aload 4
+    //   111: invokevirtual 255	java/io/InputStream:available	()I
+    //   114: newarray byte
+    //   116: astore 5
     //   118: aload 4
-    //   120: astore_3
+    //   120: astore_2
     //   121: aload 4
-    //   123: invokevirtual 255	java/io/InputStream:available	()I
-    //   126: newarray byte
-    //   128: astore 5
-    //   130: aload 4
-    //   132: astore_2
-    //   133: aload 4
-    //   135: astore_3
-    //   136: aload 4
-    //   138: aload 5
-    //   140: invokevirtual 259	java/io/InputStream:read	([B)I
-    //   143: pop
-    //   144: aload 4
-    //   146: ifnull +8 -> 154
-    //   149: aload 4
-    //   151: invokevirtual 260	java/io/InputStream:close	()V
-    //   154: aload 5
-    //   156: areturn
-    //   157: astore_3
-    //   158: goto +17 -> 175
-    //   161: astore 4
-    //   163: aload_3
-    //   164: astore_2
-    //   165: new 48	java/lang/RuntimeException
-    //   168: dup
-    //   169: aload 4
-    //   171: invokespecial 263	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   174: athrow
-    //   175: aload_2
-    //   176: ifnull +7 -> 183
-    //   179: aload_2
-    //   180: invokevirtual 260	java/io/InputStream:close	()V
-    //   183: aload_3
-    //   184: athrow
-    //   185: astore_2
-    //   186: aload 5
-    //   188: areturn
-    //   189: astore_2
-    //   190: goto -7 -> 183
+    //   123: astore_3
+    //   124: aload 4
+    //   126: aload 5
+    //   128: invokevirtual 259	java/io/InputStream:read	([B)I
+    //   131: pop
+    //   132: aload 4
+    //   134: ifnull +8 -> 142
+    //   137: aload 4
+    //   139: invokevirtual 260	java/io/InputStream:close	()V
+    //   142: aload 5
+    //   144: areturn
+    //   145: astore_3
+    //   146: goto +17 -> 163
+    //   149: astore 4
+    //   151: aload_3
+    //   152: astore_2
+    //   153: new 48	java/lang/RuntimeException
+    //   156: dup
+    //   157: aload 4
+    //   159: invokespecial 263	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   162: athrow
+    //   163: aload_2
+    //   164: ifnull +7 -> 171
+    //   167: aload_2
+    //   168: invokevirtual 260	java/io/InputStream:close	()V
+    //   171: aload_3
+    //   172: athrow
+    //   173: astore_2
+    //   174: aload 5
+    //   176: areturn
+    //   177: astore_2
+    //   178: goto -7 -> 171
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	193	0	this	bh
-    //   0	193	1	paramInt	int
-    //   8	172	2	localObject1	Object
-    //   185	1	2	localIOException1	java.io.IOException
-    //   189	1	2	localIOException2	java.io.IOException
-    //   11	125	3	localObject2	Object
-    //   157	27	3	localObject3	Object
-    //   26	124	4	localObject4	Object
-    //   161	9	4	localIOException3	java.io.IOException
-    //   4	183	5	arrayOfByte	byte[]
-    //   1	103	6	localObject5	Object
-    //   18	89	7	localAssetManager	android.content.res.AssetManager
+    //   0	181	0	this	bh
+    //   0	181	1	paramInt	int
+    //   8	160	2	localObject1	Object
+    //   173	1	2	localIOException1	java.io.IOException
+    //   177	1	2	localIOException2	java.io.IOException
+    //   11	113	3	localObject2	Object
+    //   145	27	3	localObject3	Object
+    //   26	112	4	localObject4	Object
+    //   149	9	4	localIOException3	java.io.IOException
+    //   4	171	5	arrayOfByte	byte[]
+    //   1	91	6	localObject5	Object
+    //   18	77	7	localAssetManager	android.content.res.AssetManager
     // Exception table:
     //   from	to	target	type
-    //   12	20	157	finally
-    //   37	46	157	finally
-    //   52	60	157	finally
-    //   66	73	157	finally
-    //   79	87	157	finally
-    //   93	100	157	finally
-    //   106	115	157	finally
-    //   121	130	157	finally
-    //   136	144	157	finally
-    //   165	175	157	finally
-    //   12	20	161	java/io/IOException
-    //   37	46	161	java/io/IOException
-    //   52	60	161	java/io/IOException
-    //   66	73	161	java/io/IOException
-    //   79	87	161	java/io/IOException
-    //   93	100	161	java/io/IOException
-    //   106	115	161	java/io/IOException
-    //   121	130	161	java/io/IOException
-    //   136	144	161	java/io/IOException
-    //   149	154	185	java/io/IOException
-    //   179	183	189	java/io/IOException
+    //   12	20	145	finally
+    //   37	48	145	finally
+    //   54	61	145	finally
+    //   67	75	145	finally
+    //   81	88	145	finally
+    //   94	103	145	finally
+    //   109	118	145	finally
+    //   124	132	145	finally
+    //   153	163	145	finally
+    //   12	20	149	java/io/IOException
+    //   37	48	149	java/io/IOException
+    //   54	61	149	java/io/IOException
+    //   67	75	149	java/io/IOException
+    //   81	88	149	java/io/IOException
+    //   94	103	149	java/io/IOException
+    //   109	118	149	java/io/IOException
+    //   124	132	149	java/io/IOException
+    //   137	142	173	java/io/IOException
+    //   167	171	177	java/io/IOException
   }
   
   public String getChannel()

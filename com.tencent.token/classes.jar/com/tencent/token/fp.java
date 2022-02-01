@@ -1,70 +1,116 @@
 package com.tencent.token;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.widget.CompoundButton;
+import java.lang.reflect.Field;
 
 public final class fp
 {
-  private static final ThreadLocal<DateFormat> a = new ThreadLocal()
-  {
-    protected DateFormat a()
-    {
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-      localSimpleDateFormat.setLenient(false);
-      localSimpleDateFormat.setTimeZone(ff.g);
-      return localSimpleDateFormat;
-    }
-  };
-  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
-  private static final DateFormat[] c = new DateFormat[b.length];
+  private static final c a = new c();
   
-  public static String a(Date paramDate)
+  static
   {
-    return ((DateFormat)a.get()).format(paramDate);
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public static Date a(String paramString)
+  public static Drawable a(CompoundButton paramCompoundButton)
   {
-    if (paramString.length() == 0) {
-      return null;
-    }
-    ParsePosition localParsePosition = new ParsePosition(0);
-    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    if (localParsePosition.getIndex() == paramString.length()) {
-      return localObject;
-    }
-    for (;;)
+    return a.a(paramCompoundButton);
+  }
+  
+  public static void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+  {
+    a.a(paramCompoundButton, paramColorStateList);
+  }
+  
+  public static void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+  {
+    a.a(paramCompoundButton, paramMode);
+  }
+  
+  static class a
+    extends fp.c
+  {
+    public final void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
     {
-      int i;
-      synchronized (b)
+      paramCompoundButton.setButtonTintList(paramColorStateList);
+    }
+    
+    public final void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      paramCompoundButton.setButtonTintMode(paramMode);
+    }
+  }
+  
+  static final class b
+    extends fp.a
+  {
+    public final Drawable a(CompoundButton paramCompoundButton)
+    {
+      return paramCompoundButton.getButtonDrawable();
+    }
+  }
+  
+  static class c
+  {
+    private static Field a;
+    private static boolean b;
+    
+    public Drawable a(CompoundButton paramCompoundButton)
+    {
+      if (!b) {}
+      try
       {
-        int j = b.length;
-        i = 0;
-        if (i < j)
+        Field localField = CompoundButton.class.getDeclaredField("mButtonDrawable");
+        a = localField;
+        localField.setAccessible(true);
+        label23:
+        b = true;
+        localField = a;
+        if (localField != null) {}
+        try
         {
-          DateFormat localDateFormat = c[i];
-          localObject = localDateFormat;
-          if (localDateFormat == null)
-          {
-            localObject = new SimpleDateFormat(b[i], Locale.US);
-            ((DateFormat)localObject).setTimeZone(ff.g);
-            c[i] = localObject;
-          }
-          localParsePosition.setIndex(0);
-          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-          if (localParsePosition.getIndex() != 0) {
-            return localObject;
-          }
+          paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
+          return paramCompoundButton;
         }
-        else
+        catch (IllegalAccessException paramCompoundButton)
         {
-          return null;
+          label46:
+          break label46;
         }
+        a = null;
+        return null;
       }
-      i += 1;
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label23;
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    {
+      if ((paramCompoundButton instanceof fz)) {
+        ((fz)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      if ((paramCompoundButton instanceof fz)) {
+        ((fz)paramCompoundButton).setSupportButtonTintMode(paramMode);
+      }
     }
   }
 }

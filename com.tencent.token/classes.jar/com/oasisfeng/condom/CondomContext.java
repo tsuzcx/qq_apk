@@ -15,13 +15,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
 import android.os.UserHandle;
-import android.support.annotation.CheckResult;
 import android.support.annotation.Keep;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.Size;
-import android.util.Log;
 import com.oasisfeng.condom.util.Lazy;
+import com.tencent.token.kh;
 
 @Keep
 public class CondomContext
@@ -32,10 +28,9 @@ public class CondomContext
   private final Lazy<Context> mBaseContext;
   CondomCore mCondom;
   
-  private CondomContext(CondomCore paramCondomCore, @Nullable Context paramContext, @Nullable @Size(max=16L) String paramString)
+  private CondomContext(CondomCore paramCondomCore, Context paramContext, String paramString)
   {
     super(paramCondomCore.mBase);
-    Context localContext = paramCondomCore.mBase;
     this.mCondom = paramCondomCore;
     if (paramContext != null) {
       paramCondomCore = paramContext;
@@ -43,33 +38,23 @@ public class CondomContext
       paramCondomCore = this;
     }
     this.mApplicationContext = paramCondomCore;
-    this.mBaseContext = new Lazy()
-    {
-      protected Context a()
-      {
-        return new CondomContext.a(CondomContext.this);
-      }
-    };
+    this.mBaseContext = new Lazy() {};
     this.TAG = CondomCore.buildLogTag("Condom", "Condom.", paramString);
   }
   
-  @CheckResult
-  public static CondomContext wrap(Context paramContext, @Nullable @Size(max=13L) String paramString)
+  public static CondomContext wrap(Context paramContext, String paramString)
   {
     return wrap(paramContext, paramString, new CondomOptions());
   }
   
-  @CheckResult
-  public static CondomContext wrap(Context paramContext, @Nullable @Size(max=13L) String paramString, CondomOptions paramCondomOptions)
+  public static CondomContext wrap(Context paramContext, String paramString, CondomOptions paramCondomOptions)
   {
     if ((paramContext instanceof CondomContext))
     {
       paramContext = (CondomContext)paramContext;
-      paramString = new StringBuilder();
-      paramString.append("The wrapped context is already a CondomContext (tag: ");
+      paramString = new StringBuilder("The wrapped context is already a CondomContext (tag: ");
       paramString.append(paramContext.TAG);
       paramString.append("), tag and options specified here will be ignore.");
-      Log.w("Condom", paramString.toString());
       return paramContext;
     }
     Context localContext = paramContext.getApplicationContext();
@@ -77,14 +62,14 @@ public class CondomContext
     if ((localContext instanceof Application))
     {
       Application localApplication = (Application)localContext;
-      a locala = new a(localCondomCore, localApplication, paramString);
-      paramCondomOptions = new CondomContext(localCondomCore, locala, paramString);
+      kh localkh = new kh(localCondomCore, localApplication, paramString);
+      paramCondomOptions = new CondomContext(localCondomCore, localkh, paramString);
       if (paramContext == localContext) {
         paramContext = paramCondomOptions;
       } else {
         paramContext = new CondomContext(localCondomCore, localApplication, paramString);
       }
-      locala.attachBaseContext(paramContext);
+      localkh.attachBaseContext(paramContext);
       return paramCondomOptions;
     }
     if (paramContext == localContext) {
@@ -97,13 +82,7 @@ public class CondomContext
   
   public boolean bindService(final Intent paramIntent, final ServiceConnection paramServiceConnection, final int paramInt)
   {
-    boolean bool = ((Boolean)this.mCondom.proceed(OutboundType.BIND_SERVICE, paramIntent, Boolean.FALSE, new CondomCore.f()
-    {
-      public Boolean a()
-      {
-        return Boolean.valueOf(CondomContext.this.bindService(paramIntent, paramServiceConnection, paramInt));
-      }
-    })).booleanValue();
+    boolean bool = ((Boolean)this.mCondom.proceed(OutboundType.BIND_SERVICE, paramIntent, Boolean.FALSE, new CondomCore.f() {})).booleanValue();
     if (bool) {
       this.mCondom.logIfOutboundPass(this.TAG, paramIntent, CondomCore.getTargetPackage(paramIntent), CondomCore.CondomEvent.BIND_PASS);
     }
@@ -118,7 +97,6 @@ public class CondomContext
     return super.checkPermission(paramString, paramInt1, paramInt2);
   }
   
-  @RequiresApi(23)
   public int checkSelfPermission(String paramString)
   {
     if (this.mCondom.shouldSpoofPermission(paramString)) {
@@ -184,7 +162,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendBroadcast(paramIntent);
       }
@@ -195,7 +173,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendBroadcast(paramIntent, paramString);
       }
@@ -203,12 +181,11 @@ public class CondomContext
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle)
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle);
       }
@@ -216,12 +193,11 @@ public class CondomContext
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final String paramString)
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle, paramString);
       }
@@ -232,7 +208,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendOrderedBroadcast(paramIntent, paramString);
       }
@@ -243,7 +219,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendOrderedBroadcast(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
       }
@@ -251,12 +227,11 @@ public class CondomContext
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendOrderedBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final String paramString1, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString2, final Bundle paramBundle)
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
       }
@@ -268,7 +243,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendStickyBroadcast(paramIntent);
       }
@@ -276,12 +251,11 @@ public class CondomContext
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendStickyBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle)
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendStickyBroadcastAsUser(paramIntent, paramUserHandle);
       }
@@ -293,7 +267,7 @@ public class CondomContext
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendStickyOrderedBroadcast(paramIntent, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
       }
@@ -301,12 +275,11 @@ public class CondomContext
   }
   
   @SuppressLint({"MissingPermission"})
-  @RequiresApi(17)
   public void sendStickyOrderedBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString, final Bundle paramBundle)
   {
     this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
     {
-      public void a()
+      public final void b()
       {
         CondomContext.this.sendStickyOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
       }
@@ -319,31 +292,19 @@ public class CondomContext
       return this;
     }
     this.mCondom.mDryRun = paramBoolean;
-    if (paramBoolean)
-    {
-      Log.w(this.TAG, "Start dry-run mode, no outbound requests will be blocked actually, despite later stated in log.");
-      return this;
-    }
-    Log.w(this.TAG, "Stop dry-run mode.");
     return this;
   }
   
   public ComponentName startService(final Intent paramIntent)
   {
-    ComponentName localComponentName = (ComponentName)this.mCondom.proceed(OutboundType.START_SERVICE, paramIntent, null, new CondomCore.f()
-    {
-      public ComponentName a()
-      {
-        return CondomContext.this.startService(paramIntent);
-      }
-    });
+    ComponentName localComponentName = (ComponentName)this.mCondom.proceed(OutboundType.START_SERVICE, paramIntent, null, new CondomCore.f() {});
     if (localComponentName != null) {
       this.mCondom.logIfOutboundPass(this.TAG, paramIntent, localComponentName.getPackageName(), CondomCore.CondomEvent.START_PASS);
     }
     return localComponentName;
   }
   
-  private static class a
+  static final class a
     extends PseudoContextWrapper
   {
     public a(CondomContext paramCondomContext)

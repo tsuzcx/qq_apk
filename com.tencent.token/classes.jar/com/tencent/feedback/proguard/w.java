@@ -19,12 +19,10 @@ public final class w
     this.b.append(3, new a(3));
     this.b = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("S(@L@L");
-    localStringBuilder.append("@)");
+    localStringBuilder.append("S(@L@L@)");
     this.g = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    localStringBuilder.append("*^@K#K");
-    localStringBuilder.append("@!");
+    localStringBuilder.append("*^@K#K@!");
     this.f = localStringBuilder.toString();
   }
   

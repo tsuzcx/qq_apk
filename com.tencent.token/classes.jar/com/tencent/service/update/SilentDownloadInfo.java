@@ -13,14 +13,14 @@ public final class SilentDownloadInfo
   public int type = 0;
   public String url = "";
   
-  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new SilentDownloadInfo();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.title = paramJceInputStream.readString(0, false);
     this.msg = paramJceInputStream.readString(1, false);
@@ -29,7 +29,7 @@ public final class SilentDownloadInfo
     this.url = paramJceInputStream.readString(4, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     String str = this.title;
     if (str != null) {

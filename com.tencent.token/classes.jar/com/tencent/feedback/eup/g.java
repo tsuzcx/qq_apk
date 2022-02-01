@@ -1601,7 +1601,7 @@ public final class g
   {
     com.tencent.feedback.common.e.b("rqdp{  getEupInMe}", new Object[0]);
     if ((paramContext != null) && (paramInt > 0)) {}
-    label390:
+    label388:
     for (;;)
     {
       Object localObject1;
@@ -1609,9 +1609,9 @@ public final class g
       {
         long l = a.c();
         localObject1 = new ArrayList();
-        localObject2 = b.a(paramContext, paramInt, "desc", -1, null, -1, -1, -1, 3, l, -1L, Boolean.valueOf(false));
+        localObject2 = b.a(paramContext, paramInt, "desc", -1, null, -1, -1, -1, 3, l, -1L, Boolean.FALSE);
         if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-          break label380;
+          break label378;
         }
         com.tencent.feedback.common.e.b("rqdp{  tdeup ge c=1, n:}%d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
         ((List)localObject1).addAll((Collection)localObject2);
@@ -1622,7 +1622,7 @@ public final class g
         {
           localObject2 = b.a(paramContext, paramInt, "desc", -1, null, 2, -1, -1, 3, -1L, l, null);
           if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-            break label383;
+            break label381;
           }
           localStringBuilder = new StringBuilder("rqdp{  yeseup c>=2,n:}%d");
           localStringBuilder.append(((List)localObject2).size());
@@ -1632,9 +1632,9 @@ public final class g
           localObject2 = localObject1;
         }
         if (((List)localObject2).size() >= paramInt) {
-          break label390;
+          break label388;
         }
-        localObject1 = b.a(paramContext, paramInt, "desc", -1, null, 0, 1, -1, -1, 3L, l, Boolean.valueOf(false));
+        localObject1 = b.a(paramContext, paramInt, "desc", -1, null, 0, 1, -1, -1, 3L, l, Boolean.FALSE);
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
           localStringBuilder = new StringBuilder("rqdp{  yeseup c>=2,n:}%d");
@@ -1656,9 +1656,9 @@ public final class g
       }
       com.tencent.feedback.common.e.d("rqdp{  params!}", new Object[0]);
       return null;
-      label380:
+      label378:
       continue;
-      label383:
+      label381:
       Object localObject2 = localObject1;
     }
   }
@@ -1684,27 +1684,26 @@ public final class g
           catch (Throwable localThrowable)
           {
             if (com.tencent.feedback.common.e.a(localThrowable)) {
-              break label314;
+              break label298;
             }
           }
           localThrowable.printStackTrace();
-          break label314;
-          Object localObject2;
+          break label298;
           if (paramBoolean)
           {
             long l = a.c();
-            localObject2 = this.f.iterator();
+            Iterator localIterator = this.f.iterator();
             ArrayList localArrayList = new ArrayList();
-            if (((Iterator)localObject2).hasNext())
+            if (localIterator.hasNext())
             {
-              e locale = (e)((Iterator)localObject2).next();
+              e locale = (e)localIterator.next();
               if (locale.i() <= l) {
                 continue;
               }
               locale.b(true);
               locale.a(0);
               localArrayList.add(locale);
-              ((Iterator)localObject2).remove();
+              localIterator.remove();
               continue;
             }
             paramBoolean = b.b(this.c, localArrayList);
@@ -1713,10 +1712,7 @@ public final class g
           }
           else
           {
-            int i = b.a(this.c, this.f);
-            localObject2 = new StringBuilder("rqdp{  rm n:}");
-            ((StringBuilder)localObject2).append(i);
-            com.tencent.feedback.common.e.b(((StringBuilder)localObject2).toString(), new Object[0]);
+            com.tencent.feedback.common.e.b("rqdp{  rm n:}".concat(String.valueOf(b.a(this.c, this.f))), new Object[0]);
           }
         }
         this.e = null;
@@ -1726,7 +1722,7 @@ public final class g
       finally {}
       String str = "FAIL";
       continue;
-      label314:
+      label298:
       paramBoolean = false;
     }
   }

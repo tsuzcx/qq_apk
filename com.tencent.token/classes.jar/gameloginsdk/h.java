@@ -1,8 +1,8 @@
 package gameloginsdk;
 
-import b.a.g;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.eg;
+import com.tencent.token.agw;
+import com.tencent.token.ju;
 import java.util.concurrent.atomic.AtomicLong;
 
 class h
@@ -27,40 +27,29 @@ class h
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = eg.a;
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = eg.a;
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("回包超时  gameLoginCallback   retCode : ");
-      paramJceStruct.append(paramInt3);
-      paramJceStruct.toString();
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
-    paramJceStruct = (g)paramJceStruct;
-    paramInt1 = eg.a;
+    paramJceStruct = (ju)paramJceStruct;
+    paramInt1 = agw.a;
     long l = paramJceStruct.a;
     paramInt1 = paramJceStruct.b;
     l = paramJceStruct.c;
     if (paramInt3 == 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SCGameLogin timestamp : ");
-      localStringBuilder.append(paramJceStruct.c);
-      localStringBuilder.toString();
+      new StringBuilder("SCGameLogin timestamp : ").append(paramJceStruct.c);
       if (!this.a.g.a(paramJceStruct.a))
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("忽略这个包，因为没收到过SCConfirm包的reqid : ");
-        localStringBuilder.append(paramJceStruct.a);
-        localStringBuilder.toString();
-        paramInt1 = eg.a;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("忽略这个包，因为没收到过包的reqid : ");
+        new StringBuilder("忽略这个包，因为没收到过SCConfirm包的reqid : ").append(paramJceStruct.a);
+        paramInt1 = agw.a;
+        StringBuilder localStringBuilder = new StringBuilder("忽略这个包，因为没收到过包的reqid : ");
         localStringBuilder.append(paramJceStruct.a);
         localStringBuilder.toString();
         return;
@@ -82,21 +71,12 @@ class h
       this.b = paramInt1;
       if (paramInt1 < 3)
       {
-        if (this.c != null)
-        {
-          paramJceStruct = new StringBuilder();
-          paramJceStruct.append("resendGameLoginInfo retCode : ");
-          paramJceStruct.append(paramInt3);
-          paramJceStruct.toString();
+        if (this.c != null) {
           this.a.a(this);
         }
       }
       else
       {
-        paramJceStruct = new StringBuilder();
-        paramJceStruct.append("sendGameLoginInfo --- retCode = ");
-        paramJceStruct.append(paramInt3);
-        paramJceStruct.toString();
         a(paramInt3, (int)this.d);
         this.b = 0;
       }

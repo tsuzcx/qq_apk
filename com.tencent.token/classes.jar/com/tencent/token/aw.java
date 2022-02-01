@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public abstract interface aw
 {
-  public abstract void a();
+  public abstract au getLifecycle();
 }
 
 

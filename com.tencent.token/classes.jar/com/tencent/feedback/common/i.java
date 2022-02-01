@@ -13,7 +13,7 @@ import com.tencent.feedback.upload.d;
 public class i
   implements s, x
 {
-  protected final Context a;
+  public final Context a;
   private int b;
   private int c;
   private int d;
@@ -229,46 +229,46 @@ public class i
           if (!bool1) {
             break label367;
           }
-          if (bool2) {
-            break label362;
-          }
-          if (i()) {
-            break label367;
-          }
-          z localz = com.tencent.feedback.proguard.a.a(this.a, this.d);
-          if (localz != null)
+          if (!bool2)
           {
-            d locald = l();
-            if (locald == null)
-            {
-              e.c("rqdp{  imposiable eup reshandler not ready}", new Object[0]);
+            if (i()) {
               break label367;
             }
-            locald.a(this.d, localz.c(), false);
-          }
-          if (i()) {
-            break label367;
-          }
-          break label362;
-          e.b("rqdp{  needDetail} %b rqdp{  allQ:}%b rqdp{  result:}%b", new Object[] { Boolean.valueOf(locala.d()), Boolean.valueOf(localw.g()), Boolean.valueOf(bool1) });
-          if (g() <= 0) {
-            break label372;
-          }
-          j = 1;
-          if (j != 0)
-          {
-            e.b("rqdp{  asyn up module} %d", new Object[] { Integer.valueOf(this.b) });
-            b.b().a(new Runnable()
+            z localz = com.tencent.feedback.proguard.a.a(this.a, this.d);
+            if (localz != null)
             {
-              public final void run()
+              d locald = l();
+              if (locald == null)
               {
-                i.this.h();
+                e.c("rqdp{  imposiable eup reshandler not ready}", new Object[0]);
+                break label367;
               }
-            });
-            return;
-          }
-          if (bool1)
-          {
+              locald.a(this.d, localz.c(), false);
+            }
+            if (i()) {
+              break label367;
+            }
+            break label362;
+            e.b("rqdp{  needDetail} %b rqdp{  allQ:}%b rqdp{  result:}%b", new Object[] { Boolean.valueOf(locala.d()), Boolean.valueOf(localw.g()), Boolean.valueOf(bool1) });
+            if (g() <= 0) {
+              break label372;
+            }
+            j = 1;
+            if (j != 0)
+            {
+              e.b("rqdp{  asyn up module} %d", new Object[] { Integer.valueOf(this.b) });
+              b.b().a(new Runnable()
+              {
+                public final void run()
+                {
+                  i.this.h();
+                }
+              });
+              return;
+            }
+            if (!bool1) {
+              break;
+            }
             e.b("rqdp{  asyn query module }%d", new Object[] { Integer.valueOf(this.b) });
             b.b().a(new Runnable()
             {
@@ -291,8 +291,8 @@ public class i
           localThrowable.printStackTrace();
         }
         e.d("rqdp{  common query end error} %s", new Object[] { localThrowable.toString() });
+        return;
       }
-      return;
       label362:
       boolean bool1 = true;
       continue;

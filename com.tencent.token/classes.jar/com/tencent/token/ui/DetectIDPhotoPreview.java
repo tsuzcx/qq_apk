@@ -1,13 +1,17 @@
 package com.tencent.token.ui;
 
 import android.content.Context;
+import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.jni.FaceDetector.IdCardDirection;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
+import com.tencent.token.xu;
 
 public class DetectIDPhotoPreview
   extends SurfaceView
@@ -15,7 +19,7 @@ public class DetectIDPhotoPreview
 {
   private Context a;
   private SurfaceHolder b;
-  private e c;
+  private xu c;
   private Handler d;
   private FaceDetector.IdCardDirection e;
   
@@ -25,17 +29,17 @@ public class DetectIDPhotoPreview
     this.a = paramContext;
   }
   
-  public void a()
+  public final void a()
   {
-    e locale = this.c;
-    if (locale != null)
+    xu localxu = this.c;
+    if (localxu != null)
     {
-      locale.b();
+      localxu.b();
       this.c = null;
     }
   }
   
-  public void a(Context paramContext, Handler paramHandler)
+  public final void a(Context paramContext, Handler paramHandler)
   {
     this.a = paramContext;
     this.d = paramHandler;
@@ -51,9 +55,9 @@ public class DetectIDPhotoPreview
   
   public void setStop(boolean paramBoolean)
   {
-    e locale = this.c;
-    if (locale != null) {
-      locale.a(paramBoolean);
+    xu localxu = this.c;
+    if (localxu != null) {
+      localxu.a = paramBoolean;
     }
   }
   
@@ -64,8 +68,43 @@ public class DetectIDPhotoPreview
     }
     if (this.c == null)
     {
-      this.c = new e(getContext(), paramSurfaceHolder, this.d, this.e);
-      this.c.a();
+      this.c = new xu(getContext(), paramSurfaceHolder, this.d, this.e);
+      paramSurfaceHolder = this.c;
+      if (paramSurfaceHolder.d == null)
+      {
+        Object localObject = new Camera.CameraInfo();
+        paramInt2 = Camera.getNumberOfCameras();
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
+        {
+          Camera.getCameraInfo(paramInt1, (Camera.CameraInfo)localObject);
+          if (((Camera.CameraInfo)localObject).facing == 0) {
+            try
+            {
+              paramSurfaceHolder.d = Camera.open(paramInt1);
+            }
+            catch (RuntimeException localRuntimeException)
+            {
+              StringBuilder localStringBuilder = new StringBuilder("CameraOpen camera=");
+              localStringBuilder.append(paramSurfaceHolder.d);
+              xb.c(localStringBuilder.toString());
+              localRuntimeException.printStackTrace();
+            }
+          }
+          paramInt1 += 1;
+        }
+        if (paramSurfaceHolder.d == null)
+        {
+          localObject = new StringBuilder("CameraOpen camera=");
+          ((StringBuilder)localObject).append(paramSurfaceHolder.d);
+          xb.c(((StringBuilder)localObject).toString());
+          localObject = paramSurfaceHolder.b.obtainMessage(0);
+          ((Message)localObject).what = 2;
+          ((Message)localObject).sendToTarget();
+        }
+        paramSurfaceHolder.a();
+        paramSurfaceHolder.c = System.currentTimeMillis();
+      }
     }
   }
   
@@ -73,7 +112,7 @@ public class DetectIDPhotoPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    g.c("surfaceDestroyed!");
+    xb.c("surfaceDestroyed!");
     try
     {
       a();

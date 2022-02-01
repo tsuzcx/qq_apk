@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 final class ErrMsg$1
   implements Parcelable.Creator<ErrMsg>
 {
-  public ErrMsg createFromParcel(Parcel paramParcel)
+  public final ErrMsg createFromParcel(Parcel paramParcel)
   {
     return new ErrMsg(paramParcel, null);
   }
   
-  public ErrMsg[] newArray(int paramInt)
+  public final ErrMsg[] newArray(int paramInt)
   {
     return new ErrMsg[paramInt];
   }

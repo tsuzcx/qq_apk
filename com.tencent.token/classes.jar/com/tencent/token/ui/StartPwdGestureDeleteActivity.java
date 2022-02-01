@@ -15,18 +15,20 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.bv;
-import com.tencent.token.bw;
-import com.tencent.token.ca;
-import com.tencent.token.ce;
+import com.tencent.token.aad;
+import com.tencent.token.ahh;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
+import com.tencent.token.ru;
+import com.tencent.token.rv;
+import com.tencent.token.rv.a;
+import com.tencent.token.rz;
+import com.tencent.token.sd;
+import com.tencent.token.ta;
 import com.tencent.token.ui.base.LockPatternVerifyView;
 import com.tencent.token.ui.base.LockPatternVerifyView.b;
-import com.tencent.token.utils.l;
+import com.tencent.token.wz;
+import com.tencent.token.xb;
 
 public class StartPwdGestureDeleteActivity
   extends BaseActivity
@@ -34,7 +36,7 @@ public class StartPwdGestureDeleteActivity
   private int mActivityType;
   private Handler mHandler = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (StartPwdGestureDeleteActivity.this.isFinishing()) {
         return;
@@ -57,61 +59,60 @@ public class StartPwdGestureDeleteActivity
         {
           localObject1 = StartPwdGestureDeleteActivity.this;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(StartPwdGestureDeleteActivity.this.getResources().getString(2131493554));
+          ((StringBuilder)localObject2).append(StartPwdGestureDeleteActivity.this.getResources().getString(2131493555));
           ((StringBuilder)localObject2).append(":");
           ((StringBuilder)localObject2).append(paramAnonymousMessage.getData().getString("exception"));
           ((StartPwdGestureDeleteActivity)localObject1).showToast(((StringBuilder)localObject2).toString());
           return;
         }
-        StartPwdGestureDeleteActivity.this.showToast(2131493554);
+        StartPwdGestureDeleteActivity.this.showToast(2131493555);
         return;
       }
       if (paramAnonymousMessage.arg1 == 0)
       {
         StartPwdGestureDeleteActivity.this.dismissDialog();
-        paramAnonymousMessage = cs.a().e();
+        paramAnonymousMessage = ta.a().k.b();
         if (paramAnonymousMessage == null)
         {
-          bv.a().a(System.currentTimeMillis(), 23);
+          ru.a().a(System.currentTimeMillis(), 23);
           paramAnonymousMessage = StartPwdGestureDeleteActivity.this;
           paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493243, 2131493237);
           return;
         }
         StartPwdGestureDeleteActivity.this.dismissDialog();
-        localObject1 = ca.a(StartPwdGestureDeleteActivity.this.getApplicationContext());
+        localObject1 = rz.a(StartPwdGestureDeleteActivity.this.getApplicationContext());
         localObject2 = StartPwdGestureDeleteActivity.this;
         Handler localHandler = ((StartPwdGestureDeleteActivity)localObject2).mHandler;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramAnonymousMessage.mRealUin);
-        localStringBuilder.append("");
-        ((ca)localObject1).a((Activity)localObject2, 523005419L, localHandler, localStringBuilder.toString());
+        ((rz)localObject1).a((Activity)localObject2, localHandler, localStringBuilder.toString());
         return;
       }
       StartPwdGestureDeleteActivity.this.dismissDialog();
-      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+      paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
       StartPwdGestureDeleteActivity.this.showUserDialog(paramAnonymousMessage.c);
     }
   };
   private LockPatternVerifyView.b mListener = new LockPatternVerifyView.b()
   {
-    public void a()
+    public final void a()
     {
-      ce.a().a(StartPwdGestureDeleteActivity.this);
+      sd.a().e();
       StartPwdGestureDeleteActivity.this.setResult(257);
       SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).edit();
       localEditor.clear();
       localEditor.commit();
-      if (!ce.a().c()) {
+      if (!sd.a().c()) {
         StartPwdGestureDeleteActivity.this.pwdIsDelete();
       }
     }
     
-    public void a(boolean paramAnonymousBoolean)
+    public final void a(boolean paramAnonymousBoolean)
     {
       StartPwdGestureDeleteActivity localStartPwdGestureDeleteActivity = StartPwdGestureDeleteActivity.this;
       localStartPwdGestureDeleteActivity.showUserDialog(2131492986, localStartPwdGestureDeleteActivity.getResources().getString(2131493259), 2131493040, new DialogInterface.OnClickListener()
       {
-        public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+        public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
         {
           StartPwdGestureDeleteActivity.access$302(StartPwdGestureDeleteActivity.this, 3);
           StartPwdGestureDeleteActivity.this.gotoQuickLoginWb();
@@ -119,7 +120,7 @@ public class StartPwdGestureDeleteActivity
       });
     }
     
-    public void b()
+    public final void b()
     {
       StartPwdGestureDeleteActivity.access$302(StartPwdGestureDeleteActivity.this, 1);
       StartPwdGestureDeleteActivity.this.gotoQuickLoginWb();
@@ -128,33 +129,33 @@ public class StartPwdGestureDeleteActivity
   
   private void gotoQuickLoginWb()
   {
-    QQUser localQQUser = cs.a().e();
+    QQUser localQQUser = ta.a().k.b();
     if ((localQQUser != null) && (localQQUser.mRealUin > 0L))
     {
-      ca localca = ca.a(getApplicationContext());
+      rz localrz = rz.a(getApplicationContext());
       Handler localHandler = this.mHandler;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(localQQUser.b());
-      localca.a(this, 523005419L, localHandler, localStringBuilder.toString());
+      localStringBuilder.append(localQQUser.mRealUin);
+      localrz.a(this, localHandler, localStringBuilder.toString());
       return;
     }
-    bw.a().e(this.mHandler);
+    rv.a.a().c(this.mHandler);
     showProDialog(this, 2131492986, 2131493441, null);
   }
   
   private void judgeNextStep()
   {
     dismissDialog();
-    ce.a().a(this);
+    sd.a().e();
     RqdApplication.k();
-    l.a(null, FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    ce.a().a(this, 0);
+    aad.a(FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
+    sd.a();
+    sd.a(0);
     setResult(257);
     SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("start_pwd_config", 0).edit();
     localEditor.clear();
     localEditor.commit();
-    if (!ce.a().c()) {
+    if (!sd.a().c()) {
       pwdIsDelete();
     }
   }
@@ -164,9 +165,9 @@ public class StartPwdGestureDeleteActivity
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
       showUserDialog(2131492986, getString(paramInt1), paramInt2, 2131493029, new DialogInterface.OnClickListener()
       {
-        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          ce.a().a(paramContext);
+          sd.a().e();
           RqdApplication.k();
           StartPwdGestureDeleteActivity.this.setResult(35);
           StartPwdGestureDeleteActivity.this.finish();
@@ -178,17 +179,16 @@ public class StartPwdGestureDeleteActivity
   public void finish()
   {
     super.finish();
-    l.a(this, 0);
+    aad.a(this, 0);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("verify gesture: resultCode=");
+    StringBuilder localStringBuilder = new StringBuilder("verify gesture: resultCode=");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(", requestCode=");
     localStringBuilder.append(paramInt1);
-    g.c(localStringBuilder.toString());
+    xb.c(localStringBuilder.toString());
     if ((paramInt1 == 256) && (paramInt2 == 257))
     {
       setResult(35);
@@ -196,7 +196,7 @@ public class StartPwdGestureDeleteActivity
       return;
     }
     if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
-      ca.a(getApplicationContext()).a(paramIntent);
+      rz.a(getApplicationContext()).a(paramIntent);
     }
   }
   
@@ -204,9 +204,9 @@ public class StartPwdGestureDeleteActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2131296447);
-    ((ViewStub)findViewById(2131166268)).inflate();
-    paramBundle = (LockPatternVerifyView)findViewById(2131165718);
+    setContentView(2131296448);
+    ((ViewStub)findViewById(2131166281)).inflate();
+    paramBundle = (LockPatternVerifyView)findViewById(2131165722);
     paramBundle.setVerifyListener(this.mListener);
     paramBundle.setAnimType(2);
     this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
@@ -220,7 +220,7 @@ public class StartPwdGestureDeleteActivity
     setResult(257);
     new Handler().post(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         StartPwdGestureDeleteActivity.this.finish();
       }

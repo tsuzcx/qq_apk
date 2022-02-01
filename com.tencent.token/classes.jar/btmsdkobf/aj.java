@@ -14,12 +14,12 @@ public final class aj
   public String title = "";
   public int type = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new aj();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.title = paramJceInputStream.readString(0, false);
     this.msg = paramJceInputStream.readString(1, false);
@@ -29,7 +29,7 @@ public final class aj
     this.bgColor = paramJceInputStream.read(this.bgColor, 5, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     String str = this.title;
     if (str != null) {

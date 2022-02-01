@@ -12,13 +12,12 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.token.dz;
+import com.tencent.token.abk;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -91,7 +90,7 @@ public class ShowLogActivity
     //   85: invokeinterface 139 1 0
     //   90: iconst_3
     //   91: isub
-    //   92: ifle +53 -> 145
+    //   92: ifle +57 -> 149
     //   95: aload 4
     //   97: invokeinterface 139 1 0
     //   102: iconst_3
@@ -105,31 +104,35 @@ public class ShowLogActivity
     //   114: invokevirtual 147	java/io/BufferedReader:close	()V
     //   117: return
     //   118: astore_3
-    //   119: goto +14 -> 133
+    //   119: goto +16 -> 135
     //   122: astore_3
     //   123: aload_3
     //   124: invokevirtual 150	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   127: invokestatic 155	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   130: goto -17 -> 113
-    //   133: aload_1
-    //   134: invokevirtual 147	java/io/BufferedReader:close	()V
-    //   137: aload_3
-    //   138: athrow
-    //   139: astore_1
-    //   140: return
+    //   127: invokestatic 155	com/tencent/token/xb:c	(Ljava/lang/String;)V
+    //   130: aload_1
+    //   131: invokevirtual 147	java/io/BufferedReader:close	()V
+    //   134: return
+    //   135: aload_1
+    //   136: invokevirtual 147	java/io/BufferedReader:close	()V
+    //   139: aload_3
+    //   140: athrow
     //   141: astore_1
-    //   142: goto -5 -> 137
-    //   145: iconst_0
-    //   146: istore_2
-    //   147: goto -39 -> 108
+    //   142: return
+    //   143: astore_1
+    //   144: return
+    //   145: astore_1
+    //   146: goto -7 -> 139
+    //   149: iconst_0
+    //   150: istore_2
+    //   151: goto -43 -> 108
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	150	0	this	ShowLogActivity
-    //   0	150	1	paramBufferedReader	BufferedReader
-    //   104	43	2	i	int
+    //   0	154	0	this	ShowLogActivity
+    //   0	154	1	paramBufferedReader	BufferedReader
+    //   104	47	2	i	int
     //   39	70	3	localObject1	Object
     //   118	1	3	localObject2	Object
-    //   122	16	3	localIOException	java.io.IOException
+    //   122	18	3	localIOException	java.io.IOException
     //   33	63	4	localArrayList	ArrayList
     //   24	50	5	locala	a
     // Exception table:
@@ -143,13 +146,14 @@ public class ShowLogActivity
     //   44	62	122	java/io/IOException
     //   65	105	122	java/io/IOException
     //   108	113	122	java/io/IOException
-    //   113	117	139	java/io/IOException
-    //   133	137	141	java/io/IOException
+    //   113	117	141	java/io/IOException
+    //   130	134	143	java/io/IOException
+    //   135	139	145	java/io/IOException
   }
   
   private void clearLog()
   {
-    new b(null).execute(new Void[0]);
+    new b((byte)0).execute(new Void[0]);
   }
   
   private SpannableString highlightLog(String paramString)
@@ -187,12 +191,12 @@ public class ShowLogActivity
   
   private void initData()
   {
-    this.mAdapter = new c(null);
+    this.mAdapter = new c((byte)0);
     this.mListView.setAdapter(this.mAdapter);
     this.mListView.setRefreshTime(System.currentTimeMillis());
     this.mListView.setOnRefreshListener(new PullToRefreshListView.a()
     {
-      public void onRefresh()
+      public final void onRefresh()
       {
         ShowLogActivity.this.loadMoreLogs();
       }
@@ -205,7 +209,7 @@ public class ShowLogActivity
     {
       this.mLogs = new ArrayList();
       d locald = new d();
-      locald.a = new a(1024, true);
+      locald.a = new a();
       locald.b = -1;
       this.mLogs.add(locald);
     }
@@ -213,15 +217,15 @@ public class ShowLogActivity
   
   private void initUI()
   {
-    setContentView(2131296442);
-    this.mListView = ((PullToRefreshListView)findViewById(2131165685));
-    View localView = LayoutInflater.from(this).inflate(2131296379, this.mListView, false);
+    setContentView(2131296443);
+    this.mListView = ((PullToRefreshListView)findViewById(2131165689));
+    View localView = LayoutInflater.from(this).inflate(2131296380, this.mListView, false);
+    localView.setVisibility(8);
+    this.mListView.addFooterView(localView);
+    localView = LayoutInflater.from(this).inflate(2131296377, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     localView = LayoutInflater.from(this).inflate(2131296376, this.mListView, false);
-    localView.setVisibility(8);
-    this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2131296375, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     this.mListView.setScrollingCacheEnabled(true);
@@ -243,7 +247,7 @@ public class ShowLogActivity
         if (((d)localObject).b + 1 >= 2) {
           return;
         }
-        BufferedReader localBufferedReader = dz.b(((d)localObject).b + 1);
+        BufferedReader localBufferedReader = abk.b(((d)localObject).b + 1);
         if (localBufferedReader != null)
         {
           addData(localBufferedReader);
@@ -266,7 +270,7 @@ public class ShowLogActivity
       localObject = ((d)((List)localObject).get(this.mCurrType)).a;
       updateData((a)localObject);
       this.mListView.setSelection(this.mAdapter.getCount() - 1);
-      if (((a)localObject).a() <= 0) {
+      if (((a)localObject).a.size() <= 0) {
         loadMoreLogs();
       }
       return;
@@ -275,8 +279,13 @@ public class ShowLogActivity
   
   private void updateData(a parama)
   {
-    this.mAdapter.a(parama);
-    this.mListView.b();
+    c localc = this.mAdapter;
+    localc.a.clear();
+    if (parama != null) {
+      parama.a(localc.a);
+    }
+    localc.notifyDataSetChanged();
+    this.mListView.b(0);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -293,23 +302,12 @@ public class ShowLogActivity
     super.onResume();
   }
   
-  private static class a
+  static final class a
   {
-    private final List<CharSequence> a = new LinkedList();
-    private final boolean b;
+    final List<CharSequence> a = new LinkedList();
+    private final boolean b = true;
     
-    public a(int paramInt, boolean paramBoolean)
-    {
-      if (paramInt >= 0) {}
-      this.b = paramBoolean;
-    }
-    
-    public int a()
-    {
-      return this.a.size();
-    }
-    
-    public Collection<CharSequence> a(Collection<CharSequence> paramCollection)
+    public final Collection<CharSequence> a(Collection<CharSequence> paramCollection)
     {
       Object localObject = paramCollection;
       if (paramCollection == null) {}
@@ -323,28 +321,7 @@ public class ShowLogActivity
       finally {}
     }
     
-    public void a(List<CharSequence> paramList)
-    {
-      if (paramList != null) {
-        try
-        {
-          if (paramList.size() != 0)
-          {
-            int i;
-            if (this.b) {
-              i = 0;
-            } else {
-              i = this.a.size();
-            }
-            this.a.addAll(i, paramList);
-            return;
-          }
-        }
-        finally {}
-      }
-    }
-    
-    public void b()
+    public final void a()
     {
       try
       {
@@ -357,38 +334,38 @@ public class ShowLogActivity
         throw localObject;
       }
     }
+    
+    public final void a(List<CharSequence> paramList)
+    {
+      try
+      {
+        int i = paramList.size();
+        if (i == 0) {
+          return;
+        }
+        if (this.b) {
+          i = 0;
+        } else {
+          i = this.a.size();
+        }
+        this.a.addAll(i, paramList);
+        return;
+      }
+      finally {}
+    }
   }
   
-  private class b
+  final class b
     extends AsyncTask<Void, Void, Void>
   {
     private b() {}
     
-    protected Void a(Void... paramVarArgs)
-    {
-      dz.h();
-      paramVarArgs = ShowLogActivity.this.mLogs.iterator();
-      while (paramVarArgs.hasNext())
-      {
-        ShowLogActivity.d locald = (ShowLogActivity.d)paramVarArgs.next();
-        locald.a.b();
-        locald.b = -1;
-      }
-      return null;
-    }
-    
-    protected void a(Void paramVoid)
-    {
-      ShowLogActivity.this.updateData(null);
-      ShowLogActivity.this.dismissDialog();
-    }
-    
-    protected void onPreExecute()
+    protected final void onPreExecute()
     {
       ShowLogActivity localShowLogActivity = ShowLogActivity.this;
-      localShowLogActivity.showProDialog(localShowLogActivity, 2131493567, new View.OnClickListener()
+      localShowLogActivity.showProDialog(localShowLogActivity, 2131493568, new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           ShowLogActivity.this.dismissDialog();
         }
@@ -396,44 +373,35 @@ public class ShowLogActivity
     }
   }
   
-  private class c
+  final class c
     extends BaseAdapter
   {
-    private List<CharSequence> b = new ArrayList();
+    List<CharSequence> a = new ArrayList();
     
     private c() {}
     
-    public CharSequence a(int paramInt)
+    private CharSequence a(int paramInt)
     {
-      return (CharSequence)this.b.get(paramInt);
+      return (CharSequence)this.a.get(paramInt);
     }
     
-    public void a(ShowLogActivity.a parama)
+    public final int getCount()
     {
-      this.b.clear();
-      if (parama != null) {
-        parama.a(this.b);
-      }
-      notifyDataSetChanged();
+      return this.a.size();
     }
     
-    public int getCount()
-    {
-      return this.b.size();
-    }
-    
-    public long getItemId(int paramInt)
+    public final long getItemId(int paramInt)
     {
       return paramInt;
     }
     
-    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       if (paramView == null)
       {
-        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296443, null);
-        paramViewGroup = new a(null);
-        paramViewGroup.a = ((TextView)paramView.findViewById(2131165686));
+        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296444, null);
+        paramViewGroup = new a((byte)0);
+        paramViewGroup.a = ((TextView)paramView.findViewById(2131165690));
         paramView.setTag(paramViewGroup);
       }
       else
@@ -445,7 +413,7 @@ public class ShowLogActivity
       paramViewGroup.setText(localCharSequence);
       paramViewGroup.setOnLongClickListener(new View.OnLongClickListener()
       {
-        public boolean onLongClick(View paramAnonymousView)
+        public final boolean onLongClick(View paramAnonymousView)
         {
           return true;
         }
@@ -453,7 +421,7 @@ public class ShowLogActivity
       return paramView;
     }
     
-    private class a
+    final class a
     {
       TextView a;
       
@@ -461,7 +429,7 @@ public class ShowLogActivity
     }
   }
   
-  public class d
+  public final class d
   {
     public ShowLogActivity.a a;
     public int b;

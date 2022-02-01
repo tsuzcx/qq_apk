@@ -9,8 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.j;
-import com.tencent.token.utils.a;
+import com.tencent.token.kt;
+import com.tencent.token.kt.a;
+import com.tencent.token.zt;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -25,36 +26,25 @@ public class GuideQQPimSecureTipsView
   public GuideQQPimSecureTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296358, this, true);
+    this.b = ((TextView)findViewById(2131166108));
+    this.c = ((TextView)findViewById(2131166107));
+    this.d = ((ImageView)findViewById(2131165657));
   }
   
-  private void a(Context paramContext)
-  {
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296357, this, true);
-    this.b = ((TextView)findViewById(2131166102));
-    this.c = ((TextView)findViewById(2131166101));
-    this.d = ((ImageView)findViewById(2131165653));
-  }
-  
-  public void a()
-  {
-    if (getVisibility() == 0) {
-      boolean bool = a;
-    }
-  }
-  
-  public void a(final String paramString1, String paramString2, String paramString3, String paramString4, final ArrayList<String> paramArrayList, final boolean paramBoolean)
+  public final void a(final String paramString1, String paramString2, String paramString3, String paramString4, final ArrayList<String> paramArrayList, final boolean paramBoolean)
   {
     this.b.setText(paramString2);
     this.c.setText(paramString3);
     if (!TextUtils.isEmpty(paramString4)) {
-      new a(this.d).execute(new String[] { paramString4 });
+      new zt(this.d).execute(new String[] { paramString4 });
     }
     setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
-        j.a().a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
+        paramAnonymousView = kt.a.a;
+        kt.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
         GuideQQPimSecureTipsView.this.setVisibility(8);
         GuideQQPimSecureTipsView.a = true;
         if (paramBoolean)

@@ -13,12 +13,12 @@ public final class ap
   public String cW = "";
   public String cX = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ap();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.cU = ((an)paramJceInputStream.read(cY, 0, true));
     this.cV = paramJceInputStream.readString(1, true);
@@ -26,7 +26,7 @@ public final class ap
     this.cX = paramJceInputStream.readString(3, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cU, 0);
     paramJceOutputStream.write(this.cV, 1);

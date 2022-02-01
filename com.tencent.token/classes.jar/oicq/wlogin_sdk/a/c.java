@@ -17,7 +17,7 @@ public class c
     util.int8_to_buf(arrayOfByte, 0, paramInt);
     util.int8_to_buf(arrayOfByte, 1, paramArrayOfByte.length);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 2, paramArrayOfByte.length);
-    util.int64_to_buf32(arrayOfByte, 2 + paramArrayOfByte.length, paramLong);
+    util.int64_to_buf32(arrayOfByte, paramArrayOfByte.length + 2, paramLong);
     return a(arrayOfByte);
   }
 }

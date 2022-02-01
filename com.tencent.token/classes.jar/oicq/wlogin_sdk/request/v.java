@@ -26,68 +26,49 @@ public class v
   
   public int a(long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte, String paramString, int paramInt2, int paramInt3, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int m = t.w;
     int i = 0;
+    int j;
     for (;;)
     {
-      Object localObject = a(paramLong1, paramLong2, paramInt1, j, paramArrayOfByte, paramString.getBytes(), paramInt2, paramInt3, paramArrayOfLong);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject);
+      Object localObject = a(paramLong1, paramLong2, paramInt1, m, paramArrayOfByte, paramString.getBytes(), paramInt2, paramInt3, paramArrayOfLong);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject);
       int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      j = k;
       if (k != 0) {
-        return k;
+        break;
       }
       k = b();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("retry num:");
+      localObject = new StringBuilder("retry num:");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" ret:");
       ((StringBuilder)localObject).append(k);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
       localStringBuilder.append(this.x.f);
       util.LOGI((String)localObject, localStringBuilder.toString());
+      j = k;
       if (k != 180) {
-        return k;
+        break;
       }
-      if (i >= 1) {
+      if (i > 0) {
         return k;
       }
       i += 1;
     }
+    return j;
   }
   
   public byte[] a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, long[] paramArrayOfLong)
   {
-    int[] arrayOfInt = new int[9];
-    int[] tmp8_6 = arrayOfInt;
-    tmp8_6[0] = 256;
-    int[] tmp14_8 = tmp8_6;
-    tmp14_8[1] = 264;
-    int[] tmp20_14 = tmp14_8;
-    tmp20_14[2] = 265;
-    int[] tmp26_20 = tmp20_14;
-    tmp26_20[3] = 8;
-    int[] tmp31_26 = tmp26_20;
-    tmp31_26[4] = 322;
-    int[] tmp37_31 = tmp31_26;
-    tmp37_31[5] = 325;
-    int[] tmp43_37 = tmp37_31;
-    tmp43_37[6] = 340;
-    int[] tmp50_43 = tmp43_37;
-    tmp50_43[7] = 274;
-    int[] tmp57_50 = tmp50_43;
-    tmp57_50[8] = 278;
-    tmp57_50;
     ArrayList localArrayList = new ArrayList();
-    int i1 = tmp14_8.length;
     int j = 0;
     int k = 0;
     int m;
-    for (int i = 0; j < i1; i = m)
+    for (int i = 0; j < 9; i = m)
     {
       byte[] arrayOfByte = new byte[0];
-      m = tmp14_8[j];
+      m = new int[] { 256, 264, 265, 8, 322, 325, 340, 274, 278 }[j];
       if (m != 8)
       {
         if (m != 256)

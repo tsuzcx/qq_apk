@@ -1,122 +1,123 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import okhttp3.aa;
-import okhttp3.t;
-import okhttp3.t.a;
-import okhttp3.x;
-import okhttp3.y;
-import okhttp3.z;
-import okhttp3.z.a;
-import okio.d;
-import okio.k;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RadialGradient;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 public final class fn
-  implements t
+  extends ImageView
 {
-  private final boolean a;
+  public Animation.AnimationListener a;
+  int b;
   
-  public fn(boolean paramBoolean)
+  public fn(Context paramContext)
   {
-    this.a = paramBoolean;
+    super(paramContext);
+    float f = getContext().getResources().getDisplayMetrics().density;
+    int i = (int)(1.75F * f);
+    int j = (int)(0.0F * f);
+    this.b = ((int)(3.5F * f));
+    if (a())
+    {
+      paramContext = new ShapeDrawable(new OvalShape());
+      ex.a(this, f * 4.0F);
+    }
+    else
+    {
+      paramContext = new ShapeDrawable(new a(this.b));
+      setLayerType(1, paramContext.getPaint());
+      paramContext.getPaint().setShadowLayer(this.b, j, i, 503316480);
+      i = this.b;
+      setPadding(i, i, i, i);
+    }
+    paramContext.getPaint().setColor(-328966);
+    ex.a(this, paramContext);
   }
   
-  public z a(t.a parama)
+  private static boolean a()
   {
-    fs localfs = (fs)parama;
-    fo localfo = localfs.g();
-    okhttp3.internal.connection.f localf = localfs.f();
-    okhttp3.internal.connection.c localc = (okhttp3.internal.connection.c)localfs.e();
-    x localx = localfs.a();
-    long l = System.currentTimeMillis();
-    localfs.i().c(localfs.h());
-    localfo.a(localx);
-    localfs.i().a(localfs.h(), localx);
-    boolean bool = fr.c(localx.b());
-    d locald = null;
-    Object localObject = null;
-    parama = locald;
-    if (bool)
-    {
-      parama = locald;
-      if (localx.d() != null)
-      {
-        if ("100-continue".equalsIgnoreCase(localx.a("Expect")))
-        {
-          localfo.a();
-          localfs.i().e(localfs.h());
-          localObject = localfo.a(true);
-        }
-        if (localObject == null)
-        {
-          localfs.i().d(localfs.h());
-          parama = new a(localfo.a(localx, localx.d().b()));
-          locald = k.a(parama);
-          localx.d().a(locald);
-          locald.close();
-          localfs.i().a(localfs.h(), parama.a);
-          parama = (t.a)localObject;
-        }
-        else
-        {
-          parama = (t.a)localObject;
-          if (!localc.d())
-          {
-            localf.e();
-            parama = (t.a)localObject;
-          }
-        }
-      }
-    }
-    localfo.b();
-    localObject = parama;
-    if (parama == null)
-    {
-      localfs.i().e(localfs.h());
-      localObject = localfo.a(false);
-    }
-    parama = ((z.a)localObject).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-    int j = parama.b();
-    int i = j;
-    if (j == 100)
-    {
-      parama = localfo.a(false).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-      i = parama.b();
-    }
-    localfs.i().a(localfs.h(), parama);
-    if ((this.a) && (i == 101)) {
-      parama = parama.f().a(ff.c).a();
-    } else {
-      parama = parama.f().a(localfo.a(parama)).a();
-    }
-    if (("close".equalsIgnoreCase(parama.a().a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
-      localf.e();
-    }
-    if (((i != 204) && (i != 205)) || (parama.e().a() <= 0L)) {
-      return parama;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("HTTP ");
-    ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(" had non-zero Content-Length: ");
-    ((StringBuilder)localObject).append(parama.e().a());
-    throw new ProtocolException(((StringBuilder)localObject).toString());
+    return Build.VERSION.SDK_INT >= 21;
   }
   
-  static final class a
-    extends okio.f
+  public final void onAnimationEnd()
   {
-    long a;
+    super.onAnimationEnd();
+    Animation.AnimationListener localAnimationListener = this.a;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationEnd(getAnimation());
+    }
+  }
+  
+  public final void onAnimationStart()
+  {
+    super.onAnimationStart();
+    Animation.AnimationListener localAnimationListener = this.a;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationStart(getAnimation());
+    }
+  }
+  
+  protected final void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(paramInt1, paramInt2);
+    if (!a()) {
+      setMeasuredDimension(getMeasuredWidth() + this.b * 2, getMeasuredHeight() + this.b * 2);
+    }
+  }
+  
+  public final void setBackgroundColor(int paramInt)
+  {
+    if ((getBackground() instanceof ShapeDrawable)) {
+      ((ShapeDrawable)getBackground()).getPaint().setColor(paramInt);
+    }
+  }
+  
+  final class a
+    extends OvalShape
+  {
+    private RadialGradient b;
+    private Paint c = new Paint();
     
-    a(okio.p paramp)
+    a(int paramInt)
     {
-      super();
+      fn.this.b = paramInt;
+      a((int)rect().width());
     }
     
-    public void a_(okio.c paramc, long paramLong)
+    private void a(int paramInt)
     {
-      super.a_(paramc, paramLong);
-      this.a += paramLong;
+      float f1 = paramInt / 2;
+      float f2 = fn.this.b;
+      Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+      this.b = new RadialGradient(f1, f1, f2, new int[] { 1023410176, 0 }, null, localTileMode);
+      this.c.setShader(this.b);
+    }
+    
+    public final void draw(Canvas paramCanvas, Paint paramPaint)
+    {
+      int j = fn.this.getWidth();
+      int i = fn.this.getHeight();
+      j /= 2;
+      float f1 = j;
+      float f2 = i / 2;
+      paramCanvas.drawCircle(f1, f2, f1, this.c);
+      paramCanvas.drawCircle(f1, f2, j - fn.this.b, paramPaint);
+    }
+    
+    protected final void onResize(float paramFloat1, float paramFloat2)
+    {
+      super.onResize(paramFloat1, paramFloat2);
+      a((int)paramFloat1);
     }
   }
 }

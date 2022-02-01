@@ -55,59 +55,44 @@ public class p
     localObject1 = localObject3;
     for (;;)
     {
+      int k = i;
       localObject2 = a(localtlv_t104.get_data(), paramArrayOfByte, localtlv_t174.get_data(), paramInt1, paramInt2, paramArrayOfLong, ((async_context)localObject1)._G);
       a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject2);
-      int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-      if (k != 0) {
-        return k;
+      int m = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      i = m;
+      if (m != 0) {
+        break;
       }
-      int m = b();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("retry num:");
-      ((StringBuilder)localObject2).append(i);
+      m = b();
+      localObject2 = new StringBuilder("retry num:");
+      ((StringBuilder)localObject2).append(k);
       ((StringBuilder)localObject2).append(" ret:");
       ((StringBuilder)localObject2).append(m);
       localObject2 = ((StringBuilder)localObject2).toString();
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(this.x.f);
       util.LOGI((String)localObject2, ((StringBuilder)localObject3).toString());
+      i = m;
       if (m != 180) {
+        break;
+      }
+      i = k + 1;
+      if (k > 0) {
         return m;
       }
-      k = i + 1;
-      if (i >= 1) {
-        return m;
-      }
-      i = k;
     }
+    return i;
   }
   
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte4)
   {
-    int[] arrayOfInt = new int[7];
-    int[] tmp8_6 = arrayOfInt;
-    tmp8_6[0] = 8;
-    int[] tmp13_8 = tmp8_6;
-    tmp13_8[1] = 260;
-    int[] tmp19_13 = tmp13_8;
-    tmp19_13[2] = 278;
-    int[] tmp25_19 = tmp19_13;
-    tmp25_19[3] = 372;
-    int[] tmp31_25 = tmp25_19;
-    tmp31_25[4] = 380;
-    int[] tmp37_31 = tmp31_25;
-    tmp37_31[5] = 1025;
-    int[] tmp43_37 = tmp37_31;
-    tmp43_37[6] = 408;
-    tmp43_37;
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     int k;
-    for (int i = 0; j < arrayOfInt.length; i = k)
+    for (int i = 0; j < 7; i = k)
     {
       Object localObject = null;
-      k = arrayOfInt[j];
+      k = new int[] { 8, 260, 278, 372, 380, 1025, 408 }[j];
       if (k != 8)
       {
         if (k != 260)

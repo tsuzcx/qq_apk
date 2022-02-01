@@ -42,7 +42,7 @@ public final class DynamicInputStream
     return JceField.create(str, paramHeadData.tag);
   }
   
-  public JceField read()
+  public final JceField read()
   {
     try
     {
@@ -62,8 +62,7 @@ public final class DynamicInputStream
           this.bs.get((byte[])localObject1);
           return JceField.create((byte[])localObject1, i);
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("type mismatch, simple_list only support byte, tag: ");
+        localObject2 = new StringBuilder("type mismatch, simple_list only support byte, tag: ");
         ((StringBuilder)localObject2).append(i);
         ((StringBuilder)localObject2).append(", type: ");
         ((StringBuilder)localObject2).append(((JceInputStream.HeadData)localObject1).type);
@@ -84,52 +83,55 @@ public final class DynamicInputStream
     for (;;)
     {
       Object localObject3 = read();
-      if (localObject3 == null) {
-        return JceField.createStruct((JceField[])((List)localObject2).toArray(new JceField[0]), ((JceInputStream.HeadData)localObject1).tag);
-      }
-      ((List)localObject2).add(localObject3);
-      continue;
-      j = ((NumberField)read()).intValue();
-      localObject2 = new JceField[j];
-      for (;;)
+      if (localObject3 != null)
       {
-        if (i < j)
+        ((List)localObject2).add(localObject3);
+      }
+      else
+      {
+        return JceField.createStruct((JceField[])((List)localObject2).toArray(new JceField[0]), ((JceInputStream.HeadData)localObject1).tag);
+        j = ((NumberField)read()).intValue();
+        localObject2 = new JceField[j];
+        for (;;)
         {
-          localObject2[i] = read();
-          i += 1;
-        }
-        else
-        {
-          return JceField.createList((JceField[])localObject2, ((JceInputStream.HeadData)localObject1).tag);
-          k = ((NumberField)read()).intValue();
-          localObject2 = new JceField[k];
-          localObject3 = new JceField[k];
-          i = j;
-          for (;;)
+          if (i < j)
           {
-            if (i < k)
+            localObject2[i] = read();
+            i += 1;
+          }
+          else
+          {
+            return JceField.createList((JceField[])localObject2, ((JceInputStream.HeadData)localObject1).tag);
+            k = ((NumberField)read()).intValue();
+            localObject2 = new JceField[k];
+            localObject3 = new JceField[k];
+            i = j;
+            for (;;)
             {
-              localObject2[i] = read();
-              localObject3[i] = read();
-              i += 1;
-            }
-            else
-            {
-              return JceField.createMap((JceField[])localObject2, (JceField[])localObject3, ((JceInputStream.HeadData)localObject1).tag);
-              return readString((JceInputStream.HeadData)localObject1, this.bs.getInt());
-              j = this.bs.get();
-              i = j;
-              if (j < 0) {
-                i = j + 256;
+              if (i < k)
+              {
+                localObject2[i] = read();
+                localObject3[i] = read();
+                i += 1;
               }
-              return readString((JceInputStream.HeadData)localObject1, i);
-              return JceField.create(this.bs.getDouble(), ((JceInputStream.HeadData)localObject1).tag);
-              return JceField.create(this.bs.getFloat(), ((JceInputStream.HeadData)localObject1).tag);
-              return JceField.create(this.bs.getLong(), ((JceInputStream.HeadData)localObject1).tag);
-              return JceField.create(this.bs.getInt(), ((JceInputStream.HeadData)localObject1).tag);
-              return JceField.create(this.bs.getShort(), ((JceInputStream.HeadData)localObject1).tag);
-              localObject1 = JceField.create(this.bs.get(), ((JceInputStream.HeadData)localObject1).tag);
-              return localObject1;
+              else
+              {
+                return JceField.createMap((JceField[])localObject2, (JceField[])localObject3, ((JceInputStream.HeadData)localObject1).tag);
+                return readString((JceInputStream.HeadData)localObject1, this.bs.getInt());
+                j = this.bs.get();
+                i = j;
+                if (j < 0) {
+                  i = j + 256;
+                }
+                return readString((JceInputStream.HeadData)localObject1, i);
+                return JceField.create(this.bs.getDouble(), ((JceInputStream.HeadData)localObject1).tag);
+                return JceField.create(this.bs.getFloat(), ((JceInputStream.HeadData)localObject1).tag);
+                return JceField.create(this.bs.getLong(), ((JceInputStream.HeadData)localObject1).tag);
+                return JceField.create(this.bs.getInt(), ((JceInputStream.HeadData)localObject1).tag);
+                return JceField.create(this.bs.getShort(), ((JceInputStream.HeadData)localObject1).tag);
+                localObject1 = JceField.create(this.bs.get(), ((JceInputStream.HeadData)localObject1).tag);
+                return localObject1;
+              }
             }
           }
         }
@@ -139,7 +141,7 @@ public final class DynamicInputStream
     return null;
   }
   
-  public int setServerEncoding(String paramString)
+  public final int setServerEncoding(String paramString)
   {
     this.sServerEncoding = paramString;
     return 0;

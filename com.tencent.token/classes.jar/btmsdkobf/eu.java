@@ -34,7 +34,7 @@ public abstract interface eu
       return true;
     }
     
-    private static class a
+    static final class a
       implements eu
     {
       private IBinder a;
@@ -44,7 +44,7 @@ public abstract interface eu
         this.a = paramIBinder;
       }
       
-      public String a(String paramString1, String paramString2, String paramString3)
+      public final String a(String paramString1, String paramString2, String paramString3)
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -66,7 +66,7 @@ public abstract interface eu
         }
       }
       
-      public IBinder asBinder()
+      public final IBinder asBinder()
       {
         return this.a;
       }

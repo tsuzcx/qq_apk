@@ -5,9 +5,12 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.cd;
-import com.tencent.token.ce;
-import com.tencent.token.cf;
+import android.os.AsyncTask;
+import com.tencent.token.qz;
+import com.tencent.token.sd;
+import com.tencent.token.se;
+import com.tencent.token.se.2;
+import com.tencent.token.xb;
 
 public class WidgetReceiver
   extends BroadcastReceiver
@@ -28,16 +31,23 @@ public class WidgetReceiver
         ((AlarmManager)paramContext.getSystemService("alarm")).cancel(paramIntent);
         return;
       }
-      if (paramIntent.equals("com.tencent.token.widget.SPEECH"))
+      if ("com.tencent.token.widget.SPEECH".equals(paramIntent))
       {
-        paramIntent = cd.c();
-        ce localce = ce.a();
-        if ((!paramIntent.g()) && (!localce.c()))
+        paramIntent = sd.a();
+        if ((!qz.a().d()) && (!paramIntent.c()))
         {
-          cf.a(paramContext).a(paramIntent.l(), 0);
-          return;
+          paramContext = se.a(paramContext);
+          paramIntent = qz.a().f();
+          xb.a("start play token1");
+          if (!paramContext.b)
+          {
+            paramContext.b = true;
+            xb.a("start play token2");
+            new se.2(paramContext, paramIntent).execute(new String[] { Integer.toString(0) });
+          }
         }
       }
+      return;
     }
     catch (Exception paramContext)
     {

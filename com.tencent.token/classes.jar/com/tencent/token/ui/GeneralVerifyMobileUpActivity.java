@@ -16,16 +16,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.bw;
-import com.tencent.token.cc;
-import com.tencent.token.cd;
-import com.tencent.token.cn;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cs;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
+import com.tencent.token.rv;
+import com.tencent.token.rv.a;
+import com.tencent.token.sb;
+import com.tencent.token.ta;
+import com.tencent.token.wz;
+import com.tencent.token.xb;
+import com.tencent.token.yk;
 
 public class GeneralVerifyMobileUpActivity
   extends BaseActivity
@@ -38,7 +38,7 @@ public class GeneralVerifyMobileUpActivity
   private TextView mCountry_number;
   private Handler mHandler = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (GeneralVerifyMobileUpActivity.this.isFinishing()) {
         return;
@@ -59,7 +59,7 @@ public class GeneralVerifyMobileUpActivity
                 return;
               case 4: 
                 paramAnonymousMessage = GeneralVerifyMobileUpActivity.this;
-                paramAnonymousMessage.showUserDialog(2131492986, paramAnonymousMessage.getResources().getString(2131493733), 2131493040, null);
+                paramAnonymousMessage.showUserDialog(2131492986, paramAnonymousMessage.getResources().getString(2131493735), 2131493040, null);
                 return;
               }
               GeneralVerifyMobileUpActivity.access$302(GeneralVerifyMobileUpActivity.this, 0);
@@ -73,16 +73,15 @@ public class GeneralVerifyMobileUpActivity
               GeneralVerifyMobileUpActivity.this.setActiveSucc();
               return;
             }
-            paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-            e.a(GeneralVerifyMobileUpActivity.this.getResources(), paramAnonymousMessage);
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("query up flow failed:");
+            paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
+            wz.a(GeneralVerifyMobileUpActivity.this.getResources(), paramAnonymousMessage);
+            localObject = new StringBuilder("query up flow failed:");
             ((StringBuilder)localObject).append(paramAnonymousMessage.a);
             ((StringBuilder)localObject).append("-");
             ((StringBuilder)localObject).append(paramAnonymousMessage.b);
             ((StringBuilder)localObject).append("-");
             ((StringBuilder)localObject).append(paramAnonymousMessage.c);
-            g.c(((StringBuilder)localObject).toString());
+            xb.c(((StringBuilder)localObject).toString());
             GeneralVerifyMobileUpActivity.this.showBindFailDialog(paramAnonymousMessage.c);
             return;
           }
@@ -90,14 +89,14 @@ public class GeneralVerifyMobileUpActivity
           {
             if (!GeneralVerifyMobileUpActivity.this.mVerifyType.a(Integer.valueOf(GeneralVerifyMobileUpActivity.this.mVerifyFactorId)))
             {
-              paramAnonymousMessage = u.a();
+              paramAnonymousMessage = yk.a();
               localObject = GeneralVerifyMobileUpActivity.this;
               paramAnonymousMessage.a((Activity)localObject, ((GeneralVerifyMobileUpActivity)localObject).mVerifyResult, GeneralVerifyMobileUpActivity.this.mVerifyType, GeneralVerifyMobileUpActivity.this.mVerifyType.a(GeneralVerifyMobileUpActivity.this.mVerifyFactorId), false, GeneralVerifyMobileUpActivity.this.mHandler);
               return;
             }
             if (GeneralVerifyMobileUpActivity.this.mVerifyResult.b())
             {
-              cc.a().b(GeneralVerifyMobileUpActivity.this.mUser.mRealUin, GeneralVerifyMobileUpActivity.this.mVerifyType.a(), GeneralVerifyMobileUpActivity.this.mMobile, GeneralVerifyMobileUpActivity.this.mCountryCode, GeneralVerifyMobileUpActivity.this.mHandler);
+              sb.a().b(GeneralVerifyMobileUpActivity.this.mUser.mRealUin, GeneralVerifyMobileUpActivity.this.mVerifyType.verifyTypeId, GeneralVerifyMobileUpActivity.this.mMobile, GeneralVerifyMobileUpActivity.this.mCountryCode, GeneralVerifyMobileUpActivity.this.mHandler);
               return;
             }
             GeneralVerifyMobileUpActivity.this.dismissDialog();
@@ -109,8 +108,8 @@ public class GeneralVerifyMobileUpActivity
             GeneralVerifyMobileUpActivity.this.startActivity(paramAnonymousMessage);
             return;
           }
-          paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-          e.a(GeneralVerifyMobileUpActivity.this.getResources(), paramAnonymousMessage);
+          paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
+          wz.a(GeneralVerifyMobileUpActivity.this.getResources(), paramAnonymousMessage);
           if ((paramAnonymousMessage.a == 146) && (GeneralVerifyMobileUpActivity.this.mRetryTimes < 4))
           {
             postDelayed(GeneralVerifyMobileUpActivity.this.mVrySMSRunnable, 10000L);
@@ -122,7 +121,7 @@ public class GeneralVerifyMobileUpActivity
         GeneralVerifyMobileUpActivity.this.dismissDialog();
         paramAnonymousMessage = new Intent(GeneralVerifyMobileUpActivity.this, VerifySuccActivity.class);
         paramAnonymousMessage.putExtra("mRealUin", GeneralVerifyMobileUpActivity.this.mUser.mRealUin);
-        if ((GeneralVerifyMobileUpActivity.this.mVerifyResult != null) && (GeneralVerifyMobileUpActivity.this.mVerifyResult.c() == 2)) {
+        if ((GeneralVerifyMobileUpActivity.this.mVerifyResult != null) && (GeneralVerifyMobileUpActivity.this.mVerifyResult.mScene == 2)) {
           paramAnonymousMessage.putExtra("mSourceId", 1);
         }
         GeneralVerifyMobileUpActivity.this.startActivity(paramAnonymousMessage);
@@ -152,15 +151,15 @@ public class GeneralVerifyMobileUpActivity
   private DeterminVerifyFactorsResult.VerifyTypeItem mVerifyType;
   Runnable mVrySMSRunnable = new Runnable()
   {
-    public void run()
+    public final void run()
     {
       int i;
       if (GeneralVerifyMobileUpActivity.this.mVerifyType != null) {
-        i = GeneralVerifyMobileUpActivity.this.mVerifyType.a();
+        i = GeneralVerifyMobileUpActivity.this.mVerifyType.verifyTypeId;
       } else {
         i = 0;
       }
-      cc.a().a(0L, GeneralVerifyMobileUpActivity.this.mUser.mRealUin, 1007, i, GeneralVerifyMobileUpActivity.this.mHandler);
+      sb.a().a(0L, GeneralVerifyMobileUpActivity.this.mUser.mRealUin, 1007, i, GeneralVerifyMobileUpActivity.this.mHandler);
       GeneralVerifyMobileUpActivity.access$308(GeneralVerifyMobileUpActivity.this);
     }
   };
@@ -168,33 +167,29 @@ public class GeneralVerifyMobileUpActivity
   
   private void setActiveSucc()
   {
-    Object localObject = cd.c();
-    ((cd)localObject).i();
-    ((cd)localObject).n();
-    localObject = new StringBuilder();
+    Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.mUser.mRealUin);
-    ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    cs.a().f(Long.parseLong((String)localObject));
-    bw.a().e(this.mHandler);
+    ta.a().f(Long.parseLong((String)localObject));
+    rv.a.a().c(this.mHandler);
   }
   
   private void showBindFailDialog(String paramString)
   {
     showUserDialog(2131492922, paramString, 2131493040, new DialogInterface.OnClickListener()
     {
-      public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
   }
   
   private void showFailDialog(String paramString)
   {
-    showUserDialog(2131493654, paramString, 2131493040, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+    showUserDialog(2131493656, paramString, 2131493040, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
     {
-      public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     }, new DialogInterface.OnCancelListener()
     {
-      public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
   }
   
@@ -204,12 +199,12 @@ public class GeneralVerifyMobileUpActivity
     {
       if ((this.mIsModSetSucc) && (paramKeyEvent.getAction() == 0)) {
         if (paramKeyEvent.getKeyCode() == 4) {
-          break label115;
+          break label110;
         }
       }
       if ((this.isFirstFactor) && (paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        startActivity(u.a().a(this));
+        startActivity(yk.a().a(this));
         return true;
       }
       boolean bool = super.dispatchKeyEvent(paramKeyEvent);
@@ -218,14 +213,13 @@ public class GeneralVerifyMobileUpActivity
     catch (Exception paramKeyEvent)
     {
       paramKeyEvent.printStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("dispatchKeyEvent exception ");
+      StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      g.d(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       return true;
     }
-    label115:
+    label110:
     return true;
   }
   
@@ -236,17 +230,14 @@ public class GeneralVerifyMobileUpActivity
     {
       this.mHandler.sendEmptyMessage(3);
       startTimeTask();
-      g.b("startTimeTask onActivityResult");
+      xb.b("startTimeTask onActivityResult");
       return;
     }
     if (paramInt2 == 0) {
       return;
     }
     paramIntent = paramIntent.getStringExtra("name");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("+");
-    localStringBuilder.append(paramInt2);
-    this.mCountryCode = localStringBuilder.toString();
+    this.mCountryCode = "+".concat(String.valueOf(paramInt2));
     this.mCountry_name.setText(paramIntent);
     this.mCountry_number.setText(this.mCountryCode);
   }
@@ -272,23 +263,23 @@ public class GeneralVerifyMobileUpActivity
       paramBundle = this.mVerifyResult;
       if ((paramBundle != null) && (this.mVerifyType != null))
       {
-        if ((paramBundle != null) && (paramBundle.c() == 2)) {
+        if ((paramBundle != null) && (paramBundle.mScene == 2)) {
           setNeverShowLockVerifyView();
         }
-        setContentView(2131296351);
-        this.mMobile = this.mVerifyResult.g();
-        findViewById(2131165769).setOnClickListener(new View.OnClickListener()
+        setContentView(2131296352);
+        this.mMobile = this.mVerifyResult.mMobileMask;
+        findViewById(2131165773).setOnClickListener(new View.OnClickListener()
         {
-          public void onClick(View paramAnonymousView)
+          public final void onClick(View paramAnonymousView)
           {
             paramAnonymousView = GeneralVerifyMobileUpActivity.this;
-            paramAnonymousView.sendUpSmsBySMSAPP(paramAnonymousView.mVerifyResult.e(), GeneralVerifyMobileUpActivity.this.mVerifyResult.d());
+            paramAnonymousView.sendUpSmsBySMSAPP(paramAnonymousView.mVerifyResult.mSMSChannel, GeneralVerifyMobileUpActivity.this.mVerifyResult.mSMSContent);
             GeneralVerifyMobileUpActivity.this.showProgressDialog();
           }
         });
-        findViewById(2131165353).setOnClickListener(new View.OnClickListener()
+        findViewById(2131165355).setOnClickListener(new View.OnClickListener()
         {
-          public void onClick(View paramAnonymousView)
+          public final void onClick(View paramAnonymousView)
           {
             paramAnonymousView = new Intent(GeneralVerifyMobileUpActivity.this, SmsContentTipActivity.class);
             paramAnonymousView.putExtra("intent.qquser", GeneralVerifyMobileUpActivity.this.mUser);
@@ -299,10 +290,10 @@ public class GeneralVerifyMobileUpActivity
             GeneralVerifyMobileUpActivity.this.startActivity(paramAnonymousView);
           }
         });
-        ((TextView)findViewById(2131165736)).setText(this.mVerifyResult.g());
-        ((TextView)findViewById(2131165373)).setOnClickListener(new View.OnClickListener()
+        ((TextView)findViewById(2131165740)).setText(this.mVerifyResult.mMobileMask);
+        ((TextView)findViewById(2131165375)).setOnClickListener(new View.OnClickListener()
         {
-          public void onClick(View paramAnonymousView)
+          public final void onClick(View paramAnonymousView)
           {
             paramAnonymousView = new Intent(GeneralVerifyMobileUpActivity.this, NetActiveVryOtherListActivity.class);
             paramAnonymousView.putExtra("intent.qquser", GeneralVerifyMobileUpActivity.this.mUser);
@@ -322,19 +313,17 @@ public class GeneralVerifyMobileUpActivity
   {
     super.onDestroy();
     this.mIsRunning = false;
-    u.c();
+    yk.b();
   }
   
   public void onResume()
   {
     super.onResume();
-    cd.c().a.a(this.mHandler);
   }
   
   public void onStop()
   {
     super.onStop();
-    cd.c().a.a(null);
   }
   
   public void removeTimeTask()
@@ -348,7 +337,7 @@ public class GeneralVerifyMobileUpActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          g.c("removeTimeTask removeTimeTask");
+          xb.c("removeTimeTask removeTimeTask");
           removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
@@ -366,10 +355,7 @@ public class GeneralVerifyMobileUpActivity
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("smsto:");
-      localStringBuilder.append(paramString1);
-      paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse(localStringBuilder.toString()));
+      paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:".concat(String.valueOf(paramString1))));
       paramString1.putExtra("sms_body", paramString2);
       startActivityForResult(paramString1, 0);
       return;
@@ -377,7 +363,7 @@ public class GeneralVerifyMobileUpActivity
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      g.b(paramString1.toString());
+      xb.b(paramString1.toString());
     }
   }
   
@@ -387,9 +373,9 @@ public class GeneralVerifyMobileUpActivity
     if (this.isFirstFactor) {
       this.mBackArrow.setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
-          paramAnonymousView = u.a().a(GeneralVerifyMobileUpActivity.this);
+          paramAnonymousView = yk.a().a(GeneralVerifyMobileUpActivity.this);
           GeneralVerifyMobileUpActivity.this.startActivity(paramAnonymousView);
         }
       });
@@ -398,11 +384,11 @@ public class GeneralVerifyMobileUpActivity
   
   public void showProgressDialog()
   {
-    showProDialog(this, 2131493802, 2131492947, new View.OnClickListener()
+    showProDialog(this, 2131493804, 2131492947, new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
-        g.c("removeTimeTask showProgressDialog");
+        xb.c("removeTimeTask showProgressDialog");
         GeneralVerifyMobileUpActivity.this.removeTimeTask();
       }
     });

@@ -36,14 +36,13 @@ public final class b
         if (paramArrayOfByte.length == 0) {
           return null;
         }
-        int k = paramArrayOfByte.length;
-        int i = 0;
-        if (j + 0 <= k)
+        if (j + 0 <= paramArrayOfByte.length)
         {
           localObject = new char[j * 2];
+          int i = 0;
           while (i < j)
           {
-            k = paramArrayOfByte[i];
+            int k = paramArrayOfByte[i];
             int m = i * 2;
             char[] arrayOfChar = a;
             localObject[(m + 1)] = arrayOfChar[(k & 0xF)];
@@ -52,8 +51,7 @@ public final class b
           }
           return new String((char[])localObject);
         }
-        Object localObject = new StringBuilder("offset + length(");
-        ((StringBuilder)localObject).append(0);
+        Object localObject = new StringBuilder("offset + length(0");
         ((StringBuilder)localObject).append(j);
         ((StringBuilder)localObject).append(") > bytes.length(");
         ((StringBuilder)localObject).append(paramArrayOfByte.length);

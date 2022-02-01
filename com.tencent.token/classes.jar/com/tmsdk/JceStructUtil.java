@@ -1,6 +1,5 @@
 package com.tmsdk;
 
-import android.util.Log;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -34,10 +33,7 @@ public class JceStructUtil
       }
       catch (Exception paramArrayOfByte)
       {
-        paramT = new StringBuilder();
-        paramT.append("getJceStruct exception: ");
-        paramT.append(paramArrayOfByte);
-        Log.e("JceStructUtil", paramT.toString());
+        new StringBuilder("getJceStruct exception: ").append(paramArrayOfByte);
         return null;
       }
     }

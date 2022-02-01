@@ -41,7 +41,7 @@ public final class RequestPacket
     this.status = paramMap2;
   }
   
-  public Object clone()
+  public final Object clone()
   {
     try
     {
@@ -56,13 +56,13 @@ public final class RequestPacket
     return null;
   }
   
-  public boolean equals(Object paramObject)
+  public final boolean equals(Object paramObject)
   {
     paramObject = (RequestPacket)paramObject;
     return (JceUtil.equals(1, paramObject.iVersion)) && (JceUtil.equals(1, paramObject.cPacketType)) && (JceUtil.equals(1, paramObject.iMessageType)) && (JceUtil.equals(1, paramObject.iRequestId)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sServantName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sFuncName)) && (JceUtil.equals(Integer.valueOf(1), paramObject.sBuffer)) && (JceUtil.equals(1, paramObject.iTimeout)) && (JceUtil.equals(Integer.valueOf(1), paramObject.context)) && (JceUtil.equals(Integer.valueOf(1), paramObject.status));
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     try
     {
@@ -79,14 +79,16 @@ public final class RequestPacket
       this.iTimeout = paramJceInputStream.read(this.iTimeout, 8, true);
       if (cache_context == null)
       {
-        cache_context = new HashMap();
-        cache_context.put("", "");
+        localObject = new HashMap();
+        cache_context = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.context = ((Map)paramJceInputStream.read(cache_context, 9, true));
       if (cache_context == null)
       {
-        cache_context = new HashMap();
-        cache_context.put("", "");
+        localObject = new HashMap();
+        cache_context = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.status = ((Map)paramJceInputStream.read(cache_context, 10, true));
       return;
@@ -94,16 +96,15 @@ public final class RequestPacket
     catch (Exception paramJceInputStream)
     {
       paramJceInputStream.printStackTrace();
-      PrintStream localPrintStream = System.out;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("RequestPacket decode error ");
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder("RequestPacket decode error ");
       localStringBuilder.append(WupHexUtil.bytes2HexStr(this.sBuffer));
-      localPrintStream.println(localStringBuilder.toString());
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(paramJceInputStream);
     }
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iVersion, 1);
     paramJceOutputStream.write(this.cPacketType, 2);

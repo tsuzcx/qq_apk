@@ -418,11 +418,14 @@ public final class JceUtil
   
   public static int hashCode(Object paramObject)
   {
-    if (paramObject == null) {
-      return 629;
-    }
-    if (paramObject.getClass().isArray())
+    for (;;)
     {
+      if (paramObject == null) {
+        return 629;
+      }
+      if (!paramObject.getClass().isArray()) {
+        break;
+      }
       if ((paramObject instanceof long[])) {
         return hashCode((long[])paramObject);
       }
@@ -450,7 +453,7 @@ public final class JceUtil
       if ((paramObject instanceof JceStruct[])) {
         return hashCode((JceStruct[])paramObject);
       }
-      return hashCode((Object[])paramObject);
+      paramObject = (Object[])paramObject;
     }
     if ((paramObject instanceof JceStruct)) {
       return paramObject.hashCode();

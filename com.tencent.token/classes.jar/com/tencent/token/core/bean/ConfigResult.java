@@ -2,10 +2,10 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.dz;
-import com.tencent.token.global.g;
-import com.tencent.token.utils.e;
-import com.tencent.token.utils.i;
+import com.tencent.token.aaa;
+import com.tencent.token.abk;
+import com.tencent.token.xb;
+import com.tencent.token.zx;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -66,8 +66,7 @@ public class ConfigResult
     this.schemaKey = paramJSONObject.getString("schema_key");
     this.schemaTimeout = paramJSONObject.getInt("schema_timeout");
     this.utilsShowFlag = paramJSONObject.getInt("icon_show_flag");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("ConfigResult mStartUpImgUrl=");
+    Object localObject = new StringBuilder("ConfigResult mStartUpImgUrl=");
     ((StringBuilder)localObject).append(this.mStartUpImgUrl);
     ((StringBuilder)localObject).append("mStartUpImgStartTime=");
     ((StringBuilder)localObject).append(this.mStartUpImgStartTime);
@@ -75,7 +74,7 @@ public class ConfigResult
     ((StringBuilder)localObject).append(this.schemaKey);
     ((StringBuilder)localObject).append("schemaTimeout=");
     ((StringBuilder)localObject).append(this.schemaTimeout);
-    g.b(((StringBuilder)localObject).toString());
+    xb.b(((StringBuilder)localObject).toString());
     this.so_param_ids = paramJSONObject.optString("so_param_ids");
     this.so_param_values = paramJSONObject.optString("so_param_values");
     this.mFaceRecognitionParamResult = new FaceRecognitionParamResult(paramJSONObject);
@@ -121,46 +120,46 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 2: 
-                dz.a(48);
+                abk.a(48);
                 break;
-                dz.a(48);
+                abk.a(48);
                 break;
               case 1: 
-                dz.a(60);
+                abk.a(60);
                 break;
               case 0: 
-                dz.a(63);
+                abk.a(63);
                 try
                 {
-                  this.uploadDate = paramJSONObject.getInt("upload_date");
+                  if (paramJSONObject.has("upload_date")) {
+                    this.uploadDate = paramJSONObject.getInt("upload_date");
+                  }
                   if (this.uploadDate >= 0)
                   {
-                    i.b("debug.file.uploadfiledate", this.uploadDate).commit();
-                    paramJSONObject = new StringBuilder();
-                    paramJSONObject.append("log file upload date=");
+                    aaa.b("debug.file.uploadfiledate", this.uploadDate).commit();
+                    paramJSONObject = new StringBuilder("log file upload date=");
                     paramJSONObject.append(this.uploadDate);
-                    g.a(paramJSONObject.toString());
-                    paramJSONObject = new File(dz.b(), "upload.file");
-                    if (paramJSONObject.exists())
-                    {
-                      e.a(paramJSONObject);
-                      return;
+                    xb.a(paramJSONObject.toString());
+                    paramJSONObject = new File(abk.b(), "upload.file");
+                    if (paramJSONObject.exists()) {
+                      zx.a(paramJSONObject);
                     }
                   }
+                  return;
                 }
                 catch (Exception paramJSONObject)
                 {
                   paramJSONObject.printStackTrace();
                   return;
                 }
-                return;
+                localException1 = localException1;
               }
             }
             catch (Exception paramJSONObject)
             {
               paramJSONObject.printStackTrace();
+              return;
             }
-            localException1 = localException1;
           }
           localException2 = localException2;
         }

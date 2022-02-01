@@ -10,18 +10,18 @@ public final class y
   public int aY = 0;
   public int cmdId = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new y();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aY = paramJceInputStream.read(this.aY, 0, false);
     this.cmdId = paramJceInputStream.read(this.cmdId, 1, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     int i = this.aY;
     if (i != 0) {

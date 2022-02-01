@@ -13,8 +13,8 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.xb;
 
 public class FreezeUinDialog
   extends Dialog
@@ -26,10 +26,10 @@ public class FreezeUinDialog
   private Context e;
   private Handler f;
   
-  public FreezeUinDialog(Context paramContext, int paramInt1, String paramString, int paramInt2, Handler paramHandler)
+  public FreezeUinDialog(Context paramContext, String paramString, int paramInt, Handler paramHandler)
   {
-    super(paramContext, paramInt1);
-    this.a = paramInt2;
+    super(paramContext, 2131558791);
+    this.a = paramInt;
     this.b = paramString;
     this.e = paramContext;
     this.f = paramHandler;
@@ -38,26 +38,26 @@ public class FreezeUinDialog
   protected void onCreate(final Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296349);
+    setContentView(2131296350);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.c = ((TextView)findViewById(2131165536));
+    this.c = ((TextView)findViewById(2131165538));
     paramBundle = String.format(this.e.getString(2131493189), new Object[] { this.b });
     this.c.setText(paramBundle);
-    this.d = ((TextView)findViewById(2131165535));
+    this.d = ((TextView)findViewById(2131165537));
     paramBundle = String.format(this.e.getString(2131493187), new Object[] { Integer.valueOf(this.a) });
     this.d.setText(paramBundle);
-    paramBundle = (CheckBox)findViewById(2131165540);
-    ((TextView)findViewById(2131165533)).setOnClickListener(new View.OnClickListener()
+    paramBundle = (CheckBox)findViewById(2131165542);
+    ((TextView)findViewById(2131165535)).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         FreezeUinDialog.this.dismiss();
         if (FreezeUinDialog.a(FreezeUinDialog.this) != null)
         {
-          g.a("freeze: msg=4009");
+          xb.a("freeze: msg=4009");
           paramAnonymousView = FreezeUinDialog.a(FreezeUinDialog.this).obtainMessage(4009);
           if (paramBundle.isChecked()) {
             paramAnonymousView.arg1 = 1;
@@ -68,9 +68,9 @@ public class FreezeUinDialog
         }
       }
     });
-    ((TextView)findViewById(2131165532)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165534)).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         FreezeUinDialog.this.dismiss();
       }

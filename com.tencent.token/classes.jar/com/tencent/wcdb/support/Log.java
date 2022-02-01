@@ -2,57 +2,11 @@ package com.tencent.wcdb.support;
 
 public class Log
 {
-  public static final int LOGGER_DEFAULT = 1;
-  public static final int LOGGER_NONE = 0;
-  private static LogCallback mCallback;
+  private static LogCallback a;
   
-  public static void d(String paramString1, String paramString2)
+  private static void a(int paramInt, String paramString1, String paramString2)
   {
-    println(3, paramString1, paramString2);
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    println(3, paramString1, String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    println(6, paramString1, paramString2);
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    println(6, paramString1, String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void f(String paramString1, String paramString2)
-  {
-    println(7, paramString1, paramString2);
-  }
-  
-  public static void f(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    println(7, paramString1, String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void i(String paramString1, String paramString2)
-  {
-    println(4, paramString1, paramString2);
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    println(4, paramString1, String.format(paramString2, paramVarArgs));
-  }
-  
-  private static native void nativePrintLn(int paramInt, String paramString1, String paramString2);
-  
-  private static native void nativeSetLogger(int paramInt, LogCallback paramLogCallback);
-  
-  public static void println(int paramInt, String paramString1, String paramString2)
-  {
-    LogCallback localLogCallback = mCallback;
+    LogCallback localLogCallback = a;
     if (localLogCallback != null)
     {
       localLogCallback.println(paramInt, paramString1, paramString2);
@@ -61,37 +15,39 @@ public class Log
     nativePrintLn(paramInt, paramString1, paramString2);
   }
   
-  public static void setLogger(int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    mCallback = null;
-    nativeSetLogger(paramInt, null);
+    a(6, paramString1, paramString2);
   }
   
-  public static void setLogger(LogCallback paramLogCallback)
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    mCallback = paramLogCallback;
-    nativeSetLogger(-1, paramLogCallback);
+    a(6, paramString1, String.format(paramString2, paramVarArgs));
   }
   
-  public static void v(String paramString1, String paramString2)
+  public static void b(String paramString1, String paramString2)
   {
-    println(2, paramString1, paramString2);
+    a(5, paramString1, paramString2);
   }
   
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    println(2, paramString1, String.format(paramString2, paramVarArgs));
+    a(5, paramString1, String.format(paramString2, paramVarArgs));
   }
   
-  public static void w(String paramString1, String paramString2)
+  public static void c(String paramString1, String paramString2)
   {
-    println(5, paramString1, paramString2);
+    a(4, paramString1, paramString2);
   }
   
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    println(5, paramString1, String.format(paramString2, paramVarArgs));
+    a(4, paramString1, String.format(paramString2, paramVarArgs));
   }
+  
+  private static native void nativePrintLn(int paramInt, String paramString1, String paramString2);
+  
+  private static native void nativeSetLogger(int paramInt, LogCallback paramLogCallback);
   
   public static abstract interface LogCallback
   {

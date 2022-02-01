@@ -24,10 +24,7 @@ public class cp
       }
       catch (Exception paramArrayOfByte)
       {
-        paramT = new StringBuilder();
-        paramT.append("getJceStruct exception: ");
-        paramT.append(paramArrayOfByte);
-        eg.h("JceStructUtil", paramT.toString());
+        eg.h("JceStructUtil", "getJceStruct exception: ".concat(String.valueOf(paramArrayOfByte)));
       }
     }
     return null;

@@ -9,17 +9,17 @@ public final class am
 {
   public String sessionId = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new am();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.sessionId = paramJceInputStream.readString(0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     String str = this.sessionId;
     if (str != null) {

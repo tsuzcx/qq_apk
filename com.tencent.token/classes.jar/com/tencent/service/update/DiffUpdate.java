@@ -11,21 +11,21 @@ public final class DiffUpdate
   public boolean isGradual = true;
   public String yybUrl = "";
   
-  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new DiffUpdate();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.isGradual = paramJceInputStream.read(this.isGradual, 0, false);
     this.isDownloadYYB = paramJceInputStream.read(this.isDownloadYYB, 1, false);
     this.yybUrl = paramJceInputStream.readString(2, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     boolean bool = this.isGradual;
     if (bool != true) {

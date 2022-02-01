@@ -1,9 +1,9 @@
 package btmsdkobf;
 
 import android.content.Context;
+import com.tencent.token.ass;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.TMSDKBaseContext;
-import tmsdk.common.tcc.b;
 
 public class bc
 {
@@ -34,8 +34,7 @@ public class bc
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init, aContext:[");
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
       localStringBuilder.append(paramContext);
       localStringBuilder.append("]aTMSConfig:[");
       localStringBuilder.append(paramAbsTMSBaseConfig);
@@ -50,7 +49,7 @@ public class bc
           eg.g("TMSDKBaseContextInner", "checkNoProguard false");
           return false;
         }
-        if ((!fq.isJavaTCC()) && (!b.cO()))
+        if ((!fq.isJavaTCC()) && (!ass.a()))
         {
           eg.g("TMSDKBaseContextInner", "loadLibraryIfNot false");
           return false;

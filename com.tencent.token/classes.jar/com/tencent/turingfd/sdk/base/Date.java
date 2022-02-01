@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 
 public final class Date
@@ -9,22 +11,22 @@ public final class Date
   public int yb = 0;
   public ArrayList<Fig> zb = null;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.yb = paramcy.a(this.yb, 0, true);
+    this.yb = paramafl.a(this.yb, 0, true);
     if (xb == null)
     {
       xb = new ArrayList();
       Fig localFig = new Fig();
       xb.add(localFig);
     }
-    this.zb = ((ArrayList)paramcy.a(xb, 1, true));
+    this.zb = ((ArrayList)paramafl.a(xb, 1, true));
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.yb, 0);
-    paramdb.a(this.zb, 1);
+    paramafo.a(this.yb, 0);
+    paramafo.a(this.zb, 1);
   }
 }
 

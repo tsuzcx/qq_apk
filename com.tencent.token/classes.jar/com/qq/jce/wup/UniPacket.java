@@ -52,8 +52,9 @@ public class UniPacket
     localJceInputStream.setServerEncoding(this.encodeName);
     if (newCache__tempdata == null)
     {
-      newCache__tempdata = new HashMap();
-      newCache__tempdata.put("", new byte[0]);
+      HashMap localHashMap = new HashMap();
+      newCache__tempdata = localHashMap;
+      localHashMap.put("", new byte[0]);
     }
     this._newData = localJceInputStream.readMap(newCache__tempdata, 0, false);
   }
@@ -223,10 +224,7 @@ public class UniPacket
       super.put(paramString, paramT);
       return;
     }
-    paramT = new StringBuilder();
-    paramT.append("put name can not startwith . , now is ");
-    paramT.append(paramString);
-    throw new IllegalArgumentException(paramT.toString());
+    throw new IllegalArgumentException("put name can not startwith . , now is ".concat(String.valueOf(paramString)));
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

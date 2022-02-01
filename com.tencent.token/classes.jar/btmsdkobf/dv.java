@@ -68,7 +68,7 @@ public class dv
     catch (Throwable paramString) {}
   }
   
-  class a
+  final class a
     extends BroadcastReceiver
   {
     public String a = null;
@@ -76,16 +76,13 @@ public class dv
     
     a() {}
     
-    public void onReceive(final Context paramContext, Intent paramIntent)
+    public final void onReceive(final Context paramContext, Intent paramIntent)
     {
       paramContext = paramIntent.getAction();
       if (paramContext == null) {
         return;
       }
-      paramIntent = new StringBuilder();
-      paramIntent.append("action:");
-      paramIntent.append(paramContext);
-      eg.f("cccccc", paramIntent.toString());
+      eg.f("cccccc", "action:".concat(String.valueOf(paramContext)));
       if (this.a.equals(paramContext))
       {
         if (this.b == null) {
@@ -93,7 +90,7 @@ public class dv
         }
         ee.cT().addTask(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             dv.a.this.b.run();
             dv.this.D(paramContext);

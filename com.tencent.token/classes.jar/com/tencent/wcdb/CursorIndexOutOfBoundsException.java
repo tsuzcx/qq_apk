@@ -7,11 +7,6 @@ public class CursorIndexOutOfBoundsException
   {
     super(localStringBuilder.toString());
   }
-  
-  public CursorIndexOutOfBoundsException(String paramString)
-  {
-    super(paramString);
-  }
 }
 
 

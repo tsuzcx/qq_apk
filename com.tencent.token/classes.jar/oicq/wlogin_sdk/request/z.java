@@ -5,7 +5,6 @@ import java.net.Socket;
 import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t;
 import oicq.wlogin_sdk.tlv_type.tlv_t172;
-import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
 import org.json.JSONObject;
@@ -30,88 +29,81 @@ public class z
   public int a(long paramLong1, TransReqContext paramTransReqContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong2, long paramLong3, WUserSigInfo paramWUserSigInfo)
   {
     int j;
-    Object localObject2;
-    Object localObject1;
+    byte[] arrayOfByte2;
+    byte[] arrayOfByte1;
     label100:
     boolean bool;
-    label203:
+    label178:
     try
     {
       i = t.w;
       i = 0;
       j = 0;
-      localObject2 = paramTransReqContext._body;
+      arrayOfByte2 = paramTransReqContext._body;
       long l1 = System.currentTimeMillis() / 1000L;
       long l2 = t.ac;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[0];
+      arrayOfByte1 = arrayOfByte2;
+      if (arrayOfByte2 == null) {
+        arrayOfByte1 = new byte[0];
       }
-      localObject2 = new byte[localObject1.length + 4];
-      util.int64_to_buf32((byte[])localObject2, 0, l1 + l2);
-      System.arraycopy(localObject1, 0, localObject2, 4, localObject1.length);
+      arrayOfByte2 = new byte[arrayOfByte1.length + 4];
+      util.int64_to_buf32(arrayOfByte2, 0, l1 + l2);
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, arrayOfByte1.length);
       if (paramArrayOfByte1 == null) {
-        break label337;
+        break label297;
       }
-      localObject1 = cryptor.encrypt((byte[])localObject2, 0, localObject2.length, paramArrayOfByte2);
-      if ((localObject1 == null) || (localObject1.length <= 0)) {
-        break label380;
+      arrayOfByte1 = cryptor.encrypt(arrayOfByte2, 0, arrayOfByte2.length, paramArrayOfByte2);
+      if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+        break label340;
       }
       if ((oicq_request.EncryptionMethod.EM_ST != paramTransReqContext.requestEm) || ((paramTransReqContext.wtSessionTicketKey != null) && (paramTransReqContext.wtSessionTicketKey.length != 0) && (paramTransReqContext.wtSessionTicket != null) && (paramTransReqContext.wtSessionTicket.length != 0))) {
-        break label344;
+        break label304;
       }
       paramTransReqContext.requestEm = oicq_request.EncryptionMethod.EM_ECDH;
       t.an.attr_api(2413503);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(paramLong1);
-      util.LOGI("using wt st encrypt body but no st key", ((StringBuilder)localObject2).toString());
+      util.LOGI("using wt st encrypt body but no st key", String.valueOf(paramLong1));
     }
     finally {}
-    a(paramLong1, a((byte[])localObject1, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
-    int i = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
-    int k;
-    if (i == 0)
+    a(paramLong1, a(arrayOfByte1, bool, paramArrayOfByte1, paramLong2, paramLong3, paramTransReqContext), paramTransReqContext.requestEm);
+    int k = a(String.valueOf(paramLong1), false, paramWUserSigInfo);
+    int i = k;
+    if (k == 0)
     {
       k = a(paramTransReqContext);
       if ((k != 0) || (paramArrayOfByte1 == null)) {
-        break label361;
+        break label321;
       }
-      localObject1 = paramTransReqContext.get_body();
-      paramTransReqContext.set_body(cryptor.decrypt((byte[])localObject1, 0, localObject1.length, paramArrayOfByte2));
+      arrayOfByte1 = paramTransReqContext.get_body();
+      paramTransReqContext.set_body(cryptor.decrypt(arrayOfByte1, 0, arrayOfByte1.length, paramArrayOfByte2));
     }
     for (;;)
     {
-      label289:
-      paramTransReqContext = new StringBuilder();
-      paramTransReqContext.append("request_transport rsp: ret=");
-      paramTransReqContext.append(i);
-      util.LOGI(paramTransReqContext.toString());
+      label265:
+      util.LOGI("request_transport rsp: ret=".concat(String.valueOf(i)));
       return i;
-      label337:
-      label344:
-      label361:
-      label380:
+      label297:
+      label304:
+      label321:
+      label340:
       do
       {
         j += 1;
         break;
-        localObject1 = localObject2;
+        arrayOfByte1 = arrayOfByte2;
         break label100;
         if (paramArrayOfByte1 != null)
         {
           bool = true;
-          break label203;
+          break label178;
         }
         bool = false;
-        break label203;
+        break label178;
         i = k;
-        if (k != 180)
-        {
-          i = k;
-          break label289;
+        if (k != 180) {
+          break label265;
         }
-      } while (j < 1);
+        i = k;
+      } while (j <= 0);
     }
   }
   
@@ -158,18 +150,19 @@ public class z
           try
           {
             a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte3);
-            i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
-            if (i != 0) {
-              break label385;
+            j = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
+            i = j;
+            if (j != 0) {
+              break label386;
             }
             j = a(paramTransReqContext);
             i = j;
             if (j != 0) {
-              break label385;
+              break label386;
             }
             i = j;
             if (paramArrayOfByte1 == null) {
-              break label385;
+              break label386;
             }
             paramArrayOfByte1 = paramTransReqContext.get_body();
             paramTransReqContext.set_body(cryptor.decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2));
@@ -181,7 +174,7 @@ public class z
         {
           i = 0;
         }
-        label385:
+        label386:
         return i;
       }
       finally {}
@@ -230,8 +223,9 @@ public class z
           report_t.delete_file(t.t);
           paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramLong2, 85L, 0);
           a(this.i, this.t, this.j, paramLong1, this.m, this.n, i, this.p, paramArrayOfByte1);
-          i = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
-          if (i == 0) {
+          int j = a(String.valueOf(paramLong1), true, paramWUserSigInfo);
+          i = j;
+          if (j == 0) {
             i = b();
           }
           if (i != 0) {
@@ -298,8 +292,7 @@ public class z
     }
     else
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("unknown encryption method ");
+      StringBuilder localStringBuilder = new StringBuilder("unknown encryption method ");
       localStringBuilder.append(paramTransReqContext.requestEm);
       util.LOGI(localStringBuilder.toString(), "");
       i = -1024;
@@ -316,34 +309,33 @@ public class z
       return -1009;
     }
     int i = c(paramArrayOfByte, paramInt1);
-    a((ErrMsg)null);
-    Object localObject = getClass().getName();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("type=");
-    localStringBuilder.append(i);
-    util.LOGD((String)localObject, localStringBuilder.toString());
+    a(null);
+    util.LOGD(getClass().getName(), "type=".concat(String.valueOf(i)));
     if (i != 0)
     {
-      if (i != 180) {
-        return i;
-      }
-      paramInt1 += this.J + 2;
-      paramTransReqContext = new tlv_t172();
-      paramInt1 = paramTransReqContext.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
-      if (paramInt1 > 0)
+      if (i == 180)
       {
+        paramInt1 += this.J + 2;
+        paramTransReqContext = new tlv_t172();
+        paramInt2 = paramTransReqContext.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+        paramInt1 = paramInt2;
+        if (paramInt2 <= 0) {
+          return paramInt1;
+        }
         this.x.m = 2;
         this.x.r = paramTransReqContext.get_data();
         util.LOGI("request_transport get rollback sig");
-        return i;
       }
-      return paramInt1;
     }
-    int j = this.J;
-    localObject = new byte[paramInt2 - j];
-    System.arraycopy(paramArrayOfByte, paramInt1 + j, localObject, 0, localObject.length);
-    paramTransReqContext.set_body((byte[])localObject);
-    return i;
+    else
+    {
+      int j = this.J;
+      byte[] arrayOfByte = new byte[paramInt2 - j];
+      System.arraycopy(paramArrayOfByte, paramInt1 + j, arrayOfByte, 0, arrayOfByte.length);
+      paramTransReqContext.set_body(arrayOfByte);
+    }
+    paramInt1 = i;
+    return paramInt1;
   }
   
   public void a(Socket paramSocket)
@@ -422,12 +414,11 @@ public class z
     util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
     util.int16_to_buf(arrayOfByte2, 11, arrayOfByte1.length);
     System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 13, arrayOfByte1.length);
-    int i = 13 + arrayOfByte1.length;
+    int i = arrayOfByte1.length + 13;
     util.int8_to_buf(arrayOfByte2, i, paramArrayOfByte2.length);
     i += 1;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, i, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, i + paramArrayOfByte2.length, paramArrayOfByte1.length);
-    i = paramArrayOfByte1.length;
     return a(arrayOfByte2, paramTransReqContext.requestEm, paramTransReqContext.wtSessionTicket, paramTransReqContext.wtSessionTicketKey);
   }
   
@@ -471,12 +462,11 @@ public class z
     util.int64_to_buf32(arrayOfByte2, 7, paramLong2);
     util.int16_to_buf(arrayOfByte2, 11, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte2, 13, paramArrayOfByte2.length);
-    paramInt = 13 + paramArrayOfByte2.length;
+    paramInt = paramArrayOfByte2.length + 13;
     util.int8_to_buf(arrayOfByte2, paramInt, arrayOfByte1.length);
     paramInt += 1;
     System.arraycopy(arrayOfByte1, 0, arrayOfByte2, paramInt, arrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte2, paramInt + arrayOfByte1.length, paramArrayOfByte1.length);
-    paramInt = paramArrayOfByte1.length;
     return a(arrayOfByte2);
   }
   
@@ -494,12 +484,8 @@ public class z
       return -1009;
     }
     paramInt1 = c(paramArrayOfByte, paramInt1);
-    a((ErrMsg)null);
-    paramArrayOfByte = getClass().getName();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("type=");
-    localStringBuilder.append(paramInt1);
-    util.LOGD(paramArrayOfByte, localStringBuilder.toString());
+    a(null);
+    util.LOGD(getClass().getName(), "type=".concat(String.valueOf(paramInt1)));
     return paramInt1;
   }
   
@@ -507,8 +493,7 @@ public class z
   {
     if (this.x.ak != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("_transport_sk");
+      StringBuilder localStringBuilder = new StringBuilder("_transport_sk");
       localStringBuilder.append(this.x.ak.toString());
       util.LOGD("_transport_sk", localStringBuilder.toString());
     }

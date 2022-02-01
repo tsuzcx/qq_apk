@@ -97,8 +97,7 @@ public class dd
   {
     if (cx.ax())
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("sending process registerSharkPush() from cmdId: ");
+      localStringBuilder = new StringBuilder("sending process registerSharkPush() from cmdId: ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(" flag: ");
       localStringBuilder.append(paramInt2);
@@ -109,8 +108,7 @@ public class dd
       cf().a(paramLong, paramInt1, paramJceStruct, paramInt2, paramcm, paramBoolean);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("other process registerSharkPush() from cmdId: ");
+    StringBuilder localStringBuilder = new StringBuilder("other process registerSharkPush() from cmdId: ");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(" flag: ");
     localStringBuilder.append(paramInt2);

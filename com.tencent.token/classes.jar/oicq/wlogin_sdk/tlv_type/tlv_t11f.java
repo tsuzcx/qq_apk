@@ -23,9 +23,9 @@ public class tlv_t11f
   public Boolean verify()
   {
     if (this._body_len < 8) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

@@ -11,40 +11,34 @@ public class d
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramContext != null)
+    if ((paramContext != null) && (paramIntent != null))
     {
-      if (paramIntent == null) {
-        return;
-      }
       boolean bool = false;
       int i = paramIntent.getIntExtra("openIdNotifyFlag", 0);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("shouldUpdateId, notifyFlag : ");
-      ((StringBuilder)localObject).append(i);
-      e.b(((StringBuilder)localObject).toString());
+      e.b("shouldUpdateId, notifyFlag : ".concat(String.valueOf(i)));
       if (i == 1)
       {
         if (!TextUtils.equals(paramIntent.getStringExtra("openIdPackage"), paramContext.getPackageName())) {
-          break label115;
+          break label94;
         }
       }
       else
       {
         if (i == 2)
         {
-          localObject = paramIntent.getStringArrayListExtra("openIdPackageList");
-          if (localObject == null) {
-            break label115;
+          ArrayList localArrayList = paramIntent.getStringArrayListExtra("openIdPackageList");
+          if (localArrayList == null) {
+            break label94;
           }
-          bool = ((ArrayList)localObject).contains(paramContext.getPackageName());
-          break label115;
+          bool = localArrayList.contains(paramContext.getPackageName());
+          break label94;
         }
         if (i != 0) {
-          break label115;
+          break label94;
         }
       }
       bool = true;
-      label115:
+      label94:
       if (!bool) {
         return;
       }

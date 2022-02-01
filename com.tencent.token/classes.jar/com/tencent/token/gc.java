@@ -1,71 +1,56 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLParameters;
-import javax.net.ssl.SSLSocket;
-import okhttp3.Protocol;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-final class gc
-  extends gf
+public final class gc
 {
-  final Method a;
-  final Method b;
+  private static final ThreadLocal<Matrix> a = new ThreadLocal();
+  private static final ThreadLocal<RectF> b = new ThreadLocal();
   
-  gc(Method paramMethod1, Method paramMethod2)
+  public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
   {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
+    paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
+    Matrix localMatrix = (Matrix)a.get();
+    if (localMatrix == null)
+    {
+      localMatrix = new Matrix();
+      a.set(localMatrix);
+    }
+    else
+    {
+      localMatrix.reset();
+    }
+    a(paramViewGroup, paramView, localMatrix);
+    paramView = (RectF)b.get();
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = new RectF();
+      b.set(paramViewGroup);
+    }
+    paramViewGroup.set(paramRect);
+    localMatrix.mapRect(paramViewGroup);
+    paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
   }
   
-  public static gc a()
+  private static void a(ViewParent paramViewParent, View paramView, Matrix paramMatrix)
   {
-    try
+    Object localObject = paramView.getParent();
+    if (((localObject instanceof View)) && (localObject != paramViewParent))
     {
-      gc localgc = new gc(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
-      return localgc;
+      localObject = (View)localObject;
+      a(paramViewParent, (View)localObject, paramMatrix);
+      paramMatrix.preTranslate(-((View)localObject).getScrollX(), -((View)localObject).getScrollY());
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label37:
-      break label37;
+    paramMatrix.preTranslate(paramView.getLeft(), paramView.getTop());
+    if (!paramView.getMatrix().isIdentity()) {
+      paramMatrix.preConcat(paramView.getMatrix());
     }
-    return null;
-  }
-  
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
-  {
-    try
-    {
-      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null)
-      {
-        boolean bool = paramSSLSocket.equals("");
-        if (!bool) {
-          return paramSSLSocket;
-        }
-      }
-      return null;
-    }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw ff.a("unable to get selected protocols", paramSSLSocket);
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
-  {
-    try
-    {
-      paramString = paramSSLSocket.getSSLParameters();
-      paramList = a(paramList);
-      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
-      paramSSLSocket.setSSLParameters(paramString);
-      return;
-    }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw ff.a("unable to set ssl parameters", paramSSLSocket);
   }
 }
 

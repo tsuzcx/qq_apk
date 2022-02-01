@@ -10,7 +10,7 @@ import android.os.Build.VERSION;
 import btmsdkobf.bc;
 import btmsdkobf.eg;
 import btmsdkobf.ei;
-import tmsdk.QQPIM.ConnectType;
+import com.tencent.token.aos;
 
 public class NetworkUtil
 {
@@ -75,7 +75,7 @@ public class NetworkUtil
     return 1;
   }
   
-  public static ConnectType getNetworkType()
+  public static aos getNetworkType()
   {
     String str;
     try
@@ -88,20 +88,20 @@ public class NetworkUtil
       str = null;
     }
     if (str == null) {
-      return ConnectType.CT_NONE;
+      return aos.b;
     }
     if (str.getType() == 1) {
-      return ConnectType.CT_WIFI;
+      return aos.d;
     }
     if (str.getType() == 0)
     {
       str = getProxyHost();
       if ((str != null) && (str.length() > 0) && (getProxyPort() > 0)) {
-        return ConnectType.CT_GPRS_WAP;
+        return aos.e;
       }
-      return ConnectType.CT_GPRS_NET;
+      return aos.f;
     }
-    return ConnectType.CT_GPRS_NET;
+    return aos.f;
   }
   
   public static String getProxyHost()
@@ -146,10 +146,7 @@ public class NetworkUtil
     }
     catch (Throwable localThrowable)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getSSID: ");
-      localStringBuilder.append(localThrowable);
-      eg.h("WifiUtil", localStringBuilder.toString());
+      eg.h("WifiUtil", "getSSID: ".concat(String.valueOf(localThrowable)));
     }
     return "";
   }
@@ -163,8 +160,7 @@ public class NetworkUtil
     }
     catch (Throwable localThrowable)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" getActiveNetworkInfo NullPointerException--- \n");
+      StringBuilder localStringBuilder = new StringBuilder(" getActiveNetworkInfo NullPointerException--- \n");
       localStringBuilder.append(localThrowable.getMessage());
       eg.g("getActiveNetworkInfo", localStringBuilder.toString());
       localObject = null;

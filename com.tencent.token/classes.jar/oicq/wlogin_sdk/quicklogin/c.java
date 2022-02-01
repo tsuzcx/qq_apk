@@ -43,19 +43,18 @@ final class c
     return false;
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public final void onPageFinished(WebView paramWebView, String paramString)
   {
     if (17 <= Build.VERSION.SDK_INT) {
       this.b.loadUrl(this.c);
     }
   }
   
-  public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
+  public final void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
     try
     {
-      paramWebView = new StringBuilder();
-      paramWebView.append("ssl error ");
+      paramWebView = new StringBuilder("ssl error ");
       paramWebView.append(paramSslError.getUrl());
       paramWebView.append(":");
       paramWebView.append(paramSslError.getPrimaryError());
@@ -72,8 +71,7 @@ final class c
         return;
       }
       paramWebView = new AlertDialog.Builder(this.a);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("页面证书错误(");
+      StringBuilder localStringBuilder = new StringBuilder("页面证书错误(");
       localStringBuilder.append(paramSslError.getPrimaryError());
       localStringBuilder.append(")，是否继续？");
       paramWebView.setMessage(localStringBuilder.toString());
@@ -97,7 +95,7 @@ final class c
     }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public final boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
     if (paramString != null) {
       try
@@ -107,8 +105,7 @@ final class c
       }
       catch (Exception localException)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("load url ");
+        StringBuilder localStringBuilder = new StringBuilder("load url ");
         paramWebView = paramString;
         if (paramString == null) {
           paramWebView = "";

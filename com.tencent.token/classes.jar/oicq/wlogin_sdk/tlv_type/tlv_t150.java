@@ -25,14 +25,14 @@ public class tlv_t150
   public Boolean verify()
   {
     if (this._body_len < 7) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len + 5);
     if (this._body_len < i + 7) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._other_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

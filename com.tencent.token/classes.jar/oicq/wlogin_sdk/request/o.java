@@ -24,7 +24,7 @@ public class o
   
   public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int k = t.w;
+    int m = t.w;
     Object localObject1 = t.b(this.x.h);
     tlv_t104 localtlv_t104 = ((async_context)localObject1)._t104;
     if (localtlv_t104 == null) {
@@ -36,33 +36,34 @@ public class o
     }
     int i = 0;
     int j;
-    int m;
+    int k;
     do
     {
       j = i;
       Object localObject2 = a(localtlv_t104.get_data(), paramArrayOfByte, ((tlv_t105)localObject1).get_sign(), paramInt1, paramInt2, paramArrayOfLong);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, k, this.p, (byte[])localObject2);
-      i = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-      if (i != 0) {
-        return i;
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject2);
+      k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      i = k;
+      if (k != 0) {
+        break;
       }
-      m = b();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("retry num:");
+      k = b();
+      localObject2 = new StringBuilder("retry num:");
       ((StringBuilder)localObject2).append(j);
       ((StringBuilder)localObject2).append(" ret:");
-      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(k);
       localObject2 = ((StringBuilder)localObject2).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
       localStringBuilder.append(this.x.f);
       util.LOGI((String)localObject2, localStringBuilder.toString());
-      if (m != 180) {
-        return m;
+      i = k;
+      if (k != 180) {
+        break;
       }
       i = j + 1;
-    } while (j < 1);
-    return m;
+    } while (j <= 0);
+    i = k;
+    return i;
   }
   
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, long[] paramArrayOfLong)
@@ -87,7 +88,6 @@ public class o
     paramInt1 += localObject1.length;
     System.arraycopy(localObject2, 0, paramArrayOfByte2, paramInt1, localObject2.length);
     System.arraycopy(paramArrayOfLong, 0, paramArrayOfByte2, paramInt1 + localObject2.length, paramArrayOfLong.length);
-    paramInt1 = paramArrayOfLong.length;
     return b(paramArrayOfByte2, this.u, 4);
   }
 }

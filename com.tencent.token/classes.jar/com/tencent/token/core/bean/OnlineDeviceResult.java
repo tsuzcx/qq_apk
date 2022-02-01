@@ -21,14 +21,21 @@ public class OnlineDeviceResult
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         a locala = new a();
-        locala.a(localJSONObject);
+        locala.a = localJSONObject.getString("dguid");
+        locala.b = localJSONObject.getString("dname");
+        locala.c = localJSONObject.getString("dtype");
+        locala.d = localJSONObject.getString("ddes");
+        locala.e = localJSONObject.getInt("dappid");
+        locala.f = localJSONObject.getInt("dsubappid");
+        locala.g = localJSONObject.getString("dappname");
+        locala.h = localJSONObject.getInt("dflag");
         this.mDevicesList.add(locala);
         i += 1;
       }
     }
   }
   
-  public class a
+  public final class a
   {
     public String a;
     public String b;
@@ -40,18 +47,6 @@ public class OnlineDeviceResult
     public int h;
     
     public a() {}
-    
-    public void a(JSONObject paramJSONObject)
-    {
-      this.a = paramJSONObject.getString("dguid");
-      this.b = paramJSONObject.getString("dname");
-      this.c = paramJSONObject.getString("dtype");
-      this.d = paramJSONObject.getString("ddes");
-      this.e = paramJSONObject.getInt("dappid");
-      this.f = paramJSONObject.getInt("dsubappid");
-      this.g = paramJSONObject.getString("dappname");
-      this.h = paramJSONObject.getInt("dflag");
-    }
   }
 }
 

@@ -9,17 +9,17 @@ public final class ax
 {
   public String dr = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ax();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.dr = paramJceInputStream.readString(0, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dr, 0);
   }

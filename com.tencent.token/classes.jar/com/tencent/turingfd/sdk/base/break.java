@@ -1,26 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.io.Serializable;
 
 public abstract class break
   implements Serializable
 {
-  public break a()
+  public abstract void a(afl paramafl);
+  
+  public abstract void a(afo paramafo);
+  
+  public final byte[] a()
   {
-    return null;
-  }
-  
-  public abstract void a(cy paramcy);
-  
-  public abstract void a(db paramdb);
-  
-  public void b() {}
-  
-  public byte[] c()
-  {
-    db localdb = new db();
-    a(localdb);
-    return localdb.a();
+    afo localafo = new afo();
+    a(localafo);
+    return localafo.a();
   }
   
   public String toString()

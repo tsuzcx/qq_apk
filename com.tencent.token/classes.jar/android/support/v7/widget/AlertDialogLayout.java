@@ -2,201 +2,20 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.appcompat.R.id;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
+import com.tencent.token.ek;
+import com.tencent.token.ex;
+import com.tencent.token.gp.f;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class AlertDialogLayout
   extends LinearLayoutCompat
 {
-  public AlertDialogLayout(@Nullable Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public AlertDialogLayout(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  public AlertDialogLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-  }
-  
-  private void forceUniformWidth(int paramInt1, int paramInt2)
-  {
-    int j = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824);
-    int i = 0;
-    while (i < paramInt1)
-    {
-      View localView = getChildAt(i);
-      if (localView.getVisibility() != 8)
-      {
-        LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
-        if (localLayoutParams.width == -1)
-        {
-          int k = localLayoutParams.height;
-          localLayoutParams.height = localView.getMeasuredHeight();
-          measureChildWithMargins(localView, j, 0, paramInt2, 0);
-          localLayoutParams.height = k;
-        }
-      }
-      i += 1;
-    }
-  }
-  
-  private static int resolveMinimumHeight(View paramView)
-  {
-    int i = ViewCompat.getMinimumHeight(paramView);
-    if (i > 0) {
-      return i;
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      if (paramView.getChildCount() == 1) {
-        return resolveMinimumHeight(paramView.getChildAt(0));
-      }
-    }
-    return 0;
-  }
-  
-  private void setChildFrame(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramView.layout(paramInt1, paramInt2, paramInt3 + paramInt1, paramInt4 + paramInt2);
-  }
-  
-  private boolean tryOnMeasure(int paramInt1, int paramInt2)
-  {
-    int i5 = getChildCount();
-    Object localObject4 = null;
-    Object localObject1 = localObject4;
-    Object localObject2 = localObject1;
-    int i = 0;
-    Object localObject3 = localObject1;
-    while (i < i5)
-    {
-      localObject1 = getChildAt(i);
-      if (((View)localObject1).getVisibility() != 8)
-      {
-        j = ((View)localObject1).getId();
-        if (j == R.id.topPanel)
-        {
-          localObject4 = localObject1;
-        }
-        else if (j == R.id.buttonPanel)
-        {
-          localObject3 = localObject1;
-        }
-        else
-        {
-          if ((j != R.id.contentPanel) && (j != R.id.customPanel)) {
-            return false;
-          }
-          if (localObject2 != null) {
-            return false;
-          }
-          localObject2 = localObject1;
-        }
-      }
-      i += 1;
-    }
-    int i7 = View.MeasureSpec.getMode(paramInt2);
-    int n = View.MeasureSpec.getSize(paramInt2);
-    int i6 = View.MeasureSpec.getMode(paramInt1);
-    int k = getPaddingTop() + getPaddingBottom();
-    if (localObject4 != null)
-    {
-      localObject4.measure(paramInt1, 0);
-      k += localObject4.getMeasuredHeight();
-      j = View.combineMeasuredStates(0, localObject4.getMeasuredState());
-    }
-    else
-    {
-      j = 0;
-    }
-    int i1;
-    if (localObject3 != null)
-    {
-      localObject3.measure(paramInt1, 0);
-      i = resolveMinimumHeight(localObject3);
-      i1 = localObject3.getMeasuredHeight() - i;
-      k += i;
-      j = View.combineMeasuredStates(j, localObject3.getMeasuredState());
-    }
-    else
-    {
-      i = 0;
-      i1 = 0;
-    }
-    int i2;
-    if (localObject2 != null)
-    {
-      if (i7 == 0) {
-        m = 0;
-      } else {
-        m = View.MeasureSpec.makeMeasureSpec(Math.max(0, n - k), i7);
-      }
-      localObject2.measure(paramInt1, m);
-      i2 = localObject2.getMeasuredHeight();
-      k += i2;
-      j = View.combineMeasuredStates(j, localObject2.getMeasuredState());
-    }
-    else
-    {
-      i2 = 0;
-    }
-    int i3 = n - k;
-    n = j;
-    int i4 = i3;
-    int m = k;
-    if (localObject3 != null)
-    {
-      i1 = Math.min(i3, i1);
-      n = i3;
-      m = i;
-      if (i1 > 0)
-      {
-        n = i3 - i1;
-        m = i + i1;
-      }
-      localObject3.measure(paramInt1, View.MeasureSpec.makeMeasureSpec(m, 1073741824));
-      m = k - i + localObject3.getMeasuredHeight();
-      i = View.combineMeasuredStates(j, localObject3.getMeasuredState());
-      i4 = n;
-      n = i;
-    }
-    int j = n;
-    i = m;
-    if (localObject2 != null)
-    {
-      j = n;
-      i = m;
-      if (i4 > 0)
-      {
-        localObject2.measure(paramInt1, View.MeasureSpec.makeMeasureSpec(i2 + i4, i7));
-        i = m - i2 + localObject2.getMeasuredHeight();
-        j = View.combineMeasuredStates(n, localObject2.getMeasuredState());
-      }
-    }
-    k = 0;
-    for (m = 0; k < i5; m = n)
-    {
-      localObject1 = getChildAt(k);
-      n = m;
-      if (((View)localObject1).getVisibility() != 8) {
-        n = Math.max(m, ((View)localObject1).getMeasuredWidth());
-      }
-      k += 1;
-    }
-    setMeasuredDimension(View.resolveSizeAndState(m + (getPaddingLeft() + getPaddingRight()), paramInt1, j), View.resolveSizeAndState(i, paramInt2, 0));
-    if (i6 != 1073741824) {
-      forceUniformWidth(i5, paramInt2);
-    }
-    return true;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -221,12 +40,12 @@ public class AlertDialogLayout
       paramInt1 = getPaddingTop() + (paramInt4 - paramInt2 - paramInt1) / 2;
     }
     Object localObject = getDividerDrawable();
+    paramInt4 = 0;
     if (localObject == null) {
       paramInt3 = 0;
     } else {
       paramInt3 = ((Drawable)localObject).getIntrinsicHeight();
     }
-    paramInt4 = 0;
     while (paramInt4 < i1)
     {
       localObject = getChildAt(paramInt4);
@@ -239,12 +58,12 @@ public class AlertDialogLayout
           int i3 = ((View)localObject).getMeasuredWidth();
           int i4 = ((View)localObject).getMeasuredHeight();
           LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)((View)localObject).getLayoutParams();
-          int i = localLayoutParams.gravity;
+          int i = localLayoutParams.h;
           paramInt2 = i;
           if (i < 0) {
             paramInt2 = i2 & 0x800007;
           }
-          paramInt2 = GravityCompat.getAbsoluteGravity(paramInt2, ViewCompat.getLayoutDirection(this)) & 0x7;
+          paramInt2 = ek.a(paramInt2, ex.c(this)) & 0x7;
           if (paramInt2 != 1)
           {
             if (paramInt2 != 5) {
@@ -257,11 +76,11 @@ public class AlertDialogLayout
             paramInt2 = (k - j - n - i3) / 2 + j + localLayoutParams.leftMargin - localLayoutParams.rightMargin;
           }
           i = paramInt1;
-          if (hasDividerBeforeChildAt(paramInt4)) {
+          if (a(paramInt4)) {
             i = paramInt1 + paramInt3;
           }
           paramInt1 = i + localLayoutParams.topMargin;
-          setChildFrame((View)localObject, paramInt2, paramInt1, i3, i4);
+          ((View)localObject).layout(paramInt2, paramInt1, i3 + paramInt2, paramInt1 + i4);
           paramInt2 = paramInt1 + (i4 + localLayoutParams.bottomMargin);
         }
       }
@@ -272,7 +91,184 @@ public class AlertDialogLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (!tryOnMeasure(paramInt1, paramInt2)) {
+    int i5 = getChildCount();
+    int j = 0;
+    Object localObject4 = null;
+    Object localObject1 = localObject4;
+    Object localObject3 = localObject1;
+    int i = 0;
+    Object localObject2;
+    while (i < i5)
+    {
+      localObject2 = getChildAt(i);
+      Object localObject5 = localObject4;
+      Object localObject6 = localObject1;
+      Object localObject7 = localObject3;
+      if (((View)localObject2).getVisibility() != 8)
+      {
+        k = ((View)localObject2).getId();
+        if (k == gp.f.topPanel)
+        {
+          localObject5 = localObject2;
+          localObject6 = localObject1;
+          localObject7 = localObject3;
+        }
+        else if (k == gp.f.buttonPanel)
+        {
+          localObject5 = localObject4;
+          localObject6 = localObject2;
+          localObject7 = localObject3;
+        }
+        else
+        {
+          if ((k != gp.f.contentPanel) && (k != gp.f.customPanel))
+          {
+            i = j;
+            break label777;
+          }
+          if (localObject3 != null)
+          {
+            i = j;
+            break label777;
+          }
+          localObject7 = localObject2;
+          localObject6 = localObject1;
+          localObject5 = localObject4;
+        }
+      }
+      i += 1;
+      localObject4 = localObject5;
+      localObject1 = localObject6;
+      localObject3 = localObject7;
+    }
+    int i7 = View.MeasureSpec.getMode(paramInt2);
+    int n = View.MeasureSpec.getSize(paramInt2);
+    int i6 = View.MeasureSpec.getMode(paramInt1);
+    int k = getPaddingTop() + getPaddingBottom();
+    if (localObject4 != null)
+    {
+      localObject4.measure(paramInt1, 0);
+      k += localObject4.getMeasuredHeight();
+      j = View.combineMeasuredStates(0, localObject4.getMeasuredState());
+    }
+    else
+    {
+      j = 0;
+    }
+    label311:
+    int i1;
+    if (localObject1 != null)
+    {
+      ((View)localObject1).measure(paramInt1, 0);
+      for (localObject2 = localObject1;; localObject2 = ((ViewGroup)localObject2).getChildAt(0))
+      {
+        i = ex.e((View)localObject2);
+        if (i > 0) {
+          break label311;
+        }
+        if (!(localObject2 instanceof ViewGroup)) {
+          break;
+        }
+        localObject2 = (ViewGroup)localObject2;
+        if (((ViewGroup)localObject2).getChildCount() != 1) {
+          break;
+        }
+      }
+      i = 0;
+      i1 = ((View)localObject1).getMeasuredHeight() - i;
+      k += i;
+      j = View.combineMeasuredStates(j, ((View)localObject1).getMeasuredState());
+    }
+    else
+    {
+      i1 = 0;
+      i = 0;
+    }
+    int i2;
+    if (localObject3 != null)
+    {
+      if (i7 == 0) {
+        m = 0;
+      } else {
+        m = View.MeasureSpec.makeMeasureSpec(Math.max(0, n - k), i7);
+      }
+      localObject3.measure(paramInt1, m);
+      i2 = localObject3.getMeasuredHeight();
+      k += i2;
+      j = View.combineMeasuredStates(j, localObject3.getMeasuredState());
+    }
+    else
+    {
+      i2 = 0;
+    }
+    int i3 = n - k;
+    n = j;
+    int i4 = i3;
+    int m = k;
+    if (localObject1 != null)
+    {
+      i1 = Math.min(i3, i1);
+      n = i3;
+      m = i;
+      if (i1 > 0)
+      {
+        n = i3 - i1;
+        m = i + i1;
+      }
+      ((View)localObject1).measure(paramInt1, View.MeasureSpec.makeMeasureSpec(m, 1073741824));
+      m = k - i + ((View)localObject1).getMeasuredHeight();
+      i = View.combineMeasuredStates(j, ((View)localObject1).getMeasuredState());
+      i4 = n;
+      n = i;
+    }
+    j = n;
+    i = m;
+    if (localObject3 != null)
+    {
+      j = n;
+      i = m;
+      if (i4 > 0)
+      {
+        localObject3.measure(paramInt1, View.MeasureSpec.makeMeasureSpec(i2 + i4, i7));
+        i = m - i2 + localObject3.getMeasuredHeight();
+        j = View.combineMeasuredStates(n, localObject3.getMeasuredState());
+      }
+    }
+    k = 0;
+    for (m = 0; k < i5; m = n)
+    {
+      localObject1 = getChildAt(k);
+      n = m;
+      if (((View)localObject1).getVisibility() != 8) {
+        n = Math.max(m, ((View)localObject1).getMeasuredWidth());
+      }
+      k += 1;
+    }
+    setMeasuredDimension(View.resolveSizeAndState(m + (getPaddingLeft() + getPaddingRight()), paramInt1, j), View.resolveSizeAndState(i, paramInt2, 0));
+    if (i6 != 1073741824)
+    {
+      j = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824);
+      i = 0;
+      while (i < i5)
+      {
+        localObject1 = getChildAt(i);
+        if (((View)localObject1).getVisibility() != 8)
+        {
+          localObject2 = (LinearLayoutCompat.LayoutParams)((View)localObject1).getLayoutParams();
+          if (((LinearLayoutCompat.LayoutParams)localObject2).width == -1)
+          {
+            k = ((LinearLayoutCompat.LayoutParams)localObject2).height;
+            ((LinearLayoutCompat.LayoutParams)localObject2).height = ((View)localObject1).getMeasuredHeight();
+            measureChildWithMargins((View)localObject1, j, 0, paramInt2, 0);
+            ((LinearLayoutCompat.LayoutParams)localObject2).height = k;
+          }
+        }
+        i += 1;
+      }
+    }
+    i = 1;
+    label777:
+    if (i == 0) {
       super.onMeasure(paramInt1, paramInt2);
     }
   }

@@ -1,21 +1,24 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class Flat
   extends break
 {
   public String sc = "";
   public String tc = "";
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.sc = paramcy.a(0, true);
-    this.tc = paramcy.a(1, true);
+    this.sc = paramafl.a(0, true);
+    this.tc = paramafl.a(1, true);
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.sc, 0);
-    paramdb.a(this.tc, 1);
+    paramafo.a(this.sc, 0);
+    paramafo.a(this.tc, 1);
   }
 }
 

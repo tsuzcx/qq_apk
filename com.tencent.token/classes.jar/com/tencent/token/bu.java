@@ -1,21 +1,287 @@
 package com.tencent.token;
 
-public class bu
+import android.app.Activity;
+import android.app.SharedElementCallback;
+import android.app.SharedElementCallback.OnSharedElementsReadyListener;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import java.util.List;
+import java.util.Map;
+
+public final class bu
+  extends cs
 {
-  static bu a;
-  public String[] b = { "其他", "北京市", "天津市", "河北省", "山西省", "内蒙古", "江苏省", "安徽省", "山东省", "辽宁省", "吉林省", "黑龙江省", "上海市", "浙江省", "江西省", "福建省", "湖北省", "湖南省", "河南省", "广东省", "广西省", "海南省", "重庆市", "四川省", "贵州省", "云南省", "西藏", "陕西省", "甘肃省", "宁夏", "青海省", "新疆", "香港", "澳门", "台湾省" };
-  public String[] c = { "阿坝州", "阿克苏地区", "阿拉尔市", "阿拉善盟", "阿勒泰地区", "阿里地区", "安康市", "安庆市", "安顺市", "安阳市", "鞍山市", "澳门", "巴彦淖尔市", "巴音郭楞州", "巴中市", "白城市", "白沙黎族自治县", "白山市", "白银市", "百色市", "蚌埠市", "包头市", "宝鸡市", "保定市", "保山市", "保亭黎族苗族自治县", "北海市", "北京市", "本溪市", "毕节地区", "滨州市", "亳州市", "博尔塔拉州", "沧州市", "昌都地区", "昌吉州", "昌江黎族自治县", "长春市", "常德市", "长沙市", "长治市", "常州市", "巢湖市", "朝阳市", "潮州市", "重庆市", "郴州市", "成都市", "承德市", "澄迈县", "池州市", "赤峰市", "崇左市", "滁州市", "楚雄州", "达州市", "大理州", "大连市", "大庆市", "大同市", "大兴安岭地区", "丹东市", "儋州市", "德宏州", "德阳市", "德州市", "迪庆州", "定安县", "定西市", "东方市", "东莞市", "东营市", "鄂尔多斯市", "鄂州市", "恩施州", "防城港市", "佛山市", "福州市", "抚顺市", "抚州市", "阜新市", "阜阳市", "甘南州", "甘孜州", "赣州市", "高雄", "固原市", "广安市", "广元市", "广州市", "贵港市", "贵阳市", "桂林市", "果洛州", "哈尔滨市", "哈密地区", "海北州", "海东地区", "海口市", "海南州", "海西州", "邯郸市", "汉中市", "杭州市", "合肥市", "和田地区", "河池市", "河源市", "菏泽市", "贺州市", "鹤壁市", "鹤岗市", "黑河市", "衡水市", "衡阳市", "红河州", "呼和浩特市", "呼伦贝尔市", "湖州市", "葫芦岛市", "花莲", "怀化市", "淮安市", "淮北市", "淮南市", "黄冈市", "黄南州", "黄山市", "黄石市", "惠州市", "鸡西市", "基隆", "吉安市", "吉林市", "济南市", "济宁市", "济源市", "佳木斯市", "嘉兴市", "嘉义", "嘉峪关市", "江门市", "焦作市", "揭阳市", "金昌市", "金华市", "金门", "锦州市", "晋城市", "晋中市", "荆门市", "荆州市", "景德镇市", "九江市", "酒泉市", "喀什地区", "开封市", "克拉玛依市", "克孜勒苏柯州", "昆明市", "拉萨市", "来宾市", "莱芜市", "兰州市", "廊坊市", "乐东黎族自治县", "乐山市", "丽江市", "丽水市", "连江", "连云港市", "凉山州", "辽阳市", "辽源市", "聊城市", "林芝地区", "临沧市", "临汾市", "临高县", "临夏州", "临沂市", "陵水黎族自治县", "柳州市", "六安市", "六盘水市", "龙岩市", "陇南市", "娄底市", "泸州市", "吕梁市", "洛阳市", "漯河市", "马鞍山市", "茂名市", "眉山市", "梅州市", "绵阳市", "苗栗", "牡丹江市", "那曲地区", "南昌市", "南充市", "南京市", "南宁市", "南平市", "南通市", "南投", "南阳市", "内江市", "宁波市", "宁德市", "怒江州", "攀枝花市", "盘锦市", "澎湖", "平顶山市", "平凉市", "屏东", "萍乡市", "莆田市", "濮阳市", "七台河市", "齐齐哈尔市", "潜江市", "黔东南州", "黔南州", "黔西南州", "钦州市", "秦皇岛市", "青岛市", "清远市", "庆阳市", "琼海市", "琼中黎族苗族自治县", "曲靖市", "衢州市", "泉州市", "日喀则地区", "日照市", "三门峡市", "三明市", "三亚市", "山南地区", "汕头市", "汕尾市", "商洛市", "商丘市", "上海市", "上饶市", "韶关市", "邵阳市", "绍兴市", "沈阳市", "深圳市", "神农架林区", "十堰市", "石河子市", "石家庄市", "石嘴山市", "双鸭山市", "朔州市", "思茅市", "四平市", "松原市", "苏州市", "宿迁市", "宿州市", "绥化市", "随州市", "遂宁市", "塔城地区", "台北", "台东", "台南", "台中", "台州市", "太原市", "泰安市", "泰州市", "唐山市", "桃园", "天津市", "天门市", "天水市", "铁岭市", "通化市", "通辽市", "铜川市", "铜陵市", "铜仁地区", "图木舒克市", "吐鲁番地区", "屯昌县", "万宁市", "威海市", "潍坊市", "渭南市", "温州市", "文昌市", "文山州", "乌海市", "乌兰察布市", "乌鲁木齐市", "无锡市", "吴忠市", "芜湖市", "梧州市", "五家渠市", "五指山市", "武汉市", "武威市", "锡林郭勒盟", "西安市", "西宁市", "西双版纳州", "厦门市", "咸宁市", "咸阳市", "仙桃市", "香港", "湘潭市", "湘西州", "襄樊市", "孝感市", "忻州市", "新乡市", "新余市", "新竹", "信阳市", "邢台市", "兴安盟", "徐州市", "许昌市", "宣城市", "雅安市", "烟台市", "延安市", "延边州", "盐城市", "扬州市", "阳江市", "阳泉市", "伊春市", "伊犁州", "益阳市", "宜宾市", "宜昌市", "宜春市", "宜兰", "银川市", "鹰潭市", "营口市", "永州市", "榆林市", "玉林市", "玉树州", "玉溪市", "岳阳市", "云浮市", "云林", "运城市", "枣庄市", "湛江市", "张家界市", "张家口市", "张掖市", "彰化", "漳州市", "昭通市", "肇庆市", "镇江市", "郑州市", "中山市", "中卫市", "舟山市", "周口市", "株洲市", "珠海市", "驻马店市", "资阳市", "淄博市", "自贡市", "遵义市" };
-  public int[] d = { 294, 371, 381, 33, 379, 327, 337, 55, 300, 187, 84, 407, 30, 374, 292, 103, 245, 101, 341, 228, 50, 24, 331, 6, 309, 249, 223, 403, 86, 302, 80, 62, 376, 9, 324, 375, 246, 96, 172, 166, 15, 38, 60, 94, 216, 0, 175, 276, 8, 241, 63, 26, 232, 57, 317, 289, 318, 83, 110, 13, 117, 87, 237, 319, 280, 78, 321, 242, 349, 240, 207, 69, 28, 156, 161, 224, 210, 140, 85, 138, 90, 58, 352, 295, 135, 385, 356, 288, 282, 198, 226, 297, 221, 363, 105, 369, 360, 359, 233, 362, 365, 4, 335, 118, 48, 370, 230, 203, 81, 229, 185, 108, 115, 11, 169, 315, 23, 29, 122, 95, 387, 177, 42, 53, 51, 158, 361, 56, 150, 205, 107, 388, 136, 97, 65, 73, 197, 113, 121, 389, 343, 209, 184, 217, 340, 124, 390, 88, 16, 18, 155, 153, 130, 132, 347, 372, 181, 367, 373, 306, 322, 231, 76, 339, 10, 247, 285, 311, 128, 391, 41, 296, 91, 99, 79, 328, 313, 21, 244, 351, 77, 248, 220, 61, 298, 147, 350, 178, 279, 22, 182, 190, 52, 213, 290, 204, 281, 392, 112, 323, 129, 286, 35, 219, 146, 40, 393, 192, 284, 119, 148, 320, 278, 92, 394, 183, 346, 395, 131, 142, 188, 114, 106, 164, 304, 305, 303, 225, 3, 66, 215, 348, 236, 250, 307, 125, 144, 326, 75, 191, 143, 234, 325, 201, 206, 338, 193, 405, 139, 202, 170, 123, 82, 199, 165, 152, 380, 1, 354, 109, 17, 312, 98, 102, 39, 47, 59, 116, 160, 283, 378, 384, 396, 397, 386, 127, 12, 74, 46, 2, 398, 404, 163, 342, 93, 100, 27, 330, 54, 301, 382, 368, 243, 239, 72, 70, 333, 120, 238, 314, 25, 31, 366, 36, 355, 49, 222, 383, 235, 149, 344, 32, 329, 358, 316, 141, 159, 332, 162, 406, 168, 179, 151, 157, 20, 186, 133, 399, 194, 5, 34, 37, 189, 64, 291, 71, 334, 104, 43, 44, 211, 14, 111, 377, 174, 287, 154, 137, 400, 353, 134, 89, 176, 336, 227, 364, 308, 171, 218, 401, 19, 68, 212, 173, 7, 345, 402, 145, 310, 214, 45, 180, 208, 357, 126, 195, 167, 200, 196, 293, 67, 277, 299 };
-  public int[] e = { 23, 31, 31, 5, 31, 26, 27, 7, 24, 18, 9, 33, 5, 31, 23, 10, 21, 10, 28, 20, 7, 5, 27, 3, 25, 21, 20, 1, 9, 24, 8, 7, 31, 3, 26, 31, 21, 10, 17, 17, 4, 6, 7, 9, 19, 22, 17, 23, 3, 21, 7, 5, 20, 7, 25, 23, 25, 9, 11, 4, 11, 9, 21, 25, 23, 8, 25, 21, 28, 21, 19, 8, 5, 16, 16, 20, 19, 15, 9, 14, 9, 7, 28, 23, 14, 34, 29, 23, 23, 19, 20, 24, 20, 30, 11, 31, 30, 30, 21, 30, 30, 3, 27, 13, 7, 31, 20, 19, 8, 20, 18, 11, 11, 3, 17, 25, 5, 5, 13, 9, 34, 17, 6, 7, 7, 16, 30, 7, 16, 19, 11, 34, 14, 10, 8, 8, 18, 11, 13, 34, 28, 19, 18, 19, 28, 13, 34, 9, 4, 4, 16, 16, 14, 14, 28, 31, 18, 31, 31, 25, 26, 20, 8, 28, 3, 21, 23, 25, 13, 34, 6, 23, 9, 10, 8, 26, 25, 4, 21, 28, 8, 21, 20, 7, 24, 15, 28, 17, 23, 4, 18, 18, 7, 19, 23, 19, 23, 34, 11, 26, 14, 23, 6, 20, 15, 6, 34, 18, 23, 13, 15, 25, 23, 9, 34, 18, 28, 34, 14, 15, 18, 11, 11, 16, 24, 24, 24, 20, 3, 8, 19, 28, 21, 21, 25, 13, 15, 26, 8, 18, 15, 21, 26, 19, 19, 27, 18, 12, 14, 19, 17, 13, 9, 19, 16, 16, 31, 3, 29, 11, 4, 25, 10, 10, 6, 6, 7, 11, 16, 23, 31, 34, 34, 34, 34, 13, 4, 8, 6, 3, 34, 2, 16, 28, 9, 10, 5, 27, 7, 24, 31, 31, 21, 21, 8, 8, 27, 13, 21, 25, 5, 5, 31, 6, 29, 7, 20, 31, 21, 16, 28, 5, 27, 30, 25, 15, 16, 27, 16, 32, 17, 17, 16, 16, 4, 18, 14, 34, 18, 3, 5, 6, 18, 7, 23, 8, 27, 10, 6, 6, 19, 4, 11, 31, 17, 23, 16, 14, 34, 29, 14, 9, 17, 27, 20, 30, 25, 17, 19, 34, 4, 8, 19, 17, 3, 28, 34, 15, 25, 19, 6, 18, 19, 29, 13, 18, 17, 19, 18, 23, 8, 23, 24 };
-  public String[] f = { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z" };
-  public int[] g = { 0, 12, 33, 56, 72, 75, 82, 94, 130, 155, 160, 192, 199, 212, 221, 237, 239, 270, 293, 311, 334, 361 };
+  private static b a;
   
-  public static bu a()
+  public static b a()
   {
-    if (a == null) {
-      a = new bu();
-    }
     return a;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.finishAffinity();
+      return;
+    }
+    paramActivity.finish();
+  }
+  
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.startActivityForResult(paramIntent, paramInt, paramBundle);
+      return;
+    }
+    paramActivity.startActivityForResult(paramIntent, paramInt);
+  }
+  
+  public static void a(Activity paramActivity, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
+    }
+    paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public static void a(Activity paramActivity, cp paramcp)
+  {
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i >= 23)
+    {
+      if (paramcp != null) {
+        localObject1 = new e(paramcp);
+      }
+      paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramcp != null) {
+        localObject1 = new d(paramcp);
+      }
+      paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
+    }
+  }
+  
+  public static void a(final Activity paramActivity, String[] paramArrayOfString, final int paramInt)
+  {
+    b localb = a;
+    if ((localb != null) && (localb.a())) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if ((paramActivity instanceof c)) {
+        ((c)paramActivity).validateRequestPermissionsRequestCode(paramInt);
+      }
+      paramActivity.requestPermissions(paramArrayOfString, paramInt);
+      return;
+    }
+    if ((paramActivity instanceof a)) {
+      new Handler(Looper.getMainLooper()).post(new Runnable()
+      {
+        public final void run()
+        {
+          int[] arrayOfInt = new int[this.a.length];
+          PackageManager localPackageManager = paramActivity.getPackageManager();
+          String str = paramActivity.getPackageName();
+          int j = this.a.length;
+          int i = 0;
+          while (i < j)
+          {
+            arrayOfInt[i] = localPackageManager.checkPermission(this.a[i], str);
+            i += 1;
+          }
+          ((bu.a)paramActivity).onRequestPermissionsResult(paramInt, this.a, arrayOfInt);
+        }
+      });
+    }
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramActivity.finishAfterTransition();
+      return;
+    }
+    paramActivity.finish();
+  }
+  
+  public static void b(Activity paramActivity, cp paramcp)
+  {
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (i >= 23)
+    {
+      if (paramcp != null) {
+        localObject1 = new e(paramcp);
+      }
+      paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramcp != null) {
+        localObject1 = new d(paramcp);
+      }
+      paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
+    }
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramActivity.postponeEnterTransition();
+    }
+  }
+  
+  public static void d(Activity paramActivity)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramActivity.startPostponedEnterTransition();
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean a();
+    
+    public abstract boolean b();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void validateRequestPermissionsRequestCode(int paramInt);
+  }
+  
+  static class d
+    extends SharedElementCallback
+  {
+    protected cp a;
+    
+    d(cp paramcp)
+    {
+      this.a = paramcp;
+    }
+    
+    public Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
+    {
+      cp localcp = this.a;
+      if ((paramView instanceof ImageView))
+      {
+        localObject1 = (ImageView)paramView;
+        localObject2 = ((ImageView)localObject1).getDrawable();
+        Drawable localDrawable = ((ImageView)localObject1).getBackground();
+        if ((localObject2 != null) && (localDrawable == null))
+        {
+          localObject2 = cp.a((Drawable)localObject2);
+          if (localObject2 != null)
+          {
+            paramView = new Bundle();
+            paramView.putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject2);
+            paramView.putString("sharedElement:snapshot:imageScaleType", ((ImageView)localObject1).getScaleType().toString());
+            if (((ImageView)localObject1).getScaleType() == ImageView.ScaleType.MATRIX)
+            {
+              paramMatrix = ((ImageView)localObject1).getImageMatrix();
+              paramRectF = new float[9];
+              paramMatrix.getValues(paramRectF);
+              paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
+            }
+            return paramView;
+          }
+        }
+      }
+      int j = Math.round(paramRectF.width());
+      int i = Math.round(paramRectF.height());
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (j > 0)
+      {
+        localObject1 = localObject2;
+        if (i > 0)
+        {
+          float f = Math.min(1.0F, cp.b / (j * i));
+          j = (int)(j * f);
+          i = (int)(i * f);
+          if (localcp.a == null) {
+            localcp.a = new Matrix();
+          }
+          localcp.a.set(paramMatrix);
+          localcp.a.postTranslate(-paramRectF.left, -paramRectF.top);
+          localcp.a.postScale(f, f);
+          localObject1 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+          paramMatrix = new Canvas((Bitmap)localObject1);
+          paramMatrix.concat(localcp.a);
+          paramView.draw(paramMatrix);
+        }
+      }
+      return localObject1;
+    }
+    
+    public View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
+    {
+      return cp.a(paramContext, paramParcelable);
+    }
+    
+    public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
+    
+    public void onRejectSharedElements(List<View> paramList) {}
+    
+    public void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
+    
+    public void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
+  }
+  
+  static final class e
+    extends bu.d
+  {
+    e(cp paramcp)
+    {
+      super();
+    }
+    
+    public final void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
+    {
+      cp.a(new cp.a()
+      {
+        public final void a()
+        {
+          paramOnSharedElementsReadyListener.onSharedElementsReady();
+        }
+      });
+    }
   }
 }
 

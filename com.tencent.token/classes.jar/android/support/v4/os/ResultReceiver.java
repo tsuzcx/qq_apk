@@ -5,40 +5,20 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.os.RemoteException;
-import android.support.annotation.RestrictTo;
+import com.tencent.token.dr;
+import com.tencent.token.dr.a;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ResultReceiver
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator()
-  {
-    public ResultReceiver createFromParcel(Parcel paramAnonymousParcel)
-    {
-      return new ResultReceiver(paramAnonymousParcel);
-    }
-    
-    public ResultReceiver[] newArray(int paramAnonymousInt)
-    {
-      return new ResultReceiver[paramAnonymousInt];
-    }
-  };
-  final Handler mHandler;
-  final boolean mLocal;
-  IResultReceiver mReceiver;
-  
-  public ResultReceiver(Handler paramHandler)
-  {
-    this.mLocal = true;
-    this.mHandler = paramHandler;
-  }
+  public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
+  final boolean a = false;
+  final Handler b = null;
+  dr c;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.mLocal = false;
-    this.mHandler = null;
-    this.mReceiver = IResultReceiver.Stub.asInterface(paramParcel.readStrongBinder());
+    this.c = dr.a.a(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -46,76 +26,45 @@ public class ResultReceiver
     return 0;
   }
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle) {}
-  
-  public void send(int paramInt, Bundle paramBundle)
-  {
-    if (this.mLocal)
-    {
-      localObject = this.mHandler;
-      if (localObject != null)
-      {
-        ((Handler)localObject).post(new MyRunnable(paramInt, paramBundle));
-        return;
-      }
-      onReceiveResult(paramInt, paramBundle);
-      return;
-    }
-    Object localObject = this.mReceiver;
-    if (localObject != null) {}
-    try
-    {
-      ((IResultReceiver)localObject).send(paramInt, paramBundle);
-      return;
-    }
-    catch (RemoteException paramBundle) {}
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     try
     {
-      if (this.mReceiver == null) {
-        this.mReceiver = new MyResultReceiver();
+      if (this.c == null) {
+        this.c = new a();
       }
-      paramParcel.writeStrongBinder(this.mReceiver.asBinder());
+      paramParcel.writeStrongBinder(this.c.asBinder());
       return;
     }
     finally {}
   }
   
-  class MyResultReceiver
-    extends IResultReceiver.Stub
+  final class a
+    extends dr.a
   {
-    MyResultReceiver() {}
+    a() {}
     
-    public void send(int paramInt, Bundle paramBundle)
+    public final void a(int paramInt, Bundle paramBundle)
     {
-      if (ResultReceiver.this.mHandler != null)
-      {
-        ResultReceiver.this.mHandler.post(new ResultReceiver.MyRunnable(ResultReceiver.this, paramInt, paramBundle));
-        return;
+      if (ResultReceiver.this.b != null) {
+        ResultReceiver.this.b.post(new ResultReceiver.b(ResultReceiver.this, paramInt, paramBundle));
       }
-      ResultReceiver.this.onReceiveResult(paramInt, paramBundle);
     }
   }
   
-  class MyRunnable
+  final class b
     implements Runnable
   {
-    final int mResultCode;
-    final Bundle mResultData;
+    final int a;
+    final Bundle b;
     
-    MyRunnable(int paramInt, Bundle paramBundle)
+    b(int paramInt, Bundle paramBundle)
     {
-      this.mResultCode = paramInt;
-      this.mResultData = paramBundle;
+      this.a = paramInt;
+      this.b = paramBundle;
     }
     
-    public void run()
-    {
-      ResultReceiver.this.onReceiveResult(this.mResultCode, this.mResultData);
-    }
+    public final void run() {}
   }
 }
 

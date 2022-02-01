@@ -1,250 +1,488 @@
 package com.tencent.token;
 
-import com.tencent.halley.common.b;
-import java.net.InetAddress;
-import java.net.Socket;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class bn
+  extends bs
   implements bm
 {
-  private int a = 1;
-  private int b = 1;
-  private int c = 20000;
-  private int d = 3;
-  private ArrayList e = null;
-  private int f = 0;
-  private boolean g = false;
-  private ArrayList h = null;
-  private int i = 0;
-  private boolean j = false;
-  private String k = "dispatcher.3g.qq.com";
-  private Socket l;
-  private int m;
-  private int n;
-  private int o;
-  private int p;
-  private az q;
-  
-  public bn()
+  final Drawable.Callback a = new Drawable.Callback()
   {
-    int[] arrayOfInt = bg.a;
-    this.l = null;
-    this.m = 0;
-    this.n = 0;
-    this.o = -1;
-    this.p = -1;
+    public final void invalidateDrawable(Drawable paramAnonymousDrawable)
+    {
+      bn.this.invalidateSelf();
+    }
+    
+    public final void scheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable, long paramAnonymousLong)
+    {
+      bn.this.scheduleSelf(paramAnonymousRunnable, paramAnonymousLong);
+    }
+    
+    public final void unscheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable)
+    {
+      bn.this.unscheduleSelf(paramAnonymousRunnable);
+    }
+  };
+  private a c;
+  private Context d;
+  private ArgbEvaluator e = null;
+  private Animator.AnimatorListener f = null;
+  private ArrayList<Object> g = null;
+  
+  bn()
+  {
+    this(null, (byte)0);
   }
   
-  private static ArrayList a(ArrayList paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
+  private bn(Context paramContext)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (paramInt1 >= paramArrayList.size()) {
-        return paramArrayList;
-      }
-      paramInt2 = Math.min(paramInt2, paramArrayList.size() - paramInt1);
-      if (paramInt2 <= 0) {
-        return paramArrayList;
-      }
-      ArrayList localArrayList = new ArrayList(paramInt2);
-      paramArrayList = paramArrayList.subList(paramInt1, paramInt1 + paramInt2);
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        az localaz = (az)paramArrayList.get(paramInt1);
-        localArrayList.add(new az(localaz.a(), localaz.b()));
-        paramInt1 += 1;
-      }
-      return localArrayList;
-    }
-    return paramArrayList;
+    this(paramContext, (byte)0);
   }
   
-  public final void a()
+  private bn(Context paramContext, byte paramByte)
   {
-    Object localObject = this.e;
-    boolean bool;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    this.g = bool;
-    if (this.h == null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.j = bool;
-    b.a("SocketConnectorImpl", "doConnect...");
-    while ((!this.g) || (!this.j))
+    this.d = paramContext;
+    this.c = new a();
+  }
+  
+  public static bn a(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    paramContext = new bn(paramContext);
+    paramContext.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+    return paramContext;
+  }
+  
+  private void a(Animator paramAnimator)
+  {
+    Object localObject;
+    if ((paramAnimator instanceof AnimatorSet))
     {
-      int i1 = this.n;
-      if (i1 > this.d) {
-        break;
-      }
-      this.n = (i1 + 1);
-      long l1;
-      if (bq.c())
+      localObject = ((AnimatorSet)paramAnimator).getChildAnimations();
+      if (localObject != null)
       {
-        this.l = bl.a(this.k, this.c);
-      }
-      else
-      {
-        if (!this.g)
+        int i = 0;
+        while (i < ((List)localObject).size())
         {
-          l1 = System.currentTimeMillis();
-          localObject = a(this.e, this.f, this.a, true);
-          if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-          {
-            this.f += ((ArrayList)localObject).size();
-            if (this.f < this.e.size()) {}
-          }
-          else
-          {
-            this.g = true;
-          }
-          this.l = bl.a((ArrayList)localObject, this.c);
-          this.o = 0;
-          this.p = ((int)(System.currentTimeMillis() - l1));
-          localObject = new StringBuilder("use IpList, dnsTime: 0 ,connectTime：");
+          a((Animator)((List)localObject).get(i));
+          i += 1;
         }
-        else
+      }
+    }
+    if ((paramAnimator instanceof ObjectAnimator))
+    {
+      paramAnimator = (ObjectAnimator)paramAnimator;
+      localObject = paramAnimator.getPropertyName();
+      if (("fillColor".equals(localObject)) || ("strokeColor".equals(localObject)))
+      {
+        if (this.e == null) {
+          this.e = new ArgbEvaluator();
+        }
+        paramAnimator.setEvaluator(this.e);
+      }
+    }
+  }
+  
+  public final void applyTheme(Resources.Theme paramTheme)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramTheme);
+      return;
+    }
+  }
+  
+  public final boolean canApplyTheme()
+  {
+    if (this.b != null) {
+      return dh.c(this.b);
+    }
+    return false;
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    if (this.b != null)
+    {
+      this.b.draw(paramCanvas);
+      return;
+    }
+    this.c.b.draw(paramCanvas);
+    if (this.c.c.isStarted()) {
+      invalidateSelf();
+    }
+  }
+  
+  public final int getAlpha()
+  {
+    if (this.b != null) {
+      return dh.b(this.b);
+    }
+    return this.c.b.getAlpha();
+  }
+  
+  public final int getChangingConfigurations()
+  {
+    if (this.b != null) {
+      return this.b.getChangingConfigurations();
+    }
+    return super.getChangingConfigurations() | this.c.a;
+  }
+  
+  public final Drawable.ConstantState getConstantState()
+  {
+    if ((this.b != null) && (Build.VERSION.SDK_INT >= 24)) {
+      return new b(this.b.getConstantState());
+    }
+    return null;
+  }
+  
+  public final int getIntrinsicHeight()
+  {
+    if (this.b != null) {
+      return this.b.getIntrinsicHeight();
+    }
+    return this.c.b.getIntrinsicHeight();
+  }
+  
+  public final int getIntrinsicWidth()
+  {
+    if (this.b != null) {
+      return this.b.getIntrinsicWidth();
+    }
+    return this.c.b.getIntrinsicWidth();
+  }
+  
+  public final int getOpacity()
+  {
+    if (this.b != null) {
+      return this.b.getOpacity();
+    }
+    return this.c.b.getOpacity();
+  }
+  
+  public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
+  {
+    inflate(paramResources, paramXmlPullParser, paramAttributeSet, null);
+  }
+  
+  public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      return;
+    }
+    int i = paramXmlPullParser.getEventType();
+    int j = paramXmlPullParser.getDepth();
+    while ((i != 1) && ((paramXmlPullParser.getDepth() >= j + 1) || (i != 3)))
+    {
+      if (i == 2)
+      {
+        Object localObject1 = paramXmlPullParser.getName();
+        Object localObject2;
+        if ("animated-vector".equals(localObject1))
         {
-          ArrayList localArrayList1 = new ArrayList();
-          localObject = localArrayList1;
-          if (!this.j)
+          localObject1 = cy.a(paramResources, paramTheme, paramAttributeSet, bl.e);
+          i = ((TypedArray)localObject1).getResourceId(0, 0);
+          if (i != 0)
           {
-            ArrayList localArrayList2 = this.h;
-            localObject = localArrayList1;
-            if (localArrayList2 != null)
-            {
-              localObject = localArrayList1;
-              if (localArrayList2.size() > 0)
-              {
-                localObject = localArrayList1;
-                if (this.i < this.h.size())
-                {
-                  localArrayList1 = a(this.h, this.i, this.b, true);
-                  localObject = localArrayList1;
-                  if (localArrayList1 != null)
-                  {
-                    localObject = localArrayList1;
-                    if (localArrayList1.size() > 0)
-                    {
-                      this.i += localArrayList1.size();
-                      localObject = localArrayList1;
-                      if (this.i < this.h.size()) {
-                        break label380;
-                      }
-                      localObject = localArrayList1;
-                    }
-                  }
-                }
-              }
+            localObject2 = bt.a(paramResources, i, paramTheme);
+            ((bt)localObject2).d = false;
+            ((bt)localObject2).setCallback(this.a);
+            if (this.c.b != null) {
+              this.c.b.setCallback(null);
             }
-            this.j = true;
+            this.c.b = ((bt)localObject2);
           }
-          label380:
-          localObject = bl.a((ArrayList)localObject, this.k, this.c);
-          if (localObject != null) {
-            this.l = ((bk)localObject).c();
+          ((TypedArray)localObject1).recycle();
+        }
+        else if ("target".equals(localObject1))
+        {
+          localObject2 = paramResources.obtainAttributes(paramAttributeSet, bl.f);
+          String str = ((TypedArray)localObject2).getString(0);
+          i = ((TypedArray)localObject2).getResourceId(1, 0);
+          if (i != 0)
+          {
+            localObject1 = this.d;
+            if (localObject1 != null)
+            {
+              if (Build.VERSION.SDK_INT >= 24) {
+                localObject1 = AnimatorInflater.loadAnimator((Context)localObject1, i);
+              } else {
+                localObject1 = bp.a((Context)localObject1, ((Context)localObject1).getResources(), ((Context)localObject1).getTheme(), i);
+              }
+              ((Animator)localObject1).setTarget(this.c.b.c.b.h.get(str));
+              if (Build.VERSION.SDK_INT < 21) {
+                a((Animator)localObject1);
+              }
+              if (a.a(this.c) == null)
+              {
+                a.a(this.c, new ArrayList());
+                this.c.e = new dv();
+              }
+              a.a(this.c).add(localObject1);
+              this.c.e.put(localObject1, str);
+            }
+            else
+            {
+              ((TypedArray)localObject2).recycle();
+              throw new IllegalStateException("Context can't be null when inflating animators");
+            }
           }
-          this.o = bl.a;
-          this.p = bl.b;
-          localObject = new StringBuilder("use IpList DNS parallel , dnsTime:");
-          ((StringBuilder)localObject).append(this.o);
-          ((StringBuilder)localObject).append(",connectTime：");
+          ((TypedArray)localObject2).recycle();
         }
-        ((StringBuilder)localObject).append(this.p);
-        b.a("SocketConnectorImpl", ((StringBuilder)localObject).toString());
       }
-      localObject = this.l;
-      if ((localObject != null) && (((Socket)localObject).isConnected()) && (!this.l.isClosed()))
-      {
-        this.q = new az(this.l.getInetAddress().getHostAddress(), this.l.getPort());
-        this.m = 0;
-        return;
-      }
-      if (bq.f()) {
-        this.m = -3;
-      }
-      for (i1 = 3000;; i1 = 5000)
-      {
-        l1 = i1;
-        try
-        {
-          Thread.sleep(l1);
-        }
-        catch (Exception localException)
-        {
-          break;
-        }
-        this.m = -4;
-      }
-      this.l = null;
+      i = paramXmlPullParser.next();
     }
+    paramResources = this.c;
+    if (paramResources.c == null) {
+      paramResources.c = new AnimatorSet();
+    }
+    paramResources.c.playTogether(paramResources.d);
   }
   
-  public final void a(int paramInt)
+  public final boolean isAutoMirrored()
   {
-    this.c = paramInt;
+    if (this.b != null) {
+      return dh.a(this.b);
+    }
+    return this.c.b.isAutoMirrored();
   }
   
-  public final void a(String paramString)
+  public final boolean isRunning()
   {
-    this.k = paramString;
+    if (this.b != null) {
+      return ((AnimatedVectorDrawable)this.b).isRunning();
+    }
+    return this.c.c.isRunning();
   }
   
-  public final void a(ArrayList paramArrayList)
+  public final boolean isStateful()
   {
-    this.e = paramArrayList;
+    if (this.b != null) {
+      return this.b.isStateful();
+    }
+    return this.c.b.isStateful();
   }
   
-  public final void a(ArrayList paramArrayList, boolean paramBoolean)
+  public final Drawable mutate()
   {
-    this.h = paramArrayList;
+    if (this.b != null) {
+      this.b.mutate();
+    }
+    return this;
   }
   
-  public final void a(int[] paramArrayOfInt)
+  protected final void onBoundsChange(Rect paramRect)
   {
-    paramArrayOfInt.clone();
-  }
-  
-  public final int b()
-  {
-    return this.m;
-  }
-  
-  public final void b(int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 4))
+    if (this.b != null)
     {
-      this.a = paramInt;
-      this.b = paramInt;
+      this.b.setBounds(paramRect);
+      return;
+    }
+    this.c.b.setBounds(paramRect);
+  }
+  
+  protected final boolean onLevelChange(int paramInt)
+  {
+    if (this.b != null) {
+      return this.b.setLevel(paramInt);
+    }
+    return this.c.b.setLevel(paramInt);
+  }
+  
+  protected final boolean onStateChange(int[] paramArrayOfInt)
+  {
+    if (this.b != null) {
+      return this.b.setState(paramArrayOfInt);
+    }
+    return this.c.b.setState(paramArrayOfInt);
+  }
+  
+  public final void setAlpha(int paramInt)
+  {
+    if (this.b != null)
+    {
+      this.b.setAlpha(paramInt);
+      return;
+    }
+    this.c.b.setAlpha(paramInt);
+  }
+  
+  public final void setAutoMirrored(boolean paramBoolean)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramBoolean);
+      return;
+    }
+    this.c.b.setAutoMirrored(paramBoolean);
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter)
+  {
+    if (this.b != null)
+    {
+      this.b.setColorFilter(paramColorFilter);
+      return;
+    }
+    this.c.b.setColorFilter(paramColorFilter);
+  }
+  
+  public final void setTint(int paramInt)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramInt);
+      return;
+    }
+    this.c.b.setTint(paramInt);
+  }
+  
+  public final void setTintList(ColorStateList paramColorStateList)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramColorStateList);
+      return;
+    }
+    this.c.b.setTintList(paramColorStateList);
+  }
+  
+  public final void setTintMode(PorterDuff.Mode paramMode)
+  {
+    if (this.b != null)
+    {
+      dh.a(this.b, paramMode);
+      return;
+    }
+    this.c.b.setTintMode(paramMode);
+  }
+  
+  public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.b != null) {
+      return this.b.setVisible(paramBoolean1, paramBoolean2);
+    }
+    this.c.b.setVisible(paramBoolean1, paramBoolean2);
+    return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  public final void start()
+  {
+    if (this.b != null)
+    {
+      ((AnimatedVectorDrawable)this.b).start();
+      return;
+    }
+    if (this.c.c.isStarted()) {
+      return;
+    }
+    this.c.c.start();
+    invalidateSelf();
+  }
+  
+  public final void stop()
+  {
+    if (this.b != null)
+    {
+      ((AnimatedVectorDrawable)this.b).stop();
+      return;
+    }
+    this.c.c.end();
+  }
+  
+  static final class a
+    extends Drawable.ConstantState
+  {
+    int a;
+    bt b;
+    AnimatorSet c;
+    ArrayList<Animator> d;
+    dv<Animator, String> e;
+    
+    public final int getChangingConfigurations()
+    {
+      return this.a;
+    }
+    
+    public final Drawable newDrawable()
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
+    }
+    
+    public final Drawable newDrawable(Resources paramResources)
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
     }
   }
   
-  public final Socket c()
+  static final class b
+    extends Drawable.ConstantState
   {
-    return this.l;
-  }
-  
-  public final int d()
-  {
-    return this.o;
-  }
-  
-  public final int e()
-  {
-    return this.p;
-  }
-  
-  public final az f()
-  {
-    return this.q;
+    private final Drawable.ConstantState a;
+    
+    public b(Drawable.ConstantState paramConstantState)
+    {
+      this.a = paramConstantState;
+    }
+    
+    public final boolean canApplyTheme()
+    {
+      return this.a.canApplyTheme();
+    }
+    
+    public final int getChangingConfigurations()
+    {
+      return this.a.getChangingConfigurations();
+    }
+    
+    public final Drawable newDrawable()
+    {
+      bn localbn = new bn();
+      localbn.b = this.a.newDrawable();
+      localbn.b.setCallback(localbn.a);
+      return localbn;
+    }
+    
+    public final Drawable newDrawable(Resources paramResources)
+    {
+      bn localbn = new bn();
+      localbn.b = this.a.newDrawable(paramResources);
+      localbn.b.setCallback(localbn.a);
+      return localbn;
+    }
+    
+    public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
+    {
+      bn localbn = new bn();
+      localbn.b = this.a.newDrawable(paramResources, paramTheme);
+      localbn.b.setCallback(localbn.a);
+      return localbn;
+    }
   }
 }
 

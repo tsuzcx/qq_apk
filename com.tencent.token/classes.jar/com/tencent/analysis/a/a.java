@@ -145,9 +145,7 @@ public abstract class a
       }
       return;
     }
-    paramByteBuffer = new StringBuilder("STX(2) invalid:");
-    paramByteBuffer.append(i);
-    throw new RuntimeException(paramByteBuffer.toString());
+    throw new RuntimeException("STX(2) invalid:".concat(String.valueOf(i)));
   }
   
   public String toString()

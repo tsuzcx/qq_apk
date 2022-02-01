@@ -21,18 +21,19 @@ class a
   
   private static long a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    long l1 = 0L;
     if (paramInt2 > 4) {
       paramInt2 = paramInt1 + 4;
     } else {
       paramInt2 += paramInt1;
     }
-    long l = 0L;
     while (paramInt1 < paramInt2)
     {
-      l = l << 8 | paramArrayOfByte[paramInt1] & 0xFF;
+      long l2 = paramArrayOfByte[paramInt1] & 0xFF;
       paramInt1 += 1;
+      l1 = l1 << 8 | l2;
     }
-    return 0xFFFFFFFF & l;
+    return 0xFFFFFFFF & l1;
   }
   
   private void a()

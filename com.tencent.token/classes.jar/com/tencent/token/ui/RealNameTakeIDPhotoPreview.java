@@ -15,7 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
@@ -49,41 +49,36 @@ public class RealNameTakeIDPhotoPreview
       this.g = paramContext.heightPixels;
       this.h = paramContext.widthPixels;
     }
-    paramContext = new StringBuilder();
-    paramContext.append("screenWidth =");
+    paramContext = new StringBuilder("screenWidth =");
     paramContext.append(this.g);
     paramContext.append(",screenHeight=");
     paramContext.append(this.h);
-    g.b(paramContext.toString());
+    xb.b(paramContext.toString());
   }
   
   private static String a(Collection<String> paramCollection, String... paramVarArgs)
   {
     if (paramCollection != null)
     {
-      int n = paramVarArgs.length;
       int m = 0;
-      while (m < n)
+      while (m <= 0)
       {
-        String str = paramVarArgs[m];
+        String str = paramVarArgs[0];
         if (paramCollection.contains(str))
         {
           paramCollection = str;
-          break label45;
+          break label38;
         }
         m += 1;
       }
     }
     paramCollection = null;
-    label45:
-    paramVarArgs = new StringBuilder();
-    paramVarArgs.append("resolution Settable value: ");
-    paramVarArgs.append(paramCollection);
-    g.b(paramVarArgs.toString());
+    label38:
+    xb.b("resolution Settable value: ".concat(String.valueOf(paramCollection)));
     return paramCollection;
   }
   
-  private void a(Camera paramCamera, int paramInt)
+  private static void a(Camera paramCamera, int paramInt)
   {
     try
     {
@@ -96,7 +91,7 @@ public class RealNameTakeIDPhotoPreview
     catch (Exception paramCamera) {}
   }
   
-  private void d()
+  private void b()
   {
     Object localObject = new Camera.CameraInfo();
     int n = Camera.getNumberOfCameras();
@@ -111,10 +106,9 @@ public class RealNameTakeIDPhotoPreview
         }
         catch (RuntimeException localRuntimeException)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("CameraOpen camera=");
+          StringBuilder localStringBuilder = new StringBuilder("CameraOpen camera=");
           localStringBuilder.append(this.a);
-          g.c(localStringBuilder.toString());
+          xb.c(localStringBuilder.toString());
           localRuntimeException.printStackTrace();
         }
       }
@@ -122,17 +116,16 @@ public class RealNameTakeIDPhotoPreview
     }
     if (this.a == null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("CameraOpen camera=");
+      localObject = new StringBuilder("CameraOpen camera=");
       ((StringBuilder)localObject).append(this.a);
-      g.c(((StringBuilder)localObject).toString());
+      xb.c(((StringBuilder)localObject).toString());
       localObject = this.k.obtainMessage(0);
       ((Message)localObject).what = 2;
       ((Message)localObject).sendToTarget();
     }
   }
   
-  private void e()
+  private void c()
   {
     Object localObject = this.i;
     if (localObject != null)
@@ -187,8 +180,7 @@ public class RealNameTakeIDPhotoPreview
       }
       m += 1;
     }
-    paramList = new StringBuilder();
-    paramList.append("debug------------bestPreviewWidth=");
+    paramList = new StringBuilder("debug------------bestPreviewWidth=");
     paramList.append(this.c);
     paramList.append(",bestPreviewHeight=");
     paramList.append(this.e);
@@ -196,7 +188,7 @@ public class RealNameTakeIDPhotoPreview
     paramList.append(this.g);
     paramList.append(",screenHeight=");
     paramList.append(this.h);
-    g.c(paramList.toString());
+    xb.c(paramList.toString());
   }
   
   private void setBestResult(List<Camera.Size> paramList)
@@ -238,15 +230,14 @@ public class RealNameTakeIDPhotoPreview
       }
       m += 1;
     }
-    paramList = new StringBuilder();
-    paramList.append("debug------------mPictureWidth=");
+    paramList = new StringBuilder("debug------------mPictureWidth=");
     paramList.append(this.d);
     paramList.append(",mPictureHeight=");
     paramList.append(this.f);
-    g.c(paramList.toString());
+    xb.c(paramList.toString());
   }
   
-  public void a()
+  public final void a()
   {
     Camera localCamera = this.a;
     if (localCamera != null)
@@ -256,13 +247,13 @@ public class RealNameTakeIDPhotoPreview
       this.a.release();
       this.a = null;
     }
-    e();
+    c();
   }
   
-  public void a(Context paramContext, Handler paramHandler)
+  public final void a(Context paramContext, Handler paramHandler)
   {
     this.k = paramHandler;
-    d();
+    b();
     this.b = getHolder();
     this.b.addCallback(this);
     this.b.setType(3);
@@ -274,57 +265,11 @@ public class RealNameTakeIDPhotoPreview
       this.g = paramContext.heightPixels;
       this.h = paramContext.widthPixels;
     }
-    paramContext = new StringBuilder();
-    paramContext.append("screenWidth =");
+    paramContext = new StringBuilder("screenWidth =");
     paramContext.append(this.g);
     paramContext.append(",screenHeight=");
     paramContext.append(this.h);
-    g.b(paramContext.toString());
-  }
-  
-  public void b()
-  {
-    Camera localCamera = this.a;
-    if (localCamera == null) {
-      return;
-    }
-    try
-    {
-      localCamera.autoFocus(this);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("camera auto focus ");
-      localStringBuilder.append(localException.toString());
-      g.d(localStringBuilder.toString());
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      localRuntimeException.printStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("camera auto focus ");
-      localStringBuilder.append(localRuntimeException.toString());
-      g.d(localStringBuilder.toString());
-    }
-  }
-  
-  public void c()
-  {
-    this.i = new Timer(false);
-    this.j = new TimerTask()
-    {
-      public void run()
-      {
-        Message localMessage = RealNameTakeIDPhotoPreview.a(RealNameTakeIDPhotoPreview.this).obtainMessage(0);
-        localMessage.what = 3;
-        localMessage.sendToTarget();
-      }
-    };
-    this.i.schedule(this.j, 500L, 2000L);
+    xb.b(paramContext.toString());
   }
   
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
@@ -342,12 +287,11 @@ public class RealNameTakeIDPhotoPreview
     {
       paramSurfaceHolder.printStackTrace();
     }
-    paramSurfaceHolder = new StringBuilder();
-    paramSurfaceHolder.append("width =");
+    paramSurfaceHolder = new StringBuilder("width =");
     paramSurfaceHolder.append(paramInt2);
     paramSurfaceHolder.append(",height=");
     paramSurfaceHolder.append(paramInt3);
-    g.b(paramSurfaceHolder.toString());
+    xb.b(paramSurfaceHolder.toString());
     paramSurfaceHolder = this.a;
     if (paramSurfaceHolder != null) {}
     try
@@ -362,12 +306,11 @@ public class RealNameTakeIDPhotoPreview
         while (paramInt1 < ((List)localObject1).size())
         {
           localObject2 = (Camera.Size)((List)localObject1).get(paramInt1);
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("picSizes,width: ");
+          localObject3 = new StringBuilder("picSizes,width: ");
           ((StringBuilder)localObject3).append(((Camera.Size)localObject2).width);
           ((StringBuilder)localObject3).append(" height");
           ((StringBuilder)localObject3).append(((Camera.Size)localObject2).height);
-          g.b(((StringBuilder)localObject3).toString());
+          xb.b(((StringBuilder)localObject3).toString());
           paramInt1 += 1;
         }
       }
@@ -378,12 +321,11 @@ public class RealNameTakeIDPhotoPreview
         while (paramInt1 < ((List)localObject2).size())
         {
           localObject3 = (Camera.Size)((List)localObject2).get(paramInt1);
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("presize,width: ");
+          StringBuilder localStringBuilder = new StringBuilder("presize,width: ");
           localStringBuilder.append(((Camera.Size)localObject3).width);
           localStringBuilder.append(" height");
           localStringBuilder.append(((Camera.Size)localObject3).height);
-          g.b(localStringBuilder.toString());
+          xb.b(localStringBuilder.toString());
           paramInt1 += 1;
         }
       }
@@ -396,22 +338,18 @@ public class RealNameTakeIDPhotoPreview
       setBestResult((List)localObject1);
       paramSurfaceHolder.setPreviewSize(this.c, this.e);
       paramSurfaceHolder.setPictureSize(this.d, this.f);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("mPreviewWidth!");
+      localObject1 = new StringBuilder("mPreviewWidth!");
       ((StringBuilder)localObject1).append(this.c);
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("mPreviewHeight!");
+      xb.c(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder("mPreviewHeight!");
       ((StringBuilder)localObject1).append(this.e);
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("mPictureWidth!");
+      xb.c(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder("mPictureWidth!");
       ((StringBuilder)localObject1).append(this.d);
-      g.c(((StringBuilder)localObject1).toString());
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("mPictureHeight!");
+      xb.c(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder("mPictureHeight!");
       ((StringBuilder)localObject1).append(this.f);
-      g.c(((StringBuilder)localObject1).toString());
+      xb.c(((StringBuilder)localObject1).toString());
       localObject1 = a(paramSurfaceHolder.getSupportedFocusModes(), new String[] { "continuous-video" });
       if (localObject1 != null)
       {
@@ -426,12 +364,24 @@ public class RealNameTakeIDPhotoPreview
       }
       this.a.setParameters(paramSurfaceHolder);
       this.a.startPreview();
-      if ((this.a.getParameters().getFocusMode().equals("auto")) || (this.a.getParameters().getFocusMode().equals("macro"))) {
-        c();
+      if ((this.a.getParameters().getFocusMode().equals("auto")) || (this.a.getParameters().getFocusMode().equals("macro")))
+      {
+        this.i = new Timer(false);
+        this.j = new TimerTask()
+        {
+          public final void run()
+          {
+            Message localMessage = RealNameTakeIDPhotoPreview.a(RealNameTakeIDPhotoPreview.this).obtainMessage(0);
+            localMessage.what = 3;
+            localMessage.sendToTarget();
+          }
+        };
+        this.i.schedule(this.j, 500L, 2000L);
       }
       return;
     }
     catch (Exception paramSurfaceHolder) {}
+    return;
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
@@ -456,7 +406,7 @@ public class RealNameTakeIDPhotoPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    g.c("surfaceDestroyed!");
+    xb.c("surfaceDestroyed!");
     a();
   }
 }

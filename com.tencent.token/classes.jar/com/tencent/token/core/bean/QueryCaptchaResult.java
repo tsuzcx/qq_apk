@@ -28,7 +28,6 @@ public class QueryCaptchaResult
       this.mUrlValidTimeSecs = paramJSONObject.getInt("url_valid_time");
       this.mLastGetUrlTime = (System.currentTimeMillis() / 1000L);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
       localStringBuilder.append(paramJSONObject.getInt("appid"));
       this.mAppid = localStringBuilder.toString();
     }

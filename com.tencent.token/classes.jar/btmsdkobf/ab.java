@@ -17,12 +17,12 @@ public final class ab
   public int phase = 0;
   public int time = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ab();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bg = paramJceInputStream.read(this.bg, 0, false);
     this.bh = paramJceInputStream.read(this.bh, 1, false);
@@ -35,7 +35,7 @@ public final class ab
     this.time = paramJceInputStream.read(this.time, 8, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     long l = this.bg;
     if (l != 0L) {

@@ -34,7 +34,7 @@ public class b
     util.int64_to_buf32(arrayOfByte, 8, paramLong2);
     System.arraycopy(t.A, 0, arrayOfByte, 12, t.A.length);
     int i = t.A.length;
-    i = fill_staff(arrayOfByte, t.E, 12 + i);
+    i = fill_staff(arrayOfByte, t.E, i + 12);
     i = fill_staff(arrayOfByte, t.G, i);
     fill_staff(arrayOfByte, t.H, i);
     return arrayOfByte;
@@ -63,7 +63,7 @@ public class b
     util.int32_to_buf(arrayOfByte, 31, i);
     util.int64_to_buf(arrayOfByte, 35, paramLong);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 43, paramArrayOfByte.length);
-    util.int8_to_buf(arrayOfByte, 43 + paramArrayOfByte.length, 3);
+    util.int8_to_buf(arrayOfByte, paramArrayOfByte.length + 43, 3);
     return arrayOfByte;
   }
   

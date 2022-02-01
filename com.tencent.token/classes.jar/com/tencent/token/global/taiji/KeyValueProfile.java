@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class KeyValueProfile
   extends JceStruct
 {
-  static byte[] cache_byt = (byte[])new byte[1];
+  static byte[] cache_byt;
   public boolean bl = false;
   public byte[] byt = null;
   public int i = 0;
@@ -20,15 +20,17 @@ public final class KeyValueProfile
   
   static
   {
-    ((byte[])cache_byt)[0] = 0;
+    byte[] arrayOfByte = (byte[])new byte[1];
+    cache_byt = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new KeyValueProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.valueType = paramJceInputStream.read(this.valueType, 0, false);
     this.keyid = paramJceInputStream.read(this.keyid, 1, false);
@@ -41,7 +43,7 @@ public final class KeyValueProfile
     this.updateTime = paramJceInputStream.read(this.updateTime, 8, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     int j = this.valueType;
     if (j != 0) {

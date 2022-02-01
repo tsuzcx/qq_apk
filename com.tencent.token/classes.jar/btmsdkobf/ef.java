@@ -58,10 +58,10 @@ public class ef
     //   93: if_icmpeq +20 -> 113
     //   96: iload_1
     //   97: sipush 301
-    //   100: if_icmplt +145 -> 245
+    //   100: if_icmplt +142 -> 242
     //   103: iload_1
     //   104: sipush 305
-    //   107: if_icmpgt +138 -> 245
+    //   107: if_icmpgt +135 -> 242
     //   110: goto +3 -> 113
     //   113: aload 4
     //   115: ldc 73
@@ -94,60 +94,59 @@ public class ef
     //   170: putstatic 96	btmsdkobf/ef:oe	Ljava/lang/String;
     //   173: aload_0
     //   174: iconst_1
-    //   175: iload_2
+    //   175: iconst_0
     //   176: invokeinterface 94 3 0
     //   181: aload_3
     //   182: areturn
     //   183: astore_3
-    //   184: goto +10 -> 194
-    //   187: goto +30 -> 217
-    //   190: astore_3
-    //   191: aconst_null
-    //   192: astore 4
-    //   194: aload 4
-    //   196: ifnull +8 -> 204
-    //   199: aload 4
-    //   201: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
-    //   204: aload_0
-    //   205: iconst_0
-    //   206: iconst_0
-    //   207: invokeinterface 94 3 0
-    //   212: aload_3
-    //   213: athrow
-    //   214: aconst_null
-    //   215: astore 4
-    //   217: aload 4
-    //   219: ifnull +8 -> 227
-    //   222: aload 4
-    //   224: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
-    //   227: aload_0
-    //   228: iconst_0
-    //   229: iconst_0
-    //   230: invokeinterface 94 3 0
-    //   235: aconst_null
-    //   236: areturn
-    //   237: astore_3
-    //   238: goto -24 -> 214
-    //   241: astore_3
-    //   242: goto -55 -> 187
-    //   245: iconst_1
-    //   246: istore_2
-    //   247: aload 5
-    //   249: astore_3
-    //   250: goto -105 -> 145
+    //   184: goto +7 -> 191
+    //   187: astore_3
+    //   188: aconst_null
+    //   189: astore 4
+    //   191: aload 4
+    //   193: ifnull +8 -> 201
+    //   196: aload 4
+    //   198: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
+    //   201: aload_0
+    //   202: iconst_0
+    //   203: iconst_0
+    //   204: invokeinterface 94 3 0
+    //   209: aload_3
+    //   210: athrow
+    //   211: aconst_null
+    //   212: astore 4
+    //   214: aload 4
+    //   216: ifnull +8 -> 224
+    //   219: aload 4
+    //   221: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
+    //   224: aload_0
+    //   225: iconst_0
+    //   226: iconst_0
+    //   227: invokeinterface 94 3 0
+    //   232: aconst_null
+    //   233: areturn
+    //   234: astore_3
+    //   235: goto -24 -> 211
+    //   238: astore_3
+    //   239: goto -25 -> 214
+    //   242: iconst_1
+    //   243: istore_2
+    //   244: aload 5
+    //   246: astore_3
+    //   247: goto -102 -> 145
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	253	0	parama	a
+    //   0	250	0	parama	a
     //   88	20	1	i	int
-    //   144	103	2	bool	boolean
+    //   144	100	2	bool	boolean
     //   4	178	3	str1	String
     //   183	1	3	localObject1	Object
-    //   190	23	3	localObject2	Object
-    //   237	1	3	localThrowable1	java.lang.Throwable
-    //   241	1	3	localThrowable2	java.lang.Throwable
-    //   249	1	3	str2	String
-    //   20	203	4	localHttpURLConnection	java.net.HttpURLConnection
-    //   1	247	5	str3	String
+    //   187	23	3	localObject2	Object
+    //   234	1	3	localThrowable1	java.lang.Throwable
+    //   238	1	3	localThrowable2	java.lang.Throwable
+    //   246	1	3	str2	String
+    //   20	200	4	localHttpURLConnection	java.net.HttpURLConnection
+    //   1	244	5	str3	String
     // Exception table:
     //   from	to	target	type
     //   22	38	183	finally
@@ -155,13 +154,13 @@ public class ef
     //   113	122	183	finally
     //   127	137	183	finally
     //   137	143	183	finally
-    //   5	22	190	finally
-    //   5	22	237	java/lang/Throwable
-    //   22	38	241	java/lang/Throwable
-    //   38	89	241	java/lang/Throwable
-    //   113	122	241	java/lang/Throwable
-    //   127	137	241	java/lang/Throwable
-    //   137	143	241	java/lang/Throwable
+    //   5	22	187	finally
+    //   5	22	234	java/lang/Throwable
+    //   22	38	238	java/lang/Throwable
+    //   38	89	238	java/lang/Throwable
+    //   113	122	238	java/lang/Throwable
+    //   127	137	238	java/lang/Throwable
+    //   137	143	238	java/lang/Throwable
   }
   
   /* Error */
@@ -200,7 +199,7 @@ public class ef
     //   58: aload_2
     //   59: astore_3
     //   60: aload_2
-    //   61: ifnonnull +44 -> 105
+    //   61: ifnonnull +41 -> 102
     //   64: aload_2
     //   65: astore_3
     //   66: aload 6
@@ -212,7 +211,7 @@ public class ef
     //   76: aload_0
     //   77: ldc 112
     //   79: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   82: ifnull +23 -> 105
+    //   82: ifnull +20 -> 102
     //   85: aload 6
     //   87: astore 5
     //   89: aload 7
@@ -223,188 +222,181 @@ public class ef
     //   96: ldc 112
     //   98: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   101: astore_3
-    //   102: goto +3 -> 105
-    //   105: aload_3
-    //   106: astore_2
-    //   107: aload_3
-    //   108: ifnonnull +84 -> 192
-    //   111: aload_3
-    //   112: astore_2
-    //   113: aload 6
-    //   115: astore 5
-    //   117: aload 7
-    //   119: astore 4
-    //   121: aload_3
-    //   122: astore_1
-    //   123: aload_0
-    //   124: ldc 114
-    //   126: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   129: ifnull +63 -> 192
-    //   132: aload 6
-    //   134: astore 5
-    //   136: aload 7
-    //   138: astore 4
-    //   140: aload_3
-    //   141: astore_1
-    //   142: aload_0
-    //   143: ldc 114
-    //   145: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   148: ldc 116
-    //   150: invokevirtual 120	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   153: astore 9
-    //   155: aload_3
-    //   156: astore_2
-    //   157: aload 6
-    //   159: astore 5
-    //   161: aload 7
-    //   163: astore 4
-    //   165: aload_3
-    //   166: astore_1
-    //   167: aload 9
-    //   169: arraylength
-    //   170: iconst_2
-    //   171: if_icmpne +21 -> 192
-    //   174: aload 6
-    //   176: astore 5
-    //   178: aload 7
-    //   180: astore 4
-    //   182: aload_3
-    //   183: astore_1
-    //   184: aload 9
-    //   186: iconst_1
-    //   187: aaload
-    //   188: invokevirtual 123	java/lang/String:trim	()Ljava/lang/String;
-    //   191: astore_2
-    //   192: aload 8
-    //   194: astore_3
-    //   195: aload_2
-    //   196: astore_1
-    //   197: aload_2
-    //   198: ifnonnull +54 -> 252
-    //   201: aload 6
-    //   203: astore 5
-    //   205: aload 7
-    //   207: astore 4
-    //   209: aload_2
-    //   210: astore_1
-    //   211: aload_0
-    //   212: invokevirtual 127	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   215: astore_0
-    //   216: aload_0
-    //   217: astore_3
-    //   218: aload_2
-    //   219: astore_1
-    //   220: aload_0
-    //   221: ifnull +31 -> 252
+    //   102: aload_3
+    //   103: astore_2
+    //   104: aload_3
+    //   105: ifnonnull +84 -> 189
+    //   108: aload_3
+    //   109: astore_2
+    //   110: aload 6
+    //   112: astore 5
+    //   114: aload 7
+    //   116: astore 4
+    //   118: aload_3
+    //   119: astore_1
+    //   120: aload_0
+    //   121: ldc 114
+    //   123: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: ifnull +63 -> 189
+    //   129: aload 6
+    //   131: astore 5
+    //   133: aload 7
+    //   135: astore 4
+    //   137: aload_3
+    //   138: astore_1
+    //   139: aload_0
+    //   140: ldc 114
+    //   142: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: ldc 116
+    //   147: invokevirtual 120	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   150: astore 9
+    //   152: aload_3
+    //   153: astore_2
+    //   154: aload 6
+    //   156: astore 5
+    //   158: aload 7
+    //   160: astore 4
+    //   162: aload_3
+    //   163: astore_1
+    //   164: aload 9
+    //   166: arraylength
+    //   167: iconst_2
+    //   168: if_icmpne +21 -> 189
+    //   171: aload 6
+    //   173: astore 5
+    //   175: aload 7
+    //   177: astore 4
+    //   179: aload_3
+    //   180: astore_1
+    //   181: aload 9
+    //   183: iconst_1
+    //   184: aaload
+    //   185: invokevirtual 123	java/lang/String:trim	()Ljava/lang/String;
+    //   188: astore_2
+    //   189: aload 8
+    //   191: astore_3
+    //   192: aload_2
+    //   193: astore_1
+    //   194: aload_2
+    //   195: ifnonnull +60 -> 255
+    //   198: aload 6
+    //   200: astore 5
+    //   202: aload 7
+    //   204: astore 4
+    //   206: aload_2
+    //   207: astore_1
+    //   208: aload_0
+    //   209: invokevirtual 127	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   212: astore_0
+    //   213: aload_0
+    //   214: astore_3
+    //   215: aload_2
+    //   216: astore_1
+    //   217: aload_0
+    //   218: ifnull +37 -> 255
+    //   221: aload_0
+    //   222: astore 5
     //   224: aload_0
-    //   225: astore 5
-    //   227: aload_0
-    //   228: astore 4
-    //   230: aload_2
-    //   231: astore_1
-    //   232: aload_0
-    //   233: invokestatic 130	btmsdkobf/ef:c	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   236: astore 6
-    //   238: aload_0
-    //   239: astore_3
-    //   240: aload_2
-    //   241: astore_1
-    //   242: aload 6
-    //   244: ifnull +8 -> 252
-    //   247: aload 6
-    //   249: astore_1
-    //   250: aload_0
-    //   251: astore_3
-    //   252: aload_1
-    //   253: astore_0
-    //   254: aload_3
-    //   255: ifnull +37 -> 292
-    //   258: aload_3
-    //   259: invokevirtual 135	java/io/InputStream:close	()V
-    //   262: aload_1
-    //   263: areturn
-    //   264: astore_0
-    //   265: aload 5
-    //   267: ifnull +8 -> 275
-    //   270: aload 5
-    //   272: invokevirtual 135	java/io/InputStream:close	()V
-    //   275: aload_0
-    //   276: athrow
-    //   277: aconst_null
-    //   278: astore_1
-    //   279: aload_1
-    //   280: astore_0
-    //   281: aload 4
-    //   283: ifnull +9 -> 292
-    //   286: aload 4
-    //   288: astore_3
-    //   289: goto -31 -> 258
-    //   292: aload_0
-    //   293: areturn
-    //   294: astore_0
-    //   295: goto -18 -> 277
-    //   298: astore_0
-    //   299: goto +10 -> 309
-    //   302: astore_0
-    //   303: aload_1
-    //   304: areturn
-    //   305: astore_1
-    //   306: goto -31 -> 275
-    //   309: goto -30 -> 279
+    //   225: astore 4
+    //   227: aload_2
+    //   228: astore_1
+    //   229: aload_0
+    //   230: invokestatic 130	btmsdkobf/ef:c	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   233: astore 6
+    //   235: aload_0
+    //   236: astore_3
+    //   237: aload_2
+    //   238: astore_1
+    //   239: aload 6
+    //   241: ifnull +14 -> 255
+    //   244: aload 6
+    //   246: astore_1
+    //   247: aload_0
+    //   248: astore_3
+    //   249: goto +6 -> 255
+    //   252: goto +30 -> 282
+    //   255: aload_1
+    //   256: astore_0
+    //   257: aload_3
+    //   258: ifnull +37 -> 295
+    //   261: aload_3
+    //   262: invokevirtual 135	java/io/InputStream:close	()V
+    //   265: aload_1
+    //   266: areturn
+    //   267: astore_0
+    //   268: aload 5
+    //   270: ifnull +8 -> 278
+    //   273: aload 5
+    //   275: invokevirtual 135	java/io/InputStream:close	()V
+    //   278: aload_0
+    //   279: athrow
+    //   280: aconst_null
+    //   281: astore_1
+    //   282: aload_1
+    //   283: astore_0
+    //   284: aload 4
+    //   286: ifnull +9 -> 295
+    //   289: aload 4
+    //   291: astore_3
+    //   292: goto -31 -> 261
+    //   295: aload_0
+    //   296: areturn
+    //   297: astore_0
+    //   298: goto -18 -> 280
+    //   301: astore_0
+    //   302: goto -50 -> 252
+    //   305: astore_0
+    //   306: aload_1
+    //   307: areturn
+    //   308: astore_1
+    //   309: goto -31 -> 278
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	312	0	paramHttpURLConnection	java.net.HttpURLConnection
-    //   75	229	1	localObject1	Object
-    //   305	1	1	localIOException	java.io.IOException
-    //   52	189	2	localObject2	Object
-    //   59	230	3	localObject3	Object
-    //   4	283	4	localObject4	Object
-    //   14	257	5	localObject5	Object
-    //   1	247	6	str	String
-    //   7	199	7	localObject6	Object
-    //   10	183	8	localObject7	Object
-    //   153	32	9	arrayOfString	String[]
+    //   75	232	1	localObject1	Object
+    //   308	1	1	localIOException	java.io.IOException
+    //   52	186	2	localObject2	Object
+    //   59	233	3	localObject3	Object
+    //   4	286	4	localObject4	Object
+    //   14	260	5	localObject5	Object
+    //   1	244	6	str	String
+    //   7	196	7	localObject6	Object
+    //   10	180	8	localObject7	Object
+    //   150	32	9	arrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   16	41	264	finally
-    //   45	53	264	finally
-    //   76	85	264	finally
-    //   95	102	264	finally
-    //   123	132	264	finally
-    //   142	155	264	finally
-    //   167	174	264	finally
-    //   184	192	264	finally
-    //   211	216	264	finally
-    //   232	238	264	finally
-    //   16	41	294	java/lang/Throwable
-    //   45	53	294	java/lang/Throwable
-    //   76	85	298	java/lang/Throwable
-    //   95	102	298	java/lang/Throwable
-    //   123	132	298	java/lang/Throwable
-    //   142	155	298	java/lang/Throwable
-    //   167	174	298	java/lang/Throwable
-    //   184	192	298	java/lang/Throwable
-    //   211	216	298	java/lang/Throwable
-    //   232	238	298	java/lang/Throwable
-    //   258	262	302	java/io/IOException
-    //   270	275	305	java/io/IOException
+    //   16	41	267	finally
+    //   45	53	267	finally
+    //   76	85	267	finally
+    //   95	102	267	finally
+    //   120	129	267	finally
+    //   139	152	267	finally
+    //   164	171	267	finally
+    //   181	189	267	finally
+    //   208	213	267	finally
+    //   229	235	267	finally
+    //   16	41	297	java/lang/Throwable
+    //   45	53	297	java/lang/Throwable
+    //   76	85	301	java/lang/Throwable
+    //   95	102	301	java/lang/Throwable
+    //   120	129	301	java/lang/Throwable
+    //   139	152	301	java/lang/Throwable
+    //   164	171	301	java/lang/Throwable
+    //   181	189	301	java/lang/Throwable
+    //   208	213	301	java/lang/Throwable
+    //   229	235	301	java/lang/Throwable
+    //   261	265	305	java/io/IOException
+    //   273	278	308	java/io/IOException
   }
   
   private static String c(InputStream paramInputStream)
   {
     String str2 = d(paramInputStream);
-    String[] arrayOfString = new String[5];
     int i = 0;
-    arrayOfString[0] = "http-equiv\\s*=\\s*[\"']*refresh[\"']*\\s*content\\s*=\\s*[\"']*[^;]*;\\s*url\\s*=\\s*[\"']*([^\"'\\s>]+)";
-    arrayOfString[1] = "[^\\w](?:location.href\\s*=|location\\s*=|location.replace\\s*\\()\\s*[\"']*([^\"'>]+)";
-    arrayOfString[2] = "<NextURL>([^<]+)";
-    arrayOfString[3] = "\\s+action\\s*=\\s*[\"']*([^\"'>]+)[\"'>\\s]*.*submit";
-    arrayOfString[4] = "<LoginURL>([^<]+)";
-    int j = arrayOfString.length;
     paramInputStream = null;
-    while ((i < j) && (paramInputStream == null))
+    while ((i < 5) && (paramInputStream == null))
     {
-      Matcher localMatcher = Pattern.compile(arrayOfString[i], 2).matcher(str2);
+      Matcher localMatcher = Pattern.compile(new String[] { "http-equiv\\s*=\\s*[\"']*refresh[\"']*\\s*content\\s*=\\s*[\"']*[^;]*;\\s*url\\s*=\\s*[\"']*([^\"'\\s>]+)", "[^\\w](?:location.href\\s*=|location\\s*=|location.replace\\s*\\()\\s*[\"']*([^\"'>]+)", "<NextURL>([^<]+)", "\\s+action\\s*=\\s*[\"']*([^\"'>]+)[\"'>\\s]*.*submit", "<LoginURL>([^<]+)" }[i], 2).matcher(str2);
       while ((localMatcher.find()) && (paramInputStream == null))
       {
         String str1 = localMatcher.group(localMatcher.groupCount());

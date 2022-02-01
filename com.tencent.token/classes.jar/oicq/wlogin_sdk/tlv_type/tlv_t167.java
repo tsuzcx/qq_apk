@@ -36,14 +36,14 @@ public class tlv_t167
   public Boolean verify()
   {
     if (this._body_len < 4) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     int i = util.buf_to_int16(this._buf, this._head_len + 1 + 1);
     if (this._body_len < i + 4) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._url_len = i;
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

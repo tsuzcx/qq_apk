@@ -2,12 +2,11 @@ package com.oasisfeng.condom;
 
 import android.content.Intent;
 import android.support.annotation.Keep;
-import android.support.annotation.Nullable;
 
 @Keep
 public abstract interface OutboundJudge
 {
-  public abstract boolean shouldAllow(OutboundType paramOutboundType, @Nullable Intent paramIntent, String paramString);
+  public abstract boolean shouldAllow(OutboundType paramOutboundType, Intent paramIntent, String paramString);
 }
 
 

@@ -11,16 +11,16 @@ public final class ProductVersion
   public int hotfix = 0;
   public int pversion = 0;
   
-  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.pversion = paramJceInputStream.read(this.pversion, 1, true);
     this.cversion = paramJceInputStream.read(this.cversion, 2, true);
     this.hotfix = paramJceInputStream.read(this.hotfix, 3, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.pversion, 1);
     paramJceOutputStream.write(this.cversion, 2);

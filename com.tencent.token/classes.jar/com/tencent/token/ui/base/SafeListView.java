@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 
 public class SafeListView
   extends ListView
@@ -29,10 +29,9 @@ public class SafeListView
     }
     catch (IndexOutOfBoundsException paramCanvas)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SafeListView dispatchDraw");
+      StringBuilder localStringBuilder = new StringBuilder("SafeListView dispatchDraw");
       localStringBuilder.append(paramCanvas.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
   }
   
@@ -45,18 +44,16 @@ public class SafeListView
     }
     catch (Exception paramMotionEvent)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SafeListView dispatchTouchEvent");
+      localStringBuilder = new StringBuilder("SafeListView dispatchTouchEvent");
       localStringBuilder.append(paramMotionEvent.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       return false;
     }
     catch (IndexOutOfBoundsException paramMotionEvent)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SafeListView dispatchTouchEvent");
+      StringBuilder localStringBuilder = new StringBuilder("SafeListView dispatchTouchEvent");
       localStringBuilder.append(paramMotionEvent.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
     return false;
   }
@@ -70,19 +67,17 @@ public class SafeListView
     }
     catch (Exception localException)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SafeListView onLayout");
+      localStringBuilder = new StringBuilder("SafeListView onLayout");
       localStringBuilder.append(localException.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       localException.printStackTrace();
       return;
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("SafeListView onLayout");
+      StringBuilder localStringBuilder = new StringBuilder("SafeListView onLayout");
       localStringBuilder.append(localIndexOutOfBoundsException.toString());
-      g.c(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
       localIndexOutOfBoundsException.printStackTrace();
     }
   }

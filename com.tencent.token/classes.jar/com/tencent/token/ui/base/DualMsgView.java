@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Html;
@@ -21,50 +20,47 @@ import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.cf;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.cs;
 import com.tencent.token.global.RqdApplication;
+import com.tencent.token.se;
+import com.tencent.token.sf;
+import com.tencent.token.ta;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.g;
-import com.tencent.token.utils.m;
+import com.tencent.token.zz;
 
 public class DualMsgView
   extends RelativeLayout
 {
-  private View a;
-  private View b;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private Button h;
-  private Button i;
-  private ImageView j;
-  private ImageView k;
-  private ImageView l;
-  private Activity m;
-  private LayoutInflater n;
-  private View o;
-  private View p;
-  private View q;
-  private View r;
-  private View s;
-  private Bitmap t;
-  private Bitmap u;
-  private int v;
-  private int w;
-  private f x;
-  private Handler y = new Handler()
+  View a;
+  View b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
+  Button h;
+  Button i;
+  ImageView j;
+  ImageView k;
+  ImageView l;
+  Activity m;
+  LayoutInflater n;
+  View o;
+  View p;
+  View q;
+  View r;
+  View s;
+  Bitmap t;
+  Bitmap u;
+  Handler v = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage) {}
+    public final void handleMessage(Message paramAnonymousMessage) {}
   };
+  private int w;
+  private int x;
+  private f y;
   
   public DualMsgView(Activity paramActivity)
   {
@@ -84,7 +80,7 @@ public class DualMsgView
     this.m = ((Activity)paramContext);
   }
   
-  private String a(String paramString1, String paramString2)
+  private static String a(String paramString1, String paramString2)
   {
     if ((paramString1 != null) && (paramString1.length() > 0))
     {
@@ -117,7 +113,18 @@ public class DualMsgView
     return "";
   }
   
-  public void a()
+  private void b()
+  {
+    this.v.post(new c(this.p, this.q, this.r, this.s));
+    se.a(RqdApplication.n()).a();
+  }
+  
+  private void c()
+  {
+    this.v.post(new d(this));
+  }
+  
+  public final void a()
   {
     Bitmap localBitmap = this.t;
     if (localBitmap != null) {
@@ -129,169 +136,56 @@ public class DualMsgView
     }
   }
   
-  public void a(int paramInt)
+  public final void a(int paramInt)
   {
     if (paramInt == 3)
     {
-      d();
+      c();
       return;
     }
-    c();
+    b();
   }
   
-  public void a(a parama)
+  public final void a(sf paramsf)
   {
-    this.c.setText(Html.fromHtml(parama.f()));
-    this.d.setText(Html.fromHtml(parama.g()));
-    this.h.setText(a(parama.h(), " "));
-    this.i.setText(a(parama.i(), " "));
-    parama = cs.a().c(parama.c());
-    if (parama != null)
+    this.c.setText(Html.fromHtml(paramsf.f));
+    this.d.setText(Html.fromHtml(paramsf.g));
+    this.h.setText(a(paramsf.h, " "));
+    this.i.setText(a(paramsf.i, " "));
+    paramsf = ta.a().c(paramsf.c);
+    if (paramsf != null)
     {
       ImageView localImageView = this.j;
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(parama.b());
-      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramsf.mRealUin);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(parama.mUin);
-      localStringBuilder.append("");
-      localImageView.setImageDrawable(g.a((String)localObject, localStringBuilder.toString()));
-      if (parama.mIsZzb)
+      localStringBuilder.append(paramsf.mUin);
+      localImageView.setImageDrawable(zz.a((String)localObject, localStringBuilder.toString()));
+      if (paramsf.mIsZzb)
       {
-        this.k.setImageDrawable(getResources().getDrawable(2131100224));
+        this.k.setImageDrawable(getResources().getDrawable(2131100227));
         this.l.setVisibility(0);
       }
-      this.g.setText(parama.mNickName);
+      this.g.setText(paramsf.mNickName);
       return;
     }
     this.g.setText("");
   }
   
-  public boolean a(Context paramContext)
-  {
-    Activity localActivity = this.m;
-    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
-    {
-      this.n = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-      this.o = this.n.inflate(2131296320, null);
-      this.o.setVisibility(4);
-      this.p = this.o.findViewById(2131166260);
-      this.q = this.o.findViewById(2131166247);
-      this.r = this.o.findViewById(2131166261);
-      this.s = this.o.findViewById(2131166248);
-      this.t = m.a(this.m.getResources(), 2131099827);
-      this.u = m.a(this.m.getResources(), 2131099826);
-      if (this.t != null) {
-        ((LinearLayout)this.o.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.t));
-      }
-      if (this.u != null)
-      {
-        ((LinearLayout)this.o.findViewById(2131166242)).setBackgroundDrawable(new BitmapDrawable(this.u));
-        ((LinearLayout)this.o.findViewById(2131166243)).setBackgroundDrawable(new BitmapDrawable(this.u));
-      }
-      this.a = this.o.findViewById(2131165760);
-      this.c = ((TextView)this.o.findViewById(2131165756));
-      this.d = ((TextView)this.o.findViewById(2131165744));
-      this.b = this.o.findViewById(2131165761);
-      this.e = ((TextView)this.o.findViewById(2131165757));
-      this.f = ((TextView)this.o.findViewById(2131165745));
-      this.j = ((ImageView)this.o.findViewById(2131165747));
-      this.k = ((ImageView)this.o.findViewById(2131165749));
-      this.l = ((ImageView)this.o.findViewById(2131165748));
-      this.h = ((Button)this.o.findViewById(2131165743));
-      this.i = ((Button)this.o.findViewById(2131165753));
-      this.g = ((TextView)this.o.findViewById(2131165759));
-      this.h.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          DualMsgView.a(DualMsgView.this).a(2);
-        }
-      });
-      this.i.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          DualMsgView.a(DualMsgView.this).a(3);
-        }
-      });
-      addView(this.o, new RelativeLayout.LayoutParams(-1, -1));
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.y.post(new b(this.p, this.q, this.r, this.s));
-  }
-  
-  public void b(a parama)
-  {
-    this.e.setText(Html.fromHtml(parama.f()));
-    this.f.setText(Html.fromHtml(parama.g()));
-    Object localObject1 = this.h;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("  ");
-    ((StringBuilder)localObject2).append(Html.fromHtml(parama.h()));
-    ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
-    localObject1 = this.i;
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("  ");
-    ((StringBuilder)localObject2).append(Html.fromHtml(parama.i()));
-    ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
-    parama = cs.a().c(parama.c());
-    if (parama != null)
-    {
-      localObject1 = this.j;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(parama.b());
-      ((StringBuilder)localObject2).append("");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(parama.mUin);
-      localStringBuilder.append("");
-      ((ImageView)localObject1).setImageDrawable(g.a((String)localObject2, localStringBuilder.toString()));
-      if (parama.mIsZzb)
-      {
-        this.k.setImageDrawable(getResources().getDrawable(2131100224));
-        this.l.setVisibility(0);
-      }
-      this.g.setText(parama.mNickName);
-    }
-    else
-    {
-      this.g.setText("");
-      this.l.setVisibility(4);
-    }
-    this.y.post(new a(this.a, this.b));
-  }
-  
-  public void c()
-  {
-    this.y.post(new c(this.p, this.q, this.r, this.s));
-    cf.a(RqdApplication.n()).a();
-  }
-  
-  public void d()
-  {
-    this.y.post(new d(this));
-  }
-  
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.v = this.p.getMeasuredHeight();
-    this.w = this.q.getMeasuredHeight();
+    this.w = this.p.getMeasuredHeight();
+    this.x = this.q.getMeasuredHeight();
   }
   
   public void setListener(f paramf)
   {
-    this.x = paramf;
+    this.y = paramf;
   }
   
-  private class a
+  final class a
     implements Runnable
   {
     private View b;
@@ -307,20 +201,20 @@ public class DualMsgView
       this.e = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771992);
       this.e.setAnimationListener(new Animation.AnimationListener()
       {
-        public void onAnimationEnd(Animation paramAnonymousAnimation)
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           DualMsgView.i(DualMsgView.this).setText(DualMsgView.h(DualMsgView.this).getText());
           DualMsgView.k(DualMsgView.this).setText(DualMsgView.j(DualMsgView.this).getText());
           DualMsgView.a.a(DualMsgView.a.this).setVisibility(4);
         }
         
-        public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
-        public void onAnimationStart(Animation paramAnonymousAnimation) {}
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
     }
     
-    public void run()
+    public final void run()
     {
       this.c.setVisibility(0);
       this.b.startAnimation(this.e);
@@ -328,7 +222,7 @@ public class DualMsgView
     }
   }
   
-  private class b
+  final class b
     implements Runnable
   {
     private View b;
@@ -359,15 +253,15 @@ public class DualMsgView
       this.g.setDuration(500L);
       this.g.setAnimationListener(new Animation.AnimationListener()
       {
-        public void onAnimationEnd(Animation paramAnonymousAnimation) {}
+        public final void onAnimationEnd(Animation paramAnonymousAnimation) {}
         
-        public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
-        public void onAnimationStart(Animation paramAnonymousAnimation) {}
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
     }
     
-    public void run()
+    public final void run()
     {
       DualMsgView.d(DualMsgView.this).setVisibility(0);
       DualMsgView.e(DualMsgView.this).setEnabled(true);
@@ -379,7 +273,7 @@ public class DualMsgView
     }
   }
   
-  private class c
+  final class c
     implements Runnable
   {
     private View b;
@@ -400,10 +294,10 @@ public class DualMsgView
       int j = (int)(IndexActivity.S_DENSITY * 40.0F);
       this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(DualMsgView.this) + j);
       this.h.setDuration(600L);
-      this.h.setInterpolator(new DualMsgView.e(DualMsgView.this, null));
+      this.h.setInterpolator(new DualMsgView.e(DualMsgView.this, (byte)0));
       this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(DualMsgView.this));
       this.i.setDuration(600L);
-      this.i.setInterpolator(new DualMsgView.e(DualMsgView.this, null));
+      this.i.setInterpolator(new DualMsgView.e(DualMsgView.this, (byte)0));
       this.f = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(DualMsgView.this));
       this.f.setDuration(600L);
       this.f.setInterpolator(new AccelerateInterpolator());
@@ -414,7 +308,7 @@ public class DualMsgView
       this.g.setFillAfter(true);
       this.i.setAnimationListener(new Animation.AnimationListener()
       {
-        public void onAnimationEnd(Animation paramAnonymousAnimation)
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           DualMsgView.this.setVisibility(8);
           if (DualMsgView.a(DualMsgView.this) != null) {
@@ -422,13 +316,13 @@ public class DualMsgView
           }
         }
         
-        public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
-        public void onAnimationStart(Animation paramAnonymousAnimation) {}
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
     }
     
-    public void run()
+    public final void run()
     {
       DualMsgView.e(DualMsgView.this).setEnabled(false);
       DualMsgView.f(DualMsgView.this).setEnabled(false);
@@ -439,7 +333,7 @@ public class DualMsgView
     }
   }
   
-  private class d
+  final class d
     implements Runnable
   {
     private View b;
@@ -451,7 +345,7 @@ public class DualMsgView
       this.c = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771993);
       this.c.setAnimationListener(new Animation.AnimationListener()
       {
-        public void onAnimationEnd(Animation paramAnonymousAnimation)
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           DualMsgView.this.setVisibility(8);
           if (DualMsgView.a(DualMsgView.this) != null) {
@@ -459,24 +353,24 @@ public class DualMsgView
           }
         }
         
-        public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
-        public void onAnimationStart(Animation paramAnonymousAnimation) {}
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
     }
     
-    public void run()
+    public final void run()
     {
       this.b.startAnimation(this.c);
     }
   }
   
-  private class e
+  final class e
     implements Interpolator
   {
     private e() {}
     
-    public float getInterpolation(float paramFloat)
+    public final float getInterpolation(float paramFloat)
     {
       if (paramFloat < 0.3D) {
         return 0.0F;

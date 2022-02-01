@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 final class WloginSigInfo$1
   implements Parcelable.Creator<WloginSigInfo>
 {
-  public WloginSigInfo createFromParcel(Parcel paramParcel)
+  public final WloginSigInfo createFromParcel(Parcel paramParcel)
   {
     return new WloginSigInfo(paramParcel, null);
   }
   
-  public WloginSigInfo[] newArray(int paramInt)
+  public final WloginSigInfo[] newArray(int paramInt)
   {
     return new WloginSigInfo[paramInt];
   }

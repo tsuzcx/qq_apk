@@ -28,10 +28,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.RequiresPermission;
 import java.util.List;
 
 @Keep
@@ -70,7 +66,6 @@ public class PackageManagerWrapper
     return this.mBase.buildRequestPermissionsIntent(paramArrayOfString);
   }
   
-  @RequiresApi(26)
   public boolean canRequestPackageInstalls()
   {
     return this.mBase.canRequestPackageInstalls();
@@ -96,7 +91,6 @@ public class PackageManagerWrapper
     return this.mBase.checkSignatures(paramString1, paramString2);
   }
   
-  @RequiresApi(26)
   public void clearInstantAppCookie()
   {
     this.mBase.clearInstantAppCookie();
@@ -112,7 +106,6 @@ public class PackageManagerWrapper
     return this.mBase.currentToCanonicalPackageNames(paramArrayOfString);
   }
   
-  @RequiresApi(17)
   public void extendVerificationTimeout(int paramInt1, int paramInt2, long paramLong)
   {
     this.mBase.extendVerificationTimeout(paramInt1, paramInt2, paramLong);
@@ -123,13 +116,11 @@ public class PackageManagerWrapper
     this.mBase.flushPackageRestrictionsAsUser(paramInt);
   }
   
-  @RequiresApi(20)
   public Drawable getActivityBanner(ComponentName paramComponentName)
   {
     return this.mBase.getActivityBanner(paramComponentName);
   }
   
-  @RequiresApi(20)
   public Drawable getActivityBanner(Intent paramIntent)
   {
     return this.mBase.getActivityBanner(paramIntent);
@@ -170,13 +161,11 @@ public class PackageManagerWrapper
     return this.mBase.getAllPermissionGroups(paramInt);
   }
   
-  @RequiresApi(20)
   public Drawable getApplicationBanner(ApplicationInfo paramApplicationInfo)
   {
     return this.mBase.getApplicationBanner(paramApplicationInfo);
   }
   
-  @RequiresApi(20)
   public Drawable getApplicationBanner(String paramString)
   {
     return this.mBase.getApplicationBanner(paramString);
@@ -222,7 +211,6 @@ public class PackageManagerWrapper
     return this.mBase.getApplicationLogo(paramString);
   }
   
-  @RequiresApi(26)
   public ChangedPackages getChangedPackages(int paramInt)
   {
     return this.mBase.getChangedPackages(paramInt);
@@ -263,19 +251,16 @@ public class PackageManagerWrapper
     return this.mBase.getInstalledPackagesAsUser(paramInt1, paramInt2);
   }
   
-  @RequiresPermission("android.permission.DELETE_PACKAGES")
   public String getInstallerPackageName(String paramString)
   {
     return this.mBase.getInstallerPackageName(paramString);
   }
   
-  @RequiresApi(26)
   public byte[] getInstantAppCookie()
   {
     return this.mBase.getInstantAppCookie();
   }
   
-  @RequiresApi(26)
   public int getInstantAppCookieMaxBytes()
   {
     return this.mBase.getInstantAppCookieMaxBytes();
@@ -296,7 +281,6 @@ public class PackageManagerWrapper
     return this.mBase.getLaunchIntentForPackage(paramString);
   }
   
-  @RequiresApi(21)
   public Intent getLeanbackLaunchIntentForPackage(String paramString)
   {
     return this.mBase.getLeanbackLaunchIntentForPackage(paramString);
@@ -307,14 +291,11 @@ public class PackageManagerWrapper
     return this.mBase.getManagedUserBadgedDrawable(paramDrawable, paramRect, paramInt);
   }
   
-  @Nullable
   public String getNameForUid(int paramInt)
   {
     return this.mBase.getNameForUid(paramInt);
   }
   
-  @Nullable
-  @RequiresApi(27)
   public String[] getNamesForUids(int[] paramArrayOfInt)
   {
     return this.mBase.getNamesForUids(paramArrayOfInt);
@@ -330,13 +311,11 @@ public class PackageManagerWrapper
     return this.mBase.getPackageGids(paramString);
   }
   
-  @RequiresApi(24)
   public int[] getPackageGids(String paramString, int paramInt)
   {
     return this.mBase.getPackageGids(paramString, paramInt);
   }
   
-  @RequiresApi(26)
   public PackageInfo getPackageInfo(VersionedPackage paramVersionedPackage, int paramInt)
   {
     return this.mBase.getPackageInfo(paramVersionedPackage, paramInt);
@@ -352,8 +331,6 @@ public class PackageManagerWrapper
     return this.mBase.getPackageInfoAsUser(paramString, paramInt1, paramInt2);
   }
   
-  @NonNull
-  @RequiresApi(21)
   public PackageInstaller getPackageInstaller()
   {
     return this.mBase.getPackageInstaller();
@@ -369,7 +346,6 @@ public class PackageManagerWrapper
     this.mBase.getPackageSizeInfoAsUser(paramString, paramInt, paramIPackageStatsObserver);
   }
   
-  @RequiresApi(24)
   public int getPackageUid(String paramString, int paramInt)
   {
     return this.mBase.getPackageUid(paramString, paramInt);
@@ -385,13 +361,11 @@ public class PackageManagerWrapper
     return this.mBase.getPackageUidAsUser(paramString, paramInt1, paramInt2);
   }
   
-  @Nullable
   public String[] getPackagesForUid(int paramInt)
   {
     return this.mBase.getPackagesForUid(paramInt);
   }
   
-  @RequiresApi(18)
   public List<PackageInfo> getPackagesHoldingPermissions(String[] paramArrayOfString, int paramInt)
   {
     return this.mBase.getPackagesHoldingPermissions(paramArrayOfString, paramInt);
@@ -412,7 +386,7 @@ public class PackageManagerWrapper
     return this.mBase.getPermissionInfo(paramString, paramInt);
   }
   
-  public int getPreferredActivities(@NonNull List<IntentFilter> paramList, @NonNull List<ComponentName> paramList1, String paramString)
+  public int getPreferredActivities(List<IntentFilter> paramList, List<ComponentName> paramList1, String paramString)
   {
     return this.mBase.getPreferredActivities(paramList, paramList1, paramString);
   }
@@ -462,7 +436,6 @@ public class PackageManagerWrapper
     return this.mBase.getServicesSystemSharedLibraryPackageName();
   }
   
-  @RequiresApi(26)
   public List<SharedLibraryInfo> getSharedLibraries(int paramInt)
   {
     return this.mBase.getSharedLibraries(paramInt);
@@ -478,7 +451,6 @@ public class PackageManagerWrapper
     return this.mBase.getSigningKeySet(paramString);
   }
   
-  @RequiresApi(28)
   public Bundle getSuspendedPackageAppExtras()
   {
     return this.mBase.getSuspendedPackageAppExtras();
@@ -494,7 +466,6 @@ public class PackageManagerWrapper
     return this.mBase.getSystemSharedLibraryNames();
   }
   
-  @RequiresApi(28)
   public String getSystemTextClassifierPackageName()
   {
     return this.mBase.getSystemTextClassifierPackageName();
@@ -520,19 +491,16 @@ public class PackageManagerWrapper
     return this.mBase.getUserBadgeForDensityNoBackground(paramUserHandle, paramInt);
   }
   
-  @RequiresApi(api=21)
   public Drawable getUserBadgedDrawableForDensity(Drawable paramDrawable, UserHandle paramUserHandle, Rect paramRect, int paramInt)
   {
     return this.mBase.getUserBadgedDrawableForDensity(paramDrawable, paramUserHandle, paramRect, paramInt);
   }
   
-  @RequiresApi(api=21)
   public Drawable getUserBadgedIcon(Drawable paramDrawable, UserHandle paramUserHandle)
   {
     return this.mBase.getUserBadgedIcon(paramDrawable, paramUserHandle);
   }
   
-  @RequiresApi(api=21)
   public CharSequence getUserBadgedLabel(CharSequence paramCharSequence, UserHandle paramUserHandle)
   {
     return this.mBase.getUserBadgedLabel(paramCharSequence, paramUserHandle);
@@ -543,7 +511,6 @@ public class PackageManagerWrapper
     return this.mBase.getXml(paramString, paramInt, paramApplicationInfo);
   }
   
-  @RequiresApi(28)
   public boolean hasSigningCertificate(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     return this.mBase.hasSigningCertificate(paramString, paramArrayOfByte, paramInt);
@@ -554,19 +521,16 @@ public class PackageManagerWrapper
     return this.mBase.hasSystemFeature(paramString);
   }
   
-  @RequiresApi(24)
   public boolean hasSystemFeature(String paramString, int paramInt)
   {
     return this.mBase.hasSystemFeature(paramString, paramInt);
   }
   
-  @RequiresApi(26)
   public boolean isInstantApp()
   {
     return this.mBase.isInstantApp();
   }
   
-  @RequiresApi(26)
   public boolean isInstantApp(String paramString)
   {
     return this.mBase.isInstantApp(paramString);
@@ -577,13 +541,11 @@ public class PackageManagerWrapper
     return this.mBase.isPackageAvailable(paramString);
   }
   
-  @RequiresApi(28)
   public boolean isPackageStateProtected(String paramString, int paramInt)
   {
     return this.mBase.isPackageStateProtected(paramString, paramInt);
   }
   
-  @RequiresApi(28)
   public boolean isPackageSuspended()
   {
     return this.mBase.isPackageSuspended();
@@ -594,8 +556,7 @@ public class PackageManagerWrapper
     return this.mBase.isPackageSuspendedForUser(paramString, paramInt);
   }
   
-  @RequiresApi(23)
-  public boolean isPermissionRevokedByPolicy(@NonNull String paramString1, @NonNull String paramString2)
+  public boolean isPermissionRevokedByPolicy(String paramString1, String paramString2)
   {
     return this.mBase.isPermissionRevokedByPolicy(paramString1, paramString2);
   }
@@ -676,7 +637,6 @@ public class PackageManagerWrapper
     return this.mBase.queryIntentActivityOptions(paramComponentName, paramArrayOfIntent, paramIntent, paramInt);
   }
   
-  @RequiresApi(19)
   public List<ResolveInfo> queryIntentContentProviders(Intent paramIntent, int paramInt)
   {
     return this.mBase.queryIntentContentProviders(paramIntent, paramInt);
@@ -742,7 +702,6 @@ public class PackageManagerWrapper
     return this.mBase.resolveServiceAsUser(paramIntent, paramInt1, paramInt2);
   }
   
-  @RequiresApi(26)
   public void setApplicationCategoryHint(String paramString, int paramInt)
   {
     this.mBase.setApplicationCategoryHint(paramString, paramInt);
@@ -758,7 +717,6 @@ public class PackageManagerWrapper
     this.mBase.setComponentEnabledSetting(paramComponentName, paramInt1, paramInt2);
   }
   
-  @RequiresApi(11)
   public void setInstallerPackageName(String paramString1, String paramString2)
   {
     this.mBase.setInstallerPackageName(paramString1, paramString2);
@@ -769,13 +727,11 @@ public class PackageManagerWrapper
     return this.mBase.shouldShowRequestPermissionRationale(paramString);
   }
   
-  @RequiresApi(26)
   public void updateInstantAppCookie(byte[] paramArrayOfByte)
   {
     this.mBase.updateInstantAppCookie(paramArrayOfByte);
   }
   
-  @RequiresApi(14)
   public void verifyPendingInstall(int paramInt1, int paramInt2)
   {
     this.mBase.verifyPendingInstall(paramInt1, paramInt2);

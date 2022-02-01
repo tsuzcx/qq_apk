@@ -1,5 +1,6 @@
 package com.tencent.halley.downloader.d.a;
 
+import com.tencent.token.mq;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -7,12 +8,12 @@ import java.util.concurrent.TimeUnit;
 public final class d
   extends LinkedBlockingQueue
 {
-  private f a = null;
+  public mq a = null;
   private Integer b = null;
   
   public d() {}
   
-  public d(int paramInt)
+  public d(byte paramByte)
   {
     super(16);
   }
@@ -22,23 +23,18 @@ public final class d
     paramTimeUnit = (Runnable)super.poll(paramLong, paramTimeUnit);
     if (paramTimeUnit == null)
     {
-      f localf = this.a;
-      if (localf != null) {
-        localf.a();
+      mq localmq = this.a;
+      if (localmq != null) {
+        localmq.a();
       }
     }
     return paramTimeUnit;
   }
   
-  public final void a(f paramf)
-  {
-    this.a = paramf;
-  }
-  
-  public final boolean a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)
+  public final boolean a(Runnable paramRunnable, TimeUnit paramTimeUnit)
   {
     if (!this.a.isShutdown()) {
-      return super.offer(paramRunnable, paramLong, paramTimeUnit);
+      return super.offer(paramRunnable, 0L, paramTimeUnit);
     }
     throw new RejectedExecutionException("Executor not running, can't force a command into the queue");
   }

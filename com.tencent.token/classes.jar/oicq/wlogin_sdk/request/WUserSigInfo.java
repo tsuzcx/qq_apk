@@ -49,8 +49,7 @@ public class WUserSigInfo
   {
     if (paramWloginSigInfo.cacheTickets != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("WUserSigInfo::get_clone using cacheTickets last update stamp ");
+      StringBuilder localStringBuilder = new StringBuilder("WUserSigInfo::get_clone using cacheTickets last update stamp ");
       localStringBuilder.append(paramWloginSigInfo.cacheUpdateStamp);
       util.LOGI(localStringBuilder.toString(), "");
       this._tickets = paramWloginSigInfo.cacheTickets;

@@ -1,49 +1,22 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.view.View;
 
-public class er
-  implements ev
+public abstract interface er
 {
-  public String a;
-  public String b;
+  public abstract boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean);
   
-  public ev a(Cursor paramCursor)
-  {
-    er localer = new er();
-    localer.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localer.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
-    return localer;
-  }
+  public abstract boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2);
   
-  public void a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
-  }
+  public abstract void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt);
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
-  {
-    a(paramSQLiteDatabase);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
-  }
+  public abstract void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public String b()
-  {
-    return "qqface";
-  }
+  public abstract void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt);
   
-  public ContentValues c()
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
-  }
+  public abstract boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt);
+  
+  public abstract void onStopNestedScroll(View paramView);
 }
 
 

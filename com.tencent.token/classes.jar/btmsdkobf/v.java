@@ -31,12 +31,12 @@ public final class v
     aV.add(localt);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new v();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ay = paramJceInputStream.read(this.ay, 0, true);
     this.aM = paramJceInputStream.read(this.aM, 1, false);
@@ -50,7 +50,7 @@ public final class v
     this.az = ((s)paramJceInputStream.read(aA, 9, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
     int i = this.aM;

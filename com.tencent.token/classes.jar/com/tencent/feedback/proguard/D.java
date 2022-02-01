@@ -28,7 +28,7 @@ public final class D
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     for (;;)
     {
-      int i = localGZIPInputStream.read(arrayOfByte, 0, arrayOfByte.length);
+      int i = localGZIPInputStream.read(arrayOfByte, 0, 1024);
       if (i == -1) {
         break;
       }

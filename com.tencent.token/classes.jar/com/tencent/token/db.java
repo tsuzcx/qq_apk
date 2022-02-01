@@ -1,31 +1,104 @@
 package com.tencent.token;
 
-public class db
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.os.Build.VERSION;
+
+public final class db
 {
-  private String a;
-  private String b;
-  private String c;
+  private static final a a;
+  private static final eb<String, Typeface> b = new eb(16);
   
-  public db(String paramString1, String paramString2, String paramString3)
+  static
   {
-    this.b = paramString1;
-    this.c = paramString2;
-    this.a = paramString3;
+    if (Build.VERSION.SDK_INT >= 26) {
+      a = new de();
+    } else if ((Build.VERSION.SDK_INT >= 24) && (dd.a())) {
+      a = new dd();
+    } else if (Build.VERSION.SDK_INT >= 21) {
+      a = new dc();
+    } else {
+      a = new df();
+    }
   }
   
-  public String a()
+  public static Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    return this.a;
+    paramContext = a.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
+    if (paramContext != null)
+    {
+      paramResources = b(paramResources, paramInt1, paramInt2);
+      b.a(paramResources, paramContext);
+    }
+    return paramContext;
   }
   
-  public String b()
+  public static Typeface a(Context paramContext, cw.a parama, Resources paramResources, int paramInt1, int paramInt2, cx.a parama1)
   {
-    return this.b;
+    if ((parama instanceof cw.d))
+    {
+      parama = (cw.d)parama;
+      boolean bool;
+      if (parama.c == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      int i = parama.b;
+      paramContext = dt.a(paramContext, parama.a, parama1, bool, i, paramInt2);
+    }
+    else
+    {
+      parama = a.a(paramContext, (cw.b)parama, paramResources, paramInt2);
+      paramContext = parama;
+      if (parama1 != null) {
+        if (parama != null)
+        {
+          parama1.a(parama, null);
+          paramContext = parama;
+        }
+        else
+        {
+          parama1.a(-3, null);
+          paramContext = parama;
+        }
+      }
+    }
+    if (paramContext != null) {
+      b.a(b(paramResources, paramInt1, paramInt2), paramContext);
+    }
+    return paramContext;
   }
   
-  public String c()
+  public static Typeface a(Context paramContext, dt.b[] paramArrayOfb, int paramInt)
   {
-    return this.c;
+    return a.a(paramContext, paramArrayOfb, paramInt);
+  }
+  
+  public static Typeface a(Resources paramResources, int paramInt1, int paramInt2)
+  {
+    return (Typeface)b.a(b(paramResources, paramInt1, paramInt2));
+  }
+  
+  private static String b(Resources paramResources, int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramResources.getResourcePackageName(paramInt1));
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
+  }
+  
+  static abstract interface a
+  {
+    public abstract Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2);
+    
+    public abstract Typeface a(Context paramContext, cw.b paramb, Resources paramResources, int paramInt);
+    
+    public abstract Typeface a(Context paramContext, dt.b[] paramArrayOfb, int paramInt);
   }
 }
 

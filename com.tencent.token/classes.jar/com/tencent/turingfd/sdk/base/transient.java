@@ -5,7 +5,7 @@ import android.net.Proxy;
 import android.os.Build.VERSION;
 import java.net.HttpURLConnection;
 
-public class transient
+public final class transient
 {
   public HttpURLConnection a = null;
   public boolean b = false;
@@ -57,7 +57,7 @@ public class transient
       localdo = Kj;
     }
     
-    public do() {}
+    private do() {}
   }
 }
 

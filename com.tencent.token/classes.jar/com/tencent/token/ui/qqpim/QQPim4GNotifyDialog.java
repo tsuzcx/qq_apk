@@ -19,9 +19,9 @@ public class QQPim4GNotifyDialog
   private Context a;
   private a b = null;
   
-  public QQPim4GNotifyDialog(Context paramContext, int paramInt, a parama)
+  public QQPim4GNotifyDialog(Context paramContext, a parama)
   {
-    super(paramContext, paramInt);
+    super(paramContext, 2131558791);
     this.a = paramContext;
     this.b = parama;
   }
@@ -29,16 +29,16 @@ public class QQPim4GNotifyDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296400);
+    setContentView(2131296401);
     paramBundle = getWindow();
     if (paramBundle != null)
     {
       WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
       localLayoutParams.width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 84.0F));
       paramBundle.setAttributes(localLayoutParams);
-      ((TextView)findViewById(2131166171)).setOnClickListener(new View.OnClickListener()
+      ((TextView)findViewById(2131166181)).setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           if (QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this) != null) {
             QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this).a();
@@ -46,9 +46,9 @@ public class QQPim4GNotifyDialog
           QQPim4GNotifyDialog.this.dismiss();
         }
       });
-      ((TextView)findViewById(2131166170)).setOnClickListener(new View.OnClickListener()
+      ((TextView)findViewById(2131166180)).setOnClickListener(new View.OnClickListener()
       {
-        public void onClick(View paramAnonymousView)
+        public final void onClick(View paramAnonymousView)
         {
           QQPim4GNotifyDialog.this.dismiss();
         }

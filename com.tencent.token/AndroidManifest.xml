@@ -144,6 +144,7 @@
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.DownloadAppActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.DownloadQQSecureActivity" android:screenOrientation="portrait"/>
         <activity android:exported="false" android:name="com.tencent.push.PActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/title_privacy" android:name="com.tencent.token.ui.ImageActivity" android:screenOrientation="portrait"/>
         <receiver android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.widget.TokenWidgetProvider">
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/xmltokenwidget_provider"/>
             <intent-filter>

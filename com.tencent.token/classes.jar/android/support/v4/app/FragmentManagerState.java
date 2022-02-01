@@ -4,50 +4,39 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 
-final class FragmentManagerState
+public final class FragmentManagerState
   implements Parcelable
 {
-  public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator()
-  {
-    public FragmentManagerState createFromParcel(Parcel paramAnonymousParcel)
-    {
-      return new FragmentManagerState(paramAnonymousParcel);
-    }
-    
-    public FragmentManagerState[] newArray(int paramAnonymousInt)
-    {
-      return new FragmentManagerState[paramAnonymousInt];
-    }
-  };
-  FragmentState[] mActive;
-  int[] mAdded;
-  BackStackState[] mBackStack;
-  int mNextFragmentIndex;
-  int mPrimaryNavActiveIndex = -1;
+  public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator() {};
+  public FragmentState[] a;
+  public int[] b;
+  public BackStackState[] c;
+  public int d = -1;
+  public int e;
   
   public FragmentManagerState() {}
   
   public FragmentManagerState(Parcel paramParcel)
   {
-    this.mActive = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
-    this.mAdded = paramParcel.createIntArray();
-    this.mBackStack = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
-    this.mPrimaryNavActiveIndex = paramParcel.readInt();
-    this.mNextFragmentIndex = paramParcel.readInt();
+    this.a = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
+    this.b = paramParcel.createIntArray();
+    this.c = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
   }
   
-  public int describeContents()
+  public final int describeContents()
   {
     return 0;
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedArray(this.mActive, paramInt);
-    paramParcel.writeIntArray(this.mAdded);
-    paramParcel.writeTypedArray(this.mBackStack, paramInt);
-    paramParcel.writeInt(this.mPrimaryNavActiveIndex);
-    paramParcel.writeInt(this.mNextFragmentIndex);
+    paramParcel.writeTypedArray(this.a, paramInt);
+    paramParcel.writeIntArray(this.b);
+    paramParcel.writeTypedArray(this.c, paramInt);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
   }
 }
 

@@ -40,25 +40,22 @@ public class AppInfoUtil
         localAppInfo.mVersionCode = paramPackageInfo.versionCode;
         localAppInfo.mVersionName = paramPackageInfo.versionName;
         localAppInfo.mApkPath = paramPackageInfo.applicationInfo.sourceDir;
-        int i = -1;
         if (paramBoolean1)
         {
           localAppInfo.mIsSystemApp = false;
-          localAppInfo.mUid = i;
+          break label287;
         }
-        else
-        {
-          if ((paramPackageInfo.applicationInfo.flags & 0x1) == 0) {
-            break label282;
-          }
-          paramBoolean1 = true;
-          localAppInfo.mIsSystemApp = paramBoolean1;
-          if (paramPackageInfo.applicationInfo == null) {
-            continue;
-          }
-          i = paramPackageInfo.applicationInfo.uid;
-          continue;
+        i = paramPackageInfo.applicationInfo.flags;
+        paramBoolean1 = true;
+        if ((i & 0x1) == 0) {
+          break label282;
         }
+        localAppInfo.mIsSystemApp = paramBoolean1;
+        if (paramPackageInfo.applicationInfo == null) {
+          break label287;
+        }
+        i = paramPackageInfo.applicationInfo.uid;
+        localAppInfo.mUid = i;
         paramPackageManager = new File(localAppInfo.mApkPath);
         if (paramPackageManager.exists())
         {
@@ -68,7 +65,7 @@ public class AppInfoUtil
         if (paramBoolean2) {
           if (paramPackageInfo.signatures != null)
           {
-            if (paramPackageInfo.signatures.length < 1) {
+            if (paramPackageInfo.signatures.length <= 0) {
               return localAppInfo;
             }
             paramPackageManager = (X509Certificate)a(paramPackageInfo.signatures[0]);
@@ -91,6 +88,9 @@ public class AppInfoUtil
       return localAppInfo;
       label282:
       paramBoolean1 = false;
+      continue;
+      label287:
+      int i = -1;
     }
   }
   
@@ -237,8 +237,7 @@ public class AppInfoUtil
             }
             catch (Throwable localThrowable)
             {
-              StringBuilder localStringBuilder2 = new StringBuilder();
-              localStringBuilder2.append("extractPkgCertMd5s(), e: ");
+              StringBuilder localStringBuilder2 = new StringBuilder("extractPkgCertMd5s(), e: ");
               localStringBuilder2.append(localThrowable.getMessage());
               eg.g("AppInfoUtil", localStringBuilder2.toString());
             }
@@ -251,8 +250,7 @@ public class AppInfoUtil
     }
     catch (Throwable paramString)
     {
-      localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("extractPkgCertMd5s(), e: ");
+      localStringBuilder1 = new StringBuilder("extractPkgCertMd5s(), e: ");
       localStringBuilder1.append(paramString.getMessage());
       eg.g("AppInfoUtil", localStringBuilder1.toString());
     }

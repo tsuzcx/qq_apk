@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build.VERSION;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -40,7 +39,12 @@ public class QuickLoginWebViewLoader
       localMethod.invoke(paramContext, new Object[] { Integer.valueOf(0) });
       return;
     }
-    catch (Exception|Error paramContext) {}
+    catch (Exception paramContext)
+    {
+      return;
+    }
+    catch (Error paramContext) {}
+    return;
   }
   
   public static void load(Activity paramActivity, Intent paramIntent)
@@ -112,18 +116,15 @@ public class QuickLoginWebViewLoader
       StringBuilder localStringBuilder;
       break label258;
     }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
     util.LOGI(localStringBuilder.toString(), "");
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
-    Log.e("wtlogin", localStringBuilder.toString());
     ((TextView)localObject3).setText("");
     ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-1, m));
     ((RelativeLayout)localObject2).addView((View)localObject3);
@@ -135,21 +136,18 @@ public class QuickLoginWebViewLoader
     }
     catch (IllegalArgumentException localIllegalArgumentException2)
     {
-      label420:
-      break label420;
+      label397:
+      break label397;
     }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
     util.LOGI(localStringBuilder.toString(), "");
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder = new StringBuilder("color error titleBackgroundColor ");
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(" titleTextColor ");
     localStringBuilder.append(paramIntent);
-    Log.e("wtlogin", localStringBuilder.toString());
     ((Button)localObject3).setText("关闭");
     ((Button)localObject3).setPadding(15, ((Button)localObject3).getPaddingTop(), 15, ((Button)localObject3).getPaddingBottom());
     ((Button)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, m));
@@ -194,16 +192,14 @@ public class QuickLoginWebViewLoader
         localObject1 = localObject2;
         if (str.length() != 0)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("&default_uin=");
+          localObject1 = new StringBuilder("&default_uin=");
           ((StringBuilder)localObject1).append(str);
           ((StringBuilder)localObject1).append("&pt_lock_uin=");
           ((StringBuilder)localObject1).append(i);
           localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=");
+      localObject2 = new StringBuilder("https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=");
       ((StringBuilder)localObject2).append(l);
       ((StringBuilder)localObject2).append("&style=42&s_url=http://wtlogin.qq.com/&pt_no_onekey=1&pt_no_auth=1&daid=499&wt_force_pwd=");
       ((StringBuilder)localObject2).append(j);
@@ -213,16 +209,14 @@ public class QuickLoginWebViewLoader
     }
     catch (Error paramActivity)
     {
-      paramIntent = new StringBuilder();
-      paramIntent.append("create webview failed ");
+      paramIntent = new StringBuilder("create webview failed ");
       paramIntent.append(paramActivity.getMessage());
       util.LOGI(paramIntent.toString(), "");
       return;
     }
     catch (Exception paramActivity)
     {
-      paramIntent = new StringBuilder();
-      paramIntent.append("create webview failed ");
+      paramIntent = new StringBuilder("create webview failed ");
       paramIntent.append(paramActivity.getMessage());
       util.LOGI(paramIntent.toString(), "");
       return;

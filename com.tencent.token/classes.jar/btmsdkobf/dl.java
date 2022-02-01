@@ -26,8 +26,7 @@ public class dl
         bool1 = bool2;
         if (!bool2)
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[shark_vip] request not allow currently, cmd: ");
+          localObject = new StringBuilder("[shark_vip] request not allow currently, cmd: ");
           ((StringBuilder)localObject).append(paramInt);
           ((StringBuilder)localObject).append(" ident: ");
           ((StringBuilder)localObject).append(paramLong);
@@ -43,8 +42,7 @@ public class dl
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mVipIdents|");
+    StringBuilder localStringBuilder = new StringBuilder("mVipIdents|");
     localStringBuilder.append(this.mY);
     return localStringBuilder.toString();
   }

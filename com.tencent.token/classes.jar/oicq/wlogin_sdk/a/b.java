@@ -198,10 +198,7 @@ public class b
     j = localArrayList.size();
     paramArrayOfByte4 = new byte[i + 2];
     util.int16_to_buf(paramArrayOfByte4, 0, (byte)j);
-    paramArrayOfByte5 = new StringBuilder();
-    paramArrayOfByte5.append("tlv cnt ");
-    paramArrayOfByte5.append(j);
-    util.LOGI(paramArrayOfByte5.toString(), "");
+    util.LOGI("tlv cnt ".concat(String.valueOf(j)), "");
     paramInt2 = 0;
     i = 2;
     while (paramInt2 < j)
@@ -224,8 +221,7 @@ public class b
       paramArrayOfByte3 = paramArrayOfByte5.toByteArray();
       if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0))
       {
-        paramArrayOfByte4 = new StringBuilder();
-        paramArrayOfByte4.append("msgchk is ");
+        paramArrayOfByte4 = new StringBuilder("msgchk is ");
         paramArrayOfByte4.append(util.buf_to_string(paramArrayOfByte2, paramArrayOfByte2.length));
         util.LOGI(paramArrayOfByte4.toString(), "");
         paramArrayOfByte2 = MD5.toMD5Byte(paramArrayOfByte2);
@@ -240,20 +236,17 @@ public class b
       paramArrayOfByte3 = new byte[this.d];
       util.int8_to_buf(paramArrayOfByte3, 0, paramArrayOfByte1.length);
       System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, 1, paramArrayOfByte1.length);
-      paramInt1 = 1 + paramArrayOfByte1.length;
+      paramInt1 = paramArrayOfByte1.length + 1;
       util.int16_to_buf(paramArrayOfByte3, paramInt1, paramArrayOfByte2.length);
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, paramInt1 + 2, paramArrayOfByte2.length);
-      paramInt1 = paramArrayOfByte2.length;
-      paramArrayOfByte1 = new StringBuilder();
-      paramArrayOfByte1.append("encryptedContent length ");
+      paramArrayOfByte1 = new StringBuilder("encryptedContent length ");
       paramArrayOfByte1.append(paramArrayOfByte2.length);
       util.LOGI(paramArrayOfByte1.toString(), "");
       return a(paramArrayOfByte3);
     }
     catch (Exception paramArrayOfByte1)
     {
-      paramArrayOfByte2 = new StringBuilder();
-      paramArrayOfByte2.append("get account failed ");
+      paramArrayOfByte2 = new StringBuilder("get account failed ");
       paramArrayOfByte2.append(paramArrayOfByte1.getMessage());
       util.LOGI(paramArrayOfByte2.toString(), "");
     }

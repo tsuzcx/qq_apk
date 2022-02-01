@@ -24,14 +24,14 @@ public final class SoftUpdateInfo
   public String url = "";
   public int urlType = 0;
   
-  public void display(StringBuilder paramStringBuilder, int paramInt) {}
+  public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new SoftUpdateInfo();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.url = paramJceInputStream.readString(0, false);
     this.urlType = paramJceInputStream.read(this.urlType, 1, false);
@@ -48,7 +48,7 @@ public final class SoftUpdateInfo
     this.noticeInterval = paramJceInputStream.read(this.noticeInterval, 12, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     Object localObject = this.url;
     if (localObject != null) {

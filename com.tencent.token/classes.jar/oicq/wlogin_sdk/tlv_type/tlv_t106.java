@@ -50,7 +50,7 @@ public class tlv_t106
     }
     util.int64_to_buf(arrayOfByte, 18, paramLong1);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 26, paramArrayOfByte1.length);
-    paramInt1 = 26 + paramArrayOfByte1.length;
+    paramInt1 = paramArrayOfByte1.length + 26;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, paramInt1, paramArrayOfByte2.length);
     paramInt1 += paramArrayOfByte2.length;
     util.int8_to_buf(arrayOfByte, paramInt1, paramInt2);
@@ -70,7 +70,7 @@ public class tlv_t106
       util.int32_to_buf(paramArrayOfByte1, 4, util.get_rand_32());
       util.int32_to_buf(paramArrayOfByte1, 8, util.get_rand_32());
       util.int32_to_buf(paramArrayOfByte1, 12, util.get_rand_32());
-      paramInt1 += paramArrayOfByte1.length;
+      paramInt1 += 16;
     }
     else
     {

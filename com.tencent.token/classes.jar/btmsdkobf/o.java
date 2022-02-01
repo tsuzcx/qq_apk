@@ -18,7 +18,7 @@ public final class o
   public int pluginId = 0;
   public int timestamp = 0;
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ar = paramJceInputStream.read(this.ar, 0, true);
     this.timestamp = paramJceInputStream.read(this.timestamp, 1, true);
@@ -39,7 +39,7 @@ public final class o
     this.au = paramJceInputStream.read(this.au, 6, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ar, 0);
     paramJceOutputStream.write(this.timestamp, 1);

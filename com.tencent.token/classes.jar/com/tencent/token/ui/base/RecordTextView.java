@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 
 public class RecordTextView
   extends TextView
@@ -27,7 +27,7 @@ public class RecordTextView
   private int l;
   private Handler m = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       paramAnonymousMessage = RecordTextView.this;
       RecordTextView.a(paramAnonymousMessage, RecordTextView.a(paramAnonymousMessage) ^ true);
@@ -51,8 +51,9 @@ public class RecordTextView
       }
       if (RecordTextView.g(RecordTextView.this) != null)
       {
-        g.c("onAniEnd");
-        RecordTextView.g(RecordTextView.this).a(RecordTextView.h(RecordTextView.this));
+        xb.c("onAniEnd");
+        RecordTextView.g(RecordTextView.this);
+        RecordTextView.h(RecordTextView.this);
       }
     }
   };
@@ -82,10 +83,7 @@ public class RecordTextView
     }
   }
   
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt);
-  }
+  public static abstract interface a {}
 }
 
 

@@ -1,12 +1,14 @@
 package com.tencent.token;
 
+import android.view.View;
+
 public abstract interface fb
 {
-  public abstract void a(fa paramfa, String paramString);
+  public abstract void a(View paramView);
   
-  public abstract void a(fa paramfa, byte[] paramArrayOfByte);
+  public abstract void b(View paramView);
   
-  public abstract boolean a(fa paramfa, int paramInt);
+  public abstract void c(View paramView);
 }
 
 

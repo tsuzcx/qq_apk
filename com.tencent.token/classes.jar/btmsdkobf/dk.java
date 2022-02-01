@@ -103,8 +103,7 @@ public class dk
     }
     if (!aY())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: ");
+      StringBuilder localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: ");
       localStringBuilder.append(this.mV);
       eh.f("VidCertifier", localStringBuilder.toString());
       return;
@@ -113,7 +112,7 @@ public class dk
     this.mW = true;
     cx.bE().b(5006, cz(), new ax(), 0, new cj()
     {
-      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
         StringBuilder localStringBuilder;
         if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0) && (paramAnonymousJceStruct != null))
@@ -121,18 +120,14 @@ public class dk
           paramAnonymousJceStruct = ((ax)paramAnonymousJceStruct).dr;
           if (!TextUtils.isEmpty(paramAnonymousJceStruct))
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: ");
-            localStringBuilder.append(paramAnonymousJceStruct);
-            eh.f("VidCertifier", localStringBuilder.toString());
+            eh.f("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: ".concat(String.valueOf(paramAnonymousJceStruct)));
             dk.a(dk.this, paramAnonymousJceStruct);
             dk.a(dk.this).bL().c(paramAnonymousJceStruct, true);
             dk.a(dk.this).bL().d(paramAnonymousJceStruct, true);
           }
           else
           {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+            localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
             localStringBuilder.append(paramAnonymousInt1);
             localStringBuilder.append(", vid is empty: ");
             localStringBuilder.append(paramAnonymousJceStruct);
@@ -141,8 +136,7 @@ public class dk
         }
         else
         {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+          localStringBuilder = new StringBuilder("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
           localStringBuilder.append(paramAnonymousInt1);
           localStringBuilder.append(" retCode: ");
           localStringBuilder.append(paramAnonymousInt3);
@@ -168,13 +162,10 @@ public class dk
     }
     cx.bE().b(5007, localaq, new ay(), 0, new cj()
     {
-      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0))
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0) && (paramAnonymousJceStruct != null))
         {
-          if (paramAnonymousJceStruct == null) {
-            return;
-          }
           paramAnonymousJceStruct = ((ay)paramAnonymousJceStruct).dr;
           if (!TextUtils.isEmpty(paramAnonymousJceStruct))
           {
@@ -191,7 +182,7 @@ public class dk
   {
     cm local3 = new cm()
     {
-      public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
       {
         if (paramAnonymousJceStruct == null)
         {

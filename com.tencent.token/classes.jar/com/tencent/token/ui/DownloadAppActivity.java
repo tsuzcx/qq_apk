@@ -13,13 +13,19 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.service.a.a;
-import com.tencent.service.a.c;
-import com.tencent.token.ef;
-import com.tencent.token.global.RqdApplication;
+import com.tencent.token.aae;
+import com.tencent.token.afr;
+import com.tencent.token.r;
+import com.tencent.token.rc;
+import com.tencent.token.rc.a;
+import com.tencent.token.rc.b;
+import com.tencent.token.rc.c;
+import com.tencent.token.t;
 import com.tencent.token.ui.qqpim.ProgressTextView;
-import com.tencent.token.upload.i;
-import com.tencent.token.utils.m;
+import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
+import com.tencent.token.zf;
+import com.tencent.token.zf.a;
+import com.tencent.token.zt;
 import java.io.File;
 
 public class DownloadAppActivity
@@ -29,42 +35,43 @@ public class DownloadAppActivity
   private ImageView centerImage;
   private TextView descriptionText;
   private FrameLayout flProgress;
-  private ImageView ivBack;
-  a.c listener = new a.c()
+  private FrameLayout ivBack;
+  rc.c listener = new rc.c()
   {
-    public void a(a.a paramAnonymousa)
+    public final void a(rc.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public void b(a.a paramAnonymousa)
+    public final void b(rc.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public void c(a.a paramAnonymousa)
+    public final void c(rc.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
     }
     
-    public void d(a.a paramAnonymousa)
+    public final void d(rc.a paramAnonymousa)
     {
       DownloadAppActivity.this.postUpdateUI();
       DownloadAppActivity.this.mHandler.postDelayed(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           if ((DownloadAppActivity.this.mDownloadInfo != null) && (DownloadAppActivity.this.mDownloadInfo.f == DownloaderTaskStatus.COMPLETE)) {
-            com.tencent.service.a.a(DownloadAppActivity.this, new File(com.tencent.service.a.b(), DownloadAppActivity.this.mDownloadInfo.d));
+            rc.a(DownloadAppActivity.this, new File(rc.a(), DownloadAppActivity.this.mDownloadInfo.d));
           }
         }
       }, 500L);
     }
   };
-  a.a mDownloadInfo;
+  private LayoutAppKeyInfo mAppLayout;
+  rc.a mDownloadInfo;
   Handler mHandler = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (paramAnonymousMessage.what == 99) {
         DownloadAppActivity.this.refreshUIByState();
@@ -76,6 +83,52 @@ public class DownloadAppActivity
   private TextView subDescriptionText;
   private TextView tvDownload;
   private ProgressTextView tvProgress;
+  
+  private void setDefaultSoftDetail(String paramString)
+  {
+    if ("com.tencent.qqpimsecure".equals(paramString))
+    {
+      this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "8.11.0", "腾讯手机管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpimsecure", "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11", this);
+      this.mAppLayout.setVisibility(0);
+      return;
+    }
+    if ("com.tencent.qqpim".equals(paramString))
+    {
+      this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "7.16", "QQ同步助手-微信文件备份", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpim", "https://cftweb.3g.qq.com/privacy/privacyPolicy?content_id=26e57ba2bb972d84e9a8c45ed6f7ad801617788449", this);
+      this.mAppLayout.setVisibility(0);
+      return;
+    }
+    if ("com.tencent.gallerymanager".equals(paramString))
+    {
+      this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "4.2.6", "腾讯相册管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.gallerymanager", "https://cftweb.3g.qq.com/privacy/privacyPolicy?content_id=95fb3a1fc2e0d6bda65de66c15606b2b1617954054", this);
+      this.mAppLayout.setVisibility(0);
+      return;
+    }
+    if ("com.tencent.gamestick".equals(paramString))
+    {
+      this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "4.4.2", "腾讯游戏管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.gamestick", "http://pic-17161.sh.gfp.tencent-cloud.com/fromcos%7C5242880%7C1599561493.4843%7C%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96375px.png", this);
+      this.mAppLayout.setVisibility(0);
+      return;
+    }
+    if ("com.tencent.transfer".equals(paramString))
+    {
+      this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "1.5.6", "换机助手", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.transfer", "http://pic-17161.sh.gfp.tencent-cloud.com/fromcos%7C5242880%7C1599559220.8459%7C%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96-3.jpg", this);
+      this.mAppLayout.setVisibility(0);
+    }
+  }
+  
+  private void setSoftDetail(r paramr)
+  {
+    if (paramr != null)
+    {
+      if (TextUtils.isEmpty(paramr.i)) {
+        return;
+      }
+      this.mAppLayout.setVisibility(0);
+      this.mAppLayout.a(paramr.i, paramr.a.b, paramr.a.d, paramr.k, paramr.r, this);
+      return;
+    }
+  }
   
   private void updateUIFromBundle()
   {
@@ -89,7 +142,7 @@ public class DownloadAppActivity
     this.subDescriptionText.setText(str3);
     this.tvDownload.setText(str4);
     if (!TextUtils.isEmpty(str5)) {
-      new com.tencent.token.utils.a(this.centerImage).execute(new String[] { str5 });
+      new zt(this.centerImage).execute(new String[] { str5 });
     }
   }
   
@@ -103,23 +156,23 @@ public class DownloadAppActivity
     default: 
       return;
     case 7: 
-      com.tencent.service.a.a().c(this.mDownloadInfo);
+      rc.b.a().c(this.mDownloadInfo);
       return;
     case 6: 
-      com.tencent.service.a.a().d(this.mDownloadInfo);
+      rc.b.a().d(this.mDownloadInfo);
       return;
     case 5: 
-      com.tencent.service.a.a().c(this.mDownloadInfo);
+      rc.b.a().c(this.mDownloadInfo);
       return;
     case 4: 
-      com.tencent.service.a.a(this, new File(com.tencent.service.a.b(), this.mDownloadInfo.d));
+      rc.a(this, new File(rc.a(), this.mDownloadInfo.d));
       return;
     case 2: 
     case 3: 
-      com.tencent.service.a.a().b(this.mDownloadInfo);
+      rc.b.a().b(this.mDownloadInfo);
       return;
     }
-    com.tencent.service.a.a().c(this.mDownloadInfo);
+    rc.b.a().c(this.mDownloadInfo);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -127,64 +180,69 @@ public class DownloadAppActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     setContentView(2131296296);
-    m.a(this, this.mTitleBar, 2130968771);
-    this.mPageTitle = ((TextView)findViewById(2131165803));
-    this.pbProgress = ((ProgressBar)findViewById(2131165547));
-    this.flProgress = ((FrameLayout)findViewById(2131165546));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165548));
-    this.descriptionText = ((TextView)findViewById(2131166155));
-    this.subDescriptionText = ((TextView)findViewById(2131166157));
-    this.centerImage = ((ImageView)findViewById(2131165623));
-    this.ivBack = ((ImageView)findViewById(2131165545));
-    this.tvDownload = ((TextView)findViewById(2131166156));
+    aae.a(this, this.mTitleBar, 2130968771);
+    this.mPageTitle = ((TextView)findViewById(2131165807));
+    this.pbProgress = ((ProgressBar)findViewById(2131165549));
+    this.flProgress = ((FrameLayout)findViewById(2131165548));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165550));
+    this.descriptionText = ((TextView)findViewById(2131166163));
+    this.subDescriptionText = ((TextView)findViewById(2131166165));
+    this.centerImage = ((ImageView)findViewById(2131165625));
+    this.ivBack = ((FrameLayout)findViewById(2131165547));
+    this.tvDownload = ((TextView)findViewById(2131166164));
     this.tvDownload.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         DownloadAppActivity.this.handleProcessByState();
       }
     });
     this.flProgress.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         DownloadAppActivity.this.handleProcessByState();
       }
     });
     this.ivBack.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         DownloadAppActivity.this.finish();
       }
     });
     paramBundle = getIntent().getStringExtra("downloadurl");
-    this.mDownloadInfo = com.tencent.service.a.a().a(paramBundle);
+    this.mDownloadInfo = rc.b.a().a(paramBundle);
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = ef.a(getIntent().getStringExtra("pkg"), paramBundle);
+      this.mDownloadInfo = afr.a(getIntent().getStringExtra("pkg"), paramBundle);
     }
-    if (com.tencent.service.a.a().a(this.mDownloadInfo)) {
+    if (rc.b.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
     }
     updateUIFromBundle();
     refreshUIByState();
-    com.tencent.service.a.a().a(this.listener);
-    if (i.e(RqdApplication.n()) == 1) {
-      this.mHandler.postDelayed(new Runnable()
+    rc.b.a().a(this.listener);
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    this.mAppLayout.setVisibility(8);
+    zf.a(getIntent().getStringExtra("pkg"), new zf.a()
+    {
+      public final void a(final r paramAnonymousr)
       {
-        public void run()
+        DownloadAppActivity.this.mHandler.post(new Runnable()
         {
-          if ((DownloadAppActivity.this.mDownloadInfo != null) && (DownloadAppActivity.this.mDownloadInfo.f == DownloaderTaskStatus.PENDING)) {
-            com.tencent.service.a.a().c(DownloadAppActivity.this.mDownloadInfo);
+          public final void run()
+          {
+            DownloadAppActivity.this.setSoftDetail(paramAnonymousr);
           }
-        }
-      }, 500L);
-    }
+        });
+      }
+    });
+    setDefaultSoftDetail(getIntent().getStringExtra("pkg"));
   }
   
   protected void onDestroy()
   {
-    com.tencent.service.a.a().b(this.listener);
+    rc.b.a().b(this.listener);
     super.onDestroy();
   }
   
@@ -204,31 +262,31 @@ public class DownloadAppActivity
     default: 
     case 6: 
       this.tvDownload.setVisibility(0);
-      this.flProgress.setVisibility(4);
+      this.flProgress.setVisibility(8);
       this.tvDownload.setText(getResources().getText(2131493210));
       return;
     case 5: 
       this.tvDownload.setVisibility(0);
-      this.flProgress.setVisibility(4);
+      this.flProgress.setVisibility(8);
       this.tvDownload.setText(getResources().getText(2131493214));
       return;
     case 4: 
       this.tvDownload.setVisibility(0);
-      this.flProgress.setVisibility(4);
+      this.flProgress.setVisibility(8);
       this.tvDownload.setText("安装");
       return;
     case 2: 
     case 3: 
-      this.tvDownload.setVisibility(4);
+      this.tvDownload.setVisibility(8);
       this.flProgress.setVisibility(0);
       this.tvProgress.setTextWhiteLength(this.mDownloadInfo.e / 100);
       this.pbProgress.setProgress(this.mDownloadInfo.e);
       ProgressTextView localProgressTextView = this.tvProgress;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("下载中...");
+      StringBuilder localStringBuilder = new StringBuilder("下载中...");
       localStringBuilder.append(this.mDownloadInfo.e);
       localStringBuilder.append("%");
       localProgressTextView.setText(localStringBuilder.toString());
+      return;
     }
   }
 }

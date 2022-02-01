@@ -86,10 +86,7 @@ public class JceField
     if ((paramInt >= 0) && (paramInt < 255)) {
       return zs[paramInt];
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("invalid tag: ");
-    localStringBuilder.append(paramInt);
-    throw new JceDecodeException(localStringBuilder.toString());
+    throw new JceDecodeException("invalid tag: ".concat(String.valueOf(paramInt)));
   }
   
   public int getTag()

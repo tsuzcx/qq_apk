@@ -1,25 +1,23 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class byte
   extends break
 {
   public long Wa = 0L;
   
-  public break a()
+  public final void a(afl paramafl)
   {
-    return new byte();
+    this.Wa = paramafl.a(this.Wa, 0, false);
   }
   
-  public void a(cy paramcy)
-  {
-    this.Wa = paramcy.a(this.Wa, 0, false);
-  }
-  
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
     long l = this.Wa;
     if (l != 0L) {
-      paramdb.a(l, 0);
+      paramafo.a(l, 0);
     }
   }
 }

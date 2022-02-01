@@ -45,7 +45,7 @@ public class a
       int i = util.buf_to_int16((byte[])localObject, 15);
       _status.d = new byte[i];
       System.arraycopy(localObject, 17, _status.d, 0, i);
-      int j = 17 + i;
+      int j = i + 17;
       i = j + 2;
       if (i + 2 + 1 >= localObject.length) {
         return _status.b;
@@ -99,10 +99,7 @@ public class a
         i = oicq.wlogin_sdk.tools.b.a(i, (byte[])localObject, j, localObject.length - j, paramMap);
         if (i != 0)
         {
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append("parseTLV failed ");
-          paramArrayOfByte.append(i);
-          util.LOGI(paramArrayOfByte.toString(), "");
+          util.LOGI("parseTLV failed ".concat(String.valueOf(i)), "");
           return -1009;
         }
         if (c.t) {
@@ -164,13 +161,12 @@ public class a
     byte[] tmp48_43 = tmp43_38;
     tmp48_43[4] = 104;
     tmp48_43;
-    Object localObject2;
     if ((c.t) && (paramArrayOfByte4.length > 16))
     {
       paramList = new byte[paramArrayOfByte4.length - 16];
       localObject2 = new byte[16];
       System.arraycopy(paramArrayOfByte4, 0, paramList, 0, paramList.length);
-      System.arraycopy(paramArrayOfByte4, paramList.length, localObject2, 0, localObject2.length);
+      System.arraycopy(paramArrayOfByte4, paramList.length, localObject2, 0, 16);
       a = (byte[])localObject2;
     }
     else
@@ -180,7 +176,8 @@ public class a
     }
     paramArrayOfByte4 = new tlv_t();
     paramArrayOfByte4.fill_head(104);
-    paramArrayOfByte4.fill_body(t.A, t.A.length);
+    Object localObject2 = t.A;
+    paramArrayOfByte4.fill_body((byte[])localObject2, localObject2.length);
     paramArrayOfByte4.set_length();
     ((List)tmp43_38).add(paramArrayOfByte4.get_buf());
     paramInt = 0;
@@ -244,7 +241,7 @@ public class a
     util.int64_to_buf(paramArrayOfByte3, 6, paramLong1);
     util.int16_to_buf(paramArrayOfByte3, 14, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, 16, paramArrayOfByte1.length);
-    paramInt = 16 + paramArrayOfByte1.length;
+    paramInt = paramArrayOfByte1.length + 16;
     util.int16_to_buf(paramArrayOfByte3, paramInt, paramArrayOfByte2.length);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, paramInt, paramArrayOfByte2.length);

@@ -1,77 +1,44 @@
 package com.tencent.token;
 
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-import javax.security.auth.x500.X500Principal;
+import android.content.Context;
+import android.support.v7.app.AppCompatDelegateImplV9.PanelFeatureState;
+import android.view.KeyboardShortcutGroup;
+import android.view.Menu;
+import android.view.Window;
+import android.view.Window.Callback;
+import java.util.List;
 
-public final class gh
-  implements gk
+final class gh
+  extends gj
 {
-  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
-  
-  public gh(X509Certificate... paramVarArgs)
+  gh(Context paramContext, Window paramWindow, ge paramge)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    super(paramContext, paramWindow, paramge);
+  }
+  
+  final Window.Callback a(Window.Callback paramCallback)
+  {
+    return new a(paramCallback);
+  }
+  
+  final class a
+    extends gj.a
+  {
+    a(Window.Callback paramCallback)
     {
-      X509Certificate localX509Certificate = paramVarArgs[i];
-      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
-      Set localSet = (Set)this.a.get(localX500Principal);
-      Object localObject = localSet;
-      if (localSet == null)
-      {
-        localObject = new LinkedHashSet(1);
-        this.a.put(localX500Principal, localObject);
-      }
-      ((Set)localObject).add(localX509Certificate);
-      i += 1;
+      super(paramCallback);
     }
-  }
-  
-  public X509Certificate a(X509Certificate paramX509Certificate)
-  {
-    Object localObject = paramX509Certificate.getIssuerX500Principal();
-    localObject = (Set)this.a.get(localObject);
-    if (localObject == null) {
-      return null;
-    }
-    localObject = ((Set)localObject).iterator();
-    for (;;)
+    
+    public final void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
     {
-      X509Certificate localX509Certificate;
-      PublicKey localPublicKey;
-      if (((Iterator)localObject).hasNext())
+      AppCompatDelegateImplV9.PanelFeatureState localPanelFeatureState = gh.this.g(0);
+      if ((localPanelFeatureState != null) && (localPanelFeatureState.j != null))
       {
-        localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-        localPublicKey = localX509Certificate.getPublicKey();
+        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.j, paramInt);
+        return;
       }
-      try
-      {
-        paramX509Certificate.verify(localPublicKey);
-        return localX509Certificate;
-      }
-      catch (Exception localException) {}
-      return null;
+      super.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
     }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {
-      return true;
-    }
-    return ((paramObject instanceof gh)) && (((gh)paramObject).a.equals(this.a));
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
   }
 }
 

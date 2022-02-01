@@ -1,32 +1,41 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
-import okhttp3.aa;
-import okio.e;
+import android.os.Build.VERSION;
+import android.widget.EdgeEffect;
 
 public final class ft
-  extends aa
 {
-  @Nullable
-  private final String a;
-  private final long b;
-  private final e c;
+  private static final b a = new b();
   
-  public ft(@Nullable String paramString, long paramLong, e parame)
+  static
   {
-    this.a = paramString;
-    this.b = paramLong;
-    this.c = parame;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public long a()
+  public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    return this.b;
+    a.a(paramEdgeEffect, paramFloat1, paramFloat2);
   }
   
-  public e c()
+  static final class a
+    extends ft.b
   {
-    return this.c;
+    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+    }
+  }
+  
+  static class b
+  {
+    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1);
+    }
   }
 }
 

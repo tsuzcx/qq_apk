@@ -11,7 +11,7 @@ import btmsdkobf.ec;
 import btmsdkobf.ee;
 import btmsdkobf.eg;
 import com.qq.taf.jce.JceStruct;
-import tmsdk.common.tcc.b;
+import com.tencent.token.ass;
 
 public class TMSDKBaseContext
 {
@@ -24,8 +24,7 @@ public class TMSDKBaseContext
   
   public static void SaveStringData(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SaveStringData, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("SaveStringData, modelId:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]msg:[");
     localStringBuilder.append(paramString);
@@ -36,8 +35,7 @@ public class TMSDKBaseContext
   
   public static void SaveStringDataOnce(int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SaveStringDataOnce, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("SaveStringDataOnce, modelId:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]msg:[");
     localStringBuilder.append(paramString);
@@ -74,12 +72,12 @@ public class TMSDKBaseContext
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.decrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return ass.b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.encrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return ass.a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static Context getApplicationContext()
@@ -112,8 +110,7 @@ public class TMSDKBaseContext
         return true;
       }
       r = bc.init(paramContext, paramAbsTMSBaseConfig);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init, aContext:[");
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
       localStringBuilder.append(paramContext);
       localStringBuilder.append("]aTMSConfig:[");
       localStringBuilder.append(paramAbsTMSBaseConfig);
@@ -149,8 +146,7 @@ public class TMSDKBaseContext
   
   public static void saveActionData(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("saveActionData, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]");
     eg.e("TMSDKBaseContext", localStringBuilder.toString());
@@ -159,8 +155,7 @@ public class TMSDKBaseContext
   
   public static void saveActionData(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("saveActionData, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("]errorCode:[");
     localStringBuilder.append(paramInt2);
@@ -171,8 +166,7 @@ public class TMSDKBaseContext
   
   public static void saveActionDataOnce(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("saveActionDataOnce, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionDataOnce, modelId:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]");
     eg.e("TMSDKBaseContext", localStringBuilder.toString());
@@ -186,8 +180,7 @@ public class TMSDKBaseContext
   
   public static void sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBackOut paramISharkCallBackOut, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("guid:[");
+    StringBuilder localStringBuilder = new StringBuilder("guid:[");
     localStringBuilder.append(bx.ar().getGuid());
     localStringBuilder.append("]sendShark, cmdId:[");
     localStringBuilder.append(paramInt1);
@@ -202,10 +195,9 @@ public class TMSDKBaseContext
     }
     bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
     {
-      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onFinish, cmdId:[");
+        Object localObject = new StringBuilder("onFinish, cmdId:[");
         ((StringBuilder)localObject).append(paramAnonymousInt2);
         ((StringBuilder)localObject).append("]retCode:[");
         ((StringBuilder)localObject).append(paramAnonymousInt3);
@@ -240,8 +232,7 @@ public class TMSDKBaseContext
   
   public static void setAutoConnectionSwitch(Context paramContext, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setAutoConnectionSwitch, aContext:[");
+    StringBuilder localStringBuilder = new StringBuilder("setAutoConnectionSwitch, aContext:[");
     localStringBuilder.append(paramContext);
     localStringBuilder.append("]aAutoConnection:[");
     localStringBuilder.append(paramBoolean);

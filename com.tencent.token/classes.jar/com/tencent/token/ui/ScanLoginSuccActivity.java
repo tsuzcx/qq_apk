@@ -10,10 +10,10 @@ public class ScanLoginSuccActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296430);
-    findViewById(2131165404).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296431);
+    findViewById(2131165406).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         ScanLoginSuccActivity.this.finish();
       }

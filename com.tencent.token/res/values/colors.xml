@@ -211,6 +211,7 @@
     <color name="utils_upper_background">#ffe5e5e5</color>
     <color name="utils_upper_dcode_background">#ffffffff</color>
     <color name="viewfinder_mask">#60000000</color>
+    <color name="white_60_percent">#99ffffff</color>
     <color name="wifi_abnormal">#ffe19819</color>
     <color name="zzb_background">#fffee401</color>
     <color name="zzb_text_color">#ffeba000</color>

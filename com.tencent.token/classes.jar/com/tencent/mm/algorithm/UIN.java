@@ -3,32 +3,7 @@ package com.tencent.mm.algorithm;
 public class UIN
   extends Number
 {
-  private int h = 0;
-  
-  public UIN(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public UIN(long paramLong)
-  {
-    this.h = ((int)(paramLong & 0xFFFFFFFF));
-  }
-  
-  public static int valueOf(String paramString)
-  {
-    try
-    {
-      int i = new UIN(Long.valueOf(paramString).longValue()).intValue();
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      label20:
-      break label20;
-    }
-    return 0;
-  }
+  private int h;
   
   public double doubleValue()
   {
@@ -57,11 +32,6 @@ public class UIN
   public String toString()
   {
     return String.valueOf(this.h & 0xFFFFFFFF);
-  }
-  
-  public int value()
-  {
-    return this.h;
   }
 }
 

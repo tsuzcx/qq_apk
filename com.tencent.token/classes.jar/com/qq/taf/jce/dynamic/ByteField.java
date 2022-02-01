@@ -11,17 +11,17 @@ public final class ByteField
     this.data = paramByte;
   }
   
-  public byte get()
+  public final byte get()
   {
     return this.data;
   }
   
-  public Number getNumber()
+  public final Number getNumber()
   {
     return Byte.valueOf(this.data);
   }
   
-  public void set(byte paramByte)
+  public final void set(byte paramByte)
   {
     this.data = paramByte;
   }

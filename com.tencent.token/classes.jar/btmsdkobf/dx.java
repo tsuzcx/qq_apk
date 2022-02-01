@@ -1,8 +1,8 @@
 package btmsdkobf;
 
 import android.text.TextUtils;
+import com.tencent.token.ass;
 import java.io.UnsupportedEncodingException;
-import tmsdk.common.tcc.b;
 
 public class dx
 {
@@ -13,13 +13,12 @@ public class dx
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    StringBuilder localStringBuilder;
     String str;
     try
     {
-      paramString = b.encrypt(paramString.getBytes("gbk"), null);
+      paramString = ass.a(paramString.getBytes("gbk"), null);
       if (paramString == null) {
-        break label87;
+        break label63;
       }
       paramString = dw.encodeToString(paramString, 0);
       return paramString;
@@ -27,19 +26,15 @@ public class dx
     catch (Exception localException)
     {
       paramString = TAG;
-      localStringBuilder = new StringBuilder();
       str = "getEncodeString, Exception: ";
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       paramString = TAG;
-      localStringBuilder = new StringBuilder();
       str = "getEncodeString, UnsupportedEncodingException: ";
     }
-    localStringBuilder.append(str);
-    localStringBuilder.append(localUnsupportedEncodingException);
-    eh.h(paramString, localStringBuilder.toString());
-    label87:
+    eh.h(paramString, str.concat(String.valueOf(localUnsupportedEncodingException)));
+    label63:
     return null;
   }
   
@@ -48,13 +43,12 @@ public class dx
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    StringBuilder localStringBuilder;
     String str;
     try
     {
-      paramString = b.decrypt(dw.decode(paramString, 0), null);
+      paramString = ass.b(dw.decode(paramString, 0), null);
       if (paramString == null) {
-        break label91;
+        break label67;
       }
       paramString = new String(paramString, "gbk");
       return paramString;
@@ -62,19 +56,15 @@ public class dx
     catch (Exception localException)
     {
       paramString = TAG;
-      localStringBuilder = new StringBuilder();
       str = "getDecodeString, Exception: ";
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       paramString = TAG;
-      localStringBuilder = new StringBuilder();
       str = "getDecodeString, UnsupportedEncodingException: ";
     }
-    localStringBuilder.append(str);
-    localStringBuilder.append(localUnsupportedEncodingException);
-    eh.h(paramString, localStringBuilder.toString());
-    label91:
+    eh.h(paramString, str.concat(String.valueOf(localUnsupportedEncodingException)));
+    label67:
     return null;
   }
 }

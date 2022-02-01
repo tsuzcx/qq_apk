@@ -1,234 +1,212 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.f;
-import com.tencent.token.global.g;
-import com.tencent.token.global.h;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
+import java.lang.reflect.Method;
+import org.xmlpull.v1.XmlPullParser;
 
-public class dh
+public final class dh
 {
-  List<f> a = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem b;
-  String c;
-  long d;
-  public boolean e;
-  public boolean f = false;
+  private static Method a;
+  private static boolean b;
+  private static Method c;
+  private static boolean d;
   
-  public f a(int paramInt)
+  public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
   {
-    if (paramInt >= 0)
-    {
-      if (paramInt >= c()) {
-        return null;
-      }
-      List localList = a();
-      if (localList == null) {
-        return null;
-      }
-      return (f)localList.get(paramInt);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramDrawable.setHotspot(paramFloat1, paramFloat2);
     }
-    return null;
   }
   
-  public List<f> a()
+  public static void a(Drawable paramDrawable, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(String paramString)
-  {
-    h.a("game_lock", paramString);
-  }
-  
-  public void a(List<f> paramList)
-  {
-    try
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      if (this.b == null) {
-        this.b = ct.a().h.a("game_lock");
-      }
-      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
-      {
-        Iterator localIterator1 = this.b.mConfIDs.iterator();
-        while (localIterator1.hasNext())
-        {
-          int i = ((Integer)localIterator1.next()).intValue();
-          Iterator localIterator2 = paramList.iterator();
-          while (localIterator2.hasNext())
-          {
-            f localf = (f)localIterator2.next();
-            if (i == localf.a) {
-              localf.f = true;
-            }
-          }
-        }
-      }
-      this.a.clear();
-      this.a.addAll(paramList);
-      this.c = cs.c;
-      if (cs.a().e() != null) {
-        this.d = cs.a().e().mUin;
-      }
+      paramDrawable.setTint(paramInt);
       return;
     }
-    finally {}
-  }
-  
-  public boolean a(JSONArray paramJSONArray)
-  {
-    boolean bool;
-    if (paramJSONArray != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    g.a(bool);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (paramJSONArray != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i >= paramJSONArray.length()) {
-            break label247;
-          }
-          Object localObject = paramJSONArray.getJSONObject(i);
-          if (localObject == null) {
-            break label242;
-          }
-          bool = true;
-          g.a(bool);
-          f localf = new f();
-          if (!localf.c((JSONObject)localObject))
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("object item parse failed: ");
-            ((StringBuilder)localObject).append(i);
-            g.c(((StringBuilder)localObject).toString());
-          }
-          localArrayList1.add(localf);
-          i += 1;
-          continue;
-          if (i >= localArrayList1.size()) {
-            break label259;
-          }
-          paramJSONArray = (f)localArrayList1.get(i);
-          if (paramJSONArray.g) {
-            break label252;
-          }
-          localArrayList2.add(paramJSONArray);
-          break label252;
-          if (i < localArrayList1.size())
-          {
-            paramJSONArray = (f)localArrayList1.get(i);
-            if (paramJSONArray.g) {
-              localArrayList2.add(paramJSONArray);
-            }
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList2);
-        return true;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
-      }
-      label242:
-      bool = false;
-      continue;
-      label247:
-      int i = 0;
-      continue;
-      label252:
-      i += 1;
-      continue;
-      label259:
-      i = 0;
+    if ((paramDrawable instanceof di)) {
+      ((di)paramDrawable).setTint(paramInt);
     }
   }
   
-  public int b(int paramInt)
+  public static void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Iterator localIterator = this.a.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      f localf = (f)localIterator.next();
-      int j = i + 1;
-      i = j;
-      if (localf.a == paramInt) {
-        return j;
-      }
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramDrawable.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    return -1;
   }
   
-  public boolean b()
+  public static void a(Drawable paramDrawable, ColorStateList paramColorStateList)
   {
-    QQUser localQQUser = cs.a().e();
-    String str = this.c;
-    if (str != null)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      if (localQQUser == null) {
-        return false;
-      }
-      return (str.equals(cs.c)) && (this.d == cs.a().e().mUin) && (this.e);
+      paramDrawable.setTintList(paramColorStateList);
+      return;
+    }
+    if ((paramDrawable instanceof di)) {
+      ((di)paramDrawable).setTintList(paramColorStateList);
+    }
+  }
+  
+  public static void a(Drawable paramDrawable, Resources.Theme paramTheme)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramDrawable.applyTheme(paramTheme);
+    }
+  }
+  
+  public static void a(Drawable paramDrawable, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      return;
+    }
+    paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
+  }
+  
+  public static void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramDrawable.setTintMode(paramMode);
+      return;
+    }
+    if ((paramDrawable instanceof di)) {
+      ((di)paramDrawable).setTintMode(paramMode);
+    }
+  }
+  
+  public static void a(Drawable paramDrawable, boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramDrawable.setAutoMirrored(paramBoolean);
+    }
+  }
+  
+  public static boolean a(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramDrawable.isAutoMirrored();
     }
     return false;
   }
   
-  public int c()
+  public static int b(Drawable paramDrawable)
   {
-    List localList = a();
-    if (localList == null) {
-      return 0;
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramDrawable.getAlpha();
     }
-    return localList.size();
+    return 0;
   }
   
-  public int d()
+  public static boolean b(Drawable paramDrawable, int paramInt)
   {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramDrawable.setLayoutDirection(paramInt);
+    }
+    if ((Build.VERSION.SDK_INT < 17) || (!b)) {}
     try
     {
-      List localList = a();
-      int i = 0;
-      if (localList == null) {
-        return 0;
-      }
-      int k;
-      for (int j = 0; i < localList.size(); j = k)
+      Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
+      a = localMethod;
+      localMethod.setAccessible(true);
+      label55:
+      b = true;
+      localMethod = a;
+      if (localMethod != null) {}
+      try
       {
-        boolean bool = ((f)localList.get(i)).g;
-        k = j;
-        if (!bool) {
-          k = j + 1;
-        }
-        i += 1;
+        localMethod.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+        return true;
       }
-      return j;
+      catch (Exception paramDrawable)
+      {
+        label86:
+        break label86;
+      }
+      a = null;
+      return false;
+      return false;
     }
-    finally {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label55;
+    }
   }
   
-  public void e()
+  public static boolean c(Drawable paramDrawable)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((f)localIterator.next()).f = false;
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramDrawable.canApplyTheme();
+    }
+    return false;
+  }
+  
+  public static Drawable d(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramDrawable;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      if (!(paramDrawable instanceof di)) {
+        return new dm(paramDrawable);
+      }
+      return paramDrawable;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (!(paramDrawable instanceof di)) {
+        return new dl(paramDrawable);
+      }
+      return paramDrawable;
+    }
+    if (!(paramDrawable instanceof di)) {
+      return new dk(paramDrawable);
+    }
+    return paramDrawable;
+  }
+  
+  public static int e(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramDrawable.getLayoutDirection();
+    }
+    if ((Build.VERSION.SDK_INT < 17) || (!d)) {}
+    try
+    {
+      Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
+      c = localMethod;
+      localMethod.setAccessible(true);
+      label48:
+      d = true;
+      localMethod = c;
+      if (localMethod != null) {}
+      try
+      {
+        int i = ((Integer)localMethod.invoke(paramDrawable, new Object[0])).intValue();
+        return i;
+      }
+      catch (Exception paramDrawable)
+      {
+        label78:
+        break label78;
+      }
+      c = null;
+      return 0;
+      return 0;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label48;
     }
   }
 }

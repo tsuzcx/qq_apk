@@ -7,9 +7,9 @@ public class CustomPriorityBlockingQueue<E>
 {
   private static final String TAG = "CustomPriorityBlockingQueue";
   
-  public CustomPriorityBlockingQueue(int paramInt)
+  public CustomPriorityBlockingQueue()
   {
-    super(paramInt);
+    super(5);
   }
   
   public boolean offer(E paramE)

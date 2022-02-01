@@ -30,7 +30,7 @@ public class e
       int i = util.buf_to_int16(paramArrayOfByte, 15);
       _status.d = new byte[i];
       System.arraycopy(paramArrayOfByte, 17, _status.d, 0, i);
-      i = 17 + i;
+      i += 17;
       int k = util.buf_to_int16(paramArrayOfByte, i);
       _status.g = new byte[0];
       _status.e = new ArrayList(k);
@@ -105,15 +105,10 @@ public class e
     i += 2;
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
     i += paramArrayOfByte2.length;
-    if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length == 16))
-    {
+    if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length == 16)) {
       System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, i, 16);
-      i += 16;
     }
-    else
-    {
-      i += 16;
-    }
+    i += 16;
     util.int8_to_buf(arrayOfByte, i, 1);
     i += 1;
     util.int16_to_buf(arrayOfByte, i, paramInt);
@@ -151,7 +146,6 @@ public class e
       paramInt += 2;
       util.int16_to_buf(arrayOfByte, paramInt, paramArrayOfByte5.length);
       System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, paramInt + 2, paramArrayOfByte5.length);
-      paramInt = paramArrayOfByte5.length;
     }
     return get_request(paramLong1, paramBoolean, arrayOfByte);
   }

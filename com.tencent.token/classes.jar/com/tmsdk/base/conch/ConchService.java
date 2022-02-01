@@ -36,12 +36,12 @@ public abstract interface ConchService
   {
     public static final Parcelable.Creator<ConchPushInfo> CREATOR = new Parcelable.Creator()
     {
-      public ConchService.ConchPushInfo a(Parcel paramAnonymousParcel)
+      public final ConchService.ConchPushInfo a(Parcel paramAnonymousParcel)
       {
         return ConchService.ConchPushInfo.b(paramAnonymousParcel);
       }
       
-      public ConchService.ConchPushInfo[] b(int paramAnonymousInt)
+      public final ConchService.ConchPushInfo[] b(int paramAnonymousInt)
       {
         return new ConchService.ConchPushInfo[paramAnonymousInt];
       }
@@ -152,12 +152,12 @@ public abstract interface ConchService
   {
     public static final Parcelable.Creator<ConchPushResp> CREATOR = new Parcelable.Creator()
     {
-      public ConchService.ConchPushResp c(Parcel paramAnonymousParcel)
+      public final ConchService.ConchPushResp c(Parcel paramAnonymousParcel)
       {
         return ConchService.ConchPushResp.d(paramAnonymousParcel);
       }
       
-      public ConchService.ConchPushResp[] c(int paramAnonymousInt)
+      public final ConchService.ConchPushResp[] c(int paramAnonymousInt)
       {
         return new ConchService.ConchPushResp[paramAnonymousInt];
       }

@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 final class Ticket$1
   implements Parcelable.Creator<Ticket>
 {
-  public Ticket createFromParcel(Parcel paramParcel)
+  public final Ticket createFromParcel(Parcel paramParcel)
   {
     return new Ticket(paramParcel, null);
   }
   
-  public Ticket[] newArray(int paramInt)
+  public final Ticket[] newArray(int paramInt)
   {
     return new Ticket[paramInt];
   }

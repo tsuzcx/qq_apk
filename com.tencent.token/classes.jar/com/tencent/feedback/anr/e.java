@@ -30,10 +30,7 @@ final class e
     if (this.a.d == null) {
       this.a.d = new HashMap();
     }
-    Map localMap = this.a.d;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localMap.put(paramString1, new String[] { paramString2, paramString3, localStringBuilder.toString() });
+    this.a.d.put(paramString1, new String[] { paramString2, paramString3, String.valueOf(paramInt) });
     return true;
   }
 }

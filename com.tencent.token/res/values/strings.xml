@@ -39,7 +39,7 @@
     <string name="about_list_privacy">隐私协议</string>
     <string name="about_list_serialnumber">序列号</string>
     <string name="account_bind_so_far">安全中心已连续守护您xx天</string>
-    <string name="account_bind_to_enjoy">登录QQ,开启安全之旅 ></string>
+    <string name="account_bind_to_enjoy">登录QQ，开启安全之旅 ></string>
     <string name="account_eval_result">您的帐号安全有待加强</string>
     <string name="account_have_bind_mb">已设置密保手机：</string>
     <string name="account_head">您的QQ</string>
@@ -187,8 +187,8 @@
     <string name="contact_protect_download_wifi_notify_subtitle">本次下载将消耗流量！</string>
     <string name="contact_protect_download_wifi_notify_title">下载提示</string>
     <string name="contact_protect_new_title">QQ同步助手</string>
-    <string name="contact_protect_now">立即保护</string>
-    <string name="contact_protect_now_new">立即体验</string>
+    <string name="contact_protect_now">立即下载</string>
+    <string name="contact_protect_now_new">立即下载</string>
     <string name="contact_protect_subdes">通讯录云端保存，永不丢失</string>
     <string name="contact_protect_title">通讯录保护</string>
     <string name="contact_protect_title1">一键备份QQ、微信重要文件，文件不丢失</string>
@@ -348,7 +348,7 @@
     <string name="gallery_install_gallery">安装腾讯相册管家</string>
     <string name="gallery_protect">照片隐私保护</string>
     <string name="gallery_protect_des">隐私照片存在泄漏风险</string>
-    <string name="gallery_protect_now">立即保护</string>
+    <string name="gallery_protect_now">立即下载</string>
     <string name="gallery_protect_subdes">隐私照片加密备份，永不泄漏</string>
     <string name="gallery_protect_title">照片隐私保护</string>
     <string name="gallery_str_backup_gallery">加密隐私照片</string>
@@ -586,7 +586,7 @@
     <string name="private_licence">隐私条款</string>
     <string name="progress_doing">正在处理…</string>
     <string name="progress_message">信息读取中…</string>
-    <string name="protocol_url">https://m.aq.qq.com/cn/manage/token/wtoken_terms</string>
+    <string name="protocol_url">https://sdi.3g.qq.com/v/2019120415543611159</string>
     <string name="qq_passwd_forget_get">https://aq.qq.com/cn2/findpsw/mobile_v2/mobile_web_find_select_way?lang=zh_cn&amp;login_type=normal&amp;source_id=3166</string>
     <string name="qq_token">QQ令牌</string>
     <string name="qqpim_install_qqpim">安装同步助手</string>
@@ -674,6 +674,7 @@
     <string name="rebuild_button">重新创建</string>
     <string name="recove_to_use_safe_mode">改密恢复使用</string>
     <string name="redetect">重新检测</string>
+    <string name="report_min">举报入口</string>
     <string name="retry_scan_face">重新拍摄人脸</string>
     <string name="return_button">返回</string>
     <string name="return_main">返回首页</string>
@@ -764,6 +765,7 @@
     <string name="title_drop_menu_get_dualmsg">获取验证消息</string>
     <string name="title_knowtoken">帮助</string>
     <string name="title_modify_pwd">修改QQ密码</string>
+    <string name="title_privacy">隐私政策</string>
     <string name="title_recommend">推荐给好友</string>
     <string name="title_token_pwd_verify">验证启动密码</string>
     <string name="title_unbindQQ">身份验证</string>

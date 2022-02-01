@@ -29,8 +29,6 @@ public class e
       catch (CloneNotSupportedException paramErrMsg)
       {
         paramErrMsg.printStackTrace();
-        this.c = null;
-        return;
       }
     }
     this.c = null;

@@ -56,57 +56,59 @@ public class ds
     int m = 1;
     paramdp.n(true);
     int n = paramdp.q(true);
-    Object localObject1 = null;
     long l1 = 0L;
     int j = 0;
-    int i = 0;
-    int k;
-    while (j < n)
+    Object localObject1 = null;
+    int k = 0;
+    int i;
+    Object localObject2;
+    long l2;
+    for (;;)
     {
+      i = j;
+      localObject2 = localObject1;
+      l2 = l1;
+      if (k >= n) {
+        break;
+      }
       localObject1 = paramdp.l(true);
       if (localObject1 != null)
       {
         l1 = System.currentTimeMillis();
-        k = b((dq.b)localObject1);
+        j = b((dq.b)localObject1);
         l1 = System.currentTimeMillis() - l1;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("checkSocketWithRetry(), ipPoint ");
+        localObject2 = new StringBuilder("checkSocketWithRetry(), ipPoint ");
         ((StringBuilder)localObject2).append(((dq.b)localObject1).toString());
         ((StringBuilder)localObject2).append(" localIp ");
         ((StringBuilder)localObject2).append(cJ());
         ((StringBuilder)localObject2).append(" localPort ");
         ((StringBuilder)localObject2).append(cK());
         ((StringBuilder)localObject2).append(" ret: ");
-        ((StringBuilder)localObject2).append(k);
+        ((StringBuilder)localObject2).append(j);
         eh.f("TcpNetwork", ((StringBuilder)localObject2).toString());
-        l2 = l1;
-        i = k;
+        i = j;
         localObject2 = localObject1;
-        if (k == 0) {
-          break label264;
+        l2 = l1;
+        if (j == 0) {
+          break;
         }
-        if (!bz.q(k))
-        {
-          l2 = l1;
-          i = k;
-          localObject2 = localObject1;
-          break label264;
+        i = j;
+        localObject2 = localObject1;
+        l2 = l1;
+        if (!bz.q(j)) {
+          break;
         }
-        if ((j == 0) && (cx.y("tcp connect")))
+        if ((k == 0) && (cx.y("tcp connect")))
         {
           i = -160000;
-          l2 = l1;
           localObject2 = localObject1;
-          break label264;
+          l2 = l1;
+          break;
         }
         paramdp.m(true);
-        i = k;
       }
-      j += 1;
+      k += 1;
     }
-    Object localObject2 = localObject1;
-    long l2 = l1;
-    label264:
     boolean bool;
     if (i == 0) {
       bool = true;
@@ -123,14 +125,14 @@ public class ds
       ((dg)localObject1).mn = l2;
       ((dg)localObject1).errorCode = i;
       ((dg)localObject1).mo = this.nm;
-      if (j < n) {
-        k = j + 1;
+      if (k < n) {
+        j = k + 1;
       } else {
-        k = n;
+        j = n;
       }
-      ((dg)localObject1).mk = k;
+      ((dg)localObject1).mk = j;
       ((dg)localObject1).f(paramdp.p(true));
-      if (j == n) {
+      if (k == n) {
         j = m;
       } else {
         j = 0;
@@ -139,7 +141,7 @@ public class ds
       {
         ee.cT().addTask(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             Object localObject = this.a;
             ((dg)localObject).ms = true;
@@ -162,8 +164,7 @@ public class ds
         }
       }
     }
-    paramdp = new StringBuilder();
-    paramdp.append("[tcp_control] checkSocketWithRetry(), ret: ");
+    paramdp = new StringBuilder("[tcp_control] checkSocketWithRetry(), ret: ");
     paramdp.append(i);
     paramdp.append(" time: ");
     paramdp.append(System.currentTimeMillis() - l3);
@@ -173,8 +174,7 @@ public class ds
   
   private Socket a(InetAddress paramInetAddress, int paramInt)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("acquireSocketWithTimeOut, addr: ");
+    Object localObject = new StringBuilder("acquireSocketWithTimeOut, addr: ");
     ((StringBuilder)localObject).append(paramInetAddress);
     ((StringBuilder)localObject).append(", port: ");
     ((StringBuilder)localObject).append(paramInt);
@@ -219,10 +219,7 @@ public class ds
   {
     try
     {
-      paramContext = new StringBuilder();
-      paramContext.append("[tcp_control]start() isRestart ");
-      paramContext.append(paramBoolean);
-      eh.e("TcpNetwork", paramContext.toString());
+      eh.e("TcpNetwork", "[tcp_control]start() isRestart ".concat(String.valueOf(paramBoolean)));
       if (isStarted())
       {
         eh.e("TcpNetwork", "start() already started");
@@ -274,13 +271,11 @@ public class ds
         localDataOutputStream.writeInt(paramArrayOfByte.length);
         localDataOutputStream.write(paramArrayOfByte);
         paramArrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control]sendDataInAsync(), bf [tcp send] bytes: ");
+        localObject = new StringBuilder("[tcp_control]sendDataInAsync(), bf [tcp send] bytes: ");
         ((StringBuilder)localObject).append(paramArrayOfByte.length);
         eh.f("TcpNetwork", ((StringBuilder)localObject).toString());
         this.nr.write(paramArrayOfByte);
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[flow_control][tcp_control]sendDataInAsync(), [tcp send] bytes: ");
+        localObject = new StringBuilder("[flow_control][tcp_control]sendDataInAsync(), [tcp send] bytes: ");
         ((StringBuilder)localObject).append(paramArrayOfByte.length);
         eh.e("TcpNetwork", ((StringBuilder)localObject).toString());
         if ((paramf != null) && (paramf.jT != null) && (paramf.jT.size() > 0))
@@ -308,8 +303,7 @@ public class ds
     catch (Throwable paramf)
     {
       this.nm = paramf.toString();
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("sendDataInAsync() Throwable: ");
+      paramArrayOfByte = new StringBuilder("sendDataInAsync() Throwable: ");
       paramArrayOfByte.append(paramf.toString());
       eh.h("TcpNetwork", paramArrayOfByte.toString());
       return -320000;
@@ -317,8 +311,7 @@ public class ds
     catch (SocketException paramf)
     {
       this.nm = paramf.toString();
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("sendDataInAsync() SocketException: ");
+      paramArrayOfByte = new StringBuilder("sendDataInAsync() SocketException: ");
       paramArrayOfByte.append(paramf.toString());
       eh.h("TcpNetwork", paramArrayOfByte.toString());
     }
@@ -423,7 +416,7 @@ public class ds
   {
     this.no = new Thread("RcvThread")
     {
-      public void run()
+      public final void run()
       {
         eh.e("TcpNetwork", "[tcp_control]RcvThread start...");
         ds.a(ds.this);
@@ -440,23 +433,20 @@ public class ds
     if (!this.nn) {}
     for (;;)
     {
+      Object localObject;
       try
       {
         if (!this.nl) {
-          break label438;
+          break label360;
         }
         i = this.ns.readInt();
         int j = this.ns.readInt();
         if (j >= 1000000)
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[flow_control][tcp_control]包有误，数据过大，size >= 1000000, [tcp receive] bytes: ");
-          ((StringBuilder)localObject).append(j);
-          eh.h("TcpNetwork", ((StringBuilder)localObject).toString());
+          eh.h("TcpNetwork", "[flow_control][tcp_control]包有误，数据过大，size >= 1000000, [tcp receive] bytes: ".concat(String.valueOf(j)));
           return;
         }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[flow_control][tcp_control]recv(), [tcp receive] bytes: ");
+        localObject = new StringBuilder("[flow_control][tcp_control]recv(), [tcp receive] bytes: ");
         ((StringBuilder)localObject).append(j + 4);
         eh.e("TcpNetwork", ((StringBuilder)localObject).toString());
         localObject = dq.a(this.ns, 0, j, null);
@@ -465,68 +455,58 @@ public class ds
           eh.h("TcpNetwork", "[tcp_control]recv(), respData == null");
           break;
         }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[tcp_control]notifyOnReceiveData(), respData.length(): ");
+        StringBuilder localStringBuilder = new StringBuilder("[tcp_control]notifyOnReceiveData(), respData.length(): ");
         localStringBuilder.append(localObject.length);
         eh.e("TcpNetwork", localStringBuilder.toString());
         d(i, (byte[])localObject);
       }
       catch (Throwable localThrowable)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control]recv() Throwable: ");
-        ((StringBuilder)localObject).append(localThrowable);
-        eh.b("TcpNetwork", ((StringBuilder)localObject).toString(), localThrowable);
+        eh.b("TcpNetwork", "[tcp_control]recv() Throwable: ".concat(String.valueOf(localThrowable)), localThrowable);
         if (!this.nu)
         {
           d(true, false);
           localObject = this.nt;
-          if (localObject != null)
-          {
-            i = 12;
-            ((a)localObject).a(i, localThrowable);
+          if (localObject == null) {
+            break label326;
           }
+          i = 12;
+          break label317;
         }
-        else
-        {
-          eh.e("TcpNetwork", "[tcp_control]ignore stop exption");
-          this.nn = true;
-        }
+        eh.e("TcpNetwork", "[tcp_control]ignore stop exption");
+        this.nn = true;
+        break label326;
       }
       catch (EOFException localEOFException)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control]recv() EOFException: ");
-        ((StringBuilder)localObject).append(localEOFException);
-        eh.b("TcpNetwork", ((StringBuilder)localObject).toString(), localEOFException);
+        eh.b("TcpNetwork", "[tcp_control]recv() EOFException: ".concat(String.valueOf(localEOFException)), localEOFException);
         if (this.nu) {
           continue;
         }
         d(true, false);
         localObject = this.nt;
-        if (localObject != null)
-        {
-          i = 11;
-          continue;
+        if (localObject == null) {
+          break label326;
         }
+        i = 11;
+        break label317;
       }
       catch (SocketException localSocketException)
       {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control]recv(), SocketException: ");
-        ((StringBuilder)localObject).append(localSocketException);
-        eh.b("TcpNetwork", ((StringBuilder)localObject).toString(), localSocketException);
+        eh.b("TcpNetwork", "[tcp_control]recv(), SocketException: ".concat(String.valueOf(localSocketException)), localSocketException);
         if (this.nu) {
           continue;
         }
         d(true, false);
         localObject = this.nt;
-        if (localObject != null)
-        {
-          i = 10;
-          continue;
+        if (localObject == null) {
+          break label326;
         }
       }
+      int i = 10;
+      label317:
+      ((a)localObject).a(i, localSocketException);
+      label326:
       if (!this.nu) {
         stop();
       }
@@ -534,8 +514,8 @@ public class ds
       this.nu = false;
       eh.e("TcpNetwork", "[tcp_control]recv(), end!!!");
       return;
-      label438:
-      int i = 0;
+      label360:
+      i = 0;
     }
   }
   
@@ -563,7 +543,6 @@ public class ds
       synchronized (this.np)
       {
         eh.f("TcpNetwork", "stopSocket() 3");
-        StringBuilder localStringBuilder2;
         try
         {
           if (!this.nq.isInputShutdown()) {
@@ -572,10 +551,7 @@ public class ds
         }
         catch (Throwable localThrowable2)
         {
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("stopSocket(), mSocket.shutdownInput() ");
-          localStringBuilder2.append(localThrowable2);
-          eh.e("TcpNetwork", localStringBuilder2.toString());
+          eh.e("TcpNetwork", "stopSocket(), mSocket.shutdownInput() ".concat(String.valueOf(localThrowable2)));
         }
         eh.f("TcpNetwork", "stopSocket() 4");
         try
@@ -595,10 +571,7 @@ public class ds
         }
         catch (Throwable localThrowable4)
         {
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("stopSocket(), mSocket.shutdownOutput() ");
-          localStringBuilder2.append(localThrowable4);
-          eh.e("TcpNetwork", localStringBuilder2.toString());
+          eh.e("TcpNetwork", "stopSocket(), mSocket.shutdownOutput() ".concat(String.valueOf(localThrowable4)));
         }
         eh.f("TcpNetwork", "stopSocket() 6");
         try
@@ -607,10 +580,7 @@ public class ds
         }
         catch (Throwable localThrowable5)
         {
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("stopSocket(), mSocketWriter.close() ");
-          localStringBuilder2.append(localThrowable5);
-          eh.e("TcpNetwork", localStringBuilder2.toString());
+          eh.e("TcpNetwork", "stopSocket(), mSocketWriter.close() ".concat(String.valueOf(localThrowable5)));
         }
         try
         {
@@ -624,7 +594,6 @@ public class ds
             Thread.sleep(2000L);
             this.nm = "";
           }
-          StringBuilder localStringBuilder1;
           String str1;
           String str2;
           this.nm = ((String)localObject2);
@@ -632,32 +601,22 @@ public class ds
         catch (Throwable localThrowable1)
         {
           i = -900000;
-          localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("stopSocket(), Throwable: ");
-          localStringBuilder1.append(localThrowable1);
-          eh.e("TcpNetwork", localStringBuilder1.toString());
+          eh.e("TcpNetwork", "stopSocket(), Throwable: ".concat(String.valueOf(localThrowable1)));
           str1 = localThrowable1.toString();
         }
         catch (IOException localIOException)
         {
           i = -140000;
-          localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("stopSocket(), IOException: ");
-          localStringBuilder1.append(localIOException);
-          eh.e("TcpNetwork", localStringBuilder1.toString());
+          eh.e("TcpNetwork", "stopSocket(), IOException: ".concat(String.valueOf(localIOException)));
           str2 = localIOException.toString();
         }
         catch (InterruptedException localInterruptedException)
         {
           i = -270000;
-          localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("stopSocket(), InterruptedException: ");
-          localStringBuilder1.append(localInterruptedException);
-          eh.e("TcpNetwork", localStringBuilder1.toString());
+          eh.e("TcpNetwork", "stopSocket(), InterruptedException: ".concat(String.valueOf(localInterruptedException)));
           localObject2 = localInterruptedException.toString();
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[tcp_control]stopSocket(), ret: ");
+        localObject2 = new StringBuilder("[tcp_control]stopSocket(), ret: ");
         ((StringBuilder)localObject2).append(i);
         ((StringBuilder)localObject2).append(" stop action use(ms): ");
         ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
@@ -691,8 +650,7 @@ public class ds
     }
     catch (Throwable localThrowable)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getActiveNetworkInfo--- \n");
+      StringBuilder localStringBuilder = new StringBuilder("getActiveNetworkInfo--- \n");
       localStringBuilder.append(localThrowable.getMessage());
       eh.g("TcpNetwork", localStringBuilder.toString());
     }
@@ -727,8 +685,7 @@ public class ds
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[tcp_control]stop(),  bySvr: ");
+      Object localObject1 = new StringBuilder("[tcp_control]stop(),  bySvr: ");
       ((StringBuilder)localObject1).append(paramBoolean1);
       ((StringBuilder)localObject1).append(" isRestart: ");
       ((StringBuilder)localObject1).append(paramBoolean2);
@@ -745,8 +702,7 @@ public class ds
         if (this.nt != null)
         {
           localObject1 = this.nt;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("stop socket failed: ");
+          StringBuilder localStringBuilder = new StringBuilder("stop socket failed: ");
           localStringBuilder.append(this.nm);
           ((a)localObject1).a(6, localStringBuilder.toString());
         }
@@ -770,7 +726,7 @@ public class ds
     if (this.nt != null) {
       ee.cT().addTask(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           try
           {
@@ -788,7 +744,7 @@ public class ds
   
   private boolean isStarted()
   {
-    return this.nn ^ true;
+    return !this.nn;
   }
   
   private int j(byte[] paramArrayOfByte)
@@ -801,8 +757,7 @@ public class ds
     }
     catch (Throwable paramArrayOfByte)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("sendDataInSync() Throwable: ");
+      StringBuilder localStringBuilder = new StringBuilder("sendDataInSync() Throwable: ");
       localStringBuilder.append(paramArrayOfByte.toString());
       eh.h("TcpNetwork", localStringBuilder.toString());
     }

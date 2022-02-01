@@ -1,744 +1,755 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
-import com.tencent.token.utils.UserTask;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.Fragment.c;
+import java.io.PrintWriter;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
-public class bv
+public final class bv
+  extends ce
+  implements cc.g
 {
-  private static int d = 20;
-  private static int e = 30;
-  private static int f = d;
-  private static bv g = null;
-  private static boolean i = false;
-  public boolean a = true;
-  protected JSONArray b = new JSONArray();
-  protected String c;
-  private boolean h = false;
-  private boolean j;
-  private UserTask<String, String, e> k = null;
+  final cc a;
+  public ArrayList<a> b = new ArrayList();
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public boolean i;
+  boolean j = true;
+  public String k;
+  boolean l;
+  public int m = -1;
+  public int n;
+  public CharSequence o;
+  public int p;
+  public CharSequence q;
+  public ArrayList<String> r;
+  public ArrayList<String> s;
+  public boolean t = false;
+  ArrayList<Runnable> u;
   
-  public static bv a()
+  public bv(cc paramcc)
   {
-    if (g == null) {
-      g = new bv();
-    }
-    if ((!c.l()) && (!i))
-    {
-      i = true;
-      g.c();
-    }
-    return g;
+    this.a = paramcc;
   }
   
-  /* Error */
-  private e a(String paramString)
+  static boolean b(a parama)
   {
-    // Byte code:
-    //   0: new 72	com/tencent/token/global/e
-    //   3: dup
-    //   4: invokespecial 73	com/tencent/token/global/e:<init>	()V
-    //   7: astore_3
-    //   8: invokestatic 78	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
-    //   11: invokevirtual 81	com/tencent/token/cs:o	()Z
-    //   14: ifne +24 -> 38
-    //   17: aload_0
-    //   18: getfield 83	com/tencent/token/bv:j	Z
-    //   21: ifeq +8 -> 29
-    //   24: aload_0
-    //   25: invokevirtual 85	com/tencent/token/bv:b	()Z
-    //   28: pop
-    //   29: aload_3
-    //   30: sipush 30001
-    //   33: invokevirtual 88	com/tencent/token/global/e:b	(I)V
-    //   36: aload_3
-    //   37: areturn
-    //   38: aload_1
-    //   39: invokevirtual 94	java/lang/String:getBytes	()[B
-    //   42: invokestatic 99	com/tencent/token/utils/l:b	([B)Ljava/lang/String;
-    //   45: astore_1
-    //   46: new 101	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   53: astore 4
-    //   55: aload 4
-    //   57: invokestatic 105	com/tencent/token/global/c:e	()Ljava/lang/String;
-    //   60: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: pop
-    //   64: aload 4
-    //   66: ldc 111
-    //   68: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: pop
-    //   72: aload 4
-    //   74: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: astore 4
-    //   79: new 116	android/content/ContentValues
-    //   82: dup
-    //   83: iconst_3
-    //   84: invokespecial 118	android/content/ContentValues:<init>	(I)V
-    //   87: astore 5
-    //   89: aload 5
-    //   91: ldc 120
-    //   93: getstatic 122	com/tencent/token/cs:c	Ljava/lang/String;
-    //   96: invokevirtual 126	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   99: aload 5
-    //   101: ldc 128
-    //   103: aload_1
-    //   104: invokevirtual 126	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   107: new 101	java/lang/StringBuilder
-    //   110: dup
-    //   111: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   114: astore 6
-    //   116: aload 6
-    //   118: ldc 130
-    //   120: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: pop
-    //   124: aload 6
-    //   126: getstatic 122	com/tencent/token/cs:c	Ljava/lang/String;
-    //   129: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: pop
-    //   133: aload 6
-    //   135: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   138: invokestatic 135	com/tencent/token/global/g:a	(Ljava/lang/String;)V
-    //   141: new 101	java/lang/StringBuilder
-    //   144: dup
-    //   145: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   148: astore 6
-    //   150: aload 6
-    //   152: ldc 137
-    //   154: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: pop
-    //   158: aload 6
-    //   160: aload_1
-    //   161: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: pop
-    //   165: aload 6
-    //   167: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 135	com/tencent/token/global/g:a	(Ljava/lang/String;)V
-    //   173: new 139	com/tencent/token/fc
-    //   176: dup
-    //   177: invokespecial 140	com/tencent/token/fc:<init>	()V
-    //   180: astore_1
-    //   181: aload_1
-    //   182: aload 4
-    //   184: aload 5
-    //   186: invokevirtual 143	com/tencent/token/fc:a	(Ljava/lang/String;Landroid/content/ContentValues;)[B
-    //   189: astore 4
-    //   191: aload 4
-    //   193: ifnonnull +25 -> 218
-    //   196: aload_0
-    //   197: getfield 83	com/tencent/token/bv:j	Z
-    //   200: ifeq +8 -> 208
-    //   203: aload_0
-    //   204: invokevirtual 85	com/tencent/token/bv:b	()Z
-    //   207: pop
-    //   208: aload_3
-    //   209: aload_1
-    //   210: invokevirtual 146	com/tencent/token/fc:a	()Lcom/tencent/token/global/e;
-    //   213: invokevirtual 149	com/tencent/token/global/e:a	(Lcom/tencent/token/global/e;)V
-    //   216: aload_3
-    //   217: areturn
-    //   218: new 151	org/json/JSONObject
-    //   221: dup
-    //   222: new 90	java/lang/String
-    //   225: dup
-    //   226: aload 4
-    //   228: invokespecial 154	java/lang/String:<init>	([B)V
-    //   231: invokespecial 156	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   234: astore_1
-    //   235: aload_1
-    //   236: ldc 158
-    //   238: invokevirtual 162	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   241: istore_2
-    //   242: iload_2
-    //   243: ifeq +20 -> 263
-    //   246: aload_1
-    //   247: ldc 164
-    //   249: invokevirtual 168	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   252: astore_1
-    //   253: aload_3
-    //   254: iload_2
-    //   255: aload_1
-    //   256: aload_1
-    //   257: invokevirtual 171	com/tencent/token/global/e:a	(ILjava/lang/String;Ljava/lang/String;)V
-    //   260: goto +100 -> 360
-    //   263: aload_3
-    //   264: invokevirtual 173	com/tencent/token/global/e:c	()V
-    //   267: aload_0
-    //   268: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   271: invokevirtual 177	org/json/JSONArray:length	()I
-    //   274: getstatic 179	com/tencent/token/bv:e	I
-    //   277: if_icmple +10 -> 287
-    //   280: getstatic 179	com/tencent/token/bv:e	I
-    //   283: istore_2
-    //   284: goto +11 -> 295
-    //   287: aload_0
-    //   288: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   291: invokevirtual 177	org/json/JSONArray:length	()I
-    //   294: istore_2
-    //   295: iload_2
-    //   296: getstatic 179	com/tencent/token/bv:e	I
-    //   299: if_icmpgt +17 -> 316
-    //   302: aload_0
-    //   303: new 48	org/json/JSONArray
-    //   306: dup
-    //   307: invokespecial 49	org/json/JSONArray:<init>	()V
-    //   310: putfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   313: goto +47 -> 360
-    //   316: new 48	org/json/JSONArray
-    //   319: dup
-    //   320: invokespecial 49	org/json/JSONArray:<init>	()V
-    //   323: astore_1
-    //   324: iload_2
-    //   325: aload_0
-    //   326: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   329: invokevirtual 177	org/json/JSONArray:length	()I
-    //   332: if_icmpge +23 -> 355
-    //   335: aload_1
-    //   336: aload_0
-    //   337: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   340: iload_2
-    //   341: invokevirtual 183	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   344: invokevirtual 186	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   347: pop
-    //   348: iload_2
-    //   349: iconst_1
-    //   350: iadd
-    //   351: istore_2
-    //   352: goto -28 -> 324
-    //   355: aload_0
-    //   356: aload_1
-    //   357: putfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   360: aload_0
-    //   361: getfield 83	com/tencent/token/bv:j	Z
-    //   364: ifeq +184 -> 548
-    //   367: aload_0
-    //   368: invokevirtual 85	com/tencent/token/bv:b	()Z
-    //   371: pop
-    //   372: aload_3
-    //   373: areturn
-    //   374: astore_1
-    //   375: goto +175 -> 550
-    //   378: astore_1
-    //   379: new 101	java/lang/StringBuilder
-    //   382: dup
-    //   383: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   386: astore 4
-    //   388: aload 4
-    //   390: ldc 188
-    //   392: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   395: pop
-    //   396: aload 4
-    //   398: aload_1
-    //   399: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
-    //   402: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: pop
-    //   406: aload 4
-    //   408: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   411: invokestatic 191	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   414: new 101	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   421: astore 4
-    //   423: aload 4
-    //   425: ldc 193
-    //   427: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: pop
-    //   431: aload 4
-    //   433: aload_1
-    //   434: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
-    //   437: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: pop
-    //   441: aload_3
-    //   442: sipush 10021
-    //   445: aload 4
-    //   447: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   450: invokevirtual 196	com/tencent/token/global/e:a	(ILjava/lang/String;)V
-    //   453: aload_0
-    //   454: getfield 83	com/tencent/token/bv:j	Z
-    //   457: ifeq +91 -> 548
-    //   460: goto -93 -> 367
-    //   463: astore_1
-    //   464: new 101	java/lang/StringBuilder
-    //   467: dup
-    //   468: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   471: astore 4
-    //   473: aload 4
-    //   475: ldc 198
-    //   477: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: pop
-    //   481: aload 4
-    //   483: aload_1
-    //   484: invokevirtual 199	org/json/JSONException:toString	()Ljava/lang/String;
-    //   487: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   490: pop
-    //   491: aload 4
-    //   493: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   496: invokestatic 191	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   499: new 101	java/lang/StringBuilder
-    //   502: dup
-    //   503: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   506: astore 4
-    //   508: aload 4
-    //   510: ldc 193
-    //   512: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: pop
-    //   516: aload 4
-    //   518: aload_1
-    //   519: invokevirtual 199	org/json/JSONException:toString	()Ljava/lang/String;
-    //   522: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   525: pop
-    //   526: aload_3
-    //   527: sipush 10020
-    //   530: aload 4
-    //   532: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   535: invokevirtual 196	com/tencent/token/global/e:a	(ILjava/lang/String;)V
-    //   538: aload_0
-    //   539: getfield 83	com/tencent/token/bv:j	Z
-    //   542: ifeq +6 -> 548
-    //   545: goto -178 -> 367
-    //   548: aload_3
-    //   549: areturn
-    //   550: aload_0
-    //   551: getfield 83	com/tencent/token/bv:j	Z
-    //   554: ifeq +8 -> 562
-    //   557: aload_0
-    //   558: invokevirtual 85	com/tencent/token/bv:b	()Z
-    //   561: pop
-    //   562: aload_1
-    //   563: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	564	0	this	bv
-    //   0	564	1	paramString	String
-    //   241	111	2	m	int
-    //   7	542	3	locale	e
-    //   53	478	4	localObject	Object
-    //   87	98	5	localContentValues	android.content.ContentValues
-    //   114	52	6	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   218	242	374	finally
-    //   246	260	374	finally
-    //   263	284	374	finally
-    //   287	295	374	finally
-    //   295	313	374	finally
-    //   316	324	374	finally
-    //   324	348	374	finally
-    //   355	360	374	finally
-    //   379	453	374	finally
-    //   464	538	374	finally
-    //   218	242	378	java/lang/Exception
-    //   246	260	378	java/lang/Exception
-    //   263	284	378	java/lang/Exception
-    //   287	295	378	java/lang/Exception
-    //   295	313	378	java/lang/Exception
-    //   316	324	378	java/lang/Exception
-    //   324	348	378	java/lang/Exception
-    //   355	360	378	java/lang/Exception
-    //   218	242	463	org/json/JSONException
-    //   246	260	463	org/json/JSONException
-    //   263	284	463	org/json/JSONException
-    //   287	295	463	org/json/JSONException
-    //   295	313	463	org/json/JSONException
-    //   316	324	463	org/json/JSONException
-    //   324	348	463	org/json/JSONException
-    //   355	360	463	org/json/JSONException
+    parama = parama.b;
+    return (parama != null) && (parama.l) && (parama.J != null) && (!parama.C) && (!parama.B) && (parama.A());
   }
   
-  public void a(long paramLong, int paramInt)
+  final Fragment a(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
-    if (c.l()) {
-      return;
-    }
-    if (this.b == null) {
-      return;
-    }
-    for (;;)
+    int i2 = 0;
+    for (Fragment localFragment1 = paramFragment; i2 < this.b.size(); localFragment1 = paramFragment)
     {
+      a locala = (a)this.b.get(i2);
+      int i1;
+      switch (locala.a)
+      {
+      case 4: 
+      case 5: 
+      default: 
+        paramFragment = localFragment1;
+        i1 = i2;
+        break;
+      case 8: 
+        this.b.add(i2, new a(9, localFragment1));
+        i1 = i2 + 1;
+        paramFragment = locala.b;
+        break;
+      case 3: 
+      case 6: 
+        paramArrayList.remove(locala.b);
+        paramFragment = localFragment1;
+        i1 = i2;
+        if (locala.b == localFragment1)
+        {
+          this.b.add(i2, new a(9, locala.b));
+          i1 = i2 + 1;
+          paramFragment = null;
+        }
+        break;
+      case 2: 
+        Fragment localFragment2 = locala.b;
+        int i6 = localFragment2.z;
+        int i4 = paramArrayList.size() - 1;
+        paramFragment = localFragment1;
+        i1 = i2;
+        int i3 = 0;
+        i2 = i4;
+        while (i2 >= 0)
+        {
+          Fragment localFragment3 = (Fragment)paramArrayList.get(i2);
+          i4 = i1;
+          localFragment1 = paramFragment;
+          int i5 = i3;
+          if (localFragment3.z == i6) {
+            if (localFragment3 == localFragment2)
+            {
+              i5 = 1;
+              i4 = i1;
+              localFragment1 = paramFragment;
+            }
+            else
+            {
+              i4 = i1;
+              localFragment1 = paramFragment;
+              if (localFragment3 == paramFragment)
+              {
+                this.b.add(i1, new a(9, localFragment3));
+                i4 = i1 + 1;
+                localFragment1 = null;
+              }
+              paramFragment = new a(3, localFragment3);
+              paramFragment.c = locala.c;
+              paramFragment.e = locala.e;
+              paramFragment.d = locala.d;
+              paramFragment.f = locala.f;
+              this.b.add(i4, paramFragment);
+              paramArrayList.remove(localFragment3);
+              i4 += 1;
+              i5 = i3;
+            }
+          }
+          i2 -= 1;
+          i1 = i4;
+          paramFragment = localFragment1;
+          i3 = i5;
+        }
+        if (i3 != 0)
+        {
+          this.b.remove(i1);
+          i1 -= 1;
+        }
+        else
+        {
+          locala.a = 1;
+          paramArrayList.add(localFragment2);
+        }
+        break;
+      case 1: 
+      case 7: 
+        paramArrayList.add(locala.b);
+        i1 = i2;
+        paramFragment = localFragment1;
+      }
+      i2 = i1 + 1;
+    }
+    return localFragment1;
+  }
+  
+  public final ce a(int paramInt, Fragment paramFragment, String paramString)
+  {
+    Object localObject = paramFragment.getClass();
+    int i1 = ((Class)localObject).getModifiers();
+    if ((!((Class)localObject).isAnonymousClass()) && (Modifier.isPublic(i1)) && ((!((Class)localObject).isMemberClass()) || (Modifier.isStatic(i1))))
+    {
+      paramFragment.s = this.a;
+      if (paramString != null)
+      {
+        if ((paramFragment.A != null) && (!paramString.equals(paramFragment.A)))
+        {
+          localObject = new StringBuilder("Can't change tag of fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(": was ");
+          ((StringBuilder)localObject).append(paramFragment.A);
+          ((StringBuilder)localObject).append(" now ");
+          ((StringBuilder)localObject).append(paramString);
+          throw new IllegalStateException(((StringBuilder)localObject).toString());
+        }
+        paramFragment.A = paramString;
+      }
+      if (paramInt != 0) {
+        if (paramInt != -1)
+        {
+          if ((paramFragment.y != 0) && (paramFragment.y != paramInt))
+          {
+            paramString = new StringBuilder("Can't change container ID of fragment ");
+            paramString.append(paramFragment);
+            paramString.append(": was ");
+            paramString.append(paramFragment.y);
+            paramString.append(" now ");
+            paramString.append(paramInt);
+            throw new IllegalStateException(paramString.toString());
+          }
+          paramFragment.y = paramInt;
+          paramFragment.z = paramInt;
+        }
+        else
+        {
+          localObject = new StringBuilder("Can't add fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(" with tag ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" to container view with no id");
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+        }
+      }
+      a(new a(1, paramFragment));
+      return this;
+    }
+    paramFragment = new StringBuilder("Fragment ");
+    paramFragment.append(((Class)localObject).getCanonicalName());
+    paramFragment.append(" must be a public static class to be  properly recreated from instance state.");
+    throw new IllegalStateException(paramFragment.toString());
+  }
+  
+  public final ce a(Fragment paramFragment)
+  {
+    a(new a(6, paramFragment));
+    return this;
+  }
+  
+  public final void a()
+  {
+    ArrayList localArrayList = this.u;
+    if (localArrayList != null)
+    {
+      int i1 = 0;
+      int i2 = localArrayList.size();
+      while (i1 < i2)
+      {
+        ((Runnable)this.u.get(i1)).run();
+        i1 += 1;
+      }
+      this.u = null;
+    }
+  }
+  
+  public final void a(int paramInt)
+  {
+    if (!this.i) {
+      return;
+    }
+    Object localObject1;
+    if (cc.a)
+    {
+      localObject1 = new StringBuilder("Bump nesting in ");
+      ((StringBuilder)localObject1).append(this);
+      ((StringBuilder)localObject1).append(" by ");
+      ((StringBuilder)localObject1).append(paramInt);
+    }
+    int i2 = this.b.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      localObject1 = (a)this.b.get(i1);
+      if (((a)localObject1).b != null)
+      {
+        Object localObject2 = ((a)localObject1).b;
+        ((Fragment)localObject2).r += paramInt;
+        if (cc.a)
+        {
+          localObject2 = new StringBuilder("Bump nesting of ");
+          ((StringBuilder)localObject2).append(((a)localObject1).b);
+          ((StringBuilder)localObject2).append(" to ");
+          ((StringBuilder)localObject2).append(((a)localObject1).b.r);
+        }
+      }
+      i1 += 1;
+    }
+  }
+  
+  final void a(Fragment.c paramc)
+  {
+    int i1 = 0;
+    while (i1 < this.b.size())
+    {
+      a locala = (a)this.b.get(i1);
+      if (b(locala)) {
+        locala.b.a(paramc);
+      }
+      i1 += 1;
+    }
+  }
+  
+  public final void a(a parama)
+  {
+    this.b.add(parama);
+    parama.c = this.c;
+    parama.d = this.d;
+    parama.e = this.e;
+    parama.f = this.f;
+  }
+  
+  public final void a(String paramString, PrintWriter paramPrintWriter)
+  {
+    a(paramString, paramPrintWriter, true);
+  }
+  
+  public final void a(String paramString, PrintWriter paramPrintWriter, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mName=");
+      paramPrintWriter.print(this.k);
+      paramPrintWriter.print(" mIndex=");
+      paramPrintWriter.print(this.m);
+      paramPrintWriter.print(" mCommitted=");
+      paramPrintWriter.println(this.l);
+      if (this.g != 0)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mTransition=#");
+        paramPrintWriter.print(Integer.toHexString(this.g));
+        paramPrintWriter.print(" mTransitionStyle=#");
+        paramPrintWriter.println(Integer.toHexString(this.h));
+      }
+      if ((this.c != 0) || (this.d != 0))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mEnterAnim=#");
+        paramPrintWriter.print(Integer.toHexString(this.c));
+        paramPrintWriter.print(" mExitAnim=#");
+        paramPrintWriter.println(Integer.toHexString(this.d));
+      }
+      if ((this.e != 0) || (this.f != 0))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mPopEnterAnim=#");
+        paramPrintWriter.print(Integer.toHexString(this.e));
+        paramPrintWriter.print(" mPopExitAnim=#");
+        paramPrintWriter.println(Integer.toHexString(this.f));
+      }
+      if ((this.n != 0) || (this.o != null))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mBreadCrumbTitleRes=#");
+        paramPrintWriter.print(Integer.toHexString(this.n));
+        paramPrintWriter.print(" mBreadCrumbTitleText=");
+        paramPrintWriter.println(this.o);
+      }
+      if ((this.p != 0) || (this.q != null))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mBreadCrumbShortTitleRes=#");
+        paramPrintWriter.print(Integer.toHexString(this.p));
+        paramPrintWriter.print(" mBreadCrumbShortTitleText=");
+        paramPrintWriter.println(this.q);
+      }
+    }
+    if (!this.b.isEmpty())
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.println("Operations:");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("    ");
+      int i2 = this.b.size();
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        a locala = (a)this.b.get(i1);
+        switch (locala.a)
+        {
+        default: 
+          localObject = new StringBuilder("cmd=");
+          ((StringBuilder)localObject).append(locala.a);
+          localObject = ((StringBuilder)localObject).toString();
+          break;
+        case 9: 
+          localObject = "UNSET_PRIMARY_NAV";
+          break;
+        case 8: 
+          localObject = "SET_PRIMARY_NAV";
+          break;
+        case 7: 
+          localObject = "ATTACH";
+          break;
+        case 6: 
+          localObject = "DETACH";
+          break;
+        case 5: 
+          localObject = "SHOW";
+          break;
+        case 4: 
+          localObject = "HIDE";
+          break;
+        case 3: 
+          localObject = "REMOVE";
+          break;
+        case 2: 
+          localObject = "REPLACE";
+          break;
+        case 1: 
+          localObject = "ADD";
+          break;
+        case 0: 
+          localObject = "NULL";
+        }
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("  Op #");
+        paramPrintWriter.print(i1);
+        paramPrintWriter.print(": ");
+        paramPrintWriter.print((String)localObject);
+        paramPrintWriter.print(" ");
+        paramPrintWriter.println(locala.b);
+        if (paramBoolean)
+        {
+          if ((locala.c != 0) || (locala.d != 0))
+          {
+            paramPrintWriter.print(paramString);
+            paramPrintWriter.print("enterAnim=#");
+            paramPrintWriter.print(Integer.toHexString(locala.c));
+            paramPrintWriter.print(" exitAnim=#");
+            paramPrintWriter.println(Integer.toHexString(locala.d));
+          }
+          if ((locala.e != 0) || (locala.f != 0))
+          {
+            paramPrintWriter.print(paramString);
+            paramPrintWriter.print("popEnterAnim=#");
+            paramPrintWriter.print(Integer.toHexString(locala.e));
+            paramPrintWriter.print(" popExitAnim=#");
+            paramPrintWriter.println(Integer.toHexString(locala.f));
+          }
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  final void a(boolean paramBoolean)
+  {
+    int i1 = this.b.size() - 1;
+    Object localObject1;
+    while (i1 >= 0)
+    {
+      localObject1 = (a)this.b.get(i1);
+      Object localObject2 = ((a)localObject1).b;
+      if (localObject2 != null) {
+        ((Fragment)localObject2).a(cc.b(this.g), this.h);
+      }
+      int i2 = ((a)localObject1).a;
+      if (i2 != 1)
+      {
+        switch (i2)
+        {
+        default: 
+          localObject2 = new StringBuilder("Unknown cmd: ");
+          ((StringBuilder)localObject2).append(((a)localObject1).a);
+          throw new IllegalArgumentException(((StringBuilder)localObject2).toString());
+        case 9: 
+          this.a.h((Fragment)localObject2);
+          break;
+        case 8: 
+          this.a.h(null);
+          break;
+        case 7: 
+          ((Fragment)localObject2).a(((a)localObject1).f);
+          this.a.f((Fragment)localObject2);
+          break;
+        case 6: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          this.a.g((Fragment)localObject2);
+          break;
+        case 5: 
+          ((Fragment)localObject2).a(((a)localObject1).f);
+          cc.d((Fragment)localObject2);
+          break;
+        case 4: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          cc.e((Fragment)localObject2);
+          break;
+        case 3: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          this.a.a((Fragment)localObject2, false);
+          break;
+        }
+      }
+      else
+      {
+        ((Fragment)localObject2).a(((a)localObject1).f);
+        this.a.c((Fragment)localObject2);
+      }
+      if ((!this.t) && (((a)localObject1).a != 3) && (localObject2 != null)) {
+        this.a.a((Fragment)localObject2);
+      }
+      i1 -= 1;
+    }
+    if ((!this.t) && (paramBoolean))
+    {
+      localObject1 = this.a;
+      ((cc)localObject1).a(((cc)localObject1).l, true);
+    }
+  }
+  
+  final boolean a(ArrayList<bv> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == paramInt1) {
+      return false;
+    }
+    int i6 = this.b.size();
+    int i2 = 0;
+    int i4;
+    for (int i3 = -1; i2 < i6; i3 = i4)
+    {
+      Object localObject = (a)this.b.get(i2);
+      int i1;
+      if (((a)localObject).b != null) {
+        i1 = ((a)localObject).b.z;
+      } else {
+        i1 = 0;
+      }
+      i4 = i3;
+      if (i1 != 0)
+      {
+        i4 = i3;
+        if (i1 != i3)
+        {
+          i3 = paramInt1;
+          while (i3 < paramInt2)
+          {
+            localObject = (bv)paramArrayList.get(i3);
+            int i7 = ((bv)localObject).b.size();
+            i4 = 0;
+            while (i4 < i7)
+            {
+              a locala = (a)((bv)localObject).b.get(i4);
+              int i5;
+              if (locala.b != null) {
+                i5 = locala.b.z;
+              } else {
+                i5 = 0;
+              }
+              if (i5 == i1) {
+                return true;
+              }
+              i4 += 1;
+            }
+            i3 += 1;
+          }
+          i4 = i1;
+        }
+      }
+      i2 += 1;
+    }
+    return false;
+  }
+  
+  public final boolean a(ArrayList<bv> paramArrayList, ArrayList<Boolean> paramArrayList1)
+  {
+    if (cc.a) {
+      new StringBuilder("Run: ").append(this);
+    }
+    paramArrayList.add(this);
+    paramArrayList1.add(Boolean.FALSE);
+    if (this.i)
+    {
+      paramArrayList = this.a;
+      if (paramArrayList.g == null) {
+        paramArrayList.g = new ArrayList();
+      }
+      paramArrayList.g.add(this);
+    }
+    return true;
+  }
+  
+  public final int b()
+  {
+    if (!this.l)
+    {
+      if (cc.a)
+      {
+        new StringBuilder("Commit: ").append(this);
+        localObject1 = new PrintWriter(new dz("FragmentManager"));
+        a("  ", (PrintWriter)localObject1);
+        ((PrintWriter)localObject1).close();
+      }
+      this.l = true;
+      if (this.i) {
+        this.m = this.a.a(this);
+      } else {
+        this.m = -1;
+      }
+      Object localObject1 = this.a;
+      ((cc)localObject1).f();
       try
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("t", paramLong / 1000L);
-        localJSONObject.put("e", paramInt);
-        localObject2 = cs.a().e();
-        if (localObject2 != null) {
-          localJSONObject.put("u", ((QQUser)localObject2).mUin);
+        if ((!((cc)localObject1).u) && (((cc)localObject1).m != null))
+        {
+          if (((cc)localObject1).b == null) {
+            ((cc)localObject1).b = new ArrayList();
+          }
+          ((cc)localObject1).b.add(this);
+          ((cc)localObject1).g();
+          return this.m;
         }
-        m = 0;
-      }
-      catch (Exception localException)
-      {
-        JSONObject localJSONObject;
-        Object localObject2;
-        int m;
-        continue;
-        m += 1;
-        continue;
-        paramInt = 1;
-        continue;
-      }
-      try
-      {
-        if (m >= this.b.length()) {
-          continue;
-        }
-        localObject2 = this.b.getJSONObject(m);
-        if ((((JSONObject)localObject2).getInt("e") != paramInt) || (((JSONObject)localObject2).getLong("t") != paramLong / 1000L)) {
-          continue;
-        }
-        paramInt = 0;
-        if (paramInt != 0) {
-          this.b.put(localJSONObject);
-        }
+        throw new IllegalStateException("Activity has been destroyed");
       }
       finally {}
     }
-    if (this.b.length() >= f) {
-      a(false);
+    throw new IllegalStateException("commit already called");
+  }
+  
+  final Fragment b(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
+  {
+    int i1 = 0;
+    while (i1 < this.b.size())
+    {
+      a locala = (a)this.b.get(i1);
+      int i2 = locala.a;
+      if (i2 != 1)
+      {
+        if (i2 != 3) {}
+        switch (i2)
+        {
+        default: 
+          break;
+        case 9: 
+          paramFragment = locala.b;
+          break;
+        case 8: 
+          paramFragment = null;
+          break;
+        case 6: 
+          paramArrayList.add(locala.b);
+          break;
+        }
+      }
+      else
+      {
+        paramArrayList.remove(locala.b);
+      }
+      i1 += 1;
+    }
+    return paramFragment;
+  }
+  
+  public final ce b(Fragment paramFragment)
+  {
+    a(new a(7, paramFragment));
+    return this;
+  }
+  
+  final boolean b(int paramInt)
+  {
+    int i3 = this.b.size();
+    int i1 = 0;
+    while (i1 < i3)
+    {
+      a locala = (a)this.b.get(i1);
+      int i2;
+      if (locala.b != null) {
+        i2 = locala.b.z;
+      } else {
+        i2 = 0;
+      }
+      if ((i2 != 0) && (i2 == paramInt)) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
+  }
+  
+  final void c()
+  {
+    int i2 = this.b.size();
+    int i1 = 0;
+    Object localObject1;
+    while (i1 < i2)
+    {
+      localObject1 = (a)this.b.get(i1);
+      Object localObject2 = ((a)localObject1).b;
+      if (localObject2 != null) {
+        ((Fragment)localObject2).a(this.g, this.h);
+      }
+      int i3 = ((a)localObject1).a;
+      if (i3 != 1)
+      {
+        switch (i3)
+        {
+        default: 
+          localObject2 = new StringBuilder("Unknown cmd: ");
+          ((StringBuilder)localObject2).append(((a)localObject1).a);
+          throw new IllegalArgumentException(((StringBuilder)localObject2).toString());
+        case 9: 
+          this.a.h(null);
+          break;
+        case 8: 
+          this.a.h((Fragment)localObject2);
+          break;
+        case 7: 
+          ((Fragment)localObject2).a(((a)localObject1).c);
+          this.a.g((Fragment)localObject2);
+          break;
+        case 6: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          this.a.f((Fragment)localObject2);
+          break;
+        case 5: 
+          ((Fragment)localObject2).a(((a)localObject1).c);
+          cc.e((Fragment)localObject2);
+          break;
+        case 4: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          cc.d((Fragment)localObject2);
+          break;
+        case 3: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          this.a.c((Fragment)localObject2);
+          break;
+        }
+      }
+      else
+      {
+        ((Fragment)localObject2).a(((a)localObject1).c);
+        this.a.a((Fragment)localObject2, false);
+      }
+      if ((!this.t) && (((a)localObject1).a != 1) && (localObject2 != null)) {
+        this.a.a((Fragment)localObject2);
+      }
+      i1 += 1;
+    }
+    if (!this.t)
+    {
+      localObject1 = this.a;
+      ((cc)localObject1).a(((cc)localObject1).l, true);
     }
   }
   
-  /* Error */
-  public void a(boolean paramBoolean)
+  public final String toString()
   {
-    // Byte code:
-    //   0: invokestatic 60	com/tencent/token/global/c:l	()Z
-    //   3: ifeq +4 -> 7
-    //   6: return
-    //   7: aload_0
-    //   8: iload_1
-    //   9: putfield 83	com/tencent/token/bv:j	Z
-    //   12: aload_0
-    //   13: getfield 44	com/tencent/token/bv:h	Z
-    //   16: ifeq +4 -> 20
-    //   19: return
-    //   20: aload_0
-    //   21: getfield 42	com/tencent/token/bv:a	Z
-    //   24: ifeq +268 -> 292
-    //   27: aload_0
-    //   28: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   31: invokevirtual 177	org/json/JSONArray:length	()I
-    //   34: ifne +4 -> 38
-    //   37: return
-    //   38: aload_0
-    //   39: iconst_1
-    //   40: putfield 44	com/tencent/token/bv:h	Z
-    //   43: new 48	org/json/JSONArray
-    //   46: dup
-    //   47: invokespecial 49	org/json/JSONArray:<init>	()V
-    //   50: astore 6
-    //   52: aload_0
-    //   53: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   56: invokevirtual 177	org/json/JSONArray:length	()I
-    //   59: istore_3
-    //   60: getstatic 179	com/tencent/token/bv:e	I
-    //   63: istore_2
-    //   64: iload_3
-    //   65: iload_2
-    //   66: if_icmple +6 -> 72
-    //   69: goto +11 -> 80
-    //   72: aload_0
-    //   73: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   76: invokevirtual 177	org/json/JSONArray:length	()I
-    //   79: istore_2
-    //   80: iconst_0
-    //   81: istore_3
-    //   82: iload_3
-    //   83: iload_2
-    //   84: if_icmpge +24 -> 108
-    //   87: aload 6
-    //   89: aload_0
-    //   90: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   93: iload_3
-    //   94: invokevirtual 183	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   97: invokevirtual 186	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   100: pop
-    //   101: iload_3
-    //   102: iconst_1
-    //   103: iadd
-    //   104: istore_3
-    //   105: goto -23 -> 82
-    //   108: aload_0
-    //   109: monitorenter
-    //   110: new 151	org/json/JSONObject
-    //   113: dup
-    //   114: invokespecial 202	org/json/JSONObject:<init>	()V
-    //   117: astore 7
-    //   119: lconst_0
-    //   120: lstore 4
-    //   122: invokestatic 78	com/tencent/token/cs:a	()Lcom/tencent/token/cs;
-    //   125: astore 8
-    //   127: aload 8
-    //   129: invokevirtual 237	com/tencent/token/cs:k	()Lcom/tencent/token/core/bean/QQUser;
-    //   132: astore 9
-    //   134: aload 9
-    //   136: ifnull +13 -> 149
-    //   139: aload 9
-    //   141: getfield 224	com/tencent/token/core/bean/QQUser:mUin	J
-    //   144: lstore 4
-    //   146: goto +22 -> 168
-    //   149: aload 8
-    //   151: invokevirtual 216	com/tencent/token/cs:e	()Lcom/tencent/token/core/bean/QQUser;
-    //   154: astore 8
-    //   156: aload 8
-    //   158: ifnull +10 -> 168
-    //   161: aload 8
-    //   163: getfield 224	com/tencent/token/core/bean/QQUser:mUin	J
-    //   166: lstore 4
-    //   168: aload 7
-    //   170: ldc 239
-    //   172: invokestatic 244	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
-    //   175: invokevirtual 248	com/tencent/token/cd:s	()J
-    //   178: ldc2_w 205
-    //   181: ldiv
-    //   182: l2i
-    //   183: invokevirtual 213	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   186: pop
-    //   187: getstatic 252	com/tencent/token/cc:a	I
-    //   190: iconst_1
-    //   191: iadd
-    //   192: istore_2
-    //   193: iload_2
-    //   194: putstatic 252	com/tencent/token/cc:a	I
-    //   197: aload 7
-    //   199: ldc 254
-    //   201: iload_2
-    //   202: invokevirtual 213	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   205: pop
-    //   206: aload 7
-    //   208: ldc_w 256
-    //   211: lload 4
-    //   213: invokevirtual 209	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   216: pop
-    //   217: aload 7
-    //   219: ldc_w 258
-    //   222: invokestatic 244	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
-    //   225: invokevirtual 260	com/tencent/token/cd:k	()J
-    //   228: invokestatic 264	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   231: invokevirtual 267	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   234: pop
-    //   235: aload 7
-    //   237: ldc_w 269
-    //   240: aload 6
-    //   242: invokevirtual 267	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   245: pop
-    //   246: aload_0
-    //   247: aload 7
-    //   249: invokevirtual 270	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   252: putfield 271	com/tencent/token/bv:c	Ljava/lang/String;
-    //   255: aload_0
-    //   256: monitorexit
-    //   257: aload_0
-    //   258: new 6	com/tencent/token/bv$1
-    //   261: dup
-    //   262: aload_0
-    //   263: invokespecial 274	com/tencent/token/bv$1:<init>	(Lcom/tencent/token/bv;)V
-    //   266: putfield 46	com/tencent/token/bv:k	Lcom/tencent/token/utils/UserTask;
-    //   269: aload_0
-    //   270: getfield 46	com/tencent/token/bv:k	Lcom/tencent/token/utils/UserTask;
-    //   273: iconst_0
-    //   274: anewarray 90	java/lang/String
-    //   277: invokevirtual 279	com/tencent/token/utils/UserTask:c	([Ljava/lang/Object;)Lcom/tencent/token/utils/UserTask;
-    //   280: pop
-    //   281: return
-    //   282: aload_0
-    //   283: monitorexit
-    //   284: return
-    //   285: astore 6
-    //   287: aload_0
-    //   288: monitorexit
-    //   289: aload 6
-    //   291: athrow
-    //   292: return
-    //   293: astore 7
-    //   295: goto -187 -> 108
-    //   298: astore 6
-    //   300: goto -18 -> 282
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	303	0	this	bv
-    //   0	303	1	paramBoolean	boolean
-    //   63	139	2	m	int
-    //   59	46	3	n	int
-    //   120	92	4	l	long
-    //   50	191	6	localJSONArray	JSONArray
-    //   285	5	6	localObject1	Object
-    //   298	1	6	localJSONException	org.json.JSONException
-    //   117	131	7	localJSONObject	JSONObject
-    //   293	1	7	localException	Exception
-    //   125	37	8	localObject2	Object
-    //   132	8	9	localQQUser	QQUser
-    // Exception table:
-    //   from	to	target	type
-    //   110	119	285	finally
-    //   122	134	285	finally
-    //   139	146	285	finally
-    //   149	156	285	finally
-    //   161	168	285	finally
-    //   168	246	285	finally
-    //   246	257	285	finally
-    //   282	284	285	finally
-    //   287	289	285	finally
-    //   87	101	293	java/lang/Exception
-    //   122	134	298	org/json/JSONException
-    //   139	146	298	org/json/JSONException
-    //   149	156	298	org/json/JSONException
-    //   161	168	298	org/json/JSONException
-    //   168	246	298	org/json/JSONException
-  }
-  
-  /* Error */
-  public boolean a(android.content.Context paramContext)
-  {
-    // Byte code:
-    //   0: invokestatic 60	com/tencent/token/global/c:l	()Z
-    //   3: ifeq +5 -> 8
-    //   6: iconst_0
-    //   7: ireturn
-    //   8: aload_0
-    //   9: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   12: ifnonnull +5 -> 17
-    //   15: iconst_0
-    //   16: ireturn
-    //   17: iconst_0
-    //   18: putstatic 36	com/tencent/token/bv:i	Z
-    //   21: aload_0
-    //   22: getfield 42	com/tencent/token/bv:a	Z
-    //   25: ifne +5 -> 30
-    //   28: iconst_1
-    //   29: ireturn
-    //   30: aload_1
-    //   31: ldc_w 286
-    //   34: iconst_0
-    //   35: invokevirtual 292	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ifnonnull +5 -> 45
-    //   43: iconst_0
-    //   44: ireturn
-    //   45: aload_1
-    //   46: aload_0
-    //   47: getfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   50: invokevirtual 293	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   53: invokevirtual 94	java/lang/String:getBytes	()[B
-    //   56: invokevirtual 298	java/io/FileOutputStream:write	([B)V
-    //   59: aload_1
-    //   60: invokevirtual 301	java/io/FileOutputStream:close	()V
-    //   63: iconst_1
-    //   64: ireturn
-    //   65: aload_1
-    //   66: invokevirtual 301	java/io/FileOutputStream:close	()V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: astore_1
-    //   72: iconst_0
-    //   73: ireturn
-    //   74: astore_2
-    //   75: goto -10 -> 65
-    //   78: astore_1
-    //   79: iconst_1
-    //   80: ireturn
-    //   81: astore_1
-    //   82: iconst_0
-    //   83: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	bv
-    //   0	84	1	paramContext	android.content.Context
-    //   74	1	2	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   30	39	71	java/io/FileNotFoundException
-    //   45	59	74	java/lang/Exception
-    //   59	63	78	java/io/IOException
-    //   65	69	81	java/io/IOException
-  }
-  
-  public boolean b()
-  {
-    if (c.l()) {
-      return false;
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("BackStackEntry{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    if (this.m >= 0)
+    {
+      localStringBuilder.append(" #");
+      localStringBuilder.append(this.m);
     }
-    return a(RqdApplication.n());
+    if (this.k != null)
+    {
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.k);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
-  /* Error */
-  public boolean c()
+  public static final class a
   {
-    // Byte code:
-    //   0: invokestatic 60	com/tencent/token/global/c:l	()Z
-    //   3: ifeq +5 -> 8
-    //   6: iconst_0
-    //   7: ireturn
-    //   8: aload_0
-    //   9: getfield 42	com/tencent/token/bv:a	Z
-    //   12: ifne +5 -> 17
-    //   15: iconst_1
-    //   16: ireturn
-    //   17: invokestatic 307	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
-    //   20: ldc_w 286
-    //   23: invokevirtual 313	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ifnonnull +5 -> 33
-    //   31: iconst_0
-    //   32: ireturn
-    //   33: sipush 2000
-    //   36: newarray byte
-    //   38: astore_2
-    //   39: aload_1
-    //   40: aload_2
-    //   41: invokevirtual 319	java/io/FileInputStream:read	([B)I
-    //   44: pop
-    //   45: aload_0
-    //   46: new 48	org/json/JSONArray
-    //   49: dup
-    //   50: new 90	java/lang/String
-    //   53: dup
-    //   54: aload_2
-    //   55: invokespecial 154	java/lang/String:<init>	([B)V
-    //   58: invokespecial 320	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   61: putfield 51	com/tencent/token/bv:b	Lorg/json/JSONArray;
-    //   64: aload_1
-    //   65: invokevirtual 321	java/io/FileInputStream:close	()V
-    //   68: iconst_1
-    //   69: ireturn
-    //   70: aload_1
-    //   71: invokevirtual 321	java/io/FileInputStream:close	()V
-    //   74: iconst_0
-    //   75: ireturn
-    //   76: astore_1
-    //   77: iconst_0
-    //   78: ireturn
-    //   79: astore_2
-    //   80: goto -10 -> 70
-    //   83: astore_1
-    //   84: iconst_1
-    //   85: ireturn
-    //   86: astore_1
-    //   87: iconst_0
-    //   88: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	bv
-    //   26	45	1	localFileInputStream	java.io.FileInputStream
-    //   76	1	1	localFileNotFoundException	java.io.FileNotFoundException
-    //   83	1	1	localIOException1	java.io.IOException
-    //   86	1	1	localIOException2	java.io.IOException
-    //   38	17	2	arrayOfByte	byte[]
-    //   79	1	2	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   17	27	76	java/io/FileNotFoundException
-    //   33	64	79	java/lang/Exception
-    //   64	68	83	java/io/IOException
-    //   70	74	86	java/io/IOException
+    public int a;
+    public Fragment b;
+    public int c;
+    public int d;
+    public int e;
+    public int f;
+    
+    public a() {}
+    
+    a(int paramInt, Fragment paramFragment)
+    {
+      this.a = paramInt;
+      this.b = paramFragment;
+    }
   }
 }
 

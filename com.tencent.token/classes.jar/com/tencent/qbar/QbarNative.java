@@ -146,7 +146,7 @@ public class QbarNative
   
   public static native int SetReaders(int[] paramArrayOfInt, int paramInt);
   
-  private static class QbarArea
+  static class QbarArea
   {
     public int height = 0;
     public int typeID = 0;

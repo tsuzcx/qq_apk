@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
 import com.tmsdk.TMSDKContext;
 
 public class SlidingMenuView
@@ -21,14 +21,14 @@ public class SlidingMenuView
   public int a = 0;
   int b = 0;
   private int d = 1;
-  private int e;
+  private int e = this.d;
   private int f = -1;
-  private Scroller g;
+  private Scroller g = new Scroller(getContext());
   private VelocityTracker h;
   private float i;
   private float j;
   private boolean k;
-  private int l;
+  private int l = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   private a m;
   
   public SlidingMenuView(Context paramContext, AttributeSet paramAttributeSet)
@@ -39,25 +39,17 @@ public class SlidingMenuView
   public SlidingMenuView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    d();
     postDelayed(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         SlidingMenuView localSlidingMenuView = SlidingMenuView.this;
-        localSlidingMenuView.scrollTo(localSlidingMenuView.findViewById(2131165655).getWidth(), 0);
+        localSlidingMenuView.scrollTo(localSlidingMenuView.findViewById(2131165659).getWidth(), 0);
       }
     }, 1L);
   }
   
-  private void d()
-  {
-    this.g = new Scroller(getContext());
-    this.e = this.d;
-    this.l = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  }
-  
-  void a()
+  private void b()
   {
     int i1 = getChildCount();
     int n = 0;
@@ -68,7 +60,55 @@ public class SlidingMenuView
     }
   }
   
-  public void a(int paramInt)
+  private void c()
+  {
+    int i1 = getChildCount();
+    int n = 0;
+    while (n < i1)
+    {
+      getChildAt(n).setDrawingCacheEnabled(false);
+      n += 1;
+    }
+  }
+  
+  public final void a()
+  {
+    int i1 = this.a;
+    int n = 1;
+    if (i1 != 1)
+    {
+      localObject = this.m;
+      if (localObject != null) {
+        ((a)localObject).a(true);
+      }
+    }
+    b();
+    int i2 = Math.min(1, getChildCount() - 1);
+    i1 = 0;
+    i2 = Math.max(0, i2);
+    if (i2 == this.e) {
+      n = 0;
+    }
+    this.f = i2;
+    Object localObject = getFocusedChild();
+    if ((localObject != null) && (n != 0) && (localObject == getChildAt(this.e))) {
+      ((View)localObject).clearFocus();
+    }
+    n = 0;
+    while (i1 < i2)
+    {
+      n += getChildAt(i1).getWidth();
+      i1 += 1;
+    }
+    i1 = getScrollX();
+    this.g.startScroll(getScrollX(), 0, n - i1, 0, 1);
+    invalidate();
+    if (i2 == 0) {
+      TMSDKContext.saveActionData(1150082);
+    }
+  }
+  
+  public final void a(int paramInt)
   {
     int n = this.a;
     int i1 = 1;
@@ -79,7 +119,7 @@ public class SlidingMenuView
         ((a)localObject).a(true);
       }
     }
-    a();
+    b();
     paramInt = Math.min(paramInt, getChildCount() - 1);
     n = 0;
     int i2 = Math.max(0, paramInt);
@@ -107,93 +147,6 @@ public class SlidingMenuView
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    findViewById(2131165655).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
-    findViewById(2131165996).measure(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    int i1 = this.a;
-    int n = 1;
-    if (i1 != 1)
-    {
-      localObject = this.m;
-      if (localObject != null) {
-        ((a)localObject).a(true);
-      }
-    }
-    a();
-    paramInt = Math.min(paramInt, getChildCount() - 1);
-    i1 = 0;
-    int i2 = Math.max(0, paramInt);
-    if (i2 != this.e) {
-      paramInt = n;
-    } else {
-      paramInt = 0;
-    }
-    this.f = i2;
-    Object localObject = getFocusedChild();
-    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.e))) {
-      ((View)localObject).clearFocus();
-    }
-    n = 0;
-    paramInt = i1;
-    while (paramInt < i2)
-    {
-      n += getChildAt(paramInt).getWidth();
-      paramInt += 1;
-    }
-    paramInt = n - getScrollX();
-    if (paramBoolean) {
-      this.g.startScroll(getScrollX(), 0, paramInt, 0, 1);
-    } else {
-      this.g.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(100) * 2);
-    }
-    invalidate();
-    if (i2 == 0) {
-      TMSDKContext.saveActionData(1150082);
-    }
-  }
-  
-  void b()
-  {
-    int i1 = getChildCount();
-    int n = 0;
-    while (n < i1)
-    {
-      getChildAt(n).setDrawingCacheEnabled(false);
-      n += 1;
-    }
-  }
-  
-  protected void c()
-  {
-    int i5 = getChildCount();
-    int i6 = getScrollX();
-    int i1 = 0;
-    int i2 = 0;
-    int i3 = 0;
-    int n = 0;
-    while (i1 < i5)
-    {
-      int i4 = getChildAt(i1).getWidth();
-      int i7 = i4 / 2;
-      if (i1 != 0) {
-        i4 = getChildAt(i1 - 1).getWidth();
-      }
-      i3 -= i4;
-      if ((i6 > i3) && (i6 < i7 + i2)) {
-        break;
-      }
-      i2 += i4;
-      n += 1;
-      i1 += 1;
-    }
-    a(n);
-  }
-  
   public void computeScroll()
   {
     if (this.g.computeScrollOffset())
@@ -209,7 +162,7 @@ public class SlidingMenuView
       }
       this.e = Math.max(0, Math.min(this.f, getChildCount() - 1));
       this.f = -1;
-      b();
+      c();
     }
   }
   
@@ -268,7 +221,7 @@ public class SlidingMenuView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    g.a("onInterceptTouchEvent");
+    xb.a("onInterceptTouchEvent");
     int n = paramMotionEvent.getAction();
     if ((n == 2) && (this.a != 0)) {
       return true;
@@ -302,7 +255,7 @@ public class SlidingMenuView
           if (paramMotionEvent != null) {
             paramMotionEvent.a(true);
           }
-          a();
+          b();
         }
         if (this.k)
         {
@@ -313,15 +266,14 @@ public class SlidingMenuView
       break;
     case 1: 
     case 3: 
-      b();
+      c();
       this.a = 0;
       this.k = false;
       break;
     case 0: 
-      paramMotionEvent = new StringBuilder();
-      paramMotionEvent.append("mLastMotionX");
+      paramMotionEvent = new StringBuilder("mLastMotionX");
       paramMotionEvent.append(this.i);
-      g.a(paramMotionEvent.toString());
+      xb.a(paramMotionEvent.toString());
       this.i = f1;
       this.j = f2;
       this.k = true;
@@ -351,7 +303,8 @@ public class SlidingMenuView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    a(paramInt1, paramInt2);
+    findViewById(2131165659).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
+    findViewById(2131166001).measure(paramInt1, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -412,13 +365,37 @@ public class SlidingMenuView
           if (i1 > 0)
           {
             a(i1 - 1);
-            break label285;
+            break label395;
           }
         }
-        if ((n < -1000) && (this.e < getChildCount() - 1)) {
+        if ((n < -1000) && (this.e < getChildCount() - 1))
+        {
           a(this.e + 1);
-        } else {
-          c();
+        }
+        else
+        {
+          int i5 = getChildCount();
+          int i6 = getScrollX();
+          i1 = 0;
+          int i2 = 0;
+          int i3 = 0;
+          n = 0;
+          while (i1 < i5)
+          {
+            int i4 = getChildAt(i1).getWidth();
+            int i7 = i4 / 2;
+            if (i1 != 0) {
+              i4 = getChildAt(i1 - 1).getWidth();
+            }
+            i3 -= i4;
+            if ((i6 > i3) && (i6 < i7 + i2)) {
+              break;
+            }
+            i2 += i4;
+            n += 1;
+            i1 += 1;
+          }
+          a(n);
         }
         paramMotionEvent = this.h;
         if (paramMotionEvent != null)
@@ -434,7 +411,7 @@ public class SlidingMenuView
       this.a = 0;
       return true;
     case 0: 
-      label285:
+      label395:
       if (!this.g.isFinished()) {
         this.g.abortAnimation();
       }

@@ -77,18 +77,13 @@ public final class A
             ((StringBuilder)localObject4).append(paramContext.G());
             ((Map)localObject3).put("C02", ((StringBuilder)localObject4).toString());
           }
-          Map localMap;
-          StringBuilder localStringBuilder;
           if (paramContext.I() > 0)
           {
             localObject3 = paramContext.J().iterator();
             while (((Iterator)localObject3).hasNext())
             {
               localObject4 = (String)((Iterator)localObject3).next();
-              localMap = localR.e;
-              localStringBuilder = new StringBuilder("C03_");
-              localStringBuilder.append((String)localObject4);
-              localMap.put(localStringBuilder.toString(), paramContext.k((String)localObject4));
+              localR.e.put("C03_".concat(String.valueOf(localObject4)), paramContext.k((String)localObject4));
             }
           }
           if (paramContext.L() > 0)
@@ -97,10 +92,7 @@ public final class A
             while (((Iterator)localObject3).hasNext())
             {
               localObject4 = (String)((Iterator)localObject3).next();
-              localMap = localR.e;
-              localStringBuilder = new StringBuilder("C04_");
-              localStringBuilder.append((String)localObject4);
-              localMap.put(localStringBuilder.toString(), paramContext.l((String)localObject4));
+              localR.e.put("C04_".concat(String.valueOf(localObject4)), paramContext.l((String)localObject4));
             }
           }
           localArrayList.add(localR);
@@ -175,12 +167,12 @@ public final class A
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 256	com/tencent/feedback/proguard/A:c	Landroid/content/Context;
+    //   3: getfield 259	com/tencent/feedback/proguard/A:c	Landroid/content/Context;
     //   6: aload_0
     //   7: getfield 15	com/tencent/feedback/proguard/A:d	Lcom/tencent/feedback/proguard/y;
     //   10: aload_0
     //   11: getfield 17	com/tencent/feedback/proguard/A:e	B
-    //   14: invokestatic 258	com/tencent/feedback/proguard/A:a	(Landroid/content/Context;Lcom/tencent/feedback/proguard/y;B)Lcom/tencent/feedback/proguard/S;
+    //   14: invokestatic 261	com/tencent/feedback/proguard/A:a	(Landroid/content/Context;Lcom/tencent/feedback/proguard/y;B)Lcom/tencent/feedback/proguard/S;
     //   17: astore_1
     //   18: aload_1
     //   19: ifnonnull +7 -> 26
@@ -189,12 +181,12 @@ public final class A
     //   24: aconst_null
     //   25: areturn
     //   26: aload_0
-    //   27: getfield 256	com/tencent/feedback/proguard/A:c	Landroid/content/Context;
+    //   27: getfield 259	com/tencent/feedback/proguard/A:c	Landroid/content/Context;
     //   30: aload_0
-    //   31: getfield 260	com/tencent/feedback/proguard/A:a	I
+    //   31: getfield 263	com/tencent/feedback/proguard/A:a	I
     //   34: aload_1
-    //   35: invokevirtual 263	com/tencent/feedback/proguard/S:a	()[B
-    //   38: invokestatic 266	com/tencent/feedback/proguard/A:a	(Landroid/content/Context;I[B)Lcom/tencent/feedback/proguard/N;
+    //   35: invokevirtual 266	com/tencent/feedback/proguard/S:a	()[B
+    //   38: invokestatic 269	com/tencent/feedback/proguard/A:a	(Landroid/content/Context;I[B)Lcom/tencent/feedback/proguard/N;
     //   41: astore_1
     //   42: aload_0
     //   43: monitorexit
@@ -204,10 +196,10 @@ public final class A
     //   47: goto +19 -> 66
     //   50: astore_1
     //   51: aload_1
-    //   52: invokestatic 269	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   52: invokestatic 272	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   55: ifne +7 -> 62
     //   58: aload_1
-    //   59: invokevirtual 272	java/lang/Throwable:printStackTrace	()V
+    //   59: invokevirtual 275	java/lang/Throwable:printStackTrace	()V
     //   62: aload_0
     //   63: monitorexit
     //   64: aconst_null

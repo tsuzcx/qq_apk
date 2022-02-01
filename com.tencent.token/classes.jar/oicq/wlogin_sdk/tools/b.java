@@ -24,7 +24,7 @@ public class b
       }
       tlv_t localtlv_t = new tlv_t(j);
       localtlv_t.set_data(paramArrayOfByte, i, k);
-      paramMap.put(new Integer(j), localtlv_t);
+      paramMap.put(Integer.valueOf(j), localtlv_t);
       i += k;
       paramInt3 -= k;
       paramInt2 += 1;

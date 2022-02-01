@@ -1,5 +1,9 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.aer;
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class Kiwifruit
   extends break
   implements Cloneable
@@ -9,24 +13,24 @@ public final class Kiwifruit
   public int ld = 0;
   public Hickory md = null;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.ld = paramcy.a(this.ld, 0, true);
-    this.md = ((Hickory)paramcy.a(kd, 1, false));
-    this.Jb = paramcy.a(this.Jb, 2, true);
+    this.ld = paramafl.a(this.ld, 0, true);
+    this.md = ((Hickory)paramafl.a(kd, 1, false));
+    this.Jb = paramafl.a(this.Jb, 2, true);
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.ld, 0);
+    paramafo.a(this.ld, 0);
     Hickory localHickory = this.md;
     if (localHickory != null) {
-      paramdb.a(localHickory, 1);
+      paramafo.a(localHickory, 1);
     }
-    paramdb.a(this.Jb, 2);
+    paramafo.a(this.Jb, 2);
   }
   
-  public Object clone()
+  public final Object clone()
   {
     try
     {
@@ -44,29 +48,16 @@ public final class Kiwifruit
     throw new AssertionError();
   }
   
-  public boolean equals(Object paramObject)
+  public final boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
     if (paramObject == null) {
       return false;
     }
     paramObject = (Kiwifruit)paramObject;
-    boolean bool1 = bool2;
-    if (ce.a(this.ld, paramObject.ld))
-    {
-      bool1 = bool2;
-      if (ce.a(this.md, paramObject.md))
-      {
-        bool1 = bool2;
-        if (ce.a(this.Jb, paramObject.Jb)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return (aer.a(this.ld, paramObject.ld)) && (aer.a(this.md, paramObject.md)) && (aer.a(this.Jb, paramObject.Jb));
   }
   
-  public int hashCode()
+  public final int hashCode()
   {
     try
     {

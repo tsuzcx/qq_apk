@@ -11,7 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
-import com.tencent.token.utils.m;
+import com.tencent.token.aae;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ public class LockPatternSmallView
   extends View
   implements LockPatternView.b
 {
-  LockPatternView a;
+  public LockPatternView a;
   public int b = 1;
   private Paint c = new Paint();
   private boolean[][] d = (boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 });
@@ -47,57 +47,19 @@ public class LockPatternSmallView
     this.o.getWindowManager().getDefaultDisplay().getMetrics(paramContext);
     this.p = paramContext.widthPixels;
     int i1 = this.p * 14 / 320;
-    this.h = m.a(getResources(), 2131100139, i1);
-    this.i = m.a(getResources(), 2131100138, i1);
-    this.j = m.a(getResources(), 2131100140, i1);
-    this.k = m.a(getResources(), 2131100141, i1);
+    this.h = aae.a(getResources(), 2131100142, i1);
+    this.i = aae.a(getResources(), 2131100141, i1);
+    this.j = aae.a(getResources(), 2131100143, i1);
+    this.k = aae.a(getResources(), 2131100144, i1);
     this.l = this.h.getWidth();
     this.m = this.h.getHeight();
   }
   
-  private void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void a()
   {
-    Bitmap localBitmap;
-    if (!paramBoolean)
-    {
-      localBitmap = this.h;
+    if (this.b != 1) {
+      return;
     }
-    else
-    {
-      i1 = this.b;
-      if (i1 != 3)
-      {
-        if (this.e == LockPatternView.DisplayMode.Wrong) {
-          localBitmap = this.k;
-        } else {
-          localBitmap = this.i;
-        }
-      }
-      else
-      {
-        if (i1 != 3) {
-          break label133;
-        }
-        localBitmap = this.j;
-      }
-    }
-    int i2 = this.l;
-    int i1 = this.m;
-    float f1 = this.f;
-    float f2 = this.g;
-    i2 = (int)((f1 - i2) / 2.0F);
-    i1 = (int)((f2 - i1) / 2.0F);
-    paramCanvas.drawBitmap(localBitmap, paramInt1 + i2, paramInt2 + i1, this.c);
-    return;
-    label133:
-    paramCanvas = new StringBuilder();
-    paramCanvas.append("unknown display mode ");
-    paramCanvas.append(this.e);
-    throw new IllegalStateException(paramCanvas.toString());
-  }
-  
-  private void c()
-  {
     int i1 = 0;
     while (i1 < 3)
     {
@@ -109,48 +71,34 @@ public class LockPatternSmallView
       }
       i1 += 1;
     }
-  }
-  
-  public void a()
-  {
-    if (this.b != 1) {
-      return;
-    }
-    c();
     this.n = this.a.getPattern();
     this.e = this.a.getDispalyMode();
     invalidate();
   }
   
-  public void a(LockPatternView paramLockPatternView)
-  {
-    this.a = paramLockPatternView;
-    paramLockPatternView.a(this);
-  }
-  
-  public void a(List<LockPatternView.a> paramList)
-  {
-    if (this.b != 1) {
-      return;
-    }
-    this.n = this.a.getPattern();
-    this.e = this.a.getDispalyMode();
-    invalidate();
-  }
-  
-  public void b()
-  {
-    if (this.b != 1) {
-      return;
-    }
-    this.n = this.a.getPattern();
-    this.e = this.a.getDispalyMode();
-    invalidate();
-  }
-  
-  public void b(List<LockPatternView.a> paramList)
+  public final void a(List<LockPatternView.a> paramList)
   {
     if (this.b == 2) {
+      return;
+    }
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
+    invalidate();
+  }
+  
+  public final void b()
+  {
+    if (this.b != 1) {
+      return;
+    }
+    this.n = this.a.getPattern();
+    this.e = this.a.getDispalyMode();
+    invalidate();
+  }
+  
+  public final void c()
+  {
+    if (this.b != 1) {
       return;
     }
     this.n = this.a.getPattern();
@@ -172,7 +120,7 @@ public class LockPatternSmallView
     while (((Iterator)localObject).hasNext())
     {
       LockPatternView.a locala = (LockPatternView.a)((Iterator)localObject).next();
-      this.d[locala.a()][locala.b()] = 1;
+      this.d[locala.a][locala.b] = 1;
     }
     int i3 = getPaddingTop();
     int i4 = getPaddingLeft();
@@ -184,8 +132,44 @@ public class LockPatternSmallView
       int i2 = 0;
       while (i2 < 3)
       {
-        a(paramCanvas, (int)(i4 + i2 * f1), (int)(f3 + f4 * f2), arrayOfBoolean[i1][i2]);
+        int i5 = (int)(i4 + i2 * f1);
+        int i6 = (int)(f3 + f4 * f2);
+        if (arrayOfBoolean[i1][i2] == 0)
+        {
+          localObject = this.h;
+        }
+        else
+        {
+          i7 = this.b;
+          if (i7 != 3)
+          {
+            if (this.e == LockPatternView.DisplayMode.Wrong) {
+              localObject = this.k;
+            } else {
+              localObject = this.i;
+            }
+          }
+          else
+          {
+            if (i7 != 3) {
+              break label306;
+            }
+            localObject = this.j;
+          }
+        }
+        int i8 = this.l;
+        int i7 = this.m;
+        float f5 = this.f;
+        float f6 = this.g;
+        i8 = (int)((f5 - i8) / 2.0F);
+        i7 = (int)((f6 - i7) / 2.0F);
+        paramCanvas.drawBitmap((Bitmap)localObject, i5 + i8, i6 + i7, this.c);
         i2 += 1;
+        continue;
+        label306:
+        paramCanvas = new StringBuilder("unknown display mode ");
+        paramCanvas.append(this.e);
+        throw new IllegalStateException(paramCanvas.toString());
       }
       i1 += 1;
     }

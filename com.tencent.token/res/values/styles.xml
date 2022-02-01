@@ -1477,7 +1477,7 @@
         <item name="android:textColor">@color/dual_msg_name_font_color</item>
     </style>
     <style name="switch_qquser">
-        <item name="android:windowBackground">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>

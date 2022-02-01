@@ -1,12 +1,35 @@
 package gameloginsdk;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.eg;
-import com.tencent.token.ei;
-import com.tencent.token.el;
+import com.tencent.token.agw;
+import com.tencent.token.agy;
+import com.tencent.token.aha;
+import com.tencent.token.aov;
+import com.tencent.token.aoz;
+import com.tencent.token.apb;
+import com.tencent.token.apf;
+import com.tencent.token.apg;
+import com.tencent.token.api;
+import com.tencent.token.aqh;
+import com.tencent.token.aqk;
+import com.tencent.token.aqs;
+import com.tencent.token.ari;
+import com.tencent.token.jo;
+import com.tencent.token.jp;
+import com.tencent.token.jq;
+import com.tencent.token.js;
+import com.tencent.token.jt;
+import com.tencent.token.ju;
+import com.tencent.token.jv;
+import com.tencent.token.jz;
+import com.tencent.token.kc;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,10 +37,10 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.Stack;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import tmsdk.common.c.a.d;
-import tmsdk.common.d.a.b.r;
+import tmsdk.common.c.a.b;
 
 public class GameLogin
 {
@@ -27,12 +50,12 @@ public class GameLogin
   long b = 10000L;
   boolean c = false;
   boolean d = false;
-  el e = null;
+  aha e = null;
   IGameLoginCallback f;
   o g = new o();
   AtomicInteger h = new AtomicInteger();
   Handler i = new Handler(Looper.getMainLooper());
-  ei j = new c(this);
+  agy j = new c(this);
   private Object k = new Object();
   private long l = -1L;
   private Stack m = new Stack();
@@ -47,6 +70,8 @@ public class GameLogin
   
   public GameLogin()
   {
+    kc.a();
+    this.e = ((aha)jz.a());
     int i2 = (int)System.currentTimeMillis();
     int i1 = i2;
     if (i2 < 0) {
@@ -68,7 +93,7 @@ public class GameLogin
   
   private String a(int paramInt)
   {
-    switch (tmsdk.common.d.a.a.a.filterNetworkCode(paramInt))
+    switch (apf.filterNetworkCode(paramInt))
     {
     default: 
       return "未知错误";
@@ -138,39 +163,30 @@ public class GameLogin
     if (this.n == null) {
       return -1;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("获取计数 : ");
-    localStringBuilder.append(this.n.get());
-    localStringBuilder.toString();
+    new StringBuilder("获取计数 : ").append(this.n.get());
     return this.n.get();
   }
   
   private void g()
   {
-    Object localObject = this.n;
-    if (localObject == null) {
+    AtomicInteger localAtomicInteger = this.n;
+    if (localAtomicInteger == null) {
       return;
     }
-    if (((AtomicInteger)localObject).decrementAndGet() < 0) {
+    if (localAtomicInteger.decrementAndGet() < 0) {
       this.n.set(0);
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("计数-1 : ");
-    ((StringBuilder)localObject).append(this.n.get());
-    ((StringBuilder)localObject).toString();
+    new StringBuilder("计数-1 : ").append(this.n.get());
   }
   
   private void h()
   {
-    Object localObject = this.n;
-    if (localObject == null) {
+    AtomicInteger localAtomicInteger = this.n;
+    if (localAtomicInteger == null) {
       return;
     }
-    ((AtomicInteger)localObject).incrementAndGet();
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("计数+1 : ");
-    ((StringBuilder)localObject).append(this.n.get());
-    ((StringBuilder)localObject).toString();
+    localAtomicInteger.incrementAndGet();
+    new StringBuilder("计数+1 : ").append(this.n.get());
   }
   
   private byte[] i()
@@ -178,7 +194,7 @@ public class GameLogin
     Random localRandom = new Random(System.currentTimeMillis());
     byte[] arrayOfByte = new byte[10];
     int i1 = 0;
-    while (i1 < arrayOfByte.length)
+    while (i1 < 10)
     {
       arrayOfByte[i1] = ((byte)localRandom.nextInt(127));
       i1 += 1;
@@ -188,25 +204,24 @@ public class GameLogin
   
   void a()
   {
-    this.e.a(10051, new b.a.h(), 1, this.j);
+    this.e.a(10051, new jv(), 1, this.j);
   }
   
   void a(p paramp)
   {
-    b.a.c localc = (b.a.c)paramp.c;
-    int i1 = eg.a;
-    long l1 = localc.a;
-    l1 = localc.c;
-    a(localc.d);
-    String str = localc.e;
-    str = localc.b;
-    this.e.a(653, localc, new b.a.g(), 1, paramp);
+    jq localjq = (jq)paramp.c;
+    int i1 = agw.a;
+    long l1 = localjq.a;
+    l1 = localjq.c;
+    a(localjq.d);
+    String str = localjq.e;
+    str = localjq.b;
+    this.e.a(653, localjq, new ju(), 1, paramp);
   }
   
   void b()
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("tryCloseConn isKeepConnection : ");
+    ??? = new StringBuilder("tryCloseConn isKeepConnection : ");
     ((StringBuilder)???).append(this.c);
     ((StringBuilder)???).append(" gameLoginVsPushCount : ");
     ((StringBuilder)???).append(f());
@@ -216,7 +231,6 @@ public class GameLogin
     ((StringBuilder)???).append(this.p.get());
     ((StringBuilder)???).append(" qrcodeSet.size() : ");
     ((StringBuilder)???).append(this.s.size());
-    ((StringBuilder)???).toString();
     synchronized (this.k)
     {
       if ((this.c) && (f() <= 0) && (this.o.get() < this.p.get()) && (this.s.isEmpty())) {
@@ -228,27 +242,25 @@ public class GameLogin
   
   void b(p paramp)
   {
-    b.a.a locala = (b.a.a)paramp.c;
-    int i1 = eg.a;
-    long l1 = locala.b;
-    l1 = locala.a;
-    i1 = locala.f;
-    String str = locala.c;
-    a(locala.e);
-    a(locala.d);
-    this.e.a(654, locala, new b.a.e(), 1, paramp);
+    jo localjo = (jo)paramp.c;
+    int i1 = agw.a;
+    long l1 = localjo.b;
+    l1 = localjo.a;
+    i1 = localjo.f;
+    String str = localjo.c;
+    a(localjo.e);
+    a(localjo.d);
+    this.e.a(654, localjo, new js(), 1, paramp);
   }
   
   void c()
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("tryCloseConn_2 isKeepConnection : ");
+    ??? = new StringBuilder("tryCloseConn_2 isKeepConnection : ");
     ((StringBuilder)???).append(this.c);
     ((StringBuilder)???).append(" getGameLoginVsPushCount() : ");
     ((StringBuilder)???).append(f());
     ((StringBuilder)???).append(" qrcodeSet.size() : ");
     ((StringBuilder)???).append(this.s.size());
-    ((StringBuilder)???).toString();
     synchronized (this.k)
     {
       if ((this.c) && (f() <= 0) && (this.s.isEmpty())) {
@@ -260,11 +272,11 @@ public class GameLogin
   
   void c(p paramp)
   {
-    b.a.b localb = (b.a.b)paramp.c;
-    int i1 = eg.a;
-    long l1 = localb.b;
-    l1 = localb.a;
-    this.e.a(656, localb, new b.a.f(), 0, paramp);
+    jp localjp = (jp)paramp.c;
+    int i1 = agw.a;
+    long l1 = localjp.b;
+    l1 = localjp.a;
+    this.e.a(656, localjp, new jt(), 0, paramp);
   }
   
   void d()
@@ -273,7 +285,7 @@ public class GameLogin
     {
       this.c = false;
       this.d = false;
-      this.e.b(1);
+      this.e.b();
       this.e.a(10051, 1);
       return;
     }
@@ -293,34 +305,25 @@ public class GameLogin
     if ((paramString != null) && (paramArrayOfByte != null))
     {
       int i1 = e();
-      b.a.a locala = new b.a.a();
-      locala.b = ((Long)this.m.pop()).longValue();
-      locala.a = i1;
-      locala.c = paramString;
-      locala.d = paramArrayOfByte;
-      locala.e = this.q.a();
-      locala.f = j.d(paramInt);
-      this.g.a(locala.a, this.b);
-      paramInt = eg.a;
-      long l1 = locala.b;
-      l1 = locala.a;
-      paramInt = locala.f;
-      paramString = locala.c;
-      a(locala.e);
-      a(locala.d);
-      paramString = new StringBuilder();
-      paramString.append("CSConfirm confirm : ");
-      paramString.append(locala.f);
-      paramString.toString();
-      paramString = new StringBuilder();
-      paramString.append("reqid : ");
-      paramString.append(locala.a);
-      paramString.toString();
-      paramString = new StringBuilder();
-      paramString.append("session : ");
-      paramString.append(a(locala.e));
-      paramString.toString();
-      this.e.a(654, locala, new b.a.e(), 1, new g(this, locala.a, locala), this.b);
+      jo localjo = new jo();
+      localjo.b = ((Long)this.m.pop()).longValue();
+      localjo.a = i1;
+      localjo.c = paramString;
+      localjo.d = paramArrayOfByte;
+      localjo.e = this.q.a();
+      localjo.f = j.d(paramInt);
+      this.g.a(localjo.a, this.b);
+      paramInt = agw.a;
+      long l1 = localjo.b;
+      l1 = localjo.a;
+      paramInt = localjo.f;
+      paramString = localjo.c;
+      a(localjo.e);
+      a(localjo.d);
+      new StringBuilder("CSConfirm confirm : ").append(localjo.f);
+      new StringBuilder("reqid : ").append(localjo.a);
+      new StringBuilder("session : ").append(a(localjo.e));
+      this.e.a(654, localjo, new js(), 1, new g(this, localjo.a, localjo), this.b);
       return i1;
     }
     return -2;
@@ -339,7 +342,7 @@ public class GameLogin
         if (!this.c)
         {
           this.c = true;
-          this.e.a(5);
+          this.e.a();
         }
         if (!this.d)
         {
@@ -347,36 +350,47 @@ public class GameLogin
           a();
         }
         int i1 = e();
-        ??? = new b.a.c();
-        ((b.a.c)???).c = this.l;
-        ((b.a.c)???).d = paramArrayOfByte;
-        ((b.a.c)???).b = paramString1;
-        ((b.a.c)???).a = i1;
+        ??? = new jq();
+        ((jq)???).c = this.l;
+        ((jq)???).d = paramArrayOfByte;
+        ((jq)???).b = paramString1;
+        ((jq)???).a = i1;
         paramString1 = a(paramString2);
         if (paramString1 != null)
         {
-          ((b.a.c)???).g = d.a(paramString1);
-          this.t.a(((b.a.c)???).c, ((b.a.c)???).g);
+          ((jq)???).g = apb.a(paramString1);
+          this.t.a(((jq)???).c, ((jq)???).g);
         }
-        paramString1 = ((b.a.c)???).g;
-        this.s.add(paramString1);
-        int i2 = eg.a;
-        long l1 = ((b.a.c)???).a;
-        l1 = ((b.a.c)???).c;
-        a(((b.a.c)???).d);
-        paramArrayOfByte = ((b.a.c)???).e;
-        paramArrayOfByte = ((b.a.c)???).b;
-        this.g.a(((b.a.c)???).a, this.b);
-        paramArrayOfByte = new StringBuilder();
-        paramArrayOfByte.append("reqid : ");
-        paramArrayOfByte.append(((b.a.c)???).a);
-        paramArrayOfByte.toString();
-        paramArrayOfByte = new StringBuilder();
-        paramArrayOfByte.append("picmd5 : ");
-        paramArrayOfByte.append(((b.a.c)???).g);
-        paramArrayOfByte.toString();
-        tmsdk.common.c.a.a.a().a(((b.a.c)???).g, this.a, new e(this, paramString1));
-        this.e.a(653, (JceStruct)???, new b.a.g(), 1, new h(this, ((b.a.c)???).a, (JceStruct)???), this.b);
+        paramString2 = ((jq)???).g;
+        this.s.add(paramString2);
+        int i2 = agw.a;
+        long l1 = ((jq)???).a;
+        l1 = ((jq)???).c;
+        a(((jq)???).d);
+        paramString1 = ((jq)???).e;
+        paramString1 = ((jq)???).b;
+        this.g.a(((jq)???).a, this.b);
+        new StringBuilder("reqid : ").append(((jq)???).a);
+        new StringBuilder("picmd5 : ").append(((jq)???).g);
+        paramString1 = aoz.a();
+        paramArrayOfByte = ((jq)???).g;
+        l1 = this.a;
+        Object localObject2 = new e(this, paramString2);
+        paramString2 = new StringBuilder("添加闹钟任务 : action : ");
+        paramString2.append(paramArrayOfByte);
+        paramString2.append("  ");
+        paramString2.append(l1 / 1000L);
+        paramString2.append("s");
+        paramString2 = new b(paramString1);
+        paramString1.a.registerReceiver(paramString2, new IntentFilter(paramArrayOfByte));
+        paramString2.b = ((Runnable)localObject2);
+        paramString2.a = paramArrayOfByte;
+        localObject2 = new Intent(paramArrayOfByte);
+        localObject2 = PendingIntent.getBroadcast(paramString1.a, 0, (Intent)localObject2, 0);
+        AlarmManager localAlarmManager = (AlarmManager)paramString1.a.getSystemService("alarm");
+        paramString1.b.put(paramArrayOfByte, paramString2);
+        localAlarmManager.set(0, System.currentTimeMillis() + l1, (PendingIntent)localObject2);
+        this.e.a(653, (JceStruct)???, new ju(), 1, new h(this, ((jq)???).a, (JceStruct)???), this.b);
         return i1;
       }
     }
@@ -389,22 +403,16 @@ public class GameLogin
       return -1;
     }
     int i1 = e();
-    b.a.b localb = new b.a.b();
-    localb.b = paramLong;
-    localb.a = i1;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appid : ");
-    localStringBuilder.append(localb.b);
-    localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("reqid : ");
-    localStringBuilder.append(localb.a);
-    localStringBuilder.toString();
-    int i2 = eg.a;
-    long l1 = localb.b;
-    l1 = localb.a;
-    this.g.a(localb.a, this.b);
-    this.e.a(656, localb, new b.a.f(), 0, new i(this, localb.a, localb), this.b);
+    jp localjp = new jp();
+    localjp.b = paramLong;
+    localjp.a = i1;
+    new StringBuilder("appid : ").append(localjp.b);
+    new StringBuilder("reqid : ").append(localjp.a);
+    int i2 = agw.a;
+    long l1 = localjp.b;
+    l1 = localjp.a;
+    this.g.a(localjp.a, this.b);
+    this.e.a(656, localjp, new jt(), 0, new i(this, localjp.a, localjp), this.b);
     this.l = paramLong;
     return i1;
   }
@@ -423,7 +431,15 @@ public class GameLogin
   
   public void setTestServer(boolean paramBoolean)
   {
-    ((r)tmsdk.common.a.b.a(r.class)).a(paramBoolean);
+    Object localObject = (aqk)aov.a(aqk.class);
+    aqs localaqs = aqs.a();
+    if (localaqs.b != null) {
+      localaqs.b.a(paramBoolean);
+    }
+    localObject = ((aqk)localObject).a.c.a;
+    ((api)localObject).a = paramBoolean;
+    ((api)localObject).b();
+    ((api)localObject).a();
   }
   
   public void setWaitPushTime(long paramLong)

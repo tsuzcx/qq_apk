@@ -20,10 +20,10 @@ public class tlv_t186
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._pwdflag = util.buf_to_int8(this._buf, this._head_len + 1);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

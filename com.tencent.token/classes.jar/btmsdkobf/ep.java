@@ -10,7 +10,7 @@ public class ep
   private static es.a oP;
   private static eq.a oQ = new eq.a()
   {
-    public void a(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
+    public final void a(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
     {
       paramAnonymousRunnable = new es.c();
       paramAnonymousRunnable.oT = 3;
@@ -24,7 +24,7 @@ public class ep
       ep.dk().a(paramAnonymousRunnable, ep.activeCount());
     }
     
-    public void b(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
+    public final void b(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
     {
       paramAnonymousThread = (es.c)ep.di().remove(paramAnonymousThread);
       if (paramAnonymousThread != null)
@@ -36,7 +36,7 @@ public class ep
       }
     }
     
-    public void beforeExecute(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
+    public final void beforeExecute(Thread paramAnonymousThread, Runnable paramAnonymousRunnable)
     {
       paramAnonymousThread = (es.c)ep.di().get(paramAnonymousThread);
       if (paramAnonymousThread != null)

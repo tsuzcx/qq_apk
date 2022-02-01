@@ -1,5 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class Loquat
   extends break
 {
@@ -7,18 +10,18 @@ public final class Loquat
   public String vd = "";
   public int wd = 0;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.ud = paramcy.a(0, true);
-    this.vd = paramcy.a(1, true);
-    this.wd = paramcy.a(this.wd, 2, true);
+    this.ud = paramafl.a(0, true);
+    this.vd = paramafl.a(1, true);
+    this.wd = paramafl.a(this.wd, 2, true);
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.ud, 0);
-    paramdb.a(this.vd, 1);
-    paramdb.a(this.wd, 2);
+    paramafo.a(this.ud, 0);
+    paramafo.a(this.vd, 1);
+    paramafo.a(this.wd, 2);
   }
 }
 

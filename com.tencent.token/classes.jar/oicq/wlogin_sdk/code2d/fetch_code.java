@@ -32,24 +32,23 @@ public class fetch_code
     int[] tmp43_38 = tmp38_33;
     tmp43_38[6] = 53;
     tmp43_38;
-    int j = tmp23_18.length;
     ArrayList localArrayList = new ArrayList();
-    int m = i + 17 + 2;
-    int k = 0;
+    int k = i + 17 + 2;
+    int j = 0;
     for (;;)
     {
-      Object localObject2 = paramArrayOfByte2;
       Object localObject1 = paramQRCodeCustom;
-      if (k >= j) {
+      if (j >= 7) {
         break;
       }
       tlv_t localtlv_t = new tlv_t();
-      localtlv_t.fill_head(tmp23_18[k]);
-      i = tmp23_18[k];
+      localtlv_t.fill_head(tmp23_18[j]);
+      i = tmp23_18[j];
       if (i != 17)
       {
         if (i != 22)
         {
+          Object localObject2;
           if (i != 27)
           {
             if (i != 29)
@@ -63,22 +62,21 @@ public class fetch_code
                     localObject1 = new byte[4];
                     util.int32_to_buf((byte[])localObject1, 0, t.au);
                     i = 4;
-                    break label697;
+                    break label633;
                   }
                 }
                 else
                 {
                   localObject1 = (byte[])t.A.clone();
                   i = localObject1.length;
-                  break label697;
+                  break label633;
                 }
               }
               else
               {
                 i = t.K.length + 3 + 2 + t.J.length + 2 + 2 + t.C.length + 2 + 0 + 2 + t.F.length;
                 localObject1 = new byte[i];
-                localObject2 = new StringBuilder();
-                ((StringBuilder)localObject2).append("os ");
+                localObject2 = new StringBuilder("os ");
                 ((StringBuilder)localObject2).append(new String(t.K));
                 ((StringBuilder)localObject2).append(" sim info ");
                 ((StringBuilder)localObject2).append(new String(t.C));
@@ -86,13 +84,13 @@ public class fetch_code
                 ((StringBuilder)localObject2).append(new String(t.F));
                 util.LOGI(((StringBuilder)localObject2).toString(), "");
                 util.int8_to_buf((byte[])localObject1, 0, t.Z);
-                int n = fill_staff((byte[])localObject1, t.K, 1);
-                n = fill_staff((byte[])localObject1, t.J, n);
-                util.int16_to_buf((byte[])localObject1, n, t.D);
-                n = fill_staff((byte[])localObject1, t.C, n + 2);
-                n = fill_staff((byte[])localObject1, new byte[0], n);
-                fill_staff((byte[])localObject1, t.F, n);
-                break label697;
+                int m = fill_staff((byte[])localObject1, t.K, 1);
+                m = fill_staff((byte[])localObject1, t.J, m);
+                util.int16_to_buf((byte[])localObject1, m, t.D);
+                m = fill_staff((byte[])localObject1, t.C, m + 2);
+                m = fill_staff((byte[])localObject1, new byte[0], m);
+                fill_staff((byte[])localObject1, t.F, m);
+                break label633;
               }
             }
             else
@@ -104,7 +102,7 @@ public class fetch_code
               util.int8_to_buf((byte[])localObject1, 9, 0);
               util.int64_to_buf32((byte[])localObject1, 10, 0L);
               i = 14;
-              break label697;
+              break label633;
             }
           }
           else
@@ -120,44 +118,37 @@ public class fetch_code
             util.int16_to_buf((byte[])localObject2, 28, 0);
             localObject1 = localObject2;
             i = 30;
-            break label697;
+            break label633;
           }
         }
         else
         {
           localObject1 = getAppInfo(paramLong2, paramLong3);
           i = localObject1.length;
-          break label697;
+          break label633;
         }
       }
-      else if ((localObject2 != null) && (localObject2.length > 0))
+      else if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0))
       {
-        i = localObject2.length;
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("qrpushsig of ");
-        ((StringBuilder)localObject1).append(paramLong2);
-        localObject1 = ((StringBuilder)localObject1).toString();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramLong1);
-        ((StringBuilder)localObject2).append("");
-        util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+        i = paramArrayOfByte2.length;
+        util.LOGI("qrpushsig of ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
         localObject1 = paramArrayOfByte2;
-        break label697;
+        break label633;
       }
       localObject1 = null;
       i = 0;
-      label697:
+      label633:
       if (localObject1 != null)
       {
         localtlv_t.fill_body((byte[])localObject1, i);
         localtlv_t.set_length();
         localObject1 = localtlv_t.get_buf();
-        m += localObject1.length;
+        k += localObject1.length;
         localArrayList.add(localObject1);
       }
-      k += 1;
+      j += 1;
     }
-    paramQRCodeCustom = new byte[m];
+    paramQRCodeCustom = new byte[k];
     util.int64_to_buf32(paramQRCodeCustom, 2, paramLong2);
     util.int64_to_buf(paramQRCodeCustom, 6, paramLong1);
     util.int8_to_buf(paramQRCodeCustom, 14, 8);
@@ -193,7 +184,7 @@ public class fetch_code
       int i = util.buf_to_int16(paramArrayOfByte, 7);
       c.i = new byte[i];
       System.arraycopy(paramArrayOfByte, 9, c.i, 0, i);
-      i = 9 + i;
+      i += 9;
       int k = util.buf_to_int16(paramArrayOfByte, i);
       i += 2;
       int j = 0;

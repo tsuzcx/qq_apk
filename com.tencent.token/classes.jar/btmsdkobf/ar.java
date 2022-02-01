@@ -9,17 +9,17 @@ public final class ar
 {
   public long db = 0L;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ar();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.db = paramJceInputStream.read(this.db, 0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     long l = this.db;
     if (l != 0L) {

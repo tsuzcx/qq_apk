@@ -1,102 +1,289 @@
 package com.tencent.token;
 
-import java.security.GeneralSecurityException;
-import java.security.Principal;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.List;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.content.res.TypedArray;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.Window.Callback;
 
-public final class gg
-  extends gi
+public abstract class gg
+  extends gf
 {
-  private final gk a;
+  private static boolean o;
+  private static final boolean p;
+  private static final int[] q = { 16842836 };
+  protected final Context b;
+  public final Window c;
+  protected final Window.Callback d;
+  protected final Window.Callback e;
+  public final ge f;
+  protected ActionBar g;
+  protected MenuInflater h;
+  public boolean i;
+  protected boolean j;
+  protected boolean k;
+  protected boolean l;
+  protected boolean m;
+  public boolean n;
+  private CharSequence r;
+  private boolean s;
   
-  public gg(gk paramgk)
+  static
   {
-    this.a = paramgk;
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    p = bool;
+    if ((bool) && (!o))
+    {
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+      {
+        public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+        {
+          boolean bool = paramAnonymousThrowable instanceof Resources.NotFoundException;
+          int j = 0;
+          int i = j;
+          Object localObject;
+          if (bool)
+          {
+            localObject = paramAnonymousThrowable.getMessage();
+            i = j;
+            if (localObject != null) {
+              if (!((String)localObject).contains("drawable"))
+              {
+                i = j;
+                if (!((String)localObject).contains("Drawable")) {}
+              }
+              else
+              {
+                i = 1;
+              }
+            }
+          }
+          if (i != 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramAnonymousThrowable.getMessage());
+            ((StringBuilder)localObject).append(". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
+            localObject = new Resources.NotFoundException(((StringBuilder)localObject).toString());
+            ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
+            ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
+            this.a.uncaughtException(paramAnonymousThread, (Throwable)localObject);
+            return;
+          }
+          this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+        }
+      });
+      o = true;
+    }
   }
   
-  private boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
+  protected gg(Context paramContext, Window paramWindow, ge paramge)
   {
-    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
-      return false;
-    }
-    try
+    this.b = paramContext;
+    this.c = paramWindow;
+    this.f = paramge;
+    this.d = this.c.getCallback();
+    paramWindow = this.d;
+    if (!(paramWindow instanceof b))
     {
-      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
-      return true;
+      this.e = a(paramWindow);
+      this.c.setCallback(this.e);
+      paramContext = jf.a(paramContext, null, q);
+      paramWindow = paramContext.b(0);
+      if (paramWindow != null) {
+        this.c.setBackgroundDrawable(paramWindow);
+      }
+      paramContext.a.recycle();
+      return;
     }
-    catch (GeneralSecurityException paramX509Certificate1) {}
+    throw new IllegalStateException("AppCompat has already installed itself into the Window");
+  }
+  
+  public final ActionBar a()
+  {
+    m();
+    return this.g;
+  }
+  
+  Window.Callback a(Window.Callback paramCallback)
+  {
+    return new b(paramCallback);
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.r = paramCharSequence;
+    b(paramCharSequence);
+  }
+  
+  protected abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  
+  protected abstract boolean a(KeyEvent paramKeyEvent);
+  
+  public final MenuInflater b()
+  {
+    if (this.h == null)
+    {
+      m();
+      Object localObject = this.g;
+      if (localObject != null) {
+        localObject = ((ActionBar)localObject).b();
+      } else {
+        localObject = this.b;
+      }
+      this.h = new hc((Context)localObject);
+    }
+    return this.h;
+  }
+  
+  protected abstract gx b(gx.a parama);
+  
+  public void b(Bundle paramBundle) {}
+  
+  protected abstract void b(CharSequence paramCharSequence);
+  
+  public void d()
+  {
+    this.s = true;
+  }
+  
+  protected abstract void d(int paramInt);
+  
+  public void e()
+  {
+    this.s = false;
+  }
+  
+  protected abstract boolean e(int paramInt);
+  
+  public void h()
+  {
+    this.n = true;
+  }
+  
+  public final gd.a i()
+  {
+    return new a();
+  }
+  
+  public boolean k()
+  {
     return false;
   }
   
-  public List<Certificate> a(List<Certificate> paramList, String paramString)
+  protected abstract void m();
+  
+  protected final Context n()
   {
-    ArrayDeque localArrayDeque = new ArrayDeque(paramList);
-    paramList = new ArrayList();
-    paramList.add(localArrayDeque.removeFirst());
-    int i = 0;
-    int j = 0;
-    while (i < 9)
-    {
-      paramString = (X509Certificate)paramList.get(paramList.size() - 1);
-      Object localObject = this.a.a(paramString);
-      if (localObject != null)
-      {
-        if ((paramList.size() > 1) || (!paramString.equals(localObject))) {
-          paramList.add(localObject);
-        }
-        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
-          return paramList;
-        }
-        j = 1;
-      }
-      else
-      {
-        localObject = localArrayDeque.iterator();
-        X509Certificate localX509Certificate;
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-        } while (!a(paramString, localX509Certificate));
-        ((Iterator)localObject).remove();
-        paramList.add(localX509Certificate);
-      }
-      i += 1;
-      continue;
-      if (j != 0) {
-        return paramList;
-      }
-      paramList = new StringBuilder();
-      paramList.append("Failed to find a trusted cert that signed ");
-      paramList.append(paramString);
-      throw new SSLPeerUnverifiedException(paramList.toString());
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      localObject1 = ((ActionBar)localObject1).b();
+    } else {
+      localObject1 = null;
     }
-    paramString = new StringBuilder();
-    paramString.append("Certificate chain too long: ");
-    paramString.append(paramList);
-    throw new SSLPeerUnverifiedException(paramString.toString());
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.b;
+    }
+    return localObject2;
   }
   
-  public boolean equals(Object paramObject)
+  protected final CharSequence o()
   {
-    if (paramObject == this) {
+    Window.Callback localCallback = this.d;
+    if ((localCallback instanceof Activity)) {
+      return ((Activity)localCallback).getTitle();
+    }
+    return this.r;
+  }
+  
+  final class a
+    implements gd.a
+  {
+    a() {}
+    
+    public final void a(int paramInt)
+    {
+      ActionBar localActionBar = gg.this.a();
+      if (localActionBar != null) {
+        localActionBar.a(paramInt);
+      }
+    }
+  }
+  
+  class b
+    extends he
+  {
+    b(Window.Callback paramCallback)
+    {
+      super();
+    }
+    
+    public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+    {
+      return (gg.this.a(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
+    }
+    
+    public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+    {
+      return (super.dispatchKeyShortcutEvent(paramKeyEvent)) || (gg.this.a(paramKeyEvent.getKeyCode(), paramKeyEvent));
+    }
+    
+    public void onContentChanged() {}
+    
+    public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+    {
+      if ((paramInt == 0) && (!(paramMenu instanceof hm))) {
+        return false;
+      }
+      return super.onCreatePanelMenu(paramInt, paramMenu);
+    }
+    
+    public boolean onMenuOpened(int paramInt, Menu paramMenu)
+    {
+      super.onMenuOpened(paramInt, paramMenu);
+      gg.this.e(paramInt);
       return true;
     }
-    return ((paramObject instanceof gg)) && (((gg)paramObject).a.equals(this.a));
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
+    
+    public void onPanelClosed(int paramInt, Menu paramMenu)
+    {
+      super.onPanelClosed(paramInt, paramMenu);
+      gg.this.d(paramInt);
+    }
+    
+    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      hm localhm;
+      if ((paramMenu instanceof hm)) {
+        localhm = (hm)paramMenu;
+      } else {
+        localhm = null;
+      }
+      if ((paramInt == 0) && (localhm == null)) {
+        return false;
+      }
+      if (localhm != null) {
+        localhm.k = true;
+      }
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if (localhm != null) {
+        localhm.k = false;
+      }
+      return bool;
+    }
   }
 }
 

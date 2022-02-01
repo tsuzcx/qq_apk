@@ -35,7 +35,7 @@ public class LoginProtectResult
     }
   }
   
-  public class a
+  public final class a
   {
     public int a;
     public String b;

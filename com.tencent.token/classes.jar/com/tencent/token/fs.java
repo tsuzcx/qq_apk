@@ -1,147 +1,60 @@
 package com.tencent.token;
 
-import java.util.List;
-import okhttp3.e;
-import okhttp3.i;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.f;
-import okhttp3.p;
-import okhttp3.t;
-import okhttp3.t.a;
-import okhttp3.x;
-import okhttp3.z;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-public final class fs
-  implements t.a
+public final class fs<T>
 {
-  private final List<t> a;
-  private final f b;
-  private final fo c;
-  private final c d;
-  private final int e;
-  private final x f;
-  private final e g;
-  private final p h;
-  private final int i;
-  private final int j;
-  private final int k;
-  private int l;
+  public final ee.a<ArrayList<T>> a = new ee.b(10);
+  public final eg<T, ArrayList<T>> b = new eg();
+  private final ArrayList<T> c = new ArrayList();
+  private final HashSet<T> d = new HashSet();
   
-  public fs(List<t> paramList, f paramf, fo paramfo, c paramc, int paramInt1, x paramx, e parame, p paramp, int paramInt2, int paramInt3, int paramInt4)
+  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    this.a = paramList;
-    this.d = paramc;
-    this.b = paramf;
-    this.c = paramfo;
-    this.e = paramInt1;
-    this.f = paramx;
-    this.g = parame;
-    this.h = paramp;
-    this.i = paramInt2;
-    this.j = paramInt3;
-    this.k = paramInt4;
-  }
-  
-  public x a()
-  {
-    return this.f;
-  }
-  
-  public z a(x paramx)
-  {
-    return a(paramx, this.b, this.c, this.d);
-  }
-  
-  public z a(x paramx, f paramf, fo paramfo, c paramc)
-  {
-    if (this.e < this.a.size())
-    {
-      this.l += 1;
-      if ((this.c != null) && (!this.d.a(paramx.a())))
-      {
-        paramx = new StringBuilder();
-        paramx.append("network interceptor ");
-        paramx.append(this.a.get(this.e - 1));
-        paramx.append(" must retain the same host and port");
-        throw new IllegalStateException(paramx.toString());
-      }
-      if ((this.c != null) && (this.l > 1))
-      {
-        paramx = new StringBuilder();
-        paramx.append("network interceptor ");
-        paramx.append(this.a.get(this.e - 1));
-        paramx.append(" must call proceed() exactly once");
-        throw new IllegalStateException(paramx.toString());
-      }
-      paramf = new fs(this.a, paramf, paramfo, paramc, this.e + 1, paramx, this.g, this.h, this.i, this.j, this.k);
-      paramx = (t)this.a.get(this.e);
-      paramc = paramx.a(paramf);
-      if ((paramfo != null) && (this.e + 1 < this.a.size()) && (paramf.l != 1))
-      {
-        paramf = new StringBuilder();
-        paramf.append("network interceptor ");
-        paramf.append(paramx);
-        paramf.append(" must call proceed() exactly once");
-        throw new IllegalStateException(paramf.toString());
-      }
-      if (paramc != null)
-      {
-        if (paramc.e() != null) {
-          return paramc;
-        }
-        paramf = new StringBuilder();
-        paramf.append("interceptor ");
-        paramf.append(paramx);
-        paramf.append(" returned a response with no body");
-        throw new IllegalStateException(paramf.toString());
-      }
-      paramf = new StringBuilder();
-      paramf.append("interceptor ");
-      paramf.append(paramx);
-      paramf.append(" returned null");
-      throw new NullPointerException(paramf.toString());
+    if (paramArrayList.contains(paramT)) {
+      return;
     }
-    throw new AssertionError();
+    if (!paramHashSet.contains(paramT))
+    {
+      paramHashSet.add(paramT);
+      ArrayList localArrayList = (ArrayList)this.b.get(paramT);
+      if (localArrayList != null)
+      {
+        int i = 0;
+        int j = localArrayList.size();
+        while (i < j)
+        {
+          a(localArrayList.get(i), paramArrayList, paramHashSet);
+          i += 1;
+        }
+      }
+      paramHashSet.remove(paramT);
+      paramArrayList.add(paramT);
+      return;
+    }
+    throw new RuntimeException("This graph contains cyclic dependencies");
   }
   
-  public int b()
+  public final ArrayList<T> a()
   {
-    return this.i;
-  }
-  
-  public int c()
-  {
-    return this.j;
-  }
-  
-  public int d()
-  {
-    return this.k;
-  }
-  
-  public i e()
-  {
-    return this.d;
-  }
-  
-  public f f()
-  {
-    return this.b;
-  }
-  
-  public fo g()
-  {
+    this.c.clear();
+    this.d.clear();
+    int j = this.b.size();
+    int i = 0;
+    while (i < j)
+    {
+      a(this.b.b(i), this.c, this.d);
+      i += 1;
+    }
     return this.c;
   }
   
-  public e h()
+  public final void a(T paramT)
   {
-    return this.g;
-  }
-  
-  public p i()
-  {
-    return this.h;
+    if (!this.b.containsKey(paramT)) {
+      this.b.put(paramT, null);
+    }
   }
 }
 

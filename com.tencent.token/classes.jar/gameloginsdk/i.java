@@ -1,8 +1,8 @@
 package gameloginsdk;
 
-import b.a.f;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.eg;
+import com.tencent.token.agw;
+import com.tencent.token.jt;
 
 class i
   extends p
@@ -26,42 +26,31 @@ class i
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = eg.a;
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
     if (paramInt3 == -50004)
     {
-      paramInt1 = eg.a;
-      paramJceStruct = new StringBuilder();
-      paramJceStruct.append("回包超时  httpGetAppidTypeCallback   retCode : ");
-      paramJceStruct.append(paramInt3);
-      paramJceStruct.toString();
+      paramInt1 = agw.a;
       a(paramInt3, (int)this.d);
       return;
     }
-    paramJceStruct = (f)paramJceStruct;
-    paramInt1 = eg.a;
+    paramJceStruct = (jt)paramJceStruct;
+    paramInt1 = agw.a;
     paramInt1 = paramJceStruct.b;
     long l = paramJceStruct.a;
     Object localObject = paramJceStruct.c;
     if (paramInt3 == 0)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("SCGameAppid url : ");
-      ((StringBuilder)localObject).append(paramJceStruct.c);
-      ((StringBuilder)localObject).toString();
+      new StringBuilder("SCGameAppid url : ").append(paramJceStruct.c);
       if (!this.a.g.a(paramJceStruct.a))
       {
-        paramInt1 = eg.a;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("忽略这个包，因为没收到过包的reqid : ");
+        paramInt1 = agw.a;
+        localObject = new StringBuilder("忽略这个包，因为没收到过包的reqid : ");
         ((StringBuilder)localObject).append(paramJceStruct.a);
         ((StringBuilder)localObject).toString();
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("忽略这个包，因为没收到过SCGameAppid包的reqid : ");
-        ((StringBuilder)localObject).append(paramJceStruct.a);
-        ((StringBuilder)localObject).toString();
+        new StringBuilder("忽略这个包，因为没收到过SCGameAppid包的reqid : ").append(paramJceStruct.a);
         return;
       }
       this.b = 0;
@@ -79,21 +68,12 @@ class i
       this.b = paramInt1;
       if (paramInt1 < 3)
       {
-        if (this.c != null)
-        {
-          paramJceStruct = new StringBuilder();
-          paramJceStruct.append("resendGetFlowType retCode : ");
-          paramJceStruct.append(paramInt3);
-          paramJceStruct.toString();
+        if (this.c != null) {
           this.a.c(this);
         }
       }
       else
       {
-        paramJceStruct = new StringBuilder();
-        paramJceStruct.append("httpGetAppidTypeCallback --- retCode = ");
-        paramJceStruct.append(paramInt3);
-        paramJceStruct.toString();
         a(paramInt3, (int)this.d);
         this.b = 0;
       }

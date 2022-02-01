@@ -30,14 +30,14 @@ public class tlv_t125
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._openid_len = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < this._openid_len + 2 + 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._openkey_len = util.buf_to_int16(this._buf, this._head_len + 2 + this._openid_len);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

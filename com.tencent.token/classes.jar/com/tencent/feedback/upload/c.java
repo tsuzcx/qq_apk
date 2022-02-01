@@ -636,9 +636,7 @@ public abstract class c
           i = k;
           if (n > 1)
           {
-            StringBuilder localStringBuilder = new StringBuilder("rqdp{  try time} ");
-            localStringBuilder.append(n);
-            e.b(localStringBuilder.toString(), new Object[0]);
+            e.b("rqdp{  try time} ".concat(String.valueOf(n)), new Object[0]);
             try
             {
               Thread.sleep(10000L);

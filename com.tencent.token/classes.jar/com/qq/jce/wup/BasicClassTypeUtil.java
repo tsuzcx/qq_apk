@@ -34,7 +34,7 @@ public class BasicClassTypeUtil
       return Integer.valueOf(0);
     }
     if (paramString.equals("java.lang.Boolean")) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     if (paramString.equals("java.lang.Byte")) {
       return Byte.valueOf((byte)0);
@@ -85,49 +85,55 @@ public class BasicClassTypeUtil
   public static Object createClassByUni(String paramString)
   {
     Iterator localIterator = getTypeList(paramString).iterator();
-    Object localObject = null;
-    paramString = localObject;
+    Object localObject1 = null;
+    paramString = localObject1;
     String str1 = paramString;
     while (localIterator.hasNext())
     {
-      localObject = createClassByName((String)localIterator.next());
-      boolean bool = localObject instanceof String;
+      Object localObject2 = createClassByName((String)localIterator.next());
+      boolean bool = localObject2 instanceof String;
       int j = 0;
       if (bool)
       {
-        String str2 = (String)localObject;
+        String str2 = (String)localObject2;
         if ("Array".equals(str2))
         {
+          localObject1 = localObject2;
           if (paramString != null) {
             continue;
           }
-          localObject = Array.newInstance(Byte.class, 0);
+          localObject1 = Array.newInstance(Byte.class, 0);
           continue;
         }
+        localObject1 = localObject2;
         if ("?".equals(str2)) {
           continue;
         }
-        if (paramString != null) {
-          break label226;
+        if (paramString != null)
+        {
+          str1 = paramString;
+          paramString = localObject2;
+          localObject1 = localObject2;
         }
       }
       else
       {
-        if ((localObject instanceof List))
+        if ((localObject2 instanceof List))
         {
           if ((paramString != null) && ((paramString instanceof Byte)))
           {
-            localObject = Array.newInstance(Byte.class, 1);
-            Array.set(localObject, 0, paramString);
+            localObject1 = Array.newInstance(Byte.class, 1);
+            Array.set(localObject1, 0, paramString);
             continue;
           }
           if (paramString != null) {
-            ((List)localObject).add(paramString);
+            ((List)localObject2).add(paramString);
           }
           paramString = null;
+          localObject1 = localObject2;
           continue;
         }
-        if ((localObject instanceof Map))
+        if ((localObject2 instanceof Map))
         {
           int i;
           if (paramString != null) {
@@ -139,22 +145,26 @@ public class BasicClassTypeUtil
             j = 1;
           }
           if ((i & j) != 0) {
-            ((Map)localObject).put(paramString, str1);
+            ((Map)localObject2).put(paramString, str1);
           }
           paramString = null;
           str1 = paramString;
+          localObject1 = localObject2;
           continue;
         }
-        if (paramString == null) {
-          break label229;
+        if (paramString != null) {
+          break label259;
         }
       }
-      label226:
+      paramString = localObject2;
+      localObject1 = localObject2;
+      continue;
+      label259:
       str1 = paramString;
-      label229:
-      paramString = localObject;
+      paramString = localObject2;
+      localObject1 = localObject2;
     }
-    return localObject;
+    return localObject1;
   }
   
   public static String getClassTransName(String paramString)
@@ -419,8 +429,7 @@ public class BasicClassTypeUtil
       }
       Collections.reverse(localArrayList);
       localObject1 = System.out;
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("-------------finished ");
+      Object localObject2 = new StringBuilder("-------------finished ");
       ((StringBuilder)localObject2).append(transTypeList(localArrayList));
       ((PrintStream)localObject1).println(((StringBuilder)localObject2).toString());
     }
@@ -444,8 +453,7 @@ public class BasicClassTypeUtil
       if (((String)localObject).equals("list"))
       {
         j = i - 1;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("<");
+        localObject = new StringBuilder("<");
         ((StringBuilder)localObject).append((String)paramArrayList.get(j));
         paramArrayList.set(j, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
@@ -456,8 +464,7 @@ public class BasicClassTypeUtil
       else if (((String)localObject).equals("map"))
       {
         j = i - 1;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("<");
+        localObject = new StringBuilder("<");
         ((StringBuilder)localObject).append((String)paramArrayList.get(j));
         ((StringBuilder)localObject).append(",");
         paramArrayList.set(j, ((StringBuilder)localObject).toString());
@@ -469,8 +476,7 @@ public class BasicClassTypeUtil
       else if (((String)localObject).equals("Array"))
       {
         j = i - 1;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("<");
+        localObject = new StringBuilder("<");
         ((StringBuilder)localObject).append((String)paramArrayList.get(j));
         paramArrayList.set(j, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();

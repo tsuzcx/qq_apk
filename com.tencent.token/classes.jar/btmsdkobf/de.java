@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
+import com.tencent.token.aos;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,7 +17,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import tmsdk.QQPIM.ConnectType;
 
 public class de
 {
@@ -29,7 +29,7 @@ public class de
   private Context mContext = bc.n();
   private Handler mHandler = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       int i = paramAnonymousMessage.what;
       if (i != 3)
@@ -55,7 +55,7 @@ public class de
   private boolean ma = false;
   private Runnable mb = new Runnable()
   {
-    public void run()
+    public final void run()
     {
       synchronized (de.this)
       {
@@ -101,33 +101,23 @@ public class de
       if (paramList.size() == 0) {
         return;
       }
-      Object localObject;
       if (((t)paramList.get(0)).aD > 0)
       {
-        localObject = (t)paramList.get(paramList.size() - 1);
-        t localt = new t();
-        localt.aD = H(0);
-        localt.aE = ((t)localObject).aE;
-        localt.aF = ((t)localObject).aF;
-        paramList.add(0, localt);
+        t localt1 = (t)paramList.get(paramList.size() - 1);
+        t localt2 = new t();
+        localt2.aD = H(0);
+        localt2.aE = localt1.aE;
+        localt2.aF = localt1.aF;
+        paramList.add(0, localt2);
       }
       try
       {
-        Collections.sort(paramList, new Comparator()
-        {
-          public int a(t paramAnonymoust1, t paramAnonymoust2)
-          {
-            return paramAnonymoust1.aD - paramAnonymoust2.aD;
-          }
-        });
+        Collections.sort(paramList, new Comparator() {});
         return;
       }
       catch (Throwable paramList)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[tcp_control][shark_conf]checkAndSort() exception: ");
-        ((StringBuilder)localObject).append(paramList);
-        eh.b("SharkTcpControler", ((StringBuilder)localObject).toString(), paramList);
+        eh.b("SharkTcpControler", "[tcp_control][shark_conf]checkAndSort() exception: ".concat(String.valueOf(paramList)), paramList);
       }
     }
   }
@@ -137,11 +127,7 @@ public class de
     if (this.lZ.get() < 0) {
       this.lZ.set(0);
     }
-    int i = this.lZ.incrementAndGet();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control][shark_conf]markKeepAlive(), refCount: ");
-    localStringBuilder.append(i);
-    eh.f("SharkTcpControler", localStringBuilder.toString());
+    eh.f("SharkTcpControler", "[tcp_control][shark_conf]markKeepAlive(), refCount: ".concat(String.valueOf(this.lZ.incrementAndGet())));
   }
   
   private static ArrayList<t> ck()
@@ -178,8 +164,7 @@ public class de
     {
       this.mHandler.sendEmptyMessage(0);
       dm.a(this.mContext, "action_keep_alive_close", localt.aE * 1000);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control][shark_conf]now open connection, after ");
+      localStringBuilder = new StringBuilder("[tcp_control][shark_conf]now open connection, after ");
       localStringBuilder.append(localt.aE);
       localStringBuilder.append("s close connection");
       eh.i("SharkTcpControler", localStringBuilder.toString());
@@ -189,8 +174,7 @@ public class de
       eh.g("SharkTcpControler", "[tcp_control][f_p][h_b][shark_conf]execRule(), scSharkConf: donnot keepAlive!");
     }
     dm.a(this.mContext, "action_keep_alive_cycle", (localt.aE + localt.aF) * 1000);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control][shark_conf]execRule(), next cycle in ");
+    StringBuilder localStringBuilder = new StringBuilder("[tcp_control][shark_conf]execRule(), next cycle in ");
     localStringBuilder.append(localt.aE + localt.aF);
     localStringBuilder.append("s");
     eh.i("SharkTcpControler", localStringBuilder.toString());
@@ -222,10 +206,9 @@ public class de
           {
             t localt = (t)((v)localObject2).aO.get(i);
             if (localt.aD > j) {
-              break label185;
+              break label179;
             }
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("[tcp_control][shark_conf]getRuleAtNow(), fixed policy: start hour: ");
+            localObject2 = new StringBuilder("[tcp_control][shark_conf]getRuleAtNow(), fixed policy: start hour: ");
             ((StringBuilder)localObject2).append(localt.aD / 3600);
             ((StringBuilder)localObject2).append(" start: ");
             ((StringBuilder)localObject2).append(localt.aD);
@@ -240,7 +223,7 @@ public class de
         return null;
       }
       finally {}
-      label185:
+      label179:
       i -= 1;
     }
   }
@@ -277,39 +260,33 @@ public class de
       paramv.aT = 2;
     }
     eh.e("SharkTcpControler", "[shark_push][shark_conf]------------- ensureValid() ---------------------");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] hash : ");
+    Object localObject = new StringBuilder("[shark_push][shark_conf] hash : ");
     ((StringBuilder)localObject).append(paramv.ay);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
     if (paramv.az != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[shark_push][shark_conf] info.taskNo: ");
+      localObject = new StringBuilder("[shark_push][shark_conf] info.taskNo: ");
       ((StringBuilder)localObject).append(paramv.az.aB);
       ((StringBuilder)localObject).append(" info.seqNo: ");
       ((StringBuilder)localObject).append(paramv.az.aC);
       eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] hb interval: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] hb interval: ");
     ((StringBuilder)localObject).append(paramv.aM);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] KeepAliveAfterSendInSeconds: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] KeepAliveAfterSendInSeconds: ");
     ((StringBuilder)localObject).append(paramv.aP);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
     if (paramv.aO != null)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[shark_push][shark_conf]scSharkConf.policy.size(): ");
+      localObject = new StringBuilder("[shark_push][shark_conf]scSharkConf.policy.size(): ");
       ((StringBuilder)localObject).append(paramv.aO.size());
       eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
       localObject = paramv.aO.iterator();
       while (((Iterator)localObject).hasNext())
       {
         t localt = (t)((Iterator)localObject).next();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[shark_push][shark_conf]start: ");
+        StringBuilder localStringBuilder = new StringBuilder("[shark_push][shark_conf]start: ");
         localStringBuilder.append(localt.aD);
         localStringBuilder.append(" keepAlive: ");
         localStringBuilder.append(localt.aE);
@@ -318,20 +295,16 @@ public class de
         eh.f("SharkTcpControler", localStringBuilder.toString());
       }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfNotWifi: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.connIfNotWifi: ");
     ((StringBuilder)localObject).append(paramv.aQ);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfScreenOff: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.connIfScreenOff: ");
     ((StringBuilder)localObject).append(paramv.aR);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.reconnectInterval: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.reconnectInterval: ");
     ((StringBuilder)localObject).append(paramv.aS);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: ");
+    localObject = new StringBuilder("[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: ");
     ((StringBuilder)localObject).append(paramv.aT);
     eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
     eh.e("SharkTcpControler", "[shark_push][shark_conf]-----------------------------------------------------------");
@@ -344,12 +317,9 @@ public class de
       return true;
     }
     boolean bool1;
-    if ((!((v)localObject).aQ) && (ConnectType.CT_WIFI != NetworkUtil.getNetworkType()))
+    if ((!((v)localObject).aQ) && (aos.d != NetworkUtil.getNetworkType()))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control][shark_conf] shouldKeepAlive(), not allow in none wifi! timing: ");
-      localStringBuilder.append(paramString);
-      eh.i("SharkTcpControler", localStringBuilder.toString());
+      eh.i("SharkTcpControler", "[tcp_control][shark_conf] shouldKeepAlive(), not allow in none wifi! timing: ".concat(String.valueOf(paramString)));
       bool1 = false;
     }
     else
@@ -374,17 +344,14 @@ public class de
     catch (Throwable localThrowable)
     {
       int i;
-      label116:
-      break label116;
+      label96:
+      break label96;
     }
     i = 0;
     bool2 = bool1;
     if (i != 0)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[tcp_control][shark_conf] shouldKeepAlive(), not allow on screen off! timing: ");
-      ((StringBuilder)localObject).append(paramString);
-      eh.i("SharkTcpControler", ((StringBuilder)localObject).toString());
+      eh.i("SharkTcpControler", "[tcp_control][shark_conf] shouldKeepAlive(), not allow on screen off! timing: ".concat(String.valueOf(paramString)));
       bool2 = false;
     }
     return bool2;
@@ -455,7 +422,7 @@ public class de
       eh.e("SharkTcpControler", "[tcp_control][shark_conf]startTcpControl()");
       if (this.lX == null)
       {
-        this.lX = new b(null);
+        this.lX = new b((byte)0);
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("action_keep_alive_close");
         localIntentFilter.addAction("action_keep_alive_cycle");
@@ -465,10 +432,7 @@ public class de
         }
         catch (Throwable localThrowable)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[tcp_control][shark_conf]registerReceiver exception: ");
-          localStringBuilder.append(localThrowable);
-          eh.g("SharkTcpControler", localStringBuilder.toString());
+          eh.g("SharkTcpControler", "[tcp_control][shark_conf]registerReceiver exception: ".concat(String.valueOf(localThrowable)));
         }
       }
       this.mHandler.sendEmptyMessage(3);
@@ -497,10 +461,7 @@ public class de
         }
         catch (Throwable localThrowable)
         {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[tcp_control][shark_conf]unregisterReceiver exception: ");
-          localStringBuilder.append(localThrowable);
-          eh.g("SharkTcpControler", localStringBuilder.toString());
+          eh.g("SharkTcpControler", "[tcp_control][shark_conf]unregisterReceiver exception: ".concat(String.valueOf(localThrowable)));
         }
       }
       ci();
@@ -523,10 +484,7 @@ public class de
   void ci()
   {
     int i = this.lZ.decrementAndGet();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[tcp_control][shark_conf]tryCloseConnectionAsyn, refCount: ");
-    localStringBuilder.append(i);
-    eh.f("SharkTcpControler", localStringBuilder.toString());
+    eh.f("SharkTcpControler", "[tcp_control][shark_conf]tryCloseConnectionAsyn, refCount: ".concat(String.valueOf(i)));
     if (i <= 0)
     {
       this.lZ.set(0);
@@ -548,8 +506,7 @@ public class de
         cj();
         this.ma = true;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[tcp_control][shark_conf] ");
+      StringBuilder localStringBuilder = new StringBuilder("[tcp_control][shark_conf] ");
       localStringBuilder.append(paramLong / 1000L);
       eh.f("SharkTcpControler", localStringBuilder.toString());
       dv.cQ().D("action_keep_alive_after_send_end");
@@ -566,29 +523,25 @@ public class de
     public abstract void onClose();
   }
   
-  private class b
+  final class b
     extends BroadcastReceiver
   {
     private b() {}
     
-    public void onReceive(Context paramContext, Intent paramIntent)
+    public final void onReceive(Context paramContext, Intent paramIntent)
     {
       eh.e("SharkTcpControler", "[tcp_control][shark_conf]doOnRecv()");
       paramContext = paramIntent.getAction();
       paramIntent = paramIntent.getPackage();
       if ((paramContext != null) && (paramIntent != null) && (paramIntent.equals(bc.n().getPackageName())))
       {
-        if (paramContext.equals("action_keep_alive_cycle")) {
-          paramContext = de.e(de.this);
-        }
-        for (int i = 3;; i = 1)
+        if (paramContext.equals("action_keep_alive_cycle"))
         {
-          paramContext.sendEmptyMessage(i);
+          de.e(de.this).sendEmptyMessage(3);
           return;
-          if (!paramContext.equals("action_keep_alive_close")) {
-            break;
-          }
-          paramContext = de.e(de.this);
+        }
+        if (paramContext.equals("action_keep_alive_close")) {
+          de.e(de.this).sendEmptyMessage(1);
         }
         return;
       }

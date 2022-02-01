@@ -4,47 +4,57 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.service.a;
-import com.tencent.service.a.a;
-import com.tencent.service.a.c;
-import com.tencent.token.ef;
+import com.tencent.token.afr;
+import com.tencent.token.r;
+import com.tencent.token.rc;
+import com.tencent.token.rc.a;
+import com.tencent.token.rc.b;
+import com.tencent.token.rc.c;
+import com.tencent.token.t;
+import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
+import com.tencent.token.zf;
+import com.tencent.token.zf.a;
 import java.io.File;
 
 public class DownloadQQSecureActivity
   extends Activity
 {
   static final int MSG_UPDATE_UI = 99;
-  a.c listener = new a.c()
+  rc.c listener = new rc.c()
   {
-    public void a(a.a paramAnonymousa)
+    public final void a(rc.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public void b(a.a paramAnonymousa)
+    public final void b(rc.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public void c(a.a paramAnonymousa)
+    public final void c(rc.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public void d(a.a paramAnonymousa)
+    public final void d(rc.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
   };
+  LayoutAppKeyInfo mAppLayout;
+  FrameLayout mBackView;
   Button mButton;
-  a.a mDownloadInfo;
+  rc.a mDownloadInfo;
   Handler mHandler = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (paramAnonymousMessage.what == 99) {
         DownloadQQSecureActivity.this.refreshUIByState();
@@ -52,33 +62,45 @@ public class DownloadQQSecureActivity
     }
   };
   
+  private void setSoftDetail(r paramr)
+  {
+    if (paramr != null)
+    {
+      if (TextUtils.isEmpty(paramr.i)) {
+        return;
+      }
+      this.mAppLayout.a(paramr.i, paramr.a.b, paramr.a.d, paramr.k, paramr.r, this);
+      return;
+    }
+  }
+  
   void handleProcessByState()
   {
     if (this.mDownloadInfo == null) {
       return;
     }
-    switch (4.a[this.mDownloadInfo.f.ordinal()])
+    switch (6.a[this.mDownloadInfo.f.ordinal()])
     {
     default: 
       return;
     case 7: 
-      a.a().c(this.mDownloadInfo);
+      rc.b.a().c(this.mDownloadInfo);
       return;
     case 6: 
-      a.a().d(this.mDownloadInfo);
+      rc.b.a().d(this.mDownloadInfo);
       return;
     case 5: 
-      a.a().c(this.mDownloadInfo);
+      rc.b.a().c(this.mDownloadInfo);
       return;
     case 4: 
-      a.a(this, new File(a.b(), this.mDownloadInfo.d));
+      rc.a(this, new File(rc.a(), this.mDownloadInfo.d));
       return;
     case 2: 
     case 3: 
-      a.a().b(this.mDownloadInfo);
+      rc.b.a().b(this.mDownloadInfo);
       return;
     }
-    a.a().c(this.mDownloadInfo);
+    rc.b.a().c(this.mDownloadInfo);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -86,28 +108,51 @@ public class DownloadQQSecureActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     setContentView(2131296295);
-    this.mButton = ((Button)findViewById(2131165822));
-    this.mDownloadInfo = a.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+    this.mButton = ((Button)findViewById(2131165826));
+    this.mBackView = ((FrameLayout)findViewById(2131165858));
+    this.mDownloadInfo = rc.b.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = ef.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+      this.mDownloadInfo = afr.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     }
-    if (a.a().a(this.mDownloadInfo)) {
+    if (rc.b.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
     }
     this.mButton.setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         DownloadQQSecureActivity.this.handleProcessByState();
       }
     });
+    this.mBackView.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        DownloadQQSecureActivity.this.finish();
+      }
+    });
     refreshUIByState();
-    a.a().a(this.listener);
+    rc.b.a().a(this.listener);
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "8.11.0", "腾讯手机管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpimsecure", "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11", this);
+    zf.a("com.tencent.qqpimsecure", new zf.a()
+    {
+      public final void a(final r paramAnonymousr)
+      {
+        DownloadQQSecureActivity.this.mHandler.post(new Runnable()
+        {
+          public final void run()
+          {
+            DownloadQQSecureActivity.this.setSoftDetail(paramAnonymousr);
+          }
+        });
+      }
+    });
   }
   
   protected void onDestroy()
   {
-    a.a().b(this.listener);
+    rc.b.a().b(this.listener);
     super.onDestroy();
   }
   
@@ -122,7 +167,7 @@ public class DownloadQQSecureActivity
     if (this.mDownloadInfo == null) {
       return;
     }
-    switch (4.a[this.mDownloadInfo.f.ordinal()])
+    switch (6.a[this.mDownloadInfo.f.ordinal()])
     {
     default: 
       return;
@@ -138,14 +183,13 @@ public class DownloadQQSecureActivity
     case 2: 
     case 3: 
       Button localButton = this.mButton;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("下载中...(");
+      StringBuilder localStringBuilder = new StringBuilder("下载中...(");
       localStringBuilder.append(this.mDownloadInfo.e);
       localStringBuilder.append("%)");
       localButton.setText(localStringBuilder.toString());
       return;
     }
-    this.mButton.setText("立即体验");
+    this.mButton.setText("立即下载");
   }
 }
 

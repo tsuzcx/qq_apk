@@ -17,7 +17,6 @@ import android.os.StatFs;
 import android.os.SystemClock;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import com.tencent.analysis.d.a.c;
 import com.tencent.analysis.d.a.d;
 import java.io.BufferedReader;
@@ -105,65 +104,66 @@ public class a
   private String a()
   {
     Object localObject2 = "UNKNOWN";
-    for (;;)
+    try
     {
-      try
+      if (!a("android.permission.ACCESS_WIFI_STATE")) {
+        break label178;
+      }
+      localObject1 = localObject2;
+      if (this.B != null)
       {
-        if (!a("android.permission.ACCESS_WIFI_STATE")) {
-          break label190;
-        }
+        localObject3 = this.B.getConnectionInfo();
         localObject1 = localObject2;
-        if (this.B != null)
-        {
-          localObject3 = this.B.getConnectionInfo();
-          localObject1 = localObject2;
-          if (localObject3 != null) {
-            localObject1 = ((WifiInfo)localObject3).getMacAddress();
-          }
-        }
-        if ((localObject1 != null) && (!((String)localObject1).equals("NOPERMISSION")))
-        {
-          boolean bool = ((String)localObject1).equals("");
-          if (!bool) {
-            continue;
-          }
+        if (localObject3 != null) {
+          localObject1 = ((WifiInfo)localObject3).getMacAddress();
         }
       }
-      catch (Exception localException1)
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
       {
         Object localObject1;
         Object localObject3;
-        int i1;
-        String str1 = localException1.toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("BaseInfoUtil", str1);
-        }
-        str1 = "EXCEPTION";
-        return str1;
-      }
-      try
-      {
-        localObject1 = new StringBuffer(1000);
-        localObject2 = new BufferedReader(new FileReader("/sys/class/net/eth0/address"));
-        localObject3 = new char[1024];
-        i1 = ((BufferedReader)localObject2).read((char[])localObject3);
-        if (i1 != -1)
-        {
-          ((StringBuffer)localObject1).append(String.valueOf((char[])localObject3, 0, i1));
-          continue;
-        }
-        ((BufferedReader)localObject2).close();
-        localObject1 = ((StringBuffer)localObject1).toString().toUpperCase().substring(0, 17);
-        return localObject1;
-      }
-      catch (Exception localException2)
-      {
+        boolean bool;
         continue;
+        String str = "NOPERMISSION";
       }
-      return "UNKNOWN";
-      label190:
-      String str2 = "NOPERMISSION";
     }
+    if ((localObject1 != null) && (!((String)localObject1).equals("NOPERMISSION")))
+    {
+      bool = ((String)localObject1).equals("");
+      if (!bool) {
+        break label168;
+      }
+    }
+    try
+    {
+      localObject1 = new StringBuffer(1000);
+      localObject2 = new BufferedReader(new FileReader("/sys/class/net/eth0/address"));
+      localObject3 = new char[1024];
+      for (;;)
+      {
+        int i1 = ((BufferedReader)localObject2).read((char[])localObject3);
+        if (i1 == -1) {
+          break;
+        }
+        ((StringBuffer)localObject1).append(String.valueOf((char[])localObject3, 0, i1));
+      }
+      ((BufferedReader)localObject2).close();
+      localObject1 = ((StringBuffer)localObject1).toString().toUpperCase().substring(0, 17);
+      return localObject1;
+    }
+    catch (Exception localException2)
+    {
+      label157:
+      label168:
+      break label157;
+    }
+    return "UNKNOWN";
+    localObject1 = "EXCEPTION";
+    bool = com.tencent.analysis.b.c;
+    return localObject1;
   }
   
   private static boolean a(String paramString)
@@ -185,7 +185,7 @@ public class a
         int i1 = 0;
         while (i1 < i2)
         {
-          boolean bool = localObject[i1].equals(paramString);
+          bool = localObject[i1].equals(paramString);
           if (bool) {
             return true;
           }
@@ -196,80 +196,80 @@ public class a
     }
     catch (Exception paramString)
     {
-      paramString = paramString.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", paramString);
-      }
+      boolean bool;
+      label89:
+      break label89;
     }
+    bool = com.tencent.analysis.b.c;
     return false;
   }
   
   private String b()
   {
-    String str1 = "UNKNOWN";
+    String str = "UNKNOWN";
     try
     {
       if (a("android.permission.READ_PHONE_STATE"))
       {
-        if (this.C != null) {
-          return this.C.getDeviceId();
+        if (this.C == null) {
+          break label38;
         }
+        return this.C.getDeviceId();
       }
-      else {
-        return "NOPERMISSION";
-      }
+      return "NOPERMISSION";
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
-      str2 = "EXCEPTION";
-      return str2;
+      label30:
+      boolean bool;
+      break label30;
     }
+    str = "EXCEPTION";
+    bool = com.tencent.analysis.b.c;
+    label38:
+    return str;
   }
   
   private String c()
   {
-    String str1 = "UNKNOWN";
+    String str = "UNKNOWN";
     try
     {
       if (a("android.permission.READ_PHONE_STATE"))
       {
-        if (this.C != null) {
-          return this.C.getSubscriberId();
+        if (this.C == null) {
+          break label38;
         }
+        return this.C.getSubscriberId();
       }
-      else {
-        return "NOPERMISSION";
-      }
+      return "NOPERMISSION";
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
-      str2 = "EXCEPTION";
-      return str2;
+      label30:
+      boolean bool;
+      break label30;
     }
+    str = "EXCEPTION";
+    bool = com.tencent.analysis.b.c;
+    label38:
+    return str;
   }
   
   private static String d()
   {
     try
     {
-      String str1 = Settings.Secure.getString(com.tencent.analysis.a.a.getContentResolver(), "android_id");
-      return str1;
+      String str = Settings.Secure.getString(com.tencent.analysis.a.a.getContentResolver(), "android_id");
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label15:
+      boolean bool;
+      break label15;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -277,16 +277,16 @@ public class a
   {
     try
     {
-      String str1 = Build.MODEL;
-      return str1;
+      String str = Build.MODEL;
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label6:
+      boolean bool;
+      break label6;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -294,40 +294,36 @@ public class a
   {
     try
     {
-      String str1 = Build.VERSION.RELEASE;
-      return str1;
+      String str = Build.VERSION.RELEASE;
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label6:
+      boolean bool;
+      break label6;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
   private void g()
   {
-    String str1 = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("gpu_user", "UNKNOWN");
-    if (str1.equals("UNKNOWN"))
+    String str = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("gpu_user", "UNKNOWN");
+    if (str.equals("UNKNOWN"))
     {
       this.k = "UNKNOWN";
       return;
     }
     try
     {
-      this.k = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str1)), "UTF-8");
+      this.k = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str)), "UTF-8");
       return;
     }
     catch (Exception localException)
     {
-      StringBuilder localStringBuilder = new StringBuilder("loadGpuInfo Error :");
-      localStringBuilder.append(localException.toString());
-      String str2 = localStringBuilder.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      new StringBuilder("loadGpuInfo Error :").append(localException.toString());
+      boolean bool = com.tencent.analysis.b.c;
     }
   }
   
@@ -345,11 +341,11 @@ public class a
     }
     catch (Exception localException)
     {
-      String str = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str);
-      }
+      label65:
+      boolean bool;
+      break label65;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -357,234 +353,158 @@ public class a
   private static String i()
   {
     // Byte code:
-    //   0: new 243	java/io/FileReader
-    //   3: dup
-    //   4: ldc_w 391
-    //   7: invokespecial 248	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   10: astore_3
-    //   11: new 241	java/io/BufferedReader
-    //   14: dup
-    //   15: aload_3
-    //   16: sipush 8192
-    //   19: invokespecial 394	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   22: astore_2
-    //   23: aload_2
-    //   24: astore 4
-    //   26: aload_3
-    //   27: astore 5
-    //   29: aload_2
-    //   30: invokevirtual 397	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   33: ldc_w 399
-    //   36: iconst_2
-    //   37: invokevirtual 403	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
-    //   40: iconst_1
-    //   41: aaload
-    //   42: invokevirtual 406	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   45: ldc_w 408
-    //   48: ldc 42
-    //   50: invokevirtual 412	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   53: invokevirtual 415	java/lang/String:trim	()Ljava/lang/String;
-    //   56: invokestatic 421	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   59: ldc2_w 386
-    //   62: ldiv
-    //   63: lstore_0
-    //   64: aload_2
-    //   65: astore 4
-    //   67: aload_3
-    //   68: astore 5
-    //   70: new 186	java/lang/StringBuilder
-    //   73: dup
-    //   74: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   77: astore 6
-    //   79: aload_2
-    //   80: astore 4
-    //   82: aload_3
-    //   83: astore 5
-    //   85: aload 6
-    //   87: lload_0
-    //   88: invokevirtual 197	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   91: pop
-    //   92: aload_2
-    //   93: astore 4
-    //   95: aload_3
-    //   96: astore 5
-    //   98: aload 6
-    //   100: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: astore 6
-    //   105: aload_2
-    //   106: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   109: aload_3
-    //   110: invokevirtual 422	java/io/FileReader:close	()V
-    //   113: aload 6
-    //   115: areturn
-    //   116: astore_2
-    //   117: aload_2
-    //   118: invokevirtual 423	java/io/IOException:toString	()Ljava/lang/String;
-    //   121: astore_2
-    //   122: getstatic 277	com/tencent/analysis/b:c	Z
-    //   125: ifeq +11 -> 136
-    //   128: ldc_w 279
-    //   131: aload_2
-    //   132: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   135: pop
-    //   136: ldc_w 286
-    //   139: areturn
-    //   140: astore 6
-    //   142: goto +32 -> 174
-    //   145: astore_2
-    //   146: aconst_null
-    //   147: astore 4
-    //   149: goto +119 -> 268
-    //   152: astore 6
-    //   154: aconst_null
-    //   155: astore_2
-    //   156: goto +18 -> 174
-    //   159: astore_2
-    //   160: aconst_null
-    //   161: astore_3
-    //   162: aload_3
-    //   163: astore 4
-    //   165: goto +103 -> 268
-    //   168: astore 6
-    //   170: aconst_null
-    //   171: astore_3
-    //   172: aload_3
-    //   173: astore_2
-    //   174: aload_2
-    //   175: astore 4
-    //   177: aload_3
-    //   178: astore 5
-    //   180: aload 6
-    //   182: invokevirtual 274	java/lang/Exception:toString	()Ljava/lang/String;
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: new 243	java/io/FileReader
+    //   9: dup
+    //   10: ldc_w 384
+    //   13: invokespecial 248	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   16: astore_3
+    //   17: aload_3
+    //   18: astore 4
+    //   20: new 241	java/io/BufferedReader
+    //   23: dup
+    //   24: aload_3
+    //   25: sipush 8192
+    //   28: invokespecial 387	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   31: astore 6
+    //   33: aload 6
+    //   35: invokevirtual 390	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   38: ldc_w 392
+    //   41: iconst_2
+    //   42: invokevirtual 396	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   45: iconst_1
+    //   46: aaload
+    //   47: invokevirtual 399	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   50: ldc_w 401
+    //   53: ldc 42
+    //   55: invokevirtual 405	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   58: invokevirtual 408	java/lang/String:trim	()Ljava/lang/String;
+    //   61: invokestatic 414	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   64: ldc2_w 379
+    //   67: ldiv
+    //   68: lstore_0
+    //   69: aload 6
+    //   71: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   74: aload_3
+    //   75: invokevirtual 415	java/io/FileReader:close	()V
+    //   78: lload_0
+    //   79: invokestatic 418	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   82: areturn
+    //   83: getstatic 278	com/tencent/analysis/b:c	Z
+    //   86: istore_2
+    //   87: ldc_w 275
+    //   90: areturn
+    //   91: astore 4
+    //   93: aload 6
+    //   95: astore 5
+    //   97: aload 4
+    //   99: astore 6
+    //   101: goto +55 -> 156
+    //   104: goto +19 -> 123
+    //   107: astore 6
+    //   109: aconst_null
+    //   110: astore_3
+    //   111: aload_3
+    //   112: astore 5
+    //   114: goto +42 -> 156
+    //   117: aconst_null
+    //   118: astore_3
+    //   119: aload 7
+    //   121: astore 6
+    //   123: aload 6
+    //   125: astore 5
+    //   127: aload_3
+    //   128: astore 4
+    //   130: getstatic 278	com/tencent/analysis/b:c	Z
+    //   133: istore_2
+    //   134: aload 6
+    //   136: ifnull +8 -> 144
+    //   139: aload 6
+    //   141: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   144: aload_3
+    //   145: ifnull +54 -> 199
+    //   148: aload_3
+    //   149: invokevirtual 415	java/io/FileReader:close	()V
+    //   152: ldc_w 275
+    //   155: areturn
+    //   156: aload 5
+    //   158: ifnull +8 -> 166
+    //   161: aload 5
+    //   163: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   166: aload_3
+    //   167: ifnull +7 -> 174
+    //   170: aload_3
+    //   171: invokevirtual 415	java/io/FileReader:close	()V
+    //   174: aload 6
+    //   176: athrow
+    //   177: astore_3
+    //   178: goto -61 -> 117
+    //   181: astore 4
+    //   183: aload 7
     //   185: astore 6
-    //   187: aload_2
-    //   188: astore 4
-    //   190: aload_3
-    //   191: astore 5
-    //   193: getstatic 277	com/tencent/analysis/b:c	Z
-    //   196: ifeq +18 -> 214
-    //   199: aload_2
-    //   200: astore 4
-    //   202: aload_3
-    //   203: astore 5
-    //   205: ldc_w 279
-    //   208: aload 6
-    //   210: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   213: pop
-    //   214: aload_2
-    //   215: ifnull +10 -> 225
-    //   218: aload_2
-    //   219: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   222: goto +3 -> 225
-    //   225: aload_3
-    //   226: ifnull +34 -> 260
-    //   229: aload_3
-    //   230: invokevirtual 422	java/io/FileReader:close	()V
-    //   233: ldc_w 286
-    //   236: areturn
-    //   237: aload_2
-    //   238: invokevirtual 423	java/io/IOException:toString	()Ljava/lang/String;
-    //   241: astore_2
-    //   242: getstatic 277	com/tencent/analysis/b:c	Z
-    //   245: ifeq +11 -> 256
-    //   248: ldc_w 279
-    //   251: aload_2
-    //   252: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   255: pop
-    //   256: ldc_w 286
-    //   259: areturn
-    //   260: ldc_w 286
-    //   263: areturn
-    //   264: astore_2
-    //   265: aload 5
-    //   267: astore_3
-    //   268: aload 4
-    //   270: ifnull +11 -> 281
-    //   273: aload 4
-    //   275: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   278: goto +3 -> 281
-    //   281: aload_3
-    //   282: ifnull +33 -> 315
-    //   285: aload_3
-    //   286: invokevirtual 422	java/io/FileReader:close	()V
-    //   289: goto +26 -> 315
-    //   292: aload_2
-    //   293: invokevirtual 423	java/io/IOException:toString	()Ljava/lang/String;
-    //   296: astore_2
-    //   297: getstatic 277	com/tencent/analysis/b:c	Z
-    //   300: ifeq +11 -> 311
-    //   303: ldc_w 279
-    //   306: aload_2
-    //   307: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   310: pop
-    //   311: ldc_w 286
-    //   314: areturn
-    //   315: aload_2
-    //   316: athrow
-    //   317: astore_2
-    //   318: goto -81 -> 237
-    //   321: astore_2
-    //   322: goto -30 -> 292
+    //   187: goto -64 -> 123
+    //   190: astore 4
+    //   192: goto -88 -> 104
+    //   195: astore_3
+    //   196: goto -113 -> 83
+    //   199: ldc_w 275
+    //   202: areturn
+    //   203: astore 6
+    //   205: aload 4
+    //   207: astore_3
+    //   208: goto -52 -> 156
     // Local variable table:
     //   start	length	slot	name	signature
-    //   63	25	0	l1	long
-    //   22	84	2	localBufferedReader	BufferedReader
-    //   116	2	2	localIOException1	java.io.IOException
-    //   121	11	2	str1	String
-    //   145	1	2	localObject1	Object
-    //   155	1	2	localObject2	Object
-    //   159	1	2	localObject3	Object
-    //   173	79	2	localObject4	Object
-    //   264	29	2	localObject5	Object
-    //   296	20	2	str2	String
-    //   317	1	2	localIOException2	java.io.IOException
-    //   321	1	2	localIOException3	java.io.IOException
-    //   10	276	3	localObject6	Object
-    //   24	250	4	localObject7	Object
-    //   27	239	5	localObject8	Object
-    //   77	37	6	localObject9	Object
-    //   140	1	6	localException1	Exception
-    //   152	1	6	localException2	Exception
-    //   168	13	6	localException3	Exception
-    //   185	24	6	str3	String
+    //   68	11	0	l1	long
+    //   86	48	2	bool	boolean
+    //   16	155	3	localFileReader1	FileReader
+    //   177	1	3	localException1	Exception
+    //   195	1	3	localIOException	java.io.IOException
+    //   207	1	3	localObject1	Object
+    //   18	1	4	localFileReader2	FileReader
+    //   91	7	4	localObject2	Object
+    //   128	1	4	localFileReader3	FileReader
+    //   181	1	4	localException2	Exception
+    //   190	16	4	localException3	Exception
+    //   1	161	5	localObject3	Object
+    //   31	69	6	localObject4	Object
+    //   107	1	6	localObject5	Object
+    //   121	65	6	localObject6	Object
+    //   203	1	6	localObject7	Object
+    //   4	180	7	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   105	113	116	java/io/IOException
-    //   29	64	140	java/lang/Exception
-    //   70	79	140	java/lang/Exception
-    //   85	92	140	java/lang/Exception
-    //   98	105	140	java/lang/Exception
-    //   11	23	145	finally
-    //   11	23	152	java/lang/Exception
-    //   0	11	159	finally
-    //   0	11	168	java/lang/Exception
-    //   29	64	264	finally
-    //   70	79	264	finally
-    //   85	92	264	finally
-    //   98	105	264	finally
-    //   180	187	264	finally
-    //   193	199	264	finally
-    //   205	214	264	finally
-    //   218	222	317	java/io/IOException
-    //   229	233	317	java/io/IOException
-    //   273	278	321	java/io/IOException
-    //   285	289	321	java/io/IOException
+    //   33	69	91	finally
+    //   6	17	107	finally
+    //   6	17	177	java/lang/Exception
+    //   20	33	181	java/lang/Exception
+    //   33	69	190	java/lang/Exception
+    //   69	78	195	java/io/IOException
+    //   139	144	195	java/io/IOException
+    //   148	152	195	java/io/IOException
+    //   161	166	195	java/io/IOException
+    //   170	174	195	java/io/IOException
+    //   20	33	203	finally
+    //   130	134	203	finally
   }
   
   private static String j()
   {
     try
     {
-      String str1 = Locale.getDefault().getCountry();
-      return str1;
+      String str = Locale.getDefault().getCountry();
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label9:
+      boolean bool;
+      break label9;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -592,142 +512,140 @@ public class a
   {
     try
     {
-      String str1 = Locale.getDefault().getLanguage();
-      return str1;
+      String str = Locale.getDefault().getLanguage();
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label9:
+      boolean bool;
+      break label9;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
   private static String l()
   {
-    if (com.tencent.analysis.b.c) {
-      Log.i("BaseInfoUtil", "getSensor start");
-    }
+    boolean bool = com.tencent.analysis.b.c;
     Object localObject1 = "X";
-    Object localObject3 = "X";
+    localObject3 = "X";
     StringBuffer localStringBuffer = new StringBuffer();
     if (Integer.parseInt(Build.VERSION.SDK) >= 10) {}
-    for (;;)
+    try
     {
-      int i2;
-      Object localObject6;
-      int i3;
-      int i1;
-      int i5;
-      try
+      localClass = Class.forName("android.hardware.Camera");
+      i2 = ((Integer)localClass.getMethod("getNumberOfCameras", new Class[0]).invoke(localClass, new Object[0])).intValue();
+      if (i2 == 0)
       {
-        Class localClass = Class.forName("android.hardware.Camera");
-        i2 = ((Integer)localClass.getMethod("getNumberOfCameras", new Class[0]).invoke(localClass, new Object[0])).intValue();
-        if (i2 == 0)
-        {
-          localObject1 = "N";
-          localObject3 = "N";
-        }
-        else
-        {
-          localObject6 = Class.forName("android.hardware.Camera$CameraInfo");
-          Object localObject7 = ((Class)localObject6).newInstance();
-          Object localObject8 = localClass.getMethods();
-          localObject4 = null;
-          i3 = localObject8.length;
-          i1 = 0;
-          localObject5 = localObject4;
-          if (i1 < i3)
-          {
-            localObject5 = localObject8[i1];
-            if (!((Method)localObject5).getName().equals("getCameraInfo")) {
-              break label427;
-            }
-          }
-          localObject8 = ((Class)localObject6).getField("facing");
-          Field localField1 = ((Class)localObject6).getField("CAMERA_FACING_BACK");
-          Field localField2 = ((Class)localObject6).getField("CAMERA_FACING_FRONT");
-          if (localObject5 != null)
-          {
-            localObject3 = "X";
-            localObject4 = "X";
-            i1 = 0;
-            if (i1 >= i2) {
-              break label482;
-            }
-            ((Method)localObject5).invoke(localClass, new Object[] { Integer.valueOf(i1), localObject7 });
-            i3 = ((Field)localObject8).getInt(localObject7);
-            int i4 = localField1.getInt(localObject7);
-            i5 = localField2.getInt(localObject7);
-            if (i3 != i4) {
-              break label434;
-            }
-            localObject4 = "Y";
-            localObject1 = localObject4;
-            if (i2 != 1) {
-              break label471;
-            }
-            localObject3 = "N";
-            localObject1 = localObject4;
-            break label471;
-          }
-        }
-        localObject5 = (SensorManager)com.tencent.analysis.a.a.getSystemService("sensor");
-        if (((SensorManager)localObject5).getDefaultSensor(1) == null) {
-          break label489;
-        }
-        localObject4 = "Y";
-        if (((SensorManager)localObject5).getDefaultSensor(4) == null) {
-          break label497;
-        }
-        localObject5 = "Y";
-        localStringBuffer.append((String)localObject1);
-        localStringBuffer.append((String)localObject3);
-        localStringBuffer.append((String)localObject4);
-        localStringBuffer.append((String)localObject5);
+        localObject1 = "N";
+        localObject3 = "N";
+        break label283;
       }
-      catch (Exception localException)
+      localObject6 = Class.forName("android.hardware.Camera$CameraInfo");
+      localObject7 = ((Class)localObject6).newInstance();
+      localObject8 = localClass.getMethods();
+      localObject4 = null;
+      i3 = localObject8.length;
+      i1 = 0;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localObject2 = localException.toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("BaseInfoUtil", (String)localObject2);
-        }
-        return "EXCEPTION";
-      }
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", "getSensor End");
-      }
-      return localStringBuffer.toString();
-      label427:
-      i1 += 1;
-      continue;
-      label434:
-      Object localObject2 = localObject4;
-      if (i3 == i5)
-      {
-        localObject6 = "Y";
-        localObject2 = localObject4;
-        localObject3 = localObject6;
-        if (i2 == 1)
+        Class localClass;
+        int i2;
+        Object localObject6;
+        Object localObject7;
+        Object localObject8;
+        int i3;
+        int i1;
+        Field localField1;
+        Field localField2;
+        int i4;
+        int i5;
+        label283:
+        label375:
+        continue;
+        i1 += 1;
+        continue;
+        Object localObject2 = localObject4;
+        if (i3 == i5)
         {
-          localObject2 = "N";
+          localObject6 = "Y";
+          localObject2 = localObject4;
           localObject3 = localObject6;
+          if (i2 == 1)
+          {
+            localObject2 = "N";
+            localObject3 = localObject6;
+          }
         }
+        i1 += 1;
+        Object localObject4 = localObject2;
+        continue;
+        localObject2 = localObject4;
+        continue;
+        localObject4 = "N";
+        continue;
+        Object localObject5 = "N";
       }
-      label471:
-      i1 += 1;
-      Object localObject4 = localObject2;
-      continue;
-      label482:
-      localObject2 = localObject4;
-      continue;
-      label489:
-      localObject4 = "N";
-      continue;
-      label497:
-      Object localObject5 = "N";
+    }
+    localObject5 = localObject4;
+    if (i1 < i3)
+    {
+      localObject5 = localObject8[i1];
+      if (!((Method)localObject5).getName().equals("getCameraInfo")) {
+        break label391;
+      }
+    }
+    localObject8 = ((Class)localObject6).getField("facing");
+    localField1 = ((Class)localObject6).getField("CAMERA_FACING_BACK");
+    localField2 = ((Class)localObject6).getField("CAMERA_FACING_FRONT");
+    if (localObject5 != null)
+    {
+      localObject3 = "X";
+      localObject4 = "X";
+      i1 = 0;
+      if (i1 >= i2) {
+        break label446;
+      }
+      ((Method)localObject5).invoke(localClass, new Object[] { Integer.valueOf(i1), localObject7 });
+      i3 = ((Field)localObject8).getInt(localObject7);
+      i4 = localField1.getInt(localObject7);
+      i5 = localField2.getInt(localObject7);
+      if (i3 == i4)
+      {
+        localObject4 = "Y";
+        localObject1 = localObject4;
+        if (i2 != 1) {
+          break label435;
+        }
+        localObject3 = "N";
+        localObject1 = localObject4;
+        break label435;
+      }
+    }
+    else
+    {
+      localObject5 = (SensorManager)com.tencent.analysis.a.a.getSystemService("sensor");
+      if (((SensorManager)localObject5).getDefaultSensor(1) == null) {
+        break label453;
+      }
+      localObject4 = "Y";
+      if (((SensorManager)localObject5).getDefaultSensor(4) == null) {
+        break label461;
+      }
+      localObject5 = "Y";
+      localStringBuffer.append((String)localObject1);
+      localStringBuffer.append((String)localObject3);
+      localStringBuffer.append((String)localObject4);
+      localStringBuffer.append((String)localObject5);
+      break label375;
+      bool = com.tencent.analysis.b.c;
+      return "EXCEPTION";
+      bool = com.tencent.analysis.b.c;
+      return localStringBuffer.toString();
     }
   }
   
@@ -744,11 +662,11 @@ public class a
     }
     catch (Exception localException)
     {
-      String str = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str);
-      }
+      label43:
+      boolean bool;
+      break label43;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -756,16 +674,16 @@ public class a
   {
     try
     {
-      String str1 = Build.BRAND;
-      return str1;
+      String str = Build.BRAND;
+      return str;
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      label6:
+      boolean bool;
+      break label6;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
   
@@ -785,7 +703,7 @@ public class a
   
   private String p()
   {
-    String str3 = "UNKNOWN";
+    String str2 = "UNKNOWN";
     try
     {
       if (a("android.permission.ACCESS_NETWORK_STATE"))
@@ -797,32 +715,33 @@ public class a
         if (localNetworkInfo.getType() == 1) {
           return "wifi";
         }
-        String str1 = str3;
-        if (localNetworkInfo.getType() == 0)
-        {
-          str1 = str3;
-          if (this.C == null) {}
+        str1 = str2;
+        if (localNetworkInfo.getType() != 0) {
+          break label139;
+        }
+        str1 = str2;
+        if (this.C == null) {
+          break label139;
         }
       }
-      else
+      switch (this.C.getNetworkType())
       {
-        switch (this.C.getNetworkType())
-        {
-        default: 
-          return "NOPERMISSION";
-        }
+      default: 
+        return "NOPERMISSION";
       }
     }
     catch (Exception localException)
     {
-      String str2 = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
-      str2 = "EXCEPTION";
-      return str2;
+      String str1;
+      label131:
+      boolean bool;
+      break label131;
+      return "UNKNOWN";
     }
-    return "UNKNOWN";
+    str1 = "EXCEPTION";
+    bool = com.tencent.analysis.b.c;
+    label139:
+    return str1;
     return "HSPA";
     return "HSUPA";
     return "HSDPA";
@@ -839,209 +758,154 @@ public class a
   private static String q()
   {
     // Byte code:
-    //   0: new 243	java/io/FileReader
-    //   3: dup
-    //   4: ldc_w 573
-    //   7: invokespecial 248	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   10: astore_0
-    //   11: new 241	java/io/BufferedReader
-    //   14: dup
-    //   15: aload_0
-    //   16: invokespecial 251	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   19: astore 5
-    //   21: aload_0
-    //   22: astore_1
-    //   23: aload 5
-    //   25: astore_2
-    //   26: aload 5
-    //   28: invokevirtual 397	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   31: ldc_w 399
-    //   34: iconst_2
-    //   35: invokevirtual 403	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
-    //   38: iconst_1
-    //   39: aaload
-    //   40: astore_3
-    //   41: aload 5
-    //   43: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   46: aload_0
-    //   47: invokevirtual 422	java/io/FileReader:close	()V
-    //   50: aload_3
-    //   51: areturn
-    //   52: astore_0
-    //   53: aload_0
-    //   54: invokevirtual 274	java/lang/Exception:toString	()Ljava/lang/String;
-    //   57: astore_0
-    //   58: getstatic 277	com/tencent/analysis/b:c	Z
-    //   61: ifeq +11 -> 72
-    //   64: ldc_w 279
-    //   67: aload_0
-    //   68: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   71: pop
-    //   72: ldc_w 286
-    //   75: areturn
-    //   76: astore 4
-    //   78: aload_0
-    //   79: astore_3
-    //   80: aload 5
-    //   82: astore_0
-    //   83: goto +34 -> 117
-    //   86: astore_1
-    //   87: aconst_null
-    //   88: astore_2
-    //   89: goto +113 -> 202
-    //   92: astore 4
-    //   94: aconst_null
-    //   95: astore_1
-    //   96: aload_0
-    //   97: astore_3
-    //   98: aload_1
-    //   99: astore_0
-    //   100: goto +17 -> 117
-    //   103: astore_1
-    //   104: aconst_null
-    //   105: astore_2
-    //   106: aload_2
-    //   107: astore_0
-    //   108: goto +94 -> 202
-    //   111: astore 4
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: aload_0
-    //   116: astore_3
-    //   117: aload_3
-    //   118: astore_1
-    //   119: aload_0
-    //   120: astore_2
-    //   121: aload 4
-    //   123: invokevirtual 274	java/lang/Exception:toString	()Ljava/lang/String;
-    //   126: astore 4
-    //   128: aload_3
-    //   129: astore_1
-    //   130: aload_0
-    //   131: astore_2
-    //   132: getstatic 277	com/tencent/analysis/b:c	Z
-    //   135: ifeq +16 -> 151
-    //   138: aload_3
-    //   139: astore_1
-    //   140: aload_0
-    //   141: astore_2
-    //   142: ldc_w 279
-    //   145: aload 4
-    //   147: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   150: pop
-    //   151: aload_0
-    //   152: ifnull +10 -> 162
-    //   155: aload_0
-    //   156: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   159: goto +3 -> 162
-    //   162: aload_3
-    //   163: ifnull +30 -> 193
-    //   166: aload_3
-    //   167: invokevirtual 422	java/io/FileReader:close	()V
-    //   170: ldc_w 286
-    //   173: areturn
-    //   174: aload_0
-    //   175: invokevirtual 274	java/lang/Exception:toString	()Ljava/lang/String;
-    //   178: astore_0
-    //   179: getstatic 277	com/tencent/analysis/b:c	Z
-    //   182: ifeq +11 -> 193
-    //   185: ldc_w 279
-    //   188: aload_0
-    //   189: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   192: pop
-    //   193: ldc_w 286
-    //   196: areturn
-    //   197: astore_3
-    //   198: aload_1
-    //   199: astore_0
-    //   200: aload_3
-    //   201: astore_1
-    //   202: aload_2
-    //   203: ifnull +10 -> 213
-    //   206: aload_2
-    //   207: invokevirtual 265	java/io/BufferedReader:close	()V
-    //   210: goto +3 -> 213
-    //   213: aload_0
-    //   214: ifnull +33 -> 247
-    //   217: aload_0
-    //   218: invokevirtual 422	java/io/FileReader:close	()V
-    //   221: goto +26 -> 247
-    //   224: aload_0
-    //   225: invokevirtual 274	java/lang/Exception:toString	()Ljava/lang/String;
-    //   228: astore_0
-    //   229: getstatic 277	com/tencent/analysis/b:c	Z
-    //   232: ifeq +11 -> 243
-    //   235: ldc_w 279
-    //   238: aload_0
-    //   239: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   242: pop
-    //   243: ldc_w 286
-    //   246: areturn
-    //   247: aload_1
-    //   248: athrow
-    //   249: astore_0
-    //   250: goto -76 -> 174
-    //   253: astore_0
-    //   254: goto -30 -> 224
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: new 243	java/io/FileReader
+    //   8: dup
+    //   9: ldc_w 564
+    //   12: invokespecial 248	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   15: astore_1
+    //   16: aload_1
+    //   17: astore_2
+    //   18: new 241	java/io/BufferedReader
+    //   21: dup
+    //   22: aload_1
+    //   23: invokespecial 251	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: astore 4
+    //   28: aload 4
+    //   30: invokevirtual 390	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: ldc_w 392
+    //   36: iconst_2
+    //   37: invokevirtual 396	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   40: iconst_1
+    //   41: aaload
+    //   42: astore_2
+    //   43: aload 4
+    //   45: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   48: aload_1
+    //   49: invokevirtual 415	java/io/FileReader:close	()V
+    //   52: aload_2
+    //   53: areturn
+    //   54: getstatic 278	com/tencent/analysis/b:c	Z
+    //   57: istore_0
+    //   58: ldc_w 275
+    //   61: areturn
+    //   62: astore_3
+    //   63: aload 4
+    //   65: astore_2
+    //   66: goto +51 -> 117
+    //   69: goto +17 -> 86
+    //   72: astore_3
+    //   73: aconst_null
+    //   74: astore_2
+    //   75: aload_2
+    //   76: astore_1
+    //   77: goto +40 -> 117
+    //   80: aconst_null
+    //   81: astore_1
+    //   82: aload 5
+    //   84: astore 4
+    //   86: aload 4
+    //   88: astore_3
+    //   89: aload_1
+    //   90: astore_2
+    //   91: getstatic 278	com/tencent/analysis/b:c	Z
+    //   94: istore_0
+    //   95: aload 4
+    //   97: ifnull +8 -> 105
+    //   100: aload 4
+    //   102: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   105: aload_1
+    //   106: ifnull +49 -> 155
+    //   109: aload_1
+    //   110: invokevirtual 415	java/io/FileReader:close	()V
+    //   113: ldc_w 275
+    //   116: areturn
+    //   117: aload_2
+    //   118: ifnull +7 -> 125
+    //   121: aload_2
+    //   122: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   125: aload_1
+    //   126: ifnull +7 -> 133
+    //   129: aload_1
+    //   130: invokevirtual 415	java/io/FileReader:close	()V
+    //   133: aload_3
+    //   134: athrow
+    //   135: astore_1
+    //   136: goto -56 -> 80
+    //   139: astore_2
+    //   140: aload 5
+    //   142: astore 4
+    //   144: goto -58 -> 86
+    //   147: astore_2
+    //   148: goto -79 -> 69
+    //   151: astore_1
+    //   152: goto -98 -> 54
+    //   155: ldc_w 275
+    //   158: areturn
+    //   159: astore_1
+    //   160: aload_3
+    //   161: astore 4
+    //   163: aload_1
+    //   164: astore_3
+    //   165: aload_2
+    //   166: astore_1
+    //   167: aload 4
+    //   169: astore_2
+    //   170: goto -53 -> 117
     // Local variable table:
     //   start	length	slot	name	signature
-    //   10	37	0	localFileReader1	FileReader
-    //   52	2	0	localException1	Exception
-    //   57	182	0	localObject1	Object
-    //   249	1	0	localException2	Exception
-    //   253	1	0	localException3	Exception
-    //   22	1	1	localFileReader2	FileReader
-    //   86	1	1	localObject2	Object
-    //   95	4	1	localObject3	Object
-    //   103	1	1	localObject4	Object
-    //   118	130	1	localObject5	Object
-    //   25	182	2	localObject6	Object
-    //   40	127	3	localObject7	Object
-    //   197	4	3	localObject8	Object
-    //   76	1	4	localException4	Exception
-    //   92	1	4	localException5	Exception
-    //   111	11	4	localException6	Exception
-    //   126	20	4	str	String
-    //   19	62	5	localBufferedReader	BufferedReader
+    //   57	38	0	bool	boolean
+    //   15	115	1	localObject1	Object
+    //   135	1	1	localException1	Exception
+    //   151	1	1	localException2	Exception
+    //   159	5	1	localObject2	Object
+    //   166	1	1	localObject3	Object
+    //   17	105	2	localObject4	Object
+    //   139	1	2	localException3	Exception
+    //   147	19	2	localException4	Exception
+    //   169	1	2	localObject5	Object
+    //   1	1	3	localObject6	Object
+    //   62	1	3	localObject7	Object
+    //   72	1	3	localObject8	Object
+    //   88	77	3	localObject9	Object
+    //   26	142	4	localObject10	Object
+    //   3	138	5	localObject11	Object
     // Exception table:
     //   from	to	target	type
-    //   41	50	52	java/lang/Exception
-    //   26	41	76	java/lang/Exception
-    //   11	21	86	finally
-    //   11	21	92	java/lang/Exception
-    //   0	11	103	finally
-    //   0	11	111	java/lang/Exception
-    //   26	41	197	finally
-    //   121	128	197	finally
-    //   132	138	197	finally
-    //   142	151	197	finally
-    //   155	159	249	java/lang/Exception
-    //   166	170	249	java/lang/Exception
-    //   206	210	253	java/lang/Exception
-    //   217	221	253	java/lang/Exception
+    //   28	43	62	finally
+    //   5	16	72	finally
+    //   5	16	135	java/lang/Exception
+    //   18	28	139	java/lang/Exception
+    //   28	43	147	java/lang/Exception
+    //   43	52	151	java/lang/Exception
+    //   100	105	151	java/lang/Exception
+    //   109	113	151	java/lang/Exception
+    //   121	125	151	java/lang/Exception
+    //   129	133	151	java/lang/Exception
+    //   18	28	159	finally
+    //   91	95	159	finally
   }
   
   private void r()
   {
-    String str1 = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_qimei", "UNKNOWN");
-    if (str1.equals("UNKNOWN"))
+    String str = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_qimei", "UNKNOWN");
+    if (str.equals("UNKNOWN"))
     {
       this.a = "UNKNOWN";
       return;
     }
     try
     {
-      this.a = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str1)), "UTF-8");
+      this.a = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str)), "UTF-8");
       return;
     }
     catch (Exception localException)
     {
-      StringBuilder localStringBuilder = new StringBuilder("getQimei Error :");
-      localStringBuilder.append(localException.toString());
-      String str2 = localStringBuilder.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str2);
-      }
+      new StringBuilder("getQimei Error :").append(localException.toString());
+      boolean bool = com.tencent.analysis.b.c;
     }
   }
   
@@ -1049,8 +913,8 @@ public class a
   {
     Object localObject1 = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_mac", "UNKNOWN");
     Object localObject3;
-    String str3;
-    String str1;
+    String str;
+    boolean bool;
     if (((String)localObject1).equals("UNKNOWN"))
     {
       this.c = a();
@@ -1062,55 +926,43 @@ public class a
       {
         localObject1 = com.tencent.analysis.a.a;
         localObject3 = c.b();
-        str3 = this.c;
-        localObject3 = ((d)localObject3).b.c(str3.getBytes());
+        str = this.c;
+        localObject3 = ((d)localObject3).b.c(str.getBytes());
         ((Context)localObject1).getSharedPreferences("analysis_sdk", 0).edit().putString("key_mac", (String)localObject3).commit();
         return;
       }
       catch (Exception localException1)
       {
-        localObject3 = new StringBuilder("getMac Error :");
-        ((StringBuilder)localObject3).append(localException1.toString());
-        str1 = ((StringBuilder)localObject3).toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("BaseInfoUtil", str1);
-        }
+        new StringBuilder("getMac Error :").append(localException1.toString());
+        bool = com.tencent.analysis.b.c;
         return;
       }
     }
     try
     {
-      this.c = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str1)), "UTF-8");
+      this.c = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(localException1)), "UTF-8");
       return;
     }
     catch (Exception localException2)
     {
-      localObject3 = new StringBuilder("getQimei Error :");
-      ((StringBuilder)localObject3).append(localException2.toString());
-      Object localObject2 = ((StringBuilder)localObject3).toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", (String)localObject2);
-      }
+      new StringBuilder("getQimei Error :").append(localException2.toString());
+      bool = com.tencent.analysis.b.c;
       this.c = a();
-      localObject2 = this.c;
+      Object localObject2 = this.c;
       if ((localObject2 != null) && (!((String)localObject2).equals("")) && (!this.c.equals("EXCEPTION")) && (!this.c.equals("NOPERMISSION")) && (!this.c.equals("UNKNOWN"))) {
         try
         {
           localObject2 = com.tencent.analysis.a.a;
           localObject3 = c.b();
-          str3 = this.c;
-          localObject3 = ((d)localObject3).b.c(str3.getBytes());
+          str = this.c;
+          localObject3 = ((d)localObject3).b.c(str.getBytes());
           ((Context)localObject2).getSharedPreferences("analysis_sdk", 0).edit().putString("key_mac", (String)localObject3).commit();
           return;
         }
         catch (Exception localException3)
         {
-          localObject3 = new StringBuilder("getMac Error :");
-          ((StringBuilder)localObject3).append(localException3.toString());
-          String str2 = ((StringBuilder)localObject3).toString();
-          if (com.tencent.analysis.b.c) {
-            Log.i("BaseInfoUtil", str2);
-          }
+          new StringBuilder("getMac Error :").append(localException3.toString());
+          bool = com.tencent.analysis.b.c;
         }
       }
     }
@@ -1120,8 +972,8 @@ public class a
   {
     Object localObject1 = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_imsi", "UNKNOWN");
     Object localObject3;
-    String str3;
-    String str1;
+    String str;
+    boolean bool;
     if (((String)localObject1).equals("UNKNOWN"))
     {
       this.d = c();
@@ -1133,55 +985,43 @@ public class a
       {
         localObject1 = com.tencent.analysis.a.a;
         localObject3 = c.b();
-        str3 = this.d;
-        localObject3 = ((d)localObject3).b.c(str3.getBytes());
+        str = this.d;
+        localObject3 = ((d)localObject3).b.c(str.getBytes());
         ((Context)localObject1).getSharedPreferences("analysis_sdk", 0).edit().putString("key_imsi", (String)localObject3).commit();
         return;
       }
       catch (Exception localException1)
       {
-        localObject3 = new StringBuilder("getIMsi Error :");
-        ((StringBuilder)localObject3).append(localException1.toString());
-        str1 = ((StringBuilder)localObject3).toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("BaseInfoUtil", str1);
-        }
+        new StringBuilder("getIMsi Error :").append(localException1.toString());
+        bool = com.tencent.analysis.b.c;
         return;
       }
     }
     try
     {
-      this.d = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str1)), "UTF-8");
+      this.d = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(localException1)), "UTF-8");
       return;
     }
     catch (Exception localException2)
     {
-      localObject3 = new StringBuilder("getQimei Error :");
-      ((StringBuilder)localObject3).append(localException2.toString());
-      Object localObject2 = ((StringBuilder)localObject3).toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", (String)localObject2);
-      }
+      new StringBuilder("getQimei Error :").append(localException2.toString());
+      bool = com.tencent.analysis.b.c;
       this.d = c();
-      localObject2 = this.d;
+      Object localObject2 = this.d;
       if ((localObject2 != null) && (!((String)localObject2).equals("")) && (!this.d.equals("EXCEPTION")) && (!this.d.equals("NOPERMISSION")) && (!this.d.equals("UNKNOWN"))) {
         try
         {
           localObject2 = com.tencent.analysis.a.a;
           localObject3 = c.b();
-          str3 = this.d;
-          localObject3 = ((d)localObject3).b.c(str3.getBytes());
+          str = this.d;
+          localObject3 = ((d)localObject3).b.c(str.getBytes());
           ((Context)localObject2).getSharedPreferences("analysis_sdk", 0).edit().putString("key_imsi", (String)localObject3).commit();
           return;
         }
         catch (Exception localException3)
         {
-          localObject3 = new StringBuilder("getIMsi Error :");
-          ((StringBuilder)localObject3).append(localException3.toString());
-          String str2 = ((StringBuilder)localObject3).toString();
-          if (com.tencent.analysis.b.c) {
-            Log.i("BaseInfoUtil", str2);
-          }
+          new StringBuilder("getIMsi Error :").append(localException3.toString());
+          bool = com.tencent.analysis.b.c;
         }
       }
     }
@@ -1189,21 +1029,17 @@ public class a
   
   private static String u()
   {
-    String str1 = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_user", "");
-    if (!str1.equals("")) {
+    String str = com.tencent.analysis.a.a.getSharedPreferences("analysis_sdk", 0).getString("key_user", "");
+    if (!str.equals("")) {
       try
       {
-        str1 = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str1)), "UTF-8");
-        return str1;
+        str = new String(c.b().b.a(com.tencent.analysis.d.a.b.a(str)), "UTF-8");
+        return str;
       }
       catch (Exception localException)
       {
-        StringBuilder localStringBuilder = new StringBuilder("getUserId Error :");
-        localStringBuilder.append(localException.toString());
-        String str2 = localStringBuilder.toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("BaseInfoUtil", str2);
-        }
+        new StringBuilder("getUserId Error :").append(localException.toString());
+        boolean bool = com.tencent.analysis.b.c;
       }
     }
     return "";
@@ -1219,11 +1055,11 @@ public class a
     }
     catch (Exception localException)
     {
-      String str = localException.toString();
-      if (com.tencent.analysis.b.c) {
-        Log.i("BaseInfoUtil", str);
-      }
+      label24:
+      boolean bool;
+      break label24;
     }
+    bool = com.tencent.analysis.b.c;
     return "EXCEPTION";
   }
 }

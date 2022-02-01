@@ -1,5 +1,7 @@
 package com.tencent.halley.common.b;
 
+import com.tencent.token.lj;
+import com.tencent.token.lk;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,57 +21,57 @@ public final class e
   private Map i;
   private Map j;
   
-  public final void a(a parama)
+  public final void a(lj paramlj)
   {
     try
     {
-      this.a = parama.a(this.a, 1, true);
-      this.f = parama.a(this.f, 2, true);
-      this.g = parama.a(this.g, 3, true);
-      this.b = parama.a(this.b, 4, true);
-      this.c = parama.a(5, true);
-      this.d = parama.a(6, true);
+      this.a = paramlj.a(this.a, 1, true);
+      this.f = paramlj.a(this.f, 2, true);
+      this.g = paramlj.a(this.g, 3, true);
+      this.b = paramlj.a(this.b, 4, true);
+      this.c = paramlj.a(5, true);
+      this.d = paramlj.a(6, true);
       if (k == null) {
         k = new byte[] { 0 };
       }
-      Object localObject = k;
-      this.e = ((byte[])parama.b(7, true));
-      this.h = parama.a(this.h, 8, true);
+      this.e = ((byte[])paramlj.b(7, true));
+      this.h = paramlj.a(this.h, 8, true);
+      HashMap localHashMap;
       if (l == null)
       {
-        localObject = new HashMap();
-        l = (Map)localObject;
-        ((Map)localObject).put("", "");
+        localHashMap = new HashMap();
+        l = localHashMap;
+        localHashMap.put("", "");
       }
-      this.i = ((Map)parama.a(l, 9, true));
+      this.i = ((Map)paramlj.a(l, 9, true));
       if (l == null)
       {
-        localObject = new HashMap();
-        l = (Map)localObject;
-        ((Map)localObject).put("", "");
+        localHashMap = new HashMap();
+        l = localHashMap;
+        localHashMap.put("", "");
       }
-      this.j = ((Map)parama.a(l, 10, true));
+      this.j = ((Map)paramlj.a(l, 10, true));
       return;
     }
-    catch (Exception parama)
+    catch (Exception paramlj)
     {
-      parama.printStackTrace();
-      throw new RuntimeException(parama);
+      paramlj.printStackTrace();
+      throw new RuntimeException(paramlj);
     }
   }
   
-  public final void a(b paramb)
+  public final void a(lk paramlk)
   {
-    paramb.a(this.a, 1);
-    paramb.a(this.f, 2);
-    paramb.a(this.g, 3);
-    paramb.a(this.b, 4);
-    paramb.a(this.c, 5);
-    paramb.a(this.d, 6);
-    paramb.a(this.e, 7);
-    paramb.a(this.h, 8);
-    paramb.a(this.i, 9);
-    paramb.a(this.j, 10);
+    paramlk.a(this.a, 1);
+    paramlk.a(this.f, 2);
+    paramlk.a(this.g, 3);
+    paramlk.a(this.b, 4);
+    paramlk.a(this.c, 5);
+    paramlk.a(this.d, 6);
+    paramlk.a(this.e, 7);
+    paramlk.a(this.h, 8);
+    paramlk.a(this.i, 9);
+    paramlk.a(this.j, 10);
   }
 }
 

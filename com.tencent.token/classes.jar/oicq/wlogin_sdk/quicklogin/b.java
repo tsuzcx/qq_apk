@@ -11,7 +11,7 @@ final class b
 {
   b(QuikLoginJSInterface paramQuikLoginJSInterface) {}
   
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public final boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
     paramJsPromptResult.cancel();
     try
@@ -27,10 +27,7 @@ final class b
       label54:
       break label54;
     }
-    paramWebView = new StringBuilder();
-    paramWebView.append("onJsPrompt failed message ");
-    paramWebView.append(paramString2);
-    util.LOGI(paramWebView.toString(), "");
+    util.LOGI("onJsPrompt failed message ".concat(String.valueOf(paramString2)), "");
     return true;
   }
 }

@@ -1,118 +1,29 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.d.a.a;
-import com.tencent.halley.downloader.d.a.b;
-import com.tencent.halley.downloader.d.a.d;
-import com.tencent.halley.downloader.d.a.f;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class ah
-  implements aj
+  extends JceStruct
 {
-  private static ah e;
-  private b a;
-  private b b;
-  private f c;
-  private f d;
+  static ag c;
+  public ag a = null;
+  public String b = "";
   
-  private ah()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    Object localObject = new a(64);
-    this.a = new b(l.a(), l.a(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-MassTaskPool"));
-    ((a)localObject).a(this.a);
-    localObject = new a(64);
-    this.b = new b(1, l.b(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-EaseTaskPool"));
-    ((a)localObject).a(this.b);
-    localObject = new d(16);
-    this.c = new f(1, l.a() + l.b() + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-DirectPool"));
-    ((d)localObject).a(this.c);
-    localObject = new d(16);
-    this.d = new f(1, (l.a() << 1) + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new a("HallyDownload-SchedulePool"));
-    ((d)localObject).a(this.d);
-  }
-  
-  public static ah a()
-  {
-    try
-    {
-      if (e == null) {
-        e = new ah();
-      }
-      ah localah = e;
-      return localah;
+    if (c == null) {
+      c = new ag();
     }
-    finally {}
+    this.a = ((ag)paramJceInputStream.read(c, 0, true));
+    this.b = paramJceInputStream.readString(1, true);
   }
   
-  public final ai a(Runnable paramRunnable)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    return new ai(this.a.submit(paramRunnable));
-  }
-  
-  public final ai b(Runnable paramRunnable)
-  {
-    return new ai(this.b.submit(paramRunnable));
-  }
-  
-  public final ai c(Runnable paramRunnable)
-  {
-    return new ai(this.c.submit(paramRunnable));
-  }
-  
-  public final ai d(Runnable paramRunnable)
-  {
-    return new ai(this.d.submit(paramRunnable));
-  }
-  
-  static final class a
-    implements ThreadFactory
-  {
-    private static final AtomicInteger a = new AtomicInteger(1);
-    private final ThreadGroup b;
-    private final AtomicInteger c = new AtomicInteger(1);
-    private final String d;
-    
-    a(String paramString)
-    {
-      Object localObject = System.getSecurityManager();
-      if (localObject != null) {
-        localObject = ((SecurityManager)localObject).getThreadGroup();
-      } else {
-        localObject = Thread.currentThread().getThreadGroup();
-      }
-      this.b = ((ThreadGroup)localObject);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("-");
-      ((StringBuilder)localObject).append(a.getAndIncrement());
-      ((StringBuilder)localObject).append("-thread-");
-      this.d = ((StringBuilder)localObject).toString();
-    }
-    
-    public final Thread newThread(Runnable paramRunnable)
-    {
-      ThreadGroup localThreadGroup = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(this.c.getAndIncrement());
-      paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
-      if (paramRunnable.isDaemon()) {
-        paramRunnable.setDaemon(false);
-      }
-      try
-      {
-        paramRunnable.setPriority(l.d);
-        return paramRunnable;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      return paramRunnable;
-    }
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
   }
 }
 

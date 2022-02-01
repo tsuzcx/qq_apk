@@ -1,26 +1,10 @@
 package android.arch.lifecycle;
 
-import android.annotation.SuppressLint;
-import android.app.Application;
-import android.support.annotation.NonNull;
+import com.tencent.token.bf;
 
 public class AndroidViewModel
-  extends ViewModel
-{
-  @SuppressLint({"StaticFieldLeak"})
-  private Application mApplication;
-  
-  public AndroidViewModel(@NonNull Application paramApplication)
-  {
-    this.mApplication = paramApplication;
-  }
-  
-  @NonNull
-  public <T extends Application> T getApplication()
-  {
-    return this.mApplication;
-  }
-}
+  extends bf
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.token.global.g;
+import com.tencent.token.xb;
+import com.tencent.token.zs;
 
 public class CustomerEditText
   extends EditText
@@ -34,20 +35,15 @@ public class CustomerEditText
     this.b = null;
     this.c = 0L;
     this.f = "";
-    a();
-  }
-  
-  private void a()
-  {
     setOnFocusChangeListener(this);
     setFocusable(true);
     setFocusableInTouchMode(true);
     ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this, 0);
   }
   
-  public void a(boolean paramBoolean)
+  public final void a(boolean paramBoolean)
   {
-    this.b = a.a().b();
+    this.b = zs.a().j;
     this.c = 0L;
     if (this.b != null)
     {
@@ -71,38 +67,32 @@ public class CustomerEditText
     {
       if (getText() != null)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("focus start:");
+        localStringBuilder = new StringBuilder("focus start:");
         localStringBuilder.append(getText().toString());
-        g.c(localStringBuilder.toString());
-        a.a().a(a.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-        a.a().d();
+        xb.c(localStringBuilder.toString());
+        zs.a().a(zs.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+        zs.a().b();
       }
     }
     else if (getText() != null)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("focus end");
+      localStringBuilder = new StringBuilder("focus end");
       localStringBuilder.append(getText().toString());
-      g.c(localStringBuilder.toString());
-      a.a().a(a.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+      xb.c(localStringBuilder.toString());
+      zs.a().a(zs.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pagename:");
+    StringBuilder localStringBuilder = new StringBuilder("pagename:");
     localStringBuilder.append(this.f);
-    g.c(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ctrlName:");
+    xb.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("ctrlName:");
     localStringBuilder.append(getClass().getName());
-    g.c(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getRawX:");
+    xb.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("getRawX:");
     localStringBuilder.append(this.d);
-    g.c(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getRawY:");
+    xb.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("getRawY:");
     localStringBuilder.append(this.e);
-    g.c(localStringBuilder.toString());
+    xb.c(localStringBuilder.toString());
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)

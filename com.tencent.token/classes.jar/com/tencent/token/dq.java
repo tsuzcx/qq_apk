@@ -1,8 +1,14 @@
 package com.tencent.token;
 
-public class dq
+import android.os.Build.VERSION;
+
+public final class dq
 {
-  public Object a;
+  @Deprecated
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 27;
+  }
 }
 
 

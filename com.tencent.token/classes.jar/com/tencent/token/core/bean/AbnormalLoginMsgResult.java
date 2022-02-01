@@ -34,8 +34,7 @@ public class AbnormalLoginMsgResult
         }
         else
         {
-          paramJSONObject = new StringBuilder();
-          paramJSONObject.append("parse msg[");
+          paramJSONObject = new StringBuilder("parse msg[");
           paramJSONObject.append(i);
           paramJSONObject.append("] error");
           throw new JSONException(paramJSONObject.toString());

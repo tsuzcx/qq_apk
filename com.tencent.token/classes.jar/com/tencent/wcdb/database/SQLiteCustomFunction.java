@@ -18,10 +18,7 @@ public final class SQLiteCustomFunction
     throw new IllegalArgumentException("name must not be null.");
   }
   
-  private void dispatchCallback(String[] paramArrayOfString)
-  {
-    this.callback.callback(paramArrayOfString);
-  }
+  private void dispatchCallback(String[] paramArrayOfString) {}
 }
 
 

@@ -1,25 +1,35 @@
 package gameloginsdk;
 
 import android.content.Context;
-import com.tencent.token.c;
-import tmsdk.common.a;
+import android.text.TextUtils;
+import com.tencent.token.aot;
+import com.tencent.token.kb;
 
 public class k
 {
-  static c a;
+  static kb a;
   
   private static void a(int paramInt1, String paramString, int paramInt2)
   {
-    a.a(paramInt1, paramString, paramInt2);
+    kb localkb = a;
+    localkb.a = paramInt1;
+    localkb.b = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localkb.c = paramInt2;
+      return;
+    }
+    throw new RuntimeException("appVersion couldn't be null or empty");
   }
   
   public static boolean a(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
     try
     {
-      a.a(paramContext);
-      a = new c(paramContext);
-      a.a(a, paramInt2);
+      aot.a(paramContext);
+      paramContext = new kb(paramContext);
+      a = paramContext;
+      aot.a(paramContext, paramInt2);
       a(paramInt1, paramString, paramInt2);
       return true;
     }

@@ -1,5 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class Foxnut
   extends break
 {
@@ -7,23 +10,23 @@ public final class Foxnut
   public long vc = 0L;
   public long wc = 0L;
   
-  public void a(cy paramcy)
+  public final void a(afl paramafl)
   {
-    this.uc = paramcy.a(this.uc, 0, true);
-    this.vc = paramcy.a(this.vc, 1, false);
-    this.wc = paramcy.a(this.wc, 2, false);
+    this.uc = paramafl.a(this.uc, 0, true);
+    this.vc = paramafl.a(this.vc, 1, false);
+    this.wc = paramafl.a(this.wc, 2, false);
   }
   
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
-    paramdb.a(this.uc, 0);
+    paramafo.a(this.uc, 0);
     long l = this.vc;
     if (l != 0L) {
-      paramdb.a(l, 1);
+      paramafo.a(l, 1);
     }
     l = this.wc;
     if (l != 0L) {
-      paramdb.a(l, 2);
+      paramafo.a(l, 2);
     }
   }
 }

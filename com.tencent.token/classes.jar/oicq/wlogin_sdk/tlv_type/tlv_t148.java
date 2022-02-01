@@ -12,39 +12,37 @@ public class tlv_t148
   
   public byte[] get_tlv_148(byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    byte[] arrayOfByte = paramArrayOfByte1;
     if (paramArrayOfByte1 == null) {
-      arrayOfByte = new byte[0];
-    }
-    paramArrayOfByte1 = paramArrayOfByte2;
-    if (paramArrayOfByte2 == null) {
       paramArrayOfByte1 = new byte[0];
     }
-    paramArrayOfByte2 = paramArrayOfByte3;
-    if (paramArrayOfByte3 == null) {
+    if (paramArrayOfByte2 == null) {
       paramArrayOfByte2 = new byte[0];
     }
-    int k = limit_len(arrayOfByte, 32);
-    int j = limit_len(paramArrayOfByte1, 32);
-    int i = limit_len(paramArrayOfByte2, 32);
-    paramArrayOfByte3 = new byte[k + 2 + 4 + 4 + 4 + 2 + j + 2 + i];
-    util.int16_to_buf(paramArrayOfByte3, 0, k);
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte3, 2, k);
-    k += 2;
-    util.int64_to_buf32(paramArrayOfByte3, k, paramLong1);
-    k += 4;
-    util.int64_to_buf32(paramArrayOfByte3, k, paramLong2);
-    k += 4;
-    util.int64_to_buf32(paramArrayOfByte3, k, paramLong3);
-    k += 4;
-    util.int16_to_buf(paramArrayOfByte3, k, j);
-    k += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, k, j);
-    j = k + j;
-    util.int16_to_buf(paramArrayOfByte3, j, i);
-    System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, j + 2, i);
+    if (paramArrayOfByte3 == null) {
+      paramArrayOfByte3 = new byte[0];
+    }
+    int i = limit_len(paramArrayOfByte1, 32);
+    int j = limit_len(paramArrayOfByte2, 32);
+    int k = limit_len(paramArrayOfByte3, 32);
+    int m = i + 2;
+    int n = m + 4;
+    int i1 = n + 4;
+    int i2 = i1 + 4;
+    int i3 = i2 + 2;
+    int i4 = i3 + j;
+    int i5 = i4 + 2;
+    byte[] arrayOfByte = new byte[i5 + k];
+    util.int16_to_buf(arrayOfByte, 0, i);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, i);
+    util.int64_to_buf32(arrayOfByte, m, paramLong1);
+    util.int64_to_buf32(arrayOfByte, n, paramLong2);
+    util.int64_to_buf32(arrayOfByte, i1, paramLong3);
+    util.int16_to_buf(arrayOfByte, i2, j);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i3, j);
+    util.int16_to_buf(arrayOfByte, i4, k);
+    System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, i5, k);
     fill_head(this._cmd);
-    fill_body(paramArrayOfByte3, paramArrayOfByte3.length);
+    fill_body(arrayOfByte, arrayOfByte.length);
     set_length();
     return get_buf();
   }

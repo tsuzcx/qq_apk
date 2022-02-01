@@ -1,8 +1,42 @@
 package com.tencent.token;
 
-public abstract interface o
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
+public final class o
+  extends JceStruct
 {
-  public abstract void r();
+  static ArrayList<r> c = new ArrayList();
+  public int a = 0;
+  public ArrayList<r> b = null;
+  
+  static
+  {
+    r localr = new r();
+    c.add(localr);
+  }
+  
+  public final JceStruct newInit()
+  {
+    return new o();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = ((ArrayList)paramJceInputStream.read(c, 1, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
+    }
+  }
 }
 
 

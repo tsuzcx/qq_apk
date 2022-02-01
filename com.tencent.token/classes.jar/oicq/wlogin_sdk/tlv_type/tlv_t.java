@@ -236,7 +236,7 @@ public class tlv_t
   
   public Boolean verify()
   {
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

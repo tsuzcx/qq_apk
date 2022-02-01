@@ -94,8 +94,7 @@ public class ErrMsg
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("(");
+    StringBuilder localStringBuilder = new StringBuilder("(");
     int i = this.type;
     if (i < 0) {
       localObject = Integer.valueOf(i);

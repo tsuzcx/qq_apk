@@ -1,40 +1,26 @@
 package android.arch.lifecycle;
 
-class FullLifecycleObserverAdapter
+import com.tencent.token.au.a;
+import com.tencent.token.aw;
+
+public class FullLifecycleObserverAdapter
   implements GenericLifecycleObserver
 {
-  private final FullLifecycleObserver mObserver;
+  private final FullLifecycleObserver a;
   
-  FullLifecycleObserverAdapter(FullLifecycleObserver paramFullLifecycleObserver)
+  public FullLifecycleObserverAdapter(FullLifecycleObserver paramFullLifecycleObserver)
   {
-    this.mObserver = paramFullLifecycleObserver;
+    this.a = paramFullLifecycleObserver;
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+  public final void a(aw paramaw, au.a parama)
   {
-    switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
+    switch (1.a[parama.ordinal()])
     {
     default: 
-      return;
     case 7: 
       throw new IllegalArgumentException("ON_ANY must not been send by anybody");
-    case 6: 
-      this.mObserver.onDestroy(paramLifecycleOwner);
-      return;
-    case 5: 
-      this.mObserver.onStop(paramLifecycleOwner);
-      return;
-    case 4: 
-      this.mObserver.onPause(paramLifecycleOwner);
-      return;
-    case 3: 
-      this.mObserver.onResume(paramLifecycleOwner);
-      return;
-    case 2: 
-      this.mObserver.onStart(paramLifecycleOwner);
-      return;
     }
-    this.mObserver.onCreate(paramLifecycleOwner);
   }
 }
 

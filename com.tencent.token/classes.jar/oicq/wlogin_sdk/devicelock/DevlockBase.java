@@ -27,7 +27,7 @@ public class DevlockBase
     util.int16_to_buf(arrayOfByte, 43, this._version);
     util.int8_to_buf(arrayOfByte, 45, 0);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 111, paramArrayOfByte.length);
-    util.int8_to_buf(arrayOfByte, 111 + paramArrayOfByte.length, 3);
+    util.int8_to_buf(arrayOfByte, paramArrayOfByte.length + 111, 3);
     return arrayOfByte;
   }
   

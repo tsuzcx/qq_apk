@@ -20,58 +20,51 @@ public class w
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
+    int m = t.w;
     int i = 0;
+    int j;
     for (;;)
     {
       Object localObject = a(paramInt1, paramInt2, paramArrayOfLong);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject);
       int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      j = k;
       if (k != 0) {
-        return k;
+        break;
       }
       k = b();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("retry num:");
+      localObject = new StringBuilder("retry num:");
       ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" ret:");
       ((StringBuilder)localObject).append(k);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
       localStringBuilder.append(this.x.f);
       util.LOGI((String)localObject, localStringBuilder.toString());
+      j = k;
       if (k != 180) {
-        return k;
+        break;
       }
-      if (i >= 1) {
+      if (i > 0) {
         return k;
       }
       i += 1;
     }
+    return j;
   }
   
   public byte[] a(int paramInt1, int paramInt2, long[] paramArrayOfLong)
   {
-    int[] arrayOfInt = new int[3];
-    int[] tmp7_5 = arrayOfInt;
-    tmp7_5[0] = 260;
-    int[] tmp13_7 = tmp7_5;
-    tmp13_7[1] = 8;
-    int[] tmp18_13 = tmp13_7;
-    tmp18_13[2] = 278;
-    tmp18_13;
     ArrayList localArrayList = new ArrayList();
-    int i1 = arrayOfInt.length;
     async_context localasync_context = t.b(this.x.h);
     int j = 0;
     int k = 0;
     byte[] arrayOfByte;
     int m;
-    for (int i = 0; j < i1; i = m)
+    for (int i = 0; j < 3; i = m)
     {
       arrayOfByte = new byte[0];
-      m = arrayOfInt[j];
+      m = new int[] { 260, 8, 278 }[j];
       if (m != 8)
       {
         if (m != 260)

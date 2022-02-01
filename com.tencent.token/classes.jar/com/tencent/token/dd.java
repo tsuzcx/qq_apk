@@ -1,237 +1,130 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.f;
-import com.tencent.token.global.g;
-import com.tencent.token.global.h;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.net.Uri;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class dd
+final class dd
+  extends df
 {
-  List<f> a = Collections.synchronizedList(new ArrayList());
-  List<f> b = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem c;
-  String d;
-  long e;
-  public boolean f;
-  public boolean g = false;
+  private static final Class a;
+  private static final Constructor b;
+  private static final Method c;
+  private static final Method d;
   
-  public f a(int paramInt, boolean paramBoolean)
+  static
   {
-    if (paramInt >= 0)
+    Object localObject1 = null;
+    try
     {
-      if (paramInt >= b(paramBoolean)) {
-        return null;
-      }
-      List localList = a(paramBoolean);
-      if (localList == null) {
-        return null;
-      }
-      return (f)localList.get(paramInt);
+      localClass2 = Class.forName("android.graphics.FontFamily");
+      Constructor localConstructor = localClass2.getConstructor(new Class[0]);
+      localObject2 = localClass2.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
+      Method localMethod = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass2, 1).getClass() });
+      localObject1 = localConstructor;
     }
-    return null;
+    catch (NoSuchMethodException localNoSuchMethodException) {}catch (ClassNotFoundException localClassNotFoundException) {}
+    localClassNotFoundException.getClass().getName();
+    Class localClass2 = null;
+    Class localClass1 = localClass2;
+    Object localObject2 = localClass1;
+    b = localObject1;
+    a = localClass2;
+    c = (Method)localObject2;
+    d = localClass1;
   }
   
-  public List<f> a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return this.a;
-    }
-    return this.b;
-  }
-  
-  public void a(String paramString)
-  {
-    h.a("account_lock", paramString);
-  }
-  
-  public void a(List<f> paramList, boolean paramBoolean)
+  private static Typeface a(Object paramObject)
   {
     try
     {
-      if (this.c == null) {
-        this.c = ct.a().h.a("account_lock");
-      }
-      if (this.c.mClientVersion > this.c.mClickVersion)
-      {
-        Object localObject;
-        Iterator localIterator;
-        f localf;
-        if (this.c.mClickVersion == -1)
-        {
-          if (this.c.mConfIDs != null)
-          {
-            localObject = this.c.mConfIDs.iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              int i = ((Integer)((Iterator)localObject).next()).intValue();
-              localIterator = paramList.iterator();
-              while (localIterator.hasNext())
-              {
-                localf = (f)localIterator.next();
-                if (i == localf.a) {
-                  localf.f = true;
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          localObject = new HashSet();
-          if (paramBoolean)
-          {
-            localIterator = this.a.iterator();
-            while (localIterator.hasNext()) {
-              ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
-            }
-          }
-          localIterator = this.b.iterator();
-          while (localIterator.hasNext()) {
-            ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
-          }
-          localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            localf = (f)localIterator.next();
-            if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
-              localf.f = true;
-            }
-          }
-        }
-      }
-      if (paramBoolean)
-      {
-        this.a.clear();
-        this.a.addAll(paramList);
-      }
-      else
-      {
-        this.b.clear();
-        this.b.addAll(paramList);
-      }
-      this.d = cs.c;
-      if (cs.a().e() != null) {
-        this.e = cs.a().e().mUin;
-      }
-      return;
+      Object localObject = Array.newInstance(a, 1);
+      Array.set(localObject, 0, paramObject);
+      paramObject = (Typeface)d.invoke(null, new Object[] { localObject });
+      return paramObject;
     }
-    finally {}
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
   }
   
-  public boolean a()
+  public static boolean a()
   {
-    QQUser localQQUser = cs.a().e();
-    String str = this.d;
-    if (str != null)
-    {
-      if (localQQUser == null) {
-        return false;
-      }
-      return (str.equals(cs.c)) && (this.e == localQQUser.mUin) && (this.f);
-    }
-    return false;
+    return c != null;
   }
   
-  public boolean a(JSONArray paramJSONArray)
+  private static boolean a(Object paramObject, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (paramJSONArray.length() < 2) {
-      return false;
-    }
-    boolean bool;
-    if (paramJSONArray != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    g.a(bool);
     try
     {
-      if (!a(paramJSONArray.getJSONArray(0), true)) {
-        return false;
-      }
-      bool = a(paramJSONArray.getJSONArray(1), false);
-      return bool;
+      paramBoolean = ((Boolean)c.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
+      return paramBoolean;
     }
-    catch (JSONException paramJSONArray)
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
+  }
+  
+  private static Object b()
+  {
+    try
     {
-      paramJSONArray.printStackTrace();
+      Object localObject = b.newInstance(new Object[0]);
+      return localObject;
     }
-    return false;
+    catch (InvocationTargetException localInvocationTargetException) {}catch (InstantiationException localInstantiationException) {}catch (IllegalAccessException localIllegalAccessException) {}
+    throw new RuntimeException(localIllegalAccessException);
   }
   
-  public boolean a(JSONArray paramJSONArray, boolean paramBoolean)
+  public final Typeface a(Context paramContext, cw.b paramb, Resources paramResources, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null) {}
-    for (;;)
+    Object localObject1 = b();
+    paramb = paramb.a;
+    int i = paramb.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          int i = 0;
-          if (i < paramJSONArray.length())
-          {
-            Object localObject = paramJSONArray.getJSONObject(i);
-            if (localObject == null) {
-              break label133;
-            }
-            bool = true;
-            g.a(bool);
-            f localf = new f();
-            if (!localf.b((JSONObject)localObject))
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("object item parse failed: ");
-              ((StringBuilder)localObject).append(i);
-              g.c(((StringBuilder)localObject).toString());
-            }
-            localArrayList.add(localf);
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList, paramBoolean);
-        return true;
+      Object localObject2 = paramb[paramInt];
+      ByteBuffer localByteBuffer = dg.a(paramContext, paramResources, localObject2.d);
+      if (localByteBuffer == null) {
+        return null;
       }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
+      if (!a(localObject1, localByteBuffer, 0, localObject2.b, localObject2.c)) {
+        return null;
       }
-      label133:
-      boolean bool = false;
+      paramInt += 1;
     }
+    return a(localObject1);
   }
   
-  public int b(boolean paramBoolean)
+  public final Typeface a(Context paramContext, dt.b[] paramArrayOfb, int paramInt)
   {
-    List localList = a(paramBoolean);
-    if (localList == null) {
-      return 0;
+    Object localObject = b();
+    eg localeg = new eg();
+    int j = paramArrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      dt.b localb = paramArrayOfb[i];
+      Uri localUri = localb.a;
+      ByteBuffer localByteBuffer2 = (ByteBuffer)localeg.get(localUri);
+      ByteBuffer localByteBuffer1 = localByteBuffer2;
+      if (localByteBuffer2 == null)
+      {
+        localByteBuffer1 = dg.a(paramContext, localUri);
+        localeg.put(localUri, localByteBuffer1);
+      }
+      if (!a(localObject, localByteBuffer1, localb.b, localb.c, localb.d)) {
+        return null;
+      }
+      i += 1;
     }
-    return localList.size();
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((f)localIterator.next()).f = false;
-    }
-    localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((f)localIterator.next()).f = false;
-    }
+    return Typeface.create(a(localObject), paramInt);
   }
 }
 

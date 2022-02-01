@@ -3,9 +3,13 @@ package com.tmsdk;
 import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.global.k;
-import com.tencent.token.utils.j;
-import com.tencent.token.utils.l;
+import com.tencent.token.aab;
+import com.tencent.token.aad;
+import com.tencent.token.aen;
+import com.tencent.token.aen.a;
+import com.tencent.token.afm;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.xf;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
@@ -39,8 +43,7 @@ public class TMSDKContext
   
   public static void SaveStringData(int paramInt, String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("SaveStringData, modelId:[");
+    Object localObject = new StringBuilder("SaveStringData, modelId:[");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append("]msg:[");
     ((StringBuilder)localObject).append(paramString);
@@ -60,8 +63,7 @@ public class TMSDKContext
   
   public static void c_c(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("c_c, arg:[");
+    StringBuilder localStringBuilder = new StringBuilder("c_c, arg:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]");
     TmsLog.d("TMSDKContext", localStringBuilder.toString());
@@ -91,8 +93,7 @@ public class TMSDKContext
   {
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init, aContext:[");
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
       localStringBuilder.append(paramContext);
       localStringBuilder.append("]aConfig:[");
       localStringBuilder.append(paramAbsTMSConfig);
@@ -110,56 +111,75 @@ public class TMSDKContext
       }
       boolean bool = TMSDKBaseContext.init(paramContext, new AbsTMSBaseConfig()
       {
-        public int getBuildNo()
+        public final int getBuildNo()
         {
-          return j.a;
+          return aab.a;
         }
         
-        public String getChannel()
+        public final String getChannel()
         {
-          String str = l.m();
+          String str = aad.k();
           if ("0000".equals(str)) {
             return "999001";
           }
           return str;
         }
         
-        public String getDeviceId1()
+        public final String getDeviceId1()
         {
-          return l.b(this.val$aContext);
+          return aad.b(this.val$aContext);
         }
         
-        public String getDeviceId2()
+        public final String getDeviceId2()
         {
-          return l.c(this.val$aContext);
+          return aad.c(this.val$aContext);
         }
         
-        public String getDeviceId3()
+        public final String getDeviceId3()
         {
           return TMSDKContext.sAbsTMSConfig.getDeviceId3();
         }
         
-        public String getDeviceId4()
+        public final String getDeviceId4()
         {
-          return k.b();
+          
+          if (!xf.a) {
+            return "";
+          }
+          long l = System.currentTimeMillis();
+          Object localObject2 = aen.a(afm.a(RqdApplication.n()));
+          Object localObject1 = "";
+          if (((aen.a)localObject2).b() == 0)
+          {
+            localObject2 = ((aen.a)localObject2).c();
+            localObject1 = localObject2;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              localObject1 = "";
+            }
+          }
+          localObject2 = new StringBuilder("getOAID : ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("  time=");
+          ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+          return localObject1;
         }
         
-        public String getLC()
+        public final String getLC()
         {
           return "C1D4CD9B6187E99C";
         }
         
-        public String getOpenIdTicket()
+        public final String getOpenIdTicket()
         {
-          return k.d();
+          return xf.b();
         }
         
-        public int getProductId()
+        public final int getProductId()
         {
           return 115;
         }
         
-        public String getTCPServerAdd()
+        public final String getTCPServerAdd()
         {
           String str2 = TMSDKContext.sAbsTMSConfig.getServerAddress();
           String str1 = str2;
@@ -169,22 +189,22 @@ public class TMSDKContext
           return str1;
         }
         
-        public String getTccSoName()
+        public final String getTccSoName()
         {
           return "Tcc-1.0.1";
         }
         
-        public String getVersion()
+        public final String getVersion()
         {
-          return j.b;
+          return aab.b;
         }
         
-        public boolean isAllowAndroidID()
+        public final boolean isAllowAndroidID()
         {
           return ReleaseSetting.isAllowAndroidID();
         }
         
-        public boolean isAllowImei()
+        public final boolean isAllowImei()
         {
           if (TextUtils.isEmpty(getDeviceId1())) {
             return true;
@@ -192,32 +212,32 @@ public class TMSDKContext
           return ReleaseSetting.isAllowImei();
         }
         
-        public boolean isAllowImsi()
+        public final boolean isAllowImsi()
         {
           return ReleaseSetting.isAllowImsi();
         }
         
-        public boolean isAllowMac()
+        public final boolean isAllowMac()
         {
           return ReleaseSetting.isAllowMac();
         }
         
-        public boolean isAllowOther()
+        public final boolean isAllowOther()
         {
           return ReleaseSetting.isAllowOther();
         }
         
-        public boolean isCheckLicence()
+        public final boolean isCheckLicence()
         {
           return ReleaseSetting.isCheckLicence();
         }
         
-        public boolean isJavaTCC()
+        public final boolean isJavaTCC()
         {
           return ReleaseSetting.isJavaTCC();
         }
         
-        public boolean isUseIPList()
+        public final boolean isUseIPList()
         {
           return TMSDKContext.sAbsTMSConfig.isUseIPList();
         }
@@ -234,8 +254,7 @@ public class TMSDKContext
   
   public static void saveActionData(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("saveActionData, modelId:[");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("])");
     TmsLog.d("TMSDKContext", localStringBuilder.toString());
@@ -249,8 +268,7 @@ public class TMSDKContext
   
   public static void setAutoConnectionSwitch(Context paramContext, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setAutoConnectionSwitch, aContext[");
+    StringBuilder localStringBuilder = new StringBuilder("setAutoConnectionSwitch, aContext[");
     localStringBuilder.append(paramContext);
     localStringBuilder.append("]aAutoConnection:[");
     localStringBuilder.append(paramBoolean);

@@ -289,9 +289,7 @@ public class CrashReport
       e.c(paramContext.toString(), new Object[0]);
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString2);
-    localObject = ((StringBuilder)localObject).toString();
+    Object localObject = String.valueOf(paramString2);
     paramString2 = (String)localObject;
     if (((String)localObject).length() > 200)
     {
@@ -363,9 +361,7 @@ public class CrashReport
   public static void setDengta_AppKey(Context paramContext, String paramString)
   {
     c.a(paramContext).e(paramString);
-    paramContext = new StringBuilder();
-    paramContext.append(paramString);
-    e.b("setted beacon appkey %s", new Object[] { paramContext.toString() });
+    e.b("setted beacon appkey %s", new Object[] { String.valueOf(paramString) });
   }
   
   public static void setDeviceId(Context paramContext, String paramString)
@@ -376,9 +372,7 @@ public class CrashReport
   public static void setDeviceRooted(Context paramContext, boolean paramBoolean)
   {
     c.a(paramContext).a(paramBoolean);
-    paramContext = new StringBuilder();
-    paramContext.append(paramBoolean);
-    e.b("setted isRT %s", new Object[] { paramContext.toString() });
+    e.b("setted isRT %s", new Object[] { String.valueOf(paramBoolean) });
   }
   
   public static void setLogAble(boolean paramBoolean1, boolean paramBoolean2)
@@ -403,9 +397,7 @@ public class CrashReport
   public static void setProductID(Context paramContext, String paramString)
   {
     c.a(paramContext).i(paramString);
-    paramContext = new StringBuilder();
-    paramContext.append(paramString);
-    e.b("setted ProductID %s", new Object[] { paramContext.toString() });
+    e.b("setted ProductID %s", new Object[] { String.valueOf(paramString) });
   }
   
   public static void setProductVersion(Context paramContext, String paramString)

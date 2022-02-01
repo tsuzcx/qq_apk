@@ -10,21 +10,16 @@ import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.RestrictTo;
 import java.util.ArrayList;
 import java.util.List;
 
 @Keep
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-class ContentResolverWrapper
+public class ContentResolverWrapper
   extends ContentResolver
 {
   private final ContentResolver mBase;
   
-  ContentResolverWrapper(Context paramContext, ContentResolver paramContentResolver)
+  protected ContentResolverWrapper(Context paramContext, ContentResolver paramContentResolver)
   {
     super(paramContext);
     this.mBase = paramContentResolver;
@@ -45,8 +40,7 @@ class ContentResolverWrapper
     return this.mBase.acquireUnstableProvider(paramContext, paramString);
   }
   
-  @NonNull
-  public ContentProviderResult[] applyBatch(@NonNull String paramString, @NonNull ArrayList<ContentProviderOperation> paramArrayList)
+  public ContentProviderResult[] applyBatch(String paramString, ArrayList<ContentProviderOperation> paramArrayList)
   {
     return this.mBase.applyBatch(paramString, paramArrayList);
   }
@@ -56,45 +50,37 @@ class ContentResolverWrapper
     this.mBase.cancelSync(paramUri);
   }
   
-  @NonNull
-  @RequiresApi(19)
   public List<UriPermission> getOutgoingPersistedUriPermissions()
   {
     return this.mBase.getOutgoingPersistedUriPermissions();
   }
   
-  @NonNull
-  @RequiresApi(19)
   public List<UriPermission> getPersistedUriPermissions()
   {
     return this.mBase.getPersistedUriPermissions();
   }
   
-  @Nullable
-  @RequiresApi(11)
-  public String[] getStreamTypes(@NonNull Uri paramUri, @NonNull String paramString)
+  public String[] getStreamTypes(Uri paramUri, String paramString)
   {
     return this.mBase.getStreamTypes(paramUri, paramString);
   }
   
-  public void notifyChange(@NonNull Uri paramUri, @Nullable ContentObserver paramContentObserver)
+  public void notifyChange(Uri paramUri, ContentObserver paramContentObserver)
   {
     this.mBase.notifyChange(paramUri, paramContentObserver);
   }
   
-  @RequiresApi(24)
-  public void notifyChange(@NonNull Uri paramUri, @Nullable ContentObserver paramContentObserver, int paramInt)
+  public void notifyChange(Uri paramUri, ContentObserver paramContentObserver, int paramInt)
   {
     this.mBase.notifyChange(paramUri, paramContentObserver, paramInt);
   }
   
-  public void notifyChange(@NonNull Uri paramUri, @Nullable ContentObserver paramContentObserver, boolean paramBoolean)
+  public void notifyChange(Uri paramUri, ContentObserver paramContentObserver, boolean paramBoolean)
   {
     this.mBase.notifyChange(paramUri, paramContentObserver, paramBoolean);
   }
   
-  @RequiresApi(19)
-  public void releasePersistableUriPermission(@NonNull Uri paramUri, int paramInt)
+  public void releasePersistableUriPermission(Uri paramUri, int paramInt)
   {
     this.mBase.releasePersistableUriPermission(paramUri, paramInt);
   }
@@ -114,13 +100,11 @@ class ContentResolverWrapper
     this.mBase.startSync(paramUri, paramBundle);
   }
   
-  @RequiresApi(19)
-  public void takePersistableUriPermission(@NonNull Uri paramUri, int paramInt)
+  public void takePersistableUriPermission(Uri paramUri, int paramInt)
   {
     this.mBase.takePersistableUriPermission(paramUri, paramInt);
   }
   
-  @RequiresApi(28)
   public void takePersistableUriPermission(String paramString, Uri paramUri, int paramInt)
   {
     this.mBase.takePersistableUriPermission(paramString, paramUri, paramInt);

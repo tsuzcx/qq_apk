@@ -1,9 +1,12 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
+
 public final class int
   extends break
 {
-  public static byte[] Xa = new byte[1];
+  public static byte[] Xa;
   public static for Ya = new for();
   public int Za = 0;
   public int _a = 0;
@@ -17,61 +20,58 @@ public final class int
   
   static
   {
-    Xa[0] = 0;
+    byte[] arrayOfByte = new byte[1];
+    Xa = arrayOfByte;
+    arrayOfByte[0] = 0;
   }
   
-  public break a()
+  public final void a(afl paramafl)
   {
-    return new int();
+    this.Za = paramafl.a(this.Za, 0, true);
+    this._a = paramafl.a(this._a, 1, false);
+    this.ab = paramafl.a(this.ab, 2, false);
+    this.data = paramafl.b(3, false);
+    this.bb = paramafl.a(this.bb, 4, false);
+    this.cb = paramafl.a(this.cb, 5, false);
+    this.db = paramafl.a(this.db, 6, false);
+    this.eb = ((for)paramafl.a(Ya, 7, false));
+    this.fb = paramafl.a(this.fb, 8, false);
   }
   
-  public void a(cy paramcy)
+  public final void a(afo paramafo)
   {
-    this.Za = paramcy.a(this.Za, 0, true);
-    this._a = paramcy.a(this._a, 1, false);
-    this.ab = paramcy.a(this.ab, 2, false);
-    this.data = paramcy.a(Xa, 3, false);
-    this.bb = paramcy.a(this.bb, 4, false);
-    this.cb = paramcy.a(this.cb, 5, false);
-    this.db = paramcy.a(this.db, 6, false);
-    this.eb = ((for)paramcy.a(Ya, 7, false));
-    this.fb = paramcy.a(this.fb, 8, false);
-  }
-  
-  public void a(db paramdb)
-  {
-    paramdb.a(this.Za, 0);
+    paramafo.a(this.Za, 0);
     int i = this._a;
     if (i != 0) {
-      paramdb.a(i, 1);
+      paramafo.a(i, 1);
     }
     i = this.ab;
     if (i != 0) {
-      paramdb.a(i, 2);
+      paramafo.a(i, 2);
     }
     Object localObject = this.data;
     if (localObject != null) {
-      paramdb.a((byte[])localObject, 3);
+      paramafo.a((byte[])localObject, 3);
     }
     long l = this.bb;
     if (l != 0L) {
-      paramdb.a(l, 4);
+      paramafo.a(l, 4);
     }
     i = this.cb;
     if (i != 0) {
-      paramdb.a(i, 5);
+      paramafo.a(i, 5);
     }
     i = this.db;
     if (i != 0) {
-      paramdb.a(i, 6);
+      paramafo.a(i, 6);
     }
     localObject = this.eb;
     if (localObject != null) {
-      paramdb.a((break)localObject, 7);
+      paramafo.a((break)localObject, 7);
     }
     i = this.fb;
     if (i != 0) {
-      paramdb.a(i, 8);
+      paramafo.a(i, 8);
     }
   }
 }

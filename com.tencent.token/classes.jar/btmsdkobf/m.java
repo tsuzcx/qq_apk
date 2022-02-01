@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.util.Log;
 
 public class m
 {
@@ -17,19 +16,9 @@ public class m
   private a al = null;
   private Context mContext = null;
   
-  private void h(String paramString)
-  {
-    if (aj) {
-      Log.i(TAG, paramString);
-    }
-  }
+  private void h(String paramString) {}
   
-  private void i(String paramString)
-  {
-    if (aj) {
-      Log.e(TAG, paramString);
-    }
-  }
+  private void i(String paramString) {}
   
   public int a(Context paramContext, a<String> parama)
   {
@@ -39,7 +28,7 @@ public class m
       this.al = parama;
       this.ak = new ServiceConnection()
       {
-        public void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
+        public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
         {
           try
           {
@@ -53,7 +42,7 @@ public class m
           finally {}
         }
         
-        public void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+        public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
         {
           m.a(m.this, null);
           m.a(m.this, "Service onServiceDisconnected");

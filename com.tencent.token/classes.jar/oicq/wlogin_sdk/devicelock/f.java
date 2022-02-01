@@ -37,15 +37,16 @@ public class f
       }
       if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0))
       {
-        int k = localTLV_QuerySig.get_size();
-        int i = paramArrayOfByte3.length;
-        int j = paramArrayOfByte1.length;
-        paramArrayOfByte2 = new byte[k + 2 + i + j];
+        int i = localTLV_QuerySig.get_size();
+        int j = paramArrayOfByte3.length;
+        int k = paramArrayOfByte1.length;
+        int m = i + 2;
+        int n = m + j;
+        paramArrayOfByte2 = new byte[n + k];
         util.int16_to_buf(paramArrayOfByte2, 0, 3);
-        System.arraycopy(localTLV_QuerySig.get_buf(), 0, paramArrayOfByte2, 2, k);
-        k = 2 + k;
-        System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, k, i);
-        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, k + i, j);
+        System.arraycopy(localTLV_QuerySig.get_buf(), 0, paramArrayOfByte2, 2, i);
+        System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte2, m, j);
+        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, n, k);
         return _get_request(paramLong1, paramLong2, paramArrayOfByte2);
       }
       return new byte[0];

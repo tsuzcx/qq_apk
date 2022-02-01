@@ -78,12 +78,10 @@ public class d
             arrayOfByte3 = new byte[i];
             System.arraycopy(arrayOfByte4, n, arrayOfByte3, 0, i);
             i = n + i;
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("get tgtQR len ");
+            localObject = new StringBuilder("get tgtQR len ");
             ((StringBuilder)localObject).append(arrayOfByte3.length);
             localObject = ((StringBuilder)localObject).toString();
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("");
             localStringBuilder.append(_status.a);
             util.LOGI((String)localObject, localStringBuilder.toString());
           }
@@ -133,7 +131,7 @@ public class d
   
   public byte[] a(long paramLong1, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    byte[] arrayOfByte = new byte[13 + paramArrayOfByte1.length + (paramArrayOfByte2.length + 11 + 2)];
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 13 + (paramArrayOfByte2.length + 11 + 2)];
     util.int16_to_buf(arrayOfByte, 0, 5);
     util.int8_to_buf(arrayOfByte, 2, 1);
     util.int32_to_buf(arrayOfByte, 3, t.au);

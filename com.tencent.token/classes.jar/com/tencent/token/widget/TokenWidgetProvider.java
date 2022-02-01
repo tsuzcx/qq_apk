@@ -7,8 +7,8 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.bv;
-import com.tencent.token.global.g;
+import com.tencent.token.ru;
+import com.tencent.token.xb;
 
 public class TokenWidgetProvider
   extends AppWidgetProvider
@@ -16,12 +16,11 @@ public class TokenWidgetProvider
   public void onDeleted(Context paramContext, int[] paramArrayOfInt)
   {
     paramArrayOfInt = AppWidgetManager.getInstance(paramContext).getAppWidgetIds(new ComponentName(paramContext, TokenWidgetProvider.class));
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("widget_big num=");
+    Object localObject = new StringBuilder("widget_big num=");
     ((StringBuilder)localObject).append(paramArrayOfInt.length);
-    g.a(((StringBuilder)localObject).toString());
-    bv.a().a(System.currentTimeMillis(), 13);
-    bv.a().a(paramContext);
+    xb.a(((StringBuilder)localObject).toString());
+    ru.a().a(System.currentTimeMillis(), 13);
+    ru.a().a(paramContext);
     if (paramArrayOfInt.length <= 0)
     {
       paramArrayOfInt = new Intent(paramContext, TokenService.class);
@@ -33,9 +32,9 @@ public class TokenWidgetProvider
   
   public void onEnabled(Context paramContext)
   {
-    g.a("widget enabled");
-    bv.a().a(System.currentTimeMillis(), 7);
-    bv.a().a(paramContext);
+    xb.a("widget enabled");
+    ru.a().a(System.currentTimeMillis(), 7);
+    ru.a().a(paramContext);
     super.onEnabled(paramContext);
   }
   

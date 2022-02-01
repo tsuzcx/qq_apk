@@ -22,7 +22,7 @@ public final class da
   private final Object hT = new Object();
   private Handler jA = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       super.handleMessage(paramAnonymousMessage);
       if (paramAnonymousMessage.what != 0) {
@@ -33,7 +33,7 @@ public final class da
   };
   private Handler jy = new Handler(cx.getLooper())
   {
-    public void handleMessage(Message arg1)
+    public final void handleMessage(Message arg1)
     {
       if (???.what != 1) {
         return;
@@ -41,36 +41,33 @@ public final class da
       try
       {
         da.a(da.this).removeMessages(1);
-        da.b localb = new da.b(da.this, null);
+        da.b localb = new da.b(da.this, (byte)0);
         synchronized (da.b(da.this))
         {
           Iterator localIterator = da.c(da.this).iterator();
           while (localIterator.hasNext())
           {
             da.a locala = (da.a)localIterator.next();
-            localb.a(Integer.valueOf(locala.kC), locala);
+            int i = locala.kC;
+            localb.a.put(Integer.valueOf(i), locala);
             if ((locala.kJ & 0x40000000) == 0) {
               da.d(da.this).put(Integer.valueOf(locala.kC), locala);
             }
-            StringBuilder localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append(da.e(da.this));
-            localStringBuilder2.append(" sendShark() MSG_SEND_PROXY_TASK task.mIpcSeqNo: ");
-            localStringBuilder2.append(locala.kC);
-            eh.e("SharkProcessProxy", localStringBuilder2.toString());
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(da.e(da.this));
+            localStringBuilder.append(" sendShark() MSG_SEND_PROXY_TASK task.mIpcSeqNo: ");
+            localStringBuilder.append(locala.kC);
+            eh.e("SharkProcessProxy", localStringBuilder.toString());
           }
           da.c(da.this).clear();
           da.f(da.this).submit(localb);
           return;
         }
-        StringBuilder localStringBuilder1;
         return;
       }
       catch (Exception ???)
       {
-        localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("exception: ");
-        localStringBuilder1.append(???);
-        eh.h("SharkProcessProxy", localStringBuilder1.toString());
+        eh.h("SharkProcessProxy", "exception: ".concat(String.valueOf(???)));
       }
     }
   };
@@ -82,7 +79,7 @@ public final class da
   private TreeMap<Integer, Pair<JceStruct, cm>> kq = new TreeMap();
   private Handler kr = new Handler(Looper.getMainLooper())
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       if (paramAnonymousMessage.what != 11) {
         return;
@@ -104,8 +101,7 @@ public final class da
   
   private void a(final a parama)
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("runTimeout() sharkProxyTask: ");
+    ??? = new StringBuilder("runTimeout() sharkProxyTask: ");
     ((StringBuilder)???).append(parama.kC);
     eh.e("SharkProcessProxy", ((StringBuilder)???).toString());
     this.jA.removeMessages(0, parama);
@@ -116,7 +112,7 @@ public final class da
       }
       ee.cT().addTask(new Runnable()
       {
-        public void run()
+        public final void run()
         {
           da.this.a(Process.myPid(), parama.kC, 0, parama.kF, null, bz.p(-2050000), 0);
         }
@@ -138,7 +134,7 @@ public final class da
     finally {}
   }
   
-  public void a(int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4, final byte[] paramArrayOfByte, final int paramInt5, final int paramInt6)
+  public final void a(int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4, final byte[] paramArrayOfByte, final int paramInt5, final int paramInt6)
   {
     if (this.km != paramInt1)
     {
@@ -151,7 +147,7 @@ public final class da
     }
     ee.cT().addTask(new Runnable()
     {
-      public void run()
+      public final void run()
       {
         try
         {
@@ -193,16 +189,13 @@ public final class da
         }
         catch (Exception localException)
         {
-          ??? = new StringBuilder();
-          ((StringBuilder)???).append("exception: ");
-          ((StringBuilder)???).append(localException);
-          eh.h("SharkProcessProxy", ((StringBuilder)???).toString());
+          eh.h("SharkProcessProxy", "exception: ".concat(String.valueOf(localException)));
         }
       }
     }, "shark callback");
   }
   
-  public void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, JceStruct arg8, JceStruct paramJceStruct2, int paramInt4, cj paramcj, long paramLong3, long paramLong4)
+  public final void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, JceStruct arg8, JceStruct paramJceStruct2, int paramInt4, cj paramcj, long paramLong3, long paramLong4)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.km);
@@ -217,7 +210,7 @@ public final class da
     }
   }
   
-  public void a(final long paramLong, int paramInt1, JceStruct paramJceStruct, final int paramInt2, cm paramcm)
+  public final void a(final long paramLong, int paramInt1, JceStruct paramJceStruct, final int paramInt2, cm paramcm)
   {
     synchronized (this.kq)
     {
@@ -235,7 +228,7 @@ public final class da
         this.kq.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramcm));
         ee.cT().addTask(new Runnable()
         {
-          public void run()
+          public final void run()
           {
             if (da.g(da.this) != null)
             {
@@ -248,8 +241,7 @@ public final class da
       }
       else
       {
-        paramJceStruct = new StringBuilder();
-        paramJceStruct.append("[shark_push]registerSharkPush(), only one listener is allowed for current version! callIdent: ");
+        paramJceStruct = new StringBuilder("[shark_push]registerSharkPush(), only one listener is allowed for current version! callIdent: ");
         paramJceStruct.append(paramLong);
         paramJceStruct.append(" cmdId: ");
         paramJceStruct.append(paramInt1);
@@ -257,23 +249,22 @@ public final class da
         paramJceStruct.append(paramInt2);
         paramJceStruct = paramJceStruct.toString();
         if (cx.bD()) {
-          break label223;
+          break label219;
         }
         eh.h("SharkProcessProxy", paramJceStruct);
       }
       return;
-      label223:
+      label219:
       throw new RuntimeException(paramJceStruct);
     }
   }
   
-  protected void a(a parama, Integer paramInteger1, Integer paramInteger2, Integer paramInteger3)
+  protected final void a(a parama, Integer paramInteger1, Integer paramInteger2, Integer paramInteger3)
   {
     if (parama.kK == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[ocean]procallback: ECmd|");
+    StringBuilder localStringBuilder = new StringBuilder("[ocean]procallback: ECmd|");
     localStringBuilder.append(parama.kF);
     localStringBuilder.append("|ipcSeqNo|");
     localStringBuilder.append(parama.kC);
@@ -301,7 +292,7 @@ public final class da
     this.kr.sendMessage(parama);
   }
   
-  public cm e(final int paramInt1, final int paramInt2)
+  public final cm e(final int paramInt1, final int paramInt2)
   {
     for (;;)
     {
@@ -319,7 +310,7 @@ public final class da
           localObject1 = (cm)((Pair)this.kq.remove(Integer.valueOf(paramInt1))).second;
           ee.cT().addTask(new Runnable()
           {
-            public void run()
+            public final void run()
             {
               da.g(da.this).f(paramInt1, paramInt2);
             }
@@ -393,8 +384,7 @@ public final class da
         localStringBuilder1.append(this.kL);
         localStringBuilder1.append("|time(s)|");
         localStringBuilder1.append(l2 / 1000L);
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("[ocean][time_out]SharkProcessProxy.SharkProxyTask.isTimeOut(), ");
+        StringBuilder localStringBuilder2 = new StringBuilder("[ocean][time_out]SharkProcessProxy.SharkProxyTask.isTimeOut(), ");
         localStringBuilder2.append(localStringBuilder1.toString());
         eh.h("ocean", localStringBuilder2.toString());
       }
@@ -402,34 +392,29 @@ public final class da
     }
   }
   
-  private class b
+  final class b
     implements Runnable
   {
-    private TreeMap<Integer, da.a> b = new TreeMap();
+    TreeMap<Integer, da.a> a = new TreeMap();
     
     private b() {}
     
-    public Set<Map.Entry<Integer, da.a>> a()
+    private Set<Map.Entry<Integer, da.a>> a()
     {
-      synchronized (this.b)
+      synchronized (this.a)
       {
-        TreeMap localTreeMap2 = (TreeMap)this.b.clone();
+        TreeMap localTreeMap2 = (TreeMap)this.a.clone();
         return localTreeMap2.entrySet();
       }
     }
     
-    public void a(Integer paramInteger, da.a parama)
-    {
-      this.b.put(paramInteger, parama);
-    }
-    
-    public void run()
+    public final void run()
     {
       boolean bool = NetworkUtil.isNetworkConnected();
       Iterator localIterator = a().iterator();
       for (;;)
       {
-        b localb = this;
+        Object localObject1 = this;
         if (!localIterator.hasNext()) {
           break;
         }
@@ -437,54 +422,57 @@ public final class da
         int i;
         if (!bool)
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(da.e(localb.a));
-          ((StringBuilder)localObject).append(" run, 无物理网络");
-          eh.f("SharkProcessProxy", ((StringBuilder)localObject).toString());
-          i = -1000002;
-          localb.a.a(Process.myPid(), ((da.a)localEntry.getValue()).kC, 0, ((da.a)localEntry.getValue()).kF, null, -1000002, 0);
-          localObject = new StringBuilder();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(da.e(((b)localObject1).b));
+          ((StringBuilder)localObject2).append(" run, 无物理网络");
+          eh.f("SharkProcessProxy", ((StringBuilder)localObject2).toString());
+          ((b)localObject1).b.a(Process.myPid(), ((da.a)localEntry.getValue()).kC, 0, ((da.a)localEntry.getValue()).kF, null, -1000002, 0);
+          localObject2 = new StringBuilder("[ocean]SharkProxyTaskRunnable.run(), no network: cmdId: ");
+          ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kF);
+          ((StringBuilder)localObject2).append(" retCode: -1000002");
+          eh.g("SharkProcessProxy", ((StringBuilder)localObject2).toString());
+          localObject1 = da.g(((b)localObject1).b);
+          i = ((da.a)localEntry.getValue()).kF;
         }
-        for (String str = "[ocean]SharkProxyTaskRunnable.run(), no network: cmdId: ";; str = "[ocean][time_out]SharkProxyTaskRunnable.run(), send time out, stats by onConnnect(): cmdId: ")
+        for (int j = -1000002;; j = -1000017)
         {
-          ((StringBuilder)localObject).append(str);
-          ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kF);
-          ((StringBuilder)localObject).append(" retCode: ");
-          ((StringBuilder)localObject).append(i);
-          eh.g("SharkProcessProxy", ((StringBuilder)localObject).toString());
-          da.g(localb.a).i(((da.a)localEntry.getValue()).kF, i);
+          ((cl)localObject1).i(i, j);
           break;
           if (!((da.a)localEntry.getValue()).bP()) {
-            break label289;
+            break label348;
           }
-          i = -1000017;
-          localb.a.a(Process.myPid(), ((da.a)localEntry.getValue()).kC, 0, ((da.a)localEntry.getValue()).kF, null, -1000017, 0);
-          localObject = new StringBuilder();
+          ((b)localObject1).b.a(Process.myPid(), ((da.a)localEntry.getValue()).kC, 0, ((da.a)localEntry.getValue()).kF, null, -1000017, 0);
+          localObject2 = new StringBuilder("[ocean][time_out]SharkProxyTaskRunnable.run(), send time out, stats by onConnnect(): cmdId: ");
+          ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kF);
+          ((StringBuilder)localObject2).append(" retCode: -1000017");
+          eh.g("SharkProcessProxy", ((StringBuilder)localObject2).toString());
+          localObject1 = da.g(((b)localObject1).b);
+          i = ((da.a)localEntry.getValue()).kF;
         }
-        label289:
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(da.e(localb.a));
-        ((StringBuilder)localObject).append(" onPostToSendingProcess() mPid: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).km);
-        ((StringBuilder)localObject).append(" mCallerIdent: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kG);
-        ((StringBuilder)localObject).append(" mIpcSeqNo: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kC);
-        ((StringBuilder)localObject).append(" mPushSeqNo: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kD);
-        ((StringBuilder)localObject).append(" mPushId: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kE);
-        ((StringBuilder)localObject).append(" mCmdId: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kF);
-        ((StringBuilder)localObject).append(" mFlag: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kJ);
-        ((StringBuilder)localObject).append(" mTimeout: ");
-        ((StringBuilder)localObject).append(((da.a)localEntry.getValue()).kL);
-        eh.f("SharkProcessProxy", ((StringBuilder)localObject).toString());
-        localObject = Message.obtain(da.h(localb.a), 0, localEntry.getValue());
-        da.h(localb.a).sendMessageDelayed((Message)localObject, 35000L);
-        localObject = cd.a(((da.a)localEntry.getValue()).kH);
-        da.g(localb.a).a(((da.a)localEntry.getValue()).km, ((da.a)localEntry.getValue()).kG, ((da.a)localEntry.getValue()).kC, ((da.a)localEntry.getValue()).kD, ((da.a)localEntry.getValue()).kE, ((da.a)localEntry.getValue()).kF, (byte[])localObject, ((da.a)localEntry.getValue()).kJ, ((da.a)localEntry.getValue()).kL, ((da.a)localEntry.getValue()).kM, ((da.a)localEntry.getValue()).kN);
+        label348:
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(da.e(((b)localObject1).b));
+        ((StringBuilder)localObject2).append(" onPostToSendingProcess() mPid: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).km);
+        ((StringBuilder)localObject2).append(" mCallerIdent: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kG);
+        ((StringBuilder)localObject2).append(" mIpcSeqNo: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kC);
+        ((StringBuilder)localObject2).append(" mPushSeqNo: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kD);
+        ((StringBuilder)localObject2).append(" mPushId: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kE);
+        ((StringBuilder)localObject2).append(" mCmdId: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kF);
+        ((StringBuilder)localObject2).append(" mFlag: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kJ);
+        ((StringBuilder)localObject2).append(" mTimeout: ");
+        ((StringBuilder)localObject2).append(((da.a)localEntry.getValue()).kL);
+        eh.f("SharkProcessProxy", ((StringBuilder)localObject2).toString());
+        localObject2 = Message.obtain(da.h(((b)localObject1).b), 0, localEntry.getValue());
+        da.h(((b)localObject1).b).sendMessageDelayed((Message)localObject2, 35000L);
+        localObject2 = cd.a(((da.a)localEntry.getValue()).kH);
+        da.g(((b)localObject1).b).a(((da.a)localEntry.getValue()).km, ((da.a)localEntry.getValue()).kG, ((da.a)localEntry.getValue()).kC, ((da.a)localEntry.getValue()).kD, ((da.a)localEntry.getValue()).kE, ((da.a)localEntry.getValue()).kF, (byte[])localObject2, ((da.a)localEntry.getValue()).kJ, ((da.a)localEntry.getValue()).kL, ((da.a)localEntry.getValue()).kM, ((da.a)localEntry.getValue()).kN);
       }
     }
   }

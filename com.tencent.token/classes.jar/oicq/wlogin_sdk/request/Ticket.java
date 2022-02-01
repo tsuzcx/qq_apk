@@ -94,8 +94,7 @@ public class Ticket
   
   private String __getPskey(String paramString, Map<String, byte[]> paramMap, Map<String, Long> paramMap1)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("__getPskey get domain ");
+    Object localObject1 = new StringBuilder("__getPskey get domain ");
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append(" pskey or pt4token");
     util.LOGI(((StringBuilder)localObject1).toString(), "");
@@ -105,8 +104,7 @@ public class Ticket
     Object localObject2 = (byte[])paramMap.get(paramString);
     if (localObject2 == null)
     {
-      paramMap = new StringBuilder();
-      paramMap.append("__getPskey get domain ");
+      paramMap = new StringBuilder("__getPskey get domain ");
       paramMap.append(paramString);
       paramMap.append(" pskey or pt4token null");
       util.LOGI(paramMap.toString(), "");
@@ -117,8 +115,7 @@ public class Ticket
       localObject1 = (Long)paramMap1.get(paramString);
       if ((localObject1 != null) && (((Long)localObject1).longValue() <= t.f()))
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("__getPskey delete domain ");
+        localObject2 = new StringBuilder("__getPskey delete domain ");
         ((StringBuilder)localObject2).append(paramString);
         ((StringBuilder)localObject2).append(" expired pskey or pt4token expire time ");
         ((StringBuilder)localObject2).append(localObject1);
@@ -129,8 +126,7 @@ public class Ticket
       }
     }
     paramMap = new String((byte[])localObject2);
-    paramMap1 = new StringBuilder();
-    paramMap1.append("__getPskey get domain ");
+    paramMap1 = new StringBuilder("__getPskey get domain ");
     paramMap1.append(paramString);
     paramMap1.append(" pskey or pt4token len ");
     paramMap1.append(paramMap.length());
@@ -168,8 +164,7 @@ public class Ticket
   public static boolean isPskeyStorageExpired(long paramLong)
   {
     long l = t.f();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isPskeyStorageExpired expireTime:");
+    StringBuilder localStringBuilder = new StringBuilder("isPskeyStorageExpired expireTime:");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("|current: ");
     localStringBuilder.append(l);
@@ -195,8 +190,7 @@ public class Ticket
     }
     if (paramLong > 86400L + l)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("time for system may be  modified manually expireTime ");
+      StringBuilder localStringBuilder = new StringBuilder("time for system may be  modified manually expireTime ");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(" current ");
       localStringBuilder.append(l);
@@ -208,8 +202,7 @@ public class Ticket
   
   protected static byte[] packPsBuf(Map<String, byte[]> paramMap, long paramLong, Map<String, Long> paramMap1)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("pskeyMap ");
+    Object localObject1 = new StringBuilder("pskeyMap ");
     ((StringBuilder)localObject1).append(paramMap.size());
     util.LOGI(((StringBuilder)localObject1).toString(), "");
     localObject1 = ByteBuffer.allocate(4096);
@@ -239,8 +232,7 @@ public class Ticket
   
   protected static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1)
   {
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("ps_buf ");
+    Object localObject2 = new StringBuilder("ps_buf ");
     Object localObject1;
     if (paramArrayOfByte == null) {
       localObject1 = "null";
@@ -256,10 +248,7 @@ public class Ticket
       }
       long l2 = t.f();
       int k = util.buf_to_int16(paramArrayOfByte, 0);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("domainCnt ");
-      ((StringBuilder)localObject1).append(k);
-      util.LOGI(((StringBuilder)localObject1).toString(), "");
+      util.LOGI("domainCnt ".concat(String.valueOf(k)), "");
       int j = 0;
       int i = 2;
       while (j < k)
@@ -267,25 +256,25 @@ public class Ticket
         int n = paramArrayOfByte.length;
         int m = i + 2;
         if (n < m) {
-          return;
+          break;
         }
         n = util.buf_to_int16(paramArrayOfByte, i);
         int i1 = paramArrayOfByte.length;
         i = m + n;
         if (i1 < i) {
-          return;
+          break;
         }
         localObject1 = new String(paramArrayOfByte, m, n);
         m = paramArrayOfByte.length;
         n = i + 2;
         if (m < n) {
-          return;
+          break;
         }
         m = util.buf_to_int16(paramArrayOfByte, i);
         i1 = paramArrayOfByte.length;
         i = n + m;
         if (i1 < i) {
-          return;
+          break;
         }
         localObject2 = new byte[m];
         System.arraycopy(paramArrayOfByte, n, localObject2, 0, m);
@@ -321,8 +310,7 @@ public class Ticket
   
   protected static void parseSvrPs(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap1, Map<String, Long> paramMap2, Map<String, byte[]> paramMap3, Map<String, Long> paramMap4)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("pskeyMap ");
+    Object localObject1 = new StringBuilder("pskeyMap ");
     ((StringBuilder)localObject1).append(paramMap1.size());
     ((StringBuilder)localObject1).append(", tokenMap ");
     ((StringBuilder)localObject1).append(paramMap3.size());
@@ -349,8 +337,7 @@ public class Ticket
         long l = 86400L + paramLong;
         if (arrayOfByte1.length > 0)
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("parseSvrPs add domain ");
+          localObject2 = new StringBuilder("parseSvrPs add domain ");
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append(" pskey len ");
           ((StringBuilder)localObject2).append(arrayOfByte1.length);
@@ -363,8 +350,7 @@ public class Ticket
         if (arrayOfByte2.length > 0)
         {
           localObject2 = new String(arrayOfByte2);
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("parseSvrPs add domain ");
+          StringBuilder localStringBuilder = new StringBuilder("parseSvrPs add domain ");
           localStringBuilder.append((String)localObject1);
           localStringBuilder.append(" pt4token len ");
           localStringBuilder.append(arrayOfByte2.length);
@@ -402,8 +388,7 @@ public class Ticket
   {
     if (4096 == this._type)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("skey:");
+      StringBuilder localStringBuilder = new StringBuilder("skey:");
       localStringBuilder.append(util.getMaskBytes(this._sig, 2, 2));
       return localStringBuilder.toString();
     }
@@ -417,8 +402,7 @@ public class Ticket
   
   public String getPt4Token(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getPt4Token get domain ");
+    StringBuilder localStringBuilder = new StringBuilder("getPt4Token get domain ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" pt4token");
     util.LOGI(localStringBuilder.toString(), "");

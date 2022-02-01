@@ -25,8 +25,7 @@ public class cf
     paramBoolean = this.hF.bL().aK();
     if ((this.hi != paramBoolean) && (!TextUtils.isEmpty(paramContext)))
     {
-      paramContext = new StringBuilder();
-      paramContext.append("[cu_guid]GuidCertifier, clean guid for server change(isTest?): ");
+      paramContext = new StringBuilder("[cu_guid]GuidCertifier, clean guid for server change(isTest?): ");
       paramContext.append(paramBoolean);
       paramContext.append(" -> ");
       paramContext.append(this.hi);
@@ -43,8 +42,7 @@ public class cf
   
   private void a(final an paraman, String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[cu_guid]updateGuid(), for: ");
+    Object localObject = new StringBuilder("[cu_guid]updateGuid(), for: ");
     ((StringBuilder)localObject).append(this.hH);
     eh.f("GuidCertifier", ((StringBuilder)localObject).toString());
     final int i = cu.bu().bm();
@@ -58,8 +56,7 @@ public class cf
       eh.g("GuidCertifier", "[cu_guid]updateGuid(), jceStruct2DataForSend failed");
       return;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[cu_guid]updateGuid(), cur info: ");
+    localObject = new StringBuilder("[cu_guid]updateGuid(), cur info: ");
     ((StringBuilder)localObject).append(c(paraman));
     eh.f("GuidCertifier", ((StringBuilder)localObject).toString());
     localObject = new ArrayList();
@@ -67,18 +64,12 @@ public class cf
     cv.by().a(paramString.dc, -1L, null);
     this.hF.a(0, 0L, false, (ArrayList)localObject, new cy.b()
     {
-      public void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+      public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
       {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("updateGuid() retCode: ");
-        ((StringBuilder)localObject).append(paramAnonymousInt1);
-        eh.e("GuidCertifier", ((StringBuilder)localObject).toString());
+        eh.e("GuidCertifier", "updateGuid() retCode: ".concat(String.valueOf(paramAnonymousInt1)));
         if (paramAnonymousInt1 != 0)
         {
-          paramAnonymousArrayList = new StringBuilder();
-          paramAnonymousArrayList.append("[cu_guid]updateGuid() ESharkCode.ERR_NONE != retCode, retCode: ");
-          paramAnonymousArrayList.append(paramAnonymousInt1);
-          eh.h("GuidCertifier", paramAnonymousArrayList.toString());
+          eh.h("GuidCertifier", "[cu_guid]updateGuid() ESharkCode.ERR_NONE != retCode, retCode: ".concat(String.valueOf(paramAnonymousInt1)));
           paramAnonymousArrayList = cv.by();
         }
         for (paramAnonymousInt2 = i;; paramAnonymousInt2 = i)
@@ -86,6 +77,7 @@ public class cf
           paramAnonymousArrayList.a("GuidCertifier", 10002, paramAnonymousInt2, null, 30, paramAnonymousInt1);
           cv.by().x(i);
           return;
+          Object localObject;
           if ((paramAnonymousArrayList != null) && (paramAnonymousArrayList.size() > 0)) {
             localObject = paramAnonymousArrayList.iterator();
           }
@@ -96,38 +88,32 @@ public class cf
             {
               if (paramAnonymousArrayList.df != 0)
               {
-                localObject = new StringBuilder();
-                ((StringBuilder)localObject).append("[cu_guid]updateGuid(), mazu error: ");
+                localObject = new StringBuilder("[cu_guid]updateGuid(), mazu error: ");
                 ((StringBuilder)localObject).append(paramAnonymousArrayList.df);
                 eh.h("GuidCertifier", ((StringBuilder)localObject).toString());
                 paramAnonymousInt1 = paramAnonymousArrayList.df;
-                break label384;
+                break label303;
               }
               if (paramAnonymousArrayList.dg != 0)
               {
-                localObject = new StringBuilder();
-                ((StringBuilder)localObject).append("[cu_guid]updateGuid(), dataRetCode: ");
+                localObject = new StringBuilder("[cu_guid]updateGuid(), dataRetCode: ");
                 ((StringBuilder)localObject).append(paramAnonymousArrayList.dg);
                 eh.h("GuidCertifier", ((StringBuilder)localObject).toString());
                 paramAnonymousInt1 = -21300000;
-                break label384;
+                break label303;
               }
-              paramAnonymousArrayList = new StringBuilder();
-              paramAnonymousArrayList.append("[cu_guid]updateGuid(), succ, save info to db, mGuid: ");
+              paramAnonymousArrayList = new StringBuilder("[cu_guid]updateGuid(), succ, save info to db, mGuid: ");
               paramAnonymousArrayList.append(cf.c(cf.this));
               eh.e("GuidCertifier", paramAnonymousArrayList.toString());
               paramAnonymousArrayList = cf.this;
               cf.a(paramAnonymousArrayList, cf.c(paramAnonymousArrayList), paraman, false);
               paramAnonymousInt1 = 0;
-              break label384;
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("[cu_guid]updateGuid(), no sashimi, serverSashimis: ");
-              ((StringBuilder)localObject).append(paramAnonymousArrayList);
-              eh.h("GuidCertifier", ((StringBuilder)localObject).toString());
+              break label303;
+              eh.h("GuidCertifier", "[cu_guid]updateGuid(), no sashimi, serverSashimis: ".concat(String.valueOf(paramAnonymousArrayList)));
             }
           }
           paramAnonymousInt1 = -21250000;
-          label384:
+          label303:
           paramAnonymousArrayList = cv.by();
         }
       }
@@ -162,8 +148,7 @@ public class cf
   {
     if (aY())
     {
-      paramString = new StringBuilder();
-      paramString.append("[cu_guid]getCurInfoOfGuidIfNeed(), should register, donnot update, mGuid: ");
+      paramString = new StringBuilder("[cu_guid]getCurInfoOfGuidIfNeed(), should register, donnot update, mGuid: ");
       paramString.append(this.hH);
       paramString.append(" fromPhone: ");
       paramString.append(this.hG);
@@ -188,10 +173,7 @@ public class cf
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[cu_guid_p]getCurInfoOfGuidIfNeed(), refreshKey is not empty, server requires update guid: ");
-      ((StringBuilder)localObject).append(paramString);
-      eh.g("GuidCertifier", ((StringBuilder)localObject).toString());
+      eh.g("GuidCertifier", "[cu_guid_p]getCurInfoOfGuidIfNeed(), refreshKey is not empty, server requires update guid: ".concat(String.valueOf(paramString)));
       return localan;
     }
     paramString = this.hF.bL().aH();
@@ -263,12 +245,10 @@ public class cf
       eh.f("GuidCertifier", "[cu_guid]getCurInfoOfGuidIfNeed(), info not changed, no need");
       return null;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[cu_guid]getCurInfoOfGuidIfNeed(), yes, |savedInfo|");
+    localObject = new StringBuilder("[cu_guid]getCurInfoOfGuidIfNeed(), yes, |savedInfo|");
     ((StringBuilder)localObject).append(c(paramString));
     eh.i("GuidCertifier", ((StringBuilder)localObject).toString());
-    paramString = new StringBuilder();
-    paramString.append("[cu_guid]getCurInfoOfGuidIfNeed(), yes, |realInfo|");
+    paramString = new StringBuilder("[cu_guid]getCurInfoOfGuidIfNeed(), yes, |realInfo|");
     paramString.append(c(localan));
     eh.i("GuidCertifier", paramString.toString());
     return localan;
@@ -281,8 +261,7 @@ public class cf
     localap.cV = getGuid();
     localap.cW = this.hF.bL().aC();
     localap.cX = paramString;
-    paraman = new StringBuilder();
-    paraman.append("[cu_guid_p]getCSUpdateRegist(), sdGuid: ");
+    paraman = new StringBuilder("[cu_guid_p]getCSUpdateRegist(), sdGuid: ");
     paraman.append(localap.cW);
     paraman.append(" curGuid: ");
     paraman.append(localap.cV);
@@ -305,10 +284,7 @@ public class cf
     }
     catch (Throwable paramContext)
     {
-      paramString = new StringBuilder();
-      paramString.append("[cu_guid]sendBroadcast(): ");
-      paramString.append(paramContext);
-      eh.a("GuidCertifier", paramString.toString(), paramContext);
+      eh.a("GuidCertifier", "[cu_guid]sendBroadcast(): ".concat(String.valueOf(paramContext)), paramContext);
     }
   }
   
@@ -325,258 +301,196 @@ public class cf
     if (TextUtils.isEmpty(paramString2)) {
       return true;
     }
-    return paramString1.equals(paramString2) ^ true;
+    return !paramString1.equals(paramString2);
   }
   
   private String c(an paraman)
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|imei|");
+    StringBuilder localStringBuilder2 = new StringBuilder("|imei|");
     localStringBuilder2.append(paraman.imei);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|imsi|");
+    localStringBuilder2 = new StringBuilder("|imsi|");
     localStringBuilder2.append(paraman.imsi);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|imsi_2|");
+    localStringBuilder2 = new StringBuilder("|imsi_2|");
     localStringBuilder2.append(paraman.co);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|mac|");
+    localStringBuilder2 = new StringBuilder("|mac|");
     localStringBuilder2.append(paraman.mac);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|com.qq|");
+    localStringBuilder2 = new StringBuilder("|com.qq|");
     localStringBuilder2.append(paraman.qq);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|phone|");
+    localStringBuilder2 = new StringBuilder("|phone|");
     localStringBuilder2.append(paraman.phone);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|product|");
+    localStringBuilder2 = new StringBuilder("|product|");
     localStringBuilder2.append(paraman.product);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|lc|");
+    localStringBuilder2 = new StringBuilder("|lc|");
     localStringBuilder2.append(paraman.lc);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|buildno|");
+    localStringBuilder2 = new StringBuilder("|buildno|");
     localStringBuilder2.append(paraman.buildno);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|channelid|");
+    localStringBuilder2 = new StringBuilder("|channelid|");
     localStringBuilder2.append(paraman.channelid);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|platform|");
+    localStringBuilder2 = new StringBuilder("|platform|");
     localStringBuilder2.append(paraman.bR);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|subplatform|");
+    localStringBuilder2 = new StringBuilder("|subplatform|");
     localStringBuilder2.append(paraman.subplatform);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|isbuildin|");
+    localStringBuilder2 = new StringBuilder("|isbuildin|");
     localStringBuilder2.append(paraman.bS);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|pkgname|");
+    localStringBuilder2 = new StringBuilder("|pkgname|");
     localStringBuilder2.append(paraman.pkgname);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|ua|");
+    localStringBuilder2 = new StringBuilder("|ua|");
     localStringBuilder2.append(paraman.ua);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|sdkver|");
+    localStringBuilder2 = new StringBuilder("|sdkver|");
     localStringBuilder2.append(paraman.bT);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|androidid|");
+    localStringBuilder2 = new StringBuilder("|androidid|");
     localStringBuilder2.append(paraman.androidid);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|lang|");
+    localStringBuilder2 = new StringBuilder("|lang|");
     localStringBuilder2.append(paraman.lang);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|simnum|");
+    localStringBuilder2 = new StringBuilder("|simnum|");
     localStringBuilder2.append(paraman.bU);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|cpu|");
+    localStringBuilder2 = new StringBuilder("|cpu|");
     localStringBuilder2.append(paraman.bV);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|cpu_abi2|");
+    localStringBuilder2 = new StringBuilder("|cpu_abi2|");
     localStringBuilder2.append(paraman.cy);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|cpufreq|");
+    localStringBuilder2 = new StringBuilder("|cpufreq|");
     localStringBuilder2.append(paraman.bW);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|cpunum|");
+    localStringBuilder2 = new StringBuilder("|cpunum|");
     localStringBuilder2.append(paraman.bX);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|resolution|");
+    localStringBuilder2 = new StringBuilder("|resolution|");
     localStringBuilder2.append(paraman.bY);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|ram|");
+    localStringBuilder2 = new StringBuilder("|ram|");
     localStringBuilder2.append(paraman.bZ);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|rom|");
+    localStringBuilder2 = new StringBuilder("|rom|");
     localStringBuilder2.append(paraman.ca);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|sdcard|");
+    localStringBuilder2 = new StringBuilder("|sdcard|");
     localStringBuilder2.append(paraman.cb);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|inner_storage|");
+    localStringBuilder2 = new StringBuilder("|inner_storage|");
     localStringBuilder2.append(paraman.cD);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|build_brand|");
+    localStringBuilder2 = new StringBuilder("|build_brand|");
     localStringBuilder2.append(paraman.cc);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|build_version_incremental|");
+    localStringBuilder2 = new StringBuilder("|build_version_incremental|");
     localStringBuilder2.append(paraman.cd);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|build_version_release|");
+    localStringBuilder2 = new StringBuilder("|build_version_release|");
     localStringBuilder2.append(paraman.ce);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|version|");
+    localStringBuilder2 = new StringBuilder("|version|");
     localStringBuilder2.append(paraman.version);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|extSdkVer|");
+    localStringBuilder2 = new StringBuilder("|extSdkVer|");
     localStringBuilder2.append(paraman.cs);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|pkgkey|");
+    localStringBuilder2 = new StringBuilder("|pkgkey|");
     localStringBuilder2.append(paraman.cu);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|manufactory|");
+    localStringBuilder2 = new StringBuilder("|manufactory|");
     localStringBuilder2.append(paraman.ch);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|cam_pix|");
+    localStringBuilder2 = new StringBuilder("|cam_pix|");
     localStringBuilder2.append(paraman.ck);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|front_cam_pix|");
+    localStringBuilder2 = new StringBuilder("|front_cam_pix|");
     localStringBuilder2.append(paraman.cl);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|product_device|");
+    localStringBuilder2 = new StringBuilder("|product_device|");
     localStringBuilder2.append(paraman.cv);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|product_board|");
+    localStringBuilder2 = new StringBuilder("|product_board|");
     localStringBuilder2.append(paraman.cw);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|build_product|");
+    localStringBuilder2 = new StringBuilder("|build_product|");
     localStringBuilder2.append(paraman.cx);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|rom_fingerprint|");
+    localStringBuilder2 = new StringBuilder("|rom_fingerprint|");
     localStringBuilder2.append(paraman.cz);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|product_lanuage|");
+    localStringBuilder2 = new StringBuilder("|product_lanuage|");
     localStringBuilder2.append(paraman.cA);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|product_region|");
+    localStringBuilder2 = new StringBuilder("|product_region|");
     localStringBuilder2.append(paraman.cB);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|build_radiover|");
+    localStringBuilder2 = new StringBuilder("|build_radiover|");
     localStringBuilder2.append(paraman.cC);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|board_platform|");
+    localStringBuilder2 = new StringBuilder("|board_platform|");
     localStringBuilder2.append(paraman.ci);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|board_platform_mtk|");
+    localStringBuilder2 = new StringBuilder("|board_platform_mtk|");
     localStringBuilder2.append(paraman.cE);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|screen_pdi|");
+    localStringBuilder2 = new StringBuilder("|screen_pdi|");
     localStringBuilder2.append(paraman.cj);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|romname|");
+    localStringBuilder2 = new StringBuilder("|romname|");
     localStringBuilder2.append(paraman.cf);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|romversion|");
+    localStringBuilder2 = new StringBuilder("|romversion|");
     localStringBuilder2.append(paraman.cg);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|kernel_ver|");
+    localStringBuilder2 = new StringBuilder("|kernel_ver|");
     localStringBuilder2.append(paraman.cF);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|isdual|");
+    localStringBuilder2 = new StringBuilder("|isdual|");
     localStringBuilder2.append(paraman.cm);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|rom_manufactory_version|");
+    localStringBuilder2 = new StringBuilder("|rom_manufactory_version|");
     localStringBuilder2.append(paraman.cH);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|insideCid|");
+    localStringBuilder2 = new StringBuilder("|insideCid|");
     localStringBuilder2.append(paraman.cI);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|outsideCid|");
+    localStringBuilder2 = new StringBuilder("|outsideCid|");
     localStringBuilder2.append(paraman.cJ);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|registCount|");
+    localStringBuilder2 = new StringBuilder("|registCount|");
     localStringBuilder2.append(paraman.cK);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|imei1|");
+    localStringBuilder2 = new StringBuilder("|imei1|");
     localStringBuilder2.append(paraman.cL);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|imei2|");
+    localStringBuilder2 = new StringBuilder("|imei2|");
     localStringBuilder2.append(paraman.cM);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|meid|");
+    localStringBuilder2 = new StringBuilder("|meid|");
     localStringBuilder2.append(paraman.cN);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|deviceId1|");
+    localStringBuilder2 = new StringBuilder("|deviceId1|");
     localStringBuilder2.append(paraman.cO);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|deviceId2|");
+    localStringBuilder2 = new StringBuilder("|deviceId2|");
     localStringBuilder2.append(paraman.cP);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|deviceId3|");
+    localStringBuilder2 = new StringBuilder("|deviceId3|");
     localStringBuilder2.append(paraman.cQ);
     localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("|deviceId4|");
+    localStringBuilder2 = new StringBuilder("|deviceId4|");
     localStringBuilder2.append(paraman.cR);
     localStringBuilder1.append(localStringBuilder2.toString());
     return localStringBuilder1.toString();
@@ -586,17 +500,14 @@ public class cf
   {
     try
     {
-      localObject = new Intent(String.format("action.reg.guid:%s", new Object[] { paramContext.getPackageName() }));
-      ((Intent)localObject).setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast((Intent)localObject);
+      Intent localIntent = new Intent(String.format("action.reg.guid:%s", new Object[] { paramContext.getPackageName() }));
+      localIntent.setPackage(paramContext.getPackageName());
+      paramContext.sendBroadcast(localIntent);
       return;
     }
     catch (Throwable paramContext)
     {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[cu_guid]requestSendProcessRegisterGuid(): ");
-      ((StringBuilder)localObject).append(paramContext);
-      eh.b("GuidCertifier", ((StringBuilder)localObject).toString(), paramContext);
+      eh.b("GuidCertifier", "[cu_guid]requestSendProcessRegisterGuid(): ".concat(String.valueOf(paramContext)), paramContext);
     }
   }
   
@@ -617,7 +528,7 @@ public class cf
       this.hI = l1;
       break;
       if (!dy.a(l1, this.hI, 60)) {
-        return false;
+        break label165;
       }
     }
     long l2 = this.hF.bL().aJ();
@@ -634,6 +545,7 @@ public class cf
       return true;
     }
     eh.f("GuidCertifier", "[cu_guid]shouldCheckUpdate(), [file] less than 12h, donnot check");
+    label165:
     return false;
   }
   
@@ -660,8 +572,7 @@ public class cf
     eh.f("GuidCertifier", "[cu_guid]registerGuid()");
     if (!aY())
     {
-      parama = new StringBuilder();
-      parama.append("[cu_guid]registerGuid(), not necessary, mGuid: ");
+      parama = new StringBuilder("[cu_guid]registerGuid(), not necessary, mGuid: ");
       parama.append(this.hH);
       eh.e("GuidCertifier", parama.toString());
       return;
@@ -679,8 +590,7 @@ public class cf
       parama.a(i, 1, -20001500, null);
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[cu_guid]registerGuid(), cur info: ");
+    Object localObject = new StringBuilder("[cu_guid]registerGuid(), cur info: ");
     ((StringBuilder)localObject).append(c(localan));
     eh.f("GuidCertifier", ((StringBuilder)localObject).toString());
     localObject = new ArrayList();
@@ -688,14 +598,11 @@ public class cf
     cv.by().a(localas.dc, -1L, null);
     this.hF.b((ArrayList)localObject, new cy.b()
     {
-      public void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+      public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
       {
         if (paramAnonymousInt1 != 0)
         {
-          paramAnonymousArrayList = new StringBuilder();
-          paramAnonymousArrayList.append("[cu_guid]registerGuid(), retCode: ");
-          paramAnonymousArrayList.append(paramAnonymousInt1);
-          eh.h("GuidCertifier", paramAnonymousArrayList.toString());
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), retCode: ".concat(String.valueOf(paramAnonymousInt1)));
           parama.a(i, 1, paramAnonymousInt1, null);
           return;
         }
@@ -720,8 +627,7 @@ public class cf
         }
         if (paramAnonymousArrayList.df != 0)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("[cu_guid]registerGuid(), mazu error: ");
+          localObject1 = new StringBuilder("[cu_guid]registerGuid(), mazu error: ");
           ((StringBuilder)localObject1).append(paramAnonymousArrayList.df);
           eh.h("GuidCertifier", ((StringBuilder)localObject1).toString());
           parama.a(i, 1, paramAnonymousArrayList.df, null);
@@ -729,8 +635,7 @@ public class cf
         }
         if (paramAnonymousArrayList.dg != 0)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("[cu_guid]registerGuid(), dataRetCode: ");
+          localObject1 = new StringBuilder("[cu_guid]registerGuid(), dataRetCode: ");
           ((StringBuilder)localObject1).append(paramAnonymousArrayList.dg);
           eh.h("GuidCertifier", ((StringBuilder)localObject1).toString());
           parama.a(i, 1, -21300000, null);
@@ -743,8 +648,7 @@ public class cf
           parama.a(i, 1, -21000005, null);
           return;
         }
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[cu_guid]registerGuid() rs.data.length: ");
+        Object localObject2 = new StringBuilder("[cu_guid]registerGuid() rs.data.length: ");
         ((StringBuilder)localObject2).append(paramAnonymousArrayList.data.length);
         eh.e("GuidCertifier", ((StringBuilder)localObject2).toString());
         localObject2 = new aw();
@@ -758,8 +662,7 @@ public class cf
             return;
           }
           paramAnonymousArrayList = (aw)paramAnonymousArrayList;
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("[cu_guid]registerGuid(), guid got: ");
+          localObject1 = new StringBuilder("[cu_guid]registerGuid(), guid got: ");
           ((StringBuilder)localObject1).append(paramAnonymousArrayList.guid);
           eh.e("GuidCertifier", ((StringBuilder)localObject1).toString());
           cf.a(cf.this, paramAnonymousArrayList.guid, localan, true);
@@ -768,10 +671,7 @@ public class cf
         }
         catch (Exception paramAnonymousArrayList)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("[cu_guid]registerGuid(), decode jce exception: ");
-          ((StringBuilder)localObject1).append(paramAnonymousArrayList);
-          eh.h("GuidCertifier", ((StringBuilder)localObject1).toString());
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), decode jce exception: ".concat(String.valueOf(paramAnonymousArrayList)));
           parama.a(i, 1, -21000400, null);
         }
       }
@@ -820,8 +720,7 @@ public class cf
     {
       this.hG = true;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[cu_guid]refreshGuid(), mGuid: ");
+    StringBuilder localStringBuilder = new StringBuilder("[cu_guid]refreshGuid(), mGuid: ");
     localStringBuilder.append(this.hH);
     localStringBuilder.append(" fromPhone: ");
     localStringBuilder.append(this.hG);

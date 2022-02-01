@@ -1,8 +1,10 @@
 package com.tencent.token.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,40 +22,45 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.bw;
-import com.tencent.token.cc;
-import com.tencent.token.cd;
+import com.tencent.token.aae;
+import com.tencent.token.ahh;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.cs;
-import com.tencent.token.global.c;
-import com.tencent.token.global.e;
+import com.tencent.token.qz;
+import com.tencent.token.rv;
+import com.tencent.token.rv.a;
+import com.tencent.token.sb;
+import com.tencent.token.sc;
+import com.tencent.token.ta;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
-import com.tencent.token.ui.base.g.a;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.utils.m;
+import com.tencent.token.wx;
+import com.tencent.token.wz;
+import com.tencent.token.xb;
+import com.tencent.token.yr;
+import com.tencent.token.yr.a;
 
 public class WelcomeActivity
   extends Activity
-  implements g.a
+  implements yr.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
-  private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
-  private static final int[] mBitmapIds = { 2131099852, 2131099853 };
+  private static final int IMAGE_LEVEL_COUNT = 2;
+  private static final int[] mBitmapIds = { 2131099853, 2131099854 };
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private UserTask<String, String, e> mActiveTask = null;
+  private UserTask<String, String, wz> mActiveTask = null;
   private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
   {
-    public boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
     {
       return false;
     }
     
-    public boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
       try
       {
@@ -61,7 +68,7 @@ public class WelcomeActivity
         {
           if (WelcomeActivity.this.mLevel < WelcomeActivity.IMAGE_LEVEL_COUNT - 1)
           {
-            paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+            paramAnonymousMotionEvent1 = aae.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
             if (paramAnonymousMotionEvent1 == null)
             {
               WelcomeActivity.this.doOutOfMemory();
@@ -77,7 +84,7 @@ public class WelcomeActivity
         }
         else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (WelcomeActivity.this.mLevel > 0))
         {
-          paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+          paramAnonymousMotionEvent1 = aae.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             WelcomeActivity.this.doOutOfMemory();
@@ -102,16 +109,16 @@ public class WelcomeActivity
       return true;
     }
     
-    public void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+    public final void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
     
-    public boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
       return false;
     }
     
-    public void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
+    public final void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
     
-    public boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+    public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
     {
       return false;
     }
@@ -121,9 +128,10 @@ public class WelcomeActivity
   private Bitmap mDotFull;
   private Button mEndBtn;
   private boolean mFirstInstall = false;
+  @SuppressLint({"HandlerLeak"})
   private Handler mHandler = new Handler()
   {
-    public void handleMessage(Message paramAnonymousMessage)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
       WelcomeActivity localWelcomeActivity = WelcomeActivity.this;
       if (localWelcomeActivity != null)
@@ -137,15 +145,15 @@ public class WelcomeActivity
           if (i != 3071) {
             return;
           }
-          if ((paramAnonymousMessage.arg1 == 0) && (!((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha)) {
-            WelcomeActivity.this.sendActiveClient();
+          if (paramAnonymousMessage.arg1 == 0) {
+            if (!((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha) {
+              WelcomeActivity.this.sendActiveClient();
+            }
           }
         }
-        else if (paramAnonymousMessage.arg1 == 0)
+        else
         {
-          paramAnonymousMessage = cd.c();
-          paramAnonymousMessage.i();
-          paramAnonymousMessage.n();
+          i = paramAnonymousMessage.arg1;
         }
         return;
       }
@@ -154,10 +162,11 @@ public class WelcomeActivity
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private com.tencent.token.ui.base.g mPageCurlView;
+  private yr mPageCurlView;
   private ProDialogWithShutDown mProDialog;
-  private UserTask<String, String, e> mSyncInitTask = null;
+  private UserTask<String, String, wz> mSyncInitTask = null;
   private int mWidth;
+  ProgressDialog progressDialog;
   
   private void doOutOfMemory()
   {
@@ -173,7 +182,7 @@ public class WelcomeActivity
     this.mDotFull = null;
     localObject = this.mPageCurlView;
     if (localObject != null) {
-      ((com.tencent.token.ui.base.g)localObject).c();
+      ((yr)localObject).b();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -197,37 +206,24 @@ public class WelcomeActivity
   
   private void getSharedKey()
   {
-    this.mSyncInitTask = new UserTask()
-    {
-      public e a(String... paramAnonymousVarArgs)
-      {
-        return cs.a().s();
-      }
-      
-      public void a(e paramAnonymouse)
-      {
-        if (paramAnonymouse.b()) {
-          bw.a().a(0L, 3, WelcomeActivity.this.mHandler);
-        }
-      }
-    };
-    this.mSyncInitTask.c(new String[] { "" });
+    this.mSyncInitTask = new UserTask() {};
+    this.mSyncInitTask.a(new String[] { "" });
   }
   
+  @SuppressLint({"ClickableViewAccessibility"})
   private void init()
   {
-    cd.b(c.h());
+    sc.b(wx.h());
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("totalMemory:");
+      StringBuilder localStringBuilder = new StringBuilder("totalMemory:");
       localStringBuilder.append(Runtime.getRuntime().totalMemory());
       localStringBuilder.append(" freeMemory:");
       localStringBuilder.append(Runtime.getRuntime().freeMemory());
       localStringBuilder.append(" maxMemory:");
       localStringBuilder.append(Runtime.getRuntime().maxMemory());
-      com.tencent.token.global.g.b(localStringBuilder.toString());
-      m.b();
+      xb.b(localStringBuilder.toString());
+      aae.b();
       nextActivity();
       return;
     }
@@ -246,14 +242,13 @@ public class WelcomeActivity
   
   private void nextActivity()
   {
-    Object localObject = cd.c();
-    UserTask localUserTask = this.mActiveTask;
-    if ((localUserTask != null) && (localUserTask.b() != UserTask.Status.FINISHED)) {
-      this.mActiveTask.a(true);
+    Object localObject = this.mActiveTask;
+    if ((localObject != null) && (((UserTask)localObject).e != UserTask.Status.FINISHED)) {
+      this.mActiveTask.c();
     }
-    if (!((cd)localObject).g())
+    if (!qz.a().d())
     {
-      if (cs.a().d() == 0)
+      if (ta.a().k.a() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -263,7 +258,7 @@ public class WelcomeActivity
       }
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall) {
-        if (cs.a().e() != null) {
+        if (ta.a().k.b() != null) {
           ((Intent)localObject).putExtra("index_from", 17);
         } else {
           ((Intent)localObject).putExtra("index_from", 16);
@@ -281,7 +276,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    bw.a().c(this.mHandler);
+    rv.a.a().a(this.mHandler);
   }
   
   public void dismissDialog()
@@ -300,12 +295,12 @@ public class WelcomeActivity
       {
         this.mProDialog.dismiss();
         this.mProDialog = null;
-        return;
       }
+      return;
     }
     catch (Exception localException)
     {
-      com.tencent.token.global.g.b(localException.toString());
+      xb.b(localException.toString());
     }
   }
   
@@ -324,11 +319,10 @@ public class WelcomeActivity
     catch (Exception paramKeyEvent)
     {
       paramKeyEvent.printStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("dispatchKeyEvent exception ");
+      StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      com.tencent.token.global.g.d(localStringBuilder.toString());
+      xb.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -340,24 +334,45 @@ public class WelcomeActivity
     paramBundle.append(this);
     paramBundle.append(",task");
     paramBundle.append(getTaskId());
-    com.tencent.token.global.g.b(paramBundle.toString());
-    paramBundle = new StringBuilder();
-    paramBundle.append("width = ");
+    xb.b(paramBundle.toString());
+    paramBundle = new StringBuilder("width = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getWidth());
     paramBundle.append(", height = ");
     paramBundle.append(getWindowManager().getDefaultDisplay().getHeight());
-    com.tencent.token.global.g.a(paramBundle.toString());
+    xb.a(paramBundle.toString());
+    if (!qz.a().c())
+    {
+      this.progressDialog = new ProgressDialog(this);
+      this.progressDialog.setCanceledOnTouchOutside(false);
+      this.progressDialog.setCancelable(false);
+      this.progressDialog.setMessage("初始化中...");
+      this.progressDialog.show();
+      this.mHandler.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          if (!qz.a().c())
+          {
+            WelcomeActivity.this.mHandler.postDelayed(this, 1000L);
+            return;
+          }
+          WelcomeActivity.this.progressDialog.dismiss();
+          WelcomeActivity.this.init();
+        }
+      }, 1000L);
+      return;
+    }
     init();
   }
   
   protected void onDestroy()
   {
-    com.tencent.token.ui.base.g localg = this.mPageCurlView;
-    if (localg != null) {
-      localg.c();
+    yr localyr = this.mPageCurlView;
+    if (localyr != null) {
+      localyr.b();
     }
     this.mPageCurlView = null;
-    cc.a().a(getClass().getName());
+    sb.a().a(getClass().getName());
     super.onDestroy();
   }
   

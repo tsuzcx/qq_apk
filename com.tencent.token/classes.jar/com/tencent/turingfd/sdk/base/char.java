@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 
 public final class char
@@ -16,31 +18,26 @@ public final class char
     Xa.add(localcase);
   }
   
-  public break a()
+  public final void a(afl paramafl)
   {
-    return new char();
+    this._a = paramafl.a(this._a, 0, false);
+    this.ab = paramafl.a(this.ab, 1, false);
+    this.data = ((ArrayList)paramafl.a(Xa, 2, false));
   }
   
-  public void a(cy paramcy)
-  {
-    this._a = paramcy.a(this._a, 0, false);
-    this.ab = paramcy.a(this.ab, 1, false);
-    this.data = ((ArrayList)paramcy.a(Xa, 2, false));
-  }
-  
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
     int i = this._a;
     if (i != 0) {
-      paramdb.a(i, 0);
+      paramafo.a(i, 0);
     }
     i = this.ab;
     if (i != 0) {
-      paramdb.a(i, 1);
+      paramafo.a(i, 1);
     }
     ArrayList localArrayList = this.data;
     if (localArrayList != null) {
-      paramdb.a(localArrayList, 2);
+      paramafo.a(localArrayList, 2);
     }
   }
 }

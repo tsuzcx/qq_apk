@@ -1,5 +1,7 @@
 package com.tencent.turingfd.sdk.base;
 
+import com.tencent.token.afl;
+import com.tencent.token.afo;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,41 +22,36 @@ public final class new
     hb.add(localint);
   }
   
-  public break a()
+  public final void a(afl paramafl)
   {
-    return new new();
+    this._a = paramafl.a(this._a, 0, false);
+    this.ab = paramafl.a(this.ab, 1, false);
+    this.ib = paramafl.a(this.ib, 2, false);
+    this.jb = ((do)paramafl.a(gb, 3, false));
+    this.kb = ((ArrayList)paramafl.a(hb, 4, false));
   }
   
-  public void a(cy paramcy)
-  {
-    this._a = paramcy.a(this._a, 0, false);
-    this.ab = paramcy.a(this.ab, 1, false);
-    this.ib = paramcy.a(this.ib, 2, false);
-    this.jb = ((do)paramcy.a(gb, 3, false));
-    this.kb = ((ArrayList)paramcy.a(hb, 4, false));
-  }
-  
-  public void a(db paramdb)
+  public final void a(afo paramafo)
   {
     int i = this._a;
     if (i != 0) {
-      paramdb.a(i, 0);
+      paramafo.a(i, 0);
     }
     i = this.ab;
     if (i != 0) {
-      paramdb.a(i, 1);
+      paramafo.a(i, 1);
     }
     i = this.ib;
     if (i != 1) {
-      paramdb.a(i, 2);
+      paramafo.a(i, 2);
     }
     Object localObject = this.jb;
     if (localObject != null) {
-      paramdb.a((break)localObject, 3);
+      paramafo.a((break)localObject, 3);
     }
     localObject = this.kb;
     if (localObject != null) {
-      paramdb.a((Collection)localObject, 4);
+      paramafo.a((Collection)localObject, 4);
     }
   }
 }

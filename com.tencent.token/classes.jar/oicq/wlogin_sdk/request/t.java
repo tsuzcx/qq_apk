@@ -72,7 +72,7 @@ public class t
   public static String at;
   public static int au = 0;
   private static Object av;
-  static Boolean e = Boolean.valueOf(false);
+  static Boolean e = Boolean.FALSE;
   public static Context t = null;
   public static int u = 2052;
   public static String v = "";
@@ -276,13 +276,11 @@ public class t
     Y = 0;
     a(t);
     byte[] arrayOfByte = util.getGuidFromFile(t);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("get saved guid ");
+    Object localObject1 = new StringBuilder("get saved guid ");
     ((StringBuilder)localObject1).append(util.buf_to_string(arrayOfByte));
     util.LOGI(((StringBuilder)localObject1).toString(), "");
     localObject1 = util.generateGuid(t);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("get current guid ");
+    Object localObject2 = new StringBuilder("get current guid ");
     ((StringBuilder)localObject2).append(util.buf_to_string((byte[])localObject1));
     util.LOGI(((StringBuilder)localObject2).toString(), "");
     if ((arrayOfByte != null) && (arrayOfByte.length > 0))
@@ -324,40 +322,60 @@ public class t
       T = 1;
     }
     c();
-    Y |= W << 24 & 0xFF000000;
-    Y |= X << 8 & 0xFF00;
+    int i3 = Y | W << 24 & 0xFF000000;
+    Y = i3;
+    Y = i3 | X << 8 & 0xFF00;
     A = (byte[])((byte[])localObject1).clone();
     B = (byte[])((byte[])localObject1).clone();
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("guid src ");
+    localObject1 = new StringBuilder("guid src ");
     ((StringBuilder)localObject1).append(W);
     util.LOGI(((StringBuilder)localObject1).toString(), "");
-    M = util.get_imei_id(t);
-    localObject1 = M;
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      M = MD5.toMD5Byte((byte[])localObject1);
+    localObject1 = util.get_imei_id(t);
+    M = (byte[])localObject1;
+    if (localObject1 != null)
+    {
+      localObject1 = M;
+      if (localObject1.length > 0) {
+        M = MD5.toMD5Byte((byte[])localObject1);
+      }
     }
     ae = Build.VERSION.SDK_INT;
-    N = util.get_mac_addr(t);
-    localObject1 = N;
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      N = MD5.toMD5Byte((byte[])localObject1);
+    localObject1 = util.get_mac_addr(t);
+    N = (byte[])localObject1;
+    if (localObject1 != null)
+    {
+      localObject1 = N;
+      if (localObject1.length > 0) {
+        N = MD5.toMD5Byte((byte[])localObject1);
+      }
     }
-    R = util.get_bssid_addr(t);
-    localObject1 = R;
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      R = MD5.toMD5Byte((byte[])localObject1);
+    localObject1 = util.get_bssid_addr(t);
+    R = (byte[])localObject1;
+    if (localObject1 != null)
+    {
+      localObject1 = R;
+      if (localObject1.length > 0) {
+        R = MD5.toMD5Byte((byte[])localObject1);
+      }
     }
     S = util.get_ssid_addr(t);
-    O = util.get_android_id(t);
-    localObject1 = O;
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      O = MD5.toMD5Byte((byte[])localObject1);
+    localObject1 = util.get_android_id(t);
+    O = (byte[])localObject1;
+    if (localObject1 != null)
+    {
+      localObject1 = O;
+      if (localObject1.length > 0) {
+        O = MD5.toMD5Byte((byte[])localObject1);
+      }
     }
-    L = util.get_IMSI(t);
-    localObject1 = L;
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      L = MD5.toMD5Byte((byte[])localObject1);
+    localObject1 = util.get_IMSI(t);
+    L = (byte[])localObject1;
+    if (localObject1 != null)
+    {
+      localObject1 = L;
+      if (localObject1.length > 0) {
+        L = MD5.toMD5Byte((byte[])localObject1);
+      }
     }
     C = util.get_sim_operator_name(t);
     D = util.get_network_type(t);
@@ -405,8 +423,9 @@ public class t
     }
     Z = i2;
     al = new d(t);
-    an = report_t.read_fromfile(t);
-    if (an == null) {
+    localObject1 = report_t.read_fromfile(t);
+    an = (Reporter)localObject1;
+    if (localObject1 == null) {
       an = new Reporter();
     }
     util.LOGI("init done", "");
@@ -438,8 +457,8 @@ public class t
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
         if (localRunningAppProcessInfo.pid == i1)
         {
-          am = localRunningAppProcessInfo.processName;
-          localObject = am;
+          localObject = localRunningAppProcessInfo.processName;
+          am = (String)localObject;
           return localObject;
         }
       }
@@ -523,24 +542,17 @@ public class t
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("get_siginfo appid=");
-      ((StringBuilder)localObject1).append(paramLong2);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramLong1);
-      localStringBuilder.append("");
-      util.LOGI((String)localObject1, localStringBuilder.toString());
-      localObject1 = al.d(paramLong1, paramLong2);
-      if (localObject1 != null) {
-        return localObject1;
+      util.LOGI("get_siginfo appid=".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
+      WloginSigInfo localWloginSigInfo = al.d(paramLong1, paramLong2);
+      if (localWloginSigInfo != null) {
+        return localWloginSigInfo;
       }
-      return localObject1;
+      return localWloginSigInfo;
     }
     finally
     {
-      localObject2 = finally;
-      throw localObject2;
+      localObject = finally;
+      throw localObject;
     }
   }
   
@@ -602,8 +614,9 @@ public class t
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ab = (util.buf_to_int32(paramArrayOfByte1, 0) & 0xFFFFFFFF) - System.currentTimeMillis() / 1000L;
-    ac = ab;
+    long l1 = (util.buf_to_int32(paramArrayOfByte1, 0) & 0xFFFFFFFF) - System.currentTimeMillis() / 1000L;
+    ab = l1;
+    ac = l1;
     ad = paramArrayOfByte2;
   }
   

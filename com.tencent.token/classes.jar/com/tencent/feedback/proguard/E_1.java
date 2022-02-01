@@ -35,7 +35,7 @@ public final class E
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       for (;;)
       {
-        int i = localZipInputStream.read(paramArrayOfByte, 0, paramArrayOfByte.length);
+        int i = localZipInputStream.read(paramArrayOfByte, 0, 1024);
         if (i == -1) {
           break;
         }

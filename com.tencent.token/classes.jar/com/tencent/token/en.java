@@ -1,23 +1,154 @@
 package com.tencent.token;
 
-import com.tencent.token.global.g;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.os.Build.VERSION;
+import android.view.MenuItem;
 
-public class en
+public final class en
 {
-  public static void a(String paramString)
+  static final c a = new b();
+  
+  static
   {
-    try
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      et.a(paramString);
+      a = new a();
       return;
     }
-    catch (Exception paramString)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("delete database table failed: ");
-      localStringBuilder.append(paramString.toString());
-      g.c(localStringBuilder.toString());
+  }
+  
+  public static MenuItem a(MenuItem paramMenuItem, ej paramej)
+  {
+    if ((paramMenuItem instanceof do)) {
+      return ((do)paramMenuItem).a(paramej);
     }
+    return paramMenuItem;
+  }
+  
+  public static void a(MenuItem paramMenuItem, char paramChar, int paramInt)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).setNumericShortcut(paramChar, paramInt);
+      return;
+    }
+    a.b(paramMenuItem, paramChar, paramInt);
+  }
+  
+  public static void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).setIconTintList(paramColorStateList);
+      return;
+    }
+    a.a(paramMenuItem, paramColorStateList);
+  }
+  
+  public static void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).setIconTintMode(paramMode);
+      return;
+    }
+    a.a(paramMenuItem, paramMode);
+  }
+  
+  public static void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).a(paramCharSequence);
+      return;
+    }
+    a.a(paramMenuItem, paramCharSequence);
+  }
+  
+  public static void b(MenuItem paramMenuItem, char paramChar, int paramInt)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).setAlphabeticShortcut(paramChar, paramInt);
+      return;
+    }
+    a.a(paramMenuItem, paramChar, paramInt);
+  }
+  
+  public static void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
+  {
+    if ((paramMenuItem instanceof do))
+    {
+      ((do)paramMenuItem).b(paramCharSequence);
+      return;
+    }
+    a.b(paramMenuItem, paramCharSequence);
+  }
+  
+  static final class a
+    extends en.b
+  {
+    public final void a(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
+    }
+    
+    public final void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
+    {
+      paramMenuItem.setIconTintList(paramColorStateList);
+    }
+    
+    public final void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
+    {
+      paramMenuItem.setIconTintMode(paramMode);
+    }
+    
+    public final void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setContentDescription(paramCharSequence);
+    }
+    
+    public final void b(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setNumericShortcut(paramChar, paramInt);
+    }
+    
+    public final void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setTooltipText(paramCharSequence);
+    }
+  }
+  
+  static class b
+    implements en.c
+  {
+    public void a(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void a(MenuItem paramMenuItem, ColorStateList paramColorStateList) {}
+    
+    public void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode) {}
+    
+    public void a(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+    
+    public void b(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void b(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+  }
+  
+  static abstract interface c
+  {
+    public abstract void a(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void a(MenuItem paramMenuItem, ColorStateList paramColorStateList);
+    
+    public abstract void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode);
+    
+    public abstract void a(MenuItem paramMenuItem, CharSequence paramCharSequence);
+    
+    public abstract void b(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void b(MenuItem paramMenuItem, CharSequence paramCharSequence);
   }
 }
 

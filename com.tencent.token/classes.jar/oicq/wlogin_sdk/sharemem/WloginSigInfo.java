@@ -192,8 +192,7 @@ public class WloginSigInfo
           this._lsKey_create_time = paramLong2;
           this._lsKey_expire_time = (paramArrayOfLong[0] + paramLong2);
         }
-        paramArrayOfByte1 = new StringBuilder();
-        paramArrayOfByte1.append("set skey ");
+        paramArrayOfByte1 = new StringBuilder("set skey ");
         paramArrayOfByte1.append(util.getMaskBytes(paramArrayOfByte9, 2, 2));
         util.LOGI(paramArrayOfByte1.toString());
         if ((paramArrayOfByte9 != null) && (paramArrayOfByte9.length > 0))
@@ -288,8 +287,7 @@ public class WloginSigInfo
         {
           i = paramArrayOfByte[11].length;
         }
-        paramArrayOfByte1 = new StringBuilder();
-        paramArrayOfByte1.append("mainSigMap 0x");
+        paramArrayOfByte1 = new StringBuilder("mainSigMap 0x");
         paramArrayOfByte1.append(Integer.toHexString(this.mainSigMap));
         paramArrayOfByte1.append(" file da2 len ");
         paramArrayOfByte1.append(paramInt);
@@ -332,8 +330,7 @@ public class WloginSigInfo
   
   public String getAllTicketString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("A1[");
+    StringBuilder localStringBuilder = new StringBuilder("A1[");
     localStringBuilder.append(this._en_A1.length);
     localStringBuilder.append("][");
     localStringBuilder.append(this._create_time);
@@ -367,8 +364,7 @@ public class WloginSigInfo
     }
     if (l1 > 2592000L + l2)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("time for system may be  modified manually expireTime ");
+      StringBuilder localStringBuilder = new StringBuilder("time for system may be  modified manually expireTime ");
       localStringBuilder.append(l1);
       localStringBuilder.append(" current ");
       localStringBuilder.append(l2);

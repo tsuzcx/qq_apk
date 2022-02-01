@@ -39,7 +39,7 @@ public final class JceDisplayer
     }
   }
   
-  public JceDisplayer display(byte paramByte, String paramString)
+  public final JceDisplayer display(byte paramByte, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -48,7 +48,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(char paramChar, String paramString)
+  public final JceDisplayer display(char paramChar, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -57,7 +57,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(double paramDouble, String paramString)
+  public final JceDisplayer display(double paramDouble, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -66,7 +66,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(float paramFloat, String paramString)
+  public final JceDisplayer display(float paramFloat, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -75,7 +75,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(int paramInt, String paramString)
+  public final JceDisplayer display(int paramInt, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -84,7 +84,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(long paramLong, String paramString)
+  public final JceDisplayer display(long paramLong, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -93,7 +93,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(JceStruct paramJceStruct, String paramString)
+  public final JceDisplayer display(JceStruct paramJceStruct, String paramString)
   {
     display('{', paramString);
     if (paramJceStruct == null)
@@ -110,13 +110,11 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer display(T paramT, String paramString)
+  public final <T> JceDisplayer display(T paramT, String paramString)
   {
     if (paramT == null)
     {
-      paramT = this.sb;
-      paramT.append("null");
-      paramT.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if ((paramT instanceof Byte))
@@ -217,14 +215,12 @@ public final class JceDisplayer
     throw new JceEncodeException("write object error: unsupport type.");
   }
   
-  public JceDisplayer display(String paramString1, String paramString2)
+  public final JceDisplayer display(String paramString1, String paramString2)
   {
     ps(paramString2);
     if (paramString1 == null)
     {
-      paramString1 = this.sb;
-      paramString1.append("null");
-      paramString1.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     paramString2 = this.sb;
@@ -233,41 +229,35 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer display(Collection<T> paramCollection, String paramString)
+  public final <T> JceDisplayer display(Collection<T> paramCollection, String paramString)
   {
     if (paramCollection == null)
     {
       ps(paramString);
-      paramCollection = this.sb;
-      paramCollection.append("null");
-      paramCollection.append('\t');
+      this.sb.append("null\t");
       return this;
     }
     return display(paramCollection.toArray(), paramString);
   }
   
-  public <K, V> JceDisplayer display(Map<K, V> paramMap, String paramString)
+  public final <K, V> JceDisplayer display(Map<K, V> paramMap, String paramString)
   {
     ps(paramString);
     if (paramMap == null)
     {
-      paramMap = this.sb;
-      paramMap.append("null");
-      paramMap.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramMap.isEmpty())
     {
       paramString = this.sb;
       paramString.append(paramMap.size());
-      paramString.append(", {}");
-      paramString.append('\n');
+      paramString.append(", {}\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramMap.size());
-    paramString.append(", {");
-    paramString.append('\n');
+    paramString.append(", {\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 2);
     paramMap = paramMap.entrySet().iterator();
@@ -283,7 +273,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(short paramShort, String paramString)
+  public final JceDisplayer display(short paramShort, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -292,7 +282,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(boolean paramBoolean, String paramString)
+  public final JceDisplayer display(boolean paramBoolean, String paramString)
   {
     ps(paramString);
     paramString = this.sb;
@@ -307,28 +297,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(byte[] paramArrayOfByte, String paramString)
+  public final JceDisplayer display(byte[] paramArrayOfByte, String paramString)
   {
     ps(paramString);
     if (paramArrayOfByte == null)
     {
-      paramArrayOfByte = this.sb;
-      paramArrayOfByte.append("null");
-      paramArrayOfByte.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfByte.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfByte.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfByte.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -341,28 +327,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(char[] paramArrayOfChar, String paramString)
+  public final JceDisplayer display(char[] paramArrayOfChar, String paramString)
   {
     ps(paramString);
     if (paramArrayOfChar == null)
     {
-      paramArrayOfChar = this.sb;
-      paramArrayOfChar.append("null");
-      paramArrayOfChar.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfChar.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfChar.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfChar.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfChar.length;
     int i = 0;
@@ -375,28 +357,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(double[] paramArrayOfDouble, String paramString)
+  public final JceDisplayer display(double[] paramArrayOfDouble, String paramString)
   {
     ps(paramString);
     if (paramArrayOfDouble == null)
     {
-      paramArrayOfDouble = this.sb;
-      paramArrayOfDouble.append("null");
-      paramArrayOfDouble.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfDouble.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfDouble.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfDouble.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfDouble.length;
     int i = 0;
@@ -409,28 +387,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(float[] paramArrayOfFloat, String paramString)
+  public final JceDisplayer display(float[] paramArrayOfFloat, String paramString)
   {
     ps(paramString);
     if (paramArrayOfFloat == null)
     {
-      paramArrayOfFloat = this.sb;
-      paramArrayOfFloat.append("null");
-      paramArrayOfFloat.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfFloat.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfFloat.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfFloat.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfFloat.length;
     int i = 0;
@@ -443,28 +417,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(int[] paramArrayOfInt, String paramString)
+  public final JceDisplayer display(int[] paramArrayOfInt, String paramString)
   {
     ps(paramString);
     if (paramArrayOfInt == null)
     {
-      paramArrayOfInt = this.sb;
-      paramArrayOfInt.append("null");
-      paramArrayOfInt.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfInt.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfInt.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfInt.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -477,28 +447,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(long[] paramArrayOfLong, String paramString)
+  public final JceDisplayer display(long[] paramArrayOfLong, String paramString)
   {
     ps(paramString);
     if (paramArrayOfLong == null)
     {
-      paramArrayOfLong = this.sb;
-      paramArrayOfLong.append("null");
-      paramArrayOfLong.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfLong.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfLong.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfLong.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfLong.length;
     int i = 0;
@@ -511,28 +477,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer display(T[] paramArrayOfT, String paramString)
+  public final <T> JceDisplayer display(T[] paramArrayOfT, String paramString)
   {
     ps(paramString);
     if (paramArrayOfT == null)
     {
-      paramArrayOfT = this.sb;
-      paramArrayOfT.append("null");
-      paramArrayOfT.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfT.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfT.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfT.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfT.length;
     int i = 0;
@@ -545,28 +507,24 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(short[] paramArrayOfShort, String paramString)
+  public final JceDisplayer display(short[] paramArrayOfShort, String paramString)
   {
     ps(paramString);
     if (paramArrayOfShort == null)
     {
-      paramArrayOfShort = this.sb;
-      paramArrayOfShort.append("null");
-      paramArrayOfShort.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if (paramArrayOfShort.length == 0)
     {
       paramString = this.sb;
       paramString.append(paramArrayOfShort.length);
-      paramString.append(", []");
-      paramString.append('\n');
+      paramString.append(", []\n");
       return this;
     }
     paramString = this.sb;
     paramString.append(paramArrayOfShort.length);
-    paramString.append(", [");
-    paramString.append('\n');
+    paramString.append(", [\n");
     paramString = new JceDisplayer(this.sb, this._level + 1);
     int j = paramArrayOfShort.length;
     int i = 0;
@@ -579,7 +537,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(byte paramByte, boolean paramBoolean)
+  public final JceDisplayer displaySimple(byte paramByte, boolean paramBoolean)
   {
     this.sb.append(paramByte);
     if (paramBoolean) {
@@ -588,7 +546,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(char paramChar, boolean paramBoolean)
+  public final JceDisplayer displaySimple(char paramChar, boolean paramBoolean)
   {
     this.sb.append(paramChar);
     if (paramBoolean) {
@@ -597,7 +555,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(double paramDouble, boolean paramBoolean)
+  public final JceDisplayer displaySimple(double paramDouble, boolean paramBoolean)
   {
     this.sb.append(paramDouble);
     if (paramBoolean) {
@@ -606,7 +564,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(float paramFloat, boolean paramBoolean)
+  public final JceDisplayer displaySimple(float paramFloat, boolean paramBoolean)
   {
     this.sb.append(paramFloat);
     if (paramBoolean) {
@@ -615,7 +573,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(int paramInt, boolean paramBoolean)
+  public final JceDisplayer displaySimple(int paramInt, boolean paramBoolean)
   {
     this.sb.append(paramInt);
     if (paramBoolean) {
@@ -624,7 +582,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(long paramLong, boolean paramBoolean)
+  public final JceDisplayer displaySimple(long paramLong, boolean paramBoolean)
   {
     this.sb.append(paramLong);
     if (paramBoolean) {
@@ -633,7 +591,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(JceStruct paramJceStruct, boolean paramBoolean)
+  public final JceDisplayer displaySimple(JceStruct paramJceStruct, boolean paramBoolean)
   {
     this.sb.append("{");
     if (paramJceStruct == null)
@@ -653,13 +611,11 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer displaySimple(T paramT, boolean paramBoolean)
+  public final <T> JceDisplayer displaySimple(T paramT, boolean paramBoolean)
   {
     if (paramT == null)
     {
-      paramT = this.sb;
-      paramT.append("null");
-      paramT.append('\n');
+      this.sb.append("null\n");
       return this;
     }
     if ((paramT instanceof Byte))
@@ -760,7 +716,7 @@ public final class JceDisplayer
     throw new JceEncodeException("write object error: unsupport type.");
   }
   
-  public JceDisplayer displaySimple(String paramString, boolean paramBoolean)
+  public final JceDisplayer displaySimple(String paramString, boolean paramBoolean)
   {
     if (paramString == null) {
       this.sb.append("null");
@@ -773,7 +729,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer displaySimple(Collection<T> paramCollection, boolean paramBoolean)
+  public final <T> JceDisplayer displaySimple(Collection<T> paramCollection, boolean paramBoolean)
   {
     if (paramCollection == null)
     {
@@ -786,7 +742,7 @@ public final class JceDisplayer
     return displaySimple(paramCollection.toArray(), paramBoolean);
   }
   
-  public <K, V> JceDisplayer displaySimple(Map<K, V> paramMap, boolean paramBoolean)
+  public final <K, V> JceDisplayer displaySimple(Map<K, V> paramMap, boolean paramBoolean)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()))
     {
@@ -815,7 +771,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(short paramShort, boolean paramBoolean)
+  public final JceDisplayer displaySimple(short paramShort, boolean paramBoolean)
   {
     this.sb.append(paramShort);
     if (paramBoolean) {
@@ -824,7 +780,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(boolean paramBoolean1, boolean paramBoolean2)
+  public final JceDisplayer displaySimple(boolean paramBoolean1, boolean paramBoolean2)
   {
     StringBuilder localStringBuilder = this.sb;
     char c;
@@ -840,7 +796,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(byte[] paramArrayOfByte, boolean paramBoolean)
+  public final JceDisplayer displaySimple(byte[] paramArrayOfByte, boolean paramBoolean)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
@@ -856,7 +812,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(char[] paramArrayOfChar, boolean paramBoolean)
+  public final JceDisplayer displaySimple(char[] paramArrayOfChar, boolean paramBoolean)
   {
     if ((paramArrayOfChar != null) && (paramArrayOfChar.length != 0))
     {
@@ -872,7 +828,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(double[] paramArrayOfDouble, boolean paramBoolean)
+  public final JceDisplayer displaySimple(double[] paramArrayOfDouble, boolean paramBoolean)
   {
     if ((paramArrayOfDouble != null) && (paramArrayOfDouble.length != 0))
     {
@@ -901,7 +857,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(float[] paramArrayOfFloat, boolean paramBoolean)
+  public final JceDisplayer displaySimple(float[] paramArrayOfFloat, boolean paramBoolean)
   {
     if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length != 0))
     {
@@ -930,7 +886,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(int[] paramArrayOfInt, boolean paramBoolean)
+  public final JceDisplayer displaySimple(int[] paramArrayOfInt, boolean paramBoolean)
   {
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length != 0))
     {
@@ -959,7 +915,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(long[] paramArrayOfLong, boolean paramBoolean)
+  public final JceDisplayer displaySimple(long[] paramArrayOfLong, boolean paramBoolean)
   {
     if ((paramArrayOfLong != null) && (paramArrayOfLong.length != 0))
     {
@@ -988,7 +944,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public <T> JceDisplayer displaySimple(T[] paramArrayOfT, boolean paramBoolean)
+  public final <T> JceDisplayer displaySimple(T[] paramArrayOfT, boolean paramBoolean)
   {
     if ((paramArrayOfT != null) && (paramArrayOfT.length != 0))
     {
@@ -1017,7 +973,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(short[] paramArrayOfShort, boolean paramBoolean)
+  public final JceDisplayer displaySimple(short[] paramArrayOfShort, boolean paramBoolean)
   {
     if ((paramArrayOfShort != null) && (paramArrayOfShort.length != 0))
     {

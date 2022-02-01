@@ -88,396 +88,367 @@ public class d
     //   70: invokestatic 84	oicq/wlogin_sdk/request/d:c	(Ljava/lang/String;)V
     //   73: new 86	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   80: astore_3
-    //   81: aload_3
-    //   82: ldc 89
-    //   84: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: pop
-    //   88: aload_3
-    //   89: aload_1
-    //   90: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: pop
-    //   94: aload_3
-    //   95: ldc 95
-    //   97: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: pop
-    //   101: aload_3
-    //   102: aload_1
-    //   103: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: aload_3
-    //   108: ldc 97
-    //   110: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: pop
-    //   114: aload_0
-    //   115: aload_3
-    //   116: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokevirtual 103	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
-    //   122: aload_0
-    //   123: aload_1
-    //   124: iconst_1
-    //   125: anewarray 62	java/lang/String
-    //   128: dup
-    //   129: iconst_0
-    //   130: ldc 105
-    //   132: aastore
-    //   133: ldc 107
-    //   135: aconst_null
-    //   136: aconst_null
-    //   137: aconst_null
-    //   138: aconst_null
-    //   139: invokevirtual 111	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   142: astore 5
-    //   144: aload 5
-    //   146: astore_3
-    //   147: aload_0
-    //   148: astore 4
-    //   150: aload 5
-    //   152: invokeinterface 117 1 0
-    //   157: ifne +118 -> 275
-    //   160: aload 5
-    //   162: astore_3
-    //   163: aload_0
-    //   164: astore 4
-    //   166: new 86	java/lang/StringBuilder
-    //   169: dup
-    //   170: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   173: astore 6
-    //   175: aload 5
-    //   177: astore_3
-    //   178: aload_0
-    //   179: astore 4
-    //   181: aload 6
-    //   183: ldc 119
-    //   185: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: pop
-    //   189: aload 5
-    //   191: astore_3
-    //   192: aload_0
-    //   193: astore 4
-    //   195: aload 6
-    //   197: aload_1
-    //   198: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: pop
-    //   202: aload 5
-    //   204: astore_3
-    //   205: aload_0
-    //   206: astore 4
-    //   208: aload 6
-    //   210: ldc 121
-    //   212: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: pop
-    //   216: aload 5
-    //   218: astore_3
-    //   219: aload_0
-    //   220: astore 4
-    //   222: aload 6
-    //   224: aload_1
-    //   225: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: pop
-    //   229: aload 5
-    //   231: astore_3
+    //   77: ldc 88
+    //   79: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   82: astore_3
+    //   83: aload_3
+    //   84: aload_1
+    //   85: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: pop
+    //   89: aload_3
+    //   90: ldc 96
+    //   92: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: aload_3
+    //   97: aload_1
+    //   98: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: pop
+    //   102: aload_3
+    //   103: ldc 98
+    //   105: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: pop
+    //   109: aload_0
+    //   110: aload_3
+    //   111: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: invokevirtual 104	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   117: aload_0
+    //   118: aload_1
+    //   119: iconst_1
+    //   120: anewarray 62	java/lang/String
+    //   123: dup
+    //   124: iconst_0
+    //   125: ldc 106
+    //   127: aastore
+    //   128: ldc 108
+    //   130: aconst_null
+    //   131: aconst_null
+    //   132: aconst_null
+    //   133: aconst_null
+    //   134: invokevirtual 112	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   137: astore 5
+    //   139: aload 5
+    //   141: astore_3
+    //   142: aload_0
+    //   143: astore 4
+    //   145: aload 5
+    //   147: invokeinterface 118 1 0
+    //   152: ifne +106 -> 258
+    //   155: aload 5
+    //   157: astore_3
+    //   158: aload_0
+    //   159: astore 4
+    //   161: new 86	java/lang/StringBuilder
+    //   164: dup
+    //   165: ldc 120
+    //   167: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   170: astore 6
+    //   172: aload 5
+    //   174: astore_3
+    //   175: aload_0
+    //   176: astore 4
+    //   178: aload 6
+    //   180: aload_1
+    //   181: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload 5
+    //   187: astore_3
+    //   188: aload_0
+    //   189: astore 4
+    //   191: aload 6
+    //   193: ldc 122
+    //   195: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: pop
+    //   199: aload 5
+    //   201: astore_3
+    //   202: aload_0
+    //   203: astore 4
+    //   205: aload 6
+    //   207: aload_1
+    //   208: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload 5
+    //   214: astore_3
+    //   215: aload_0
+    //   216: astore 4
+    //   218: aload 6
+    //   220: ldc 124
+    //   222: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload 5
+    //   228: astore_3
+    //   229: aload_0
+    //   230: astore 4
     //   232: aload_0
-    //   233: astore 4
-    //   235: aload 6
-    //   237: ldc 123
-    //   239: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: pop
-    //   243: aload 5
-    //   245: astore_3
-    //   246: aload_0
-    //   247: astore 4
-    //   249: aload_0
-    //   250: aload 6
-    //   252: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: iconst_2
-    //   256: anewarray 4	java/lang/Object
-    //   259: dup
-    //   260: iconst_0
-    //   261: iconst_0
-    //   262: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   265: aastore
-    //   266: dup
-    //   267: iconst_1
-    //   268: iconst_1
-    //   269: newarray byte
-    //   271: aastore
-    //   272: invokevirtual 132	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   233: aload 6
+    //   235: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   238: iconst_2
+    //   239: anewarray 4	java/lang/Object
+    //   242: dup
+    //   243: iconst_0
+    //   244: iconst_0
+    //   245: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   248: aastore
+    //   249: dup
+    //   250: iconst_1
+    //   251: iconst_1
+    //   252: newarray byte
+    //   254: aastore
+    //   255: invokevirtual 133	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   258: aload 5
+    //   260: astore_3
+    //   261: aload_0
+    //   262: astore 4
+    //   264: new 86	java/lang/StringBuilder
+    //   267: dup
+    //   268: ldc 135
+    //   270: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   273: astore 6
     //   275: aload 5
     //   277: astore_3
     //   278: aload_0
     //   279: astore 4
-    //   281: new 86	java/lang/StringBuilder
-    //   284: dup
-    //   285: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   288: astore 6
-    //   290: aload 5
-    //   292: astore_3
-    //   293: aload_0
-    //   294: astore 4
-    //   296: aload 6
-    //   298: ldc 134
-    //   300: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: pop
-    //   304: aload 5
-    //   306: astore_3
-    //   307: aload_0
-    //   308: astore 4
-    //   310: aload 6
-    //   312: aload_1
-    //   313: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   316: pop
-    //   317: aload 5
-    //   319: astore_3
-    //   320: aload_0
-    //   321: astore 4
-    //   323: aload 6
-    //   325: ldc 136
-    //   327: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   330: pop
-    //   331: aload 5
-    //   333: astore_3
-    //   334: aload_0
-    //   335: astore 4
-    //   337: aload 6
-    //   339: aload_1
-    //   340: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   343: pop
-    //   344: aload 5
-    //   346: astore_3
-    //   347: aload_0
-    //   348: astore 4
-    //   350: aload 6
-    //   352: ldc 138
-    //   354: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   357: pop
-    //   358: aload 5
-    //   360: astore_3
-    //   361: aload_0
-    //   362: astore 4
-    //   364: aload_0
-    //   365: aload 6
-    //   367: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: iconst_1
-    //   371: anewarray 4	java/lang/Object
-    //   374: dup
-    //   375: iconst_0
-    //   376: aload_2
-    //   377: aastore
-    //   378: invokevirtual 132	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   381: aload 5
-    //   383: ifnull +20 -> 403
-    //   386: aload 5
-    //   388: invokeinterface 142 1 0
-    //   393: ifne +10 -> 403
-    //   396: aload 5
-    //   398: invokeinterface 145 1 0
-    //   403: aload_0
-    //   404: ifnull +22 -> 426
-    //   407: iconst_1
-    //   408: aload_0
-    //   409: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   412: if_icmpne +14 -> 426
-    //   415: ldc 150
-    //   417: ldc 152
-    //   419: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   422: aload_0
-    //   423: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   426: iconst_0
-    //   427: ireturn
-    //   428: astore_3
-    //   429: aload 5
-    //   431: astore_2
-    //   432: aload_3
-    //   433: astore 5
-    //   435: goto +30 -> 465
-    //   438: astore_1
-    //   439: aconst_null
-    //   440: astore_3
-    //   441: goto +175 -> 616
-    //   444: astore 5
-    //   446: aconst_null
-    //   447: astore_2
-    //   448: goto +17 -> 465
-    //   451: astore_1
-    //   452: aconst_null
-    //   453: astore_0
-    //   454: aload_0
-    //   455: astore_3
-    //   456: goto +160 -> 616
-    //   459: astore 5
-    //   461: aconst_null
-    //   462: astore_0
-    //   463: aload_0
-    //   464: astore_2
-    //   465: aload_2
-    //   466: astore_3
-    //   467: aload_0
-    //   468: astore 4
-    //   470: aload_1
-    //   471: ldc 60
-    //   473: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   476: ifeq +15 -> 491
-    //   479: aload_2
-    //   480: astore_3
-    //   481: aload_0
-    //   482: astore 4
-    //   484: aconst_null
-    //   485: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
-    //   488: goto +12 -> 500
-    //   491: aload_2
-    //   492: astore_3
-    //   493: aload_0
-    //   494: astore 4
-    //   496: aconst_null
-    //   497: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
-    //   500: aload_2
-    //   501: astore_3
-    //   502: aload_0
-    //   503: astore 4
-    //   505: aload 5
-    //   507: ldc 152
-    //   509: invokestatic 163	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   512: aload_2
-    //   513: astore_3
-    //   514: aload_0
-    //   515: astore 4
-    //   517: new 86	java/lang/StringBuilder
-    //   520: dup
-    //   521: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   524: astore_1
-    //   525: aload_2
-    //   526: astore_3
-    //   527: aload_0
-    //   528: astore 4
-    //   530: aload_1
-    //   531: ldc 165
-    //   533: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   536: pop
-    //   537: aload_2
-    //   538: astore_3
-    //   539: aload_0
-    //   540: astore 4
-    //   542: aload_1
-    //   543: aload 5
-    //   545: invokevirtual 168	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   548: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   551: pop
-    //   552: aload_2
-    //   553: astore_3
-    //   554: aload_0
-    //   555: astore 4
-    //   557: aload_1
-    //   558: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   561: ldc 152
-    //   563: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   566: aload_2
-    //   567: ifnull +18 -> 585
-    //   570: aload_2
-    //   571: invokeinterface 142 1 0
-    //   576: ifne +9 -> 585
-    //   579: aload_2
-    //   580: invokeinterface 145 1 0
-    //   585: aload_0
-    //   586: ifnull +22 -> 608
-    //   589: iconst_1
-    //   590: aload_0
-    //   591: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   594: if_icmpne +14 -> 608
-    //   597: ldc 150
-    //   599: ldc 152
-    //   601: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   604: aload_0
-    //   605: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   608: sipush -1022
-    //   611: ireturn
-    //   612: astore_1
-    //   613: aload 4
-    //   615: astore_0
-    //   616: aload_3
-    //   617: ifnull +18 -> 635
-    //   620: aload_3
-    //   621: invokeinterface 142 1 0
-    //   626: ifne +9 -> 635
-    //   629: aload_3
-    //   630: invokeinterface 145 1 0
-    //   635: aload_0
-    //   636: ifnull +22 -> 658
-    //   639: iconst_1
-    //   640: aload_0
-    //   641: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   644: if_icmpne +14 -> 658
-    //   647: ldc 150
-    //   649: ldc 152
-    //   651: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   654: aload_0
-    //   655: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   658: aload_1
-    //   659: athrow
+    //   281: aload 6
+    //   283: aload_1
+    //   284: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 5
+    //   290: astore_3
+    //   291: aload_0
+    //   292: astore 4
+    //   294: aload 6
+    //   296: ldc 137
+    //   298: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: pop
+    //   302: aload 5
+    //   304: astore_3
+    //   305: aload_0
+    //   306: astore 4
+    //   308: aload 6
+    //   310: aload_1
+    //   311: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload 5
+    //   317: astore_3
+    //   318: aload_0
+    //   319: astore 4
+    //   321: aload 6
+    //   323: ldc 139
+    //   325: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 5
+    //   331: astore_3
+    //   332: aload_0
+    //   333: astore 4
+    //   335: aload_0
+    //   336: aload 6
+    //   338: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: iconst_1
+    //   342: anewarray 4	java/lang/Object
+    //   345: dup
+    //   346: iconst_0
+    //   347: aload_2
+    //   348: aastore
+    //   349: invokevirtual 133	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   352: aload 5
+    //   354: ifnull +20 -> 374
+    //   357: aload 5
+    //   359: invokeinterface 143 1 0
+    //   364: ifne +10 -> 374
+    //   367: aload 5
+    //   369: invokeinterface 146 1 0
+    //   374: aload_0
+    //   375: ifnull +22 -> 397
+    //   378: iconst_1
+    //   379: aload_0
+    //   380: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   383: if_icmpne +14 -> 397
+    //   386: ldc 151
+    //   388: ldc 153
+    //   390: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   393: aload_0
+    //   394: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   397: iconst_0
+    //   398: ireturn
+    //   399: astore_3
+    //   400: aload 5
+    //   402: astore_2
+    //   403: aload_3
+    //   404: astore 5
+    //   406: goto +30 -> 436
+    //   409: astore_1
+    //   410: aconst_null
+    //   411: astore_3
+    //   412: goto +165 -> 577
+    //   415: astore 5
+    //   417: aconst_null
+    //   418: astore_2
+    //   419: goto +17 -> 436
+    //   422: astore_1
+    //   423: aconst_null
+    //   424: astore_0
+    //   425: aload_0
+    //   426: astore_3
+    //   427: goto +150 -> 577
+    //   430: astore 5
+    //   432: aconst_null
+    //   433: astore_0
+    //   434: aload_0
+    //   435: astore_2
+    //   436: aload_2
+    //   437: astore_3
+    //   438: aload_0
+    //   439: astore 4
+    //   441: aload_1
+    //   442: ldc 60
+    //   444: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   447: ifeq +15 -> 462
+    //   450: aload_2
+    //   451: astore_3
+    //   452: aload_0
+    //   453: astore 4
+    //   455: aconst_null
+    //   456: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
+    //   459: goto +12 -> 471
+    //   462: aload_2
+    //   463: astore_3
+    //   464: aload_0
+    //   465: astore 4
+    //   467: aconst_null
+    //   468: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
+    //   471: aload_2
+    //   472: astore_3
+    //   473: aload_0
+    //   474: astore 4
+    //   476: aload 5
+    //   478: ldc 153
+    //   480: invokestatic 164	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   483: aload_2
+    //   484: astore_3
+    //   485: aload_0
+    //   486: astore 4
+    //   488: new 86	java/lang/StringBuilder
+    //   491: dup
+    //   492: ldc 166
+    //   494: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   497: astore_1
+    //   498: aload_2
+    //   499: astore_3
+    //   500: aload_0
+    //   501: astore 4
+    //   503: aload_1
+    //   504: aload 5
+    //   506: invokevirtual 169	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   509: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: pop
+    //   513: aload_2
+    //   514: astore_3
+    //   515: aload_0
+    //   516: astore 4
+    //   518: aload_1
+    //   519: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   522: ldc 153
+    //   524: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   527: aload_2
+    //   528: ifnull +18 -> 546
+    //   531: aload_2
+    //   532: invokeinterface 143 1 0
+    //   537: ifne +9 -> 546
+    //   540: aload_2
+    //   541: invokeinterface 146 1 0
+    //   546: aload_0
+    //   547: ifnull +22 -> 569
+    //   550: iconst_1
+    //   551: aload_0
+    //   552: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   555: if_icmpne +14 -> 569
+    //   558: ldc 151
+    //   560: ldc 153
+    //   562: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   565: aload_0
+    //   566: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   569: sipush -1022
+    //   572: ireturn
+    //   573: astore_1
+    //   574: aload 4
+    //   576: astore_0
+    //   577: aload_3
+    //   578: ifnull +18 -> 596
+    //   581: aload_3
+    //   582: invokeinterface 143 1 0
+    //   587: ifne +9 -> 596
+    //   590: aload_3
+    //   591: invokeinterface 146 1 0
+    //   596: aload_0
+    //   597: ifnull +22 -> 619
+    //   600: iconst_1
+    //   601: aload_0
+    //   602: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   605: if_icmpne +14 -> 619
+    //   608: ldc 151
+    //   610: ldc 153
+    //   612: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   615: aload_0
+    //   616: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   619: aload_1
+    //   620: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	660	0	paramContext	Context
-    //   0	660	1	paramString	String
-    //   0	660	2	paramArrayOfByte	byte[]
-    //   80	281	3	localObject1	Object
-    //   428	5	3	localException1	Exception
-    //   440	190	3	localObject2	Object
-    //   148	466	4	localContext	Context
-    //   142	292	5	localObject3	Object
-    //   444	1	5	localException2	Exception
-    //   459	85	5	localException3	Exception
-    //   173	193	6	localStringBuilder	StringBuilder
+    //   0	621	0	paramContext	Context
+    //   0	621	1	paramString	String
+    //   0	621	2	paramArrayOfByte	byte[]
+    //   82	250	3	localObject1	Object
+    //   399	5	3	localException1	Exception
+    //   411	180	3	localObject2	Object
+    //   143	432	4	localContext	Context
+    //   137	268	5	localObject3	Object
+    //   415	1	5	localException2	Exception
+    //   430	75	5	localException3	Exception
+    //   170	167	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   150	160	428	java/lang/Exception
-    //   166	175	428	java/lang/Exception
-    //   181	189	428	java/lang/Exception
-    //   195	202	428	java/lang/Exception
-    //   208	216	428	java/lang/Exception
-    //   222	229	428	java/lang/Exception
-    //   235	243	428	java/lang/Exception
-    //   249	275	428	java/lang/Exception
-    //   281	290	428	java/lang/Exception
-    //   296	304	428	java/lang/Exception
-    //   310	317	428	java/lang/Exception
-    //   323	331	428	java/lang/Exception
-    //   337	344	428	java/lang/Exception
-    //   350	358	428	java/lang/Exception
-    //   364	381	428	java/lang/Exception
-    //   66	144	438	finally
-    //   66	144	444	java/lang/Exception
-    //   0	29	451	finally
-    //   29	36	451	finally
-    //   39	59	451	finally
-    //   59	66	451	finally
-    //   0	29	459	java/lang/Exception
-    //   29	36	459	java/lang/Exception
-    //   39	59	459	java/lang/Exception
-    //   59	66	459	java/lang/Exception
-    //   150	160	612	finally
-    //   166	175	612	finally
-    //   181	189	612	finally
-    //   195	202	612	finally
-    //   208	216	612	finally
-    //   222	229	612	finally
-    //   235	243	612	finally
-    //   249	275	612	finally
-    //   281	290	612	finally
-    //   296	304	612	finally
-    //   310	317	612	finally
-    //   323	331	612	finally
-    //   337	344	612	finally
-    //   350	358	612	finally
-    //   364	381	612	finally
-    //   470	479	612	finally
-    //   484	488	612	finally
-    //   496	500	612	finally
-    //   505	512	612	finally
-    //   517	525	612	finally
-    //   530	537	612	finally
-    //   542	552	612	finally
-    //   557	566	612	finally
+    //   145	155	399	java/lang/Exception
+    //   161	172	399	java/lang/Exception
+    //   178	185	399	java/lang/Exception
+    //   191	199	399	java/lang/Exception
+    //   205	212	399	java/lang/Exception
+    //   218	226	399	java/lang/Exception
+    //   232	258	399	java/lang/Exception
+    //   264	275	399	java/lang/Exception
+    //   281	288	399	java/lang/Exception
+    //   294	302	399	java/lang/Exception
+    //   308	315	399	java/lang/Exception
+    //   321	329	399	java/lang/Exception
+    //   335	352	399	java/lang/Exception
+    //   66	139	409	finally
+    //   66	139	415	java/lang/Exception
+    //   0	29	422	finally
+    //   29	36	422	finally
+    //   39	59	422	finally
+    //   59	66	422	finally
+    //   0	29	430	java/lang/Exception
+    //   29	36	430	java/lang/Exception
+    //   39	59	430	java/lang/Exception
+    //   59	66	430	java/lang/Exception
+    //   145	155	573	finally
+    //   161	172	573	finally
+    //   178	185	573	finally
+    //   191	199	573	finally
+    //   205	212	573	finally
+    //   218	226	573	finally
+    //   232	258	573	finally
+    //   264	275	573	finally
+    //   281	288	573	finally
+    //   294	302	573	finally
+    //   308	315	573	finally
+    //   321	329	573	finally
+    //   335	352	573	finally
+    //   441	450	573	finally
+    //   455	459	573	finally
+    //   467	471	573	finally
+    //   476	483	573	finally
+    //   488	498	573	finally
+    //   503	513	573	finally
+    //   518	527	573	finally
   }
   
   public static int a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
@@ -508,15 +479,11 @@ public class d
   
   public static TreeMap a(Context paramContext, String paramString, long paramLong)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("loadTKTreeMap sigfile ");
-    ((StringBuilder)localObject1).append(paramString);
-    util.LOGI(((StringBuilder)localObject1).toString(), "");
-    localObject1 = a(paramContext, paramString);
+    util.LOGI("loadTKTreeMap sigfile ".concat(String.valueOf(paramString)), "");
+    Object localObject1 = a(paramContext, paramString);
     if (localObject1 != null)
     {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("loadTKTreeMap len:");
+      Object localObject2 = new StringBuilder("loadTKTreeMap len:");
       ((StringBuilder)localObject2).append(localObject1.length);
       ((StringBuilder)localObject2).append(" at ");
       ((StringBuilder)localObject2).append(t.l());
@@ -533,8 +500,7 @@ public class d
           ((ByteArrayInputStream)localObject2).close();
           if (localObject1 != null)
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("loadTKTreeMap tree size: ");
+            localObject2 = new StringBuilder("loadTKTreeMap tree size: ");
             ((StringBuilder)localObject2).append(((TreeMap)localObject1).size());
             util.LOGI(((StringBuilder)localObject2).toString(), "");
             boolean bool = "tk_file".equals(paramString);
@@ -547,7 +513,7 @@ public class d
       catch (Throwable localThrowable)
       {
         Object localObject3;
-        label234:
+        label202:
         Object localObject4;
         StringBuilder localStringBuilder;
         util.printThrowable(localThrowable, "");
@@ -557,7 +523,7 @@ public class d
     {
       localObject2 = ((TreeMap)localObject1).keySet().iterator();
       if (!((Iterator)localObject2).hasNext()) {
-        break label664;
+        break label576;
       }
       localObject3 = ((Iterator)localObject2).next();
       localObject4 = (WloginAllSigInfo)((TreeMap)localObject1).get(localObject3);
@@ -565,22 +531,14 @@ public class d
       localStringBuilder.append(localObject3);
       localStringBuilder.append(" allsig: ");
       localStringBuilder.append(((WloginAllSigInfo)localObject4)._tk_map);
-      localObject4 = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(localObject3);
-      util.LOGI((String)localObject4, localStringBuilder.toString());
-      break label234;
+      util.LOGI(localStringBuilder.toString(), String.valueOf(localObject3));
+      break label202;
       localObject2 = (WloginAllSigInfo)((TreeMap)localObject1).get(Long.valueOf(paramLong));
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramLong);
       ((StringBuilder)localObject3).append(" allsig: ");
       ((StringBuilder)localObject3).append(((WloginAllSigInfo)localObject2)._tk_map);
-      localObject2 = ((StringBuilder)localObject3).toString();
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(paramLong);
-      util.LOGI((String)localObject2, ((StringBuilder)localObject3).toString());
+      util.LOGI(((StringBuilder)localObject3).toString(), String.valueOf(paramLong));
       return localObject1;
     }
     catch (Exception paramContext) {}
@@ -614,7 +572,7 @@ public class d
       util.LOGI("dbdata is null", "");
     }
     return b(paramContext, paramString);
-    label664:
+    label576:
     return localThrowable;
   }
   
@@ -622,392 +580,387 @@ public class d
   public static byte[] a(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: invokestatic 305	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   4: astore 7
-    //   6: aconst_null
-    //   7: astore 4
-    //   9: aload_1
-    //   10: ldc 60
-    //   12: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   15: ifeq +33 -> 48
-    //   18: getstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
-    //   21: ifnonnull +17 -> 38
-    //   24: new 68	oicq/wlogin_sdk/request/b
-    //   27: dup
-    //   28: aload_0
-    //   29: aload_1
-    //   30: aconst_null
-    //   31: iconst_1
-    //   32: invokespecial 71	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
-    //   35: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
-    //   38: getstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
-    //   41: invokevirtual 308	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   44: astore_0
-    //   45: goto +30 -> 75
-    //   48: getstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
-    //   51: ifnonnull +17 -> 68
-    //   54: new 68	oicq/wlogin_sdk/request/b
-    //   57: dup
-    //   58: aload_0
-    //   59: aload_1
-    //   60: aconst_null
-    //   61: iconst_1
-    //   62: invokespecial 71	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
-    //   65: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
-    //   68: getstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
-    //   71: invokevirtual 308	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   74: astore_0
-    //   75: aload_0
-    //   76: invokevirtual 81	android/database/sqlite/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   79: invokestatic 84	oicq/wlogin_sdk/request/d:c	(Ljava/lang/String;)V
-    //   82: new 86	java/lang/StringBuilder
-    //   85: dup
-    //   86: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   89: astore_3
-    //   90: aload_3
-    //   91: ldc_w 310
-    //   94: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: getstatic 318	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   3: astore 7
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: aload_1
+    //   9: ldc 60
+    //   11: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: ifeq +33 -> 47
+    //   17: getstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
+    //   20: ifnonnull +17 -> 37
+    //   23: new 68	oicq/wlogin_sdk/request/b
+    //   26: dup
+    //   27: aload_0
+    //   28: aload_1
+    //   29: aconst_null
+    //   30: iconst_1
+    //   31: invokespecial 71	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
+    //   34: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
+    //   37: getstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
+    //   40: invokevirtual 321	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   43: astore_0
+    //   44: goto +30 -> 74
+    //   47: getstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
+    //   50: ifnonnull +17 -> 67
+    //   53: new 68	oicq/wlogin_sdk/request/b
+    //   56: dup
+    //   57: aload_0
+    //   58: aload_1
+    //   59: aconst_null
+    //   60: iconst_1
+    //   61: invokespecial 71	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
+    //   64: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
+    //   67: getstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
+    //   70: invokevirtual 321	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 81	android/database/sqlite/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   78: invokestatic 84	oicq/wlogin_sdk/request/d:c	(Ljava/lang/String;)V
+    //   81: new 86	java/lang/StringBuilder
+    //   84: dup
+    //   85: ldc_w 323
+    //   88: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   91: astore_3
+    //   92: aload_3
+    //   93: aload_1
+    //   94: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: pop
     //   98: aload_3
-    //   99: aload_1
-    //   100: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: pop
-    //   104: aload_3
-    //   105: ldc_w 312
-    //   108: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: pop
-    //   112: aload_0
-    //   113: aload_3
-    //   114: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: aconst_null
-    //   118: invokevirtual 316	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   121: astore_3
-    //   122: aload 7
-    //   124: astore 4
+    //   99: ldc_w 325
+    //   102: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload_0
+    //   107: aload_3
+    //   108: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: aconst_null
+    //   112: invokevirtual 329	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   115: astore_3
+    //   116: aload 7
+    //   118: astore 4
+    //   120: aload_3
+    //   121: astore 6
+    //   123: aload_0
+    //   124: astore 5
     //   126: aload_3
-    //   127: astore 6
-    //   129: aload_0
-    //   130: astore 5
-    //   132: aload_3
-    //   133: invokeinterface 319 1 0
-    //   138: ifeq +35 -> 173
-    //   141: aload 7
-    //   143: astore 4
+    //   127: invokeinterface 332 1 0
+    //   132: ifeq +34 -> 166
+    //   135: aload 7
+    //   137: astore 4
+    //   139: aload_3
+    //   140: astore 6
+    //   142: aload_0
+    //   143: astore 5
     //   145: aload_3
-    //   146: astore 6
-    //   148: aload_0
-    //   149: astore 5
-    //   151: aload_3
-    //   152: iconst_0
-    //   153: invokeinterface 323 2 0
-    //   158: ifle +15 -> 173
-    //   161: aload_3
-    //   162: astore 6
-    //   164: aload_0
-    //   165: astore 5
-    //   167: iconst_1
-    //   168: invokestatic 305	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   171: astore 4
-    //   173: aload_3
-    //   174: ifnull +30 -> 204
-    //   177: aload_3
-    //   178: astore 6
-    //   180: aload_0
-    //   181: astore 5
-    //   183: aload_3
-    //   184: invokeinterface 142 1 0
-    //   189: ifne +15 -> 204
-    //   192: aload_3
-    //   193: astore 6
-    //   195: aload_0
-    //   196: astore 5
-    //   198: aload_3
-    //   199: invokeinterface 145 1 0
-    //   204: aload_3
-    //   205: astore 6
-    //   207: aload_0
-    //   208: astore 5
-    //   210: aload 4
-    //   212: invokevirtual 326	java/lang/Boolean:booleanValue	()Z
-    //   215: istore_2
-    //   216: iload_2
-    //   217: ifne +48 -> 265
-    //   220: aload_3
-    //   221: ifnull +18 -> 239
-    //   224: aload_3
-    //   225: invokeinterface 142 1 0
-    //   230: ifne +9 -> 239
-    //   233: aload_3
-    //   234: invokeinterface 145 1 0
-    //   239: aload_0
-    //   240: ifnull +23 -> 263
-    //   243: iconst_1
-    //   244: aload_0
-    //   245: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   248: if_icmpne +15 -> 263
-    //   251: ldc_w 328
-    //   254: ldc 152
-    //   256: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   259: aload_0
-    //   260: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   263: aconst_null
-    //   264: areturn
-    //   265: aload_3
-    //   266: astore 6
-    //   268: aload_0
-    //   269: astore 5
-    //   271: aload_0
+    //   146: iconst_0
+    //   147: invokeinterface 336 2 0
+    //   152: ifle +14 -> 166
+    //   155: aload_3
+    //   156: astore 6
+    //   158: aload_0
+    //   159: astore 5
+    //   161: getstatic 339	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   164: astore 4
+    //   166: aload_3
+    //   167: ifnull +30 -> 197
+    //   170: aload_3
+    //   171: astore 6
+    //   173: aload_0
+    //   174: astore 5
+    //   176: aload_3
+    //   177: invokeinterface 143 1 0
+    //   182: ifne +15 -> 197
+    //   185: aload_3
+    //   186: astore 6
+    //   188: aload_0
+    //   189: astore 5
+    //   191: aload_3
+    //   192: invokeinterface 146 1 0
+    //   197: aload_3
+    //   198: astore 6
+    //   200: aload_0
+    //   201: astore 5
+    //   203: aload 4
+    //   205: invokevirtual 342	java/lang/Boolean:booleanValue	()Z
+    //   208: istore_2
+    //   209: iload_2
+    //   210: ifne +48 -> 258
+    //   213: aload_3
+    //   214: ifnull +18 -> 232
+    //   217: aload_3
+    //   218: invokeinterface 143 1 0
+    //   223: ifne +9 -> 232
+    //   226: aload_3
+    //   227: invokeinterface 146 1 0
+    //   232: aload_0
+    //   233: ifnull +23 -> 256
+    //   236: iconst_1
+    //   237: aload_0
+    //   238: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   241: if_icmpne +15 -> 256
+    //   244: ldc_w 344
+    //   247: ldc 153
+    //   249: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   252: aload_0
+    //   253: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   256: aconst_null
+    //   257: areturn
+    //   258: aload_3
+    //   259: astore 6
+    //   261: aload_0
+    //   262: astore 5
+    //   264: aload_0
+    //   265: aload_1
+    //   266: iconst_1
+    //   267: anewarray 62	java/lang/String
+    //   270: dup
+    //   271: iconst_0
     //   272: aload_1
-    //   273: iconst_1
-    //   274: anewarray 62	java/lang/String
-    //   277: dup
-    //   278: iconst_0
-    //   279: aload_1
-    //   280: aastore
-    //   281: ldc 107
-    //   283: aconst_null
-    //   284: aconst_null
-    //   285: aconst_null
-    //   286: aconst_null
-    //   287: invokevirtual 111	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   290: astore 4
-    //   292: aload 4
-    //   294: ifnonnull +51 -> 345
-    //   297: aload 4
-    //   299: ifnull +20 -> 319
-    //   302: aload 4
-    //   304: invokeinterface 142 1 0
-    //   309: ifne +10 -> 319
-    //   312: aload 4
-    //   314: invokeinterface 145 1 0
-    //   319: aload_0
-    //   320: ifnull +23 -> 343
-    //   323: iconst_1
-    //   324: aload_0
-    //   325: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   328: if_icmpne +15 -> 343
-    //   331: ldc_w 328
-    //   334: ldc 152
-    //   336: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   339: aload_0
-    //   340: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   343: aconst_null
-    //   344: areturn
-    //   345: aload 4
-    //   347: invokeinterface 331 1 0
-    //   352: ifeq +67 -> 419
-    //   355: aload 4
-    //   357: iconst_0
-    //   358: invokeinterface 335 2 0
-    //   363: astore_3
+    //   273: aastore
+    //   274: ldc 108
+    //   276: aconst_null
+    //   277: aconst_null
+    //   278: aconst_null
+    //   279: aconst_null
+    //   280: invokevirtual 112	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   283: astore 4
+    //   285: aload 4
+    //   287: ifnonnull +51 -> 338
+    //   290: aload 4
+    //   292: ifnull +20 -> 312
+    //   295: aload 4
+    //   297: invokeinterface 143 1 0
+    //   302: ifne +10 -> 312
+    //   305: aload 4
+    //   307: invokeinterface 146 1 0
+    //   312: aload_0
+    //   313: ifnull +23 -> 336
+    //   316: iconst_1
+    //   317: aload_0
+    //   318: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   321: if_icmpne +15 -> 336
+    //   324: ldc_w 344
+    //   327: ldc 153
+    //   329: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   332: aload_0
+    //   333: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   336: aconst_null
+    //   337: areturn
+    //   338: aload 4
+    //   340: invokeinterface 347 1 0
+    //   345: ifeq +67 -> 412
+    //   348: aload 4
+    //   350: iconst_0
+    //   351: invokeinterface 351 2 0
+    //   356: astore_3
+    //   357: aload 4
+    //   359: invokeinterface 146 1 0
     //   364: aload 4
-    //   366: invokeinterface 145 1 0
-    //   371: aload 4
-    //   373: ifnull +20 -> 393
-    //   376: aload 4
-    //   378: invokeinterface 142 1 0
-    //   383: ifne +10 -> 393
-    //   386: aload 4
-    //   388: invokeinterface 145 1 0
-    //   393: aload_0
-    //   394: ifnull +23 -> 417
-    //   397: iconst_1
-    //   398: aload_0
-    //   399: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   402: if_icmpne +15 -> 417
-    //   405: ldc_w 328
-    //   408: ldc 152
-    //   410: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   413: aload_0
-    //   414: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   417: aload_3
-    //   418: areturn
+    //   366: ifnull +20 -> 386
+    //   369: aload 4
+    //   371: invokeinterface 143 1 0
+    //   376: ifne +10 -> 386
+    //   379: aload 4
+    //   381: invokeinterface 146 1 0
+    //   386: aload_0
+    //   387: ifnull +23 -> 410
+    //   390: iconst_1
+    //   391: aload_0
+    //   392: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   395: if_icmpne +15 -> 410
+    //   398: ldc_w 344
+    //   401: ldc 153
+    //   403: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   406: aload_0
+    //   407: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   410: aload_3
+    //   411: areturn
+    //   412: aload 4
+    //   414: invokeinterface 146 1 0
     //   419: aload 4
-    //   421: invokeinterface 145 1 0
-    //   426: aload 4
-    //   428: ifnull +20 -> 448
-    //   431: aload 4
-    //   433: invokeinterface 142 1 0
-    //   438: ifne +10 -> 448
-    //   441: aload 4
-    //   443: invokeinterface 145 1 0
-    //   448: aload_0
-    //   449: ifnull +23 -> 472
-    //   452: iconst_1
-    //   453: aload_0
-    //   454: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   457: if_icmpne +15 -> 472
-    //   460: ldc_w 328
-    //   463: ldc 152
-    //   465: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   468: aload_0
-    //   469: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   472: aconst_null
-    //   473: areturn
-    //   474: astore_3
-    //   475: aload 4
-    //   477: astore_1
-    //   478: aload_0
+    //   421: ifnull +20 -> 441
+    //   424: aload 4
+    //   426: invokeinterface 143 1 0
+    //   431: ifne +10 -> 441
+    //   434: aload 4
+    //   436: invokeinterface 146 1 0
+    //   441: aload_0
+    //   442: ifnull +23 -> 465
+    //   445: iconst_1
+    //   446: aload_0
+    //   447: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   450: if_icmpne +15 -> 465
+    //   453: ldc_w 344
+    //   456: ldc 153
+    //   458: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   461: aload_0
+    //   462: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   465: aconst_null
+    //   466: areturn
+    //   467: astore_3
+    //   468: aload 4
+    //   470: astore_1
+    //   471: aload_0
+    //   472: astore 5
+    //   474: aload_3
+    //   475: astore_0
+    //   476: goto +155 -> 631
     //   479: astore 5
-    //   481: aload_3
-    //   482: astore_0
-    //   483: goto +155 -> 638
-    //   486: astore 5
-    //   488: aload 4
-    //   490: astore_3
-    //   491: aload 5
-    //   493: astore 4
-    //   495: goto +43 -> 538
-    //   498: astore 4
-    //   500: goto +38 -> 538
-    //   503: astore_3
-    //   504: aload 4
-    //   506: astore_1
-    //   507: aload_0
-    //   508: astore 5
-    //   510: aload_3
-    //   511: astore_0
-    //   512: goto +126 -> 638
-    //   515: astore 4
-    //   517: aconst_null
-    //   518: astore_3
-    //   519: goto +19 -> 538
-    //   522: astore_0
-    //   523: aconst_null
-    //   524: astore 5
-    //   526: aload 4
-    //   528: astore_1
-    //   529: goto +109 -> 638
-    //   532: astore 4
-    //   534: aconst_null
-    //   535: astore_0
-    //   536: aload_0
-    //   537: astore_3
-    //   538: aload_3
-    //   539: astore 6
-    //   541: aload_0
-    //   542: astore 5
-    //   544: aload_1
-    //   545: ldc 60
-    //   547: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   550: ifeq +16 -> 566
-    //   553: aload_3
-    //   554: astore 6
-    //   556: aload_0
-    //   557: astore 5
-    //   559: aconst_null
-    //   560: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
-    //   563: goto +13 -> 576
-    //   566: aload_3
-    //   567: astore 6
-    //   569: aload_0
-    //   570: astore 5
-    //   572: aconst_null
-    //   573: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
-    //   576: aload_3
-    //   577: astore 6
-    //   579: aload_0
-    //   580: astore 5
-    //   582: aload 4
-    //   584: ldc 152
-    //   586: invokestatic 163	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   589: aload_3
-    //   590: ifnull +18 -> 608
-    //   593: aload_3
-    //   594: invokeinterface 142 1 0
-    //   599: ifne +9 -> 608
-    //   602: aload_3
-    //   603: invokeinterface 145 1 0
-    //   608: aload_0
-    //   609: ifnull +23 -> 632
-    //   612: iconst_1
-    //   613: aload_0
-    //   614: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   617: if_icmpne +15 -> 632
-    //   620: ldc_w 328
-    //   623: ldc 152
-    //   625: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   628: aload_0
-    //   629: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   632: aconst_null
-    //   633: areturn
-    //   634: astore_0
-    //   635: aload 6
-    //   637: astore_1
-    //   638: aload_1
-    //   639: ifnull +18 -> 657
-    //   642: aload_1
-    //   643: invokeinterface 142 1 0
-    //   648: ifne +9 -> 657
-    //   651: aload_1
-    //   652: invokeinterface 145 1 0
-    //   657: aload 5
-    //   659: ifnull +25 -> 684
-    //   662: iconst_1
-    //   663: aload 5
-    //   665: invokevirtual 148	android/database/sqlite/SQLiteDatabase:isOpen	()Z
-    //   668: if_icmpne +16 -> 684
-    //   671: ldc_w 328
-    //   674: ldc 152
-    //   676: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   679: aload 5
-    //   681: invokevirtual 159	android/database/sqlite/SQLiteDatabase:close	()V
-    //   684: aload_0
-    //   685: athrow
+    //   481: aload 4
+    //   483: astore_3
+    //   484: aload 5
+    //   486: astore 4
+    //   488: goto +43 -> 531
+    //   491: astore 4
+    //   493: goto +38 -> 531
+    //   496: astore_3
+    //   497: aload 4
+    //   499: astore_1
+    //   500: aload_0
+    //   501: astore 5
+    //   503: aload_3
+    //   504: astore_0
+    //   505: goto +126 -> 631
+    //   508: astore 4
+    //   510: aconst_null
+    //   511: astore_3
+    //   512: goto +19 -> 531
+    //   515: astore_0
+    //   516: aconst_null
+    //   517: astore 5
+    //   519: aload 4
+    //   521: astore_1
+    //   522: goto +109 -> 631
+    //   525: astore 4
+    //   527: aconst_null
+    //   528: astore_0
+    //   529: aload_0
+    //   530: astore_3
+    //   531: aload_3
+    //   532: astore 6
+    //   534: aload_0
+    //   535: astore 5
+    //   537: aload_1
+    //   538: ldc 60
+    //   540: invokevirtual 66	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   543: ifeq +16 -> 559
+    //   546: aload_3
+    //   547: astore 6
+    //   549: aload_0
+    //   550: astore 5
+    //   552: aconst_null
+    //   553: putstatic 32	oicq/wlogin_sdk/request/d:h	Loicq/wlogin_sdk/request/b;
+    //   556: goto +13 -> 569
+    //   559: aload_3
+    //   560: astore 6
+    //   562: aload_0
+    //   563: astore 5
+    //   565: aconst_null
+    //   566: putstatic 34	oicq/wlogin_sdk/request/d:i	Loicq/wlogin_sdk/request/b;
+    //   569: aload_3
+    //   570: astore 6
+    //   572: aload_0
+    //   573: astore 5
+    //   575: aload 4
+    //   577: ldc 153
+    //   579: invokestatic 164	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   582: aload_3
+    //   583: ifnull +18 -> 601
+    //   586: aload_3
+    //   587: invokeinterface 143 1 0
+    //   592: ifne +9 -> 601
+    //   595: aload_3
+    //   596: invokeinterface 146 1 0
+    //   601: aload_0
+    //   602: ifnull +23 -> 625
+    //   605: iconst_1
+    //   606: aload_0
+    //   607: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   610: if_icmpne +15 -> 625
+    //   613: ldc_w 344
+    //   616: ldc 153
+    //   618: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   621: aload_0
+    //   622: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   625: aconst_null
+    //   626: areturn
+    //   627: astore_0
+    //   628: aload 6
+    //   630: astore_1
+    //   631: aload_1
+    //   632: ifnull +18 -> 650
+    //   635: aload_1
+    //   636: invokeinterface 143 1 0
+    //   641: ifne +9 -> 650
+    //   644: aload_1
+    //   645: invokeinterface 146 1 0
+    //   650: aload 5
+    //   652: ifnull +25 -> 677
+    //   655: iconst_1
+    //   656: aload 5
+    //   658: invokevirtual 149	android/database/sqlite/SQLiteDatabase:isOpen	()Z
+    //   661: if_icmpne +16 -> 677
+    //   664: ldc_w 344
+    //   667: ldc 153
+    //   669: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   672: aload 5
+    //   674: invokevirtual 160	android/database/sqlite/SQLiteDatabase:close	()V
+    //   677: aload_0
+    //   678: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	686	0	paramContext	Context
-    //   0	686	1	paramString	String
-    //   215	2	2	bool	boolean
-    //   89	329	3	localObject1	Object
-    //   474	8	3	localObject2	Object
-    //   490	1	3	localObject3	Object
-    //   503	8	3	localObject4	Object
-    //   518	85	3	localContext1	Context
-    //   7	487	4	localObject5	Object
-    //   498	7	4	localException1	Exception
-    //   515	12	4	localException2	Exception
-    //   532	51	4	localException3	Exception
-    //   130	350	5	localContext2	Context
-    //   486	6	5	localException4	Exception
-    //   508	172	5	localContext3	Context
-    //   127	509	6	localObject6	Object
-    //   4	138	7	localBoolean	java.lang.Boolean
+    //   0	679	0	paramContext	Context
+    //   0	679	1	paramString	String
+    //   208	2	2	bool	boolean
+    //   91	320	3	localObject1	Object
+    //   467	8	3	localObject2	Object
+    //   483	1	3	localObject3	Object
+    //   496	8	3	localObject4	Object
+    //   511	85	3	localContext1	Context
+    //   6	481	4	localObject5	Object
+    //   491	7	4	localException1	Exception
+    //   508	12	4	localException2	Exception
+    //   525	51	4	localException3	Exception
+    //   124	349	5	localContext2	Context
+    //   479	6	5	localException4	Exception
+    //   501	172	5	localContext3	Context
+    //   121	508	6	localObject6	Object
+    //   3	133	7	localBoolean	java.lang.Boolean
     // Exception table:
     //   from	to	target	type
-    //   345	371	474	finally
-    //   419	426	474	finally
-    //   345	371	486	java/lang/Exception
-    //   419	426	486	java/lang/Exception
-    //   132	141	498	java/lang/Exception
-    //   151	161	498	java/lang/Exception
-    //   167	173	498	java/lang/Exception
-    //   183	192	498	java/lang/Exception
-    //   198	204	498	java/lang/Exception
-    //   210	216	498	java/lang/Exception
-    //   271	292	498	java/lang/Exception
-    //   75	122	503	finally
-    //   75	122	515	java/lang/Exception
-    //   9	38	522	finally
-    //   38	45	522	finally
-    //   48	68	522	finally
-    //   68	75	522	finally
-    //   9	38	532	java/lang/Exception
-    //   38	45	532	java/lang/Exception
-    //   48	68	532	java/lang/Exception
-    //   68	75	532	java/lang/Exception
-    //   132	141	634	finally
-    //   151	161	634	finally
-    //   167	173	634	finally
-    //   183	192	634	finally
-    //   198	204	634	finally
-    //   210	216	634	finally
-    //   271	292	634	finally
-    //   544	553	634	finally
-    //   559	563	634	finally
-    //   572	576	634	finally
-    //   582	589	634	finally
+    //   338	364	467	finally
+    //   412	419	467	finally
+    //   338	364	479	java/lang/Exception
+    //   412	419	479	java/lang/Exception
+    //   126	135	491	java/lang/Exception
+    //   145	155	491	java/lang/Exception
+    //   161	166	491	java/lang/Exception
+    //   176	185	491	java/lang/Exception
+    //   191	197	491	java/lang/Exception
+    //   203	209	491	java/lang/Exception
+    //   264	285	491	java/lang/Exception
+    //   74	116	496	finally
+    //   74	116	508	java/lang/Exception
+    //   8	37	515	finally
+    //   37	44	515	finally
+    //   47	67	515	finally
+    //   67	74	515	finally
+    //   8	37	525	java/lang/Exception
+    //   37	44	525	java/lang/Exception
+    //   47	67	525	java/lang/Exception
+    //   67	74	525	java/lang/Exception
+    //   126	135	627	finally
+    //   145	155	627	finally
+    //   161	166	627	finally
+    //   176	185	627	finally
+    //   191	197	627	finally
+    //   203	209	627	finally
+    //   264	285	627	finally
+    //   537	546	627	finally
+    //   552	556	627	finally
+    //   565	569	627	finally
+    //   575	582	627	finally
   }
   
   private static TreeMap b(Context paramContext, String paramString)
@@ -1015,88 +968,85 @@ public class d
     try
     {
       localObject1 = new SecretKeySpec(t.B, "DESede");
-      localObject2 = Cipher.getInstance("DESede");
+      Object localObject2 = Cipher.getInstance("DESede");
       ((Cipher)localObject2).init(2, (Key)localObject1);
       localObject1 = new ObjectInputStream(new CipherInputStream(paramContext.openFileInput(paramString), (Cipher)localObject2));
       try
       {
         localObject2 = (TreeMap)((ObjectInputStream)localObject1).readObject();
-        paramString = (String)localObject2;
+        paramContext = (Context)localObject2;
+        paramString = (String)localObject1;
       }
-      catch (Throwable localThrowable3)
-      {
-        localObject2 = localObject1;
-      }
-      if ((localThrowable4 instanceof FileNotFoundException)) {}
+      catch (Throwable localThrowable2) {}
+      if ((localThrowable3 instanceof FileNotFoundException)) {}
     }
-    catch (Throwable localThrowable4)
+    catch (Throwable localThrowable3)
     {
-      localObject2 = null;
+      localObject1 = null;
     }
     try
     {
-      localObject1 = new byte[256];
-      localObject3 = paramContext.openFileInput(paramString);
+      localObject3 = new byte[256];
+      localObject4 = paramContext.openFileInput(paramString);
       for (;;)
       {
-        j = ((FileInputStream)localObject3).read((byte[])localObject1, 0, localObject1.length);
+        j = ((FileInputStream)localObject4).read((byte[])localObject3, 0, 256);
         if (j <= 0) {
           break;
         }
-        util.LOGI(util.buf_to_string((byte[])localObject1, j));
+        util.LOGI(util.buf_to_string((byte[])localObject3, j));
       }
-      ((FileInputStream)localObject3).close();
+      ((FileInputStream)localObject4).close();
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
       Object localObject3;
-      int j;
-      label139:
-      label219:
-      break label139;
+      label138:
+      label221:
+      break label138;
     }
     try
     {
-      localObject1 = new SecretKeySpec(new String("%4;7t>;28<fc.5*6").getBytes(), "DESede");
-      localObject3 = Cipher.getInstance("DESede");
-      ((Cipher)localObject3).init(2, (Key)localObject1);
-      localObject1 = new ObjectInputStream(new CipherInputStream(paramContext.openFileInput(paramString), (Cipher)localObject3));
+      localObject3 = new SecretKeySpec(new String("%4;7t>;28<fc.5*6").getBytes(), "DESede");
+      localObject4 = Cipher.getInstance("DESede");
+      ((Cipher)localObject4).init(2, (Key)localObject3);
+      localObject3 = new ObjectInputStream(new CipherInputStream(paramContext.openFileInput(paramString), (Cipher)localObject4));
+    }
+    catch (Throwable localThrowable4)
+    {
+      break label221;
+    }
+    try
+    {
+      localObject1 = (TreeMap)((ObjectInputStream)localObject3).readObject();
+      paramString = (String)localObject3;
+      paramContext = (Context)localObject1;
     }
     catch (Throwable localThrowable1)
     {
-      break label223;
+      break label225;
     }
-    try
-    {
-      localObject2 = (TreeMap)((ObjectInputStream)localObject1).readObject();
-      paramString = (String)localObject2;
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label219;
-    }
-    Object localObject2 = localObject1;
-    label223:
-    Object localObject1 = localObject2;
+    localObject3 = localObject1;
+    label225:
+    Object localObject1 = localObject3;
     for (;;)
     {
       try
       {
-        localObject3 = new byte[256];
-        localObject1 = localObject2;
-        j = localObject3.length - 40;
-        localObject1 = localObject2;
+        localObject4 = new byte[256];
+        localObject1 = localObject3;
         localFileInputStream = paramContext.openFileInput(paramString);
-        localObject1 = localObject2;
+        localObject1 = localObject3;
         localFileOutputStream = paramContext.openFileOutput("tmp_tk_file", 0);
-        paramString = (String)localObject2;
+        paramString = (String)localObject3;
       }
       catch (Exception paramString)
       {
         FileInputStream localFileInputStream;
         FileOutputStream localFileOutputStream;
-        int n;
         int m;
+        int k;
+        int n;
         int i1;
         int i2;
         int i3;
@@ -1105,288 +1055,282 @@ public class d
         int i6;
         int i7;
         continue;
-        int k = 0;
+        if (j >= 256) {
+          continue;
+        }
+        localObject4[j] = 0;
+        j += 1;
+        continue;
+        j = 0;
         continue;
         continue;
-        k = 0;
+        j = 0;
         continue;
-        k = 0;
+        j = 0;
         continue;
-        k = 0;
+        j = 0;
+        continue;
         continue;
         continue;
         continue;
         continue;
       }
       localObject1 = paramString;
-      n = localFileInputStream.read((byte[])localObject3, 40, j);
-      if (n <= 0) {
+      m = localFileInputStream.read((byte[])localObject4, 40, 216);
+      if (m <= 0) {
         continue;
       }
-      k = 40 + n;
-      localObject1 = paramString;
-      if (k >= localObject3.length) {
-        continue;
-      }
-      localObject3[k] = 0;
-      k += 1;
+      j = m + 40;
       continue;
-      if (k < 0) {
+      if (j < 0) {
         continue;
       }
       localObject1 = paramString;
-      localObject2 = new String("WloginAllSigInfo").getBytes();
+      localObject3 = new String("WloginAllSigInfo").getBytes();
       localObject1 = paramString;
-      k = a((byte[])localObject3, k, (byte[])localObject2);
-      if (k < 0) {
+      j = a((byte[])localObject4, j, (byte[])localObject3);
+      if (j < 0) {
         continue;
       }
       localObject1 = paramString;
-      k += localObject2.length;
-      localObject1 = paramString;
-      if (k + 8 > localObject3.length) {
+      j += localObject3.length;
+      if (j + 8 > 256) {
         continue;
       }
-      m = k + 0;
-      if (localObject3[m] != -127) {
+      k = j + 0;
+      if (localObject4[k] != -127) {
         continue;
       }
-      i1 = k + 1;
-      if (localObject3[i1] != 64) {
+      n = j + 1;
+      if (localObject4[n] != 64) {
         continue;
       }
-      i2 = k + 2;
-      if (localObject3[i2] != 1) {
+      i1 = j + 2;
+      if (localObject4[i1] != 1) {
         continue;
       }
-      i3 = k + 3;
-      if (localObject3[i3] != 111) {
+      i2 = j + 3;
+      if (localObject4[i2] != 111) {
         continue;
       }
-      i4 = k + 4;
-      if (localObject3[i4] != -111) {
+      i3 = j + 4;
+      if (localObject4[i3] != -111) {
         continue;
       }
-      i5 = k + 5;
-      if (localObject3[i5] != -44) {
+      i4 = j + 5;
+      if (localObject4[i4] != -44) {
         continue;
       }
-      i6 = k + 6;
-      i7 = localObject3[i6];
-      if (i7 != 26) {
+      i5 = j + 6;
+      if (localObject4[i5] != 26) {
         continue;
       }
-      i7 = k + 7;
-      if (localObject3[i7] != -101) {
+      i6 = j + 7;
+      i7 = localObject4[i6];
+      if (i7 != -101) {
         continue;
       }
-      localObject3[m] = 0;
-      localObject3[i1] = 0;
-      localObject3[i2] = 0;
-      localObject3[i3] = 0;
-      localObject3[i4] = 0;
-      localObject3[i5] = 0;
-      localObject3[i6] = 0;
-      localObject3[i7] = 1;
+      localObject4[k] = 0;
+      localObject4[n] = 0;
+      localObject4[i1] = 0;
+      localObject4[i2] = 0;
+      localObject4[i3] = 0;
+      localObject4[i4] = 0;
+      localObject4[i5] = 0;
+      localObject4[i6] = 1;
       continue;
-      if (k < 0) {
+      if (j < 0) {
         continue;
       }
       localObject1 = paramString;
       try
       {
-        localObject2 = new String("WloginSigInfo").getBytes();
+        localObject3 = new String("WloginSigInfo").getBytes();
         localObject1 = paramString;
-        k = a((byte[])localObject3, k, (byte[])localObject2);
-        if (k < 0) {
+        j = a((byte[])localObject4, j, (byte[])localObject3);
+        if (j < 0) {
           continue;
         }
         localObject1 = paramString;
-        m = k + localObject2.length;
-        k = m;
-        localObject1 = paramString;
-        if (m + 8 > localObject3.length) {
+        k = j + localObject3.length;
+        j = k;
+        if (k + 8 > 256) {
           continue;
         }
-        i1 = m + 0;
-        k = m;
-        if (localObject3[i1] != 0) {
+        n = k + 0;
+        j = k;
+        if (localObject4[n] != 0) {
           continue;
         }
-        i2 = m + 1;
-        k = m;
-        if (localObject3[i2] != 0) {
+        i1 = k + 1;
+        j = k;
+        if (localObject4[i1] != 0) {
           continue;
         }
-        i3 = m + 2;
-        k = m;
-        if (localObject3[i3] != 0) {
+        i2 = k + 2;
+        j = k;
+        if (localObject4[i2] != 0) {
           continue;
         }
-        i4 = m + 3;
-        k = m;
-        if (localObject3[i4] != 0) {
+        i3 = k + 3;
+        j = k;
+        if (localObject4[i3] != 0) {
           continue;
         }
-        i5 = m + 4;
-        k = m;
-        if (localObject3[i5] != 0) {
+        i4 = k + 4;
+        j = k;
+        if (localObject4[i4] != 0) {
           continue;
         }
-        i6 = m + 5;
-        k = m;
-        if (localObject3[i6] != 0) {
+        i5 = k + 5;
+        j = k;
+        if (localObject4[i5] != 0) {
           continue;
         }
-        i7 = m + 6;
-        k = m;
-        if (localObject3[i7] != 0) {
+        i6 = k + 6;
+        j = k;
+        if (localObject4[i6] != 0) {
           continue;
         }
-        i8 = m + 7;
-        k = m;
-        if (localObject3[i8] != 0) {
+        i7 = k + 7;
+        j = k;
+        if (localObject4[i7] != 0) {
           continue;
         }
-        localObject3[i1] = 0;
-        localObject3[i2] = 0;
-        localObject3[i3] = 0;
-        localObject3[i4] = 0;
-        localObject3[i5] = 0;
-        localObject3[i6] = 0;
-        localObject3[i7] = 0;
-        localObject3[i8] = 1;
-        k = m;
+        localObject4[n] = 0;
+        localObject4[i1] = 0;
+        localObject4[i2] = 0;
+        localObject4[i3] = 0;
+        localObject4[i4] = 0;
+        localObject4[i5] = 0;
+        localObject4[i6] = 0;
+        localObject4[i7] = 1;
+        j = k;
       }
       catch (Exception paramString)
       {
-        int i8;
         continue;
       }
-      if (k < 0) {
-        continue;
-      }
-      localObject1 = paramString;
-      localObject2 = new String("WloginSimpleInfo").getBytes();
-      localObject1 = paramString;
-      k = a((byte[])localObject3, k, (byte[])localObject2);
-      if (k < 0) {
+      if (j < 0) {
         continue;
       }
       localObject1 = paramString;
-      m = k + localObject2.length;
-      k = m;
+      localObject3 = new String("WloginSimpleInfo").getBytes();
       localObject1 = paramString;
-      if (m + 8 <= localObject3.length)
+      j = a((byte[])localObject4, j, (byte[])localObject3);
+      if (j < 0) {
+        continue;
+      }
+      localObject1 = paramString;
+      k = j + localObject3.length;
+      j = k;
+      if (k + 8 <= 256)
       {
-        i1 = m + 0;
-        k = m;
-        if (localObject3[i1] == 57)
+        n = k + 0;
+        j = k;
+        if (localObject4[n] == 57)
         {
-          i2 = m + 1;
-          k = m;
-          if (localObject3[i2] == -69)
+          i1 = k + 1;
+          j = k;
+          if (localObject4[i1] == -69)
           {
-            i3 = m + 2;
-            k = m;
-            if (localObject3[i3] == -84)
+            i2 = k + 2;
+            j = k;
+            if (localObject4[i2] == -84)
             {
-              i4 = m + 3;
-              k = m;
-              if (localObject3[i4] == 110)
+              i3 = k + 3;
+              j = k;
+              if (localObject4[i3] == 110)
               {
-                i5 = m + 4;
-                k = m;
-                if (localObject3[i5] == -46)
+                i4 = k + 4;
+                j = k;
+                if (localObject4[i4] == -46)
                 {
-                  i6 = m + 5;
-                  k = m;
-                  if (localObject3[i6] == 98)
+                  i5 = k + 5;
+                  j = k;
+                  if (localObject4[i5] == 98)
                   {
-                    i7 = m + 6;
-                    k = m;
-                    if (localObject3[i7] == -31)
+                    i6 = k + 6;
+                    j = k;
+                    if (localObject4[i6] == -31)
                     {
-                      i8 = m + 7;
-                      k = m;
-                      if (localObject3[i8] == -113)
+                      i7 = k + 7;
+                      j = k;
+                      if (localObject4[i7] == -113)
                       {
-                        localObject3[i1] = 0;
-                        localObject3[i2] = 0;
-                        localObject3[i3] = 0;
-                        localObject3[i4] = 0;
-                        localObject3[i5] = 0;
-                        localObject3[i6] = 0;
-                        localObject3[i7] = 0;
-                        localObject3[i8] = 1;
-                        k = m;
+                        localObject4[n] = 0;
+                        localObject4[i1] = 0;
+                        localObject4[i2] = 0;
+                        localObject4[i3] = 0;
+                        localObject4[i4] = 0;
+                        localObject4[i5] = 0;
+                        localObject4[i6] = 0;
+                        localObject4[i7] = 1;
+                        j = k;
                         continue;
-                        if (k < 0) {
+                        if (j < 0) {
                           continue;
                         }
                         localObject1 = paramString;
-                        localObject2 = new String("UinInfo").getBytes();
+                        localObject3 = new String("UinInfo").getBytes();
                         localObject1 = paramString;
-                        k = a((byte[])localObject3, k, (byte[])localObject2);
-                        if (k >= 0)
-                        {
-                          localObject1 = paramString;
-                          k += localObject2.length;
-                          localObject1 = paramString;
-                          if (k + 8 > localObject3.length) {
-                            continue;
-                          }
-                          m = k + 0;
-                          if (localObject3[m] != -118) {
-                            continue;
-                          }
-                          i1 = k + 1;
-                          if (localObject3[i1] != -23) {
-                            continue;
-                          }
-                          i2 = k + 2;
-                          if (localObject3[i2] != -128) {
-                            continue;
-                          }
-                          i3 = k + 3;
-                          if (localObject3[i3] != -19) {
-                            continue;
-                          }
-                          i4 = k + 4;
-                          if (localObject3[i4] != -26) {
-                            continue;
-                          }
-                          i5 = k + 5;
-                          if (localObject3[i5] != 99) {
-                            continue;
-                          }
-                          i6 = k + 6;
-                          if (localObject3[i6] != 41) {
-                            continue;
-                          }
-                          i7 = k + 7;
-                          if (localObject3[i7] != 14) {
-                            continue;
-                          }
-                          localObject3[m] = 0;
-                          localObject3[i1] = 0;
-                          localObject3[i2] = 0;
-                          localObject3[i3] = 0;
-                          localObject3[i4] = 0;
-                          localObject3[i5] = 0;
-                          localObject3[i6] = 0;
-                          localObject3[i7] = 1;
+                        j = a((byte[])localObject4, j, (byte[])localObject3);
+                        if (j < 0) {
+                          continue;
                         }
-                        else
-                        {
-                          localObject1 = paramString;
-                          localFileOutputStream.write((byte[])localObject3, 40, n);
-                          if (n <= 40) {
-                            continue;
-                          }
-                          localObject1 = paramString;
-                          System.arraycopy(localObject3, n, localObject3, 0, 40);
+                        localObject1 = paramString;
+                        j += localObject3.length;
+                        if (j + 8 > 256) {
+                          continue;
                         }
+                        k = j + 0;
+                        if (localObject4[k] != -118) {
+                          continue;
+                        }
+                        n = j + 1;
+                        if (localObject4[n] != -23) {
+                          continue;
+                        }
+                        i1 = j + 2;
+                        if (localObject4[i1] != -128) {
+                          continue;
+                        }
+                        i2 = j + 3;
+                        if (localObject4[i2] != -19) {
+                          continue;
+                        }
+                        i3 = j + 4;
+                        if (localObject4[i3] != -26) {
+                          continue;
+                        }
+                        i4 = j + 5;
+                        if (localObject4[i4] != 99) {
+                          continue;
+                        }
+                        i5 = j + 6;
+                        if (localObject4[i5] != 41) {
+                          continue;
+                        }
+                        i6 = j + 7;
+                        if (localObject4[i6] != 14) {
+                          continue;
+                        }
+                        localObject4[k] = 0;
+                        localObject4[n] = 0;
+                        localObject4[i1] = 0;
+                        localObject4[i2] = 0;
+                        localObject4[i3] = 0;
+                        localObject4[i4] = 0;
+                        localObject4[i5] = 0;
+                        localObject4[i6] = 1;
+                        continue;
+                        localObject1 = paramString;
+                        localFileOutputStream.write((byte[])localObject4, 40, m);
+                        if (m <= 40) {
+                          continue;
+                        }
+                        localObject1 = paramString;
+                        System.arraycopy(localObject4, m, localObject4, 0, 40);
                       }
                     }
                   }
@@ -1402,33 +1346,38 @@ public class d
     localObject1 = paramString;
     localFileOutputStream.close();
     localObject1 = paramString;
-    localObject2 = new ObjectInputStream(paramContext.openFileInput("tmp_tk_file"));
-    localObject1 = localObject2;
-    paramString = (TreeMap)((ObjectInputStream)localObject2).readObject();
-    localObject1 = localObject2;
-    break label1428;
-    paramString = null;
-    label1428:
-    paramContext.deleteFile("tmp_tk_file");
-    if (paramString != null) {}
+    paramString = new ObjectInputStream(paramContext.openFileInput("tmp_tk_file"));
     try
     {
-      ((ObjectInputStream)localObject1).close();
-      return paramString;
+      localObject1 = (TreeMap)paramString.readObject();
+    }
+    catch (Exception localException1)
+    {
+      label1324:
+      break label1324;
+    }
+    paramString = (String)localObject1;
+    localObject1 = null;
+    paramContext.deleteFile("tmp_tk_file");
+    paramContext = (Context)localObject1;
+    if (paramContext != null) {}
+    try
+    {
+      paramString.close();
     }
     catch (Exception paramContext)
     {
-      label1450:
-      break label1450;
+      label1349:
+      break label1349;
     }
     return null;
+    return paramContext;
   }
   
   private static void c(String paramString)
   {
     long l = new File(paramString).lastModified();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("file ");
+    StringBuilder localStringBuilder = new StringBuilder("file ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" last update stample ");
     localStringBuilder.append(l);
@@ -1439,46 +1388,29 @@ public class d
   {
     try
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("start clear_da2 ");
-      ((StringBuilder)???).append(paramLong2);
-      ??? = ((StringBuilder)???).toString();
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(paramLong1);
-      util.LOGI((String)???, ((StringBuilder)localObject3).toString());
+      util.LOGI("start clear_da2 ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
       ??? = this.a;
       int j = 0;
       int k = 0;
       if (??? != null) {
         synchronized (f)
         {
-          localObject3 = a(this.a, "tk_file", paramLong1);
+          TreeMap localTreeMap = a(this.a, "tk_file", paramLong1);
           j = k;
-          if (localObject3 != null)
+          if (localTreeMap != null)
           {
-            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)((TreeMap)localObject3).get(Long.valueOf(paramLong1));
+            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)localTreeMap.get(Long.valueOf(paramLong1));
             if (localWloginAllSigInfo == null) {
               return -1;
             }
-            StringBuilder localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append("");
-            localStringBuilder2.append(paramLong1);
-            util.LOGI("clear_da2 clear DA2 in file", localStringBuilder2.toString());
+            util.LOGI("clear_da2 clear DA2 in file", String.valueOf(paramLong1));
             localWloginAllSigInfo.put_da2(paramLong2, new byte[0]);
-            j = a((TreeMap)localObject3, "tk_file");
-            this.c = ((TreeMap)localObject3);
+            j = a(localTreeMap, "tk_file");
+            this.c = localTreeMap;
           }
         }
       }
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("end clear_da2 ret ");
-      ((StringBuilder)???).append(j);
-      ??? = ((StringBuilder)???).toString();
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("");
-      localStringBuilder1.append(paramLong1);
-      util.LOGI((String)???, localStringBuilder1.toString());
+      util.LOGI("end clear_da2 ret ".concat(String.valueOf(j)), String.valueOf(paramLong1));
       return j;
     }
     finally {}
@@ -1488,19 +1420,12 @@ public class d
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("start put_siginfo ");
-      ((StringBuilder)localObject1).append(paramLong2);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("");
-      ((StringBuilder)???).append(paramLong1);
-      util.LOGI((String)localObject1, ((StringBuilder)???).toString());
-      localObject1 = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
-      if (localObject1 == null) {
+      util.LOGI("start put_siginfo ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
+      WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
+      if (localWloginAllSigInfo == null) {
         return -1;
       }
-      int j = ((WloginAllSigInfo)localObject1).put_siginfo(paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
+      int j = localWloginAllSigInfo.put_siginfo(paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
       if (this.a != null) {
         synchronized (f)
         {
@@ -1509,7 +1434,7 @@ public class d
           if (paramArrayOfByte2 == null) {
             paramArrayOfByte1 = new TreeMap();
           }
-          paramArrayOfByte1.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject1).get_clone());
+          paramArrayOfByte1.put(Long.valueOf(paramLong1), localWloginAllSigInfo.get_clone());
           a(paramArrayOfByte1, "tk_file");
         }
       }
@@ -1520,204 +1445,182 @@ public class d
   
   public int a(long paramLong1, long paramLong2, byte[][] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, WloginSimpleInfo paramWloginSimpleInfo, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[][] paramArrayOfByte14, long[] paramArrayOfLong, int paramInt)
   {
+    label1192:
+    label1195:
+    label1198:
+    label1230:
     for (;;)
     {
+      Object localObject10;
       try
       {
-        Object localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("start put_siginfo skey ");
+        Object localObject1 = new StringBuilder("start put_siginfo skey ");
         ((StringBuilder)localObject1).append(util.getMaskBytes(paramArrayOfByte10, 2, 2));
-        localObject1 = ((StringBuilder)localObject1).toString();
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(paramLong1);
-        util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+        util.LOGI(((StringBuilder)localObject1).toString(), String.valueOf(paramLong1));
         localObject1 = this.a;
         int j = 0;
         if (localObject1 != null) {
           synchronized (f)
           {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("");
-            ((StringBuilder)localObject1).append(paramLong1);
-            util.LOGI("put_siginfo load file", ((StringBuilder)localObject1).toString());
-            localObject2 = a(this.a, "tk_file", paramLong1);
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new TreeMap();
+            util.LOGI("put_siginfo load file", String.valueOf(paramLong1));
+            localObject1 = a(this.a, "tk_file", paramLong1);
+            Object localObject6 = localObject1;
+            if (localObject1 == null) {
+              localObject6 = new TreeMap();
             }
-            localObject2 = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
-            if (localObject2 != null) {
-              break label1399;
+            localObject1 = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
+            if (localObject1 != null) {
+              break label1195;
             }
-            localObject2 = (WloginAllSigInfo)((TreeMap)localObject1).get(Long.valueOf(paramLong1));
-            if (localObject2 != null) {
-              break label1396;
+            localObject1 = (WloginAllSigInfo)((TreeMap)localObject6).get(Long.valueOf(paramLong1));
+            if (localObject1 != null) {
+              break label1192;
             }
-            localObject2 = new WloginAllSigInfo();
-            Object localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("mainSigMap 0x");
-            ((StringBuilder)localObject3).append(Integer.toHexString(this.e));
-            localObject3 = ((StringBuilder)localObject3).toString();
-            localObject4 = new StringBuilder();
-            ((StringBuilder)localObject4).append("");
-            ((StringBuilder)localObject4).append(paramLong1);
-            util.LOGI((String)localObject3, ((StringBuilder)localObject4).toString());
-            ((WloginAllSigInfo)localObject2).mainSigMap = this.e;
-            localObject3 = new byte[0];
+            localObject1 = new WloginAllSigInfo();
+            Object localObject2 = new StringBuilder("mainSigMap 0x");
+            ((StringBuilder)localObject2).append(Integer.toHexString(this.e));
+            util.LOGI(((StringBuilder)localObject2).toString(), String.valueOf(paramLong1));
+            ((WloginAllSigInfo)localObject1).mainSigMap = this.e;
+            localObject2 = new byte[0];
+            localObject7 = new byte[0];
+            byte[] arrayOfByte = new byte[0];
+            localObject4 = new byte[0];
             localObject5 = new byte[0];
-            byte[] arrayOfByte1 = new byte[0];
-            byte[] arrayOfByte2 = new byte[0];
-            byte[] arrayOfByte3 = new byte[0];
-            Object localObject6 = new byte[0];
-            Object localObject7 = (WloginSigInfo)((WloginAllSigInfo)localObject2)._tk_map.get(Long.valueOf(paramLong2));
-            if (localObject7 == null) {
-              break label1402;
+            localObject10 = new byte[0];
+            localObject9 = (WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(Long.valueOf(paramLong2));
+            if (localObject9 == null) {
+              break label1198;
             }
-            localObject4 = localObject3;
-            localObject3 = localObject5;
-            if (((WloginSigInfo)localObject7)._en_A1 != null)
+            localObject3 = localObject2;
+            localObject2 = localObject7;
+            if (((WloginSigInfo)localObject9)._en_A1 != null)
             {
-              localObject6 = (byte[])((WloginSigInfo)localObject7)._en_A1.clone();
-              localObject4 = localObject6;
-              localObject3 = localObject5;
-              if (((WloginSigInfo)localObject7)._noPicSig != null)
+              localObject8 = (byte[])((WloginSigInfo)localObject9)._en_A1.clone();
+              localObject3 = localObject8;
+              localObject2 = localObject7;
+              if (((WloginSigInfo)localObject9)._noPicSig != null)
               {
-                localObject3 = (byte[])((WloginSigInfo)localObject7)._noPicSig.clone();
-                localObject4 = localObject6;
+                localObject2 = (byte[])((WloginSigInfo)localObject9)._noPicSig.clone();
+                localObject3 = localObject8;
               }
             }
-            if (((WloginSigInfo)localObject7)._G != null) {
-              arrayOfByte1 = (byte[])((WloginSigInfo)localObject7)._G.clone();
+            if (((WloginSigInfo)localObject9)._G != null) {
+              arrayOfByte = (byte[])((WloginSigInfo)localObject9)._G.clone();
             }
-            if (((WloginSigInfo)localObject7)._dpwd != null) {
-              arrayOfByte2 = (byte[])((WloginSigInfo)localObject7)._dpwd.clone();
+            if (((WloginSigInfo)localObject9)._dpwd != null) {
+              localObject4 = (byte[])((WloginSigInfo)localObject9)._dpwd.clone();
             }
-            if (((WloginSigInfo)localObject7)._randseed != null) {
-              arrayOfByte3 = (byte[])((WloginSigInfo)localObject7)._randseed.clone();
+            if (((WloginSigInfo)localObject9)._randseed != null) {
+              localObject5 = (byte[])((WloginSigInfo)localObject9)._randseed.clone();
             }
-            localObject6 = ((WloginSigInfo)localObject7)._psKey;
-            localObject5 = ((WloginSigInfo)localObject7)._pt4Token;
-            localObject7 = localObject3;
-            localObject3 = localObject4;
-            localObject4 = localObject7;
-            HashMap localHashMap1;
-            HashMap localHashMap2;
-            HashMap localHashMap3;
+            localObject7 = ((WloginSigInfo)localObject9)._psKey;
+            Object localObject11 = ((WloginSigInfo)localObject9)._pt4Token;
+            localObject8 = localObject2;
+            localObject9 = localObject4;
+            localObject10 = localObject5;
+            localObject4 = localObject11;
+            localObject2 = localObject3;
+            localObject3 = localObject8;
+            localObject5 = localObject9;
+            localObject8 = localObject10;
+            HashMap localHashMap;
             if ((paramArrayOfByte14[6] != null) && (paramArrayOfByte14[6].length > 2))
             {
-              localObject7 = new HashMap();
-              localHashMap1 = new HashMap();
-              localHashMap2 = new HashMap();
-              localHashMap3 = new HashMap();
-              Ticket.parsePsBuf((byte[])localObject6, paramLong5, (Map)localObject7, localHashMap1);
-              Ticket.parsePsBuf((byte[])localObject5, paramLong5, localHashMap2, localHashMap3);
-              localObject5 = new StringBuilder();
-              ((StringBuilder)localObject5).append("current pskey size:");
-              ((StringBuilder)localObject5).append(((Map)localObject7).size());
-              ((StringBuilder)localObject5).append(":");
-              ((StringBuilder)localObject5).append(localHashMap1.size());
-              util.LOGI(((StringBuilder)localObject5).toString(), "");
-              localObject5 = localHashMap1.entrySet().iterator();
-              Object localObject9;
-              if (((Iterator)localObject5).hasNext())
+              localObject9 = new HashMap();
+              localObject10 = new HashMap();
+              localObject11 = new HashMap();
+              localHashMap = new HashMap();
+              Ticket.parsePsBuf((byte[])localObject7, paramLong5, (Map)localObject9, (Map)localObject10);
+              Ticket.parsePsBuf((byte[])localObject4, paramLong5, (Map)localObject11, localHashMap);
+              localObject4 = new StringBuilder("current pskey size:");
+              ((StringBuilder)localObject4).append(((Map)localObject9).size());
+              ((StringBuilder)localObject4).append(":");
+              ((StringBuilder)localObject4).append(((Map)localObject10).size());
+              util.LOGI(((StringBuilder)localObject4).toString(), "");
+              localObject4 = ((Map)localObject10).entrySet().iterator();
+              String str;
+              if (((Iterator)localObject4).hasNext())
               {
-                localObject9 = (Map.Entry)((Iterator)localObject5).next();
-                localObject6 = (String)((Map.Entry)localObject9).getKey();
-                if (!Ticket.isPskeyStorageExpired(((Long)((Map.Entry)localObject9).getValue()).longValue())) {
+                localObject7 = (Map.Entry)((Iterator)localObject4).next();
+                str = (String)((Map.Entry)localObject7).getKey();
+                if (!Ticket.isPskeyStorageExpired(((Long)((Map.Entry)localObject7).getValue()).longValue())) {
                   continue;
                 }
-                ((Iterator)localObject5).remove();
-                ((Map)localObject7).remove(localObject6);
-                localObject9 = new StringBuilder();
-                ((StringBuilder)localObject9).append("delete expired pskey from file,key:");
-                ((StringBuilder)localObject9).append((String)localObject6);
-                util.LOGI(((StringBuilder)localObject9).toString(), "");
+                ((Iterator)localObject4).remove();
+                ((Map)localObject9).remove(str);
+                util.LOGI("delete expired pskey from file,key:".concat(String.valueOf(str)), "");
                 continue;
               }
-              localObject5 = localHashMap3.entrySet().iterator();
-              localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append("current pt4token size:");
-              ((StringBuilder)localObject6).append(localHashMap2.size());
-              ((StringBuilder)localObject6).append(":");
-              ((StringBuilder)localObject6).append(localHashMap3.size());
-              util.LOGI(((StringBuilder)localObject6).toString(), "");
-              if (((Iterator)localObject5).hasNext())
+              localObject4 = localHashMap.entrySet().iterator();
+              localObject7 = new StringBuilder("current pt4token size:");
+              ((StringBuilder)localObject7).append(((Map)localObject11).size());
+              ((StringBuilder)localObject7).append(":");
+              ((StringBuilder)localObject7).append(localHashMap.size());
+              util.LOGI(((StringBuilder)localObject7).toString(), "");
+              if (((Iterator)localObject4).hasNext())
               {
-                localObject9 = (Map.Entry)((Iterator)localObject5).next();
-                localObject6 = (String)((Map.Entry)localObject9).getKey();
-                if (!Ticket.isPskeyStorageExpired(((Long)((Map.Entry)localObject9).getValue()).longValue())) {
+                localObject7 = (Map.Entry)((Iterator)localObject4).next();
+                str = (String)((Map.Entry)localObject7).getKey();
+                if (!Ticket.isPskeyStorageExpired(((Long)((Map.Entry)localObject7).getValue()).longValue())) {
                   continue;
                 }
-                ((Iterator)localObject5).remove();
-                localHashMap2.remove(localObject6);
-                localObject9 = new StringBuilder();
-                ((StringBuilder)localObject9).append("delete expired pt4token from file,key:");
-                ((StringBuilder)localObject9).append((String)localObject6);
-                util.LOGI(((StringBuilder)localObject9).toString(), "");
+                ((Iterator)localObject4).remove();
+                ((Map)localObject11).remove(str);
+                util.LOGI("delete expired pt4token from file,key:".concat(String.valueOf(str)), "");
                 continue;
               }
-              Ticket.parseSvrPs(paramArrayOfByte14[6], paramLong5, (Map)localObject7, localHashMap1, localHashMap2, localHashMap3);
+              Ticket.parseSvrPs(paramArrayOfByte14[6], paramLong5, (Map)localObject9, (Map)localObject10, (Map)localObject11, localHashMap);
             }
             try
             {
-              paramArrayOfByte14[6] = Ticket.packPsBuf((Map)localObject7, paramLong5, localHashMap1);
-              paramArrayOfByte14[12] = Ticket.packPsBuf(localHashMap2, paramLong5, localHashMap3);
+              paramArrayOfByte14[6] = Ticket.packPsBuf((Map)localObject9, paramLong5, (Map)localObject10);
+              paramArrayOfByte14[12] = Ticket.packPsBuf((Map)localObject11, paramLong5, localHashMap);
             }
             catch (BufferOverflowException paramArrayOfByte1)
             {
               continue;
             }
-            paramArrayOfByte1 = new StringBuilder();
-            paramArrayOfByte1.append("map size ");
-            paramArrayOfByte1.append(((Map)localObject7).size());
+            paramArrayOfByte1 = new StringBuilder("map size ");
+            paramArrayOfByte1.append(((Map)localObject9).size());
             paramArrayOfByte1.append("is too large");
-            paramArrayOfByte1 = paramArrayOfByte1.toString();
-            paramWloginSimpleInfo = new StringBuilder();
-            paramWloginSimpleInfo.append("");
-            paramWloginSimpleInfo.append(paramLong1);
-            util.LOGI(paramArrayOfByte1, paramWloginSimpleInfo.toString());
+            util.LOGI(paramArrayOfByte1.toString(), String.valueOf(paramLong1));
             a(Long.valueOf(paramLong1));
             return -1023;
-            ((WloginAllSigInfo)localObject2).put_simpleinfo(paramWloginSimpleInfo);
-            ((WloginAllSigInfo)localObject2).put_siginfo(paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
-            ((WloginAllSigInfo)localObject2).put_siginfo(paramLong2, paramArrayOfByte1, paramLong5);
-            ((TreeMap)localObject1).put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject2).get_clone());
-            j = a((TreeMap)localObject1, "tk_file");
-            paramArrayOfByte1 = new StringBuilder();
-            paramArrayOfByte1.append("save key result:tk_file:");
-            paramArrayOfByte1.append(j);
-            util.LOGI(paramArrayOfByte1.toString(), "");
-            if (j != 0)
-            {
-              paramArrayOfByte1 = (WloginSigInfo)((WloginAllSigInfo)localObject2)._tk_map.get(Long.valueOf(paramLong2));
-              if (paramArrayOfByte1 != null)
-              {
-                paramArrayOfByte1._en_A1 = ((byte[])((byte[])localObject3).clone());
-                paramArrayOfByte1._noPicSig = ((byte[])((byte[])localObject4).clone());
-                paramArrayOfByte1._G = ((byte[])arrayOfByte1.clone());
-                paramArrayOfByte1._dpwd = ((byte[])arrayOfByte2.clone());
-                paramArrayOfByte1._randseed = ((byte[])arrayOfByte3.clone());
-              }
+            ((WloginAllSigInfo)localObject1).put_simpleinfo(paramWloginSimpleInfo);
+            ((WloginAllSigInfo)localObject1).put_siginfo(paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
+            ((WloginAllSigInfo)localObject1).put_siginfo(paramLong2, paramArrayOfByte1, paramLong5);
+            ((TreeMap)localObject6).put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject1).get_clone());
+            j = a((TreeMap)localObject6, "tk_file");
+            util.LOGI("save key result:tk_file:".concat(String.valueOf(j)), "");
+            if (j == 0) {
+              break label1230;
             }
-            paramArrayOfByte1 = new StringBuilder();
-            paramArrayOfByte1.append("");
-            paramArrayOfByte1.append(paramLong1);
-            util.LOGI("sig in memory changed", paramArrayOfByte1.toString());
-            this.c.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject2).get_clone());
+            paramArrayOfByte1 = (WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(Long.valueOf(paramLong2));
+            if (paramArrayOfByte1 != null)
+            {
+              paramArrayOfByte1._en_A1 = ((byte[])((byte[])localObject2).clone());
+              paramArrayOfByte1._noPicSig = ((byte[])localObject3.clone());
+              paramArrayOfByte1._G = ((byte[])arrayOfByte.clone());
+              paramArrayOfByte1._dpwd = ((byte[])((byte[])localObject5).clone());
+              paramArrayOfByte1._randseed = ((byte[])((byte[])localObject8).clone());
+            }
+            util.LOGI("sig in memory changed", String.valueOf(paramLong1));
+            this.c.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject1).get_clone());
           }
         } else {
           return j;
         }
       }
       finally {}
-      label1396:
       continue;
-      label1399:
       continue;
-      label1402:
-      Object localObject4 = localObject5;
-      Object localObject5 = new byte[0];
+      Object localObject3 = localObject7;
+      Object localObject8 = localObject4;
+      Object localObject9 = localObject5;
+      Object localObject4 = new byte[0];
+      Object localObject7 = localObject10;
+      Object localObject5 = localObject8;
+      localObject8 = localObject9;
     }
   }
   
@@ -1736,7 +1639,7 @@ public class d
   
   public List<WloginLoginInfo> a(boolean paramBoolean)
   {
-    label347:
+    label341:
     for (;;)
     {
       try
@@ -1777,7 +1680,7 @@ public class d
             }
             localObject5 = b(localLong);
             if (localObject5 != null) {
-              break label347;
+              break label341;
             }
             localObject5 = String.valueOf(localLong);
             if (((WloginAllSigInfo)localObject1)._useInfo._img_url == null) {
@@ -1811,8 +1714,7 @@ public class d
       Object localObject = (UinInfo)this.d.get(paramString);
       if (localObject != null)
       {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("mem got_account name: ");
+        localStringBuilder = new StringBuilder("mem got_account name: ");
         localStringBuilder.append(paramString);
         localStringBuilder.append(" uin: ");
         localStringBuilder.append(((UinInfo)localObject)._uin);
@@ -1834,8 +1736,7 @@ public class d
         return null;
       }
       this.d.put(paramString, localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("file got_account name: ");
+      StringBuilder localStringBuilder = new StringBuilder("file got_account name: ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" uin: ");
       localStringBuilder.append(((UinInfo)localObject)._uin);
@@ -1898,55 +1799,34 @@ public class d
   {
     try
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("start put_randseed ");
-      ((StringBuilder)???).append(paramLong2);
-      ??? = ((StringBuilder)???).toString();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(paramLong1);
-      util.LOGI((String)???, ((StringBuilder)localObject2).toString());
+      util.LOGI("start put_randseed ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
       if (this.a != null) {
         synchronized (f)
         {
-          localObject2 = a(this.a, "tk_file", paramLong1);
-          if (localObject2 != null)
+          TreeMap localTreeMap = a(this.a, "tk_file", paramLong1);
+          if (localTreeMap != null)
           {
-            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)((TreeMap)localObject2).get(Long.valueOf(paramLong1));
+            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)localTreeMap.get(Long.valueOf(paramLong1));
             if (localWloginAllSigInfo == null)
             {
-              paramArrayOfByte = new StringBuilder();
-              paramArrayOfByte.append("fileInfo is null ");
-              paramArrayOfByte.append(paramLong2);
-              paramArrayOfByte = paramArrayOfByte.toString();
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("");
-              ((StringBuilder)localObject2).append(paramLong1);
-              util.LOGI(paramArrayOfByte, ((StringBuilder)localObject2).toString());
+              util.LOGI("fileInfo is null ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
               return;
             }
             localWloginAllSigInfo.put_randseed(paramLong2, paramArrayOfByte);
-            int j = a((TreeMap)localObject2, "tk_file");
+            int j = a(localTreeMap, "tk_file");
             if (j != 0)
             {
-              paramArrayOfByte = new StringBuilder();
-              paramArrayOfByte.append("put_randseed refreshTKTreeMap failed ret ");
+              paramArrayOfByte = new StringBuilder("put_randseed refreshTKTreeMap failed ret ");
               paramArrayOfByte.append(j);
               paramArrayOfByte.append(" appid ");
               paramArrayOfByte.append(paramLong2);
-              paramArrayOfByte = paramArrayOfByte.toString();
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("");
-              ((StringBuilder)localObject2).append(paramLong1);
-              util.LOGI(paramArrayOfByte, ((StringBuilder)localObject2).toString());
+              util.LOGI(paramArrayOfByte.toString(), String.valueOf(paramLong1));
               return;
             }
-            this.c = ((TreeMap)localObject2);
-            paramArrayOfByte = new StringBuilder();
-            paramArrayOfByte.append("");
-            paramArrayOfByte.append(paramLong1);
-            util.LOGI("end put_randseed", paramArrayOfByte.toString());
+            this.c = localTreeMap;
+            util.LOGI("end put_randseed", String.valueOf(paramLong1));
           }
+          return;
         }
       }
       return;
@@ -1958,10 +1838,7 @@ public class d
   {
     try
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("");
-      ((StringBuilder)???).append(paramLong);
-      util.LOGI("start clear_sig", ((StringBuilder)???).toString());
+      util.LOGI("start clear_sig", String.valueOf(paramLong));
       this.c.remove(paramLong);
       if (this.a != null) {
         synchronized (f)
@@ -1972,6 +1849,7 @@ public class d
           }
           localTreeMap.remove(paramLong);
           a(localTreeMap, "tk_file");
+          return;
         }
       }
       return;
@@ -1983,16 +1861,12 @@ public class d
   {
     try
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("");
-      ((StringBuilder)???).append(paramLong1);
-      util.LOGI("start clear_sig", ((StringBuilder)???).toString());
+      util.LOGI("start clear_sig", String.valueOf(paramLong1));
       ??? = (WloginAllSigInfo)this.c.get(paramLong1);
       if (??? != null)
       {
         ((WloginAllSigInfo)???)._tk_map.remove(paramLong2);
-        ??? = new StringBuilder();
-        ((StringBuilder)???).append("uin ");
+        ??? = new StringBuilder("uin ");
         ((StringBuilder)???).append(paramLong1);
         ((StringBuilder)???).append(" appid ");
         ((StringBuilder)???).append(paramLong2);
@@ -2012,6 +1886,7 @@ public class d
           }
           paramLong1._tk_map.remove(paramLong2);
           a(localTreeMap, "tk_file");
+          return;
         }
       }
       return;
@@ -2034,6 +1909,7 @@ public class d
           }
           localTreeMap1.remove(paramString);
           a(localTreeMap1, "name_file");
+          return;
         }
       }
       return;
@@ -2045,33 +1921,27 @@ public class d
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("put account ");
-      ((StringBuilder)localObject1).append(paramString);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(paramLong);
-      util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
-      localObject2 = b(paramLong);
-      if (localObject2 != null) {
-        this.d.remove(localObject2);
+      util.LOGI("put account ".concat(String.valueOf(paramString)), String.valueOf(paramLong));
+      String str = b(paramLong);
+      if (str != null) {
+        this.d.remove(str);
       }
       UinInfo localUinInfo = new UinInfo(paramLong, paramBoolean);
       this.d.put(paramString, localUinInfo);
       if (this.a != null) {
         synchronized (g)
         {
-          localObject1 = a(this.a, "name_file", 0L);
-          paramLong = (Long)localObject1;
-          if (localObject1 == null) {
+          TreeMap localTreeMap = a(this.a, "name_file", 0L);
+          paramLong = localTreeMap;
+          if (localTreeMap == null) {
             paramLong = new TreeMap();
           }
-          if (localObject2 != null) {
-            paramLong.remove(localObject2);
+          if (str != null) {
+            paramLong.remove(str);
           }
           paramLong.put(paramString, localUinInfo);
           a(paramLong, "name_file");
+          return;
         }
       }
       return;
@@ -2085,87 +1955,84 @@ public class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 660	java/io/ByteArrayOutputStream
+    //   2: new 674	java/io/ByteArrayOutputStream
     //   5: dup
-    //   6: invokespecial 661	java/io/ByteArrayOutputStream:<init>	()V
+    //   6: invokespecial 675	java/io/ByteArrayOutputStream:<init>	()V
     //   9: astore 4
-    //   11: new 663	java/io/ObjectOutputStream
+    //   11: new 677	java/io/ObjectOutputStream
     //   14: dup
     //   15: aload 4
-    //   17: invokespecial 666	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   17: invokespecial 680	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   20: astore 5
     //   22: aload 5
     //   24: aload_1
-    //   25: invokevirtual 670	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   25: invokevirtual 684	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   28: aload 5
-    //   30: invokevirtual 673	java/io/ObjectOutputStream:flush	()V
+    //   30: invokevirtual 687	java/io/ObjectOutputStream:flush	()V
     //   33: aload 4
-    //   35: invokevirtual 676	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   35: invokevirtual 690	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   38: astore_1
     //   39: aload_1
     //   40: iconst_0
     //   41: aload_1
     //   42: arraylength
-    //   43: getstatic 192	oicq/wlogin_sdk/request/t:B	[B
-    //   46: invokestatic 679	oicq/wlogin_sdk/tools/cryptor:encrypt	([BII[B)[B
+    //   43: getstatic 200	oicq/wlogin_sdk/request/t:B	[B
+    //   46: invokestatic 693	oicq/wlogin_sdk/tools/cryptor:encrypt	([BII[B)[B
     //   49: astore_1
     //   50: aload_0
     //   51: getfield 50	oicq/wlogin_sdk/request/d:a	Landroid/content/Context;
     //   54: aload_2
     //   55: aload_1
-    //   56: invokestatic 681	oicq/wlogin_sdk/request/d:a	(Landroid/content/Context;Ljava/lang/String;[B)I
+    //   56: invokestatic 695	oicq/wlogin_sdk/request/d:a	(Landroid/content/Context;Ljava/lang/String;[B)I
     //   59: istore_3
     //   60: aload 5
-    //   62: invokevirtual 682	java/io/ObjectOutputStream:close	()V
+    //   62: invokevirtual 696	java/io/ObjectOutputStream:close	()V
     //   65: aload 4
-    //   67: invokevirtual 683	java/io/ByteArrayOutputStream:close	()V
-    //   70: goto +55 -> 125
+    //   67: invokevirtual 697	java/io/ByteArrayOutputStream:close	()V
+    //   70: goto +50 -> 120
     //   73: astore_1
-    //   74: goto +55 -> 129
+    //   74: goto +50 -> 124
     //   77: astore_1
     //   78: new 86	java/lang/StringBuilder
     //   81: dup
-    //   82: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   85: astore_2
-    //   86: aload_2
-    //   87: ldc_w 685
-    //   90: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: pop
-    //   94: aload_2
-    //   95: aload_1
-    //   96: invokevirtual 689	java/lang/Throwable:getStackTrace	()[Ljava/lang/StackTraceElement;
-    //   99: invokevirtual 690	java/lang/Object:toString	()Ljava/lang/String;
-    //   102: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: pop
-    //   106: aload_2
-    //   107: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   110: ldc 152
-    //   112: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: aload_1
-    //   116: ldc 152
-    //   118: invokestatic 295	oicq/wlogin_sdk/tools/util:printThrowable	(Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   121: sipush -1022
-    //   124: istore_3
-    //   125: aload_0
-    //   126: monitorexit
-    //   127: iload_3
-    //   128: ireturn
-    //   129: aload_0
-    //   130: monitorexit
-    //   131: aload_1
-    //   132: athrow
+    //   82: ldc_w 699
+    //   85: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   88: astore_2
+    //   89: aload_2
+    //   90: aload_1
+    //   91: invokevirtual 703	java/lang/Throwable:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   94: invokevirtual 704	java/lang/Object:toString	()Ljava/lang/String;
+    //   97: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: pop
+    //   101: aload_2
+    //   102: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: ldc 153
+    //   107: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aload_1
+    //   111: ldc 153
+    //   113: invokestatic 307	oicq/wlogin_sdk/tools/util:printThrowable	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   116: sipush -1022
+    //   119: istore_3
+    //   120: aload_0
+    //   121: monitorexit
+    //   122: iload_3
+    //   123: ireturn
+    //   124: aload_0
+    //   125: monitorexit
+    //   126: aload_1
+    //   127: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	133	0	this	d
-    //   0	133	1	paramTreeMap	TreeMap
-    //   0	133	2	paramString	String
-    //   59	69	3	j	int
+    //   0	128	0	this	d
+    //   0	128	1	paramTreeMap	TreeMap
+    //   0	128	2	paramString	String
+    //   59	64	3	j	int
     //   9	57	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     //   20	41	5	localObjectOutputStream	java.io.ObjectOutputStream
     // Exception table:
     //   from	to	target	type
     //   2	70	73	finally
-    //   78	121	73	finally
+    //   78	116	73	finally
     //   2	70	77	java/lang/Throwable
   }
   
@@ -2195,11 +2062,8 @@ public class d
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("uin=");
-      ((StringBuilder)localObject1).append(paramLong);
-      util.LOGI("start get_simpleinfo", ((StringBuilder)localObject1).toString());
-      localObject1 = a(paramLong);
+      util.LOGI("start get_simpleinfo", "uin=".concat(String.valueOf(paramLong)));
+      Object localObject1 = a(paramLong);
       if (localObject1 == null) {
         return null;
       }
@@ -2213,46 +2077,29 @@ public class d
   {
     try
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("start clearNewST ");
-      ((StringBuilder)???).append(paramLong2);
-      ??? = ((StringBuilder)???).toString();
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(paramLong1);
-      util.LOGI((String)???, ((StringBuilder)localObject3).toString());
+      util.LOGI("start clearNewST ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
       ??? = this.a;
       int j = 0;
       int k = 0;
       if (??? != null) {
         synchronized (f)
         {
-          localObject3 = a(this.a, "tk_file", paramLong1);
+          TreeMap localTreeMap = a(this.a, "tk_file", paramLong1);
           j = k;
-          if (localObject3 != null)
+          if (localTreeMap != null)
           {
-            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)((TreeMap)localObject3).get(Long.valueOf(paramLong1));
+            WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)localTreeMap.get(Long.valueOf(paramLong1));
             if (localWloginAllSigInfo == null) {
               return;
             }
-            StringBuilder localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append("");
-            localStringBuilder2.append(paramLong1);
-            util.LOGI("clearNewST clear newST in file", localStringBuilder2.toString());
+            util.LOGI("clearNewST clear newST in file", String.valueOf(paramLong1));
             localWloginAllSigInfo.putNewST(paramLong2, new byte[0], new byte[0]);
-            j = a((TreeMap)localObject3, "tk_file");
-            this.c = ((TreeMap)localObject3);
+            j = a(localTreeMap, "tk_file");
+            this.c = localTreeMap;
           }
         }
       }
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("end clearNewST ret ");
-      ((StringBuilder)???).append(j);
-      ??? = ((StringBuilder)???).toString();
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("");
-      localStringBuilder1.append(paramLong1);
-      util.LOGI((String)???, localStringBuilder1.toString());
+      util.LOGI("end clearNewST ret ".concat(String.valueOf(j)), String.valueOf(paramLong1));
       return;
     }
     finally {}
@@ -2263,10 +2110,7 @@ public class d
     try
     {
       this.d.remove(paramString);
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("clear_account ");
-      ((StringBuilder)???).append(paramString);
-      util.LOGI(((StringBuilder)???).toString(), "");
+      util.LOGI("clear_account ".concat(String.valueOf(paramString)), "");
       if (this.a != null) {
         synchronized (g)
         {
@@ -2276,6 +2120,7 @@ public class d
           }
           localTreeMap.remove(paramString);
           a(localTreeMap, "name_file");
+          return;
         }
       }
       return;
@@ -2287,19 +2132,12 @@ public class d
   {
     try
     {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("clear_pskey ");
-      ((StringBuilder)localObject1).append(paramLong2);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("");
-      ((StringBuilder)???).append(paramLong1);
-      util.LOGI((String)localObject1, ((StringBuilder)???).toString());
-      localObject1 = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
-      if (localObject1 == null) {
+      util.LOGI("clear_pskey ".concat(String.valueOf(paramLong2)), String.valueOf(paramLong1));
+      WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.c.get(Long.valueOf(paramLong1));
+      if (localWloginAllSigInfo == null) {
         return;
       }
-      ??? = (WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(Long.valueOf(paramLong2));
+      ??? = (WloginSigInfo)localWloginAllSigInfo._tk_map.get(Long.valueOf(paramLong2));
       if (??? == null) {
         return;
       }
@@ -2307,17 +2145,18 @@ public class d
       ((WloginSigInfo)???)._psKey = new byte[0];
       ((WloginSigInfo)???).cacheTickets = null;
       ((WloginSigInfo)???).cacheUpdateStamp = 0L;
-      ((WloginAllSigInfo)localObject1)._tk_map.put(Long.valueOf(paramLong1), ???);
+      localWloginAllSigInfo._tk_map.put(Long.valueOf(paramLong1), ???);
       if (this.a != null) {
         synchronized (f)
         {
           TreeMap localTreeMap = a(this.a, "tk_file", paramLong1);
           if (localTreeMap != null)
           {
-            localTreeMap.put(Long.valueOf(paramLong1), localObject1);
+            localTreeMap.put(Long.valueOf(paramLong1), localWloginAllSigInfo);
             a(localTreeMap, "tk_file");
             this.c = localTreeMap;
           }
+          return;
         }
       }
       return;

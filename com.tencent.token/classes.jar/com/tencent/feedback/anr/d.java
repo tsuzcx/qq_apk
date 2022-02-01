@@ -21,9 +21,6 @@ final class d
   public final boolean a(long paramLong1, long paramLong2, String paramString)
   {
     e.b("new process %s", new Object[] { paramString });
-    if (!paramString.equals(paramString)) {
-      return true;
-    }
     f localf = this.a;
     localf.a = paramLong1;
     localf.b = paramString;
@@ -42,10 +39,7 @@ final class d
       if (this.a.d == null) {
         this.a.d = new HashMap();
       }
-      Map localMap = this.a.d;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramInt);
-      localMap.put(paramString1, new String[] { paramString2, paramString3, localStringBuilder.toString() });
+      this.a.d.put(paramString1, new String[] { paramString2, paramString3, String.valueOf(paramInt) });
       return true;
     }
     return true;

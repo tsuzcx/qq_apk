@@ -13,7 +13,7 @@ public final class p
   public String lc = "";
   public String version = "";
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ax = paramJceInputStream.read(this.ax, 0, true);
     this.lc = paramJceInputStream.readString(1, false);
@@ -22,7 +22,7 @@ public final class p
     this.version = paramJceInputStream.readString(4, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ax, 0);
     String str = this.lc;

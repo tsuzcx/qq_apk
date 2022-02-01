@@ -10,8 +10,8 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.ce;
-import com.tencent.token.global.g;
+import com.tencent.token.sd;
+import com.tencent.token.xb;
 
 public class StartPwdDigitVerifyActivity
   extends BaseActivity
@@ -34,7 +34,7 @@ public class StartPwdDigitVerifyActivity
   protected int getBtnStringId()
   {
     if (1 == this.mEnterType) {
-      return 2131493635;
+      return 2131493637;
     }
     return 2131493040;
   }
@@ -45,18 +45,17 @@ public class StartPwdDigitVerifyActivity
     if (paramView != null) {
       paramView.clearFocus();
     }
-    if (ce.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (sd.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
-      paramView = new StringBuilder();
-      paramView.append("verify_token_pwd: ");
+      paramView = new StringBuilder("verify_token_pwd: ");
       paramView.append(this.mEnterType);
-      g.a(paramView.toString());
+      xb.a(paramView.toString());
       setResult(257);
       finish();
       return;
     }
-    showToast(2131493639);
+    showToast(2131493641);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -68,22 +67,21 @@ public class StartPwdDigitVerifyActivity
       this.mEnterType = paramBundle.getInt("enter_type");
       this.mUin = paramBundle.getLong("uin");
     }
-    setContentView(2131296497);
-    paramBundle = findViewById(2131165334);
+    setContentView(2131296498);
+    paramBundle = findViewById(2131165335);
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131166071));
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131166077));
     paramBundle = this.mTokenPwdInpuText;
     if (paramBundle != null) {
       paramBundle.clearFocus();
     }
-    paramBundle = new StringBuilder();
-    paramBundle.append("verify_token_pwd: ");
+    paramBundle = new StringBuilder("verify_token_pwd: ");
     paramBundle.append(this.mEnterType);
     paramBundle.append(", uin: ");
     paramBundle.append(this.mUin);
-    g.a(paramBundle.toString());
+    xb.a(paramBundle.toString());
   }
   
   protected void setBtnWidth(ViewGroup.LayoutParams paramLayoutParams)

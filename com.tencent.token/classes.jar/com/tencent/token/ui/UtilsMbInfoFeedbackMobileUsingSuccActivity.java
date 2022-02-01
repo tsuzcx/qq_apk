@@ -9,9 +9,9 @@ public class UtilsMbInfoFeedbackMobileUsingSuccActivity
 {
   private void initUI()
   {
-    findViewById(2131165491).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165493).setOnClickListener(new View.OnClickListener()
     {
-      public void onClick(View paramAnonymousView)
+      public final void onClick(View paramAnonymousView)
       {
         UtilsMbInfoFeedbackMobileUsingSuccActivity.this.finish();
       }
@@ -22,7 +22,7 @@ public class UtilsMbInfoFeedbackMobileUsingSuccActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131296474);
+    setContentView(2131296475);
     initUI();
   }
 }

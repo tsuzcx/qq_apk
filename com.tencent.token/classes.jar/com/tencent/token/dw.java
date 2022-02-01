@@ -1,209 +1,552 @@
 package com.tencent.token;
 
-public final class dw
-  extends du
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public final class dw<E>
+  implements Collection<E>, Set<E>
 {
-  private static final int[] d = { 1116352408, 1899447441, -1245643825, -373957723, 961987163, 1508970993, -1841331548, -1424204075, -670586216, 310598401, 607225278, 1426881987, 1925078388, -2132889090, -1680079193, -1046744716, -459576895, -272742522, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, -1740746414, -1473132947, -1341970488, -1084653625, -958395405, -710438585, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, -2117940946, -1838011259, -1564481375, -1474664885, -1035236496, -949202525, -778901479, -694614492, -200395387, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, -2067236844, -1933114872, -1866530822, -1538233109, -1090935817, -965641998 };
-  private final int[] e;
-  private final int[] f;
+  private static final int[] b = new int[0];
+  private static final Object[] c = new Object[0];
+  private static Object[] d;
+  private static int e;
+  private static Object[] f;
+  private static int g;
+  public Object[] a = c;
+  private int[] h = b;
+  private int i = 0;
+  private ec<E, E> j;
   
   public dw()
   {
-    super("SHA-256", 32, 64);
-    this.f = new int[8];
-    this.e = new int[64];
-    c();
+    this((byte)0);
   }
   
-  private dw(dw paramdw)
+  private dw(byte paramByte) {}
+  
+  private int a()
   {
-    super(paramdw);
-    int[] arrayOfInt = paramdw.f;
-    if (arrayOfInt == null)
+    int m = this.i;
+    if (m == 0) {
+      return -1;
+    }
+    int n = dx.a(this.h, m, 0);
+    if (n < 0) {
+      return n;
+    }
+    if (this.a[n] == null) {
+      return n;
+    }
+    int k = n + 1;
+    while ((k < m) && (this.h[k] == 0))
     {
-      this.f = null;
+      if (this.a[k] == null) {
+        return k;
+      }
+      k += 1;
+    }
+    m = n - 1;
+    while ((m >= 0) && (this.h[m] == 0))
+    {
+      if (this.a[m] == null) {
+        return m;
+      }
+      m -= 1;
+    }
+    return k ^ 0xFFFFFFFF;
+  }
+  
+  private int a(Object paramObject, int paramInt)
+  {
+    int m = this.i;
+    if (m == 0) {
+      return -1;
+    }
+    int n = dx.a(this.h, m, paramInt);
+    if (n < 0) {
+      return n;
+    }
+    if (paramObject.equals(this.a[n])) {
+      return n;
+    }
+    int k = n + 1;
+    while ((k < m) && (this.h[k] == paramInt))
+    {
+      if (paramObject.equals(this.a[k])) {
+        return k;
+      }
+      k += 1;
+    }
+    m = n - 1;
+    while ((m >= 0) && (this.h[m] == paramInt))
+    {
+      if (paramObject.equals(this.a[m])) {
+        return m;
+      }
+      m -= 1;
+    }
+    return k ^ 0xFFFFFFFF;
+  }
+  
+  private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
+  {
+    if (paramArrayOfInt.length == 8) {
+      try
+      {
+        if (g < 10)
+        {
+          paramArrayOfObject[0] = f;
+          paramArrayOfObject[1] = paramArrayOfInt;
+          paramInt -= 1;
+          break label114;
+          f = paramArrayOfObject;
+          g += 1;
+        }
+        return;
+      }
+      finally {}
+    } else if (paramArrayOfInt.length != 4) {}
+    for (;;)
+    {
+      try
+      {
+        if (e < 10)
+        {
+          paramArrayOfObject[0] = d;
+          paramArrayOfObject[1] = paramArrayOfInt;
+          paramInt -= 1;
+          break label130;
+          d = paramArrayOfObject;
+          e += 1;
+        }
+        return;
+      }
+      finally {}
+      return;
+      label114:
+      while (paramInt >= 2)
+      {
+        paramArrayOfObject[paramInt] = null;
+        paramInt -= 1;
+      }
+      break;
+      label130:
+      while (paramInt >= 2)
+      {
+        paramArrayOfObject[paramInt] = null;
+        paramInt -= 1;
+      }
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    if (paramInt == 8) {
+      try
+      {
+        if (f != null)
+        {
+          Object[] arrayOfObject1 = f;
+          this.a = arrayOfObject1;
+          f = (Object[])arrayOfObject1[0];
+          this.h = ((int[])arrayOfObject1[1]);
+          arrayOfObject1[1] = null;
+          arrayOfObject1[0] = null;
+          g -= 1;
+          return;
+        }
+      }
+      finally {}
+    } else if (paramInt == 4) {
+      try
+      {
+        if (d != null)
+        {
+          Object[] arrayOfObject2 = d;
+          this.a = arrayOfObject2;
+          d = (Object[])arrayOfObject2[0];
+          this.h = ((int[])arrayOfObject2[1]);
+          arrayOfObject2[1] = null;
+          arrayOfObject2[0] = null;
+          e -= 1;
+          return;
+        }
+      }
+      finally {}
+    }
+    this.h = new int[paramInt];
+    this.a = new Object[paramInt];
+  }
+  
+  public final int a(Object paramObject)
+  {
+    if (paramObject == null) {
+      return a();
+    }
+    return a(paramObject, paramObject.hashCode());
+  }
+  
+  public final E a(int paramInt)
+  {
+    Object localObject = this.a;
+    E ? = localObject[paramInt];
+    int m = this.i;
+    if (m <= 1)
+    {
+      a(this.h, (Object[])localObject, m);
+      this.h = b;
+      this.a = c;
+      this.i = 0;
+      return ?;
+    }
+    localObject = this.h;
+    int n = localObject.length;
+    int k = 8;
+    if ((n > 8) && (m < localObject.length / 3))
+    {
+      if (m > 8) {
+        k = m + (m >> 1);
+      }
+      localObject = this.h;
+      Object[] arrayOfObject = this.a;
+      b(k);
+      this.i -= 1;
+      if (paramInt > 0)
+      {
+        System.arraycopy(localObject, 0, this.h, 0, paramInt);
+        System.arraycopy(arrayOfObject, 0, this.a, 0, paramInt);
+      }
+      k = this.i;
+      if (paramInt < k)
+      {
+        m = paramInt + 1;
+        System.arraycopy(localObject, m, this.h, paramInt, k - paramInt);
+        System.arraycopy(arrayOfObject, m, this.a, paramInt, this.i - paramInt);
+        return ?;
+      }
     }
     else
     {
-      this.f = new int[arrayOfInt.length];
-      paramdw = paramdw.f;
-      arrayOfInt = this.f;
-      System.arraycopy(paramdw, 0, arrayOfInt, 0, arrayOfInt.length);
+      this.i -= 1;
+      k = this.i;
+      if (paramInt < k)
+      {
+        localObject = this.h;
+        m = paramInt + 1;
+        System.arraycopy(localObject, m, localObject, paramInt, k - paramInt);
+        localObject = this.a;
+        System.arraycopy(localObject, m, localObject, paramInt, this.i - paramInt);
+      }
+      this.a[this.i] = null;
     }
-    this.e = new int[64];
+    return ?;
   }
   
-  private static int a(int paramInt)
+  public final boolean add(E paramE)
   {
-    int i = b(paramInt, 2);
-    int j = b(paramInt, 13);
-    return b(paramInt, 22) ^ i ^ j;
-  }
-  
-  private static int a(int paramInt1, int paramInt2)
-  {
-    return paramInt1 >>> paramInt2;
-  }
-  
-  private static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return (paramInt1 ^ 0xFFFFFFFF) & paramInt3 ^ paramInt2 & paramInt1;
-  }
-  
-  static void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
-  {
-    paramArrayOfByte[paramInt2] = ((byte)(paramInt1 >> 24));
-    paramArrayOfByte[(paramInt2 + 1)] = ((byte)(paramInt1 >> 16));
-    paramArrayOfByte[(paramInt2 + 2)] = ((byte)(paramInt1 >> 8));
-    paramArrayOfByte[(paramInt2 + 3)] = ((byte)paramInt1);
-  }
-  
-  static void a(byte[] paramArrayOfByte, int paramInt, int[] paramArrayOfInt)
-  {
-    a(paramArrayOfByte, paramInt, paramArrayOfInt, 0, 64);
-  }
-  
-  static void a(byte[] paramArrayOfByte, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
-  {
-    int i = paramInt2;
-    paramInt2 = paramInt1;
-    while (paramInt2 < paramInt3 + paramInt1)
+    int m;
+    if (paramE == null)
     {
-      paramArrayOfInt[i] = (paramArrayOfByte[(paramInt2 + 3)] & 0xFF | (paramArrayOfByte[(paramInt2 + 2)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt2 + 1)] & 0xFF) << 16 | paramArrayOfByte[paramInt2] << 24);
-      paramInt2 += 4;
-      i += 1;
+      k = a();
+      m = 0;
     }
-  }
-  
-  static void a(int[] paramArrayOfInt, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    int i = paramInt2;
-    while (i < paramInt3 + paramInt2)
+    else
     {
-      int j = paramArrayOfInt[paramInt1];
-      int k = i + 1;
-      paramArrayOfByte[i] = ((byte)(j >> 24));
-      i = k + 1;
-      paramArrayOfByte[k] = ((byte)(j >> 16));
-      k = i + 1;
-      paramArrayOfByte[i] = ((byte)(j >> 8));
-      i = k + 1;
-      paramArrayOfByte[k] = ((byte)j);
-      paramInt1 += 1;
+      m = paramE.hashCode();
+      k = a(paramE, m);
     }
-  }
-  
-  private static int b(int paramInt)
-  {
-    int i = b(paramInt, 6);
-    int j = b(paramInt, 11);
-    return b(paramInt, 25) ^ i ^ j;
-  }
-  
-  private static int b(int paramInt1, int paramInt2)
-  {
-    return paramInt1 << 32 - paramInt2 | paramInt1 >>> paramInt2;
-  }
-  
-  private static int b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return paramInt1 & paramInt3 ^ paramInt1 & paramInt2 ^ paramInt2 & paramInt3;
-  }
-  
-  private static int c(int paramInt)
-  {
-    int i = b(paramInt, 7);
-    int j = b(paramInt, 18);
-    return a(paramInt, 3) ^ i ^ j;
-  }
-  
-  private static int d(int paramInt)
-  {
-    int i = b(paramInt, 17);
-    int j = b(paramInt, 19);
-    return a(paramInt, 10) ^ i ^ j;
-  }
-  
-  void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    a(paramArrayOfByte, paramInt, this.e);
-    paramInt = 16;
-    while (paramInt < 64)
+    if (k >= 0) {
+      return false;
+    }
+    int n = k ^ 0xFFFFFFFF;
+    int i1 = this.i;
+    Object localObject;
+    if (i1 >= this.h.length)
     {
-      paramArrayOfByte = this.e;
-      i = d(paramArrayOfByte[(paramInt - 2)]);
-      int[] arrayOfInt = this.e;
-      paramArrayOfByte[paramInt] = (i + arrayOfInt[(paramInt - 7)] + c(arrayOfInt[(paramInt - 15)]) + this.e[(paramInt - 16)]);
-      paramInt += 1;
+      k = 4;
+      if (i1 >= 8) {
+        k = (i1 >> 1) + i1;
+      } else if (i1 >= 4) {
+        k = 8;
+      }
+      localObject = this.h;
+      Object[] arrayOfObject = this.a;
+      b(k);
+      int[] arrayOfInt = this.h;
+      if (arrayOfInt.length > 0)
+      {
+        System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
+        System.arraycopy(arrayOfObject, 0, this.a, 0, arrayOfObject.length);
+      }
+      a((int[])localObject, arrayOfObject, this.i);
     }
-    paramArrayOfByte = this.f;
-    paramInt = paramArrayOfByte[0];
-    int i = paramArrayOfByte[1];
-    int j = paramArrayOfByte[2];
-    int i1 = paramArrayOfByte[3];
-    int m = paramArrayOfByte[4];
-    int k = paramArrayOfByte[5];
-    int n = paramArrayOfByte[6];
-    int i3 = paramArrayOfByte[7];
-    int i2 = 0;
-    while (i2 < 64)
+    int k = this.i;
+    if (n < k)
     {
-      int i4 = i3 + b(m) + a(m, k, n) + d[i2] + this.e[i2];
-      int i5 = a(paramInt);
-      int i6 = b(paramInt, i, j);
-      i2 += 1;
-      i3 = n;
-      n = k;
-      k = m;
-      m = i1 + i4;
-      i1 = j;
-      j = i;
-      i = paramInt;
-      paramInt = i4 + (i5 + i6);
+      localObject = this.h;
+      i1 = n + 1;
+      System.arraycopy(localObject, n, localObject, i1, k - n);
+      localObject = this.a;
+      System.arraycopy(localObject, n, localObject, i1, this.i - n);
     }
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[0] += paramInt;
-    paramArrayOfByte[1] += i;
-    paramArrayOfByte[2] += j;
-    paramArrayOfByte[3] += i1;
-    paramArrayOfByte[4] += m;
-    paramArrayOfByte[5] += k;
-    paramArrayOfByte[6] += n;
-    paramArrayOfByte[7] += i3;
+    this.h[n] = m;
+    this.a[n] = paramE;
+    this.i += 1;
+    return true;
   }
   
-  void b(byte[] paramArrayOfByte, int paramInt)
+  public final boolean addAll(Collection<? extends E> paramCollection)
   {
-    long l = this.b << 3;
-    int i = (int)this.b & 0x3F;
-    if (i >= 56) {
-      i = 120 - i;
-    } else {
-      i = 56 - i;
+    int k = this.i + paramCollection.size();
+    int[] arrayOfInt = this.h;
+    int m = arrayOfInt.length;
+    boolean bool = false;
+    if (m < k)
+    {
+      Object[] arrayOfObject = this.a;
+      b(k);
+      k = this.i;
+      if (k > 0)
+      {
+        System.arraycopy(arrayOfInt, 0, this.h, 0, k);
+        System.arraycopy(arrayOfObject, 0, this.a, 0, this.i);
+      }
+      a(arrayOfInt, arrayOfObject, this.i);
     }
-    a(c, 0, i);
-    a((int)(l >>> 32), this.a, 56);
-    a((int)l, this.a, 60);
-    a(this.a, 0);
-    a(this.f, 0, paramArrayOfByte, paramInt, 32);
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext()) {
+      bool |= add(paramCollection.next());
+    }
+    return bool;
   }
   
-  void c()
+  public final void clear()
   {
-    int[] arrayOfInt = this.f;
-    arrayOfInt[0] = 1779033703;
-    arrayOfInt[1] = -1150833019;
-    arrayOfInt[2] = 1013904242;
-    arrayOfInt[3] = -1521486534;
-    arrayOfInt[4] = 1359893119;
-    arrayOfInt[5] = -1694144372;
-    arrayOfInt[6] = 528734635;
-    arrayOfInt[7] = 1541459225;
+    int k = this.i;
+    if (k != 0)
+    {
+      a(this.h, this.a, k);
+      this.h = b;
+      this.a = c;
+      this.i = 0;
+    }
   }
   
-  public Object clone()
+  public final boolean contains(Object paramObject)
   {
-    return new dw(this);
+    return a(paramObject) >= 0;
+  }
+  
+  public final boolean containsAll(Collection<?> paramCollection)
+  {
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext()) {
+      if (!contains(paramCollection.next())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    int k;
+    if ((paramObject instanceof Set))
+    {
+      paramObject = (Set)paramObject;
+      if (size() != paramObject.size()) {
+        return false;
+      }
+      k = 0;
+    }
+    try
+    {
+      while (k < this.i)
+      {
+        boolean bool = paramObject.contains(this.a[k]);
+        if (!bool) {
+          return false;
+        }
+        k += 1;
+      }
+      return true;
+    }
+    catch (NullPointerException paramObject)
+    {
+      return false;
+    }
+    catch (ClassCastException paramObject) {}
+    return false;
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    int[] arrayOfInt = this.h;
+    int n = this.i;
+    int k = 0;
+    int m = 0;
+    while (k < n)
+    {
+      m += arrayOfInt[k];
+      k += 1;
+    }
+    return m;
+  }
+  
+  public final boolean isEmpty()
+  {
+    return this.i <= 0;
+  }
+  
+  public final Iterator<E> iterator()
+  {
+    if (this.j == null) {
+      this.j = new ec()
+      {
+        protected final int a()
+        {
+          return dw.a(dw.this);
+        }
+        
+        protected final int a(Object paramAnonymousObject)
+        {
+          return dw.this.a(paramAnonymousObject);
+        }
+        
+        protected final Object a(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return dw.b(dw.this)[paramAnonymousInt1];
+        }
+        
+        protected final E a(int paramAnonymousInt, E paramAnonymousE)
+        {
+          throw new UnsupportedOperationException("not a map");
+        }
+        
+        protected final void a(int paramAnonymousInt)
+        {
+          dw.this.a(paramAnonymousInt);
+        }
+        
+        protected final void a(E paramAnonymousE1, E paramAnonymousE2)
+        {
+          dw.this.add(paramAnonymousE1);
+        }
+        
+        protected final int b(Object paramAnonymousObject)
+        {
+          return dw.this.a(paramAnonymousObject);
+        }
+        
+        protected final Map<E, E> b()
+        {
+          throw new UnsupportedOperationException("not a map");
+        }
+        
+        protected final void c()
+        {
+          dw.this.clear();
+        }
+      };
+    }
+    return this.j.d().iterator();
+  }
+  
+  public final boolean remove(Object paramObject)
+  {
+    int k = a(paramObject);
+    if (k >= 0)
+    {
+      a(k);
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean removeAll(Collection<?> paramCollection)
+  {
+    paramCollection = paramCollection.iterator();
+    boolean bool = false;
+    while (paramCollection.hasNext()) {
+      bool |= remove(paramCollection.next());
+    }
+    return bool;
+  }
+  
+  public final boolean retainAll(Collection<?> paramCollection)
+  {
+    int k = this.i - 1;
+    boolean bool = false;
+    while (k >= 0)
+    {
+      if (!paramCollection.contains(this.a[k]))
+      {
+        a(k);
+        bool = true;
+      }
+      k -= 1;
+    }
+    return bool;
+  }
+  
+  public final int size()
+  {
+    return this.i;
+  }
+  
+  public final Object[] toArray()
+  {
+    int k = this.i;
+    Object[] arrayOfObject = new Object[k];
+    System.arraycopy(this.a, 0, arrayOfObject, 0, k);
+    return arrayOfObject;
+  }
+  
+  public final <T> T[] toArray(T[] paramArrayOfT)
+  {
+    Object localObject = paramArrayOfT;
+    if (paramArrayOfT.length < this.i) {
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.i);
+    }
+    System.arraycopy(this.a, 0, localObject, 0, this.i);
+    int k = localObject.length;
+    int m = this.i;
+    if (k > m) {
+      localObject[m] = null;
+    }
+    return localObject;
+  }
+  
+  public final String toString()
+  {
+    if (isEmpty()) {
+      return "{}";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(this.i * 14);
+    localStringBuilder.append('{');
+    int k = 0;
+    while (k < this.i)
+    {
+      if (k > 0) {
+        localStringBuilder.append(", ");
+      }
+      Object localObject = this.a[k];
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      } else {
+        localStringBuilder.append("(this Set)");
+      }
+      k += 1;
+    }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

@@ -12,8 +12,7 @@ public class ek
   
   ek()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Common Thread Pool-");
+    StringBuilder localStringBuilder = new StringBuilder("Common Thread Pool-");
     localStringBuilder.append(oS.getAndIncrement());
     localStringBuilder.append("-Thread-");
     this.ot = localStringBuilder.toString();

@@ -23,7 +23,7 @@ public class report_t1
   public TreeMap<Integer, report_t2> _lst = new TreeMap();
   public int _os = 2;
   public String _os_v = new String("");
-  public String _sdk_v = new Integer(5).toString();
+  public String _sdk_v = Integer.valueOf(5).toString();
   
   public void add_t2(report_t2 paramreport_t2)
   {

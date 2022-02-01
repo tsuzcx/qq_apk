@@ -9,20 +9,26 @@ import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
+import com.tencent.token.ko.a;
+import com.tencent.token.ko.b;
+import com.tencent.token.kp;
+import com.tencent.token.kq;
+import com.tencent.token.kr;
+import com.tencent.token.kr.a;
 import org.json.JSONObject;
 
 public class TCaptchaPopupActivity
   extends Activity
 {
-  private b a;
+  private kp a;
   private RelativeLayout b;
   private float c;
   private String d;
-  private d e;
+  private kr e;
   private String f;
-  private d.a g = new d.a()
+  private kr.a g = new kr.a()
   {
-    public void a(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void a(int paramAnonymousInt1, int paramAnonymousInt2)
     {
       ViewGroup.LayoutParams localLayoutParams = TCaptchaPopupActivity.a(TCaptchaPopupActivity.this).getLayoutParams();
       localLayoutParams.width = ((int)(paramAnonymousInt1 * TCaptchaPopupActivity.b(TCaptchaPopupActivity.this)));
@@ -32,13 +38,21 @@ public class TCaptchaPopupActivity
       TCaptchaPopupActivity.c(TCaptchaPopupActivity.this).setVisibility(4);
     }
     
-    public void a(int paramAnonymousInt, String paramAnonymousString)
+    public final void a(String paramAnonymousString)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("retJson", paramAnonymousString);
+      TCaptchaPopupActivity.this.setResult(-1, localIntent);
+      TCaptchaPopupActivity.this.finish();
+    }
+    
+    public final void b(String paramAnonymousString)
     {
       try
       {
         Intent localIntent = new Intent();
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", paramAnonymousInt);
+        localJSONObject.put("ret", -1001);
         localJSONObject.put("info", paramAnonymousString);
         localIntent.putExtra("retJson", localJSONObject.toString());
         TCaptchaPopupActivity.this.setResult(-1, localIntent);
@@ -50,14 +64,6 @@ public class TCaptchaPopupActivity
         paramAnonymousString.printStackTrace();
       }
     }
-    
-    public void a(String paramAnonymousString)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("retJson", paramAnonymousString);
-      TCaptchaPopupActivity.this.setResult(-1, localIntent);
-      TCaptchaPopupActivity.this.finish();
-    }
   };
   
   protected void onCreate(Bundle paramBundle)
@@ -66,14 +72,14 @@ public class TCaptchaPopupActivity
     requestWindowFeature(1);
     this.d = getIntent().getStringExtra("appid");
     this.f = getIntent().getStringExtra("map");
-    setContentView(a.b.tcaptcha_popup);
+    setContentView(ko.b.tcaptcha_popup);
     this.c = getResources().getDisplayMetrics().density;
-    paramBundle = (RelativeLayout)findViewById(a.a.tcaptcha_container);
-    this.a = new b(this);
+    paramBundle = (RelativeLayout)findViewById(ko.a.tcaptcha_container);
+    this.a = new kp(this);
     this.a.setLayerType(1, null);
-    this.b = ((RelativeLayout)findViewById(a.a.tcaptcha_indicator_layout));
-    int i = c.a(this, getWindow(), paramBundle, this.b, this.a);
-    this.e = new d(this, this.g, this.d, this.a, this.f, i);
+    this.b = ((RelativeLayout)findViewById(ko.a.tcaptcha_indicator_layout));
+    kq.a(this, getWindow(), paramBundle, this.b, this.a);
+    this.e = new kr(this, this.g, this.d, this.a, this.f);
   }
   
   protected void onDestroy()
@@ -92,8 +98,8 @@ public class TCaptchaPopupActivity
         this.a.removeAllViews();
         this.a.destroy();
         this.a = null;
-        return;
       }
+      return;
     }
     catch (Exception localException)
     {

@@ -1,6 +1,6 @@
 package com.tencent.halley.downloader.c.d;
 
-import com.tencent.halley.common.h;
+import com.tencent.token.lr;
 
 public final class a
 {
@@ -51,11 +51,6 @@ public final class a
     return (parama == a.c) || (parama == a.e) || (parama == a.f) || (parama == a.h) || (parama == a.j);
   }
   
-  public final void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
   public final String toString()
   {
     boolean bool;
@@ -69,7 +64,7 @@ public final class a
     localStringBuilder.append(":");
     localStringBuilder.append(this.b.ordinal());
     localStringBuilder.append(":");
-    localStringBuilder.append(h.a(this.a, bool));
+    localStringBuilder.append(lr.a(this.a, bool));
     return localStringBuilder.toString();
   }
   

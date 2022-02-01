@@ -3,6 +3,8 @@ package btmsdkobf;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
@@ -28,8 +30,9 @@ public class eb
           if (paramContext == null) {
             return null;
           }
-          nZ = new eb();
-          nZ.l(paramContext);
+          eb localeb = new eb();
+          nZ = localeb;
+          localeb.l(paramContext);
         }
       }
     }
@@ -41,86 +44,48 @@ public class eb
     m(paramContext);
   }
   
-  /* Error */
   private void m(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 62	btmsdkobf/eb:gm	Z
-    //   6: istore_2
-    //   7: iload_2
-    //   8: ifne +72 -> 80
-    //   11: aload_1
-    //   12: ldc 64
-    //   14: invokevirtual 70	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   17: checkcast 72	android/net/ConnectivityManager
-    //   20: invokevirtual 76	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
-    //   23: astore_3
-    //   24: aload_3
-    //   25: ifnull +16 -> 41
-    //   28: aload_3
-    //   29: invokevirtual 82	android/net/NetworkInfo:getState	()Landroid/net/NetworkInfo$State;
-    //   32: astore_3
-    //   33: aload_0
-    //   34: aload_3
-    //   35: putfield 40	btmsdkobf/eb:nX	Landroid/net/NetworkInfo$State;
-    //   38: goto +10 -> 48
-    //   41: getstatic 38	android/net/NetworkInfo$State:DISCONNECTED	Landroid/net/NetworkInfo$State;
-    //   44: astore_3
-    //   45: goto -12 -> 33
-    //   48: new 84	android/content/IntentFilter
-    //   51: dup
-    //   52: invokespecial 85	android/content/IntentFilter:<init>	()V
-    //   55: astore_3
-    //   56: aload_3
-    //   57: ldc 87
-    //   59: invokevirtual 91	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   62: aload_3
-    //   63: ldc 92
-    //   65: invokevirtual 96	android/content/IntentFilter:setPriority	(I)V
-    //   68: aload_1
-    //   69: aload_0
-    //   70: aload_3
-    //   71: invokevirtual 100	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   74: pop
-    //   75: aload_0
-    //   76: iconst_1
-    //   77: putfield 62	btmsdkobf/eb:gm	Z
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: return
-    //   83: astore_1
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: aload_1
-    //   87: athrow
-    //   88: astore_3
-    //   89: goto -41 -> 48
-    //   92: astore_1
-    //   93: goto -13 -> 80
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	96	0	this	eb
-    //   0	96	1	paramContext	Context
-    //   6	2	2	bool	boolean
-    //   23	48	3	localObject	Object
-    //   88	1	3	localThrowable	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	83	finally
-    //   11	24	83	finally
-    //   28	33	83	finally
-    //   33	38	83	finally
-    //   41	45	83	finally
-    //   48	68	83	finally
-    //   68	80	83	finally
-    //   11	24	88	java/lang/Throwable
-    //   28	33	88	java/lang/Throwable
-    //   33	38	88	java/lang/Throwable
-    //   41	45	88	java/lang/Throwable
-    //   68	80	92	java/lang/Throwable
+    label33:
+    label48:
+    label83:
+    try
+    {
+      boolean bool = this.gm;
+      if (bool) {}
+    }
+    finally {}
+    try
+    {
+      localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (localObject != null)
+      {
+        localObject = ((NetworkInfo)localObject).getState();
+        this.nX = ((NetworkInfo.State)localObject);
+      }
+      else
+      {
+        localObject = NetworkInfo.State.DISCONNECTED;
+        break label33;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label48;
+    }
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("android.net.conn.CONNECTIVITY_CHANGE");
+    ((IntentFilter)localObject).setPriority(2147483647);
+    try
+    {
+      paramContext.registerReceiver(this, (IntentFilter)localObject);
+      this.gm = true;
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      break label83;
+    }
   }
   
   public void a(a parama)
@@ -147,15 +112,13 @@ public class eb
     paramIntent = paramIntent.getExtras();
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
     {
-      NetworkInfo.State localState = ((NetworkInfo)paramIntent.getParcelable("networkInfo")).getState();
-      ee localee;
-      if (localState == NetworkInfo.State.CONNECTED) {
-        if (this.nX.compareTo(NetworkInfo.State.DISCONNECTED) == 0)
-        {
-          localee = ee.cT();
-          paramContext = new Runnable()
+      paramContext = ((NetworkInfo)paramIntent.getParcelable("networkInfo")).getState();
+      if (paramContext == NetworkInfo.State.CONNECTED)
+      {
+        if (this.nX.compareTo(NetworkInfo.State.DISCONNECTED) == 0) {
+          ee.cT().addUrgentTask(new Runnable()
           {
-            public void run()
+            public final void run()
             {
               synchronized (eb.a(eb.this))
               {
@@ -170,39 +133,34 @@ public class eb
                 return;
               }
             }
-          };
+          }, "monitor_toConnected");
         }
+        this.nX = paramContext;
+        return;
       }
-      for (paramIntent = "monitor_toConnected";; paramIntent = "monitor_toDisconnected")
+      if (paramContext == NetworkInfo.State.DISCONNECTED)
       {
-        localee.addUrgentTask(paramContext, paramIntent);
-        do
-        {
-          this.nX = localState;
-          return;
-          if (localState != NetworkInfo.State.DISCONNECTED) {
-            break;
-          }
-        } while (this.nX.compareTo(NetworkInfo.State.CONNECTED) != 0);
-        localee = ee.cT();
-        paramContext = new Runnable()
-        {
-          public void run()
+        if (this.nX.compareTo(NetworkInfo.State.CONNECTED) == 0) {
+          ee.cT().addUrgentTask(new Runnable()
           {
-            synchronized (eb.a(eb.this))
+            public final void run()
             {
-              LinkedList localLinkedList = (LinkedList)eb.a(eb.this).clone();
-              if (localLinkedList != null)
+              synchronized (eb.a(eb.this))
               {
-                ??? = localLinkedList.iterator();
-                while (((Iterator)???).hasNext()) {
-                  ((eb.a)((Iterator)???).next()).P();
+                LinkedList localLinkedList = (LinkedList)eb.a(eb.this).clone();
+                if (localLinkedList != null)
+                {
+                  ??? = localLinkedList.iterator();
+                  while (((Iterator)???).hasNext()) {
+                    ((eb.a)((Iterator)???).next()).P();
+                  }
                 }
+                return;
               }
-              return;
             }
-          }
-        };
+          }, "monitor_toDisconnected");
+        }
+        this.nX = paramContext;
       }
     }
   }

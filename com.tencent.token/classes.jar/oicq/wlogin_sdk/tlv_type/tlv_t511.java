@@ -33,36 +33,31 @@ public class tlv_t511
       localObject1 = (String)localIterator.next();
       if ((localObject1 != null) && (((String)localObject1).length() != 0))
       {
-        int i = ((String)localObject1).indexOf('(');
-        int k = ((String)localObject1).indexOf(')');
+        int k = ((String)localObject1).indexOf('(');
+        int j = ((String)localObject1).indexOf(')');
         byte b2 = 1;
+        int i = 1;
         paramList = (List<String>)localObject1;
         byte b1 = b2;
-        if (i == 0)
+        if (k == 0)
         {
           paramList = (List<String>)localObject1;
           b1 = b2;
-          if (k > 0)
+          if (j > 0)
           {
-            int j = Integer.valueOf(((String)localObject1).substring(i + 1, k)).intValue();
-            b1 = 0;
-            if ((0x100000 & j) > 0) {
-              i = 1;
+            k = Integer.valueOf(((String)localObject1).substring(k + 1, j)).intValue();
+            if ((0x100000 & k) > 0) {
+              b1 = 1;
             } else {
+              b1 = 0;
+            }
+            if ((k & 0x8000000) <= 0) {
               i = 0;
             }
-            if ((j & 0x8000000) > 0) {
-              j = 1;
-            } else {
-              j = 0;
-            }
             if (i != 0) {
-              b1 = (byte)1;
-            }
-            if (j != 0) {
               b1 = (byte)(b1 | 0x2);
             }
-            paramList = ((String)localObject1).substring(k + 1);
+            paramList = ((String)localObject1).substring(j + 1);
           }
         }
         ((ByteBuffer)localObject2).put(b1);

@@ -16,17 +16,17 @@ public final class ad
     bn.add("");
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ad();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bm = ((ArrayList)paramJceInputStream.read(bn, 0, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     ArrayList localArrayList = this.bm;
     if (localArrayList != null) {

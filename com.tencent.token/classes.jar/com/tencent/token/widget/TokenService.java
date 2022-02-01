@@ -6,12 +6,12 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.SoundPool;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.cd;
-import com.tencent.token.cf;
-import com.tencent.token.global.g;
-import com.tencent.token.ui.WidgetTransitionActivity;
+import com.tencent.token.qz;
+import com.tencent.token.se;
+import com.tencent.token.xb;
 
 public class TokenService
   extends Service
@@ -31,40 +31,39 @@ public class TokenService
   public TokenService()
   {
     int[] arrayOfInt = this.h;
-    arrayOfInt[0] = 2131100186;
-    arrayOfInt[1] = 2131100187;
-    arrayOfInt[2] = 2131100188;
-    arrayOfInt[3] = 2131100189;
-    arrayOfInt[4] = 2131100190;
-    arrayOfInt[5] = 2131100191;
-    arrayOfInt[6] = 2131100192;
-    arrayOfInt[7] = 2131100193;
-    arrayOfInt[8] = 2131100194;
-    arrayOfInt[9] = 2131100195;
+    arrayOfInt[0] = 2131100189;
+    arrayOfInt[1] = 2131100190;
+    arrayOfInt[2] = 2131100191;
+    arrayOfInt[3] = 2131100192;
+    arrayOfInt[4] = 2131100193;
+    arrayOfInt[5] = 2131100194;
+    arrayOfInt[6] = 2131100195;
+    arrayOfInt[7] = 2131100196;
+    arrayOfInt[8] = 2131100197;
+    arrayOfInt[9] = 2131100198;
   }
   
   private void a()
   {
-    Object localObject2 = cd.c();
-    if (!((cd)localObject2).g())
+    Object localObject2 = qz.a();
+    if (!((qz)localObject2).d())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       Object localObject1 = localAppWidgetManager.getAppWidgetIds(this.e);
-      this.c.setImageViewResource(2131166273, 2131100204);
+      this.c.setImageViewResource(2131166286, 2131100207);
       boolean bool = this.f;
       int i1 = 0;
       if (!bool)
       {
-        ((cd)localObject2).m();
-        this.b = ((cd)localObject2).l();
+        this.b = ((qz)localObject2).f();
         if (this.g) {
-          this.c.setImageViewResource(2131166273, 2131100201);
+          this.c.setImageViewResource(2131166286, 2131100204);
         }
-        this.c.setViewVisibility(2131166272, 4);
-        this.c.setViewVisibility(2131166123, 4);
-        this.c.setViewVisibility(2131166132, 0);
-        this.c.setViewVisibility(2131166130, 0);
-        this.c.setOnClickPendingIntent(2131166132, this.j);
+        this.c.setViewVisibility(2131166285, 4);
+        this.c.setViewVisibility(2131166129, 4);
+        this.c.setViewVisibility(2131166138, 0);
+        this.c.setViewVisibility(2131166136, 0);
+        this.c.setOnClickPendingIntent(2131166138, this.j);
         int m = 0;
         for (;;)
         {
@@ -73,15 +72,15 @@ public class TokenService
           if (m >= localObject2.length) {
             break;
           }
-          this.c.setImageViewResource(2131166124 + m, this.h[localObject2[m]]);
+          this.c.setImageViewResource(2131166130 + m, this.h[localObject2[m]]);
           m += 1;
         }
       }
-      this.c.setViewVisibility(2131166132, 4);
-      this.c.setViewVisibility(2131166130, 4);
-      this.c.setViewVisibility(2131166272, 0);
-      this.c.setViewVisibility(2131166123, 0);
-      this.c.setOnClickPendingIntent(2131166272, this.i);
+      this.c.setViewVisibility(2131166138, 4);
+      this.c.setViewVisibility(2131166136, 4);
+      this.c.setViewVisibility(2131166285, 0);
+      this.c.setViewVisibility(2131166129, 0);
+      this.c.setOnClickPendingIntent(2131166285, this.i);
       int n = i1;
       try
       {
@@ -95,27 +94,10 @@ public class TokenService
       catch (Exception localException)
       {
         localException.printStackTrace();
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("TokenService ");
+        localObject1 = new StringBuilder("TokenService ");
         ((StringBuilder)localObject1).append(localException.toString());
-        g.d(((StringBuilder)localObject1).toString());
+        xb.c(((StringBuilder)localObject1).toString());
       }
-    }
-  }
-  
-  private void b()
-  {
-    if (this.c == null)
-    {
-      this.i = PendingIntent.getActivity(this, 0, new Intent(this, WidgetTransitionActivity.class), 0);
-      this.d = new Intent(this, TokenService.class);
-      this.c = new RemoteViews(getPackageName(), 2131296466);
-      this.e = new ComponentName(this, TokenWidgetProvider.class);
-      this.c.setOnClickPendingIntent(2131166130, this.i);
-      this.c.setOnClickPendingIntent(2131166272, this.i);
-      this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
-      this.c.setOnClickPendingIntent(2131166132, this.j);
-      cf.a(this);
     }
   }
   
@@ -126,7 +108,7 @@ public class TokenService
   
   public void onCreate()
   {
-    g.a("onCreate");
+    xb.a("onCreate");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -138,7 +120,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    cf.a(this).b();
+    se.a(this).a.release();
     unregisterReceiver(this.k);
   }
   
@@ -147,112 +129,176 @@ public class TokenService
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 211	com/tencent/token/widget/TokenService:b	()V
-    //   4: invokestatic 217	java/lang/System:currentTimeMillis	()J
-    //   7: lstore 5
-    //   9: aload_0
-    //   10: getfield 32	com/tencent/token/widget/TokenService:a	Ljava/lang/Object;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: monitorenter
-    //   16: ldc2_w 218
-    //   19: lstore_3
-    //   20: invokestatic 73	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
-    //   23: invokevirtual 76	com/tencent/token/cd:g	()Z
-    //   26: ifne +78 -> 104
-    //   29: invokestatic 224	com/tencent/token/ce:a	()Lcom/tencent/token/ce;
-    //   32: invokevirtual 226	com/tencent/token/ce:c	()Z
-    //   35: ifne +56 -> 91
-    //   38: invokestatic 230	com/tencent/token/utils/m:e	()J
-    //   41: lconst_0
-    //   42: lcmp
-    //   43: ifeq +6 -> 49
-    //   46: goto +45 -> 91
-    //   49: aload_0
-    //   50: iconst_0
-    //   51: putfield 42	com/tencent/token/widget/TokenService:f	Z
-    //   54: invokestatic 73	com/tencent/token/cd:c	()Lcom/tencent/token/cd;
-    //   57: invokevirtual 233	com/tencent/token/cd:r	()J
-    //   60: lstore_3
-    //   61: lload_3
-    //   62: ldc2_w 234
-    //   65: lcmp
-    //   66: ifle +17 -> 83
-    //   69: lload_3
-    //   70: ldc2_w 234
-    //   73: lsub
-    //   74: lstore_3
-    //   75: aload_0
-    //   76: iconst_0
-    //   77: putfield 44	com/tencent/token/widget/TokenService:g	Z
-    //   80: goto +20 -> 100
-    //   83: aload_0
-    //   84: iconst_1
-    //   85: putfield 44	com/tencent/token/widget/TokenService:g	Z
-    //   88: goto +12 -> 100
+    //   1: getfield 36	com/tencent/token/widget/TokenService:c	Landroid/widget/RemoteViews;
+    //   4: ifnonnull +131 -> 135
+    //   7: aload_0
+    //   8: aload_0
+    //   9: iconst_0
+    //   10: new 185	android/content/Intent
+    //   13: dup
+    //   14: aload_0
+    //   15: ldc 187
+    //   17: invokespecial 190	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   20: iconst_0
+    //   21: invokestatic 196	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    //   24: putfield 48	com/tencent/token/widget/TokenService:i	Landroid/app/PendingIntent;
+    //   27: aload_0
+    //   28: new 185	android/content/Intent
+    //   31: dup
+    //   32: aload_0
+    //   33: ldc 2
+    //   35: invokespecial 190	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   38: putfield 38	com/tencent/token/widget/TokenService:d	Landroid/content/Intent;
+    //   41: aload_0
+    //   42: new 90	android/widget/RemoteViews
+    //   45: dup
+    //   46: aload_0
+    //   47: invokevirtual 199	com/tencent/token/widget/TokenService:getPackageName	()Ljava/lang/String;
+    //   50: ldc 200
+    //   52: invokespecial 203	android/widget/RemoteViews:<init>	(Ljava/lang/String;I)V
+    //   55: putfield 36	com/tencent/token/widget/TokenService:c	Landroid/widget/RemoteViews;
+    //   58: aload_0
+    //   59: new 205	android/content/ComponentName
+    //   62: dup
+    //   63: aload_0
+    //   64: ldc 207
+    //   66: invokespecial 208	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   69: putfield 40	com/tencent/token/widget/TokenService:e	Landroid/content/ComponentName;
+    //   72: aload_0
+    //   73: getfield 36	com/tencent/token/widget/TokenService:c	Landroid/widget/RemoteViews;
+    //   76: ldc 105
+    //   78: aload_0
+    //   79: getfield 48	com/tencent/token/widget/TokenService:i	Landroid/app/PendingIntent;
+    //   82: invokevirtual 109	android/widget/RemoteViews:setOnClickPendingIntent	(ILandroid/app/PendingIntent;)V
+    //   85: aload_0
+    //   86: getfield 36	com/tencent/token/widget/TokenService:c	Landroid/widget/RemoteViews;
+    //   89: ldc 99
     //   91: aload_0
-    //   92: iconst_1
-    //   93: putfield 42	com/tencent/token/widget/TokenService:f	Z
-    //   96: ldc2_w 236
-    //   99: lstore_3
-    //   100: aload_0
-    //   101: invokespecial 239	com/tencent/token/widget/TokenService:a	()V
-    //   104: aload_0
-    //   105: ldc 241
-    //   107: invokevirtual 245	com/tencent/token/widget/TokenService:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   110: checkcast 247	android/app/AlarmManager
-    //   113: iconst_1
-    //   114: lload 5
-    //   116: lload_3
-    //   117: ladd
-    //   118: aload_0
-    //   119: iconst_0
-    //   120: aload_0
-    //   121: getfield 38	com/tencent/token/widget/TokenService:d	Landroid/content/Intent;
-    //   124: iconst_0
-    //   125: invokestatic 250	android/app/PendingIntent:getService	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
-    //   128: invokevirtual 254	android/app/AlarmManager:set	(IJLandroid/app/PendingIntent;)V
-    //   131: goto +15 -> 146
-    //   134: astore 7
-    //   136: goto +13 -> 149
-    //   139: astore 7
-    //   141: aload 7
-    //   143: invokevirtual 121	java/lang/Exception:printStackTrace	()V
-    //   146: aload_1
-    //   147: monitorexit
-    //   148: return
-    //   149: aload_1
-    //   150: monitorexit
-    //   151: aload 7
-    //   153: athrow
+    //   92: getfield 48	com/tencent/token/widget/TokenService:i	Landroid/app/PendingIntent;
+    //   95: invokevirtual 109	android/widget/RemoteViews:setOnClickPendingIntent	(ILandroid/app/PendingIntent;)V
+    //   98: aload_0
+    //   99: aload_0
+    //   100: iconst_0
+    //   101: new 185	android/content/Intent
+    //   104: dup
+    //   105: ldc 155
+    //   107: invokespecial 209	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   110: iconst_0
+    //   111: invokestatic 212	android/app/PendingIntent:getBroadcast	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    //   114: putfield 50	com/tencent/token/widget/TokenService:j	Landroid/app/PendingIntent;
+    //   117: aload_0
+    //   118: getfield 36	com/tencent/token/widget/TokenService:c	Landroid/widget/RemoteViews;
+    //   121: ldc 104
+    //   123: aload_0
+    //   124: getfield 50	com/tencent/token/widget/TokenService:j	Landroid/app/PendingIntent;
+    //   127: invokevirtual 109	android/widget/RemoteViews:setOnClickPendingIntent	(ILandroid/app/PendingIntent;)V
+    //   130: aload_0
+    //   131: invokestatic 169	com/tencent/token/se:a	(Landroid/content/Context;)Lcom/tencent/token/se;
+    //   134: pop
+    //   135: invokestatic 218	java/lang/System:currentTimeMillis	()J
+    //   138: lstore 5
+    //   140: aload_0
+    //   141: getfield 32	com/tencent/token/widget/TokenService:a	Ljava/lang/Object;
+    //   144: astore_1
+    //   145: aload_1
+    //   146: monitorenter
+    //   147: ldc2_w 219
+    //   150: lstore_3
+    //   151: invokestatic 73	com/tencent/token/qz:a	()Lcom/tencent/token/qz;
+    //   154: invokevirtual 76	com/tencent/token/qz:d	()Z
+    //   157: ifne +75 -> 232
+    //   160: invokestatic 225	com/tencent/token/sd:a	()Lcom/tencent/token/sd;
+    //   163: invokevirtual 227	com/tencent/token/sd:c	()Z
+    //   166: ifne +53 -> 219
+    //   169: invokestatic 231	com/tencent/token/aae:e	()J
+    //   172: lconst_0
+    //   173: lcmp
+    //   174: ifeq +6 -> 180
+    //   177: goto +42 -> 219
+    //   180: aload_0
+    //   181: iconst_0
+    //   182: putfield 42	com/tencent/token/widget/TokenService:f	Z
+    //   185: invokestatic 235	com/tencent/token/sc:h	()J
+    //   188: lstore_3
+    //   189: lload_3
+    //   190: ldc2_w 236
+    //   193: lcmp
+    //   194: ifle +17 -> 211
+    //   197: lload_3
+    //   198: ldc2_w 236
+    //   201: lsub
+    //   202: lstore_3
+    //   203: aload_0
+    //   204: iconst_0
+    //   205: putfield 44	com/tencent/token/widget/TokenService:g	Z
+    //   208: goto +20 -> 228
+    //   211: aload_0
+    //   212: iconst_1
+    //   213: putfield 44	com/tencent/token/widget/TokenService:g	Z
+    //   216: goto +12 -> 228
+    //   219: aload_0
+    //   220: iconst_1
+    //   221: putfield 42	com/tencent/token/widget/TokenService:f	Z
+    //   224: ldc2_w 238
+    //   227: lstore_3
+    //   228: aload_0
+    //   229: invokespecial 241	com/tencent/token/widget/TokenService:a	()V
+    //   232: aload_0
+    //   233: ldc 243
+    //   235: invokevirtual 247	com/tencent/token/widget/TokenService:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   238: checkcast 249	android/app/AlarmManager
+    //   241: iconst_1
+    //   242: lload 5
+    //   244: lload_3
+    //   245: ladd
+    //   246: aload_0
+    //   247: iconst_0
+    //   248: aload_0
+    //   249: getfield 38	com/tencent/token/widget/TokenService:d	Landroid/content/Intent;
+    //   252: iconst_0
+    //   253: invokestatic 252	android/app/PendingIntent:getService	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    //   256: invokevirtual 256	android/app/AlarmManager:set	(IJLandroid/app/PendingIntent;)V
+    //   259: goto +15 -> 274
+    //   262: astore 7
+    //   264: goto +13 -> 277
+    //   267: astore 7
+    //   269: aload 7
+    //   271: invokevirtual 117	java/lang/Exception:printStackTrace	()V
+    //   274: aload_1
+    //   275: monitorexit
+    //   276: return
+    //   277: aload_1
+    //   278: monitorexit
+    //   279: aload 7
+    //   281: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	154	0	this	TokenService
-    //   0	154	1	paramIntent	Intent
-    //   0	154	2	paramInt	int
-    //   19	98	3	l1	long
-    //   7	108	5	l2	long
-    //   134	1	7	localObject	Object
-    //   139	13	7	localException	Exception
+    //   0	282	0	this	TokenService
+    //   0	282	1	paramIntent	Intent
+    //   0	282	2	paramInt	int
+    //   150	95	3	l1	long
+    //   138	105	5	l2	long
+    //   262	1	7	localObject	Object
+    //   267	13	7	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   20	46	134	finally
-    //   49	61	134	finally
-    //   75	80	134	finally
-    //   83	88	134	finally
-    //   91	96	134	finally
-    //   100	104	134	finally
-    //   104	131	134	finally
-    //   141	146	134	finally
-    //   146	148	134	finally
-    //   149	151	134	finally
-    //   20	46	139	java/lang/Exception
-    //   49	61	139	java/lang/Exception
-    //   75	80	139	java/lang/Exception
-    //   83	88	139	java/lang/Exception
-    //   91	96	139	java/lang/Exception
-    //   100	104	139	java/lang/Exception
-    //   104	131	139	java/lang/Exception
+    //   151	177	262	finally
+    //   180	189	262	finally
+    //   203	208	262	finally
+    //   211	216	262	finally
+    //   219	224	262	finally
+    //   228	232	262	finally
+    //   232	259	262	finally
+    //   269	274	262	finally
+    //   274	276	262	finally
+    //   277	279	262	finally
+    //   151	177	267	java/lang/Exception
+    //   180	189	267	java/lang/Exception
+    //   203	208	267	java/lang/Exception
+    //   211	216	267	java/lang/Exception
+    //   219	224	267	java/lang/Exception
+    //   228	232	267	java/lang/Exception
+    //   232	259	267	java/lang/Exception
   }
 }
 

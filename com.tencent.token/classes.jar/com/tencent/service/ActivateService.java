@@ -8,8 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import com.tencent.token.utils.l;
+import com.tencent.token.aad;
 import com.tmsdk.common.util.TmsLog;
 
 public class ActivateService
@@ -19,30 +18,6 @@ public class ActivateService
   String b = "channelId";
   String c = "channelName";
   
-  private void a()
-  {
-    this.a = ((NotificationManager)getSystemService("notification"));
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      NotificationChannel localNotificationChannel = new NotificationChannel(this.b, this.c, 4);
-      this.a.createNotificationChannel(localNotificationChannel);
-    }
-    startForeground(1, b());
-  }
-  
-  private Notification b()
-  {
-    Notification.Builder localBuilder = new Notification.Builder(this).setSmallIcon(2131099893).setContentTitle("QQ安全中心").setContentText("服务正在运行...");
-    if (Build.VERSION.SDK_INT >= 26) {
-      localBuilder.setChannelId(this.b);
-    }
-    if (Build.VERSION.SDK_INT >= 16) {
-      return localBuilder.build();
-    }
-    return new Notification();
-  }
-  
-  @Nullable
   public IBinder onBind(Intent paramIntent)
   {
     return null;
@@ -54,7 +29,22 @@ public class ActivateService
     {
       TmsLog.i("ActivateService", "onCreate.");
       super.onCreate();
-      a();
+      this.a = ((NotificationManager)getSystemService("notification"));
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localObject = new NotificationChannel(this.b, this.c, 4);
+        this.a.createNotificationChannel((NotificationChannel)localObject);
+      }
+      Object localObject = new Notification.Builder(this).setSmallIcon(2131099894).setContentTitle("QQ安全中心").setContentText("服务正在运行...");
+      if (Build.VERSION.SDK_INT >= 26) {
+        ((Notification.Builder)localObject).setChannelId(this.b);
+      }
+      if (Build.VERSION.SDK_INT >= 16) {
+        localObject = ((Notification.Builder)localObject).build();
+      } else {
+        localObject = new Notification();
+      }
+      startForeground(1, (Notification)localObject);
       return;
     }
     catch (Throwable localThrowable)
@@ -85,7 +75,7 @@ public class ActivateService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     TmsLog.i("ActivateService", "onStartCommand.");
-    l.i();
+    aad.g();
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
 }

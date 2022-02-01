@@ -1,170 +1,187 @@
 package com.tencent.token;
 
-import com.tencent.token.global.g;
+import android.app.Notification;
+import android.app.Notification.Action.Builder;
+import android.app.Notification.Builder;
+import android.app.PendingIntent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.RemoteViews;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class cl
-  implements fb
+final class cl
 {
-  private ez a = null;
-  private cm b = null;
-  private int c = 0;
-  private cg d = null;
+  final Notification.Builder a;
+  final ck.b b;
+  RemoteViews c;
+  RemoteViews d;
+  final List<Bundle> e = new ArrayList();
+  final Bundle f = new Bundle();
+  int g;
+  RemoteViews h;
   
-  public cl(cg paramcg)
+  cl(ck.b paramb)
   {
-    this.d = paramcg;
-    this.b = new cm();
-  }
-  
-  private String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(cd.a());
-    localStringBuilder.append("/cn/manage/token/gprs_get_svr_time_req");
-    return localStringBuilder.toString();
-  }
-  
-  private String a(ci paramci)
-  {
-    if ((paramci.c != null) && (paramci.c.length() != 0)) {
-      return paramci.c;
+    this.b = paramb;
+    if (Build.VERSION.SDK_INT >= 26) {
+      this.a = new Notification.Builder(paramb.a, paramb.H);
+    } else {
+      this.a = new Notification.Builder(paramb.a);
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("其它错误：");
-    ((StringBuilder)localObject).append(paramci.b);
-    localObject = ((StringBuilder)localObject).toString();
-    int i = paramci.b;
-    switch (i)
+    Object localObject1 = paramb.M;
+    Object localObject2 = this.a.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramb.g).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
+    boolean bool;
+    if ((((Notification)localObject1).flags & 0x2) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setOngoing(bool);
+    if ((((Notification)localObject1).flags & 0x8) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setOnlyAlertOnce(bool);
+    if ((((Notification)localObject1).flags & 0x10) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramb.c).setContentText(paramb.d).setContentInfo(paramb.i).setContentIntent(paramb.e).setDeleteIntent(((Notification)localObject1).deleteIntent);
+    PendingIntent localPendingIntent = paramb.f;
+    if ((((Notification)localObject1).flags & 0x80) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramb.h).setNumber(paramb.j).setProgress(paramb.q, paramb.r, paramb.s);
+    if (Build.VERSION.SDK_INT < 21) {
+      this.a.setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioStreamType);
+    }
+    if (Build.VERSION.SDK_INT >= 16)
     {
-    default: 
-      switch (i)
-      {
-      default: 
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("其它错误：");
-        ((StringBuilder)localObject).append(paramci.b);
-        g.b(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("其它错误：");
-        ((StringBuilder)localObject).append(paramci.b);
-        return ((StringBuilder)localObject).toString();
-      case 101: 
-        g.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
-        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
+      this.a.setSubText(paramb.o).setUsesChronometer(paramb.m).setPriority(paramb.k);
+      localObject2 = paramb.b.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        a((ck.a)((Iterator)localObject2).next());
       }
-      g.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
-      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
-    case 9: 
-      g.b("已经到令牌的最大绑定个数");
-      return "已经到令牌的最大绑定个数";
-    case 8: 
-      g.b("令牌序列号不存在");
-      return "令牌序列号不存在";
-    case 7: 
-      g.b("客户端输入错误");
-      return "客户端输入错误";
-    case 6: 
-      g.b("还没有密保手机");
-      return "还没有密保手机";
-    case 5: 
-      g.b("密保手机不正确");
-      return "密保手机不正确";
-    case 4: 
-      g.b("解除绑定时该号码还没有绑定qq");
-      return "解除绑定时该号码还没有绑定qq";
-    case 3: 
-      g.b("该号码已经绑定令牌");
-      return "该号码已经绑定令牌";
-    case 2: 
-      g.b("六位验证码验证错误");
-      return "六位验证码验证错误";
-    case 1: 
-      g.b("短信没有到达");
-      return "短信没有到达";
+      if (paramb.A != null) {
+        this.f.putAll(paramb.A);
+      }
+      if (Build.VERSION.SDK_INT < 20)
+      {
+        if (paramb.w) {
+          this.f.putBoolean("android.support.localOnly", true);
+        }
+        if (paramb.t != null)
+        {
+          this.f.putString("android.support.groupKey", paramb.t);
+          if (paramb.u) {
+            this.f.putBoolean("android.support.isGroupSummary", true);
+          } else {
+            this.f.putBoolean("android.support.useSideChannel", true);
+          }
+        }
+        if (paramb.v != null) {
+          this.f.putString("android.support.sortKey", paramb.v);
+        }
+      }
+      this.c = paramb.E;
+      this.d = paramb.F;
     }
-    return localObject;
-  }
-  
-  public void a(long paramLong)
-  {
-    Object localObject = this.b.a(paramLong, this.c);
-    localObject = new fa(a(), (byte[])localObject, this, true);
-    ((fa)localObject).a("POST");
-    this.a.a((fa)localObject);
-    this.c += 1;
-  }
-  
-  public void a(ez paramez)
-  {
-    this.a = paramez;
-  }
-  
-  public void a(fa paramfa, String paramString)
-  {
-    this.d.c();
-  }
-  
-  public void a(fa paramfa, byte[] paramArrayOfByte)
-  {
-    int i = this.b.a(paramArrayOfByte);
-    if (i == -1) {
-      return;
-    }
-    paramfa = new ci();
-    switch (i)
+    if (Build.VERSION.SDK_INT >= 19)
     {
-    case 103: 
-    case 104: 
-    default: 
-      return;
-    case 106: 
-      this.b.a(paramfa, paramArrayOfByte);
-      if (paramfa.b == 0)
-      {
-        cs.a().n();
-        this.d.b();
-        return;
+      this.a.setShowWhen(paramb.l);
+      if ((Build.VERSION.SDK_INT < 21) && (paramb.N != null) && (!paramb.N.isEmpty())) {
+        this.f.putStringArray("android.people", (String[])paramb.N.toArray(new String[paramb.N.size()]));
       }
-      this.d.b(paramfa.b, a(paramfa));
-      return;
-    case 105: 
-      this.b.a(paramfa, paramArrayOfByte);
-      if (paramfa.b == 0)
-      {
-        cs.a().n();
-        this.d.a();
-        return;
-      }
-      this.d.a(paramfa.b, a(paramfa));
-      return;
-    case 102: 
-      paramfa = new ch();
-      this.b.a(paramfa, paramArrayOfByte);
-      this.b.a(paramfa);
-      if (paramfa.b == 0)
-      {
-        this.d.b(paramfa.a);
-        return;
-      }
-      this.d.c(a(paramfa));
-      return;
     }
-    this.b.a(paramfa, paramArrayOfByte);
-    if (paramfa.b == 0)
+    if (Build.VERSION.SDK_INT >= 20)
     {
-      paramArrayOfByte = new StringBuilder();
-      paramArrayOfByte.append("服务器时间:");
-      paramArrayOfByte.append(paramfa.d);
-      g.b(paramArrayOfByte.toString());
-      this.d.a(paramfa.d);
-      return;
+      this.a.setLocalOnly(paramb.w).setGroup(paramb.t).setGroupSummary(paramb.u).setSortKey(paramb.v);
+      this.g = paramb.L;
     }
-    this.d.a(a(paramfa));
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      this.a.setCategory(paramb.z).setColor(paramb.B).setVisibility(paramb.C).setPublicVersion(paramb.D).setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioAttributes);
+      localObject1 = paramb.N.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        this.a.addPerson((String)localObject2);
+      }
+      this.h = paramb.G;
+    }
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      this.a.setExtras(paramb.A).setRemoteInputHistory(paramb.p);
+      if (paramb.E != null) {
+        this.a.setCustomContentView(paramb.E);
+      }
+      if (paramb.F != null) {
+        this.a.setCustomBigContentView(paramb.F);
+      }
+      if (paramb.G != null) {
+        this.a.setCustomHeadsUpContentView(paramb.G);
+      }
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      this.a.setBadgeIconType(paramb.I).setShortcutId(paramb.J).setTimeoutAfter(paramb.K).setGroupAlertBehavior(paramb.L);
+      if (paramb.y) {
+        this.a.setColorized(paramb.x);
+      }
+      if (!TextUtils.isEmpty(paramb.H)) {
+        this.a.setSound(null).setDefaults(0).setLights(0, 0, 0).setVibrate(null);
+      }
+    }
   }
   
-  public boolean a(fa paramfa, int paramInt)
+  static void a(Notification paramNotification)
   {
-    return false;
+    paramNotification.sound = null;
+    paramNotification.vibrate = null;
+    paramNotification.defaults &= 0xFFFFFFFE;
+    paramNotification.defaults &= 0xFFFFFFFD;
+  }
+  
+  private void a(ck.a parama)
+  {
+    if (Build.VERSION.SDK_INT >= 20)
+    {
+      Notification.Action.Builder localBuilder = new Notification.Action.Builder(parama.e, parama.f, parama.g);
+      Object localObject;
+      if (parama.b != null)
+      {
+        localObject = co.a(parama.b);
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localBuilder.addRemoteInput(localObject[i]);
+          i += 1;
+        }
+      }
+      if (parama.a != null) {
+        localObject = new Bundle(parama.a);
+      } else {
+        localObject = new Bundle();
+      }
+      ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", parama.d);
+      if (Build.VERSION.SDK_INT >= 24) {
+        localBuilder.setAllowGeneratedReplies(parama.d);
+      }
+      localBuilder.addExtras((Bundle)localObject);
+      this.a.addAction(localBuilder.build());
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.e.add(cm.a(this.a, parama));
+    }
   }
 }
 

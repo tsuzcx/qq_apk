@@ -3,34 +3,31 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.appcompat.R.styleable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.token.ex;
+import com.tencent.token.gp.j;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ButtonBarLayout
   extends LinearLayout
 {
-  private static final int PEEK_BUTTON_DP = 16;
-  private boolean mAllowStacking;
-  private int mLastWidthSize = -1;
-  private int mMinimumHeight = 0;
+  private boolean a;
+  private int b = -1;
+  private int c = 0;
   
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ButtonBarLayout);
-    this.mAllowStacking = paramContext.getBoolean(R.styleable.ButtonBarLayout_allowStacking, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gp.j.ButtonBarLayout);
+    this.a = paramContext.getBoolean(gp.j.ButtonBarLayout_allowStacking, true);
     paramContext.recycle();
   }
   
-  private int getNextVisibleChildIndex(int paramInt)
+  private int a(int paramInt)
   {
     int i = getChildCount();
     while (paramInt < i)
@@ -43,7 +40,7 @@ public class ButtonBarLayout
     return -1;
   }
   
-  private boolean isStacked()
+  private boolean a()
   {
     return getOrientation() == 1;
   }
@@ -55,23 +52,23 @@ public class ButtonBarLayout
   
   public int getMinimumHeight()
   {
-    return Math.max(this.mMinimumHeight, super.getMinimumHeight());
+    return Math.max(this.c, super.getMinimumHeight());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
-    boolean bool = this.mAllowStacking;
+    boolean bool = this.a;
     int m = 0;
     if (bool)
     {
-      if ((i > this.mLastWidthSize) && (isStacked())) {
+      if ((i > this.b) && (a())) {
         setStacked(false);
       }
-      this.mLastWidthSize = i;
+      this.b = i;
     }
     int j;
-    if ((!isStacked()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
+    if ((!a()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
       j = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
       i = 1;
@@ -83,10 +80,10 @@ public class ButtonBarLayout
     }
     super.onMeasure(j, paramInt2);
     int k = i;
-    if (this.mAllowStacking)
+    if (this.a)
     {
       k = i;
-      if (!isStacked())
+      if (!a())
       {
         if ((getMeasuredWidthAndState() & 0xFF000000) == 16777216) {
           j = 1;
@@ -104,16 +101,16 @@ public class ButtonBarLayout
     if (k != 0) {
       super.onMeasure(paramInt1, paramInt2);
     }
-    paramInt2 = getNextVisibleChildIndex(0);
+    paramInt2 = a(0);
     paramInt1 = m;
     if (paramInt2 >= 0)
     {
       View localView = getChildAt(paramInt2);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
       paramInt1 = getPaddingTop() + localView.getMeasuredHeight() + localLayoutParams.topMargin + localLayoutParams.bottomMargin + 0;
-      if (isStacked())
+      if (a())
       {
-        paramInt2 = getNextVisibleChildIndex(paramInt2 + 1);
+        paramInt2 = a(paramInt2 + 1);
         if (paramInt2 >= 0) {
           paramInt1 += getChildAt(paramInt2).getPaddingTop() + (int)(getResources().getDisplayMetrics().density * 16.0F);
         }
@@ -123,17 +120,17 @@ public class ButtonBarLayout
         paramInt1 += getPaddingBottom();
       }
     }
-    if (ViewCompat.getMinimumHeight(this) != paramInt1) {
+    if (ex.e(this) != paramInt1) {
       setMinimumHeight(paramInt1);
     }
   }
   
   public void setAllowStacking(boolean paramBoolean)
   {
-    if (this.mAllowStacking != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.mAllowStacking = paramBoolean;
-      if ((!this.mAllowStacking) && (getOrientation() == 1)) {
+      this.a = paramBoolean;
+      if ((!this.a) && (getOrientation() == 1)) {
         setStacked(false);
       }
       requestLayout();
